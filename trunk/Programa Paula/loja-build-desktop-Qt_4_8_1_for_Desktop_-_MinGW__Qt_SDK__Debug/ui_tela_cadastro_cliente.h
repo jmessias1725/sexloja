@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_cadastro_cliente.ui'
 **
-** Created: Tue 28. Aug 17:30:58 2012
+** Created: Tue 28. Aug 23:12:22 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -22,6 +22,7 @@
 #include <QtGui/QMainWindow>
 #include <QtGui/QPushButton>
 #include <QtGui/QTextEdit>
+#include <QtGui/QToolButton>
 #include <QtGui/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -33,8 +34,6 @@ public:
     QGroupBox *gb_dados_cliente;
     QLabel *lb_telefone;
     QComboBox *cb_telefone;
-    QLabel *lb_numero_cliente;
-    QLineEdit *le_numero_cadastro;
     QLabel *lb_nome;
     QLineEdit *le_nome;
     QLabel *lb_cpf;
@@ -45,6 +44,8 @@ public:
     QComboBox *cb_email;
     QLabel *lb_comentario;
     QTextEdit *te_comentario;
+    QToolButton *tb_mais_email;
+    QToolButton *tb_menos_email;
     QGroupBox *gb_endereo;
     QLineEdit *le_cep;
     QLabel *lb_cep;
@@ -87,7 +88,7 @@ public:
         gb_dados_cliente->setFont(font);
         lb_telefone = new QLabel(gb_dados_cliente);
         lb_telefone->setObjectName(QString::fromUtf8("lb_telefone"));
-        lb_telefone->setGeometry(QRect(590, 53, 51, 20));
+        lb_telefone->setGeometry(QRect(520, 53, 50, 20));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Calibri"));
         font1.setPointSize(10);
@@ -97,49 +98,35 @@ public:
         lb_telefone->setFont(font1);
         cb_telefone = new QComboBox(gb_dados_cliente);
         cb_telefone->setObjectName(QString::fromUtf8("cb_telefone"));
-        cb_telefone->setGeometry(QRect(644, 53, 131, 20));
+        cb_telefone->setGeometry(QRect(574, 53, 130, 20));
         cb_telefone->setMaximumSize(QSize(16777215, 20));
         cb_telefone->setFont(font1);
-        cb_telefone->setEditable(true);
-        lb_numero_cliente = new QLabel(gb_dados_cliente);
-        lb_numero_cliente->setObjectName(QString::fromUtf8("lb_numero_cliente"));
-        lb_numero_cliente->setGeometry(QRect(12, 23, 58, 20));
-        lb_numero_cliente->setMaximumSize(QSize(120, 20));
-        lb_numero_cliente->setFont(font1);
-        le_numero_cadastro = new QLineEdit(gb_dados_cliente);
-        le_numero_cadastro->setObjectName(QString::fromUtf8("le_numero_cadastro"));
-        le_numero_cadastro->setGeometry(QRect(68, 23, 80, 20));
-        le_numero_cadastro->setMinimumSize(QSize(80, 20));
-        le_numero_cadastro->setMaximumSize(QSize(65, 20));
-        le_numero_cadastro->setFont(font1);
-        le_numero_cadastro->setMaxLength(10);
-        le_numero_cadastro->setCursorPosition(0);
-        le_numero_cadastro->setReadOnly(false);
+        cb_telefone->setEditable(false);
         lb_nome = new QLabel(gb_dados_cliente);
         lb_nome->setObjectName(QString::fromUtf8("lb_nome"));
-        lb_nome->setGeometry(QRect(170, 23, 39, 20));
+        lb_nome->setGeometry(QRect(13, 23, 39, 20));
         lb_nome->setMaximumSize(QSize(40, 20));
         lb_nome->setFont(font1);
         le_nome = new QLineEdit(gb_dados_cliente);
         le_nome->setObjectName(QString::fromUtf8("le_nome"));
-        le_nome->setGeometry(QRect(210, 23, 410, 20));
+        le_nome->setGeometry(QRect(51, 23, 410, 20));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(le_nome->sizePolicy().hasHeightForWidth());
         le_nome->setSizePolicy(sizePolicy);
         le_nome->setMinimumSize(QSize(410, 20));
-        le_nome->setMaximumSize(QSize(410, 20));
+        le_nome->setMaximumSize(QSize(500, 20));
         le_nome->setFont(font1);
         le_nome->setMaxLength(60);
         le_nome->setReadOnly(false);
         lb_cpf = new QLabel(gb_dados_cliente);
         lb_cpf->setObjectName(QString::fromUtf8("lb_cpf"));
-        lb_cpf->setGeometry(QRect(12, 53, 27, 20));
+        lb_cpf->setGeometry(QRect(647, 23, 27, 20));
         lb_cpf->setFont(font1);
         le_cpf = new QLineEdit(gb_dados_cliente);
         le_cpf->setObjectName(QString::fromUtf8("le_cpf"));
-        le_cpf->setGeometry(QRect(40, 53, 100, 20));
+        le_cpf->setGeometry(QRect(675, 23, 100, 20));
         sizePolicy.setHeightForWidth(le_cpf->sizePolicy().hasHeightForWidth());
         le_cpf->setSizePolicy(sizePolicy);
         le_cpf->setMinimumSize(QSize(100, 20));
@@ -149,12 +136,12 @@ public:
         le_cpf->setReadOnly(false);
         lb_rg = new QLabel(gb_dados_cliente);
         lb_rg->setObjectName(QString::fromUtf8("lb_rg"));
-        lb_rg->setGeometry(QRect(644, 23, 20, 20));
+        lb_rg->setGeometry(QRect(487, 23, 20, 20));
         lb_rg->setFont(font1);
         le_rg = new QLineEdit(gb_dados_cliente);
         le_rg->setObjectName(QString::fromUtf8("le_rg"));
-        le_rg->setGeometry(QRect(665, 23, 111, 20));
-        le_rg->setMinimumSize(QSize(110, 20));
+        le_rg->setGeometry(QRect(508, 23, 120, 20));
+        le_rg->setMinimumSize(QSize(120, 20));
         le_rg->setMaximumSize(QSize(120, 20));
         le_rg->setFont(font1);
         le_rg->setMaxLength(15);
@@ -162,15 +149,15 @@ public:
         le_rg->setReadOnly(false);
         lb_email = new QLabel(gb_dados_cliente);
         lb_email->setObjectName(QString::fromUtf8("lb_email"));
-        lb_email->setGeometry(QRect(150, 53, 41, 20));
+        lb_email->setGeometry(QRect(14, 53, 40, 20));
         lb_email->setFont(font1);
         cb_email = new QComboBox(gb_dados_cliente);
         cb_email->setObjectName(QString::fromUtf8("cb_email"));
-        cb_email->setGeometry(QRect(190, 53, 391, 20));
+        cb_email->setGeometry(QRect(54, 53, 390, 20));
         cb_email->setMaximumSize(QSize(450, 20));
         cb_email->setSizeIncrement(QSize(450, 20));
         cb_email->setFont(font1);
-        cb_email->setEditable(true);
+        cb_email->setEditable(false);
         cb_email->setMaxCount(60);
         lb_comentario = new QLabel(gb_dados_cliente);
         lb_comentario->setObjectName(QString::fromUtf8("lb_comentario"));
@@ -184,13 +171,30 @@ public:
         font2.setWeight(50);
         te_comentario->setFont(font2);
         te_comentario->setReadOnly(false);
+        tb_mais_email = new QToolButton(gb_dados_cliente);
+        tb_mais_email->setObjectName(QString::fromUtf8("tb_mais_email"));
+        tb_mais_email->setGeometry(QRect(450, 49, 25, 15));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/img/mais.png"), QSize(), QIcon::Normal, QIcon::Off);
+        tb_mais_email->setIcon(icon1);
+        tb_mais_email->setIconSize(QSize(12, 12));
+        tb_mais_email->setAutoRaise(true);
+        tb_mais_email->setArrowType(Qt::NoArrow);
+        tb_menos_email = new QToolButton(gb_dados_cliente);
+        tb_menos_email->setObjectName(QString::fromUtf8("tb_menos_email"));
+        tb_menos_email->setGeometry(QRect(450, 63, 25, 15));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/img/menos.png"), QSize(), QIcon::Normal, QIcon::Off);
+        tb_menos_email->setIcon(icon2);
+        tb_menos_email->setIconSize(QSize(12, 12));
+        tb_menos_email->setAutoRaise(true);
         gb_endereo = new QGroupBox(centralwidget);
         gb_endereo->setObjectName(QString::fromUtf8("gb_endereo"));
         gb_endereo->setGeometry(QRect(5, 220, 790, 208));
         gb_endereo->setFont(font);
         le_cep = new QLineEdit(gb_endereo);
         le_cep->setObjectName(QString::fromUtf8("le_cep"));
-        le_cep->setGeometry(QRect(50, 23, 71, 20));
+        le_cep->setGeometry(QRect(50, 23, 91, 20));
         le_cep->setMaximumSize(QSize(100, 20));
         le_cep->setFont(font1);
         le_cep->setReadOnly(false);
@@ -266,8 +270,6 @@ public:
         te_ponto_referencia->setGeometry(QRect(10, 100, 770, 98));
         te_ponto_referencia->setFont(font2);
         te_ponto_referencia->setReadOnly(false);
-        le_cep->raise();
-        lb_cep->raise();
         lb_rua->raise();
         le_rua->raise();
         lb_numero->raise();
@@ -280,6 +282,8 @@ public:
         le_estado->raise();
         lb_ponto_refe->raise();
         te_ponto_referencia->raise();
+        le_cep->raise();
+        lb_cep->raise();
         btn_confirmar = new QPushButton(centralwidget);
         btn_confirmar->setObjectName(QString::fromUtf8("btn_confirmar"));
         btn_confirmar->setGeometry(QRect(305, 435, 90, 24));
@@ -289,9 +293,9 @@ public:
         font5.setFamily(QString::fromUtf8("Calibri"));
         font5.setPointSize(10);
         btn_confirmar->setFont(font5);
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/img/1345902916_camera_test.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_confirmar->setIcon(icon1);
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/img/1345902916_camera_test.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_confirmar->setIcon(icon3);
         btn_confirmar->setIconSize(QSize(20, 20));
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
@@ -299,9 +303,9 @@ public:
         pushButton->setMinimumSize(QSize(0, 24));
         pushButton->setMaximumSize(QSize(90, 24));
         pushButton->setFont(font5);
-        QIcon icon2;
-        icon2.addFile(QString::fromUtf8(":/img/1345902747_button_cancel.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton->setIcon(icon2);
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/img/1345902747_button_cancel.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton->setIcon(icon4);
         pushButton->setIconSize(QSize(20, 200));
         tela_cadastro_cliente->setCentralWidget(centralwidget);
 
@@ -315,18 +319,20 @@ public:
         tela_cadastro_cliente->setWindowTitle(QApplication::translate("tela_cadastro_cliente", "Cadastrar novo Cliente", 0, QApplication::UnicodeUTF8));
         gb_dados_cliente->setTitle(QApplication::translate("tela_cadastro_cliente", "Dados do Cliente", 0, QApplication::UnicodeUTF8));
         lb_telefone->setText(QApplication::translate("tela_cadastro_cliente", "Telefone:", 0, QApplication::UnicodeUTF8));
-        lb_numero_cliente->setText(QApplication::translate("tela_cadastro_cliente", "Cadastro:", 0, QApplication::UnicodeUTF8));
-        le_numero_cadastro->setText(QString());
         lb_nome->setText(QApplication::translate("tela_cadastro_cliente", "Nome:", 0, QApplication::UnicodeUTF8));
         le_nome->setText(QString());
         lb_cpf->setText(QApplication::translate("tela_cadastro_cliente", "CPF:", 0, QApplication::UnicodeUTF8));
-        le_cpf->setText(QString());
+        le_cpf->setInputMask(QApplication::translate("tela_cadastro_cliente", "000.000.000-00; ", 0, QApplication::UnicodeUTF8));
+        le_cpf->setText(QApplication::translate("tela_cadastro_cliente", "..-", 0, QApplication::UnicodeUTF8));
         lb_rg->setText(QApplication::translate("tela_cadastro_cliente", "RG:", 0, QApplication::UnicodeUTF8));
         le_rg->setText(QString());
         lb_email->setText(QApplication::translate("tela_cadastro_cliente", "E-mail:", 0, QApplication::UnicodeUTF8));
         lb_comentario->setText(QApplication::translate("tela_cadastro_cliente", "Coment\303\241rio", 0, QApplication::UnicodeUTF8));
+        tb_mais_email->setText(QApplication::translate("tela_cadastro_cliente", "...", 0, QApplication::UnicodeUTF8));
+        tb_menos_email->setText(QApplication::translate("tela_cadastro_cliente", "...", 0, QApplication::UnicodeUTF8));
         gb_endereo->setTitle(QApplication::translate("tela_cadastro_cliente", "Endere\303\247o", 0, QApplication::UnicodeUTF8));
-        le_cep->setText(QString());
+        le_cep->setInputMask(QApplication::translate("tela_cadastro_cliente", "000000-00; ", 0, QApplication::UnicodeUTF8));
+        le_cep->setText(QApplication::translate("tela_cadastro_cliente", "-", 0, QApplication::UnicodeUTF8));
         lb_cep->setText(QApplication::translate("tela_cadastro_cliente", "CEP:", 0, QApplication::UnicodeUTF8));
         lb_rua->setText(QApplication::translate("tela_cadastro_cliente", "Rua:", 0, QApplication::UnicodeUTF8));
         le_rua->setText(QString());

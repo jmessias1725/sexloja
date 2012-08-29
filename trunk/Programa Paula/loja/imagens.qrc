@@ -19,5 +19,7 @@
         <file>cadastrar_produto.png</file>
         <file>vender.png</file>
         <file>editar_cliente.png</file>
+        <file>mais.png</file>
+        <file>menos.png</file>
     </qresource>
 </RCC>

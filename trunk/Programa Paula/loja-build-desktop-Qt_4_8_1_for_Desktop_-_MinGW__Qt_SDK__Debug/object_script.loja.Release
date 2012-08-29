@@ -6,9 +6,11 @@ INPUT(
 ./release\tela_principal.o
 ./release\tela_clientes.o
 ./release\tela_cadastro_cliente.o
+./release\tela_cadastro_email.o
 ./release\moc_tela_login.o
 ./release\moc_tela_principal.o
 ./release\moc_tela_clientes.o
 ./release\moc_tela_cadastro_cliente.o
+./release\moc_tela_cadastro_email.o
 ./release\qrc_imagens.o
 );
