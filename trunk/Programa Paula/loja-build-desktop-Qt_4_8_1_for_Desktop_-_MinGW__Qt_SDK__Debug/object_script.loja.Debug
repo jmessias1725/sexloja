@@ -1,0 +1,14 @@
+INPUT(
+./debug\main.o
+./debug\conexao_bd.o
+./debug\usuario.o
+./debug\tela_login.o
+./debug\tela_principal.o
+./debug\tela_clientes.o
+./debug\tela_cadastro_cliente.o
+./debug\moc_tela_login.o
+./debug\moc_tela_principal.o
+./debug\moc_tela_clientes.o
+./debug\moc_tela_cadastro_cliente.o
+./debug\qrc_imagens.o
+);

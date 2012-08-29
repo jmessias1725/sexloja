@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>logo_sex.png</file>
+        <file>chave64x64.png</file>
+        <file>chave40x40.png</file>
+        <file>senha_cad_x_40.png</file>
+        <file>login_40.png</file>
+        <file>1345902916_camera_test.png</file>
+        <file>1345902747_button_cancel.png</file>
+        <file>Usuario.png</file>
+        <file>Cash_register_Icon_256.png</file>
+        <file>estoque.png</file>
+        <file>fornecedor.png</file>
+        <file>caixa.png</file>
+        <file>sair.png</file>
+        <file>estoque2.png</file>
+        <file>adiciona_clientes.png</file>
+        <file>cadastrar_fornecedor.png</file>
+        <file>cadastrar_produto.png</file>
+        <file>vender.png</file>
+        <file>editar_cliente.png</file>
+    </qresource>
+</RCC>
