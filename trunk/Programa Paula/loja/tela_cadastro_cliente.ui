@@ -881,7 +881,7 @@
      </size>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="btn_cancelar">
     <property name="geometry">
      <rect>
       <x>405</x>

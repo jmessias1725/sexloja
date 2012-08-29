@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_cadastro_cliente.ui'
 **
-** Created: Tue 28. Aug 23:12:22 2012
+** Created: Wed 29. Aug 15:36:56 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -62,7 +62,7 @@ public:
     QLabel *lb_ponto_refe;
     QTextEdit *te_ponto_referencia;
     QPushButton *btn_confirmar;
-    QPushButton *pushButton;
+    QPushButton *btn_cancelar;
 
     void setupUi(QMainWindow *tela_cadastro_cliente)
     {
@@ -297,16 +297,16 @@ public:
         icon3.addFile(QString::fromUtf8(":/img/1345902916_camera_test.png"), QSize(), QIcon::Normal, QIcon::Off);
         btn_confirmar->setIcon(icon3);
         btn_confirmar->setIconSize(QSize(20, 20));
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(405, 435, 90, 24));
-        pushButton->setMinimumSize(QSize(0, 24));
-        pushButton->setMaximumSize(QSize(90, 24));
-        pushButton->setFont(font5);
+        btn_cancelar = new QPushButton(centralwidget);
+        btn_cancelar->setObjectName(QString::fromUtf8("btn_cancelar"));
+        btn_cancelar->setGeometry(QRect(405, 435, 90, 24));
+        btn_cancelar->setMinimumSize(QSize(0, 24));
+        btn_cancelar->setMaximumSize(QSize(90, 24));
+        btn_cancelar->setFont(font5);
         QIcon icon4;
         icon4.addFile(QString::fromUtf8(":/img/1345902747_button_cancel.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton->setIcon(icon4);
-        pushButton->setIconSize(QSize(20, 200));
+        btn_cancelar->setIcon(icon4);
+        btn_cancelar->setIconSize(QSize(20, 200));
         tela_cadastro_cliente->setCentralWidget(centralwidget);
 
         retranslateUi(tela_cadastro_cliente);
@@ -346,7 +346,7 @@ public:
         le_estado->setText(QString());
         lb_ponto_refe->setText(QApplication::translate("tela_cadastro_cliente", "Ponto de refer\303\252ncia:", 0, QApplication::UnicodeUTF8));
         btn_confirmar->setText(QApplication::translate("tela_cadastro_cliente", "Confirmar", 0, QApplication::UnicodeUTF8));
-        pushButton->setText(QApplication::translate("tela_cadastro_cliente", "Cancelar", 0, QApplication::UnicodeUTF8));
+        btn_cancelar->setText(QApplication::translate("tela_cadastro_cliente", "Cancelar", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

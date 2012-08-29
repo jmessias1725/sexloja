@@ -18,7 +18,6 @@ void tela_cadastro_cliente::on_le_cep_editingFinished()
 
 }
 
-
 void tela_cadastro_cliente::on_tb_menos_email_clicked()
 {
     ui->cb_email->removeItem(ui->cb_email->currentIndex());
@@ -27,9 +26,4 @@ void tela_cadastro_cliente::on_tb_menos_email_clicked()
 void tela_cadastro_cliente::on_tb_mais_email_clicked()
 {
     tl_email.show();
-    if (!tl_email.novo_email.isEmpty())
-    {
-        ui->cb_email->addItem(tl_email.novo_email);
-    }
-    ui->cb_email->repaint();
 }
