@@ -17,8 +17,7 @@ SOURCES += main.cpp\
     tela_login.cpp \
     tela_principal.cpp \
     tela_clientes.cpp \
-    tela_cadastro_cliente.cpp \
-    tela_cadastro_email.cpp
+    tela_cadastro_cliente.cpp
 
 HEADERS  += \
     conexao_bd.h \
@@ -26,15 +25,13 @@ HEADERS  += \
     tela_login.h \
     tela_principal.h \
     tela_clientes.h \
-    tela_cadastro_cliente.h \
-    tela_cadastro_email.h
+    tela_cadastro_cliente.h
 
 FORMS    += \
     tela_login.ui \
     tela_principal.ui \
     tela_clientes.ui \
-    tela_cadastro_cliente.ui \
-    tela_cadastro_email.ui
+    tela_cadastro_cliente.ui
 
 RESOURCES += \
     imagens.qrc

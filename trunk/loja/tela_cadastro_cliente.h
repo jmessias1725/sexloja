@@ -4,9 +4,8 @@
 #include <QMainWindow>
 #include <iostream>
 #include <string>
-
-#include "tela_cadastro_email.h"
-
+#include <QtGui>
+#include <QDialog>
 
 namespace Ui {
 class tela_cadastro_cliente;
@@ -21,15 +20,18 @@ public:
     ~tela_cadastro_cliente();
     
 private slots:
-    void on_le_cep_editingFinished();
-
     void on_tb_menos_email_clicked();
 
     void on_tb_mais_email_clicked();
 
+    void retornar_email();
+
+    void cancelar();
+
 private:
     Ui::tela_cadastro_cliente *ui;
-    tela_cadastro_email tl_email;
+    QDialog* Qdialog_email;
+    QLineEdit *le_email;
 };
 
 #endif // TELA_CADASTRO_CLIENTE_H

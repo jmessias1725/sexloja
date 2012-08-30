@@ -19,3 +19,7 @@ void tela_cadastro_email::on_btn_confirmar_clicked()
     ui->le_cadastro_email->clear();
     this->close();
 }
+
+QString tela_cadastro_email::retorna_email(){
+    return novo_email;
+}
