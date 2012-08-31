@@ -68,11 +68,27 @@ void tela_cadastro_cliente::on_tb_mais_email_clicked()
 }
 
 void tela_cadastro_cliente::retornar_email(){
-    if (le_email->text()!="")
-    {
-        ui->cb_email->addItem(le_email->text());
+    QString aux;
+    aux=le_email->text();
+    if (aux!=""){
+        QPixmap icone_titulo_janela(":img/logo_sex.png");
+        QPixmap icone_janela(":img/email_invalido_50.png");
+        QMessageBox msg(0);
+        msg.setIconPixmap(icone_janela);
+        msg.setWindowIcon(icone_titulo_janela);
+        msg.setWindowTitle("Erro de e-mail.");
+        msg.addButton("OK", QMessageBox::AcceptRole);
+        msg.setFont(QFont ("Calibri", 11,QFont::Bold, false));
+        msg.setText("\nE-mail inválido!");
+        if((aux.contains("@"))&&(aux.contains("."))){
+            ui->cb_email->addItem(le_email->text());
+            std::cout<<ui->cb_email->count()<<std::endl;
+            Qdialog_email->close();
+        }
+        else{
+            msg.exec();
+        }
     }
-    Qdialog_email->close();
 }
 
 void tela_cadastro_cliente::cancelar(){

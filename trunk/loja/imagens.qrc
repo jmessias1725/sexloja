@@ -21,5 +21,7 @@
         <file>editar_cliente.png</file>
         <file>mais.png</file>
         <file>menos.png</file>
+        <file>email_invalido_40.png</file>
+        <file>email_invalido_50.png</file>
     </qresource>
 </RCC>
