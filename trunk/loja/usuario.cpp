@@ -65,9 +65,9 @@ bool usuario::verifica_login_senha(QString login_teclado, QString senha_teclado)
             msg.setFont(QFont ("Calibri", 11,QFont::Bold, false));
             msg.setText("\nSenha inválida!");
             msg.exec();
-
             return false;
             }
+        conexao.fechar_conexao();
         }
-    conexao.fechar_conexao();
+    return false;
 }

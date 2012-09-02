@@ -32,6 +32,7 @@ private:
     Ui::tela_cadastro_cliente *ui;
     QDialog* Qdialog_email;
     QLineEdit *le_email;
+    std::vector< std::string > lista_email;
 };
 
 #endif // TELA_CADASTRO_CLIENTE_H

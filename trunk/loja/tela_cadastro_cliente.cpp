@@ -15,7 +15,25 @@ tela_cadastro_cliente::~tela_cadastro_cliente()
 
 void tela_cadastro_cliente::on_tb_menos_email_clicked()
 {
-    ui->cb_email->removeItem(ui->cb_email->currentIndex());
+    std::string email_a_remover;
+    int posicao_remover,i;
+    posicao_remover = -1;
+    i=0;
+    email_a_remover = ui->cb_email->currentText().toStdString();
+
+    if(email_a_remover!=""){
+        while((lista_email[i]!=email_a_remover)&&(i<=(int(lista_email.size())-1))){
+            i++;
+        }
+        for (int j = i; j<(int(lista_email.size())); j++){
+            if ((j+1)>=(int(lista_email.size())))
+                lista_email.pop_back();
+            else{
+                lista_email[j]=lista_email[j+1];
+            }
+        }
+        ui->cb_email->removeItem(ui->cb_email->currentIndex());
+    }
 }
 
 void tela_cadastro_cliente::on_tb_mais_email_clicked()
@@ -68,9 +86,8 @@ void tela_cadastro_cliente::on_tb_mais_email_clicked()
 }
 
 void tela_cadastro_cliente::retornar_email(){
-    QString aux;
-    aux=le_email->text();
-    if (aux!=""){
+    ui->cb_email->setInsertPolicy(QComboBox::InsertAtTop);
+    if (le_email->text()!=""){
         QPixmap icone_titulo_janela(":img/logo_sex.png");
         QPixmap icone_janela(":img/email_invalido_50.png");
         QMessageBox msg(0);
@@ -80,9 +97,13 @@ void tela_cadastro_cliente::retornar_email(){
         msg.addButton("OK", QMessageBox::AcceptRole);
         msg.setFont(QFont ("Calibri", 11,QFont::Bold, false));
         msg.setText("\nE-mail inválido!");
-        if((aux.contains("@"))&&(aux.contains("."))){
-            ui->cb_email->addItem(le_email->text());
-            std::cout<<ui->cb_email->count()<<std::endl;
+        if((le_email->text().contains("@"))&&(le_email->text().contains("."))){
+            lista_email.push_back(le_email->text().toLower().toStdString());
+            ui->cb_email->clear();
+            int i = lista_email.size();
+            for (i = i-1; i>=0 ;i--){
+                ui->cb_email->addItem(QString::fromStdString(lista_email[i]));
+            }
             Qdialog_email->close();
         }
         else{
