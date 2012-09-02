@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_login.ui'
 **
-** Created: Sun 26. Aug 10:45:56 2012
+** Created: Sun 2. Sep 15:14:22 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -21,12 +21,14 @@
 #include <QtGui/QLineEdit>
 #include <QtGui/QPushButton>
 #include <QtGui/QVBoxLayout>
+#include <QtGui/QWidget>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_tela_login
 {
 public:
+    QWidget *widget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
     QLabel *lb_usuario;
@@ -42,20 +44,24 @@ public:
     {
         if (tela_login->objectName().isEmpty())
             tela_login->setObjectName(QString::fromUtf8("tela_login"));
-        tela_login->resize(214, 110);
+        tela_login->resize(208, 101);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/img/logo_sex.png"), QSize(), QIcon::Normal, QIcon::Off);
         tela_login->setWindowIcon(icon);
         tela_login->setWindowOpacity(1);
         tela_login->setModal(true);
-        verticalLayout = new QVBoxLayout(tela_login);
+        widget = new QWidget(tela_login);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(9, 9, 191, 86));
+        verticalLayout = new QVBoxLayout(widget);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        lb_usuario = new QLabel(tela_login);
+        lb_usuario = new QLabel(widget);
         lb_usuario->setObjectName(QString::fromUtf8("lb_usuario"));
         QFont font;
         font.setFamily(QString::fromUtf8("Calibri"));
@@ -64,7 +70,7 @@ public:
 
         horizontalLayout->addWidget(lb_usuario);
 
-        le_login = new QLineEdit(tela_login);
+        le_login = new QLineEdit(widget);
         le_login->setObjectName(QString::fromUtf8("le_login"));
         le_login->setFont(font);
         le_login->setMaxLength(30);
@@ -77,13 +83,13 @@ public:
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        lb_Senha = new QLabel(tela_login);
+        lb_Senha = new QLabel(widget);
         lb_Senha->setObjectName(QString::fromUtf8("lb_Senha"));
         lb_Senha->setFont(font);
 
         horizontalLayout_2->addWidget(lb_Senha);
 
-        le_senha = new QLineEdit(tela_login);
+        le_senha = new QLineEdit(widget);
         le_senha->setObjectName(QString::fromUtf8("le_senha"));
         le_senha->setFont(font);
         le_senha->setMaxLength(30);
@@ -97,12 +103,10 @@ public:
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setSpacing(6);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        btn_confrimar = new QPushButton(tela_login);
+        btn_confrimar = new QPushButton(widget);
         btn_confrimar->setObjectName(QString::fromUtf8("btn_confrimar"));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("Calibri"));
-        font1.setPointSize(9);
-        btn_confrimar->setFont(font1);
+        btn_confrimar->setMaximumSize(QSize(16777215, 24));
+        btn_confrimar->setFont(font);
         QIcon icon1;
         icon1.addFile(QString::fromUtf8(":/img/1345902916_camera_test.png"), QSize(), QIcon::Normal, QIcon::Off);
         btn_confrimar->setIcon(icon1);
@@ -110,13 +114,14 @@ public:
 
         horizontalLayout_3->addWidget(btn_confrimar);
 
-        btn_cancelar = new QPushButton(tela_login);
+        btn_cancelar = new QPushButton(widget);
         btn_cancelar->setObjectName(QString::fromUtf8("btn_cancelar"));
-        btn_cancelar->setFont(font1);
+        btn_cancelar->setMaximumSize(QSize(16777215, 24));
+        btn_cancelar->setFont(font);
         QIcon icon2;
         icon2.addFile(QString::fromUtf8(":/img/1345902747_button_cancel.png"), QSize(), QIcon::Normal, QIcon::Off);
         btn_cancelar->setIcon(icon2);
-        btn_cancelar->setIconSize(QSize(20, 20));
+        btn_cancelar->setIconSize(QSize(18, 18));
 
         horizontalLayout_3->addWidget(btn_cancelar);
 

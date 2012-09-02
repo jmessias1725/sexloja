@@ -31,7 +31,8 @@ FORMS    += \
     tela_login.ui \
     tela_principal.ui \
     tela_clientes.ui \
-    tela_cadastro_cliente.ui
+    tela_cadastro_cliente.ui \
+    tela_cadastro_telefone.ui
 
 RESOURCES += \
     imagens.qrc

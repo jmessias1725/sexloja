@@ -23,5 +23,15 @@
         <file>menos.png</file>
         <file>email_invalido_40.png</file>
         <file>email_invalido_50.png</file>
+        <file>telefone.png</file>
+    </qresource>
+    <qresource prefix="/operadoras">
+        <file>claro.png</file>
+        <file>LOGO-ALGAR-TELECOM.png</file>
+        <file>nextel-novo.png</file>
+        <file>oi.png</file>
+        <file>sercom_tel.png</file>
+        <file>TIM.png</file>
+        <file>vivo_boneco.png</file>
     </qresource>
 </RCC>

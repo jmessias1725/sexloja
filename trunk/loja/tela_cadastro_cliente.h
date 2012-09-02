@@ -28,10 +28,18 @@ private slots:
 
     void cancelar();
 
+    void on_tb_mais_telefone_clicked();
+
+    void definir_mascara_telefone();
+
+    void definir_mascara_inicial_telefone();
+
 private:
     Ui::tela_cadastro_cliente *ui;
     QDialog* Qdialog_email;
+    QDialog *tela_cadastro_telefone;
     QLineEdit *le_email;
+    QLineEdit *le_telefone;
     std::vector< std::string > lista_email;
 };
 
