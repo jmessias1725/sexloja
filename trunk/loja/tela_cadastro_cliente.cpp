@@ -38,8 +38,8 @@ void tela_cadastro_cliente::on_tb_menos_email_clicked()
 
 void tela_cadastro_cliente::on_tb_mais_email_clicked()
 {
-    QPushButton *btn_confirmar;
-    QPushButton *btn_cancelar;
+    QPushButton *btn_confirmar_email;
+    QPushButton *btn_cancelar_email;
 
     Qdialog_email = new QDialog(this);
 
@@ -56,36 +56,36 @@ void tela_cadastro_cliente::on_tb_mais_email_clicked()
     le_email = new QLineEdit(Qdialog_email);
     le_email->setObjectName(QString::fromUtf8("ld_email"));
     le_email->setGeometry(QRect(10, 10, 490, 20));
-    btn_confirmar = new QPushButton(Qdialog_email);
-    btn_confirmar->setObjectName(QString::fromUtf8("btn_confirmar"));
-    btn_confirmar->setGeometry(QRect(160, 30, 90, 24));
-    btn_confirmar->setMinimumSize(QSize(0, 24));
-    btn_confirmar->setMaximumSize(QSize(90, 24));
-    btn_confirmar->setFont(font);
-    btn_confirmar->setText("Confirmar");
+    btn_confirmar_email = new QPushButton(Qdialog_email);
+    btn_confirmar_email->setObjectName(QString::fromUtf8("btn_confirmar"));
+    btn_confirmar_email->setGeometry(QRect(160, 30, 90, 24));
+    btn_confirmar_email->setMinimumSize(QSize(0, 24));
+    btn_confirmar_email->setMaximumSize(QSize(90, 24));
+    btn_confirmar_email->setFont(font);
+    btn_confirmar_email->setText("Confirmar");
     QIcon icon1;
     icon1.addFile(QString::fromUtf8(":/img/1345902916_camera_test.png"), QSize(), QIcon::Normal, QIcon::Off);
-    btn_confirmar->setIcon(icon1);
-    btn_confirmar->setIconSize(QSize(20, 20));
-    btn_cancelar = new QPushButton(Qdialog_email);
-    btn_cancelar->setObjectName(QString::fromUtf8("btn_cancelar"));
-    btn_cancelar->setGeometry(QRect(260, 30, 90, 24));
-    btn_cancelar->setMinimumSize(QSize(0, 24));
-    btn_cancelar->setMaximumSize(QSize(90, 24));
-    btn_cancelar->setFont(font);
-    btn_cancelar->setText("Cancelar");
+    btn_confirmar_email->setIcon(icon1);
+    btn_confirmar_email->setIconSize(QSize(20, 20));
+    btn_cancelar_email = new QPushButton(Qdialog_email);
+    btn_cancelar_email->setObjectName(QString::fromUtf8("btn_cancelar_telefone"));
+    btn_cancelar_email->setGeometry(QRect(260, 30, 90, 24));
+    btn_cancelar_email->setMinimumSize(QSize(0, 24));
+    btn_cancelar_email->setMaximumSize(QSize(90, 24));
+    btn_cancelar_email->setFont(font);
+    btn_cancelar_email->setText("Cancelar");
     QIcon icon2;
     icon2.addFile(QString::fromUtf8(":/img/1345902747_button_cancel.png"), QSize(), QIcon::Normal, QIcon::Off);
-    btn_cancelar->setIcon(icon2);
-    btn_cancelar->setIconSize(QSize(20, 200));
+    btn_cancelar_email->setIcon(icon2);
+    btn_cancelar_email->setIconSize(QSize(20, 200));
 
-    connect(btn_confirmar,SIGNAL(pressed()),this,SLOT(retornar_email()));
-    connect(btn_cancelar,SIGNAL(pressed()),this,SLOT(cancelar()));
+    connect(btn_confirmar_email,SIGNAL(pressed()),this,SLOT(adicionar_email()));
+    connect(btn_cancelar_email,SIGNAL(pressed()),this,SLOT(cancelar_email()));
 
     Qdialog_email->exec();
 }
 
-void tela_cadastro_cliente::retornar_email(){
+void tela_cadastro_cliente::adicionar_email(){
     ui->cb_email->setInsertPolicy(QComboBox::InsertAtTop);
     if (le_email->text()!=""){
         QPixmap icone_titulo_janela(":img/logo_sex.png");
@@ -95,7 +95,7 @@ void tela_cadastro_cliente::retornar_email(){
         msg.setWindowIcon(icone_titulo_janela);
         msg.setWindowTitle("Erro de e-mail.");
         msg.addButton("OK", QMessageBox::AcceptRole);
-        msg.setFont(QFont ("Calibri", 11,QFont::Bold, false));
+        msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
         msg.setText("\nE-mail inválido!");
         if((le_email->text().contains("@"))&&(le_email->text().contains("."))){
             lista_email.push_back(le_email->text().toLower().toStdString());
@@ -112,21 +112,21 @@ void tela_cadastro_cliente::retornar_email(){
     }
 }
 
-void tela_cadastro_cliente::cancelar(){
-    if (le_email->text()!="")
+void tela_cadastro_cliente::cancelar_email(){
+    if (le_email->text()=="")
     {
         Qdialog_email->close();
     }
-    le_email->setText("");
+    else
+        le_email->setText("");
 }
 
 void tela_cadastro_cliente::on_tb_mais_telefone_clicked()
 {
     QLabel *lb_telefone;
-    QComboBox *cb_operadora;
     QLabel *lb_operadora;
-    QPushButton *btn_confrimar;
-    QPushButton *btn_cancelar;
+    QPushButton *btn_confirmar_telefone;
+    QPushButton *btn_cancelar_telefone;
 
     tela_cadastro_telefone = new QDialog(this);
 
@@ -153,6 +153,7 @@ void tela_cadastro_cliente::on_tb_mais_telefone_clicked()
     font1.setKerning(false);
     le_telefone->setFont(font1);
     cb_operadora = new QComboBox(tela_cadastro_telefone);
+    cb_operadora->addItem(QString());
     QIcon icon1;
     icon1.addFile(QString::fromUtf8(":/operadoras/LOGO-ALGAR-TELECOM.png"), QSize(), QIcon::Normal, QIcon::Off);
     cb_operadora->addItem(icon1, QString());
@@ -184,73 +185,181 @@ void tela_cadastro_cliente::on_tb_mais_telefone_clicked()
     lb_operadora->setObjectName(QString::fromUtf8("lb_operadora"));
     lb_operadora->setGeometry(QRect(170, 10, 68, 20));
     lb_operadora->setFont(font);
-    btn_confrimar = new QPushButton(tela_cadastro_telefone);
-    btn_confrimar->setObjectName(QString::fromUtf8("btn_confrimar"));
-    btn_confrimar->setGeometry(QRect(86, 40, 94, 24));
+    btn_confirmar_telefone = new QPushButton(tela_cadastro_telefone);
+    btn_confirmar_telefone->setObjectName(QString::fromUtf8("btn_confirmar_telefone"));
+    btn_confirmar_telefone->setGeometry(QRect(86, 40, 94, 24));
     QFont font2;
     font2.setFamily(QString::fromUtf8("Calibri"));
     font2.setPointSize(9);
-    btn_confrimar->setFont(font2);
+    btn_confirmar_telefone->setFont(font2);
     QIcon icon9;
     icon9.addFile(QString::fromUtf8(":/img/1345902916_camera_test.png"), QSize(), QIcon::Normal, QIcon::Off);
-    btn_confrimar->setIcon(icon9);
-    btn_confrimar->setIconSize(QSize(20, 20));
-    btn_cancelar = new QPushButton(tela_cadastro_telefone);
-    btn_cancelar->setObjectName(QString::fromUtf8("btn_cancelar"));
-    btn_cancelar->setGeometry(QRect(190, 40, 94, 24));
-    btn_cancelar->setFont(font2);
+    btn_confirmar_telefone->setIcon(icon9);
+    btn_confirmar_telefone->setIconSize(QSize(20, 20));
+    btn_cancelar_telefone = new QPushButton(tela_cadastro_telefone);
+    btn_cancelar_telefone->setObjectName(QString::fromUtf8("btn_cancelar_telefone"));
+    btn_cancelar_telefone->setGeometry(QRect(190, 40, 94, 24));
+    btn_cancelar_telefone->setFont(font2);
     QIcon icon10;
     icon10.addFile(QString::fromUtf8(":/img/1345902747_button_cancel.png"), QSize(), QIcon::Normal, QIcon::Off);
-    btn_cancelar->setIcon(icon10);
-    btn_cancelar->setIconSize(QSize(18, 18));
+    btn_cancelar_telefone->setIcon(icon10);
+    btn_cancelar_telefone->setIconSize(QSize(18, 18));
 
     tela_cadastro_telefone->setWindowTitle(QApplication::translate("tela_cadastro_telefone", "Telefone", 0, QApplication::UnicodeUTF8));
     lb_telefone->setText(QApplication::translate("tela_cadastro_telefone", "Telefone:", 0, QApplication::UnicodeUTF8));
     le_telefone->setInputMask(QApplication::translate("tela_cadastro_telefone", "(00)000000000; ", 0, QApplication::UnicodeUTF8));
     le_telefone->setText(QApplication::translate("tela_cadastro_telefone", "()", 0, QApplication::UnicodeUTF8));
     le_telefone->setCursorPosition(0);
-    cb_operadora->setItemText(0, QApplication::translate("tela_cadastro_telefone", "Algar Telecom", 0, QApplication::UnicodeUTF8));
-    cb_operadora->setItemText(1, QApplication::translate("tela_cadastro_telefone", "Claro", 0, QApplication::UnicodeUTF8));
-    cb_operadora->setItemText(2, QApplication::translate("tela_cadastro_telefone", "Vivo", 0, QApplication::UnicodeUTF8));
-    cb_operadora->setItemText(3, QApplication::translate("tela_cadastro_telefone", "TIM", 0, QApplication::UnicodeUTF8));
-    cb_operadora->setItemText(4, QApplication::translate("tela_cadastro_telefone", "Oi", 0, QApplication::UnicodeUTF8));
-    cb_operadora->setItemText(5, QApplication::translate("tela_cadastro_telefone", "Sercomtel", 0, QApplication::UnicodeUTF8));
-    cb_operadora->setItemText(6, QApplication::translate("tela_cadastro_telefone", "Nextel", 0, QApplication::UnicodeUTF8));
-    cb_operadora->setItemText(7, QApplication::translate("tela_cadastro_telefone", "Outro", 0, QApplication::UnicodeUTF8));
+    cb_operadora->setItemText(0, QApplication::translate("tela_cadastro_telefone", "------------------------", 0, QApplication::UnicodeUTF8));
+    cb_operadora->setItemText(1, QApplication::translate("tela_cadastro_telefone", "Algar Telecom", 0, QApplication::UnicodeUTF8));
+    cb_operadora->setItemText(2, QApplication::translate("tela_cadastro_telefone", "Claro", 0, QApplication::UnicodeUTF8));
+    cb_operadora->setItemText(3, QApplication::translate("tela_cadastro_telefone", "Vivo", 0, QApplication::UnicodeUTF8));
+    cb_operadora->setItemText(4, QApplication::translate("tela_cadastro_telefone", "TIM", 0, QApplication::UnicodeUTF8));
+    cb_operadora->setItemText(5, QApplication::translate("tela_cadastro_telefone", "Oi", 0, QApplication::UnicodeUTF8));
+    cb_operadora->setItemText(6, QApplication::translate("tela_cadastro_telefone", "Sercomtel", 0, QApplication::UnicodeUTF8));
+    cb_operadora->setItemText(7, QApplication::translate("tela_cadastro_telefone", "Nextel", 0, QApplication::UnicodeUTF8));
+    cb_operadora->setItemText(8, QApplication::translate("tela_cadastro_telefone", "Outro", 0, QApplication::UnicodeUTF8));
     lb_operadora->setText(QApplication::translate("tela_cadastro_telefone", "Operadora:", 0, QApplication::UnicodeUTF8));
-    btn_confrimar->setText(QApplication::translate("tela_cadastro_telefone", "Confirmar", 0, QApplication::UnicodeUTF8));
-    btn_cancelar->setText(QApplication::translate("tela_cadastro_telefone", "Cancelar", 0, QApplication::UnicodeUTF8));
+    btn_confirmar_telefone->setText(QApplication::translate("tela_cadastro_telefone", "Confirmar", 0, QApplication::UnicodeUTF8));
+    btn_cancelar_telefone->setText(QApplication::translate("tela_cadastro_telefone", "Cancelar", 0, QApplication::UnicodeUTF8));
 
     connect(le_telefone,SIGNAL(editingFinished()),this,SLOT(definir_mascara_telefone()));
-    connect(le_telefone,SIGNAL(textChanged(QString)),this,SLOT(definir_mascara_inicial_telefone()));
+    connect(btn_confirmar_telefone,SIGNAL(clicked()),this,SLOT(adicionar_telefone()));
+    connect(btn_cancelar_telefone,SIGNAL(clicked()),this,SLOT(cancelar_telefone()));
 
 
     tela_cadastro_telefone->exec();
 }
 
 void tela_cadastro_cliente::definir_mascara_telefone(){
-    QString telefone;
-    telefone = le_telefone->text();
-    if (le_telefone->text().size()>=13){
-        le_telefone->setInputMask(QApplication::translate("tela_cadastro_telefone", "(00)00000-0000; ", 0, QApplication::UnicodeUTF8));
-        le_telefone->setText(QApplication::translate("tela_cadastro_telefone", "", 0, QApplication::UnicodeUTF8));
-        std::cout<<telefone.toStdString()<<std::endl;
-        le_telefone->setText("(99)99999-9999");
-    }
-    else{
-        std::cout<<"Telefone normal"<<le_telefone->text().toStdString()<<std::endl;
-        le_telefone->setInputMask(QApplication::translate("tela_cadastro_telefone", "(00)0000-0000; ", 0, QApplication::UnicodeUTF8));
-        le_telefone->setText(QApplication::translate("tela_cadastro_telefone", "", 0, QApplication::UnicodeUTF8));
-        std::cout<<telefone.toStdString()<<std::endl;
-        le_telefone->setText("(88)8888-8888");
+    std::string telefone;
+    telefone = le_telefone->text().toStdString();
+    int posicao_traco=0;
+    int i=0;
+
+    if(telefone.size()>=12){
+       while ((posicao_traco==0)&&(i<=9)){
+            if (telefone[i]=='-'){
+                posicao_traco = i;
+                telefone = telefone.substr(0,i)+ telefone.substr(i+1,5);
+            }
+            i++;
+        }
+
+        if (telefone.size()>=13){
+            le_telefone->setInputMask(QApplication::translate("tela_cadastro_telefone", "(00)00000-0000; ", 0, QApplication::UnicodeUTF8));
+            le_telefone->setText(QApplication::translate("tela_cadastro_telefone", "", 0, QApplication::UnicodeUTF8));
+            le_telefone->setText(QString::fromStdString((telefone.substr(0,9)+"-"+telefone.substr(9,4))));
+        }
+        else{
+            if (telefone.size()>=12){
+                le_telefone->setInputMask(QApplication::translate("tela_cadastro_telefone", "(00)0000-00000; ", 0, QApplication::UnicodeUTF8));
+                le_telefone->setText(QApplication::translate("tela_cadastro_telefone", "", 0, QApplication::UnicodeUTF8));
+                le_telefone->setText(QString::fromStdString((telefone.substr(0,8)+"-"+telefone.substr(8,4))));
+            }
+        }
     }
 }
 
-void tela_cadastro_cliente::definir_mascara_inicial_telefone(){
-    //if (le_telefone->text()=="()-"){
-        std::cout<<le_telefone->text().toStdString()<<std::endl;
-        //le_telefone->setInputMask(QApplication::translate("tela_cadastro_telefone", "(00)000000000; ", 0, QApplication::UnicodeUTF8));
-        //le_telefone->setText(QApplication::translate("tela_cadastro_telefone", "()", 0, QApplication::UnicodeUTF8));
-        //le_telefone->setCursorPosition(0);
-    //}
+void tela_cadastro_cliente::adicionar_telefone(){
+    std::string telefone;
+    std::string operadora;
+    telefone = le_telefone->text().toStdString();
+    operadora = cb_operadora->currentText().toStdString();
+
+    if(telefone.size()>=13){
+        if (cb_operadora->currentText()=="------------------------"){
+            QPixmap icone_titulo_janela(":img/logo_sex.png");
+            QPixmap icone_janela(":img/telefone_invalido_50.png");
+            QMessageBox msg(0);
+            msg.setIconPixmap(icone_janela);
+            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowTitle("Operadora");
+            msg.addButton("OK", QMessageBox::AcceptRole);
+            msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+            msg.setText("\nFavor, selecione uma operadora!");
+            msg.exec();
+        }
+        else{
+            QIcon icon,icon1,icon2,icon3,icon4,icon5,icon6,icon7,icon8;
+
+            lista_telefone.push_back(telefone);
+            lista_operadora.push_back(operadora);
+            ui->cb_telefone->clear();
+
+            icon1.addFile(QString::fromUtf8(":/operadoras/LOGO-ALGAR-TELECOM.png"), QSize(), QIcon::Normal, QIcon::Off);
+            icon2.addFile(QString::fromUtf8(":/operadoras/claro.png"), QSize(), QIcon::Normal, QIcon::Off);
+            icon3.addFile(QString::fromUtf8(":/operadoras/vivo_boneco.png"), QSize(), QIcon::Normal, QIcon::Off);
+            icon4.addFile(QString::fromUtf8(":/operadoras/TIM.png"), QSize(), QIcon::Normal, QIcon::Off);
+            icon5.addFile(QString::fromUtf8(":/operadoras/oi.png"), QSize(), QIcon::Normal, QIcon::Off);
+            icon6.addFile(QString::fromUtf8(":/operadoras/sercom_tel.png"), QSize(), QIcon::Normal, QIcon::Off);
+            icon7.addFile(QString::fromUtf8(":/operadoras/nextel-novo.png"), QSize(), QIcon::Normal, QIcon::Off);
+            icon8.addFile(QString::fromUtf8(":/img/telefone.png"), QSize(), QIcon::Normal, QIcon::Off);
+            int i = lista_telefone.size();
+            for (i = i-1; i>=0 ;i--){
+                if(lista_operadora[i]=="Algar Telecom"){
+                   icon=icon1;
+                }
+                else{
+                    if(lista_operadora[i]=="Claro"){
+                        icon=icon2;
+                    }
+                    else{
+                        if(lista_operadora[i]=="Vivo"){
+                            icon=icon3;
+                        }
+                        else{
+                            if(lista_operadora[i]=="TIM"){
+                                icon=icon4;
+                            }
+                            else{
+                                if(lista_operadora[i]=="Oi"){
+                                    icon=icon5;
+                                }
+                                else{
+                                    if(lista_operadora[i]=="Sercomtel"){
+                                        icon=icon6;
+                                    }
+                                    else{
+                                        if(lista_operadora[i]=="Nextel"){
+                                            icon=icon7;
+                                        }
+                                        else{
+                                            icon=icon8;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                ui->cb_telefone->addItem(icon,QString::fromStdString(lista_telefone[i]+" "+lista_operadora[i]));
+            }
+
+            tela_cadastro_telefone->close();
+        }
+    }
+    else{
+        QPixmap icone_titulo_janela(":img/logo_sex.png");
+        QPixmap icone_janela(":img/telefone_invalido_50.png");
+        QMessageBox msg(0);
+        msg.setIconPixmap(icone_janela);
+        msg.setWindowIcon(icone_titulo_janela);
+        msg.setWindowTitle("Erro no número do telefone");
+        msg.addButton("OK", QMessageBox::AcceptRole);
+        msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+        msg.setText("\nNúmero de telefone inválido!");
+        msg.exec();
+    }
+
+}
+
+void tela_cadastro_cliente::cancelar_telefone(){
+    if (le_telefone->text().size()>3){
+        le_telefone->clear();
+    }
+    else{
+        tela_cadastro_telefone->close();
+    }
 }

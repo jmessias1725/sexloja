@@ -24,6 +24,7 @@
         <file>email_invalido_40.png</file>
         <file>email_invalido_50.png</file>
         <file>telefone.png</file>
+        <file>telefone_invalido_50.png</file>
     </qresource>
     <qresource prefix="/operadoras">
         <file>claro.png</file>

@@ -51,7 +51,7 @@
     <widget class="QLabel" name="lb_telefone">
      <property name="geometry">
       <rect>
-       <x>520</x>
+       <x>487</x>
        <y>53</y>
        <width>50</width>
        <height>20</height>
@@ -73,16 +73,16 @@
     <widget class="QComboBox" name="cb_telefone">
      <property name="geometry">
       <rect>
-       <x>574</x>
+       <x>540</x>
        <y>53</y>
-       <width>130</width>
-       <height>20</height>
+       <width>217</width>
+       <height>22</height>
       </rect>
      </property>
      <property name="maximumSize">
       <size>
        <width>16777215</width>
-       <height>20</height>
+       <height>22</height>
       </size>
      </property>
      <property name="font">
@@ -96,6 +96,9 @@
      </property>
      <property name="editable">
       <bool>false</bool>
+     </property>
+     <property name="maxVisibleItems">
+      <number>20</number>
      </property>
     </widget>
     <widget class="QLabel" name="lb_nome">
@@ -466,9 +469,9 @@
     <widget class="QToolButton" name="tb_mais_telefone">
      <property name="geometry">
       <rect>
-       <x>730</x>
+       <x>757</x>
        <y>49</y>
-       <width>25</width>
+       <width>20</width>
        <height>15</height>
       </rect>
      </property>
@@ -495,9 +498,9 @@
     <widget class="QToolButton" name="tb_menos_telefone">
      <property name="geometry">
       <rect>
-       <x>730</x>
+       <x>757</x>
        <y>63</y>
-       <width>25</width>
+       <width>20</width>
        <height>15</height>
       </rect>
      </property>
@@ -574,7 +577,7 @@
       <bool>true</bool>
      </property>
      <property name="cursorPosition">
-      <number>0</number>
+      <number>9</number>
      </property>
      <property name="readOnly">
       <bool>false</bool>

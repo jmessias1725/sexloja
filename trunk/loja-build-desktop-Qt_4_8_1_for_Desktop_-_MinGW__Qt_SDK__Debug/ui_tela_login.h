@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_login.ui'
 **
-** Created: Sun 2. Sep 15:14:22 2012
+** Created: Mon 3. Sep 17:34:37 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

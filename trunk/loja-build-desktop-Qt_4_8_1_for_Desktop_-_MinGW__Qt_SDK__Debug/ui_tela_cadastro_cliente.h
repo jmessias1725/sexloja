@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_cadastro_cliente.ui'
 **
-** Created: Sun 2. Sep 16:49:29 2012
+** Created: Mon 3. Sep 17:34:38 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -90,7 +90,7 @@ public:
         gb_dados_cliente->setFont(font);
         lb_telefone = new QLabel(gb_dados_cliente);
         lb_telefone->setObjectName(QString::fromUtf8("lb_telefone"));
-        lb_telefone->setGeometry(QRect(520, 53, 50, 20));
+        lb_telefone->setGeometry(QRect(487, 53, 50, 20));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Calibri"));
         font1.setPointSize(10);
@@ -100,10 +100,11 @@ public:
         lb_telefone->setFont(font1);
         cb_telefone = new QComboBox(gb_dados_cliente);
         cb_telefone->setObjectName(QString::fromUtf8("cb_telefone"));
-        cb_telefone->setGeometry(QRect(574, 53, 130, 20));
-        cb_telefone->setMaximumSize(QSize(16777215, 20));
+        cb_telefone->setGeometry(QRect(540, 53, 217, 22));
+        cb_telefone->setMaximumSize(QSize(16777215, 22));
         cb_telefone->setFont(font1);
         cb_telefone->setEditable(false);
+        cb_telefone->setMaxVisibleItems(20);
         lb_nome = new QLabel(gb_dados_cliente);
         lb_nome->setObjectName(QString::fromUtf8("lb_nome"));
         lb_nome->setGeometry(QRect(13, 23, 39, 20));
@@ -192,14 +193,14 @@ public:
         tb_menos_email->setAutoRaise(true);
         tb_mais_telefone = new QToolButton(gb_dados_cliente);
         tb_mais_telefone->setObjectName(QString::fromUtf8("tb_mais_telefone"));
-        tb_mais_telefone->setGeometry(QRect(730, 49, 25, 15));
+        tb_mais_telefone->setGeometry(QRect(757, 49, 20, 15));
         tb_mais_telefone->setIcon(icon1);
         tb_mais_telefone->setIconSize(QSize(12, 12));
         tb_mais_telefone->setAutoRaise(true);
         tb_mais_telefone->setArrowType(Qt::NoArrow);
         tb_menos_telefone = new QToolButton(gb_dados_cliente);
         tb_menos_telefone->setObjectName(QString::fromUtf8("tb_menos_telefone"));
-        tb_menos_telefone->setGeometry(QRect(730, 63, 25, 15));
+        tb_menos_telefone->setGeometry(QRect(757, 63, 20, 15));
         tb_menos_telefone->setIcon(icon2);
         tb_menos_telefone->setIconSize(QSize(12, 12));
         tb_menos_telefone->setAutoRaise(true);
@@ -213,7 +214,7 @@ public:
         le_cep->setMaximumSize(QSize(100, 20));
         le_cep->setFont(font1);
         le_cep->setFrame(true);
-        le_cep->setCursorPosition(0);
+        le_cep->setCursorPosition(9);
         le_cep->setReadOnly(false);
         lb_cep = new QLabel(gb_endereo);
         lb_cep->setObjectName(QString::fromUtf8("lb_cep"));
@@ -341,7 +342,6 @@ public:
         lb_cpf->setText(QApplication::translate("tela_cadastro_cliente", "CPF:", 0, QApplication::UnicodeUTF8));
         le_cpf->setInputMask(QApplication::translate("tela_cadastro_cliente", "000.000.000-00; ", 0, QApplication::UnicodeUTF8));
         le_cpf->setText(QApplication::translate("tela_cadastro_cliente", "..-", 0, QApplication::UnicodeUTF8));
-		le_cpf->setCursorPosition(0);
         lb_rg->setText(QApplication::translate("tela_cadastro_cliente", "RG:", 0, QApplication::UnicodeUTF8));
         le_rg->setText(QString());
         lb_email->setText(QApplication::translate("tela_cadastro_cliente", "E-mail:", 0, QApplication::UnicodeUTF8));

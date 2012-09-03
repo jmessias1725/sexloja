@@ -24,15 +24,17 @@ private slots:
 
     void on_tb_mais_email_clicked();
 
-    void retornar_email();
+    void adicionar_email();
 
-    void cancelar();
+    void cancelar_email();
 
     void on_tb_mais_telefone_clicked();
 
     void definir_mascara_telefone();
 
-    void definir_mascara_inicial_telefone();
+    void adicionar_telefone();
+
+    void cancelar_telefone();
 
 private:
     Ui::tela_cadastro_cliente *ui;
@@ -40,7 +42,10 @@ private:
     QDialog *tela_cadastro_telefone;
     QLineEdit *le_email;
     QLineEdit *le_telefone;
+    QComboBox *cb_operadora;
     std::vector< std::string > lista_email;
+    std::vector< std::string > lista_telefone;
+    std::vector< std::string > lista_operadora;
 };
 
 #endif // TELA_CADASTRO_CLIENTE_H

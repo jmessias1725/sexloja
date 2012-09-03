@@ -1,13 +1,13 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_cadastro_cliente.h'
 **
-** Created: Sun 2. Sep 17:27:15 2012
+** Created: Mon 3. Sep 17:35:13 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../loja/tela_cadastro_cliente.h"
+#include "../../../Programa Paula/loja/tela_cadastro_cliente.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'tela_cadastro_cliente.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 63
@@ -23,7 +23,7 @@ static const uint qt_meta_data_tela_cadastro_cliente[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -34,10 +34,11 @@ static const uint qt_meta_data_tela_cadastro_cliente[] = {
       23,   22,   22,   22, 0x08,
       51,   22,   22,   22, 0x08,
       78,   22,   22,   22, 0x08,
-      95,   22,   22,   22, 0x08,
-     106,   22,   22,   22, 0x08,
-     136,   22,   22,   22, 0x08,
-     163,   22,   22,   22, 0x08,
+      96,   22,   22,   22, 0x08,
+     113,   22,   22,   22, 0x08,
+     143,   22,   22,   22, 0x08,
+     170,   22,   22,   22, 0x08,
+     191,   22,   22,   22, 0x08,
 
        0        // eod
 };
@@ -45,10 +46,10 @@ static const uint qt_meta_data_tela_cadastro_cliente[] = {
 static const char qt_meta_stringdata_tela_cadastro_cliente[] = {
     "tela_cadastro_cliente\0\0"
     "on_tb_menos_email_clicked()\0"
-    "on_tb_mais_email_clicked()\0retornar_email()\0"
-    "cancelar()\0on_tb_mais_telefone_clicked()\0"
+    "on_tb_mais_email_clicked()\0adicionar_email()\0"
+    "cancelar_email()\0on_tb_mais_telefone_clicked()\0"
     "definir_mascara_telefone()\0"
-    "definir_mascara_inicial_telefone()\0"
+    "adicionar_telefone()\0cancelar_telefone()\0"
 };
 
 void tela_cadastro_cliente::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -59,11 +60,12 @@ void tela_cadastro_cliente::qt_static_metacall(QObject *_o, QMetaObject::Call _c
         switch (_id) {
         case 0: _t->on_tb_menos_email_clicked(); break;
         case 1: _t->on_tb_mais_email_clicked(); break;
-        case 2: _t->retornar_email(); break;
-        case 3: _t->cancelar(); break;
+        case 2: _t->adicionar_email(); break;
+        case 3: _t->cancelar_email(); break;
         case 4: _t->on_tb_mais_telefone_clicked(); break;
         case 5: _t->definir_mascara_telefone(); break;
-        case 6: _t->definir_mascara_inicial_telefone(); break;
+        case 6: _t->adicionar_telefone(); break;
+        case 7: _t->cancelar_telefone(); break;
         default: ;
         }
     }
@@ -102,9 +104,9 @@ int tela_cadastro_cliente::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 8;
     }
     return _id;
 }

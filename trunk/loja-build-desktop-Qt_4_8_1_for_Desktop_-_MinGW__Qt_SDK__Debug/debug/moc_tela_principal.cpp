@@ -1,13 +1,13 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_principal.h'
 **
-** Created: Sun 2. Sep 17:27:10 2012
+** Created: Mon 3. Sep 17:35:06 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../loja/tela_principal.h"
+#include "../../../Programa Paula/loja/tela_principal.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'tela_principal.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 63

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_cadastro_telefone.ui'
 **
-** Created: Sun 2. Sep 16:43:07 2012
+** Created: Mon 3. Sep 17:34:38 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -58,10 +58,12 @@ public:
         font1.setKerning(false);
         le_telefone->setFont(font1);
         le_telefone->setMaxLength(4);
+        le_telefone->setEchoMode(QLineEdit::Normal);
         cb_operadora = new QComboBox(tela_cadastro_telefone);
         QIcon icon1;
         icon1.addFile(QString::fromUtf8(":/operadoras/LOGO-ALGAR-TELECOM.png"), QSize(), QIcon::Normal, QIcon::Off);
         cb_operadora->addItem(icon1, QString());
+        cb_operadora->addItem(QString());
         QIcon icon2;
         icon2.addFile(QString::fromUtf8(":/operadoras/claro.png"), QSize(), QIcon::Normal, QIcon::Off);
         cb_operadora->addItem(icon2, QString());
@@ -122,13 +124,14 @@ public:
         le_telefone->setInputMask(QApplication::translate("tela_cadastro_telefone", "(00); ", 0, QApplication::UnicodeUTF8));
         le_telefone->setText(QApplication::translate("tela_cadastro_telefone", "()", 0, QApplication::UnicodeUTF8));
         cb_operadora->setItemText(0, QApplication::translate("tela_cadastro_telefone", "Algar Telecom", 0, QApplication::UnicodeUTF8));
-        cb_operadora->setItemText(1, QApplication::translate("tela_cadastro_telefone", "Claro", 0, QApplication::UnicodeUTF8));
-        cb_operadora->setItemText(2, QApplication::translate("tela_cadastro_telefone", "Vivo", 0, QApplication::UnicodeUTF8));
-        cb_operadora->setItemText(3, QApplication::translate("tela_cadastro_telefone", "TIM", 0, QApplication::UnicodeUTF8));
-        cb_operadora->setItemText(4, QApplication::translate("tela_cadastro_telefone", "Oi", 0, QApplication::UnicodeUTF8));
-        cb_operadora->setItemText(5, QApplication::translate("tela_cadastro_telefone", "Sercomtel", 0, QApplication::UnicodeUTF8));
-        cb_operadora->setItemText(6, QApplication::translate("tela_cadastro_telefone", "Nextel", 0, QApplication::UnicodeUTF8));
-        cb_operadora->setItemText(7, QApplication::translate("tela_cadastro_telefone", "Outro", 0, QApplication::UnicodeUTF8));
+        cb_operadora->setItemText(1, QApplication::translate("tela_cadastro_telefone", "--------------------", 0, QApplication::UnicodeUTF8));
+        cb_operadora->setItemText(2, QApplication::translate("tela_cadastro_telefone", "Claro", 0, QApplication::UnicodeUTF8));
+        cb_operadora->setItemText(3, QApplication::translate("tela_cadastro_telefone", "Vivo", 0, QApplication::UnicodeUTF8));
+        cb_operadora->setItemText(4, QApplication::translate("tela_cadastro_telefone", "TIM", 0, QApplication::UnicodeUTF8));
+        cb_operadora->setItemText(5, QApplication::translate("tela_cadastro_telefone", "Oi", 0, QApplication::UnicodeUTF8));
+        cb_operadora->setItemText(6, QApplication::translate("tela_cadastro_telefone", "Sercomtel", 0, QApplication::UnicodeUTF8));
+        cb_operadora->setItemText(7, QApplication::translate("tela_cadastro_telefone", "Nextel", 0, QApplication::UnicodeUTF8));
+        cb_operadora->setItemText(8, QApplication::translate("tela_cadastro_telefone", "Outro", 0, QApplication::UnicodeUTF8));
 
         lb_operadora->setText(QApplication::translate("tela_cadastro_telefone", "Operadora:", 0, QApplication::UnicodeUTF8));
         btn_confrimar->setText(QApplication::translate("tela_cadastro_telefone", "Confirmar", 0, QApplication::UnicodeUTF8));
