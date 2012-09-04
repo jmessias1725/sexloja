@@ -363,3 +363,40 @@ void tela_cadastro_cliente::cancelar_telefone(){
         tela_cadastro_telefone->close();
     }
 }
+
+void tela_cadastro_cliente::on_le_cpf_editingFinished()
+{
+    std::string cpf;
+    int soma,resultado1,resultado2,digito1,digito2;
+
+    soma = 0;
+
+    cpf = ui->le_cpf->text().toStdString();
+    cpf = cpf.substr(0,3)+cpf.substr(4,3)+cpf.substr(8,3)+cpf.substr(12,2);
+    for (int i = 0; i <9;i++){
+        soma = soma+(int(cpf[i]-48)*(10-i));
+    }
+    resultado1 = soma%11;
+    if (resultado1<=1)
+        digito1 = 0;
+    else
+        digito1 = 11-resultado1;
+
+    soma = 0;
+
+    for (int i = 0; i <10;i++){
+        soma = soma+(int(cpf[i]-48)*(11-i));
+    }
+
+    resultado2 = soma%11;
+
+    if (resultado2<=1)
+        digito2 = 0;
+    else
+        digito2 = 11-resultado2;
+
+    std::cout<<cpf[9]<<cpf[10]<<std::endl;
+    std::cout<<digito1<<digito2<<std::endl;
+    if((digito1 == int(cpf[9]-48))&&(digito2 == int(cpf[10]-48)))
+        std::cout<<"Esse CPF é Válido"<<std::endl;
+}

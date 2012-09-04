@@ -36,6 +36,8 @@ private slots:
 
     void cancelar_telefone();
 
+    void on_le_cpf_editingFinished();
+
 private:
     Ui::tela_cadastro_cliente *ui;
     QDialog* Qdialog_email;
