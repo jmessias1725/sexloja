@@ -7,6 +7,8 @@
 #include <QtGui>
 #include <QDialog>
 
+#include "cep.h"
+
 namespace Ui {
 class tela_cadastro_cliente;
 }
@@ -44,10 +46,12 @@ private:
     QDialog *tela_cadastro_telefone;
     QLineEdit *le_email;
     QLineEdit *le_telefone;
+    QString cpf_cliente;
     QComboBox *cb_operadora;
     std::vector< std::string > lista_email;
     std::vector< std::string > lista_telefone;
     std::vector< std::string > lista_operadora;
+    cep *cep_usuario;
 };
 
 #endif // TELA_CADASTRO_CLIENTE_H

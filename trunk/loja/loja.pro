@@ -17,7 +17,8 @@ SOURCES += main.cpp\
     tela_login.cpp \
     tela_principal.cpp \
     tela_clientes.cpp \
-    tela_cadastro_cliente.cpp
+    tela_cadastro_cliente.cpp \
+    cep.cpp
 
 HEADERS  += \
     conexao_bd.h \
@@ -25,7 +26,8 @@ HEADERS  += \
     tela_login.h \
     tela_principal.h \
     tela_clientes.h \
-    tela_cadastro_cliente.h
+    tela_cadastro_cliente.h \
+    cep.h
 
 FORMS    += \
     tela_login.ui \

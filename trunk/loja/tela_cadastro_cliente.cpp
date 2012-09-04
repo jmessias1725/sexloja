@@ -395,8 +395,18 @@ void tela_cadastro_cliente::on_le_cpf_editingFinished()
     else
         digito2 = 11-resultado2;
 
-    std::cout<<cpf[9]<<cpf[10]<<std::endl;
-    std::cout<<digito1<<digito2<<std::endl;
     if((digito1 == int(cpf[9]-48))&&(digito2 == int(cpf[10]-48)))
-        std::cout<<"Esse CPF é Válido"<<std::endl;
+        cpf_cliente = ui->le_cpf->text();
+    else{
+        QPixmap icone_titulo_janela(":img/logo_sex.png");
+        QPixmap icone_janela(":img/cpf_invalido_50.png");
+        QMessageBox msg(0);
+        msg.setIconPixmap(icone_janela);
+        msg.setWindowIcon(icone_titulo_janela);
+        msg.setWindowTitle("Erro no número do CPF");
+        msg.addButton("OK", QMessageBox::AcceptRole);
+        msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+        msg.setText("\nNúmero de CPF inválido!");
+        msg.exec();
+    }
 }

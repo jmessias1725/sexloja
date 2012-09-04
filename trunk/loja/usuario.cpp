@@ -1,7 +1,6 @@
 #include "usuario.h"
 
 bool usuario::verifica_login_senha(QString login_teclado, QString senha_teclado){
-
     conexao_bd conexao;
     bool verifica_conexao;
     QSqlDatabase bd;
@@ -33,7 +32,7 @@ bool usuario::verifica_login_senha(QString login_teclado, QString senha_teclado)
             msg.setWindowIcon(icone_titulo_janela);
             msg.setWindowTitle("Erro de login.");
             msg.addButton("OK", QMessageBox::RejectRole);
-            msg.setFont(QFont ("Calibri", 11,QFont::Bold, false));
+            msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
             msg.setText("\nLogin inválido!");
             msg.exec();
         }
@@ -62,7 +61,7 @@ bool usuario::verifica_login_senha(QString login_teclado, QString senha_teclado)
             msg.setWindowIcon(icone_titulo_janela);
             msg.setWindowTitle("Erro de senha.");
             msg.addButton("OK", QMessageBox::RejectRole);
-            msg.setFont(QFont ("Calibri", 11,QFont::Bold, false));
+            msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
             msg.setText("\nSenha inválida!");
             msg.exec();
             return false;
