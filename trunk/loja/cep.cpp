@@ -21,7 +21,9 @@ bool cep::buscar_cep(QString cep_procurado){
 
     cep_procurado = QString::fromStdString(cep_aux);
 
-    std::cout<<cep_procurado.toStdString()<<std::endl;
+    if(!cep_procurado.toStdString().size()>=8)
+      std::cout<<"Tem que colocar o traço seu burro"<<std::endl;
+
 
     //realiza conexão ao banco de dados
     verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_cep","root","tiger270807");
@@ -34,17 +36,25 @@ bool cep::buscar_cep(QString cep_procurado){
         QSqlQuery consultar(bd);
 
         //realiza a consulta
-        consultar.exec("SELECT bairro_codigo FROM endereco WHERE endereco_cep = '" + cep_procurado + "'");
+        consultar.exec("SELECT bairro_codigo,endereco_cep,endereco_logradouro FROM endereco WHERE endereco_cep = '" + cep_procurado + "'");
         while(consultar.next()){
             id_bairro = consultar.value(0).toString();
+            if(!id_bairro.toStdString().empty())
+            {
+                numero_cep = consultar.value(1).toString();
+                nome_rua = consultar.value(2).toString();
+                consultar.finish();
+            }
         }
         if(!id_bairro.toStdString().empty())
         {
-            std::cout<<"tem cep "<<id_bairro.toStdString()<<std::endl;
+            std::cout<<numero_cep.toStdString()<<std::endl;
+            std::cout<<nome_rua.toStdString()<<std::endl;
+
             return true;
         }
         else{
-            std::cout<<"Não tem cep "<<id_bairro.toStdString()<<std::endl;
+            std::cout<<"Não tem cep"<<std::endl;
             return false;
         }
 
