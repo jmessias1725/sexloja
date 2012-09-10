@@ -3,7 +3,7 @@
 #include <QString>
 #include <iostream>
 #include "tela_login.h"
-#include "cep.h"
+#include "endereco.h"
 
 int main(int argc, char *argv[])
 {
@@ -11,15 +11,7 @@ int main(int argc, char *argv[])
 
     tela_login tl_login;
 
-    cep *cep_usuario;
-    bool teste;
-
-    cep_usuario = new cep;
-
-    teste=cep_usuario->buscar_cep("57040-005");
-
-
-    //tl_login.show();
+    tl_login.show();
 
     return a.exec();
 }

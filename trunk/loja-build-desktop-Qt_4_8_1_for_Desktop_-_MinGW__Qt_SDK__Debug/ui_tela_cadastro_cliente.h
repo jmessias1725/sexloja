@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_cadastro_cliente.ui'
 **
-** Created: Mon 10. Sep 00:28:59 2012
+** Created: Mon 10. Sep 16:49:12 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -351,7 +351,7 @@ public:
         tb_mais_telefone->setText(QApplication::translate("tela_cadastro_cliente", "...", 0, QApplication::UnicodeUTF8));
         tb_menos_telefone->setText(QApplication::translate("tela_cadastro_cliente", "...", 0, QApplication::UnicodeUTF8));
         gb_endereo->setTitle(QApplication::translate("tela_cadastro_cliente", "Endere\303\247o", 0, QApplication::UnicodeUTF8));
-        le_cep->setInputMask(QApplication::translate("tela_cadastro_cliente", "000000-00; ", 0, QApplication::UnicodeUTF8));
+        le_cep->setInputMask(QApplication::translate("tela_cadastro_cliente", "00000-000; ", 0, QApplication::UnicodeUTF8));
         le_cep->setText(QApplication::translate("tela_cadastro_cliente", "-", 0, QApplication::UnicodeUTF8));
         lb_cep->setText(QApplication::translate("tela_cadastro_cliente", "CEP:", 0, QApplication::UnicodeUTF8));
         lb_rua->setText(QApplication::translate("tela_cadastro_cliente", "Rua:", 0, QApplication::UnicodeUTF8));

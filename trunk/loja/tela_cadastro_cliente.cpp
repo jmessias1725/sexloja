@@ -410,3 +410,16 @@ void tela_cadastro_cliente::on_le_cpf_editingFinished()
         msg.exec();
     }
 }
+
+void tela_cadastro_cliente::on_le_cep_editingFinished()
+{
+    aux_cep = new cep;
+    bool verifica_cep;
+    verifica_cep = aux_cep->buscar_cep(ui->le_cep->text());
+    if (verifica_cep){
+        ui->le_rua->setText(aux_cep->retorna_nome_rua());
+        ui->le_bairro->setText(aux_cep->retorna_bairro());
+        ui->le_estado->setText(aux_cep->retorna_nome_estado());
+        ui->le_cidade->setText(aux_cep->retorna_cidade());
+    }
+}

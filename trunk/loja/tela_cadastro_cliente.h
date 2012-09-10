@@ -7,6 +7,7 @@
 #include <QtGui>
 #include <QDialog>
 
+#include "cliente.h"
 #include "cep.h"
 
 namespace Ui {
@@ -40,6 +41,8 @@ private slots:
 
     void on_le_cpf_editingFinished();
 
+    void on_le_cep_editingFinished();
+
 private:
     Ui::tela_cadastro_cliente *ui;
     QDialog* Qdialog_email;
@@ -51,7 +54,8 @@ private:
     std::vector< std::string > lista_email;
     std::vector< std::string > lista_telefone;
     std::vector< std::string > lista_operadora;
-    cep *cep_usuario;
+    cliente *cad_cliente;
+    cep *aux_cep;
 };
 
 #endif // TELA_CADASTRO_CLIENTE_H

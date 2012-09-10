@@ -18,6 +18,8 @@ SOURCES += main.cpp\
     tela_principal.cpp \
     tela_clientes.cpp \
     tela_cadastro_cliente.cpp \
+    endereco.cpp \
+    cliente.cpp \
     cep.cpp
 
 HEADERS  += \
@@ -27,6 +29,8 @@ HEADERS  += \
     tela_principal.h \
     tela_clientes.h \
     tela_cadastro_cliente.h \
+    endereco.h \
+    cliente.h \
     cep.h
 
 FORMS    += \

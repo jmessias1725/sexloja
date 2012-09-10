@@ -568,7 +568,7 @@
       </font>
      </property>
      <property name="inputMask">
-      <string>000000-00; </string>
+      <string>00000-000; </string>
      </property>
      <property name="text">
       <string>-</string>

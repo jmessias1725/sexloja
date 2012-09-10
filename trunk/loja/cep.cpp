@@ -1,9 +1,5 @@
 #include "cep.h"
 
-cep::cep()
-{
-}
-
 bool cep::buscar_cep(QString cep_procurado){
     conexao_bd conexao;
     bool verifica_conexao;
@@ -11,19 +7,14 @@ bool cep::buscar_cep(QString cep_procurado){
 
     std::string cep_aux;
     QString id_bairro;
+    QString id_cidade;
+    QString id_uf;
 
-
-    cep_procurado = "59075-901";
+    numero_cep = cep_procurado;
 
     cep_aux = cep_procurado.toStdString();
-
     cep_aux = cep_aux.substr(0,5)+cep_aux.substr(6,3);
-
     cep_procurado = QString::fromStdString(cep_aux);
-
-    if(!cep_procurado.toStdString().size()>=8)
-      std::cout<<"Tem que colocar o traço seu burro"<<std::endl;
-
 
     //realiza conexão ao banco de dados
     verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_cep","root","tiger270807");
@@ -35,49 +26,74 @@ bool cep::buscar_cep(QString cep_procurado){
         //Declara a variável que irá fazer a consulta
         QSqlQuery consultar(bd);
 
-        //realiza a consulta
-        consultar.exec("SELECT bairro_codigo,endereco_cep,endereco_logradouro FROM endereco WHERE endereco_cep = '" + cep_procurado + "'");
+        /* realiza a consulta para verirficar se o CEP existe na base de dados,
+        se existir pega nome da rua, o id_cidade e id_bairro. */
+        consultar.exec("SELECT id_cidade,id_bairro,nome_endereco FROM endereco WHERE cep = '" + cep_procurado + "'");
         while(consultar.next()){
-            id_bairro = consultar.value(0).toString();
-            if(!id_bairro.toStdString().empty())
+            id_cidade = consultar.value(0).toString();
+            if(!id_cidade.toStdString().empty())
             {
-                numero_cep = consultar.value(1).toString();
+                id_bairro = consultar.value(1).toString();
                 nome_rua = consultar.value(2).toString();
                 consultar.finish();
             }
         }
-        if(!id_bairro.toStdString().empty())
+        if(!id_cidade.toStdString().empty())
         {
-            std::cout<<numero_cep.toStdString()<<std::endl;
-            std::cout<<nome_rua.toStdString()<<std::endl;
-
+            //realiza a consulta para pegar o nome do bairro;
+            consultar.exec("SELECT nome_bairro FROM bairro WHERE id_bairro = '" + id_bairro + "'");
+            while(consultar.next()){
+                bairro = consultar.value(0).toString();
+                consultar.finish();
+            }
+            //realiza a consulta para pegar o nome da cidade, e o id_uf;
+            consultar.exec("SELECT nome_cidade,id_uf FROM cidade WHERE id_cidade = '" + id_cidade + "'");
+            while(consultar.next()){
+                cidade = consultar.value(0).toString();
+                id_uf = consultar.value(1).toString();
+                consultar.finish();
+            }
+            //realiza a consulta determinar a uf;
+            consultar.exec("SELECT uf_sigla,uf_descricao,id_uf FROM uf WHERE id_uf = '" + id_uf + "'");
+            while(consultar.next()){
+                sigla_estado = consultar.value(0).toString();
+                nome_estado = consultar.value(1).toString();
+                consultar.finish();
+            }
+            conexao.fechar_conexao();
             return true;
         }
         else{
-            std::cout<<"Não tem cep"<<std::endl;
+            conexao.fechar_conexao();
             return false;
         }
+    }
+    else{
+        conexao.fechar_conexao();
+        return false;
+    }
+}
 
-        /*if (UF.size()>0){
-            consultar.exec("SELECT * FROM "+UF+" WHERE cep = '" + cep_procurado + "'");
-            while(consultar.next()){
-                id = consultar.value(0).toInt();
-                cidade = consultar.value(1).toString();
-                logradouro = consultar.value(2).toString();
-                bairro = consultar.value(3).toString();
-                numero_cep = consultar.value(4).toString();
-                tp_logradouro = consultar.value(5).toString();
-            }
-            std::cout<<id<<std::endl;
-            std::cout<<cidade.toStdString()<<std::endl;
-            std::cout<<logradouro.toStdString()<<std::endl;
-            std::cout<<bairro.toStdString()<<std::endl;
-            std::cout<<numero_cep.toStdString()<<std::endl;
-            std::cout<<tp_logradouro.toStdString()<<std::endl;
-        }
+QString cep::retorna_sigla_estado(void){
+    return sigla_estado;
+}
 
-        return true;*/
-        }
-    conexao.fechar_conexao();
-    return false;
+QString cep::retorna_nome_estado(void){
+    return nome_estado;
+}
+
+QString cep::retorna_cidade(void){
+    return cidade;
+}
+
+QString cep::retorna_bairro(void){
+    return bairro;
+}
+
+QString cep::retorna_nome_rua(void){
+    return nome_rua;
+}
+
+QString cep::retorna_numero_cep(void){
+    return numero_cep;
 }
