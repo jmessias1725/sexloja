@@ -11,11 +11,11 @@ class cep
 {
     private:
         int id;
+        QString UF;
         QString cidade;
-        QString logradouro;
         QString bairro;
+        QString nome_rua;
         QString numero_cep;
-        QString tp_logradouro;
 public:
     cep();
     bool buscar_cep(QString cep_procurado);

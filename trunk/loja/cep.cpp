@@ -8,18 +8,20 @@ bool cep::buscar_cep(QString cep_procurado){
     conexao_bd conexao;
     bool verifica_conexao;
     QSqlDatabase bd;
-    QString UF;
-    QString cep5;
-    std::string cep_aux;
 
-    cep_procurado = "57040-005";
+    std::string cep_aux;
+    QString id_bairro;
+
+
+    cep_procurado = "59075-901";
 
     cep_aux = cep_procurado.toStdString();
 
-    cep_aux = cep_aux.substr(0,5);
+    cep_aux = cep_aux.substr(0,5)+cep_aux.substr(6,3);
 
-    cep5 = QString::fromStdString(cep_aux);
+    cep_procurado = QString::fromStdString(cep_aux);
 
+    std::cout<<cep_procurado.toStdString()<<std::endl;
 
     //realiza conexão ao banco de dados
     verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_cep","root","tiger270807");
@@ -32,12 +34,21 @@ bool cep::buscar_cep(QString cep_procurado){
         QSqlQuery consultar(bd);
 
         //realiza a consulta
-        consultar.exec("SELECT uf FROM cep_log_index WHERE cep5 = '" + cep5 + "'");
+        consultar.exec("SELECT bairro_codigo FROM endereco WHERE endereco_cep = '" + cep_procurado + "'");
         while(consultar.next()){
-            UF = consultar.value(0).toString();
+            id_bairro = consultar.value(0).toString();
+        }
+        if(!id_bairro.toStdString().empty())
+        {
+            std::cout<<"tem cep "<<id_bairro.toStdString()<<std::endl;
+            return true;
+        }
+        else{
+            std::cout<<"Não tem cep "<<id_bairro.toStdString()<<std::endl;
+            return false;
         }
 
-        if (UF.size()>0){
+        /*if (UF.size()>0){
             consultar.exec("SELECT * FROM "+UF+" WHERE cep = '" + cep_procurado + "'");
             while(consultar.next()){
                 id = consultar.value(0).toInt();
@@ -54,8 +65,9 @@ bool cep::buscar_cep(QString cep_procurado){
             std::cout<<numero_cep.toStdString()<<std::endl;
             std::cout<<tp_logradouro.toStdString()<<std::endl;
         }
-        conexao.fechar_conexao();
-        return true;
+
+        return true;*/
         }
+    conexao.fechar_conexao();
     return false;
 }
