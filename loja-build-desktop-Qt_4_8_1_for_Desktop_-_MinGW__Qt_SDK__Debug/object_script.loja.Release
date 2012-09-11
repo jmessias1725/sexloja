@@ -1,0 +1,17 @@
+INPUT(
+./release\main.o
+./release\conexao_bd.o
+./release\usuario.o
+./release\tela_login.o
+./release\tela_principal.o
+./release\tela_clientes.o
+./release\tela_cadastro_cliente.o
+./release\endereco.o
+./release\cliente.o
+./release\cep.o
+./release\moc_tela_login.o
+./release\moc_tela_principal.o
+./release\moc_tela_clientes.o
+./release\moc_tela_cadastro_cliente.o
+./release\qrc_imagens.o
+);
