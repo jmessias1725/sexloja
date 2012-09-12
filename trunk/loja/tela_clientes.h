@@ -19,6 +19,8 @@ public:
 private slots:
     void on_actionEditar_Contato_triggered();
 
+    void on_actionAdicionar_Contato_triggered();
+
 private:
     Ui::tela_clientes *ui;
     tela_cadastro_cliente tl_cadastro_clientes;

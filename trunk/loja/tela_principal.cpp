@@ -22,3 +22,8 @@ void tela_principal::on_botao_sair_triggered()
 {
     this->close();
 }
+
+void tela_principal::on_Cadastrar_cliente_triggered()
+{
+    tl_cadastro_clientes.show();
+}

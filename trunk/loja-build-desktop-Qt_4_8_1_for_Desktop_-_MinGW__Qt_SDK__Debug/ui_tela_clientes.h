@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_clientes.ui'
 **
-** Created: Tue 11. Sep 15:36:19 2012
+** Created: Wed 12. Sep 15:51:20 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -31,6 +31,7 @@ class Ui_tela_clientes
 {
 public:
     QAction *actionEditar_Contato;
+    QAction *actionAdicionar_Contato;
     QWidget *centralwidget;
     QGroupBox *gb_dados_cliente;
     QLabel *lb_telefone;
@@ -81,6 +82,11 @@ public:
         QIcon icon1;
         icon1.addFile(QString::fromUtf8(":/img/img/editar_cliente.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionEditar_Contato->setIcon(icon1);
+        actionAdicionar_Contato = new QAction(tela_clientes);
+        actionAdicionar_Contato->setObjectName(QString::fromUtf8("actionAdicionar_Contato"));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/img/img/adiciona_clientes.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionAdicionar_Contato->setIcon(icon2);
         centralwidget = new QWidget(tela_clientes);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         gb_dados_cliente = new QGroupBox(centralwidget);
@@ -186,7 +192,7 @@ public:
         lb_comentario->setFont(font1);
         te_comentario = new QTextEdit(gb_dados_cliente);
         te_comentario->setObjectName(QString::fromUtf8("te_comentario"));
-        te_comentario->setGeometry(QRect(10, 100, 770, 100));
+        te_comentario->setGeometry(QRect(10, 100, 380, 100));
         QFont font2;
         font2.setBold(false);
         font2.setWeight(50);
@@ -292,9 +298,24 @@ public:
         Barra_de_menu->setMovable(false);
         Barra_de_menu->setIconSize(QSize(40, 40));
         tela_clientes->addToolBar(Qt::TopToolBarArea, Barra_de_menu);
+        QWidget::setTabOrder(le_numero_cadastro, le_nome);
+        QWidget::setTabOrder(le_nome, le_rg);
+        QWidget::setTabOrder(le_rg, le_cpf);
+        QWidget::setTabOrder(le_cpf, cb_email);
+        QWidget::setTabOrder(cb_email, cb_telefone);
+        QWidget::setTabOrder(cb_telefone, te_comentario);
+        QWidget::setTabOrder(te_comentario, le_cep);
+        QWidget::setTabOrder(le_cep, le_rua);
+        QWidget::setTabOrder(le_rua, le_numero);
+        QWidget::setTabOrder(le_numero, le_bairro);
+        QWidget::setTabOrder(le_bairro, le_cidade);
+        QWidget::setTabOrder(le_cidade, le_estado);
+        QWidget::setTabOrder(le_estado, te_ponto_referencia);
+        QWidget::setTabOrder(te_ponto_referencia, tv_historico_compras);
 
         Barra_de_menu->addSeparator();
         Barra_de_menu->addAction(actionEditar_Contato);
+        Barra_de_menu->addAction(actionAdicionar_Contato);
 
         retranslateUi(tela_clientes);
 
@@ -305,6 +326,7 @@ public:
     {
         tela_clientes->setWindowTitle(QApplication::translate("tela_clientes", "Clientes", 0, QApplication::UnicodeUTF8));
         actionEditar_Contato->setText(QApplication::translate("tela_clientes", "Editar Contato", 0, QApplication::UnicodeUTF8));
+        actionAdicionar_Contato->setText(QApplication::translate("tela_clientes", "Adicionar Contato", 0, QApplication::UnicodeUTF8));
         gb_dados_cliente->setTitle(QApplication::translate("tela_clientes", "Dados do Cliente", 0, QApplication::UnicodeUTF8));
         lb_telefone->setText(QApplication::translate("tela_clientes", "Telefone:", 0, QApplication::UnicodeUTF8));
         lb_numero_cliente->setText(QApplication::translate("tela_clientes", "Cadastro:", 0, QApplication::UnicodeUTF8));

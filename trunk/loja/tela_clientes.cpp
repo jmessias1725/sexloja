@@ -15,5 +15,10 @@ tela_clientes::~tela_clientes()
 
 void tela_clientes::on_actionEditar_Contato_triggered()
 {
+
+}
+
+void tela_clientes::on_actionAdicionar_Contato_triggered()
+{
     tl_cadastro_clientes.show();
 }

@@ -458,7 +458,6 @@ void tela_cadastro_cliente::on_le_cep_editingFinished()
 
 void tela_cadastro_cliente::on_cb_estado_currentIndexChanged(int index)
 {
-    std::cout<<ui->cb_estado->currentIndex()<<std::endl;
     switch(ui->cb_estado->currentIndex()){
     case 0:
         ui->le_uf->setText("AC");
@@ -478,5 +477,73 @@ void tela_cadastro_cliente::on_cb_estado_currentIndexChanged(int index)
     case 5:
         ui->le_uf->setText("CE");
         break;
+    case 6:
+        ui->le_uf->setText("DF");
+        break;
+    case 7:
+        ui->le_uf->setText("ES");
+        break;
+    case 8:
+        ui->le_uf->setText("GO");
+        break;
+    case 9:
+        ui->le_uf->setText("MA");
+        break;
+    case 10:
+        ui->le_uf->setText("MG");
+        break;
+    case 11:
+        ui->le_uf->setText("MS");
+        break;
+    case 12:
+        ui->le_uf->setText("MT");
+        break;
+    case 13:
+        ui->le_uf->setText("PA");
+        break;
+    case 14:
+        ui->le_uf->setText("PB");
+        break;
+    case 15:
+        ui->le_uf->setText("PE");
+        break;
+    case 16:
+        ui->le_uf->setText("PI");
+        break;
+    case 17:
+        ui->le_uf->setText("PR");
+        break;
+    case 18:
+        ui->le_uf->setText("RJ");
+        break;
+    case 19:
+        ui->le_uf->setText("RN");
+        break;
+    case 20:
+        ui->le_uf->setText("RO");
+        break;
+    case 21:
+        ui->le_uf->setText("RR");
+        break;
+    case 22:
+        ui->le_uf->setText("RS");
+        break;
+    case 23:
+        ui->le_uf->setText("SC");
+        break;
+    case 24:
+        ui->le_uf->setText("SE");
+        break;
+    case 25:
+        ui->le_uf->setText("SP");
+        break;
+    case 26:
+        ui->le_uf->setText("TO");
+        break;
     }
+}
+
+void tela_cadastro_cliente::on_btn_cancelar_clicked()
+{
+    this->close();
 }

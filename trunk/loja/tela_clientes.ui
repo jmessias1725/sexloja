@@ -462,7 +462,7 @@
       <rect>
        <x>10</x>
        <y>100</y>
-       <width>770</width>
+       <width>380</width>
        <height>100</height>
       </rect>
      </property>
@@ -889,6 +889,7 @@
    </attribute>
    <addaction name="separator"/>
    <addaction name="actionEditar_Contato"/>
+   <addaction name="actionAdicionar_Contato"/>
   </widget>
   <action name="actionEditar_Contato">
    <property name="icon">
@@ -899,7 +900,33 @@
     <string>Editar Contato</string>
    </property>
   </action>
+  <action name="actionAdicionar_Contato">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/img/img/adiciona_clientes.png</normaloff>:/img/img/adiciona_clientes.png</iconset>
+   </property>
+   <property name="text">
+    <string>Adicionar Contato</string>
+   </property>
+  </action>
  </widget>
+ <tabstops>
+  <tabstop>le_numero_cadastro</tabstop>
+  <tabstop>le_nome</tabstop>
+  <tabstop>le_rg</tabstop>
+  <tabstop>le_cpf</tabstop>
+  <tabstop>cb_email</tabstop>
+  <tabstop>cb_telefone</tabstop>
+  <tabstop>te_comentario</tabstop>
+  <tabstop>le_cep</tabstop>
+  <tabstop>le_rua</tabstop>
+  <tabstop>le_numero</tabstop>
+  <tabstop>le_bairro</tabstop>
+  <tabstop>le_cidade</tabstop>
+  <tabstop>le_estado</tabstop>
+  <tabstop>te_ponto_referencia</tabstop>
+  <tabstop>tv_historico_compras</tabstop>
+ </tabstops>
  <resources>
   <include location="imagens.qrc"/>
  </resources>
