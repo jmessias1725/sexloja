@@ -892,7 +892,7 @@
       <rect>
        <x>245</x>
        <y>80</y>
-       <width>21</width>
+       <width>25</width>
        <height>20</height>
       </rect>
      </property>
@@ -903,7 +903,7 @@
       </font>
      </property>
      <property name="text">
-      <string/>
+      <string>AC</string>
      </property>
      <property name="readOnly">
       <bool>true</bool>
