@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <iostream>
 #include "tela_clientes.h"
+#include "tela_cadastro_cliente.h"
 
 namespace Ui {
 class tela_principal;
@@ -23,9 +24,12 @@ private slots:
 
     void on_botao_sair_triggered();
 
+    void on_Cadastrar_cliente_triggered();
+
 private:
     Ui::tela_principal *ui;
     tela_clientes tl_clientes;
+    tela_cadastro_cliente tl_cadastro_clientes;
 };
 
 #endif // TELA_PRINCIPAL_H

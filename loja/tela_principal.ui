@@ -44,21 +44,25 @@
       <string>Novo</string>
      </property>
      <addaction name="realizaar_venda"/>
+     <addaction name="Cadastrar_cliente"/>
+     <addaction name="cadastrar_forncecedor"/>
+     <addaction name="cadastrar_produto"/>
     </widget>
     <addaction name="separator"/>
     <addaction name="menuNovo"/>
     <addaction name="botao_sair"/>
    </widget>
-   <widget class="QMenu" name="menuCadastro">
+   <widget class="QMenu" name="menuListar">
     <property name="title">
-     <string>Cadastro</string>
+     <string>Listar</string>
     </property>
-    <addaction name="Cadastrar_cliente"/>
-    <addaction name="cadastrar_forncecedor"/>
-    <addaction name="cadastrar_produto"/>
+    <addaction name="listar_clientes"/>
+    <addaction name="listar_produtos"/>
+    <addaction name="listar_fornecedores"/>
+    <addaction name="listar_estoque"/>
    </widget>
    <addaction name="menuArquivo"/>
-   <addaction name="menuCadastro"/>
+   <addaction name="menuListar"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="barra_de_menus">
@@ -174,6 +178,42 @@
    </property>
    <property name="text">
     <string>Sair</string>
+   </property>
+  </action>
+  <action name="listar_clientes">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/img/img/Usuario.png</normaloff>:/img/img/Usuario.png</iconset>
+   </property>
+   <property name="text">
+    <string>Clientes</string>
+   </property>
+  </action>
+  <action name="listar_produtos">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/img/img/produto.png</normaloff>:/img/img/produto.png</iconset>
+   </property>
+   <property name="text">
+    <string>Produtos</string>
+   </property>
+  </action>
+  <action name="listar_fornecedores">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/img/img/fornecedor.png</normaloff>:/img/img/fornecedor.png</iconset>
+   </property>
+   <property name="text">
+    <string>Fornecedores</string>
+   </property>
+  </action>
+  <action name="listar_estoque">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/img/img/estoque2.png</normaloff>:/img/img/estoque2.png</iconset>
+   </property>
+   <property name="text">
+    <string>Estoque</string>
    </property>
   </action>
  </widget>

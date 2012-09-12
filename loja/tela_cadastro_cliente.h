@@ -45,6 +45,8 @@ private slots:
 
     void on_cb_estado_currentIndexChanged(int index);
 
+    void on_btn_cancelar_clicked();
+
 private:
     Ui::tela_cadastro_cliente *ui;
     QDialog* Qdialog_email;

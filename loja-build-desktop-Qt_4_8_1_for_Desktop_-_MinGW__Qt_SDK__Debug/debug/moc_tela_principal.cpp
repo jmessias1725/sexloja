@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_principal.h'
 **
-** Created: Tue 11. Sep 16:11:45 2012
+** Created: Wed 12. Sep 15:31:30 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_tela_principal[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -33,6 +33,7 @@ static const uint qt_meta_data_tela_principal[] = {
  // slots: signature, parameters, type, tag, flags
       16,   15,   15,   15, 0x08,
       50,   15,   15,   15, 0x08,
+      76,   15,   15,   15, 0x08,
 
        0        // eod
 };
@@ -40,6 +41,7 @@ static const uint qt_meta_data_tela_principal[] = {
 static const char qt_meta_stringdata_tela_principal[] = {
     "tela_principal\0\0on_consultar_clientes_triggered()\0"
     "on_botao_sair_triggered()\0"
+    "on_Cadastrar_cliente_triggered()\0"
 };
 
 void tela_principal::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -50,6 +52,7 @@ void tela_principal::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         switch (_id) {
         case 0: _t->on_consultar_clientes_triggered(); break;
         case 1: _t->on_botao_sair_triggered(); break;
+        case 2: _t->on_Cadastrar_cliente_triggered(); break;
         default: ;
         }
     }
@@ -88,9 +91,9 @@ int tela_principal::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 3;
     }
     return _id;
 }

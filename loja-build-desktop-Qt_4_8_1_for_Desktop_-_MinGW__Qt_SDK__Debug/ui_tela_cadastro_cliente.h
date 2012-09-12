@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_cadastro_cliente.ui'
 **
-** Created: Tue 11. Sep 23:27:11 2012
+** Created: Wed 12. Sep 15:46:19 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -109,7 +109,7 @@ public:
         cb_telefone->setMaxVisibleItems(20);
         lb_nome = new QLabel(gb_dados_cliente);
         lb_nome->setObjectName(QString::fromUtf8("lb_nome"));
-        lb_nome->setGeometry(QRect(13, 23, 39, 20));
+        lb_nome->setGeometry(QRect(13, 23, 35, 20));
         lb_nome->setMaximumSize(QSize(40, 20));
         lb_nome->setFont(font1);
         le_nome = new QLineEdit(gb_dados_cliente);
@@ -206,6 +206,22 @@ public:
         tb_menos_telefone->setIcon(icon2);
         tb_menos_telefone->setIconSize(QSize(12, 12));
         tb_menos_telefone->setAutoRaise(true);
+        lb_cpf->raise();
+        lb_telefone->raise();
+        cb_telefone->raise();
+        le_cpf->raise();
+        lb_email->raise();
+        cb_email->raise();
+        lb_comentario->raise();
+        te_comentario->raise();
+        tb_mais_email->raise();
+        tb_menos_email->raise();
+        tb_mais_telefone->raise();
+        tb_menos_telefone->raise();
+        lb_nome->raise();
+        le_nome->raise();
+        lb_rg->raise();
+        le_rg->raise();
         gb_endereo = new QGroupBox(centralwidget);
         gb_endereo->setObjectName(QString::fromUtf8("gb_endereo"));
         gb_endereo->setGeometry(QRect(5, 220, 790, 239));
@@ -420,6 +436,25 @@ public:
         btn_cancelar->setIcon(icon31);
         btn_cancelar->setIconSize(QSize(18, 18));
         tela_cadastro_cliente->setCentralWidget(centralwidget);
+        QWidget::setTabOrder(le_nome, le_rg);
+        QWidget::setTabOrder(le_rg, le_cpf);
+        QWidget::setTabOrder(le_cpf, cb_email);
+        QWidget::setTabOrder(cb_email, tb_mais_email);
+        QWidget::setTabOrder(tb_mais_email, tb_menos_email);
+        QWidget::setTabOrder(tb_menos_email, cb_telefone);
+        QWidget::setTabOrder(cb_telefone, tb_mais_telefone);
+        QWidget::setTabOrder(tb_mais_telefone, tb_menos_telefone);
+        QWidget::setTabOrder(tb_menos_telefone, te_comentario);
+        QWidget::setTabOrder(te_comentario, le_cep);
+        QWidget::setTabOrder(le_cep, le_rua);
+        QWidget::setTabOrder(le_rua, le_numero);
+        QWidget::setTabOrder(le_numero, le_bairro);
+        QWidget::setTabOrder(le_bairro, le_cidade);
+        QWidget::setTabOrder(le_cidade, cb_estado);
+        QWidget::setTabOrder(cb_estado, le_uf);
+        QWidget::setTabOrder(le_uf, te_ponto_referencia);
+        QWidget::setTabOrder(te_ponto_referencia, btn_confirmar);
+        QWidget::setTabOrder(btn_confirmar, btn_cancelar);
 
         retranslateUi(tela_cadastro_cliente);
 
@@ -458,6 +493,11 @@ public:
         le_cidade->setText(QString());
         lb_estado->setText(QApplication::translate("tela_cadastro_cliente", "Estado:", 0, QApplication::UnicodeUTF8));
         lb_ponto_refe->setText(QApplication::translate("tela_cadastro_cliente", "Ponto de refer\303\252ncia:", 0, QApplication::UnicodeUTF8));
+        te_ponto_referencia->setHtml(QApplication::translate("tela_cadastro_cliente", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Calibri'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>", 0, QApplication::UnicodeUTF8));
         lb_uf->setText(QApplication::translate("tela_cadastro_cliente", "UF:", 0, QApplication::UnicodeUTF8));
         le_uf->setText(QApplication::translate("tela_cadastro_cliente", "AC", 0, QApplication::UnicodeUTF8));
         cb_estado->setItemText(0, QApplication::translate("tela_cadastro_cliente", "Acre", 0, QApplication::UnicodeUTF8));
