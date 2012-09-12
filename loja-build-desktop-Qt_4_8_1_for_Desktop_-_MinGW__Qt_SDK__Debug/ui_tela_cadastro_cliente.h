@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_cadastro_cliente.ui'
 **
-** Created: Tue 11. Sep 16:00:44 2012
+** Created: Tue 11. Sep 23:27:11 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -292,7 +292,7 @@ public:
         lb_uf->setFont(font2);
         le_uf = new QLineEdit(gb_endereo);
         le_uf->setObjectName(QString::fromUtf8("le_uf"));
-        le_uf->setGeometry(QRect(245, 80, 21, 20));
+        le_uf->setGeometry(QRect(245, 80, 25, 20));
         le_uf->setFont(font2);
         le_uf->setReadOnly(true);
         cb_estado = new QComboBox(gb_endereo);
@@ -459,7 +459,7 @@ public:
         lb_estado->setText(QApplication::translate("tela_cadastro_cliente", "Estado:", 0, QApplication::UnicodeUTF8));
         lb_ponto_refe->setText(QApplication::translate("tela_cadastro_cliente", "Ponto de refer\303\252ncia:", 0, QApplication::UnicodeUTF8));
         lb_uf->setText(QApplication::translate("tela_cadastro_cliente", "UF:", 0, QApplication::UnicodeUTF8));
-        le_uf->setText(QString());
+        le_uf->setText(QApplication::translate("tela_cadastro_cliente", "AC", 0, QApplication::UnicodeUTF8));
         cb_estado->setItemText(0, QApplication::translate("tela_cadastro_cliente", "Acre", 0, QApplication::UnicodeUTF8));
         cb_estado->setItemText(1, QApplication::translate("tela_cadastro_cliente", "Alagoas", 0, QApplication::UnicodeUTF8));
         cb_estado->setItemText(2, QApplication::translate("tela_cadastro_cliente", "Amazonas", 0, QApplication::UnicodeUTF8));
