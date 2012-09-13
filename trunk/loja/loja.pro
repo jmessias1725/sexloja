@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     tela_clientes.cpp \
     tela_cadastro_cliente.cpp \
     cliente.cpp \
-    cep.cpp
+    cep.cpp \
+    endereco.cpp
 
 HEADERS  += \
     conexao_bd.h \
@@ -29,7 +30,8 @@ HEADERS  += \
     tela_clientes.h \
     tela_cadastro_cliente.h \
     cliente.h \
-    cep.h
+    cep.h \
+    endereco.h
 
 FORMS    += \
     tela_login.ui \
