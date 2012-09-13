@@ -6,7 +6,6 @@ tela_cadastro_cliente::tela_cadastro_cliente(QWidget *parent) :
     ui(new Ui::tela_cadastro_cliente)
 {
     ui->setupUi(this);
-    cad_cliente = new (cliente);
 }
 
 tela_cadastro_cliente::~tela_cadastro_cliente()
@@ -552,7 +551,12 @@ void tela_cadastro_cliente::on_btn_cancelar_clicked()
 void tela_cadastro_cliente::on_btn_confirmar_clicked()
 {
     if((ui->le_nome->text().toStdString()!="")&&(lista_telefone.size()>0)){
+        cad_cliente = new cliente(ui->le_nome->text(),ui->le_rg->text().toFloat(),ui->le_cpf->text(),
+                    ui->te_comentario->toPlainText(),lista_email,lista_telefone, lista_operadora,
+                    ui->le_uf->text(), ui->cb_estado->currentText(), ui->lb_cidade->text(),ui->le_bairro->text(),
+                    ui->le_rua->text(), ui->le_cep->text(), ui->le_numero->text().toInt(), ui->te_ponto_referencia->toPlainText());
 
+        //std::cout<<ui->te_comentario->toPlainText().toStdString()<<std::endl;
     }
     else{
         if(ui->le_nome->text().toStdString()==""){

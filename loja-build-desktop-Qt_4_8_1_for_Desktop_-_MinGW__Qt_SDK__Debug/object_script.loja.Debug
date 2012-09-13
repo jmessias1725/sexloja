@@ -8,6 +8,7 @@ INPUT(
 ./debug\tela_cadastro_cliente.o
 ./debug\cliente.o
 ./debug\cep.o
+./debug\endereco.o
 ./debug\moc_tela_login.o
 ./debug\moc_tela_principal.o
 ./debug\moc_tela_clientes.o

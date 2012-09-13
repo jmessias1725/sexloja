@@ -9,7 +9,7 @@
 
 #include "endereco.h"
 
-class cliente
+class cliente :public endereco
 {
 private:
     QString nome;
@@ -21,35 +21,22 @@ private:
     std::vector< std::string > lista_telefone;
     std::vector< std::string > lista_operadora;
 
-    //Variáveis que definem o endereço do cliente;
-    QString sigla_estado;
-    QString nome_estado;
-    QString cidade;
-    QString bairro;
-    QString nome_rua;
-    QString numero_cep;
-    int numero_residencia;
-    QString ponto_referencia;
-
 public:
-    cliente();
+    cliente(QString cliente_nome,float cliente_rg,QString cliente_cpf,
+            QString cliente_comentario,std::vector< std::string > lista_email_cliente,
+            std::vector< std::string > lista_telefone_cliente,
+            std::vector< std::string > lista_operadora_cliente,
+            QString uf_sigla, QString uf_nome, QString cidade, QString bairro,
+            QString rua, QString cep, int numero, QString pt_referencia);
+
     QString retornar_nome(void);
     float retornar_rg(void);
     QString retornar_cpf(void);
     QString retornar_comentario(void);
-    endereco retorna_endereco(void);
     std::vector< std::string > retorna_lista_email(void);
     std::vector< std::string > retorna_lista_telefone(void);
     std::vector< std::string > retorna_lista_operadora(void);
-
-    void definir_nome(QString nome_cliente);
-    void definir_cpf(QString cpf_cliente);
-    void definir_comentario(QString comentario_cliente);
-    void definir_lista_email(std::vector< std::string > lista_email_cliente);
-    void definir_lista_telefone(std::vector< std::string > lista_telefone_cliente);
-    void definir_lista_operadora(std::vector< std::string > lista_operadora_cliente);
-    void definir_endereco_cliente(QString uf_sigla, QString uf_nome, QString nome_cidade, QString nome_bairro, QString rua, QString cep, int numero, QString pt_referencia);
-    bool salvar_cliente();
+    bool salvar_cliente(void);
 };
 
 #endif // CLIENTE_H

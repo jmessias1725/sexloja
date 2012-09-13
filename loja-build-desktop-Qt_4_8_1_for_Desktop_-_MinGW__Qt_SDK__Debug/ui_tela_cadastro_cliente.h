@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_cadastro_cliente.ui'
 **
-** Created: Wed 12. Sep 15:46:19 2012
+** Created: Thu 13. Sep 11:36:05 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -73,8 +73,8 @@ public:
         if (tela_cadastro_cliente->objectName().isEmpty())
             tela_cadastro_cliente->setObjectName(QString::fromUtf8("tela_cadastro_cliente"));
         tela_cadastro_cliente->setWindowModality(Qt::ApplicationModal);
-        tela_cadastro_cliente->resize(800, 494);
-        tela_cadastro_cliente->setMaximumSize(QSize(800, 600));
+        tela_cadastro_cliente->resize(800, 384);
+        tela_cadastro_cliente->setMaximumSize(QSize(800, 384));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/img/img/logo_sex.png"), QSize(), QIcon::Normal, QIcon::Off);
         tela_cadastro_cliente->setWindowIcon(icon);
@@ -82,7 +82,7 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         gb_dados_cliente = new QGroupBox(centralwidget);
         gb_dados_cliente->setObjectName(QString::fromUtf8("gb_dados_cliente"));
-        gb_dados_cliente->setGeometry(QRect(5, 5, 790, 210));
+        gb_dados_cliente->setGeometry(QRect(5, 5, 790, 151));
         QFont font;
         font.setFamily(QString::fromUtf8("Calibri"));
         font.setPointSize(10);
@@ -170,7 +170,7 @@ public:
         lb_comentario->setFont(font1);
         te_comentario = new QTextEdit(gb_dados_cliente);
         te_comentario->setObjectName(QString::fromUtf8("te_comentario"));
-        te_comentario->setGeometry(QRect(10, 100, 770, 100));
+        te_comentario->setGeometry(QRect(10, 100, 770, 41));
         QFont font2;
         font2.setBold(false);
         font2.setWeight(50);
@@ -224,7 +224,7 @@ public:
         le_rg->raise();
         gb_endereo = new QGroupBox(centralwidget);
         gb_endereo->setObjectName(QString::fromUtf8("gb_endereo"));
-        gb_endereo->setGeometry(QRect(5, 220, 790, 239));
+        gb_endereo->setGeometry(QRect(5, 160, 790, 192));
         gb_endereo->setFont(font);
         le_cep = new QLineEdit(gb_endereo);
         le_cep->setObjectName(QString::fromUtf8("le_cep"));
@@ -299,7 +299,7 @@ public:
         lb_ponto_refe->setFont(font1);
         te_ponto_referencia = new QTextEdit(gb_endereo);
         te_ponto_referencia->setObjectName(QString::fromUtf8("te_ponto_referencia"));
-        te_ponto_referencia->setGeometry(QRect(10, 132, 770, 98));
+        te_ponto_referencia->setGeometry(QRect(10, 132, 770, 51));
         te_ponto_referencia->setFont(font2);
         te_ponto_referencia->setReadOnly(false);
         lb_uf = new QLabel(gb_endereo);
@@ -414,7 +414,7 @@ public:
         cb_estado->raise();
         btn_confirmar = new QPushButton(centralwidget);
         btn_confirmar->setObjectName(QString::fromUtf8("btn_confirmar"));
-        btn_confirmar->setGeometry(QRect(305, 465, 90, 24));
+        btn_confirmar->setGeometry(QRect(305, 356, 90, 24));
         btn_confirmar->setMinimumSize(QSize(0, 24));
         btn_confirmar->setMaximumSize(QSize(90, 24));
         QFont font5;
@@ -427,7 +427,7 @@ public:
         btn_confirmar->setIconSize(QSize(20, 20));
         btn_cancelar = new QPushButton(centralwidget);
         btn_cancelar->setObjectName(QString::fromUtf8("btn_cancelar"));
-        btn_cancelar->setGeometry(QRect(405, 465, 90, 24));
+        btn_cancelar->setGeometry(QRect(405, 356, 90, 24));
         btn_cancelar->setMinimumSize(QSize(0, 24));
         btn_cancelar->setMaximumSize(QSize(90, 24));
         btn_cancelar->setFont(font5);

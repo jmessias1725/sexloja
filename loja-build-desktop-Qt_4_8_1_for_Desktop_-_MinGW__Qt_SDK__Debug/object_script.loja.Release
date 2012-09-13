@@ -8,6 +8,7 @@ INPUT(
 ./release\tela_cadastro_cliente.o
 ./release\cliente.o
 ./release\cep.o
+./release\endereco.o
 ./release\moc_tela_login.o
 ./release\moc_tela_principal.o
 ./release\moc_tela_clientes.o
