@@ -6,6 +6,7 @@ tela_cadastro_cliente::tela_cadastro_cliente(QWidget *parent) :
     ui(new Ui::tela_cadastro_cliente)
 {
     ui->setupUi(this);
+    cad_cliente = new (cliente);
 }
 
 tela_cadastro_cliente::~tela_cadastro_cliente()
@@ -546,4 +547,37 @@ void tela_cadastro_cliente::on_cb_estado_currentIndexChanged(int index)
 void tela_cadastro_cliente::on_btn_cancelar_clicked()
 {
     this->close();
+}
+
+void tela_cadastro_cliente::on_btn_confirmar_clicked()
+{
+    if((ui->le_nome->text().toStdString()!="")&&(lista_telefone.size()>0)){
+
+    }
+    else{
+        if(ui->le_nome->text().toStdString()==""){
+            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
+            QPixmap icone_janela(":img/img/error_50.png");
+            QMessageBox msg(0);
+            msg.setIconPixmap(icone_janela);
+            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowTitle("Nome do Cliente");
+            msg.addButton("OK", QMessageBox::AcceptRole);
+            msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+            msg.setText("\nDigite o nome do Cliente!");
+            msg.exec();
+        }
+        else{
+            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
+            QPixmap icone_janela(":img/img/telefone_50.png");
+            QMessageBox msg(0);
+            msg.setIconPixmap(icone_janela);
+            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowTitle("Telefone");
+            msg.addButton("OK", QMessageBox::AcceptRole);
+            msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+            msg.setText("\nDigite pelo menos um telefone!");
+            msg.exec();
+        }
+    }
 }

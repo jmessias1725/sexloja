@@ -6,7 +6,6 @@ INPUT(
 ./debug\tela_principal.o
 ./debug\tela_clientes.o
 ./debug\tela_cadastro_cliente.o
-./debug\endereco.o
 ./debug\cliente.o
 ./debug\cep.o
 ./debug\moc_tela_login.o

@@ -47,6 +47,8 @@ private slots:
 
     void on_btn_cancelar_clicked();
 
+    void on_btn_confirmar_clicked();
+
 private:
     Ui::tela_cadastro_cliente *ui;
     QDialog* Qdialog_email;
