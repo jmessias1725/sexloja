@@ -30,6 +30,8 @@
         <file>img/produto.png</file>
         <file>img/error_50.png</file>
         <file>img/telefone_50.png</file>
+        <file>img/arquivo_50.png</file>
+        <file>img/arquivo_erro_50.png</file>
     </qresource>
     <qresource prefix="/operadoras">
         <file>img/claro.png</file>
