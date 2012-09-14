@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_cadastro_cliente.ui'
 **
-** Created: Thu 13. Sep 11:36:05 2012
+** Created: Thu 13. Sep 17:57:51 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -73,8 +73,8 @@ public:
         if (tela_cadastro_cliente->objectName().isEmpty())
             tela_cadastro_cliente->setObjectName(QString::fromUtf8("tela_cadastro_cliente"));
         tela_cadastro_cliente->setWindowModality(Qt::ApplicationModal);
-        tela_cadastro_cliente->resize(800, 384);
-        tela_cadastro_cliente->setMaximumSize(QSize(800, 384));
+        tela_cadastro_cliente->resize(800, 390);
+        tela_cadastro_cliente->setMaximumSize(QSize(800, 390));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/img/img/logo_sex.png"), QSize(), QIcon::Normal, QIcon::Off);
         tela_cadastro_cliente->setWindowIcon(icon);
@@ -82,7 +82,7 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         gb_dados_cliente = new QGroupBox(centralwidget);
         gb_dados_cliente->setObjectName(QString::fromUtf8("gb_dados_cliente"));
-        gb_dados_cliente->setGeometry(QRect(5, 5, 790, 151));
+        gb_dados_cliente->setGeometry(QRect(5, 5, 790, 156));
         QFont font;
         font.setFamily(QString::fromUtf8("Calibri"));
         font.setPointSize(10);
@@ -109,12 +109,12 @@ public:
         cb_telefone->setMaxVisibleItems(20);
         lb_nome = new QLabel(gb_dados_cliente);
         lb_nome->setObjectName(QString::fromUtf8("lb_nome"));
-        lb_nome->setGeometry(QRect(13, 23, 35, 20));
+        lb_nome->setGeometry(QRect(5, 23, 35, 20));
         lb_nome->setMaximumSize(QSize(40, 20));
         lb_nome->setFont(font1);
         le_nome = new QLineEdit(gb_dados_cliente);
         le_nome->setObjectName(QString::fromUtf8("le_nome"));
-        le_nome->setGeometry(QRect(51, 23, 410, 20));
+        le_nome->setGeometry(QRect(41, 23, 425, 20));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -127,11 +127,11 @@ public:
         le_nome->setReadOnly(false);
         lb_cpf = new QLabel(gb_dados_cliente);
         lb_cpf->setObjectName(QString::fromUtf8("lb_cpf"));
-        lb_cpf->setGeometry(QRect(647, 23, 27, 20));
+        lb_cpf->setGeometry(QRect(653, 23, 29, 20));
         lb_cpf->setFont(font1);
         le_cpf = new QLineEdit(gb_dados_cliente);
         le_cpf->setObjectName(QString::fromUtf8("le_cpf"));
-        le_cpf->setGeometry(QRect(675, 23, 100, 20));
+        le_cpf->setGeometry(QRect(681, 23, 100, 20));
         sizePolicy.setHeightForWidth(le_cpf->sizePolicy().hasHeightForWidth());
         le_cpf->setSizePolicy(sizePolicy);
         le_cpf->setMinimumSize(QSize(100, 20));
@@ -141,15 +141,15 @@ public:
         le_cpf->setReadOnly(false);
         lb_rg = new QLabel(gb_dados_cliente);
         lb_rg->setObjectName(QString::fromUtf8("lb_rg"));
-        lb_rg->setGeometry(QRect(487, 23, 20, 20));
+        lb_rg->setGeometry(QRect(475, 23, 22, 20));
         lb_rg->setFont(font1);
         le_rg = new QLineEdit(gb_dados_cliente);
         le_rg->setObjectName(QString::fromUtf8("le_rg"));
-        le_rg->setGeometry(QRect(508, 23, 120, 20));
+        le_rg->setGeometry(QRect(497, 23, 150, 20));
         le_rg->setMinimumSize(QSize(120, 20));
-        le_rg->setMaximumSize(QSize(120, 20));
+        le_rg->setMaximumSize(QSize(200, 20));
         le_rg->setFont(font1);
-        le_rg->setMaxLength(15);
+        le_rg->setMaxLength(20);
         le_rg->setCursorPosition(0);
         le_rg->setReadOnly(false);
         lb_email = new QLabel(gb_dados_cliente);
@@ -170,11 +170,12 @@ public:
         lb_comentario->setFont(font1);
         te_comentario = new QTextEdit(gb_dados_cliente);
         te_comentario->setObjectName(QString::fromUtf8("te_comentario"));
-        te_comentario->setGeometry(QRect(10, 100, 770, 41));
+        te_comentario->setGeometry(QRect(10, 100, 770, 47));
         QFont font2;
         font2.setBold(false);
         font2.setWeight(50);
         te_comentario->setFont(font2);
+        te_comentario->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
         te_comentario->setReadOnly(false);
         tb_mais_email = new QToolButton(gb_dados_cliente);
         tb_mais_email->setObjectName(QString::fromUtf8("tb_mais_email"));
@@ -224,7 +225,7 @@ public:
         le_rg->raise();
         gb_endereo = new QGroupBox(centralwidget);
         gb_endereo->setObjectName(QString::fromUtf8("gb_endereo"));
-        gb_endereo->setGeometry(QRect(5, 160, 790, 192));
+        gb_endereo->setGeometry(QRect(5, 164, 790, 192));
         gb_endereo->setFont(font);
         le_cep = new QLineEdit(gb_endereo);
         le_cep->setObjectName(QString::fromUtf8("le_cep"));
@@ -301,6 +302,7 @@ public:
         te_ponto_referencia->setObjectName(QString::fromUtf8("te_ponto_referencia"));
         te_ponto_referencia->setGeometry(QRect(10, 132, 770, 51));
         te_ponto_referencia->setFont(font2);
+        te_ponto_referencia->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
         te_ponto_referencia->setReadOnly(false);
         lb_uf = new QLabel(gb_endereo);
         lb_uf->setObjectName(QString::fromUtf8("lb_uf"));
@@ -312,6 +314,7 @@ public:
         le_uf->setFont(font2);
         le_uf->setReadOnly(true);
         cb_estado = new QComboBox(gb_endereo);
+        cb_estado->addItem(QString());
         QIcon icon3;
         icon3.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/acre.png"), QSize(), QIcon::Normal, QIcon::Off);
         cb_estado->addItem(icon3, QString());
@@ -414,7 +417,7 @@ public:
         cb_estado->raise();
         btn_confirmar = new QPushButton(centralwidget);
         btn_confirmar->setObjectName(QString::fromUtf8("btn_confirmar"));
-        btn_confirmar->setGeometry(QRect(305, 356, 90, 24));
+        btn_confirmar->setGeometry(QRect(305, 360, 90, 24));
         btn_confirmar->setMinimumSize(QSize(0, 24));
         btn_confirmar->setMaximumSize(QSize(90, 24));
         QFont font5;
@@ -427,7 +430,7 @@ public:
         btn_confirmar->setIconSize(QSize(20, 20));
         btn_cancelar = new QPushButton(centralwidget);
         btn_cancelar->setObjectName(QString::fromUtf8("btn_cancelar"));
-        btn_cancelar->setGeometry(QRect(405, 356, 90, 24));
+        btn_cancelar->setGeometry(QRect(405, 360, 90, 24));
         btn_cancelar->setMinimumSize(QSize(0, 24));
         btn_cancelar->setMaximumSize(QSize(90, 24));
         btn_cancelar->setFont(font5);
@@ -472,6 +475,7 @@ public:
         le_cpf->setInputMask(QApplication::translate("tela_cadastro_cliente", "000.000.000-00; ", 0, QApplication::UnicodeUTF8));
         le_cpf->setText(QApplication::translate("tela_cadastro_cliente", "..-", 0, QApplication::UnicodeUTF8));
         lb_rg->setText(QApplication::translate("tela_cadastro_cliente", "RG:", 0, QApplication::UnicodeUTF8));
+        le_rg->setInputMask(QApplication::translate("tela_cadastro_cliente", "00000000000000000000; ", 0, QApplication::UnicodeUTF8));
         le_rg->setText(QString());
         lb_email->setText(QApplication::translate("tela_cadastro_cliente", "E-mail:", 0, QApplication::UnicodeUTF8));
         lb_comentario->setText(QApplication::translate("tela_cadastro_cliente", "Coment\303\241rio", 0, QApplication::UnicodeUTF8));
@@ -499,34 +503,35 @@ public:
 "</style></head><body style=\" font-family:'Calibri'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>", 0, QApplication::UnicodeUTF8));
         lb_uf->setText(QApplication::translate("tela_cadastro_cliente", "UF:", 0, QApplication::UnicodeUTF8));
-        le_uf->setText(QApplication::translate("tela_cadastro_cliente", "AC", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(0, QApplication::translate("tela_cadastro_cliente", "Acre", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(1, QApplication::translate("tela_cadastro_cliente", "Alagoas", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(2, QApplication::translate("tela_cadastro_cliente", "Amazonas", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(3, QApplication::translate("tela_cadastro_cliente", "Amap\303\241", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(4, QApplication::translate("tela_cadastro_cliente", "Bahia", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(5, QApplication::translate("tela_cadastro_cliente", "Cear\303\241", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(6, QApplication::translate("tela_cadastro_cliente", "Distrito Federal", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(7, QApplication::translate("tela_cadastro_cliente", "Esp\303\255rito Santo", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(8, QApplication::translate("tela_cadastro_cliente", "Goi\303\241s", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(9, QApplication::translate("tela_cadastro_cliente", "Maranh\303\243o", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(10, QApplication::translate("tela_cadastro_cliente", "Minas Gerais", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(11, QApplication::translate("tela_cadastro_cliente", "Mato Grosso do Sul", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(12, QApplication::translate("tela_cadastro_cliente", "Mato Grosso", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(13, QApplication::translate("tela_cadastro_cliente", "Par\303\241", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(14, QApplication::translate("tela_cadastro_cliente", "Para\303\255ba", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(15, QApplication::translate("tela_cadastro_cliente", "Pernambuco", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(16, QApplication::translate("tela_cadastro_cliente", "Piau\303\255", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(17, QApplication::translate("tela_cadastro_cliente", "Paran\303\241", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(18, QApplication::translate("tela_cadastro_cliente", "Rio de Janeiro", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(19, QApplication::translate("tela_cadastro_cliente", "Rio Grande do Norte", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(20, QApplication::translate("tela_cadastro_cliente", "Rond\303\264nia", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(21, QApplication::translate("tela_cadastro_cliente", "Roraima", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(22, QApplication::translate("tela_cadastro_cliente", "Rio Grande do Sul", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(23, QApplication::translate("tela_cadastro_cliente", "Santa Catarina", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(24, QApplication::translate("tela_cadastro_cliente", "Sergipe", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(25, QApplication::translate("tela_cadastro_cliente", "S\303\243o Paulo", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(26, QApplication::translate("tela_cadastro_cliente", "Tocantins", 0, QApplication::UnicodeUTF8));
+        le_uf->setText(QApplication::translate("tela_cadastro_cliente", "--", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(0, QApplication::translate("tela_cadastro_cliente", "-------------------", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(1, QApplication::translate("tela_cadastro_cliente", "Acre", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(2, QApplication::translate("tela_cadastro_cliente", "Alagoas", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(3, QApplication::translate("tela_cadastro_cliente", "Amazonas", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(4, QApplication::translate("tela_cadastro_cliente", "Amap\303\241", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(5, QApplication::translate("tela_cadastro_cliente", "Bahia", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(6, QApplication::translate("tela_cadastro_cliente", "Cear\303\241", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(7, QApplication::translate("tela_cadastro_cliente", "Distrito Federal", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(8, QApplication::translate("tela_cadastro_cliente", "Esp\303\255rito Santo", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(9, QApplication::translate("tela_cadastro_cliente", "Goi\303\241s", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(10, QApplication::translate("tela_cadastro_cliente", "Maranh\303\243o", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(11, QApplication::translate("tela_cadastro_cliente", "Minas Gerais", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(12, QApplication::translate("tela_cadastro_cliente", "Mato Grosso do Sul", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(13, QApplication::translate("tela_cadastro_cliente", "Mato Grosso", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(14, QApplication::translate("tela_cadastro_cliente", "Par\303\241", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(15, QApplication::translate("tela_cadastro_cliente", "Para\303\255ba", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(16, QApplication::translate("tela_cadastro_cliente", "Pernambuco", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(17, QApplication::translate("tela_cadastro_cliente", "Piau\303\255", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(18, QApplication::translate("tela_cadastro_cliente", "Paran\303\241", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(19, QApplication::translate("tela_cadastro_cliente", "Rio de Janeiro", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(20, QApplication::translate("tela_cadastro_cliente", "Rio Grande do Norte", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(21, QApplication::translate("tela_cadastro_cliente", "Rond\303\264nia", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(22, QApplication::translate("tela_cadastro_cliente", "Roraima", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(23, QApplication::translate("tela_cadastro_cliente", "Rio Grande do Sul", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(24, QApplication::translate("tela_cadastro_cliente", "Santa Catarina", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(25, QApplication::translate("tela_cadastro_cliente", "Sergipe", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(26, QApplication::translate("tela_cadastro_cliente", "S\303\243o Paulo", 0, QApplication::UnicodeUTF8));
+        cb_estado->setItemText(27, QApplication::translate("tela_cadastro_cliente", "Tocantins", 0, QApplication::UnicodeUTF8));
 
         btn_confirmar->setText(QApplication::translate("tela_cadastro_cliente", "Confirmar", 0, QApplication::UnicodeUTF8));
         btn_cancelar->setText(QApplication::translate("tela_cadastro_cliente", "Cancelar", 0, QApplication::UnicodeUTF8));

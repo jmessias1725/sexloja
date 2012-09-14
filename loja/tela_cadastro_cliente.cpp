@@ -436,7 +436,7 @@ void tela_cadastro_cliente::on_le_cep_editingFinished()
             ui->le_rua->setText(aux_cep->retorna_nome_rua());
             ui->le_bairro->setText(aux_cep->retorna_bairro());
             ui->le_cidade->setText(aux_cep->retorna_cidade());
-            ui->cb_estado->setCurrentIndex(aux_cep->retorna_id_uf()-1);
+            ui->cb_estado->setCurrentIndex(aux_cep->retorna_id_uf());
             ui->le_uf->setText(aux_cep->retorna_sigla_estado());
         }
     }
@@ -460,84 +460,87 @@ void tela_cadastro_cliente::on_cb_estado_currentIndexChanged(int index)
 {
     switch(ui->cb_estado->currentIndex()){
     case 0:
-        ui->le_uf->setText("AC");
+        ui->le_uf->setText("--");
         break;
     case 1:
-        ui->le_uf->setText("AL");
+        ui->le_uf->setText("AC");
         break;
     case 2:
-        ui->le_uf->setText("AM");
+        ui->le_uf->setText("AL");
         break;
     case 3:
-        ui->le_uf->setText("AP");
+        ui->le_uf->setText("AM");
         break;
     case 4:
-        ui->le_uf->setText("BA");
+        ui->le_uf->setText("AP");
         break;
     case 5:
-        ui->le_uf->setText("CE");
+        ui->le_uf->setText("BA");
         break;
     case 6:
-        ui->le_uf->setText("DF");
+        ui->le_uf->setText("CE");
         break;
     case 7:
-        ui->le_uf->setText("ES");
+        ui->le_uf->setText("DF");
         break;
     case 8:
-        ui->le_uf->setText("GO");
+        ui->le_uf->setText("ES");
         break;
     case 9:
-        ui->le_uf->setText("MA");
+        ui->le_uf->setText("GO");
         break;
     case 10:
-        ui->le_uf->setText("MG");
+        ui->le_uf->setText("MA");
         break;
     case 11:
-        ui->le_uf->setText("MS");
+        ui->le_uf->setText("MG");
         break;
     case 12:
-        ui->le_uf->setText("MT");
+        ui->le_uf->setText("MS");
         break;
     case 13:
-        ui->le_uf->setText("PA");
+        ui->le_uf->setText("MT");
         break;
     case 14:
-        ui->le_uf->setText("PB");
+        ui->le_uf->setText("PA");
         break;
     case 15:
-        ui->le_uf->setText("PE");
+        ui->le_uf->setText("PB");
         break;
     case 16:
-        ui->le_uf->setText("PI");
+        ui->le_uf->setText("PE");
         break;
     case 17:
-        ui->le_uf->setText("PR");
+        ui->le_uf->setText("PI");
         break;
     case 18:
-        ui->le_uf->setText("RJ");
+        ui->le_uf->setText("PR");
         break;
     case 19:
-        ui->le_uf->setText("RN");
+        ui->le_uf->setText("RJ");
         break;
     case 20:
-        ui->le_uf->setText("RO");
+        ui->le_uf->setText("RN");
         break;
     case 21:
-        ui->le_uf->setText("RR");
+        ui->le_uf->setText("RO");
         break;
     case 22:
-        ui->le_uf->setText("RS");
+        ui->le_uf->setText("RR");
         break;
     case 23:
-        ui->le_uf->setText("SC");
+        ui->le_uf->setText("RS");
         break;
     case 24:
-        ui->le_uf->setText("SE");
+        ui->le_uf->setText("SC");
         break;
     case 25:
-        ui->le_uf->setText("SP");
+        ui->le_uf->setText("SE");
         break;
     case 26:
+        ui->le_uf->setText("SP");
+        break;
+    case 27:
         ui->le_uf->setText("TO");
         break;
     }
@@ -551,12 +554,24 @@ void tela_cadastro_cliente::on_btn_cancelar_clicked()
 void tela_cadastro_cliente::on_btn_confirmar_clicked()
 {
     if((ui->le_nome->text().toStdString()!="")&&(lista_telefone.size()>0)){
-        cad_cliente = new cliente(ui->le_nome->text(),ui->le_rg->text().toFloat(),ui->le_cpf->text(),
-                    ui->te_comentario->toPlainText(),lista_email,lista_telefone, lista_operadora,
-                    ui->le_uf->text(), ui->cb_estado->currentText(), ui->lb_cidade->text(),ui->le_bairro->text(),
-                    ui->le_rua->text(), ui->le_cep->text(), ui->le_numero->text().toInt(), ui->te_ponto_referencia->toPlainText());
+        std::string comentario_Aux,ponto_referencia_aux;
+        comentario_Aux = ui->te_comentario->toPlainText().toStdString();
+        ponto_referencia_aux = ui->te_ponto_referencia->toPlainText().toStdString();
+        if (comentario_Aux.size()>=200){
+            comentario_Aux = comentario_Aux.substr(0,200);
+        }
+        if(ponto_referencia_aux.size()>=150){
+            ponto_referencia_aux = ponto_referencia_aux.substr(0,150);
+        }
 
-        //std::cout<<ui->te_comentario->toPlainText().toStdString()<<std::endl;
+        cad_cliente = new cliente(ui->le_nome->text(),ui->le_rg->text(),ui->le_cpf->text(),
+                    QString::fromStdString(comentario_Aux),lista_email,lista_telefone, lista_operadora,
+                    ui->le_uf->text(), ui->cb_estado->currentText(), ui->le_cidade->text(),ui->le_bairro->text(),
+                    ui->le_rua->text(), ui->le_cep->text(), ui->le_numero->text().toInt(), QString::fromStdString(ponto_referencia_aux));
+
+        if(cad_cliente->salvar_cliente()){
+            this->close();
+        }
     }
     else{
         if(ui->le_nome->text().toStdString()==""){

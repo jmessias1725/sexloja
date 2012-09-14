@@ -8,12 +8,13 @@
 #include <QMessageBox>
 
 #include "endereco.h"
+#include "conexao_bd.h"
 
 class cliente :public endereco
 {
 private:
     QString nome;
-    float rg;
+    QString rg;
     QString cpf;
     QString comentario;
     endereco *endereco_cliente;
@@ -22,7 +23,7 @@ private:
     std::vector< std::string > lista_operadora;
 
 public:
-    cliente(QString cliente_nome,float cliente_rg,QString cliente_cpf,
+    cliente(QString cliente_nome,QString cliente_rg,QString cliente_cpf,
             QString cliente_comentario,std::vector< std::string > lista_email_cliente,
             std::vector< std::string > lista_telefone_cliente,
             std::vector< std::string > lista_operadora_cliente,
@@ -30,7 +31,7 @@ public:
             QString rua, QString cep, int numero, QString pt_referencia);
 
     QString retornar_nome(void);
-    float retornar_rg(void);
+    QString retornar_rg(void);
     QString retornar_cpf(void);
     QString retornar_comentario(void);
     std::vector< std::string > retorna_lista_email(void);

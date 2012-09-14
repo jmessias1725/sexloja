@@ -1,6 +1,6 @@
 #include "cliente.h"
 
-cliente::cliente(QString cliente_nome,float cliente_rg,QString cliente_cpf,
+cliente::cliente(QString cliente_nome,QString cliente_rg,QString cliente_cpf,
                  QString cliente_comentario,std::vector< std::string > lista_email_cliente,
                  std::vector< std::string > lista_telefone_cliente,
                  std::vector< std::string > lista_operadora_cliente,
@@ -20,23 +20,85 @@ cliente::cliente(QString cliente_nome,float cliente_rg,QString cliente_cpf,
 }
 
 bool cliente::salvar_cliente(void){
-    std::cout<<nome.toStdString()<<std::endl;
-    std::cout<<rg<<std::endl;
-    std::cout<<cpf.toStdString()<<std::endl;
-    std::cout<<comentario.toStdString()<<std::endl;
-    for(int i = 0; i<lista_email.size();i++){
-        std::cout<<lista_email[i]<<std::endl;
+    conexao_bd conexao;
+    bool verifica_conexao;
+    bool salvou;
+    QSqlDatabase bd;
+    QString id_cliente;
+
+    //realiza conexão ao banco de dados
+    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
+
+    if (verifica_conexao){
+
+        //Retorna o banco de dados
+        bd = conexao.retorna_bd();
+
+        //Declara a variável que irá fazer a consulta
+        QSqlQuery salvar_dados_cliente(bd);
+        QSqlQuery salvar_dados_telefone_cliente(bd);
+        QSqlQuery salvar_dados_email_cliente(bd);
+        QSqlQuery consultar(bd);
+
+        salvar_dados_cliente.prepare("INSERT INTO cliente(nome,rg,cpf,comentario,cep,rua,bairro,ponto_referencia,cidade,uf,numero,estado) VALUES(:nome, :rg, :cpf, :comentario, :numero_cep, :nome_rua, :nome_bairro, :ponto_referencia, :nome_cidade,:sigla_estado, :numero_residencia, :nome_estado)");
+        salvar_dados_cliente.bindValue(":nome",nome);
+        salvar_dados_cliente.bindValue(":rg",rg);
+        salvar_dados_cliente.bindValue(":cpf",cpf);
+        salvar_dados_cliente.bindValue(":comentario",comentario);
+        salvar_dados_cliente.bindValue(":numero_cep",numero_cep);
+        salvar_dados_cliente.bindValue(":nome_rua",nome_rua);
+        salvar_dados_cliente.bindValue(":nome_bairro",nome_bairro);
+        salvar_dados_cliente.bindValue(":ponto_referencia",ponto_referencia);
+        salvar_dados_cliente.bindValue(":nome_cidade",nome_cidade);
+        salvar_dados_cliente.bindValue(":sigla_estado",sigla_estado);
+        salvar_dados_cliente.bindValue(":numero_residencia",numero_residencia);
+        salvar_dados_cliente.bindValue(":nome_estado",nome_estado);
+        salvou = salvar_dados_cliente.exec();
+
+        //realiza a consulta
+        consultar.exec("SELECT id_cliente FROM cliente");
+        while(consultar.next()){
+            id_cliente = consultar.value(0).toString();
+        }
+        for (int i=0;i<int(lista_telefone.size());i++){
+        salvar_dados_telefone_cliente.prepare("INSERT INTO tel_cliente(id_cliente,telefone,Operadora) VALUES(:id_cliente, :telefone, :Operadora)");
+            salvar_dados_telefone_cliente.bindValue(":id_cliente",id_cliente);
+            salvar_dados_telefone_cliente.bindValue(":telefone",QString::fromStdString(lista_telefone[i]));
+            salvar_dados_telefone_cliente.bindValue(":Operadora",QString::fromStdString(lista_operadora[i]));
+            salvou = salvar_dados_telefone_cliente.exec();
+        }
+
+        if (salvou){
+            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
+            QPixmap icone_janela(":img/img/arquivo_50.png");
+            QMessageBox msg(0);
+            msg.setIconPixmap(icone_janela);
+            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowTitle("Cadastro");
+            msg.addButton("OK", QMessageBox::AcceptRole);
+            msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+            msg.setText("\nCadastro efetuado com sucesso!!!!");
+            msg.exec();
+            conexao.fechar_conexao();
+            return true;
+        }
+        else{
+            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
+            QPixmap icone_janela(":img/img/arquivo_erro_50.png");
+            QMessageBox msg(0);
+            msg.setIconPixmap(icone_janela);
+            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowTitle("Cadastro");
+            msg.addButton("OK", QMessageBox::AcceptRole);
+            msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+            msg.setText("\nNão foi possível salvar o cadastro do usuário!!!!");
+            msg.exec();
+            conexao.fechar_conexao();
+            return false;
+        }
     }
-    for(int i = 0; i<lista_telefone.size();i++){
-        std::cout<<lista_telefone[i]<<" - "<<lista_operadora[i]<<std::endl;
+    else{
+        return false;
     }
-    std::cout<<sigla_estado.toStdString()<<std::endl;
-    std::cout<<nome_estado.toStdString()<<std::endl;
-    std::cout<<nome_cidade.toStdString()<<std::endl;
-    std::cout<<nome_bairro.toStdString()<<std::endl;
-    std::cout<<nome_rua.toStdString()<<std::endl;
-    std::cout<<numero_cep.toStdString()<<std::endl;
-    std::cout<<numero_residencia<<std::endl;
-    std::cout<<ponto_referencia.toStdString()<<std::endl;
 }
 
