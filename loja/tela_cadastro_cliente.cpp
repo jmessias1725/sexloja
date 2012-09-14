@@ -56,6 +56,7 @@ void tela_cadastro_cliente::on_tb_mais_email_clicked()
     le_email = new QLineEdit(Qdialog_email);
     le_email->setObjectName(QString::fromUtf8("ld_email"));
     le_email->setGeometry(QRect(10, 10, 490, 20));
+    le_email->setMaxLength(45);
     btn_confirmar_email = new QPushButton(Qdialog_email);
     btn_confirmar_email->setObjectName(QString::fromUtf8("btn_confirmar"));
     btn_confirmar_email->setGeometry(QRect(160, 30, 90, 24));
