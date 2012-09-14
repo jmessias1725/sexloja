@@ -6,6 +6,7 @@
 #include <iostream>
 #include <QtGui>
 #include <QMessageBox>
+#include <QSqlError>
 
 #include "endereco.h"
 #include "conexao_bd.h"

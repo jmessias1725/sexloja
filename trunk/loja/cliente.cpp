@@ -25,6 +25,7 @@ bool cliente::salvar_cliente(void){
     bool salvou;
     QSqlDatabase bd;
     QString id_cliente;
+    QSqlError sem_erro;
 
     //realiza conexão ao banco de dados
     verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
@@ -33,6 +34,8 @@ bool cliente::salvar_cliente(void){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
+
+        bd.transaction();
 
         //Declara a variável que irá fazer a consulta
         QSqlQuery salvar_dados_cliente(bd);
@@ -53,7 +56,7 @@ bool cliente::salvar_cliente(void){
         salvar_dados_cliente.bindValue(":sigla_estado",sigla_estado);
         salvar_dados_cliente.bindValue(":numero_residencia",numero_residencia);
         salvar_dados_cliente.bindValue(":nome_estado",nome_estado);
-        salvou = salvar_dados_cliente.exec();
+        salvar_dados_cliente.exec();
 
         //realiza a consulta
         consultar.exec("SELECT id_cliente FROM cliente");
@@ -61,14 +64,22 @@ bool cliente::salvar_cliente(void){
             id_cliente = consultar.value(0).toString();
         }
         for (int i=0;i<int(lista_telefone.size());i++){
-        salvar_dados_telefone_cliente.prepare("INSERT INTO tel_cliente(id_cliente,telefone,Operadora) VALUES(:id_cliente, :telefone, :Operadora)");
+            salvar_dados_telefone_cliente.prepare("INSERT INTO tel_cliente(id_cliente,telefone,Operadora) VALUES(:id_cliente, :telefone, :Operadora)");
             salvar_dados_telefone_cliente.bindValue(":id_cliente",id_cliente);
             salvar_dados_telefone_cliente.bindValue(":telefone",QString::fromStdString(lista_telefone[i]));
             salvar_dados_telefone_cliente.bindValue(":Operadora",QString::fromStdString(lista_operadora[i]));
-            salvou = salvar_dados_telefone_cliente.exec();
+            salvar_dados_telefone_cliente.exec();
         }
 
-        if (salvou){
+        for (int i=0;i<int(lista_email.size());i++){
+            salvar_dados_email_cliente.prepare("INSERT INTO email_cliente(id_cliente,e_mail) VALUES(:id_cliente, :email)");
+            salvar_dados_email_cliente.bindValue(":id_cliente",id_cliente);
+            salvar_dados_email_cliente.bindValue(":email",QString::fromStdString(lista_email[i]));
+            salvar_dados_email_cliente.exec();
+        }
+
+        if((salvar_dados_cliente.lastError().number()<=0)&&(salvar_dados_telefone_cliente.lastError().number()<=0)){
+            bd.commit();
             QPixmap icone_titulo_janela(":img/img/logo_sex.png");
             QPixmap icone_janela(":img/img/arquivo_50.png");
             QMessageBox msg(0);
@@ -83,6 +94,7 @@ bool cliente::salvar_cliente(void){
             return true;
         }
         else{
+            bd.rollback();
             QPixmap icone_titulo_janela(":img/img/logo_sex.png");
             QPixmap icone_janela(":img/img/arquivo_erro_50.png");
             QMessageBox msg(0);
