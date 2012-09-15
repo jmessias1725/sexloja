@@ -308,7 +308,7 @@
       <number>20</number>
      </property>
      <property name="cursorPosition">
-      <number>0</number>
+      <number>20</number>
      </property>
      <property name="readOnly">
       <bool>false</bool>
@@ -718,11 +718,14 @@
        <kerning>false</kerning>
       </font>
      </property>
+     <property name="inputMask">
+      <string>0000000000; </string>
+     </property>
      <property name="text">
       <string/>
      </property>
      <property name="maxLength">
-      <number>5</number>
+      <number>10</number>
      </property>
      <property name="readOnly">
       <bool>false</bool>
