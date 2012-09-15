@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_cadastro_cliente.ui'
 **
-** Created: Thu 13. Sep 17:57:51 2012
+** Created: Fri 14. Sep 17:58:08 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -150,7 +150,7 @@ public:
         le_rg->setMaximumSize(QSize(200, 20));
         le_rg->setFont(font1);
         le_rg->setMaxLength(20);
-        le_rg->setCursorPosition(0);
+        le_rg->setCursorPosition(20);
         le_rg->setReadOnly(false);
         lb_email = new QLabel(gb_dados_cliente);
         lb_email->setObjectName(QString::fromUtf8("lb_email"));
@@ -263,7 +263,7 @@ public:
         le_numero->setObjectName(QString::fromUtf8("le_numero"));
         le_numero->setGeometry(QRect(57, 50, 50, 20));
         le_numero->setFont(font3);
-        le_numero->setMaxLength(5);
+        le_numero->setMaxLength(10);
         le_numero->setReadOnly(false);
         lb_bairro = new QLabel(gb_endereo);
         lb_bairro->setObjectName(QString::fromUtf8("lb_bairro"));
@@ -490,6 +490,7 @@ public:
         lb_rua->setText(QApplication::translate("tela_cadastro_cliente", "Rua:", 0, QApplication::UnicodeUTF8));
         le_rua->setText(QString());
         lb_numero->setText(QApplication::translate("tela_cadastro_cliente", "N\303\272mero:", 0, QApplication::UnicodeUTF8));
+        le_numero->setInputMask(QApplication::translate("tela_cadastro_cliente", "0000000000; ", 0, QApplication::UnicodeUTF8));
         le_numero->setText(QString());
         lb_bairro->setText(QApplication::translate("tela_cadastro_cliente", "Bairro:", 0, QApplication::UnicodeUTF8));
         le_bairro->setText(QString());
