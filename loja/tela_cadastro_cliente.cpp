@@ -101,7 +101,7 @@ void tela_cadastro_cliente::adicionar_email(){
                     QMessageBox msg(0);
                     msg.setIconPixmap(icone_janela);
                     msg.setWindowIcon(icone_titulo_janela);
-                    msg.setWindowTitle("Erro de e-mail.");
+                    msg.setWindowTitle("E-mail");
                     msg.addButton("OK", QMessageBox::AcceptRole);
                     msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
                     msg.setText("\nO cliente já possue esse e-mail em seu pré-cadastro!");
@@ -125,7 +125,7 @@ void tela_cadastro_cliente::adicionar_email(){
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
             msg.setWindowIcon(icone_titulo_janela);
-            msg.setWindowTitle("Erro de e-mail.");
+            msg.setWindowTitle("Erro de e-mail");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
             msg.setText("\nE-mail inválido!");
@@ -341,7 +341,7 @@ void tela_cadastro_cliente::adicionar_telefone(){
                     QMessageBox msg(0);
                     msg.setIconPixmap(icone_janela);
                     msg.setWindowIcon(icone_titulo_janela);
-                    msg.setWindowTitle("Operadora");
+                    msg.setWindowTitle("Telefone");
                     msg.addButton("OK", QMessageBox::AcceptRole);
                     msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
                     msg.setText("\nO cliente já possue esse número de telefone em seu pré-cadastro!");
@@ -672,7 +672,6 @@ void tela_cadastro_cliente::on_btn_confirmar_clicked()
             ui->le_bairro->clear();
             ui->le_rua->clear();
             ui->le_cep->clear();
-            std::cout<<ui->le_numero->text().toInt()<<std::endl;
             ui->le_numero->clear();
             ui->te_ponto_referencia->clear();
             this->close();

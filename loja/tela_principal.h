@@ -5,6 +5,7 @@
 #include <iostream>
 #include "tela_clientes.h"
 #include "tela_cadastro_cliente.h"
+#include "tela_listar_clientes.h"
 
 namespace Ui {
 class tela_principal;
@@ -30,6 +31,7 @@ private:
     Ui::tela_principal *ui;
     tela_clientes tl_clientes;
     tela_cadastro_cliente tl_cadastro_clientes;
+    tela_listar_clientes tl_listar_clientes;
 };
 
 #endif // TELA_PRINCIPAL_H

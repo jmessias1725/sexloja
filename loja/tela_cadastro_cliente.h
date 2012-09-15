@@ -6,9 +6,11 @@
 #include <string>
 #include <QtGui>
 #include <QDialog>
+#include <sstream>
 
 #include "cliente.h"
 #include "cep.h"
+#include "funcoes_extras.h"
 
 namespace Ui {
 class tela_cadastro_cliente;
