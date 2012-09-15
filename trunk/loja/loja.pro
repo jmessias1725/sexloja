@@ -20,7 +20,9 @@ SOURCES += main.cpp\
     tela_cadastro_cliente.cpp \
     cliente.cpp \
     cep.cpp \
-    endereco.cpp
+    endereco.cpp \
+    funcoes_extras.cpp \
+    tela_listar_clientes.cpp
 
 HEADERS  += \
     conexao_bd.h \
@@ -31,14 +33,17 @@ HEADERS  += \
     tela_cadastro_cliente.h \
     cliente.h \
     cep.h \
-    endereco.h
+    endereco.h \
+    funcoes_extras.h \
+    tela_listar_clientes.h
 
 FORMS    += \
     tela_login.ui \
     tela_principal.ui \
     tela_clientes.ui \
     tela_cadastro_cliente.ui \
-    tela_cadastro_telefone.ui
+    tela_cadastro_telefone.ui \
+    tela_listar_clientes.ui
 
 RESOURCES += \
     imagens.qrc

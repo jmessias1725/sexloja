@@ -15,7 +15,7 @@ tela_principal::~tela_principal()
 
 void tela_principal::on_consultar_clientes_triggered()
 {
-    tl_clientes.show();
+    tl_listar_clientes.show();
 }
 
 void tela_principal::on_botao_sair_triggered()

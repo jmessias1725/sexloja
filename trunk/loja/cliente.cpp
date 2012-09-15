@@ -5,11 +5,8 @@ cliente::cliente(QString cliente_nome,QString cliente_rg,QString cliente_cpf,
                  std::vector< std::string > lista_telefone_cliente,
                  std::vector< std::string > lista_operadora_cliente,
                  QString uf_sigla, QString uf_nome, QString cidade, QString bairro,
-                 QString rua, QString cep, int numero, QString pt_referencia):endereco(uf_sigla,uf_nome,
-                                                                                       cidade,bairro,
-                                                                                       rua, cep,numero,
-                                                                                       pt_referencia){
-
+                 QString rua, QString cep, int numero, QString pt_referencia)
+                 :endereco(uf_sigla,uf_nome,cidade,bairro,rua, cep,numero,pt_referencia){
     nome =cliente_nome;
     rg =cliente_rg;
     cpf =cliente_cpf;
