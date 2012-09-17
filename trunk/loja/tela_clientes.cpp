@@ -27,8 +27,7 @@ void tela_clientes::definir_dados_cliente(std::string id_cliente,std::string nom
                                           std::string comentario_cliente,std::string cep_cliente,std::string rua_cliente,
                                           std::string bairro_cliente,std::string ponto_referencia_cliente,std::string cidade_cliente,
                                           std::string uf,std::string numero,std::string estado){
-    std::cout<<id_cliente<<std::endl;
-    ui->le_numero_cadastro->setText(QString::fromStdString(id_cliente));
+    ui->le_codigo->setText(QString::fromStdString(id_cliente));
     ui->le_nome->setText(QString::fromStdString(nome_cliente));
     ui->le_rg->setText(QString::fromStdString(rg_cliente));
     ui->le_cpf->setText(QString::fromStdString(cpf_cliente));
