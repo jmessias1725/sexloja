@@ -17,3 +17,137 @@ int funcoes_extras::converter_para_inteiro(std::string numero){
     }
     return numero_final;
 }
+
+int funcoes_extras::retorna_id_estado(std::string uf){
+    if(uf == "AC"){
+        return 1;
+    }
+    else{
+    if(uf == "AL"){
+        return 2;
+    }
+    else{
+    if(uf == "AM"){
+        return 3;
+    }
+    else{
+    if(uf == "AP"){
+        return 4;
+    }
+    else{
+    if(uf == "BA"){
+        return 5;
+    }
+    else{
+    if(uf == "CE"){
+        return 6;
+    }
+    else{
+    if(uf == "DF"){
+        return 7;
+    }
+    else{
+    if(uf == "ES"){
+        return 8;
+    }
+    else{
+    if(uf == "GO"){
+        return 9;
+    }
+    else{
+    if(uf == "MA"){
+        return 10;
+    }
+    else{
+    if(uf == "MG"){
+        return 11;
+    }
+    else{
+    if(uf == "MS"){
+        return 12;
+    }
+    else{
+    if(uf == "MT"){
+        return 13;
+    }
+    else{
+    if(uf == "PA"){
+        return 14;
+    }
+    else{
+    if(uf == "PB"){
+        return 15;
+    }
+    else{
+    if(uf == "PE"){
+        return 16;
+    }
+    else{
+    if(uf == "PI"){
+        return 17;
+    }
+    else{
+    if(uf == "PR"){
+        return 18;
+    }
+    else{
+    if(uf == "RJ"){
+        return 19;
+    }
+    else{
+    if(uf == "RN"){
+        return 20;
+    }
+    else{
+    if(uf == "RO"){
+        return 21;
+    }
+    else{
+    if(uf == "RR"){
+        return 22;
+    }
+    else{
+    if(uf == "RS"){
+        return 23;
+    }
+    else{
+    if(uf == "SC"){
+        return 24;
+    }
+    else{
+    if(uf == "SE"){
+        return 25;
+    }
+    else{
+    if(uf == "SP"){
+        return 26;
+    }
+    else{
+        return 27;
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+}
