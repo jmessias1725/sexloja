@@ -682,7 +682,7 @@
     <widget class="QLabel" name="lb_numero">
      <property name="geometry">
       <rect>
-       <x>8</x>
+       <x>7</x>
        <y>50</y>
        <width>51</width>
        <height>20</height>
@@ -704,9 +704,9 @@
     <widget class="QLineEdit" name="le_numero">
      <property name="geometry">
       <rect>
-       <x>57</x>
+       <x>54</x>
        <y>50</y>
-       <width>50</width>
+       <width>70</width>
        <height>20</height>
       </rect>
      </property>
@@ -734,7 +734,7 @@
     <widget class="QLabel" name="lb_bairro">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>132</x>
        <y>50</y>
        <width>46</width>
        <height>20</height>
@@ -754,7 +754,7 @@
     <widget class="QLineEdit" name="le_bairro">
      <property name="geometry">
       <rect>
-       <x>160</x>
+       <x>172</x>
        <y>50</y>
        <width>361</width>
        <height>20</height>
@@ -781,7 +781,7 @@
     <widget class="QLabel" name="lb_cidade">
      <property name="geometry">
       <rect>
-       <x>530</x>
+       <x>538</x>
        <y>50</y>
        <width>46</width>
        <height>20</height>
@@ -803,7 +803,7 @@
     <widget class="QLineEdit" name="le_cidade">
      <property name="geometry">
       <rect>
-       <x>580</x>
+       <x>581</x>
        <y>50</y>
        <width>201</width>
        <height>20</height>

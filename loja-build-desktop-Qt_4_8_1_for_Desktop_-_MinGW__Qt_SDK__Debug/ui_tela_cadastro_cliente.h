@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_cadastro_cliente.ui'
 **
-** Created: Sat 15. Sep 17:02:04 2012
+** Created: Mon 17. Sep 17:31:50 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -257,17 +257,17 @@ public:
         le_rua->setReadOnly(false);
         lb_numero = new QLabel(gb_endereo);
         lb_numero->setObjectName(QString::fromUtf8("lb_numero"));
-        lb_numero->setGeometry(QRect(8, 50, 51, 20));
+        lb_numero->setGeometry(QRect(7, 50, 51, 20));
         lb_numero->setFont(font1);
         le_numero = new QLineEdit(gb_endereo);
         le_numero->setObjectName(QString::fromUtf8("le_numero"));
-        le_numero->setGeometry(QRect(57, 50, 50, 20));
+        le_numero->setGeometry(QRect(54, 50, 70, 20));
         le_numero->setFont(font3);
         le_numero->setMaxLength(9);
         le_numero->setReadOnly(false);
         lb_bairro = new QLabel(gb_endereo);
         lb_bairro->setObjectName(QString::fromUtf8("lb_bairro"));
-        lb_bairro->setGeometry(QRect(120, 50, 46, 20));
+        lb_bairro->setGeometry(QRect(132, 50, 46, 20));
         QFont font4;
         font4.setBold(false);
         font4.setWeight(50);
@@ -275,17 +275,17 @@ public:
         lb_bairro->setFont(font4);
         le_bairro = new QLineEdit(gb_endereo);
         le_bairro->setObjectName(QString::fromUtf8("le_bairro"));
-        le_bairro->setGeometry(QRect(160, 50, 361, 20));
+        le_bairro->setGeometry(QRect(172, 50, 361, 20));
         le_bairro->setFont(font3);
         le_bairro->setMaxLength(70);
         le_bairro->setReadOnly(false);
         lb_cidade = new QLabel(gb_endereo);
         lb_cidade->setObjectName(QString::fromUtf8("lb_cidade"));
-        lb_cidade->setGeometry(QRect(530, 50, 46, 20));
+        lb_cidade->setGeometry(QRect(538, 50, 46, 20));
         lb_cidade->setFont(font1);
         le_cidade = new QLineEdit(gb_endereo);
         le_cidade->setObjectName(QString::fromUtf8("le_cidade"));
-        le_cidade->setGeometry(QRect(580, 50, 201, 20));
+        le_cidade->setGeometry(QRect(581, 50, 201, 20));
         le_cidade->setFont(font3);
         le_cidade->setMaxLength(50);
         le_cidade->setCursorPosition(0);

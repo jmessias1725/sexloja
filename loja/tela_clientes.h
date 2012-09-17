@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "tela_cadastro_cliente.h"
+#include "funcoes_extras.h"
 
 namespace Ui {
 class tela_clientes;
@@ -28,6 +29,7 @@ private slots:
 private:
     Ui::tela_clientes *ui;
     tela_cadastro_cliente tl_cadastro_clientes;
+    funcoes_extras funcoes;
 };
 
 #endif // TELA_CLIENTES_H
