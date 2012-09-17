@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_listar_clientes.h'
 **
-** Created: Sat 15. Sep 11:40:50 2012
+** Created: Sun 16. Sep 13:46:52 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,26 +23,43 @@ static const uint qt_meta_data_tela_listar_clientes[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       0,    0, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
        0,       // signalCount
 
+ // slots: signature, parameters, type, tag, flags
+      22,   21,   21,   21, 0x08,
+      55,   21,   21,   21, 0x08,
+      81,   21,   21,   21, 0x08,
+     111,  105,   21,   21, 0x08,
+
        0        // eod
 };
 
 static const char qt_meta_stringdata_tela_listar_clientes[] = {
-    "tela_listar_clientes\0"
+    "tela_listar_clientes\0\0"
+    "on_le_telefone_editingFinished()\0"
+    "on_btn_cancelar_clicked()\0"
+    "on_btn_buscar_clicked()\0index\0"
+    "on_tv_clientes_doubleClicked(QModelIndex)\0"
 };
 
 void tela_listar_clientes::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    Q_UNUSED(_o);
-    Q_UNUSED(_id);
-    Q_UNUSED(_c);
-    Q_UNUSED(_a);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        tela_listar_clientes *_t = static_cast<tela_listar_clientes *>(_o);
+        switch (_id) {
+        case 0: _t->on_le_telefone_editingFinished(); break;
+        case 1: _t->on_btn_cancelar_clicked(); break;
+        case 2: _t->on_btn_buscar_clicked(); break;
+        case 3: _t->on_tv_clientes_doubleClicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
+        default: ;
+        }
+    }
 }
 
 const QMetaObjectExtraData tela_listar_clientes::staticMetaObjectExtraData = {
@@ -76,6 +93,11 @@ int tela_listar_clientes::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     _id = QDialog::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 4)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 4;
+    }
     return _id;
 }
 QT_END_MOC_NAMESPACE

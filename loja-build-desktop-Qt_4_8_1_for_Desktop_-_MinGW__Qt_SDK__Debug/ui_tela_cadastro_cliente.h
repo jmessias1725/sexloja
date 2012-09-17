@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_cadastro_cliente.ui'
 **
-** Created: Sat 15. Sep 11:40:26 2012
+** Created: Sat 15. Sep 17:02:04 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -67,8 +67,6 @@ public:
     QComboBox *cb_estado;
     QPushButton *btn_confirmar;
     QPushButton *btn_cancelar;
-    QPushButton *btn_confirmar_2;
-    QPushButton *btn_cancelar_2;
 
     void setupUi(QMainWindow *tela_cadastro_cliente)
     {
@@ -440,22 +438,6 @@ public:
         icon31.addFile(QString::fromUtf8(":/img/img/1345902747_button_cancel.png"), QSize(), QIcon::Normal, QIcon::Off);
         btn_cancelar->setIcon(icon31);
         btn_cancelar->setIconSize(QSize(18, 18));
-        btn_confirmar_2 = new QPushButton(centralwidget);
-        btn_confirmar_2->setObjectName(QString::fromUtf8("btn_confirmar_2"));
-        btn_confirmar_2->setGeometry(QRect(430, 340, 90, 24));
-        btn_confirmar_2->setMinimumSize(QSize(0, 24));
-        btn_confirmar_2->setMaximumSize(QSize(90, 24));
-        btn_confirmar_2->setFont(font5);
-        btn_confirmar_2->setIcon(icon30);
-        btn_confirmar_2->setIconSize(QSize(20, 20));
-        btn_cancelar_2 = new QPushButton(centralwidget);
-        btn_cancelar_2->setObjectName(QString::fromUtf8("btn_cancelar_2"));
-        btn_cancelar_2->setGeometry(QRect(530, 340, 90, 24));
-        btn_cancelar_2->setMinimumSize(QSize(0, 24));
-        btn_cancelar_2->setMaximumSize(QSize(90, 24));
-        btn_cancelar_2->setFont(font5);
-        btn_cancelar_2->setIcon(icon31);
-        btn_cancelar_2->setIconSize(QSize(18, 18));
         tela_cadastro_cliente->setCentralWidget(centralwidget);
         QWidget::setTabOrder(le_nome, le_rg);
         QWidget::setTabOrder(le_rg, le_cpf);
@@ -554,8 +536,6 @@ public:
 
         btn_confirmar->setText(QApplication::translate("tela_cadastro_cliente", "Confirmar", 0, QApplication::UnicodeUTF8));
         btn_cancelar->setText(QApplication::translate("tela_cadastro_cliente", "Cancelar", 0, QApplication::UnicodeUTF8));
-        btn_confirmar_2->setText(QApplication::translate("tela_cadastro_cliente", "Confirmar", 0, QApplication::UnicodeUTF8));
-        btn_cancelar_2->setText(QApplication::translate("tela_cadastro_cliente", "Cancelar", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
