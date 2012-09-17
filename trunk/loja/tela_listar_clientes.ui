@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>623</width>
-    <height>373</height>
+    <width>800</width>
+    <height>370</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,13 +17,16 @@
    <iconset resource="imagens.qrc">
     <normaloff>:/img/img/logo_sex.png</normaloff>:/img/img/logo_sex.png</iconset>
   </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
   <widget class="QGroupBox" name="gb_buscar">
    <property name="geometry">
     <rect>
-     <x>5</x>
+     <x>10</x>
      <y>5</y>
-     <width>611</width>
-     <height>105</height>
+     <width>780</width>
+     <height>110</height>
     </rect>
    </property>
    <property name="font">
@@ -78,12 +81,15 @@
     <property name="text">
      <string/>
     </property>
+    <property name="cursorPosition">
+     <number>9</number>
+    </property>
    </widget>
    <widget class="QLabel" name="lb_rg">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>77</y>
+      <y>50</y>
       <width>20</width>
       <height>20</height>
      </rect>
@@ -104,7 +110,7 @@
    <widget class="QLabel" name="lb_nome">
     <property name="geometry">
      <rect>
-      <x>133</x>
+      <x>135</x>
       <y>23</y>
       <width>40</width>
       <height>20</height>
@@ -132,9 +138,9 @@
    <widget class="QLabel" name="lb_cpf">
     <property name="geometry">
      <rect>
-      <x>192</x>
-      <y>77</y>
-      <width>26</width>
+      <x>198</x>
+      <y>50</y>
+      <width>30</width>
       <height>20</height>
      </rect>
     </property>
@@ -154,8 +160,8 @@
    <widget class="QLineEdit" name="le_rg">
     <property name="geometry">
      <rect>
-      <x>36</x>
-      <y>77</y>
+      <x>34</x>
+      <y>50</y>
       <width>150</width>
       <height>20</height>
      </rect>
@@ -200,7 +206,7 @@
    <widget class="QLineEdit" name="le_nome">
     <property name="geometry">
      <rect>
-      <x>169</x>
+      <x>171</x>
       <y>23</y>
       <width>430</width>
       <height>20</height>
@@ -246,8 +252,8 @@
    <widget class="QLineEdit" name="le_cpf">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>77</y>
+      <x>227</x>
+      <y>50</y>
       <width>100</width>
       <height>20</height>
      </rect>
@@ -295,8 +301,8 @@
    <widget class="QLabel" name="lb_telefone">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>50</y>
+      <x>620</x>
+      <y>23</y>
       <width>50</width>
       <height>20</height>
      </rect>
@@ -314,7 +320,7 @@
    <widget class="QLabel" name="lb_email">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>342</x>
       <y>50</y>
       <width>46</width>
       <height>20</height>
@@ -333,8 +339,8 @@
    <widget class="QLineEdit" name="le_telefone">
     <property name="geometry">
      <rect>
-      <x>62</x>
-      <y>50</y>
+      <x>672</x>
+      <y>23</y>
       <width>97</width>
       <height>20</height>
      </rect>
@@ -355,7 +361,7 @@
    <widget class="QLineEdit" name="le_email">
     <property name="geometry">
      <rect>
-      <x>209</x>
+      <x>381</x>
       <y>50</y>
       <width>390</width>
       <height>20</height>
@@ -374,11 +380,11 @@
      <number>60</number>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_confirmar">
+   <widget class="QPushButton" name="btn_buscar">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>75</y>
+      <x>245</x>
+      <y>77</y>
       <width>90</width>
       <height>24</height>
      </rect>
@@ -404,11 +410,11 @@
      </font>
     </property>
     <property name="text">
-     <string>Confirmar</string>
+     <string>Buscar</string>
     </property>
     <property name="icon">
      <iconset resource="imagens.qrc">
-      <normaloff>:/img/img/1345902916_camera_test.png</normaloff>:/img/img/1345902916_camera_test.png</iconset>
+      <normaloff>:/img/img/busar_clientes.png</normaloff>:/img/img/busar_clientes.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -420,8 +426,8 @@
    <widget class="QPushButton" name="btn_cancelar">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>75</y>
+      <x>445</x>
+      <y>77</y>
       <width>90</width>
       <height>24</height>
      </rect>
@@ -460,10 +466,210 @@
      </size>
     </property>
    </widget>
+   <widget class="QPushButton" name="btn_limpar">
+    <property name="geometry">
+     <rect>
+      <x>345</x>
+      <y>77</y>
+      <width>90</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>24</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>90</width>
+      <height>24</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Limpar</string>
+    </property>
+    <property name="icon">
+     <iconset resource="imagens.qrc">
+      <normaloff>:/img/img/limpar.png</normaloff>:/img/img/limpar.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="gb_clientes">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>120</y>
+     <width>780</width>
+     <height>240</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="title">
+    <string>Clientes</string>
+   </property>
+   <widget class="QTableView" name="tv_clientes">
+    <property name="geometry">
+     <rect>
+      <x>7</x>
+      <y>15</y>
+      <width>766</width>
+      <height>218</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="sortingEnabled">
+     <bool>false</bool>
+    </property>
+    <attribute name="horizontalHeaderStretchLastSection">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="verticalHeaderDefaultSectionSize">
+     <number>30</number>
+    </attribute>
+    <attribute name="verticalHeaderStretchLastSection">
+     <bool>false</bool>
+    </attribute>
+   </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>le_codigo</tabstop>
+  <tabstop>le_nome</tabstop>
+  <tabstop>le_telefone</tabstop>
+  <tabstop>le_rg</tabstop>
+  <tabstop>le_cpf</tabstop>
+  <tabstop>le_email</tabstop>
+  <tabstop>btn_buscar</tabstop>
+  <tabstop>btn_cancelar</tabstop>
+ </tabstops>
  <resources>
   <include location="imagens.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>btn_limpar</sender>
+   <signal>clicked()</signal>
+   <receiver>le_codigo</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>387</x>
+     <y>99</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>110</x>
+     <y>42</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_limpar</sender>
+   <signal>clicked()</signal>
+   <receiver>le_nome</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>388</x>
+     <y>89</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>267</x>
+     <y>39</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_limpar</sender>
+   <signal>clicked()</signal>
+   <receiver>le_telefone</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>416</x>
+     <y>95</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>711</x>
+     <y>46</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_limpar</sender>
+   <signal>clicked()</signal>
+   <receiver>le_rg</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>407</x>
+     <y>90</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>177</x>
+     <y>66</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_limpar</sender>
+   <signal>clicked()</signal>
+   <receiver>le_cpf</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>423</x>
+     <y>95</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>312</x>
+     <y>66</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_limpar</sender>
+   <signal>clicked()</signal>
+   <receiver>le_email</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>425</x>
+     <y>98</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>448</x>
+     <y>66</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
