@@ -36,10 +36,25 @@ void tela_clientes::definir_dados_cliente(std::string id_cliente,std::string nom
     ui->le_bairro->setText(QString::fromStdString(bairro_cliente));
     ui->te_ponto_referencia->setText(QString::fromStdString(ponto_referencia_cliente));
     ui->le_cidade->setText(QString::fromStdString(cidade_cliente));
-    //ui->le_estado->setText(QString::fromStdString(estado));
-    ui->cb_estado->setItemText(0,"Alagoas");
-    std::cout<<funcoes.retorna_id_estado(uf)<<std::endl;
+    ui->le_estado->setText(QString::fromStdString(estado));
     ui->le_uf->setText(QString::fromStdString(uf));
     ui->le_numero->setText(QString::fromStdString(numero));
     ui->te_comentario_cliente->setText(QString::fromStdString(comentario_cliente));
+
+    QGraphicsScene *scene = new QGraphicsScene;
+
+    ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    QPixmap *lPixmap = new QPixmap(funcoes.retorna_nome_imagem_estado(uf));
+    QPixmap sized = lPixmap->scaled(QSize(ui->graphicsView->width(),ui->graphicsView->height()), Qt::IgnoreAspectRatio); // This scales the image too all
+
+    QImage sizedImage = QImage(sized.toImage());
+    QImage sizedCroppedImage = QImage(sizedImage.copy(0,0,(ui->graphicsView->width()),(ui->graphicsView->height())));
+
+    QGraphicsPixmapItem *sizedBackground = scene->addPixmap(QPixmap::fromImage(sizedCroppedImage));
+    sizedBackground->setZValue(1);
+    ui->graphicsView->setScene(scene);
+
+
 }

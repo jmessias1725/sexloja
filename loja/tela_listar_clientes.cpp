@@ -55,6 +55,9 @@ void tela_listar_clientes::on_btn_buscar_clicked()
     conexao_bd conexao;
     bool verifica_conexao;
     QSqlDatabase bd;
+    std::vector< std::string > aux_lista_email;
+    std::vector< std::string > aux_lista_telefone;
+    std::vector< std::string > aux_lista_operadora;
 
     //realiza conexão ao banco de dados
     verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
@@ -82,6 +85,29 @@ void tela_listar_clientes::on_btn_buscar_clicked()
             lista_uf.push_back(consultar.value(10).toString().toStdString());
             lista_numero.push_back(consultar.value(11).toString().toStdString());
             lista_estado.push_back(consultar.value(12).toString().toStdString());
+        }
+
+        for (int i=0;i<1;i++){
+            consultar.exec("SELECT telefone,operadora FROM tel_cliente WHERE id_cliente = "+QString::fromStdString(lista_id[i])+";");
+            while(consultar.next()){
+                aux_lista_telefone.push_back(consultar.value(0).toString().toStdString());
+                aux_lista_operadora.push_back(consultar.value(1).toString().toStdString());
+            }
+            consultar.exec("SELECT e_mail FROM email_cliente WHERE id_cliente = "+QString::fromStdString(lista_id[i])+";");
+            while(consultar.next()){
+                aux_lista_email.push_back(consultar.value(0).toString().toStdString());
+            }
+
+            lista_clientes.push_back(new cliente(QString::fromStdString(lista_id[i]).toInt(),QString::fromStdString(lista_nomes[i]),QString::fromStdString(lista_rgs[i]),
+                                                 QString::fromStdString(lista_cpfs[i]),QString::fromStdString(lista_comentario[i]),aux_lista_email,aux_lista_telefone,
+                                                 aux_lista_operadora,QString::fromStdString(lista_uf[i]),QString::fromStdString(lista_estado[i]),QString::fromStdString(lista_cidade[i]),
+                                                 QString::fromStdString(lista_bairro[i]),QString::fromStdString(lista_rua[i]),QString::fromStdString(lista_cep[i]),
+                                                 QString::fromStdString(lista_numero[i]).toInt(),QString::fromStdString(lista_ponto_referencia[i])));
+
+            std::cout<<lista_clientes[i]->retornar_nome().toStdString()<<std::endl;
+            aux_lista_telefone.clear();
+            aux_lista_operadora.clear();
+            aux_lista_email.clear();
         }
 
         modelo = new QStandardItemModel(int(lista_id.size()),4,this);

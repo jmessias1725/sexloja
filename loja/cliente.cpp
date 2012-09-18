@@ -1,12 +1,17 @@
 #include "cliente.h"
 
-cliente::cliente(QString cliente_nome,QString cliente_rg,QString cliente_cpf,
+cliente::cliente():endereco(){
+
+}
+
+cliente::cliente(int id_cliente,QString cliente_nome,QString cliente_rg,QString cliente_cpf,
                  QString cliente_comentario,std::vector< std::string > lista_email_cliente,
                  std::vector< std::string > lista_telefone_cliente,
                  std::vector< std::string > lista_operadora_cliente,
                  QString uf_sigla, QString uf_nome, QString cidade, QString bairro,
                  QString rua, QString cep, int numero, QString pt_referencia)
                  :endereco(uf_sigla,uf_nome,cidade,bairro,rua, cep,numero,pt_referencia){
+    id=id_cliente;
     nome =cliente_nome;
     rg =cliente_rg;
     cpf =cliente_cpf;
@@ -14,6 +19,55 @@ cliente::cliente(QString cliente_nome,QString cliente_rg,QString cliente_cpf,
     lista_email =lista_email_cliente;
     lista_telefone =lista_telefone_cliente;
     lista_operadora =lista_operadora_cliente;
+}
+
+cliente::cliente(QString cliente_nome,QString cliente_rg,QString cliente_cpf,
+                 QString cliente_comentario,std::vector< std::string > lista_email_cliente,
+                 std::vector< std::string > lista_telefone_cliente,
+                 std::vector< std::string > lista_operadora_cliente,
+                 QString uf_sigla, QString uf_nome, QString cidade, QString bairro,
+                 QString rua, QString cep, int numero, QString pt_referencia)
+                 :endereco(uf_sigla,uf_nome,cidade,bairro,rua, cep,numero,pt_referencia){
+    id = -1;
+    nome =cliente_nome;
+    rg =cliente_rg;
+    cpf =cliente_cpf;
+    comentario =cliente_comentario;
+    lista_email =lista_email_cliente;
+    lista_telefone =lista_telefone_cliente;
+    lista_operadora =lista_operadora_cliente;
+}
+
+int cliente::retornar_id(){
+    return id;
+}
+
+QString cliente::retornar_nome(){
+    return nome;
+}
+
+QString cliente::retornar_rg(void){
+
+}
+
+QString cliente::retornar_cpf(void){
+
+}
+
+QString cliente::retornar_comentario(void){
+
+}
+
+std::vector< std::string > cliente::retorna_lista_email(void){
+
+}
+
+std::vector< std::string > cliente::retorna_lista_telefone(void){
+
+}
+
+std::vector< std::string > cliente::retorna_lista_operadora(void){
+
 }
 
 bool cliente::salvar_cliente(void){

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_clientes.ui'
 **
-** Created: Mon 17. Sep 17:31:50 2012
+** Created: Mon 17. Sep 22:28:10 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -15,6 +15,7 @@
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
 #include <QtGui/QComboBox>
+#include <QtGui/QGraphicsView>
 #include <QtGui/QGroupBox>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
@@ -68,7 +69,8 @@ public:
     QTextEdit *te_ponto_referencia;
     QLabel *lb_uf;
     QLineEdit *le_uf;
-    QComboBox *cb_estado;
+    QGraphicsView *graphicsView;
+    QLineEdit *le_estado;
     QToolBar *Barra_de_menu;
 
     void setupUi(QMainWindow *tela_clientes)
@@ -151,6 +153,7 @@ public:
         le_codigo->setGeometry(QRect(54, 20, 70, 20));
         le_codigo->setFont(font2);
         le_codigo->setCursorPosition(9);
+        le_codigo->setReadOnly(true);
         le_nome = new QLineEdit(gb_dados_cliente);
         le_nome->setObjectName(QString::fromUtf8("le_nome"));
         le_nome->setGeometry(QRect(169, 20, 425, 20));
@@ -163,7 +166,7 @@ public:
         le_nome->setMaximumSize(QSize(500, 20));
         le_nome->setFont(font1);
         le_nome->setMaxLength(60);
-        le_nome->setReadOnly(false);
+        le_nome->setReadOnly(true);
         le_cpf = new QLineEdit(gb_dados_cliente);
         le_cpf->setObjectName(QString::fromUtf8("le_cpf"));
         le_cpf->setGeometry(QRect(33, 50, 95, 20));
@@ -173,7 +176,7 @@ public:
         le_cpf->setMaximumSize(QSize(95, 20));
         le_cpf->setFont(font1);
         le_cpf->setMaxLength(14);
-        le_cpf->setReadOnly(false);
+        le_cpf->setReadOnly(true);
         lb_nome = new QLabel(gb_dados_cliente);
         lb_nome->setObjectName(QString::fromUtf8("lb_nome"));
         lb_nome->setGeometry(QRect(133, 20, 35, 20));
@@ -195,7 +198,7 @@ public:
         le_rg->setFont(font1);
         le_rg->setMaxLength(20);
         le_rg->setCursorPosition(20);
-        le_rg->setReadOnly(false);
+        le_rg->setReadOnly(true);
         cb_telefone = new QComboBox(gb_dados_cliente);
         cb_telefone->setObjectName(QString::fromUtf8("cb_telefone"));
         cb_telefone->setGeometry(QRect(568, 50, 217, 22));
@@ -235,7 +238,7 @@ public:
         le_cep->setFont(font1);
         le_cep->setFrame(true);
         le_cep->setCursorPosition(9);
-        le_cep->setReadOnly(false);
+        le_cep->setReadOnly(true);
         lb_cep = new QLabel(gb_endereo);
         lb_cep->setObjectName(QString::fromUtf8("lb_cep"));
         lb_cep->setGeometry(QRect(8, 23, 27, 20));
@@ -255,7 +258,7 @@ public:
         le_rua->setFont(font4);
         le_rua->setMaxLength(100);
         le_rua->setCursorPosition(0);
-        le_rua->setReadOnly(false);
+        le_rua->setReadOnly(true);
         lb_numero = new QLabel(gb_endereo);
         lb_numero->setObjectName(QString::fromUtf8("lb_numero"));
         lb_numero->setGeometry(QRect(7, 50, 51, 20));
@@ -265,7 +268,7 @@ public:
         le_numero->setGeometry(QRect(54, 50, 70, 20));
         le_numero->setFont(font4);
         le_numero->setMaxLength(9);
-        le_numero->setReadOnly(false);
+        le_numero->setReadOnly(true);
         lb_bairro = new QLabel(gb_endereo);
         lb_bairro->setObjectName(QString::fromUtf8("lb_bairro"));
         lb_bairro->setGeometry(QRect(132, 50, 46, 20));
@@ -279,7 +282,7 @@ public:
         le_bairro->setGeometry(QRect(172, 50, 361, 20));
         le_bairro->setFont(font4);
         le_bairro->setMaxLength(70);
-        le_bairro->setReadOnly(false);
+        le_bairro->setReadOnly(true);
         lb_cidade = new QLabel(gb_endereo);
         lb_cidade->setObjectName(QString::fromUtf8("lb_cidade"));
         lb_cidade->setGeometry(QRect(538, 50, 46, 20));
@@ -290,7 +293,7 @@ public:
         le_cidade->setFont(font4);
         le_cidade->setMaxLength(50);
         le_cidade->setCursorPosition(0);
-        le_cidade->setReadOnly(false);
+        le_cidade->setReadOnly(true);
         lb_estado = new QLabel(gb_endereo);
         lb_estado->setObjectName(QString::fromUtf8("lb_estado"));
         lb_estado->setGeometry(QRect(8, 80, 45, 20));
@@ -304,102 +307,24 @@ public:
         te_ponto_referencia->setGeometry(QRect(10, 132, 770, 51));
         te_ponto_referencia->setFont(font2);
         te_ponto_referencia->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-        te_ponto_referencia->setReadOnly(false);
+        te_ponto_referencia->setReadOnly(true);
         lb_uf = new QLabel(gb_endereo);
         lb_uf->setObjectName(QString::fromUtf8("lb_uf"));
-        lb_uf->setGeometry(QRect(225, 80, 20, 20));
+        lb_uf->setGeometry(QRect(210, 80, 20, 20));
         lb_uf->setFont(font2);
         le_uf = new QLineEdit(gb_endereo);
         le_uf->setObjectName(QString::fromUtf8("le_uf"));
-        le_uf->setGeometry(QRect(245, 80, 25, 20));
+        le_uf->setGeometry(QRect(230, 80, 25, 20));
         le_uf->setFont(font2);
         le_uf->setReadOnly(true);
-        cb_estado = new QComboBox(gb_endereo);
-        cb_estado->addItem(QString());
-        QIcon icon3;
-        icon3.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/acre.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon3, QString());
-        QIcon icon4;
-        icon4.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Alagoas.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon4, QString());
-        QIcon icon5;
-        icon5.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Amazonas.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon5, QString());
-        QIcon icon6;
-        icon6.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Bandeira_do_Amapa.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon6, QString());
-        QIcon icon7;
-        icon7.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Bahia.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon7, QString());
-        QIcon icon8;
-        icon8.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Bandeira_do_Ceara.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon8, QString());
-        QIcon icon9;
-        icon9.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Distrito_Federal.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon9, QString());
-        QIcon icon10;
-        icon10.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Espirito_Santo.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon10, QString());
-        QIcon icon11;
-        icon11.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Goias.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon11, QString());
-        QIcon icon12;
-        icon12.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Maranhao.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon12, QString());
-        QIcon icon13;
-        icon13.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Minas_Gerais.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon13, QString());
-        QIcon icon14;
-        icon14.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Mato_Grosso_do_Sul.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon14, QString());
-        QIcon icon15;
-        icon15.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Mato_Grosso.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon15, QString());
-        QIcon icon16;
-        icon16.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Para.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon16, QString());
-        QIcon icon17;
-        icon17.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Paraiba.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon17, QString());
-        QIcon icon18;
-        icon18.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Pernambuco.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon18, QString());
-        QIcon icon19;
-        icon19.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Piaui.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon19, QString());
-        QIcon icon20;
-        icon20.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Bandeira_do_Parana.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon20, QString());
-        QIcon icon21;
-        icon21.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Rio_de_Janeiro.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon21, QString());
-        QIcon icon22;
-        icon22.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Rio_Grande_do_Norte.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon22, QString());
-        QIcon icon23;
-        icon23.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Rondonia.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon23, QString());
-        QIcon icon24;
-        icon24.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Roraima.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon24, QString());
-        QIcon icon25;
-        icon25.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Rio_Grande_do_Sul.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon25, QString());
-        QIcon icon26;
-        icon26.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Santa_Catarina.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon26, QString());
-        QIcon icon27;
-        icon27.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Sergipe.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon27, QString());
-        QIcon icon28;
-        icon28.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Sao_Paulo.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon28, QString());
-        QIcon icon29;
-        icon29.addFile(QString::fromUtf8(":/bandeiras/badeiras_estados/Tocantins.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cb_estado->addItem(icon29, QString());
-        cb_estado->setObjectName(QString::fromUtf8("cb_estado"));
-        cb_estado->setGeometry(QRect(53, 80, 161, 20));
-        cb_estado->setFont(font2);
+        graphicsView = new QGraphicsView(gb_endereo);
+        graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
+        graphicsView->setGeometry(QRect(50, 77, 40, 25));
+        le_estado = new QLineEdit(gb_endereo);
+        le_estado->setObjectName(QString::fromUtf8("le_estado"));
+        le_estado->setGeometry(QRect(91, 80, 110, 20));
+        le_estado->setFont(font2);
+        le_estado->setReadOnly(true);
         lb_rua->raise();
         le_rua->raise();
         lb_numero->raise();
@@ -415,7 +340,8 @@ public:
         lb_cep->raise();
         lb_uf->raise();
         le_uf->raise();
-        cb_estado->raise();
+        graphicsView->raise();
+        le_estado->raise();
         tela_clientes->setCentralWidget(centralwidget);
         Barra_de_menu = new QToolBar(tela_clientes);
         Barra_de_menu->setObjectName(QString::fromUtf8("Barra_de_menu"));
@@ -442,17 +368,13 @@ public:
         gb_dados_cliente->setTitle(QApplication::translate("tela_clientes", "Dados do Cliente", 0, QApplication::UnicodeUTF8));
         lb_telefone->setText(QApplication::translate("tela_clientes", "Telefone:", 0, QApplication::UnicodeUTF8));
         lb_email->setText(QApplication::translate("tela_clientes", "E-mail:", 0, QApplication::UnicodeUTF8));
-        cb_email->clear();
-        cb_email->insertItems(0, QStringList()
-         << QApplication::translate("tela_clientes", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 0, QApplication::UnicodeUTF8)
-        );
         lb_comentario_clientes->setText(QApplication::translate("tela_clientes", "Coment\303\241rio sobre cliente", 0, QApplication::UnicodeUTF8));
         lb_codigo->setText(QApplication::translate("tela_clientes", "C\303\263digo:", 0, QApplication::UnicodeUTF8));
         le_codigo->setInputMask(QApplication::translate("tela_clientes", "000000000; ", 0, QApplication::UnicodeUTF8));
         le_codigo->setText(QString());
-        le_nome->setText(QApplication::translate("tela_clientes", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 0, QApplication::UnicodeUTF8));
+        le_nome->setText(QString());
         le_cpf->setInputMask(QApplication::translate("tela_clientes", "000.000.000-00; ", 0, QApplication::UnicodeUTF8));
-        le_cpf->setText(QApplication::translate("tela_clientes", "999.999.999-99", 0, QApplication::UnicodeUTF8));
+        le_cpf->setText(QApplication::translate("tela_clientes", "..-", 0, QApplication::UnicodeUTF8));
         lb_nome->setText(QApplication::translate("tela_clientes", "Nome:", 0, QApplication::UnicodeUTF8));
         lb_rg->setText(QApplication::translate("tela_clientes", "RG:", 0, QApplication::UnicodeUTF8));
         lb_cpf->setText(QApplication::translate("tela_clientes", "CPF:", 0, QApplication::UnicodeUTF8));
@@ -482,35 +404,7 @@ public:
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>", 0, QApplication::UnicodeUTF8));
         lb_uf->setText(QApplication::translate("tela_clientes", "UF:", 0, QApplication::UnicodeUTF8));
         le_uf->setText(QApplication::translate("tela_clientes", "--", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(0, QApplication::translate("tela_clientes", "-------------------", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(1, QApplication::translate("tela_clientes", "Acre", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(2, QApplication::translate("tela_clientes", "Alagoas", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(3, QApplication::translate("tela_clientes", "Amazonas", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(4, QApplication::translate("tela_clientes", "Amap\303\241", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(5, QApplication::translate("tela_clientes", "Bahia", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(6, QApplication::translate("tela_clientes", "Cear\303\241", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(7, QApplication::translate("tela_clientes", "Distrito Federal", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(8, QApplication::translate("tela_clientes", "Esp\303\255rito Santo", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(9, QApplication::translate("tela_clientes", "Goi\303\241s", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(10, QApplication::translate("tela_clientes", "Maranh\303\243o", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(11, QApplication::translate("tela_clientes", "Minas Gerais", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(12, QApplication::translate("tela_clientes", "Mato Grosso do Sul", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(13, QApplication::translate("tela_clientes", "Mato Grosso", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(14, QApplication::translate("tela_clientes", "Par\303\241", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(15, QApplication::translate("tela_clientes", "Para\303\255ba", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(16, QApplication::translate("tela_clientes", "Pernambuco", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(17, QApplication::translate("tela_clientes", "Piau\303\255", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(18, QApplication::translate("tela_clientes", "Paran\303\241", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(19, QApplication::translate("tela_clientes", "Rio de Janeiro", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(20, QApplication::translate("tela_clientes", "Rio Grande do Norte", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(21, QApplication::translate("tela_clientes", "Rond\303\264nia", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(22, QApplication::translate("tela_clientes", "Roraima", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(23, QApplication::translate("tela_clientes", "Rio Grande do Sul", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(24, QApplication::translate("tela_clientes", "Santa Catarina", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(25, QApplication::translate("tela_clientes", "Sergipe", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(26, QApplication::translate("tela_clientes", "S\303\243o Paulo", 0, QApplication::UnicodeUTF8));
-        cb_estado->setItemText(27, QApplication::translate("tela_clientes", "Tocantins", 0, QApplication::UnicodeUTF8));
-
+        le_estado->setText(QString());
         Barra_de_menu->setWindowTitle(QApplication::translate("tela_clientes", "toolBar", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
