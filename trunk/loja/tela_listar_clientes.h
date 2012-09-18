@@ -8,6 +8,7 @@
 
 #include "conexao_bd.h"
 #include "tela_clientes.h"
+#include "cliente.h"
 
 namespace Ui {
 class tela_listar_clientes;
@@ -35,6 +36,7 @@ private:
     tela_clientes tl_cliente;
     QStandardItemModel *modelo;
     QStandardItem *nomes;
+    std::vector< cliente * > lista_clientes;
     std::vector< std::string > lista_id;
     std::vector< std::string > lista_nomes;
     std::vector< std::string > lista_cpfs;

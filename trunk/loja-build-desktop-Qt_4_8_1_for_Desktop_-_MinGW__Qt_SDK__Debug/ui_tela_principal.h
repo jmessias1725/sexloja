@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_principal.ui'
 **
-** Created: Sat 15. Sep 11:40:26 2012
+** Created: Mon 17. Sep 22:38:37 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -53,9 +53,13 @@ public:
         if (tela_principal->objectName().isEmpty())
             tela_principal->setObjectName(QString::fromUtf8("tela_principal"));
         tela_principal->resize(1024, 768);
+        tela_principal->setMouseTracking(false);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/img/img/logo_sex.png"), QSize(), QIcon::Normal, QIcon::Off);
         tela_principal->setWindowIcon(icon);
+        tela_principal->setAnimated(true);
+        tela_principal->setDockNestingEnabled(false);
+        tela_principal->setDockOptions(QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks|QMainWindow::ForceTabbedDocks);
         consultar_clientes = new QAction(tela_principal);
         consultar_clientes->setObjectName(QString::fromUtf8("consultar_clientes"));
         QIcon icon1;
@@ -147,8 +151,10 @@ public:
         font2.setFamily(QString::fromUtf8("Calibri"));
         font2.setPointSize(9);
         barra_de_menus->setFont(font2);
+        barra_de_menus->setMovable(false);
         barra_de_menus->setIconSize(QSize(40, 40));
-        tela_principal->addToolBar(Qt::TopToolBarArea, barra_de_menus);
+        barra_de_menus->setFloatable(false);
+        tela_principal->addToolBar(Qt::LeftToolBarArea, barra_de_menus);
 
         menubar->addAction(menuArquivo->menuAction());
         menubar->addAction(menuListar->menuAction());

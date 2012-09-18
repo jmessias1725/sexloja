@@ -151,3 +151,141 @@ int funcoes_extras::retorna_id_estado(std::string uf){
     }
     }
 }
+QString funcoes_extras::retorna_nome_imagem_estado(std::string uf){
+    if(uf == "--"){
+        return ":/bandeiras/badeiras_estados/bandeira_do_brasil.png";
+    }
+    else{
+    if(uf == "AC"){
+        return ":/bandeiras/badeiras_estados/acre.png";
+    }
+    else{
+    if(uf == "AL"){
+        return ":/bandeiras/badeiras_estados/Alagoas.png";
+    }
+    else{
+    if(uf == "AM"){
+        return ":/bandeiras/badeiras_estados/Amazonas.png";
+    }
+    else{
+    if(uf == "AP"){
+        return ":/bandeiras/badeiras_estados/Bandeira_do_Amapa.png";
+    }
+    else{
+    if(uf == "BA"){
+        return ":/bandeiras/badeiras_estados/Bahia.png";
+    }
+    else{
+    if(uf == "CE"){
+        return ":/bandeiras/badeiras_estados/Bandeira_do_Ceara.png";
+    }
+    else{
+    if(uf == "DF"){
+        return ":/bandeiras/badeiras_estados/Distrito_Federal.png";
+    }
+    else{
+    if(uf == "ES"){
+        return ":/bandeiras/badeiras_estados/Espirito_Santo.png";
+    }
+    else{
+    if(uf == "GO"){
+        return ":/bandeiras/badeiras_estados/Goias.png";
+    }
+    else{
+    if(uf == "MA"){
+        return ":/bandeiras/badeiras_estados/Maranhao.png";
+    }
+    else{
+    if(uf == "MG"){
+        return ":/bandeiras/badeiras_estados/Minas_Gerais.png";
+    }
+    else{
+    if(uf == "MS"){
+        return ":/bandeiras/badeiras_estados/Mato_Grosso_do_Sul.png";
+    }
+    else{
+    if(uf == "MT"){
+        return ":/bandeiras/badeiras_estados/Mato_Grosso.png";
+    }
+    else{
+    if(uf == "PA"){
+        return ":/bandeiras/badeiras_estados/Para.png";
+    }
+    else{
+    if(uf == "PB"){
+        return ":/bandeiras/badeiras_estados/Paraiba.png";
+    }
+    else{
+    if(uf == "PE"){
+        return ":/bandeiras/badeiras_estados/Pernambuco.png";
+    }
+    else{
+    if(uf == "PI"){
+        return ":/bandeiras/badeiras_estados/Piaui.png";
+    }
+    else{
+    if(uf == "PR"){
+        return ":/bandeiras/badeiras_estados/Bandeira_do_Parana.png";
+    }
+    else{
+    if(uf == "RJ"){
+        return ":/bandeiras/badeiras_estados/Rio_de_Janeiro.png";
+    }
+    else{
+    if(uf == "RN"){
+        return ":/bandeiras/badeiras_estados/Rio_Grande_do_Norte.png";
+    }
+    else{
+    if(uf == "RO"){
+        return ":/bandeiras/badeiras_estados/Rondonia.png";
+    }
+    else{
+    if(uf == "RR"){
+        return ":/bandeiras/badeiras_estados/Roraima.png";
+    }
+    else{
+    if(uf == "RS"){
+        return ":/bandeiras/badeiras_estados/Rio_Grande_do_Sul.png";
+    }
+    else{
+    if(uf == "SC"){
+        return ":/bandeiras/badeiras_estados/Santa_Catarina.png";
+    }
+    else{
+    if(uf == "SE"){
+        return ":/bandeiras/badeiras_estados/Sergipe.png";
+    }
+    else{
+    if(uf == "SP"){
+        return ":/bandeiras/badeiras_estados/Sao_Paulo.png";
+    }
+    else{
+        return ":/bandeiras/badeiras_estados/Tocantins.png";
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+}

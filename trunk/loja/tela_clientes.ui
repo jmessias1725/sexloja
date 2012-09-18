@@ -134,11 +134,6 @@
      <property name="maxCount">
       <number>60</number>
      </property>
-     <item>
-      <property name="text">
-       <string>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</string>
-      </property>
-     </item>
     </widget>
     <widget class="QLabel" name="lb_comentario_clientes">
      <property name="geometry">
@@ -224,6 +219,9 @@
      <property name="cursorPosition">
       <number>9</number>
      </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
     </widget>
     <widget class="QLineEdit" name="le_nome">
      <property name="geometry">
@@ -262,13 +260,13 @@
       </font>
      </property>
      <property name="text">
-      <string>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</string>
+      <string/>
      </property>
      <property name="maxLength">
       <number>60</number>
      </property>
      <property name="readOnly">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QLineEdit" name="le_cpf">
@@ -311,13 +309,13 @@
       <string>000.000.000-00; </string>
      </property>
      <property name="text">
-      <string>999.999.999-99</string>
+      <string>..-</string>
      </property>
      <property name="maxLength">
       <number>14</number>
      </property>
      <property name="readOnly">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QLabel" name="lb_nome">
@@ -435,7 +433,7 @@
       <number>20</number>
      </property>
      <property name="readOnly">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QComboBox" name="cb_telefone">
@@ -597,7 +595,7 @@
       <number>9</number>
      </property>
      <property name="readOnly">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QLabel" name="lb_cep">
@@ -671,7 +669,7 @@
       <number>0</number>
      </property>
      <property name="readOnly">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QLabel" name="lb_numero">
@@ -723,7 +721,7 @@
       <number>9</number>
      </property>
      <property name="readOnly">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QLabel" name="lb_bairro">
@@ -770,7 +768,7 @@
       <number>70</number>
      </property>
      <property name="readOnly">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QLabel" name="lb_cidade">
@@ -822,7 +820,7 @@
       <number>0</number>
      </property>
      <property name="readOnly">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QLabel" name="lb_estado">
@@ -888,7 +886,7 @@
       <enum>Qt::ScrollBarAlwaysOn</enum>
      </property>
      <property name="readOnly">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
      <property name="html">
       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -901,7 +899,7 @@ p, li { white-space: pre-wrap; }
     <widget class="QLabel" name="lb_uf">
      <property name="geometry">
       <rect>
-       <x>225</x>
+       <x>210</x>
        <y>80</y>
        <width>20</width>
        <height>20</height>
@@ -920,7 +918,7 @@ p, li { white-space: pre-wrap; }
     <widget class="QLineEdit" name="le_uf">
      <property name="geometry">
       <rect>
-       <x>245</x>
+       <x>230</x>
        <y>80</y>
        <width>25</width>
        <height>20</height>
@@ -939,12 +937,22 @@ p, li { white-space: pre-wrap; }
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QComboBox" name="cb_estado">
+    <widget class="QGraphicsView" name="graphicsView">
      <property name="geometry">
       <rect>
-       <x>53</x>
+       <x>50</x>
+       <y>77</y>
+       <width>40</width>
+       <height>25</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="le_estado">
+     <property name="geometry">
+      <rect>
+       <x>91</x>
        <y>80</y>
-       <width>161</width>
+       <width>110</width>
        <height>20</height>
       </rect>
      </property>
@@ -954,254 +962,12 @@ p, li { white-space: pre-wrap; }
        <bold>false</bold>
       </font>
      </property>
-     <item>
-      <property name="text">
-       <string>-------------------</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Acre</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/acre.png</normaloff>:/bandeiras/badeiras_estados/acre.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Alagoas</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Alagoas.png</normaloff>:/bandeiras/badeiras_estados/Alagoas.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Amazonas</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Amazonas.png</normaloff>:/bandeiras/badeiras_estados/Amazonas.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Amapá</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Bandeira_do_Amapa.png</normaloff>:/bandeiras/badeiras_estados/Bandeira_do_Amapa.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Bahia</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Bahia.png</normaloff>:/bandeiras/badeiras_estados/Bahia.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Ceará</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Bandeira_do_Ceara.png</normaloff>:/bandeiras/badeiras_estados/Bandeira_do_Ceara.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Distrito Federal</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Distrito_Federal.png</normaloff>:/bandeiras/badeiras_estados/Distrito_Federal.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Espírito Santo</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Espirito_Santo.png</normaloff>:/bandeiras/badeiras_estados/Espirito_Santo.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Goiás</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Goias.png</normaloff>:/bandeiras/badeiras_estados/Goias.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Maranhão</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Maranhao.png</normaloff>:/bandeiras/badeiras_estados/Maranhao.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Minas Gerais</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Minas_Gerais.png</normaloff>:/bandeiras/badeiras_estados/Minas_Gerais.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Mato Grosso do Sul</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Mato_Grosso_do_Sul.png</normaloff>:/bandeiras/badeiras_estados/Mato_Grosso_do_Sul.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Mato Grosso</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Mato_Grosso.png</normaloff>:/bandeiras/badeiras_estados/Mato_Grosso.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Pará</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Para.png</normaloff>:/bandeiras/badeiras_estados/Para.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Paraíba</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Paraiba.png</normaloff>:/bandeiras/badeiras_estados/Paraiba.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Pernambuco</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Pernambuco.png</normaloff>:/bandeiras/badeiras_estados/Pernambuco.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Piauí</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Piaui.png</normaloff>:/bandeiras/badeiras_estados/Piaui.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Paraná</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Bandeira_do_Parana.png</normaloff>:/bandeiras/badeiras_estados/Bandeira_do_Parana.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Rio de Janeiro</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Rio_de_Janeiro.png</normaloff>:/bandeiras/badeiras_estados/Rio_de_Janeiro.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Rio Grande do Norte</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Rio_Grande_do_Norte.png</normaloff>:/bandeiras/badeiras_estados/Rio_Grande_do_Norte.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Rondônia</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Rondonia.png</normaloff>:/bandeiras/badeiras_estados/Rondonia.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Roraima</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Roraima.png</normaloff>:/bandeiras/badeiras_estados/Roraima.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Rio Grande do Sul</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Rio_Grande_do_Sul.png</normaloff>:/bandeiras/badeiras_estados/Rio_Grande_do_Sul.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Santa Catarina</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Santa_Catarina.png</normaloff>:/bandeiras/badeiras_estados/Santa_Catarina.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Sergipe</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Sergipe.png</normaloff>:/bandeiras/badeiras_estados/Sergipe.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>São Paulo</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Sao_Paulo.png</normaloff>:/bandeiras/badeiras_estados/Sao_Paulo.png</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Tocantins</string>
-      </property>
-      <property name="icon">
-       <iconset resource="imagens.qrc">
-        <normaloff>:/bandeiras/badeiras_estados/Tocantins.png</normaloff>:/bandeiras/badeiras_estados/Tocantins.png</iconset>
-      </property>
-     </item>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
     </widget>
     <zorder>lb_rua</zorder>
     <zorder>le_rua</zorder>
@@ -1218,7 +984,8 @@ p, li { white-space: pre-wrap; }
     <zorder>lb_cep</zorder>
     <zorder>lb_uf</zorder>
     <zorder>le_uf</zorder>
-    <zorder>cb_estado</zorder>
+    <zorder>graphicsView</zorder>
+    <zorder>le_estado</zorder>
    </widget>
   </widget>
   <widget class="QToolBar" name="Barra_de_menu">

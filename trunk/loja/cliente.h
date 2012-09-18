@@ -14,6 +14,7 @@
 class cliente :public endereco
 {
 private:
+    int id;
     QString nome;
     QString rg;
     QString cpf;
@@ -24,6 +25,15 @@ private:
     std::vector< std::string > lista_operadora;
 
 public:
+    cliente();
+
+    cliente(int id_cliente,QString cliente_nome,QString cliente_rg,QString cliente_cpf,
+            QString cliente_comentario,std::vector< std::string > lista_email_cliente,
+            std::vector< std::string > lista_telefone_cliente,
+            std::vector< std::string > lista_operadora_cliente,
+            QString uf_sigla, QString uf_nome, QString cidade, QString bairro,
+            QString rua, QString cep, int numero, QString pt_referencia);
+
     cliente(QString cliente_nome,QString cliente_rg,QString cliente_cpf,
             QString cliente_comentario,std::vector< std::string > lista_email_cliente,
             std::vector< std::string > lista_telefone_cliente,
@@ -31,6 +41,7 @@ public:
             QString uf_sigla, QString uf_nome, QString cidade, QString bairro,
             QString rua, QString cep, int numero, QString pt_referencia);
 
+    int retornar_id(void);
     QString retornar_nome(void);
     QString retornar_rg(void);
     QString retornar_cpf(void);
