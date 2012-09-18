@@ -289,3 +289,50 @@ QString funcoes_extras::retorna_nome_imagem_estado(std::string uf){
     }
     }
 }
+QIcon funcoes_extras::retorna_icone_operadora(std::string operadora){
+    QIcon icon1,icon2,icon3,icon4,icon5,icon6,icon7,icon8;
+    icon1.addFile(QString::fromUtf8(":/operadoras/img/LOGO-ALGAR-TELECOM.png"), QSize(), QIcon::Normal, QIcon::Off);
+    icon2.addFile(QString::fromUtf8(":/operadoras/img/claro.png"), QSize(), QIcon::Normal, QIcon::Off);
+    icon3.addFile(QString::fromUtf8(":/operadoras/img/vivo_boneco.png"), QSize(), QIcon::Normal, QIcon::Off);
+    icon4.addFile(QString::fromUtf8(":/operadoras/img/TIM.png"), QSize(), QIcon::Normal, QIcon::Off);
+    icon5.addFile(QString::fromUtf8(":/operadoras/img/oi.png"), QSize(), QIcon::Normal, QIcon::Off);
+    icon6.addFile(QString::fromUtf8(":/operadoras/img/sercom_tel.png"), QSize(), QIcon::Normal, QIcon::Off);
+    icon7.addFile(QString::fromUtf8(":/operadoras/img/nextel-novo.png"), QSize(), QIcon::Normal, QIcon::Off);
+    icon8.addFile(QString::fromUtf8(":img/img/telefone.png"), QSize(), QIcon::Normal, QIcon::Off);
+        if(operadora=="Algar Telecom"){
+           return icon1;
+        }
+        else{
+            if(operadora=="Claro"){
+                return icon2;
+            }
+            else{
+                if(operadora=="Vivo"){
+                    return icon3;
+                }
+                else{
+                    if(operadora=="TIM"){
+                        return icon4;
+                    }
+                    else{
+                        if(operadora=="Oi"){
+                            return icon5;
+                        }
+                        else{
+                            if(operadora=="Sercomtel"){
+                                return icon6;
+                            }
+                            else{
+                                if(operadora=="Nextel"){
+                                    return icon7;
+                                }
+                                else{
+                                    return icon8;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+}

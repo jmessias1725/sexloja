@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>370</height>
+    <width>767</width>
+    <height>328</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,10 +23,10 @@
   <widget class="QGroupBox" name="gb_buscar">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>5</y>
-     <width>780</width>
-     <height>110</height>
+     <x>5</x>
+     <y>0</y>
+     <width>756</width>
+     <height>78</height>
     </rect>
    </property>
    <property name="font">
@@ -44,8 +44,8 @@
    <widget class="QLabel" name="lb_codigo">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>23</y>
+      <x>7</x>
+      <y>20</y>
       <width>46</width>
       <height>20</height>
      </rect>
@@ -64,7 +64,7 @@
     <property name="geometry">
      <rect>
       <x>53</x>
-      <y>23</y>
+      <y>20</y>
       <width>70</width>
       <height>20</height>
      </rect>
@@ -85,34 +85,12 @@
      <number>9</number>
     </property>
    </widget>
-   <widget class="QLabel" name="lb_rg">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>50</y>
-      <width>20</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Calibri</family>
-      <pointsize>10</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="text">
-     <string>RG:</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="lb_nome">
     <property name="geometry">
      <rect>
-      <x>135</x>
-      <y>23</y>
-      <width>40</width>
+      <x>130</x>
+      <y>20</y>
+      <width>35</width>
       <height>20</height>
      </rect>
     </property>
@@ -135,79 +113,11 @@
      <string>Nome:</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lb_cpf">
-    <property name="geometry">
-     <rect>
-      <x>198</x>
-      <y>50</y>
-      <width>30</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Calibri</family>
-      <pointsize>10</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="text">
-     <string>CPF:</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="le_rg">
-    <property name="geometry">
-     <rect>
-      <x>34</x>
-      <y>50</y>
-      <width>150</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>120</width>
-      <height>20</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>200</width>
-      <height>20</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Calibri</family>
-      <pointsize>10</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="inputMask">
-     <string>00000000000000000000; </string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="maxLength">
-     <number>20</number>
-    </property>
-    <property name="cursorPosition">
-     <number>20</number>
-    </property>
-    <property name="readOnly">
-     <bool>false</bool>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="le_nome">
     <property name="geometry">
      <rect>
-      <x>171</x>
-      <y>23</y>
+      <x>165</x>
+      <y>20</y>
       <width>430</width>
       <height>20</height>
      </rect>
@@ -249,60 +159,11 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QLineEdit" name="le_cpf">
-    <property name="geometry">
-     <rect>
-      <x>227</x>
-      <y>50</y>
-      <width>100</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>100</width>
-      <height>20</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>100</width>
-      <height>20</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Calibri</family>
-      <pointsize>10</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="inputMask">
-     <string>000.000.000-00; </string>
-    </property>
-    <property name="text">
-     <string>..-</string>
-    </property>
-    <property name="maxLength">
-     <number>14</number>
-    </property>
-    <property name="readOnly">
-     <bool>false</bool>
-    </property>
-   </widget>
    <widget class="QLabel" name="lb_telefone">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>23</y>
+      <x>602</x>
+      <y>20</y>
       <width>50</width>
       <height>20</height>
      </rect>
@@ -317,30 +178,11 @@
      <string>Telefone:</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lb_email">
-    <property name="geometry">
-     <rect>
-      <x>342</x>
-      <y>50</y>
-      <width>46</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>E-mail:</string>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="le_telefone">
     <property name="geometry">
      <rect>
-      <x>672</x>
-      <y>23</y>
+      <x>652</x>
+      <y>20</y>
       <width>97</width>
       <height>20</height>
      </rect>
@@ -358,33 +200,11 @@
      <string>()-</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="le_email">
-    <property name="geometry">
-     <rect>
-      <x>381</x>
-      <y>50</y>
-      <width>390</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="maxLength">
-     <number>60</number>
-    </property>
-   </widget>
    <widget class="QPushButton" name="btn_buscar">
     <property name="geometry">
      <rect>
       <x>245</x>
-      <y>77</y>
+      <y>47</y>
       <width>90</width>
       <height>24</height>
      </rect>
@@ -427,7 +247,7 @@
     <property name="geometry">
      <rect>
       <x>445</x>
-      <y>77</y>
+      <y>47</y>
       <width>90</width>
       <height>24</height>
      </rect>
@@ -470,7 +290,7 @@
     <property name="geometry">
      <rect>
       <x>345</x>
-      <y>77</y>
+      <y>47</y>
       <width>90</width>
       <height>24</height>
      </rect>
@@ -513,9 +333,9 @@
   <widget class="QGroupBox" name="gb_clientes">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>120</y>
-     <width>780</width>
+     <x>5</x>
+     <y>83</y>
+     <width>756</width>
      <height>240</height>
     </rect>
    </property>
@@ -535,7 +355,7 @@
      <rect>
       <x>7</x>
       <y>15</y>
-      <width>766</width>
+      <width>742</width>
       <height>218</height>
      </rect>
     </property>
@@ -546,10 +366,25 @@
       <kerning>false</kerning>
      </font>
     </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAsNeeded</enum>
+    </property>
+    <property name="alternatingRowColors">
+     <bool>true</bool>
+    </property>
     <property name="sortingEnabled">
      <bool>false</bool>
     </property>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>20</number>
+    </attribute>
+    <attribute name="horizontalHeaderMinimumSectionSize">
+     <number>15</number>
+    </attribute>
     <attribute name="horizontalHeaderStretchLastSection">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="verticalHeaderCascadingSectionResizes">
      <bool>true</bool>
     </attribute>
     <attribute name="verticalHeaderDefaultSectionSize">
@@ -565,11 +400,10 @@
   <tabstop>le_codigo</tabstop>
   <tabstop>le_nome</tabstop>
   <tabstop>le_telefone</tabstop>
-  <tabstop>le_rg</tabstop>
-  <tabstop>le_cpf</tabstop>
-  <tabstop>le_email</tabstop>
   <tabstop>btn_buscar</tabstop>
+  <tabstop>btn_limpar</tabstop>
   <tabstop>btn_cancelar</tabstop>
+  <tabstop>tv_clientes</tabstop>
  </tabstops>
  <resources>
   <include location="imagens.qrc"/>
@@ -620,54 +454,6 @@
     <hint type="destinationlabel">
      <x>711</x>
      <y>46</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btn_limpar</sender>
-   <signal>clicked()</signal>
-   <receiver>le_rg</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>407</x>
-     <y>90</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>177</x>
-     <y>66</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btn_limpar</sender>
-   <signal>clicked()</signal>
-   <receiver>le_cpf</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>423</x>
-     <y>95</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>312</x>
-     <y>66</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btn_limpar</sender>
-   <signal>clicked()</signal>
-   <receiver>le_email</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>425</x>
-     <y>98</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>448</x>
-     <y>66</y>
     </hint>
    </hints>
   </connection>
