@@ -49,6 +49,9 @@ public:
     std::vector< std::string > retorna_lista_email(void);
     std::vector< std::string > retorna_lista_telefone(void);
     std::vector< std::string > retorna_lista_operadora(void);
+    void retorna_primeiro_email(void);
+    QString retorna_primeiro_telefone(void);
+    QString retorna_primeiro_operadora(void);
     bool salvar_cliente(void);
 };
 

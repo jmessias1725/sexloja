@@ -23,7 +23,7 @@ class tela_cadastro_cliente : public QMainWindow
 public:
     explicit tela_cadastro_cliente(QWidget *parent = 0);
     ~tela_cadastro_cliente();
-    
+    void closeEvent( QCloseEvent * event );
 private slots:
     void on_tb_menos_email_clicked();
 

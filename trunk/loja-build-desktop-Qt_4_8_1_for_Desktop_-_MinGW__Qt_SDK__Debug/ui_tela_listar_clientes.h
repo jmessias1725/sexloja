@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_listar_clientes.ui'
 **
-** Created: Mon 17. Sep 23:59:32 2012
+** Created: Tue 18. Sep 11:03:34 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -30,16 +30,10 @@ public:
     QGroupBox *gb_buscar;
     QLabel *lb_codigo;
     QLineEdit *le_codigo;
-    QLabel *lb_rg;
     QLabel *lb_nome;
-    QLabel *lb_cpf;
-    QLineEdit *le_rg;
     QLineEdit *le_nome;
-    QLineEdit *le_cpf;
     QLabel *lb_telefone;
-    QLabel *lb_email;
     QLineEdit *le_telefone;
-    QLineEdit *le_email;
     QPushButton *btn_buscar;
     QPushButton *btn_cancelar;
     QPushButton *btn_limpar;
@@ -50,14 +44,14 @@ public:
     {
         if (tela_listar_clientes->objectName().isEmpty())
             tela_listar_clientes->setObjectName(QString::fromUtf8("tela_listar_clientes"));
-        tela_listar_clientes->resize(800, 370);
+        tela_listar_clientes->resize(767, 328);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/img/img/logo_sex.png"), QSize(), QIcon::Normal, QIcon::Off);
         tela_listar_clientes->setWindowIcon(icon);
         tela_listar_clientes->setModal(true);
         gb_buscar = new QGroupBox(tela_listar_clientes);
         gb_buscar->setObjectName(QString::fromUtf8("gb_buscar"));
-        gb_buscar->setGeometry(QRect(10, 5, 780, 110));
+        gb_buscar->setGeometry(QRect(5, 0, 756, 78));
         QFont font;
         font.setFamily(QString::fromUtf8("Calibri"));
         font.setPointSize(10);
@@ -67,47 +61,30 @@ public:
         gb_buscar->setFont(font);
         lb_codigo = new QLabel(gb_buscar);
         lb_codigo->setObjectName(QString::fromUtf8("lb_codigo"));
-        lb_codigo->setGeometry(QRect(10, 23, 46, 20));
+        lb_codigo->setGeometry(QRect(7, 20, 46, 20));
         QFont font1;
         font1.setBold(false);
         font1.setWeight(50);
         lb_codigo->setFont(font1);
         le_codigo = new QLineEdit(gb_buscar);
         le_codigo->setObjectName(QString::fromUtf8("le_codigo"));
-        le_codigo->setGeometry(QRect(53, 23, 70, 20));
+        le_codigo->setGeometry(QRect(53, 20, 70, 20));
         le_codigo->setFont(font1);
         le_codigo->setCursorPosition(9);
-        lb_rg = new QLabel(gb_buscar);
-        lb_rg->setObjectName(QString::fromUtf8("lb_rg"));
-        lb_rg->setGeometry(QRect(10, 50, 20, 20));
+        lb_nome = new QLabel(gb_buscar);
+        lb_nome->setObjectName(QString::fromUtf8("lb_nome"));
+        lb_nome->setGeometry(QRect(130, 20, 35, 20));
+        lb_nome->setMaximumSize(QSize(40, 20));
         QFont font2;
         font2.setFamily(QString::fromUtf8("Calibri"));
         font2.setPointSize(10);
         font2.setBold(false);
         font2.setWeight(50);
         font2.setKerning(false);
-        lb_rg->setFont(font2);
-        lb_nome = new QLabel(gb_buscar);
-        lb_nome->setObjectName(QString::fromUtf8("lb_nome"));
-        lb_nome->setGeometry(QRect(135, 23, 40, 20));
-        lb_nome->setMaximumSize(QSize(40, 20));
         lb_nome->setFont(font2);
-        lb_cpf = new QLabel(gb_buscar);
-        lb_cpf->setObjectName(QString::fromUtf8("lb_cpf"));
-        lb_cpf->setGeometry(QRect(198, 50, 30, 20));
-        lb_cpf->setFont(font2);
-        le_rg = new QLineEdit(gb_buscar);
-        le_rg->setObjectName(QString::fromUtf8("le_rg"));
-        le_rg->setGeometry(QRect(34, 50, 150, 20));
-        le_rg->setMinimumSize(QSize(120, 20));
-        le_rg->setMaximumSize(QSize(200, 20));
-        le_rg->setFont(font2);
-        le_rg->setMaxLength(20);
-        le_rg->setCursorPosition(20);
-        le_rg->setReadOnly(false);
         le_nome = new QLineEdit(gb_buscar);
         le_nome->setObjectName(QString::fromUtf8("le_nome"));
-        le_nome->setGeometry(QRect(171, 23, 430, 20));
+        le_nome->setGeometry(QRect(165, 20, 430, 20));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -118,36 +95,17 @@ public:
         le_nome->setFont(font2);
         le_nome->setMaxLength(60);
         le_nome->setReadOnly(false);
-        le_cpf = new QLineEdit(gb_buscar);
-        le_cpf->setObjectName(QString::fromUtf8("le_cpf"));
-        le_cpf->setGeometry(QRect(227, 50, 100, 20));
-        sizePolicy.setHeightForWidth(le_cpf->sizePolicy().hasHeightForWidth());
-        le_cpf->setSizePolicy(sizePolicy);
-        le_cpf->setMinimumSize(QSize(100, 20));
-        le_cpf->setMaximumSize(QSize(100, 20));
-        le_cpf->setFont(font2);
-        le_cpf->setMaxLength(14);
-        le_cpf->setReadOnly(false);
         lb_telefone = new QLabel(gb_buscar);
         lb_telefone->setObjectName(QString::fromUtf8("lb_telefone"));
-        lb_telefone->setGeometry(QRect(620, 23, 50, 20));
+        lb_telefone->setGeometry(QRect(602, 20, 50, 20));
         lb_telefone->setFont(font1);
-        lb_email = new QLabel(gb_buscar);
-        lb_email->setObjectName(QString::fromUtf8("lb_email"));
-        lb_email->setGeometry(QRect(342, 50, 46, 20));
-        lb_email->setFont(font1);
         le_telefone = new QLineEdit(gb_buscar);
         le_telefone->setObjectName(QString::fromUtf8("le_telefone"));
-        le_telefone->setGeometry(QRect(672, 23, 97, 20));
+        le_telefone->setGeometry(QRect(652, 20, 97, 20));
         le_telefone->setFont(font1);
-        le_email = new QLineEdit(gb_buscar);
-        le_email->setObjectName(QString::fromUtf8("le_email"));
-        le_email->setGeometry(QRect(381, 50, 390, 20));
-        le_email->setFont(font1);
-        le_email->setMaxLength(60);
         btn_buscar = new QPushButton(gb_buscar);
         btn_buscar->setObjectName(QString::fromUtf8("btn_buscar"));
-        btn_buscar->setGeometry(QRect(245, 77, 90, 24));
+        btn_buscar->setGeometry(QRect(245, 47, 90, 24));
         btn_buscar->setMinimumSize(QSize(0, 24));
         btn_buscar->setMaximumSize(QSize(90, 24));
         QFont font3;
@@ -162,7 +120,7 @@ public:
         btn_buscar->setIconSize(QSize(20, 20));
         btn_cancelar = new QPushButton(gb_buscar);
         btn_cancelar->setObjectName(QString::fromUtf8("btn_cancelar"));
-        btn_cancelar->setGeometry(QRect(445, 77, 90, 24));
+        btn_cancelar->setGeometry(QRect(445, 47, 90, 24));
         btn_cancelar->setMinimumSize(QSize(0, 24));
         btn_cancelar->setMaximumSize(QSize(90, 24));
         btn_cancelar->setFont(font3);
@@ -172,7 +130,7 @@ public:
         btn_cancelar->setIconSize(QSize(18, 18));
         btn_limpar = new QPushButton(gb_buscar);
         btn_limpar->setObjectName(QString::fromUtf8("btn_limpar"));
-        btn_limpar->setGeometry(QRect(345, 77, 90, 24));
+        btn_limpar->setGeometry(QRect(345, 47, 90, 24));
         btn_limpar->setMinimumSize(QSize(0, 24));
         btn_limpar->setMaximumSize(QSize(90, 24));
         btn_limpar->setFont(font3);
@@ -182,7 +140,7 @@ public:
         btn_limpar->setIconSize(QSize(20, 20));
         gb_clientes = new QGroupBox(tela_listar_clientes);
         gb_clientes->setObjectName(QString::fromUtf8("gb_clientes"));
-        gb_clientes->setGeometry(QRect(10, 120, 780, 240));
+        gb_clientes->setGeometry(QRect(5, 83, 756, 240));
         QFont font4;
         font4.setFamily(QString::fromUtf8("Calibri"));
         font4.setPointSize(10);
@@ -191,31 +149,32 @@ public:
         gb_clientes->setFont(font4);
         tv_clientes = new QTableView(gb_clientes);
         tv_clientes->setObjectName(QString::fromUtf8("tv_clientes"));
-        tv_clientes->setGeometry(QRect(7, 15, 766, 218));
+        tv_clientes->setGeometry(QRect(7, 15, 742, 218));
         QFont font5;
         font5.setFamily(QString::fromUtf8("Calibri"));
         font5.setPointSize(10);
         font5.setKerning(false);
         tv_clientes->setFont(font5);
+        tv_clientes->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        tv_clientes->setAlternatingRowColors(true);
         tv_clientes->setSortingEnabled(false);
+        tv_clientes->horizontalHeader()->setDefaultSectionSize(20);
+        tv_clientes->horizontalHeader()->setMinimumSectionSize(15);
         tv_clientes->horizontalHeader()->setStretchLastSection(true);
+        tv_clientes->verticalHeader()->setCascadingSectionResizes(true);
         tv_clientes->verticalHeader()->setDefaultSectionSize(30);
         tv_clientes->verticalHeader()->setStretchLastSection(false);
         QWidget::setTabOrder(le_codigo, le_nome);
         QWidget::setTabOrder(le_nome, le_telefone);
-        QWidget::setTabOrder(le_telefone, le_rg);
-        QWidget::setTabOrder(le_rg, le_cpf);
-        QWidget::setTabOrder(le_cpf, le_email);
-        QWidget::setTabOrder(le_email, btn_buscar);
-        QWidget::setTabOrder(btn_buscar, btn_cancelar);
+        QWidget::setTabOrder(le_telefone, btn_buscar);
+        QWidget::setTabOrder(btn_buscar, btn_limpar);
+        QWidget::setTabOrder(btn_limpar, btn_cancelar);
+        QWidget::setTabOrder(btn_cancelar, tv_clientes);
 
         retranslateUi(tela_listar_clientes);
         QObject::connect(btn_limpar, SIGNAL(clicked()), le_codigo, SLOT(clear()));
         QObject::connect(btn_limpar, SIGNAL(clicked()), le_nome, SLOT(clear()));
         QObject::connect(btn_limpar, SIGNAL(clicked()), le_telefone, SLOT(clear()));
-        QObject::connect(btn_limpar, SIGNAL(clicked()), le_rg, SLOT(clear()));
-        QObject::connect(btn_limpar, SIGNAL(clicked()), le_cpf, SLOT(clear()));
-        QObject::connect(btn_limpar, SIGNAL(clicked()), le_email, SLOT(clear()));
 
         QMetaObject::connectSlotsByName(tela_listar_clientes);
     } // setupUi
@@ -227,19 +186,11 @@ public:
         lb_codigo->setText(QApplication::translate("tela_listar_clientes", "C\303\263digo:", 0, QApplication::UnicodeUTF8));
         le_codigo->setInputMask(QApplication::translate("tela_listar_clientes", "000000000; ", 0, QApplication::UnicodeUTF8));
         le_codigo->setText(QString());
-        lb_rg->setText(QApplication::translate("tela_listar_clientes", "RG:", 0, QApplication::UnicodeUTF8));
         lb_nome->setText(QApplication::translate("tela_listar_clientes", "Nome:", 0, QApplication::UnicodeUTF8));
-        lb_cpf->setText(QApplication::translate("tela_listar_clientes", "CPF:", 0, QApplication::UnicodeUTF8));
-        le_rg->setInputMask(QApplication::translate("tela_listar_clientes", "00000000000000000000; ", 0, QApplication::UnicodeUTF8));
-        le_rg->setText(QString());
         le_nome->setText(QString());
-        le_cpf->setInputMask(QApplication::translate("tela_listar_clientes", "000.000.000-00; ", 0, QApplication::UnicodeUTF8));
-        le_cpf->setText(QApplication::translate("tela_listar_clientes", "..-", 0, QApplication::UnicodeUTF8));
         lb_telefone->setText(QApplication::translate("tela_listar_clientes", "Telefone:", 0, QApplication::UnicodeUTF8));
-        lb_email->setText(QApplication::translate("tela_listar_clientes", "E-mail:", 0, QApplication::UnicodeUTF8));
         le_telefone->setInputMask(QApplication::translate("tela_listar_clientes", "(00)00000-0000; ", 0, QApplication::UnicodeUTF8));
         le_telefone->setText(QApplication::translate("tela_listar_clientes", "()-", 0, QApplication::UnicodeUTF8));
-        le_email->setText(QString());
         btn_buscar->setText(QApplication::translate("tela_listar_clientes", "Buscar", 0, QApplication::UnicodeUTF8));
         btn_cancelar->setText(QApplication::translate("tela_listar_clientes", "Cancelar", 0, QApplication::UnicodeUTF8));
         btn_limpar->setText(QApplication::translate("tela_listar_clientes", "Limpar", 0, QApplication::UnicodeUTF8));

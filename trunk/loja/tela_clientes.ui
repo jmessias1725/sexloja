@@ -937,7 +937,7 @@ p, li { white-space: pre-wrap; }
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QGraphicsView" name="graphicsView">
+    <widget class="QGraphicsView" name="gv_estado">
      <property name="geometry">
       <rect>
        <x>50</x>
@@ -984,7 +984,7 @@ p, li { white-space: pre-wrap; }
     <zorder>lb_cep</zorder>
     <zorder>lb_uf</zorder>
     <zorder>le_uf</zorder>
-    <zorder>graphicsView</zorder>
+    <zorder>gv_estado</zorder>
     <zorder>le_estado</zorder>
    </widget>
   </widget>

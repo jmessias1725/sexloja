@@ -319,6 +319,7 @@ void tela_cadastro_cliente::adicionar_telefone(){
     std::string operadora;
     telefone = le_telefone->text().toStdString();
     operadora = cb_operadora->currentText().toStdString();
+    funcoes_extras icones;
 
     if(telefone.size()>=13){
         if (cb_operadora->currentText()=="------------------------"){
@@ -350,60 +351,13 @@ void tela_cadastro_cliente::adicionar_telefone(){
                 }
             }
             if(!ja_cadastrado){
-                QIcon icon,icon1,icon2,icon3,icon4,icon5,icon6,icon7,icon8;
-
                 lista_telefone.push_back(telefone);
                 lista_operadora.push_back(operadora);
                 ui->cb_telefone->clear();
 
-                icon1.addFile(QString::fromUtf8(":/operadoras/img/LOGO-ALGAR-TELECOM.png"), QSize(), QIcon::Normal, QIcon::Off);
-                icon2.addFile(QString::fromUtf8(":/operadoras/img/claro.png"), QSize(), QIcon::Normal, QIcon::Off);
-                icon3.addFile(QString::fromUtf8(":/operadoras/img/vivo_boneco.png"), QSize(), QIcon::Normal, QIcon::Off);
-                icon4.addFile(QString::fromUtf8(":/operadoras/img/TIM.png"), QSize(), QIcon::Normal, QIcon::Off);
-                icon5.addFile(QString::fromUtf8(":/operadoras/img/oi.png"), QSize(), QIcon::Normal, QIcon::Off);
-                icon6.addFile(QString::fromUtf8(":/operadoras/img/sercom_tel.png"), QSize(), QIcon::Normal, QIcon::Off);
-                icon7.addFile(QString::fromUtf8(":/operadoras/img/nextel-novo.png"), QSize(), QIcon::Normal, QIcon::Off);
-                icon8.addFile(QString::fromUtf8(":img/img/telefone.png"), QSize(), QIcon::Normal, QIcon::Off);
                 int i = lista_telefone.size();
                 for (i = i-1; i>=0 ;i--){
-                    if(lista_operadora[i]=="Algar Telecom"){
-                       icon=icon1;
-                    }
-                    else{
-                        if(lista_operadora[i]=="Claro"){
-                            icon=icon2;
-                        }
-                        else{
-                            if(lista_operadora[i]=="Vivo"){
-                                icon=icon3;
-                            }
-                            else{
-                                if(lista_operadora[i]=="TIM"){
-                                    icon=icon4;
-                                }
-                                else{
-                                    if(lista_operadora[i]=="Oi"){
-                                        icon=icon5;
-                                    }
-                                    else{
-                                        if(lista_operadora[i]=="Sercomtel"){
-                                            icon=icon6;
-                                        }
-                                        else{
-                                            if(lista_operadora[i]=="Nextel"){
-                                                icon=icon7;
-                                            }
-                                            else{
-                                                icon=icon8;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    ui->cb_telefone->addItem(icon,QString::fromStdString(lista_telefone[i]+" "+lista_operadora[i]));
+                    ui->cb_telefone->addItem(icones.retorna_icone_operadora(lista_operadora[i]),QString::fromStdString(lista_telefone[i]+" "+lista_operadora[i]));
                 }
 
                 tela_cadastro_telefone->close();
@@ -618,23 +572,6 @@ void tela_cadastro_cliente::on_cb_estado_currentIndexChanged(int index)
 
 void tela_cadastro_cliente::on_btn_cancelar_clicked()
 {
-    ui->le_nome->clear();
-    ui->le_rg->clear();
-    ui->le_cpf->clear();
-    lista_email.clear();
-    ui->cb_email->clear();
-    lista_telefone.clear();
-    lista_operadora.clear();
-    ui->cb_telefone->clear();
-    ui->te_comentario->clear();
-    ui->le_uf->setText("--");
-    ui->cb_estado->setCurrentIndex(0);
-    ui->le_cidade->clear();
-    ui->le_bairro->clear();
-    ui->le_rua->clear();
-    ui->le_cep->clear();
-    ui->le_numero->clear();
-    ui->te_ponto_referencia->clear();
     this->close();
 }
 
@@ -657,23 +594,6 @@ void tela_cadastro_cliente::on_btn_confirmar_clicked()
                     ui->le_rua->text(), ui->le_cep->text(), ui->le_numero->text().toInt(), QString::fromStdString(ponto_referencia_aux));
 
         if(cad_cliente->salvar_cliente()){
-            ui->le_nome->clear();
-            ui->le_rg->clear();
-            ui->le_cpf->clear();
-            lista_email.clear();
-            ui->cb_email->clear();
-            lista_telefone.clear();
-            lista_operadora.clear();
-            ui->cb_telefone->clear();
-            ui->te_comentario->clear();
-            ui->le_uf->setText("--");
-            ui->cb_estado->setCurrentIndex(0);
-            ui->le_cidade->clear();
-            ui->le_bairro->clear();
-            ui->le_rua->clear();
-            ui->le_cep->clear();
-            ui->le_numero->clear();
-            ui->te_ponto_referencia->clear();
             this->close();
         }
     }
@@ -703,4 +623,24 @@ void tela_cadastro_cliente::on_btn_confirmar_clicked()
             msg.exec();
         }
     }
+}
+
+void tela_cadastro_cliente::closeEvent( QCloseEvent * event ){
+    ui->le_nome->clear();
+    ui->le_rg->clear();
+    ui->le_cpf->clear();
+    lista_email.clear();
+    ui->cb_email->clear();
+    lista_telefone.clear();
+    lista_operadora.clear();
+    ui->cb_telefone->clear();
+    ui->te_comentario->clear();
+    ui->le_uf->setText("--");
+    ui->cb_estado->setCurrentIndex(0);
+    ui->le_cidade->clear();
+    ui->le_bairro->clear();
+    ui->le_rua->clear();
+    ui->le_cep->clear();
+    ui->le_numero->clear();
+    ui->te_ponto_referencia->clear();
 }

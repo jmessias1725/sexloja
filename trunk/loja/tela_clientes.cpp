@@ -23,38 +23,66 @@ void tela_clientes::on_actionAdicionar_Contato_triggered()
     tl_cadastro_clientes.show();
 }
 
-void tela_clientes::definir_dados_cliente(std::string id_cliente,std::string nome_cliente,std::string rg_cliente,std::string cpf_cliente,
-                                          std::string comentario_cliente,std::string cep_cliente,std::string rua_cliente,
-                                          std::string bairro_cliente,std::string ponto_referencia_cliente,std::string cidade_cliente,
-                                          std::string uf,std::string numero,std::string estado){
-    ui->le_codigo->setText(QString::fromStdString(id_cliente));
-    ui->le_nome->setText(QString::fromStdString(nome_cliente));
-    ui->le_rg->setText(QString::fromStdString(rg_cliente));
-    ui->le_cpf->setText(QString::fromStdString(cpf_cliente));
-    ui->le_cep->setText(QString::fromStdString(cep_cliente));
-    ui->le_rua->setText(QString::fromStdString(rua_cliente));
-    ui->le_bairro->setText(QString::fromStdString(bairro_cliente));
-    ui->te_ponto_referencia->setText(QString::fromStdString(ponto_referencia_cliente));
-    ui->le_cidade->setText(QString::fromStdString(cidade_cliente));
-    ui->le_estado->setText(QString::fromStdString(estado));
-    ui->le_uf->setText(QString::fromStdString(uf));
-    ui->le_numero->setText(QString::fromStdString(numero));
-    ui->te_comentario_cliente->setText(QString::fromStdString(comentario_cliente));
-
+void tela_clientes::definir_dados_cliente(cliente *cad_cliente){
+    funcoes_extras icone_operadora;
     QGraphicsScene *scene = new QGraphicsScene;
 
-    ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->le_codigo->setText(QString::number(cad_cliente->retornar_id()));
+    ui->le_nome->setText(cad_cliente->retornar_nome());
+    ui->le_rg->setText(cad_cliente->retornar_rg());
+    ui->le_cpf->setText(cad_cliente->retornar_cpf());
+    ui->le_cep->setText(cad_cliente->retorna_numero_cep());
+    ui->le_rua->setText(cad_cliente->retorna_nome_rua());
+    ui->le_bairro->setText(cad_cliente->retorna_bairro());
+    ui->te_ponto_referencia->setText(cad_cliente->retorna_ponto_referencia());
+    ui->le_cidade->setText(cad_cliente->retorna_cidade());
+    ui->le_estado->setText(cad_cliente->retorna_nome_estado());
+    ui->le_uf->setText(cad_cliente->retorna_sigla_estado());
+    ui->le_numero->setText(QString::number(cad_cliente->retorna_numero_residencia()));
+    ui->te_comentario_cliente->setText(cad_cliente->retornar_comentario());
 
-    QPixmap *lPixmap = new QPixmap(funcoes.retorna_nome_imagem_estado(uf));
-    QPixmap sized = lPixmap->scaled(QSize(ui->graphicsView->width(),ui->graphicsView->height()), Qt::IgnoreAspectRatio); // This scales the image too all
-
+    ui->gv_estado->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->gv_estado->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    QPixmap *lPixmap = new QPixmap(funcoes.retorna_nome_imagem_estado(cad_cliente->retorna_sigla_estado().toStdString()));
+    QPixmap sized = lPixmap->scaled(QSize(ui->gv_estado->width(),ui->gv_estado->height()), Qt::IgnoreAspectRatio); // This scales the image too all
     QImage sizedImage = QImage(sized.toImage());
-    QImage sizedCroppedImage = QImage(sizedImage.copy(0,0,(ui->graphicsView->width()),(ui->graphicsView->height())));
-
+    QImage sizedCroppedImage = QImage(sizedImage.copy(0,0,(ui->gv_estado->width()),(ui->gv_estado->height())));
     QGraphicsPixmapItem *sizedBackground = scene->addPixmap(QPixmap::fromImage(sizedCroppedImage));
     sizedBackground->setZValue(1);
-    ui->graphicsView->setScene(scene);
+    ui->gv_estado->setScene(scene);
 
+    std::vector< std::string > aux_email = cad_cliente->retorna_lista_email();
+    std::vector< std::string > aux_operadoras = cad_cliente->retorna_lista_operadora();
+    std::vector< std::string > aux_telefones = cad_cliente->retorna_lista_telefone();
+
+    int j = aux_email.size();
+    for (j = j-1; j>=0 ;j--){
+        ui->cb_email->addItem(QString::fromStdString(aux_email[j]));
+    }
+
+    int i = aux_telefones.size();
+    for (i = i-1; i>=0 ;i--){
+        ui->cb_telefone->addItem(icone_operadora.retorna_icone_operadora(aux_operadoras[i]),QString::fromStdString(aux_telefones[i]+" "+aux_operadoras[i]));
+    }
+    aux_email.clear();
+    aux_operadoras.clear();
+    aux_telefones.clear();
+}
+void tela_clientes::closeEvent(QCloseEvent *event){
+    ui->le_codigo->clear();
+    ui->le_nome->clear();
+    ui->le_rg->clear();
+    ui->le_cpf->clear();
+    ui->le_cep->clear();
+    ui->le_rua->clear();
+    ui->le_bairro->clear();
+    ui->te_ponto_referencia->clear();
+    ui->le_cidade->clear();
+    ui->le_estado->clear();
+    ui->le_uf->clear();
+    ui->le_numero->clear();
+    ui->te_comentario_cliente->clear();
+    ui->cb_email->clear();
+    ui->cb_telefone->clear();
 
 }

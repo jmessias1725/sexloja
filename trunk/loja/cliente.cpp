@@ -11,7 +11,7 @@ cliente::cliente(int id_cliente,QString cliente_nome,QString cliente_rg,QString 
                  QString uf_sigla, QString uf_nome, QString cidade, QString bairro,
                  QString rua, QString cep, int numero, QString pt_referencia)
                  :endereco(uf_sigla,uf_nome,cidade,bairro,rua, cep,numero,pt_referencia){
-    id=id_cliente;
+    id = id_cliente;
     nome =cliente_nome;
     rg =cliente_rg;
     cpf =cliente_cpf;
@@ -47,27 +47,40 @@ QString cliente::retornar_nome(){
 }
 
 QString cliente::retornar_rg(void){
-
+    return rg;
 }
 
 QString cliente::retornar_cpf(void){
-
+    return cpf;
 }
 
 QString cliente::retornar_comentario(void){
-
+    return comentario;
 }
 
 std::vector< std::string > cliente::retorna_lista_email(void){
-
+    return lista_email;
 }
 
 std::vector< std::string > cliente::retorna_lista_telefone(void){
-
+    return lista_telefone;
 }
 
 std::vector< std::string > cliente::retorna_lista_operadora(void){
+    return lista_operadora;
+}
 
+void cliente::retorna_primeiro_email(){
+        //std::cout<<lista_email[0]<<std::endl;
+    //return QString::fromStdString(lista_email[0]);
+}
+
+QString cliente::retorna_primeiro_telefone(){
+    return  QString::fromStdString(lista_telefone[0]);
+}
+
+QString cliente::retorna_primeiro_operadora(){
+    return  QString::fromStdString(lista_operadora[0]);
 }
 
 bool cliente::salvar_cliente(void){

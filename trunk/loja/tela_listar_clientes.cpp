@@ -7,6 +7,7 @@ tela_listar_clientes::tela_listar_clientes(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->le_codigo->setCursorPosition(0);
+    modelo = new QStandardItemModel();
 }
 
 tela_listar_clientes::~tela_listar_clientes()
@@ -55,6 +56,19 @@ void tela_listar_clientes::on_btn_buscar_clicked()
     conexao_bd conexao;
     bool verifica_conexao;
     QSqlDatabase bd;
+    std::vector< std::string > lista_id;
+    std::vector< std::string > lista_nomes;
+    std::vector< std::string > lista_cpfs;
+    std::vector< std::string > lista_rgs;
+    std::vector< std::string > lista_comentario;
+    std::vector< std::string > lista_cep;
+    std::vector< std::string > lista_rua;
+    std::vector< std::string > lista_bairro;
+    std::vector< std::string > lista_ponto_referencia;
+    std::vector< std::string > lista_cidade;
+    std::vector< std::string > lista_uf;
+    std::vector< std::string > lista_numero;
+    std::vector< std::string > lista_estado;
     std::vector< std::string > aux_lista_email;
     std::vector< std::string > aux_lista_telefone;
     std::vector< std::string > aux_lista_operadora;
@@ -87,7 +101,12 @@ void tela_listar_clientes::on_btn_buscar_clicked()
             lista_estado.push_back(consultar.value(12).toString().toStdString());
         }
 
-        for (int i=0;i<1;i++){
+        modelo = new QStandardItemModel(int(lista_id.size()),3,this);
+        modelo->clear();
+        modelo->setHorizontalHeaderItem(0, new QStandardItem(QString("Código:")));
+        modelo->setHorizontalHeaderItem(1, new QStandardItem(QString("Nome:")));
+        modelo->setHorizontalHeaderItem(2, new QStandardItem(QString("Telefone:")));
+        for (int i=0;i<int(lista_id.size());i++){
             consultar.exec("SELECT telefone,operadora FROM tel_cliente WHERE id_cliente = "+QString::fromStdString(lista_id[i])+";");
             while(consultar.next()){
                 aux_lista_telefone.push_back(consultar.value(0).toString().toStdString());
@@ -104,39 +123,37 @@ void tela_listar_clientes::on_btn_buscar_clicked()
                                                  QString::fromStdString(lista_bairro[i]),QString::fromStdString(lista_rua[i]),QString::fromStdString(lista_cep[i]),
                                                  QString::fromStdString(lista_numero[i]).toInt(),QString::fromStdString(lista_ponto_referencia[i])));
 
-            std::cout<<lista_clientes[i]->retornar_nome().toStdString()<<std::endl;
+            modelo->setItem(i,0,new QStandardItem(QString::fromStdString(lista_id[i])));
+            modelo->setItem(i,1,new QStandardItem(QString::fromStdString(lista_nomes[i])));
+            modelo->setItem(i,2,new QStandardItem(QString::fromStdString(aux_lista_telefone[aux_lista_telefone.size()-1]+" "+aux_lista_operadora[aux_lista_operadora.size()-1])));
+
             aux_lista_telefone.clear();
             aux_lista_operadora.clear();
             aux_lista_email.clear();
         }
-
-        modelo = new QStandardItemModel(int(lista_id.size()),4,this);
-        modelo->setHorizontalHeaderItem(0, new QStandardItem(QString("Código:")));
-        modelo->setHorizontalHeaderItem(1, new QStandardItem(QString("Nome:")));
-        modelo->setHorizontalHeaderItem(2, new QStandardItem(QString("CPF:")));
-        modelo->setHorizontalHeaderItem(3, new QStandardItem(QString("RG:")));
-
-        for(int i = 0 ; i<int(lista_id.size());i++){
-            modelo->setItem(i,0,new QStandardItem(QString::fromStdString(lista_id[i])));
-            modelo->setItem(i,1,new QStandardItem(QString::fromStdString(lista_nomes[i])));
-            modelo->setItem(i,2,new QStandardItem(QString::fromStdString(lista_cpfs[i])));
-            modelo->setItem(i,3,new QStandardItem(QString::fromStdString(lista_rgs[i])));
-        }
-        ui->tv_clientes->setModel(modelo);
-        ui->tv_clientes->resizeColumnsToContents();
-        ui->tv_clientes->horizontalHeader()->setStretchLastSection(true);
         ui->tv_clientes->setSelectionMode(QAbstractItemView::SingleSelection);
         ui->tv_clientes->setSelectionBehavior(QAbstractItemView::SelectRows);
         ui->tv_clientes->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        ui->tv_clientes->setModel(modelo);
+        ui->tv_clientes->resizeColumnsToContents();
     conexao.fechar_conexao();
     }
 }
 
 void tela_listar_clientes::on_tv_clientes_doubleClicked(const QModelIndex &index)
 {
-    tl_cliente.definir_dados_cliente(lista_id[index.row()],lista_nomes[index.row()],lista_rgs[index.row()],lista_cpfs[index.row()],
-                                     lista_comentario[index.row()],lista_cep[index.row()],lista_rua[index.row()],lista_bairro[index.row()],
-                                     lista_ponto_referencia[index.row()],lista_cidade[index.row()],lista_uf[index.row()],lista_numero[index.row()],
-                                     lista_estado[index.row()]);
+    tl_cliente.definir_dados_cliente(lista_clientes[index.row()]);
     tl_cliente.show();
+}
+
+void tela_listar_clientes::on_btn_limpar_clicked()
+{
+    modelo->clear();
+}
+
+void tela_listar_clientes::closeEvent(QCloseEvent *event){
+    modelo->clear();
+    ui->le_codigo->clear();
+    ui->le_nome->clear();
+    ui->le_telefone->clear();
 }

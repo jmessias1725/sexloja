@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_clientes.ui'
 **
-** Created: Mon 17. Sep 22:28:10 2012
+** Created: Tue 18. Sep 11:34:08 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -69,7 +69,7 @@ public:
     QTextEdit *te_ponto_referencia;
     QLabel *lb_uf;
     QLineEdit *le_uf;
-    QGraphicsView *graphicsView;
+    QGraphicsView *gv_estado;
     QLineEdit *le_estado;
     QToolBar *Barra_de_menu;
 
@@ -317,9 +317,9 @@ public:
         le_uf->setGeometry(QRect(230, 80, 25, 20));
         le_uf->setFont(font2);
         le_uf->setReadOnly(true);
-        graphicsView = new QGraphicsView(gb_endereo);
-        graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
-        graphicsView->setGeometry(QRect(50, 77, 40, 25));
+        gv_estado = new QGraphicsView(gb_endereo);
+        gv_estado->setObjectName(QString::fromUtf8("gv_estado"));
+        gv_estado->setGeometry(QRect(50, 77, 40, 25));
         le_estado = new QLineEdit(gb_endereo);
         le_estado->setObjectName(QString::fromUtf8("le_estado"));
         le_estado->setGeometry(QRect(91, 80, 110, 20));
@@ -340,7 +340,7 @@ public:
         lb_cep->raise();
         lb_uf->raise();
         le_uf->raise();
-        graphicsView->raise();
+        gv_estado->raise();
         le_estado->raise();
         tela_clientes->setCentralWidget(centralwidget);
         Barra_de_menu = new QToolBar(tela_clientes);
