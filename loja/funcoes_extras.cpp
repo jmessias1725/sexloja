@@ -151,6 +151,7 @@ int funcoes_extras::retorna_id_estado(std::string uf){
     }
     }
 }
+
 QString funcoes_extras::retorna_nome_imagem_estado(std::string uf){
     if(uf == "--"){
         return ":/bandeiras/badeiras_estados/bandeira_do_brasil.png";
@@ -289,6 +290,7 @@ QString funcoes_extras::retorna_nome_imagem_estado(std::string uf){
     }
     }
 }
+
 QIcon funcoes_extras::retorna_icone_operadora(std::string operadora){
     QIcon icon1,icon2,icon3,icon4,icon5,icon6,icon7,icon8;
     icon1.addFile(QString::fromUtf8(":/operadoras/img/LOGO-ALGAR-TELECOM.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -335,4 +337,12 @@ QIcon funcoes_extras::retorna_icone_operadora(std::string operadora){
                 }
             }
         }
+}
+
+int funcoes_extras::determinar_posicao_caractere(std::string palavra, const char *caractere){
+    for(int i = 0; i<int(palavra.size());i++){
+        if(palavra[i]==*caractere)
+            return i;
+    }
+    return -1;
 }

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_listar_clientes.ui'
 **
-** Created: Tue 18. Sep 11:03:34 2012
+** Created: Wed 19. Sep 09:38:22 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -158,11 +158,14 @@ public:
         tv_clientes->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
         tv_clientes->setAlternatingRowColors(true);
         tv_clientes->setSortingEnabled(false);
-        tv_clientes->horizontalHeader()->setDefaultSectionSize(20);
+        tv_clientes->horizontalHeader()->setVisible(true);
+        tv_clientes->horizontalHeader()->setDefaultSectionSize(450);
         tv_clientes->horizontalHeader()->setMinimumSectionSize(15);
         tv_clientes->horizontalHeader()->setStretchLastSection(true);
-        tv_clientes->verticalHeader()->setCascadingSectionResizes(true);
+        tv_clientes->verticalHeader()->setVisible(false);
+        tv_clientes->verticalHeader()->setCascadingSectionResizes(false);
         tv_clientes->verticalHeader()->setDefaultSectionSize(30);
+        tv_clientes->verticalHeader()->setMinimumSectionSize(20);
         tv_clientes->verticalHeader()->setStretchLastSection(false);
         QWidget::setTabOrder(le_codigo, le_nome);
         QWidget::setTabOrder(le_nome, le_telefone);

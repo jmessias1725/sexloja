@@ -11,10 +11,12 @@ INPUT(
 ./release\endereco.o
 ./release\funcoes_extras.o
 ./release\tela_listar_clientes.o
+./release\tela_editar_cliente.o
 ./release\moc_tela_login.o
 ./release\moc_tela_principal.o
 ./release\moc_tela_clientes.o
 ./release\moc_tela_cadastro_cliente.o
 ./release\moc_tela_listar_clientes.o
+./release\moc_tela_editar_cliente.o
 ./release\qrc_imagens.o
 );

@@ -27,3 +27,8 @@ void tela_principal::on_Cadastrar_cliente_triggered()
 {
     tl_cadastro_clientes.show();
 }
+
+void tela_principal::on_buscar_clientes_triggered()
+{
+    tl_listar_clientes.show();
+}

@@ -1,0 +1,1319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>tela_editar_cliente</class>
+ <widget class="QDialog" name="tela_editar_cliente">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>390</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Calibri</family>
+    <pointsize>10</pointsize>
+    <kerning>false</kerning>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Editar cadastro do Cliente</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="imagens.qrc">
+    <normaloff>:/img/img/logo_sex.png</normaloff>:/img/img/logo_sex.png</iconset>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <widget class="QPushButton" name="btn_confirmar">
+   <property name="geometry">
+    <rect>
+     <x>305</x>
+     <y>360</y>
+     <width>90</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>24</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>90</width>
+     <height>24</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Confirmar</string>
+   </property>
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/img/img/1345902916_camera_test.png</normaloff>:/img/img/1345902916_camera_test.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="gb_endereo">
+   <property name="geometry">
+    <rect>
+     <x>5</x>
+     <y>164</y>
+     <width>790</width>
+     <height>192</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+     <kerning>false</kerning>
+    </font>
+   </property>
+   <property name="title">
+    <string>Endereço</string>
+   </property>
+   <widget class="QLineEdit" name="le_cep">
+    <property name="geometry">
+     <rect>
+      <x>35</x>
+      <y>23</y>
+      <width>91</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>100</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="inputMask">
+     <string>00000-000; </string>
+    </property>
+    <property name="text">
+     <string>-</string>
+    </property>
+    <property name="frame">
+     <bool>true</bool>
+    </property>
+    <property name="cursorPosition">
+     <number>9</number>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lb_cep">
+    <property name="geometry">
+     <rect>
+      <x>8</x>
+      <y>23</y>
+      <width>27</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>CEP:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lb_rua">
+    <property name="geometry">
+     <rect>
+      <x>133</x>
+      <y>23</y>
+      <width>31</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>Rua:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="le_rua">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>23</y>
+      <width>621</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="maxLength">
+     <number>100</number>
+    </property>
+    <property name="cursorPosition">
+     <number>0</number>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lb_numero">
+    <property name="geometry">
+     <rect>
+      <x>7</x>
+      <y>50</y>
+      <width>51</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>Número:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="le_numero">
+    <property name="geometry">
+     <rect>
+      <x>54</x>
+      <y>50</y>
+      <width>70</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="inputMask">
+     <string>000000000; </string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="maxLength">
+     <number>9</number>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lb_bairro">
+    <property name="geometry">
+     <rect>
+      <x>132</x>
+      <y>50</y>
+      <width>46</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>Bairro:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="le_bairro">
+    <property name="geometry">
+     <rect>
+      <x>172</x>
+      <y>50</y>
+      <width>361</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="maxLength">
+     <number>70</number>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lb_cidade">
+    <property name="geometry">
+     <rect>
+      <x>538</x>
+      <y>50</y>
+      <width>46</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>Cidade:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="le_cidade">
+    <property name="geometry">
+     <rect>
+      <x>581</x>
+      <y>50</y>
+      <width>201</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="maxLength">
+     <number>50</number>
+    </property>
+    <property name="cursorPosition">
+     <number>0</number>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lb_estado">
+    <property name="geometry">
+     <rect>
+      <x>8</x>
+      <y>80</y>
+      <width>45</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>Estado:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lb_ponto_refe">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>110</y>
+      <width>131</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>Ponto de referência:</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="te_ponto_referencia">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>132</y>
+      <width>770</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOn</enum>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Calibri'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lb_uf">
+    <property name="geometry">
+     <rect>
+      <x>225</x>
+      <y>80</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>UF:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="le_uf">
+    <property name="geometry">
+     <rect>
+      <x>245</x>
+      <y>80</y>
+      <width>25</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>--</string>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cb_estado">
+    <property name="geometry">
+     <rect>
+      <x>53</x>
+      <y>80</y>
+      <width>161</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <item>
+     <property name="text">
+      <string>-------------------</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/bandeira_do_brasil.png</normaloff>:/bandeiras/badeiras_estados/bandeira_do_brasil.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Acre</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/acre.png</normaloff>:/bandeiras/badeiras_estados/acre.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Alagoas</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Alagoas.png</normaloff>:/bandeiras/badeiras_estados/Alagoas.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Amazonas</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Amazonas.png</normaloff>:/bandeiras/badeiras_estados/Amazonas.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Amapá</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Bandeira_do_Amapa.png</normaloff>:/bandeiras/badeiras_estados/Bandeira_do_Amapa.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Bahia</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Bahia.png</normaloff>:/bandeiras/badeiras_estados/Bahia.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Ceará</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Bandeira_do_Ceara.png</normaloff>:/bandeiras/badeiras_estados/Bandeira_do_Ceara.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Distrito Federal</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Distrito_Federal.png</normaloff>:/bandeiras/badeiras_estados/Distrito_Federal.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Espírito Santo</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Espirito_Santo.png</normaloff>:/bandeiras/badeiras_estados/Espirito_Santo.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Goiás</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Goias.png</normaloff>:/bandeiras/badeiras_estados/Goias.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Maranhão</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Maranhao.png</normaloff>:/bandeiras/badeiras_estados/Maranhao.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Minas Gerais</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Minas_Gerais.png</normaloff>:/bandeiras/badeiras_estados/Minas_Gerais.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Mato Grosso do Sul</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Mato_Grosso_do_Sul.png</normaloff>:/bandeiras/badeiras_estados/Mato_Grosso_do_Sul.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Mato Grosso</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Mato_Grosso.png</normaloff>:/bandeiras/badeiras_estados/Mato_Grosso.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Pará</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Para.png</normaloff>:/bandeiras/badeiras_estados/Para.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Paraíba</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Paraiba.png</normaloff>:/bandeiras/badeiras_estados/Paraiba.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Pernambuco</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Pernambuco.png</normaloff>:/bandeiras/badeiras_estados/Pernambuco.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Piauí</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Piaui.png</normaloff>:/bandeiras/badeiras_estados/Piaui.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Paraná</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Bandeira_do_Parana.png</normaloff>:/bandeiras/badeiras_estados/Bandeira_do_Parana.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Rio de Janeiro</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Rio_de_Janeiro.png</normaloff>:/bandeiras/badeiras_estados/Rio_de_Janeiro.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Rio Grande do Norte</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Rio_Grande_do_Norte.png</normaloff>:/bandeiras/badeiras_estados/Rio_Grande_do_Norte.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Rondônia</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Rondonia.png</normaloff>:/bandeiras/badeiras_estados/Rondonia.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Roraima</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Roraima.png</normaloff>:/bandeiras/badeiras_estados/Roraima.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Rio Grande do Sul</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Rio_Grande_do_Sul.png</normaloff>:/bandeiras/badeiras_estados/Rio_Grande_do_Sul.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Santa Catarina</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Santa_Catarina.png</normaloff>:/bandeiras/badeiras_estados/Santa_Catarina.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Sergipe</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Sergipe.png</normaloff>:/bandeiras/badeiras_estados/Sergipe.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>São Paulo</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Sao_Paulo.png</normaloff>:/bandeiras/badeiras_estados/Sao_Paulo.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Tocantins</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/bandeiras/badeiras_estados/Tocantins.png</normaloff>:/bandeiras/badeiras_estados/Tocantins.png</iconset>
+     </property>
+    </item>
+   </widget>
+   <zorder>lb_rua</zorder>
+   <zorder>le_rua</zorder>
+   <zorder>lb_numero</zorder>
+   <zorder>le_numero</zorder>
+   <zorder>lb_bairro</zorder>
+   <zorder>le_bairro</zorder>
+   <zorder>lb_cidade</zorder>
+   <zorder>le_cidade</zorder>
+   <zorder>lb_estado</zorder>
+   <zorder>lb_ponto_refe</zorder>
+   <zorder>te_ponto_referencia</zorder>
+   <zorder>le_cep</zorder>
+   <zorder>lb_cep</zorder>
+   <zorder>lb_uf</zorder>
+   <zorder>le_uf</zorder>
+   <zorder>cb_estado</zorder>
+  </widget>
+  <widget class="QPushButton" name="btn_cancelar">
+   <property name="geometry">
+    <rect>
+     <x>405</x>
+     <y>360</y>
+     <width>90</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>24</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>90</width>
+     <height>24</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Cancelar</string>
+   </property>
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/img/img/1345902747_button_cancel.png</normaloff>:/img/img/1345902747_button_cancel.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>18</width>
+     <height>18</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="gb_dados_cliente">
+   <property name="geometry">
+    <rect>
+     <x>5</x>
+     <y>5</y>
+     <width>790</width>
+     <height>156</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+     <kerning>false</kerning>
+    </font>
+   </property>
+   <property name="title">
+    <string>Dados do Cliente</string>
+   </property>
+   <widget class="QLabel" name="lb_telefone">
+    <property name="geometry">
+     <rect>
+      <x>487</x>
+      <y>53</y>
+      <width>50</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>Telefone:</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cb_telefone">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>53</y>
+      <width>217</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>22</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="editable">
+     <bool>false</bool>
+    </property>
+    <property name="maxVisibleItems">
+     <number>20</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lb_nome">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>23</y>
+      <width>35</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>40</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>Nome:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="le_nome">
+    <property name="geometry">
+     <rect>
+      <x>41</x>
+      <y>23</y>
+      <width>425</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>410</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>500</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="maxLength">
+     <number>60</number>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lb_cpf">
+    <property name="geometry">
+     <rect>
+      <x>653</x>
+      <y>23</y>
+      <width>29</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>CPF:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="le_cpf">
+    <property name="geometry">
+     <rect>
+      <x>681</x>
+      <y>23</y>
+      <width>100</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>100</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>100</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="inputMask">
+     <string>000.000.000-00; </string>
+    </property>
+    <property name="text">
+     <string>..-</string>
+    </property>
+    <property name="maxLength">
+     <number>14</number>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lb_rg">
+    <property name="geometry">
+     <rect>
+      <x>475</x>
+      <y>23</y>
+      <width>22</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>RG:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="le_rg">
+    <property name="geometry">
+     <rect>
+      <x>497</x>
+      <y>23</y>
+      <width>150</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>120</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>200</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="inputMask">
+     <string>00000000000000000000; </string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="maxLength">
+     <number>20</number>
+    </property>
+    <property name="cursorPosition">
+     <number>20</number>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lb_email">
+    <property name="geometry">
+     <rect>
+      <x>14</x>
+      <y>53</y>
+      <width>40</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>E-mail:</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cb_email">
+    <property name="geometry">
+     <rect>
+      <x>54</x>
+      <y>53</y>
+      <width>390</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>450</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="sizeIncrement">
+     <size>
+      <width>450</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="editable">
+     <bool>false</bool>
+    </property>
+    <property name="maxCount">
+     <number>60</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lb_comentario">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>Comentário</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="te_comentario">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>100</y>
+      <width>770</width>
+      <height>47</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAsNeeded</enum>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="tb_mais_email">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>49</y>
+      <width>25</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>...</string>
+    </property>
+    <property name="icon">
+     <iconset resource="imagens.qrc">
+      <normaloff>:/img/img/mais.png</normaloff>:/img/img/mais.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>12</width>
+      <height>12</height>
+     </size>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+    <property name="arrowType">
+     <enum>Qt::NoArrow</enum>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="tb_menos_email">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>63</y>
+      <width>25</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>...</string>
+    </property>
+    <property name="icon">
+     <iconset resource="imagens.qrc">
+      <normaloff>:/img/img/menos.png</normaloff>:/img/img/menos.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>12</width>
+      <height>12</height>
+     </size>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="tb_mais_telefone">
+    <property name="geometry">
+     <rect>
+      <x>757</x>
+      <y>49</y>
+      <width>20</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>...</string>
+    </property>
+    <property name="icon">
+     <iconset resource="imagens.qrc">
+      <normaloff>:/img/img/mais.png</normaloff>:/img/img/mais.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>12</width>
+      <height>12</height>
+     </size>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+    <property name="arrowType">
+     <enum>Qt::NoArrow</enum>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="tb_menos_telefone">
+    <property name="geometry">
+     <rect>
+      <x>757</x>
+      <y>63</y>
+      <width>20</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>...</string>
+    </property>
+    <property name="icon">
+     <iconset resource="imagens.qrc">
+      <normaloff>:/img/img/menos.png</normaloff>:/img/img/menos.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>12</width>
+      <height>12</height>
+     </size>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <zorder>lb_cpf</zorder>
+   <zorder>lb_telefone</zorder>
+   <zorder>cb_telefone</zorder>
+   <zorder>le_cpf</zorder>
+   <zorder>lb_email</zorder>
+   <zorder>cb_email</zorder>
+   <zorder>lb_comentario</zorder>
+   <zorder>te_comentario</zorder>
+   <zorder>tb_mais_email</zorder>
+   <zorder>tb_menos_email</zorder>
+   <zorder>tb_mais_telefone</zorder>
+   <zorder>tb_menos_telefone</zorder>
+   <zorder>lb_nome</zorder>
+   <zorder>le_nome</zorder>
+   <zorder>lb_rg</zorder>
+   <zorder>le_rg</zorder>
+  </widget>
+ </widget>
+ <resources>
+  <include location="imagens.qrc"/>
+ </resources>
+ <connections/>
+</ui>

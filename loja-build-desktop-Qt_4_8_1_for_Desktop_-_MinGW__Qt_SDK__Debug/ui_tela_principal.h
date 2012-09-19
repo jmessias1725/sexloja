@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_principal.ui'
 **
-** Created: Mon 17. Sep 22:38:37 2012
+** Created: Wed 19. Sep 15:25:51 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -36,10 +36,10 @@ public:
     QAction *realizaar_venda;
     QAction *Cadastrar_cliente;
     QAction *botao_sair;
-    QAction *listar_clientes;
-    QAction *listar_produtos;
-    QAction *listar_fornecedores;
-    QAction *listar_estoque;
+    QAction *buscar_clientes;
+    QAction *buscar_produtos;
+    QAction *buscar_fornecedores;
+    QAction *buscar_estoque;
     QWidget *centralwidget;
     QMenuBar *menubar;
     QMenu *menuArquivo;
@@ -109,20 +109,20 @@ public:
         QIcon icon9;
         icon9.addFile(QString::fromUtf8(":/img/img/sair.png"), QSize(), QIcon::Normal, QIcon::Off);
         botao_sair->setIcon(icon9);
-        listar_clientes = new QAction(tela_principal);
-        listar_clientes->setObjectName(QString::fromUtf8("listar_clientes"));
-        listar_clientes->setIcon(icon1);
-        listar_produtos = new QAction(tela_principal);
-        listar_produtos->setObjectName(QString::fromUtf8("listar_produtos"));
+        buscar_clientes = new QAction(tela_principal);
+        buscar_clientes->setObjectName(QString::fromUtf8("buscar_clientes"));
+        buscar_clientes->setIcon(icon1);
+        buscar_produtos = new QAction(tela_principal);
+        buscar_produtos->setObjectName(QString::fromUtf8("buscar_produtos"));
         QIcon icon10;
         icon10.addFile(QString::fromUtf8(":/img/img/produto.png"), QSize(), QIcon::Normal, QIcon::Off);
-        listar_produtos->setIcon(icon10);
-        listar_fornecedores = new QAction(tela_principal);
-        listar_fornecedores->setObjectName(QString::fromUtf8("listar_fornecedores"));
-        listar_fornecedores->setIcon(icon3);
-        listar_estoque = new QAction(tela_principal);
-        listar_estoque->setObjectName(QString::fromUtf8("listar_estoque"));
-        listar_estoque->setIcon(icon4);
+        buscar_produtos->setIcon(icon10);
+        buscar_fornecedores = new QAction(tela_principal);
+        buscar_fornecedores->setObjectName(QString::fromUtf8("buscar_fornecedores"));
+        buscar_fornecedores->setIcon(icon3);
+        buscar_estoque = new QAction(tela_principal);
+        buscar_estoque->setObjectName(QString::fromUtf8("buscar_estoque"));
+        buscar_estoque->setIcon(icon4);
         centralwidget = new QWidget(tela_principal);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         tela_principal->setCentralWidget(centralwidget);
@@ -165,10 +165,10 @@ public:
         menuNovo->addAction(Cadastrar_cliente);
         menuNovo->addAction(cadastrar_forncecedor);
         menuNovo->addAction(cadastrar_produto);
-        menuListar->addAction(listar_clientes);
-        menuListar->addAction(listar_produtos);
-        menuListar->addAction(listar_fornecedores);
-        menuListar->addAction(listar_estoque);
+        menuListar->addAction(buscar_clientes);
+        menuListar->addAction(buscar_produtos);
+        menuListar->addAction(buscar_fornecedores);
+        menuListar->addAction(buscar_estoque);
         barra_de_menus->addSeparator();
         barra_de_menus->addAction(consultar_caixa);
         barra_de_menus->addAction(consultar_clientes);
@@ -192,13 +192,13 @@ public:
         realizaar_venda->setText(QApplication::translate("tela_principal", "Venda", 0, QApplication::UnicodeUTF8));
         Cadastrar_cliente->setText(QApplication::translate("tela_principal", "Cliente", 0, QApplication::UnicodeUTF8));
         botao_sair->setText(QApplication::translate("tela_principal", "Sair", 0, QApplication::UnicodeUTF8));
-        listar_clientes->setText(QApplication::translate("tela_principal", "Clientes", 0, QApplication::UnicodeUTF8));
-        listar_produtos->setText(QApplication::translate("tela_principal", "Produtos", 0, QApplication::UnicodeUTF8));
-        listar_fornecedores->setText(QApplication::translate("tela_principal", "Fornecedores", 0, QApplication::UnicodeUTF8));
-        listar_estoque->setText(QApplication::translate("tela_principal", "Estoque", 0, QApplication::UnicodeUTF8));
+        buscar_clientes->setText(QApplication::translate("tela_principal", "Clientes", 0, QApplication::UnicodeUTF8));
+        buscar_produtos->setText(QApplication::translate("tela_principal", "Produtos", 0, QApplication::UnicodeUTF8));
+        buscar_fornecedores->setText(QApplication::translate("tela_principal", "Fornecedores", 0, QApplication::UnicodeUTF8));
+        buscar_estoque->setText(QApplication::translate("tela_principal", "Estoque", 0, QApplication::UnicodeUTF8));
         menuArquivo->setTitle(QApplication::translate("tela_principal", "Arquivo", 0, QApplication::UnicodeUTF8));
         menuNovo->setTitle(QApplication::translate("tela_principal", "Novo", 0, QApplication::UnicodeUTF8));
-        menuListar->setTitle(QApplication::translate("tela_principal", "Listar", 0, QApplication::UnicodeUTF8));
+        menuListar->setTitle(QApplication::translate("tela_principal", "Buscar", 0, QApplication::UnicodeUTF8));
         barra_de_menus->setWindowTitle(QApplication::translate("tela_principal", "Barra de menus", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

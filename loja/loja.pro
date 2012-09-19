@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     cep.cpp \
     endereco.cpp \
     funcoes_extras.cpp \
-    tela_listar_clientes.cpp
+    tela_listar_clientes.cpp \
+    tela_editar_cliente.cpp
 
 HEADERS  += \
     conexao_bd.h \
@@ -35,7 +36,8 @@ HEADERS  += \
     cep.h \
     endereco.h \
     funcoes_extras.h \
-    tela_listar_clientes.h
+    tela_listar_clientes.h \
+    tela_editar_cliente.h
 
 FORMS    += \
     tela_login.ui \
@@ -43,7 +45,8 @@ FORMS    += \
     tela_clientes.ui \
     tela_cadastro_cliente.ui \
     tela_cadastro_telefone.ui \
-    tela_listar_clientes.ui
+    tela_listar_clientes.ui \
+    tela_editar_cliente.ui
 
 RESOURCES += \
     imagens.qrc

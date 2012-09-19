@@ -5,6 +5,7 @@
 #include "tela_cadastro_cliente.h"
 #include "funcoes_extras.h"
 #include "cliente.h"
+#include "tela_editar_cliente.h"
 
 namespace Ui {
 class tela_clientes;
@@ -30,6 +31,8 @@ private slots:
 private:
     Ui::tela_clientes *ui;
     tela_cadastro_cliente tl_cadastro_clientes;
+    tela_editar_cliente tl_editar_cliente;
+    cliente *informacoes_cliente;
     funcoes_extras funcoes;
 };
 

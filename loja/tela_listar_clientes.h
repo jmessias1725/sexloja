@@ -9,6 +9,7 @@
 #include "conexao_bd.h"
 #include "tela_clientes.h"
 #include "cliente.h"
+#include "funcoes_extras.h"
 
 namespace Ui {
 class tela_listar_clientes;

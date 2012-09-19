@@ -15,7 +15,7 @@ tela_clientes::~tela_clientes()
 
 void tela_clientes::on_actionEditar_Contato_triggered()
 {
-
+    tl_editar_cliente.exec();
 }
 
 void tela_clientes::on_actionAdicionar_Contato_triggered()
@@ -24,6 +24,8 @@ void tela_clientes::on_actionAdicionar_Contato_triggered()
 }
 
 void tela_clientes::definir_dados_cliente(cliente *cad_cliente){
+    informacoes_cliente = cad_cliente;
+
     funcoes_extras icone_operadora;
     QGraphicsScene *scene = new QGraphicsScene;
 

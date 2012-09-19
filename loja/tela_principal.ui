@@ -66,12 +66,12 @@
    </widget>
    <widget class="QMenu" name="menuListar">
     <property name="title">
-     <string>Listar</string>
+     <string>Buscar</string>
     </property>
-    <addaction name="listar_clientes"/>
-    <addaction name="listar_produtos"/>
-    <addaction name="listar_fornecedores"/>
-    <addaction name="listar_estoque"/>
+    <addaction name="buscar_clientes"/>
+    <addaction name="buscar_produtos"/>
+    <addaction name="buscar_fornecedores"/>
+    <addaction name="buscar_estoque"/>
    </widget>
    <addaction name="menuArquivo"/>
    <addaction name="menuListar"/>
@@ -198,7 +198,7 @@
     <string>Sair</string>
    </property>
   </action>
-  <action name="listar_clientes">
+  <action name="buscar_clientes">
    <property name="icon">
     <iconset resource="imagens.qrc">
      <normaloff>:/img/img/Usuario.png</normaloff>:/img/img/Usuario.png</iconset>
@@ -207,7 +207,7 @@
     <string>Clientes</string>
    </property>
   </action>
-  <action name="listar_produtos">
+  <action name="buscar_produtos">
    <property name="icon">
     <iconset resource="imagens.qrc">
      <normaloff>:/img/img/produto.png</normaloff>:/img/img/produto.png</iconset>
@@ -216,7 +216,7 @@
     <string>Produtos</string>
    </property>
   </action>
-  <action name="listar_fornecedores">
+  <action name="buscar_fornecedores">
    <property name="icon">
     <iconset resource="imagens.qrc">
      <normaloff>:/img/img/fornecedor.png</normaloff>:/img/img/fornecedor.png</iconset>
@@ -225,7 +225,7 @@
     <string>Fornecedores</string>
    </property>
   </action>
-  <action name="listar_estoque">
+  <action name="buscar_estoque">
    <property name="icon">
     <iconset resource="imagens.qrc">
      <normaloff>:/img/img/estoque2.png</normaloff>:/img/img/estoque2.png</iconset>
