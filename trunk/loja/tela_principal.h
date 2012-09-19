@@ -27,6 +27,8 @@ private slots:
 
     void on_Cadastrar_cliente_triggered();
 
+    void on_buscar_clientes_triggered();
+
 private:
     Ui::tela_principal *ui;
     tela_clientes tl_clientes;

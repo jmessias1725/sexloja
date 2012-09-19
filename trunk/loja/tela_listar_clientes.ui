@@ -375,8 +375,11 @@
     <property name="sortingEnabled">
      <bool>false</bool>
     </property>
+    <attribute name="horizontalHeaderVisible">
+     <bool>true</bool>
+    </attribute>
     <attribute name="horizontalHeaderDefaultSectionSize">
-     <number>20</number>
+     <number>450</number>
     </attribute>
     <attribute name="horizontalHeaderMinimumSectionSize">
      <number>15</number>
@@ -384,11 +387,17 @@
     <attribute name="horizontalHeaderStretchLastSection">
      <bool>true</bool>
     </attribute>
+    <attribute name="verticalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
     <attribute name="verticalHeaderCascadingSectionResizes">
-     <bool>true</bool>
+     <bool>false</bool>
     </attribute>
     <attribute name="verticalHeaderDefaultSectionSize">
      <number>30</number>
+    </attribute>
+    <attribute name="verticalHeaderMinimumSectionSize">
+     <number>20</number>
     </attribute>
     <attribute name="verticalHeaderStretchLastSection">
      <bool>false</bool>

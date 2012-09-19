@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_clientes.ui'
 **
-** Created: Tue 18. Sep 11:34:08 2012
+** Created: Wed 19. Sep 16:34:35 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -78,7 +78,7 @@ public:
         if (tela_clientes->objectName().isEmpty())
             tela_clientes->setObjectName(QString::fromUtf8("tela_clientes"));
         tela_clientes->setWindowModality(Qt::ApplicationModal);
-        tela_clientes->resize(800, 670);
+        tela_clientes->resize(800, 656);
         QSizePolicy sizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -217,7 +217,7 @@ public:
         lb_comentario_produtos->setFont(font1);
         groupBox = new QGroupBox(centralwidget);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setGeometry(QRect(5, 385, 790, 231));
+        groupBox->setGeometry(QRect(5, 370, 790, 231));
         QFont font3;
         font3.setFamily(QString::fromUtf8("Calibri"));
         font3.setPointSize(10);

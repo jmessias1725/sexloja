@@ -56,6 +56,7 @@ void tela_listar_clientes::on_btn_buscar_clicked()
     conexao_bd conexao;
     bool verifica_conexao;
     QSqlDatabase bd;
+    funcoes_extras funcao;
     std::vector< std::string > lista_id;
     std::vector< std::string > lista_nomes;
     std::vector< std::string > lista_cpfs;
@@ -73,70 +74,106 @@ void tela_listar_clientes::on_btn_buscar_clicked()
     std::vector< std::string > aux_lista_telefone;
     std::vector< std::string > aux_lista_operadora;
 
-    //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
+    QString campos_consulta;
+    QString id_cliente;
+    QString nome_cliente;
+    std::string telefone;
+    int ta_string_telefone;
 
-    if (verifica_conexao){
-        //Retorna o banco de dados
-        bd = conexao.retorna_bd();
+    telefone = ui->le_telefone->text().toStdString();
+    id_cliente = ui->le_codigo->text();
+    nome_cliente = ui->le_nome->text();
+    lista_clientes.clear();
 
-        //Declara a variável que irá fazer a consulta
-        QSqlQuery consultar(bd);
+    if (((id_cliente.toStdString()!="")&&(id_cliente.toStdString()!=""))||((nome_cliente.toStdString()!="")&&(nome_cliente.toStdString()!=" "))||(telefone!="()-")){
 
-        //realiza a consulta
-        consultar.exec("SELECT id_cliente,nome,rg,cpf,comentario,cep,rua,bairro,ponto_referencia,cidade,uf,numero,estado FROM cliente");
-        while(consultar.next()){
-            lista_id.push_back(consultar.value(0).toString().toStdString());
-            lista_nomes.push_back(consultar.value(1).toString().toStdString());
-            lista_rgs.push_back(consultar.value(2).toString().toStdString());
-            lista_cpfs.push_back(consultar.value(3).toString().toStdString());
-            lista_comentario.push_back(consultar.value(4).toString().toStdString());
-            lista_cep.push_back(consultar.value(5).toString().toStdString());
-            lista_rua.push_back(consultar.value(6).toString().toStdString());
-            lista_bairro.push_back(consultar.value(7).toString().toStdString());
-            lista_ponto_referencia.push_back(consultar.value(8).toString().toStdString());
-            lista_cidade.push_back(consultar.value(9).toString().toStdString());
-            lista_uf.push_back(consultar.value(10).toString().toStdString());
-            lista_numero.push_back(consultar.value(11).toString().toStdString());
-            lista_estado.push_back(consultar.value(12).toString().toStdString());
+        campos_consulta = "cliente.id_cliente, cliente.nome, cliente.rg, cliente.cpf, cliente.comentario,cliente.cep, cliente.rua, cliente.bairro, cliente.ponto_referencia, cliente.cidade, cliente.uf, cliente.numero, cliente.estado";
+
+        if(telefone == "()-"){
+           telefone = "";
+        }
+        else{
+            ta_string_telefone = telefone.size();
+            if(int(ta_string_telefone) < 13){
+                if(ta_string_telefone <= 5){
+                    telefone = telefone.substr(0,ta_string_telefone-1);
+                    telefone = telefone.substr(0,ta_string_telefone-1);
+                }
+                else{
+                    if ((ta_string_telefone > 5)&&(ta_string_telefone <= 10)){
+                        if((funcao.determinar_posicao_caractere(telefone,"-")+1)==ta_string_telefone){
+                           telefone = telefone.substr(0,ta_string_telefone-1);
+                        }
+                    }
+                }
+            }
         }
 
-        modelo = new QStandardItemModel(int(lista_id.size()),3,this);
-        modelo->clear();
-        modelo->setHorizontalHeaderItem(0, new QStandardItem(QString("Código:")));
-        modelo->setHorizontalHeaderItem(1, new QStandardItem(QString("Nome:")));
-        modelo->setHorizontalHeaderItem(2, new QStandardItem(QString("Telefone:")));
-        for (int i=0;i<int(lista_id.size());i++){
-            consultar.exec("SELECT telefone,operadora FROM tel_cliente WHERE id_cliente = "+QString::fromStdString(lista_id[i])+";");
+        //realiza conexão ao banco de dados
+        verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
+        if (verifica_conexao){
+            //Retorna o banco de dados
+            bd = conexao.retorna_bd();
+
+            //Declara a variável que irá fazer a consulta
+            QSqlQuery consultar(bd);
+
+            //realiza a consulta
+            consultar.exec("SELECT DISTINCT "+campos_consulta+" FROM cliente,tel_cliente WHERE cliente.id_cliente LIKE '%"+id_cliente+"%' AND cliente.nome LIKE '%"+nome_cliente+"%' AND tel_cliente.telefone LIKE '%"+QString::fromStdString(telefone)+"%' AND tel_cliente.id_cliente = cliente.id_cliente;");
             while(consultar.next()){
-                aux_lista_telefone.push_back(consultar.value(0).toString().toStdString());
-                aux_lista_operadora.push_back(consultar.value(1).toString().toStdString());
+                lista_id.push_back(consultar.value(0).toString().toStdString());
+                lista_nomes.push_back(consultar.value(1).toString().toStdString());
+                lista_rgs.push_back(consultar.value(2).toString().toStdString());
+                lista_cpfs.push_back(consultar.value(3).toString().toStdString());
+                lista_comentario.push_back(consultar.value(4).toString().toStdString());
+                lista_cep.push_back(consultar.value(5).toString().toStdString());
+                lista_rua.push_back(consultar.value(6).toString().toStdString());
+                lista_bairro.push_back(consultar.value(7).toString().toStdString());
+                lista_ponto_referencia.push_back(consultar.value(8).toString().toStdString());
+                lista_cidade.push_back(consultar.value(9).toString().toStdString());
+                lista_uf.push_back(consultar.value(10).toString().toStdString());
+                lista_numero.push_back(consultar.value(11).toString().toStdString());
+                lista_estado.push_back(consultar.value(12).toString().toStdString());
             }
-            consultar.exec("SELECT e_mail FROM email_cliente WHERE id_cliente = "+QString::fromStdString(lista_id[i])+";");
-            while(consultar.next()){
-                aux_lista_email.push_back(consultar.value(0).toString().toStdString());
+
+            modelo = new QStandardItemModel(int(lista_id.size()),3,this);
+            modelo->clear();
+            modelo->setHorizontalHeaderItem(0, new QStandardItem(QString("Código:")));
+            modelo->setHorizontalHeaderItem(1, new QStandardItem(QString("Nome:")));
+            modelo->setHorizontalHeaderItem(2, new QStandardItem(QString("Telefone:")));
+            for (int i=0;i<int(lista_id.size());i++){
+                consultar.exec("SELECT telefone,operadora FROM tel_cliente WHERE id_cliente = "+QString::fromStdString(lista_id[i])+";");
+                while(consultar.next()){
+                    aux_lista_telefone.push_back(consultar.value(0).toString().toStdString());
+                    aux_lista_operadora.push_back(consultar.value(1).toString().toStdString());
+                }
+                consultar.exec("SELECT e_mail FROM email_cliente WHERE id_cliente = "+QString::fromStdString(lista_id[i])+";");
+                while(consultar.next()){
+                    aux_lista_email.push_back(consultar.value(0).toString().toStdString());
+                }
+
+                lista_clientes.push_back(new cliente(QString::fromStdString(lista_id[i]).toInt(),QString::fromStdString(lista_nomes[i]),QString::fromStdString(lista_rgs[i]),
+                                                     QString::fromStdString(lista_cpfs[i]),QString::fromStdString(lista_comentario[i]),aux_lista_email,aux_lista_telefone,
+                                                     aux_lista_operadora,QString::fromStdString(lista_uf[i]),QString::fromStdString(lista_estado[i]),QString::fromStdString(lista_cidade[i]),
+                                                     QString::fromStdString(lista_bairro[i]),QString::fromStdString(lista_rua[i]),QString::fromStdString(lista_cep[i]),
+                                                     QString::fromStdString(lista_numero[i]).toInt(),QString::fromStdString(lista_ponto_referencia[i])));
+
+                modelo->setItem(i,0,new QStandardItem(QString::fromStdString(lista_id[i])));
+                modelo->setItem(i,1,new QStandardItem(QString::fromStdString(lista_nomes[i])));
+                modelo->setItem(i,2,new QStandardItem(QString::fromStdString(aux_lista_telefone[aux_lista_telefone.size()-1]+" "+aux_lista_operadora[aux_lista_operadora.size()-1])));
+
+                aux_lista_telefone.clear();
+                aux_lista_operadora.clear();
+                aux_lista_email.clear();
             }
-
-            lista_clientes.push_back(new cliente(QString::fromStdString(lista_id[i]).toInt(),QString::fromStdString(lista_nomes[i]),QString::fromStdString(lista_rgs[i]),
-                                                 QString::fromStdString(lista_cpfs[i]),QString::fromStdString(lista_comentario[i]),aux_lista_email,aux_lista_telefone,
-                                                 aux_lista_operadora,QString::fromStdString(lista_uf[i]),QString::fromStdString(lista_estado[i]),QString::fromStdString(lista_cidade[i]),
-                                                 QString::fromStdString(lista_bairro[i]),QString::fromStdString(lista_rua[i]),QString::fromStdString(lista_cep[i]),
-                                                 QString::fromStdString(lista_numero[i]).toInt(),QString::fromStdString(lista_ponto_referencia[i])));
-
-            modelo->setItem(i,0,new QStandardItem(QString::fromStdString(lista_id[i])));
-            modelo->setItem(i,1,new QStandardItem(QString::fromStdString(lista_nomes[i])));
-            modelo->setItem(i,2,new QStandardItem(QString::fromStdString(aux_lista_telefone[aux_lista_telefone.size()-1]+" "+aux_lista_operadora[aux_lista_operadora.size()-1])));
-
-            aux_lista_telefone.clear();
-            aux_lista_operadora.clear();
-            aux_lista_email.clear();
+            ui->tv_clientes->setSelectionMode(QAbstractItemView::SingleSelection);
+            ui->tv_clientes->setSelectionBehavior(QAbstractItemView::SelectRows);
+            ui->tv_clientes->setEditTriggers(QAbstractItemView::NoEditTriggers);
+            ui->tv_clientes->setModel(modelo);
+            ui->tv_clientes->resizeColumnToContents(0);
+            ui->tv_clientes->resizeColumnToContents(2);
+        conexao.fechar_conexao();
         }
-        ui->tv_clientes->setSelectionMode(QAbstractItemView::SingleSelection);
-        ui->tv_clientes->setSelectionBehavior(QAbstractItemView::SelectRows);
-        ui->tv_clientes->setEditTriggers(QAbstractItemView::NoEditTriggers);
-        ui->tv_clientes->setModel(modelo);
-        ui->tv_clientes->resizeColumnsToContents();
-    conexao.fechar_conexao();
     }
 }
 
