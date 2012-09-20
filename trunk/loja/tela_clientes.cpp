@@ -16,7 +16,11 @@ tela_clientes::~tela_clientes()
 void tela_clientes::on_actionEditar_Contato_triggered()
 {
     tl_editar_cliente.definir_dados_cliente(informacoes_cliente);
-    tl_editar_cliente.exec();
+    if(!tl_editar_cliente.exec()){
+        informacoes_cliente = tl_editar_cliente.retorna_novo_cadastro();
+        tela_clientes::limpar_dados();
+        tela_clientes::definir_dados_cliente(informacoes_cliente);
+    }
 }
 
 void tela_clientes::on_actionAdicionar_Contato_triggered()
@@ -71,6 +75,11 @@ void tela_clientes::definir_dados_cliente(cliente *cad_cliente){
     aux_operadoras.clear();
     aux_telefones.clear();
 }
+
+cliente * tela_clientes::retorna_novo_cadastro(void){
+    return informacoes_cliente;
+}
+
 void tela_clientes::closeEvent(QCloseEvent *event){
     ui->le_codigo->clear();
     ui->le_nome->clear();
@@ -87,5 +96,22 @@ void tela_clientes::closeEvent(QCloseEvent *event){
     ui->te_comentario_cliente->clear();
     ui->cb_email->clear();
     ui->cb_telefone->clear();
+}
 
+void tela_clientes::limpar_dados(void){
+    ui->le_codigo->clear();
+    ui->le_nome->clear();
+    ui->le_rg->clear();
+    ui->le_cpf->clear();
+    ui->le_cep->clear();
+    ui->le_rua->clear();
+    ui->le_bairro->clear();
+    ui->te_ponto_referencia->clear();
+    ui->le_cidade->clear();
+    ui->le_estado->clear();
+    ui->le_uf->clear();
+    ui->le_numero->clear();
+    ui->te_comentario_cliente->clear();
+    ui->cb_email->clear();
+    ui->cb_telefone->clear();
 }

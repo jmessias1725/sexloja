@@ -31,6 +31,10 @@ public:
     QString retorna_numero_cep(void);
     int retorna_numero_residencia(void);
     QString retorna_ponto_referencia(void);
+
+    void altera_endereco(QString uf_sigla, QString uf_nome, QString cidade,
+                         QString bairro, QString rua, QString cep, int numero,
+                         QString pt_referencia);
 };
 
 #endif // ENDERECO_H

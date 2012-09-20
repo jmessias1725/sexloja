@@ -49,10 +49,16 @@ public:
     std::vector< std::string > retorna_lista_email(void);
     std::vector< std::string > retorna_lista_telefone(void);
     std::vector< std::string > retorna_lista_operadora(void);
-    void retorna_primeiro_email(void);
-    QString retorna_primeiro_telefone(void);
-    QString retorna_primeiro_operadora(void);
-    bool salvar_cliente(void);
+
+    void alterar_dados_cliente(QString cliente_nome,QString cliente_rg,QString cliente_cpf,
+                               QString cliente_comentario,std::vector< std::string > lista_email_cliente,
+                               std::vector< std::string > lista_telefone_cliente,
+                               std::vector< std::string > lista_operadora_cliente,
+                               QString uf_sigla, QString uf_nome, QString cidade, QString bairro,
+                               QString rua, QString cep, int numero, QString pt_referencia);
+
+    bool salvar_dados_cliente(void);
+    bool salvar_alteracao_dados_cliente(void);
 };
 
 #endif // CLIENTE_H
