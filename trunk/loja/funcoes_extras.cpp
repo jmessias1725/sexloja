@@ -19,6 +19,10 @@ int funcoes_extras::converter_para_inteiro(std::string numero){
 }
 
 int funcoes_extras::retorna_id_estado(std::string uf){
+    if(uf == "--"){
+        return 0;
+    }
+    else{
     if(uf == "AC"){
         return 1;
     }
@@ -124,6 +128,7 @@ int funcoes_extras::retorna_id_estado(std::string uf){
     }
     else{
         return 27;
+    }
     }
     }
     }

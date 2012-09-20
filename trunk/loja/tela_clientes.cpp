@@ -15,6 +15,7 @@ tela_clientes::~tela_clientes()
 
 void tela_clientes::on_actionEditar_Contato_triggered()
 {
+    tl_editar_cliente.definir_dados_cliente(informacoes_cliente);
     tl_editar_cliente.exec();
 }
 
