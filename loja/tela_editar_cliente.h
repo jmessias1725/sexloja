@@ -18,6 +18,7 @@ public:
     explicit tela_editar_cliente(QWidget *parent = 0);
     ~tela_editar_cliente();
     void definir_dados_cliente(cliente *cad_cliente);
+    cliente * retorna_novo_cadastro(void);
     void closeEvent( QCloseEvent * event );
 
 private slots:
@@ -48,7 +49,7 @@ private slots:
     void on_btn_confirmar_clicked();
 
     void on_tb_menos_telefone_clicked();
-    
+
 private:
     Ui::tela_editar_cliente *ui;
     QDialog* Qdialog_email;

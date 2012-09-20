@@ -70,20 +70,23 @@ std::vector< std::string > cliente::retorna_lista_operadora(void){
     return lista_operadora;
 }
 
-void cliente::retorna_primeiro_email(){
-        //std::cout<<lista_email[0]<<std::endl;
-    //return QString::fromStdString(lista_email[0]);
+void cliente::alterar_dados_cliente(QString cliente_nome,QString cliente_rg,QString cliente_cpf,
+                           QString cliente_comentario,std::vector< std::string > lista_email_cliente,
+                           std::vector< std::string > lista_telefone_cliente,
+                           std::vector< std::string > lista_operadora_cliente,
+                           QString uf_sigla, QString uf_nome, QString cidade, QString bairro,
+                           QString rua, QString cep, int numero, QString pt_referencia){
+    nome =cliente_nome;
+    rg =cliente_rg;
+    cpf =cliente_cpf;
+    comentario =cliente_comentario;
+    lista_email =lista_email_cliente;
+    lista_telefone =lista_telefone_cliente;
+    lista_operadora =lista_operadora_cliente;
+    altera_endereco(uf_sigla,uf_nome,cidade,bairro,rua,cep,numero,pt_referencia);
 }
 
-QString cliente::retorna_primeiro_telefone(){
-    return  QString::fromStdString(lista_telefone[0]);
-}
-
-QString cliente::retorna_primeiro_operadora(){
-    return  QString::fromStdString(lista_operadora[0]);
-}
-
-bool cliente::salvar_cliente(void){
+bool cliente::salvar_dados_cliente(void){
     conexao_bd conexao;
     bool verifica_conexao;
     QSqlDatabase bd;
@@ -195,3 +198,6 @@ bool cliente::salvar_cliente(void){
     }
 }
 
+bool cliente::salvar_alteracao_dados_cliente(void){
+
+}

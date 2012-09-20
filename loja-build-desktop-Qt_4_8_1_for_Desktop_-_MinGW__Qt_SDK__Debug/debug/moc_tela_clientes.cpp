@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_clientes.h'
 **
-** Created: Wed 19. Sep 22:15:00 2012
+** Created: Thu 20. Sep 11:38:43 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_tela_clientes[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -33,6 +33,8 @@ static const uint qt_meta_data_tela_clientes[] = {
  // slots: signature, parameters, type, tag, flags
       15,   14,   14,   14, 0x08,
       51,   14,   14,   14, 0x08,
+      96,   90,   14,   14, 0x08,
+     121,   14,   14,   14, 0x08,
 
        0        // eod
 };
@@ -40,6 +42,8 @@ static const uint qt_meta_data_tela_clientes[] = {
 static const char qt_meta_stringdata_tela_clientes[] = {
     "tela_clientes\0\0on_actionEditar_Contato_triggered()\0"
     "on_actionAdicionar_Contato_triggered()\0"
+    "event\0closeEvent(QCloseEvent*)\0"
+    "limpar_dados()\0"
 };
 
 void tela_clientes::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -50,10 +54,11 @@ void tela_clientes::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         switch (_id) {
         case 0: _t->on_actionEditar_Contato_triggered(); break;
         case 1: _t->on_actionAdicionar_Contato_triggered(); break;
+        case 2: _t->closeEvent((*reinterpret_cast< QCloseEvent*(*)>(_a[1]))); break;
+        case 3: _t->limpar_dados(); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObjectExtraData tela_clientes::staticMetaObjectExtraData = {
@@ -88,9 +93,9 @@ int tela_clientes::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 4;
     }
     return _id;
 }

@@ -47,3 +47,16 @@ int endereco::retorna_numero_residencia(void){
 QString endereco::retorna_ponto_referencia(void){
     return ponto_referencia;
 }
+
+void endereco::altera_endereco(QString uf_sigla, QString uf_nome, QString cidade,
+                     QString bairro, QString rua, QString cep, int numero,
+                     QString pt_referencia){
+    sigla_estado = uf_sigla;
+    nome_estado = uf_nome;
+    nome_cidade = cidade;
+    nome_bairro = bairro;
+    nome_rua = rua;
+    numero_cep = cep;
+    numero_residencia = numero;
+    ponto_referencia = pt_referencia;
+}

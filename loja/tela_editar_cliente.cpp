@@ -621,14 +621,14 @@ void tela_editar_cliente::on_btn_confirmar_clicked()
             ponto_referencia_aux = ponto_referencia_aux.substr(0,150);
         }
 
-        /*cad_cliente = new cliente(ui->le_nome->text(),ui->le_rg->text(),ui->le_cpf->text(),
-                    QString::fromStdString(comentario_Aux),lista_email,lista_telefone, lista_operadora,
-                    ui->le_uf->text(), ui->cb_estado->currentText(), ui->le_cidade->text(),ui->le_bairro->text(),
-                    ui->le_rua->text(), ui->le_cep->text(), ui->le_numero->text().toInt(), QString::fromStdString(ponto_referencia_aux));
+        informacao_cad_cliente->alterar_dados_cliente(ui->le_nome->text(),ui->le_rg->text(),ui->le_cpf->text(),
+                                                      QString::fromStdString(comentario_Aux),lista_email,lista_telefone, lista_operadora,
+                                                      ui->le_uf->text(), ui->cb_estado->currentText(), ui->le_cidade->text(),ui->le_bairro->text(),
+                                                      ui->le_rua->text(), ui->le_cep->text(), ui->le_numero->text().toInt(), QString::fromStdString(ponto_referencia_aux));
 
-        if(cad_cliente->salvar_cliente()){
+        if(informacao_cad_cliente->salvar_alteracao_dados_cliente()){
             this->close();
-        }*/
+        }
     }
     else{
         if(ui->le_nome->text().toStdString()==""){
@@ -656,6 +656,10 @@ void tela_editar_cliente::on_btn_confirmar_clicked()
             msg.exec();
         }
     }
+}
+
+cliente * tela_editar_cliente::retorna_novo_cadastro(void){
+    return informacao_cad_cliente;
 }
 
 void tela_editar_cliente::closeEvent(QCloseEvent *event){

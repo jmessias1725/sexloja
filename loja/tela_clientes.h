@@ -18,15 +18,14 @@ class tela_clientes : public QMainWindow
 public:
     explicit tela_clientes(QWidget *parent = 0);
     ~tela_clientes();
-
     void definir_dados_cliente(cliente *cad_cliente);
-
-    void closeEvent( QCloseEvent * event );
+    cliente * retorna_novo_cadastro(void);
     
 private slots:
     void on_actionEditar_Contato_triggered();
-
-    void on_actionAdicionar_Contato_triggered();
+    void on_actionAdicionar_Contato_triggered();   
+    void closeEvent( QCloseEvent * event );
+    void limpar_dados(void);
 
 private:
     Ui::tela_clientes *ui;
