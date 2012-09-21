@@ -180,7 +180,38 @@ void tela_listar_clientes::on_btn_buscar_clicked()
 void tela_listar_clientes::on_tv_clientes_doubleClicked(const QModelIndex &index)
 {
     tl_cliente.definir_dados_cliente(lista_clientes[index.row()]);
-    tl_cliente.show();
+    lista_clientes[index.row()] = tl_cliente.retorna_novo_cadastro();
+
+    std::vector< std::string > aux_lista_email;
+    std::vector< std::string > aux_lista_telefone;
+    std::vector< std::string > aux_lista_operadora;
+
+    if(!tl_cliente.exec()){
+        modelo = new QStandardItemModel(int(lista_clientes.size()),3,this);
+        modelo->clear();
+        modelo->setHorizontalHeaderItem(0, new QStandardItem(QString("Código:")));
+        modelo->setHorizontalHeaderItem(1, new QStandardItem(QString("Nome:")));
+        modelo->setHorizontalHeaderItem(2, new QStandardItem(QString("Telefone:")));
+        for (int i=0;i<int(lista_clientes.size());i++){
+            aux_lista_email=lista_clientes[i]->retorna_lista_email();
+            aux_lista_telefone=lista_clientes[i]->retorna_lista_telefone();
+            aux_lista_operadora=lista_clientes[i]->retorna_lista_operadora();
+
+            modelo->setItem(i,0,new QStandardItem(QString::number(lista_clientes[i]->retornar_id())));
+            modelo->setItem(i,1,new QStandardItem(lista_clientes[i]->retornar_nome()));
+            modelo->setItem(i,2,new QStandardItem(QString::fromStdString(aux_lista_telefone[aux_lista_telefone.size()-1]+" "+aux_lista_operadora[aux_lista_operadora.size()-1])));
+
+            aux_lista_telefone.clear();
+            aux_lista_operadora.clear();
+            aux_lista_email.clear();
+        }
+        ui->tv_clientes->setSelectionMode(QAbstractItemView::SingleSelection);
+        ui->tv_clientes->setSelectionBehavior(QAbstractItemView::SelectRows);
+        ui->tv_clientes->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        ui->tv_clientes->setModel(modelo);
+        ui->tv_clientes->resizeColumnToContents(0);
+        ui->tv_clientes->resizeColumnToContents(2);
+    }
 }
 
 void tela_listar_clientes::on_btn_limpar_clicked()

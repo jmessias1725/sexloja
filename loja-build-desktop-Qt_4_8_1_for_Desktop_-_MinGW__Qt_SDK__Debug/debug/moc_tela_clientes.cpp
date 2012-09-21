@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_clientes.h'
 **
-** Created: Thu 20. Sep 11:38:43 2012
+** Created: Thu 20. Sep 21:54:18 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -31,19 +31,18 @@ static const uint qt_meta_data_tela_clientes[] = {
        0,       // signalCount
 
  // slots: signature, parameters, type, tag, flags
-      15,   14,   14,   14, 0x08,
-      51,   14,   14,   14, 0x08,
-      96,   90,   14,   14, 0x08,
-     121,   14,   14,   14, 0x08,
+      21,   15,   14,   14, 0x08,
+      46,   14,   14,   14, 0x08,
+      61,   14,   14,   14, 0x08,
+      93,   14,   14,   14, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_tela_clientes[] = {
-    "tela_clientes\0\0on_actionEditar_Contato_triggered()\0"
-    "on_actionAdicionar_Contato_triggered()\0"
-    "event\0closeEvent(QCloseEvent*)\0"
-    "limpar_dados()\0"
+    "tela_clientes\0\0event\0closeEvent(QCloseEvent*)\0"
+    "limpar_dados()\0on_btn_editar_cliente_clicked()\0"
+    "on_btn_adicionar_cliente_clicked()\0"
 };
 
 void tela_clientes::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -52,10 +51,10 @@ void tela_clientes::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         Q_ASSERT(staticMetaObject.cast(_o));
         tela_clientes *_t = static_cast<tela_clientes *>(_o);
         switch (_id) {
-        case 0: _t->on_actionEditar_Contato_triggered(); break;
-        case 1: _t->on_actionAdicionar_Contato_triggered(); break;
-        case 2: _t->closeEvent((*reinterpret_cast< QCloseEvent*(*)>(_a[1]))); break;
-        case 3: _t->limpar_dados(); break;
+        case 0: _t->closeEvent((*reinterpret_cast< QCloseEvent*(*)>(_a[1]))); break;
+        case 1: _t->limpar_dados(); break;
+        case 2: _t->on_btn_editar_cliente_clicked(); break;
+        case 3: _t->on_btn_adicionar_cliente_clicked(); break;
         default: ;
         }
     }
@@ -66,7 +65,7 @@ const QMetaObjectExtraData tela_clientes::staticMetaObjectExtraData = {
 };
 
 const QMetaObject tela_clientes::staticMetaObject = {
-    { &QMainWindow::staticMetaObject, qt_meta_stringdata_tela_clientes,
+    { &QDialog::staticMetaObject, qt_meta_stringdata_tela_clientes,
       qt_meta_data_tela_clientes, &staticMetaObjectExtraData }
 };
 
@@ -84,12 +83,12 @@ void *tela_clientes::qt_metacast(const char *_clname)
     if (!_clname) return 0;
     if (!strcmp(_clname, qt_meta_stringdata_tela_clientes))
         return static_cast<void*>(const_cast< tela_clientes*>(this));
-    return QMainWindow::qt_metacast(_clname);
+    return QDialog::qt_metacast(_clname);
 }
 
 int tela_clientes::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QMainWindow::qt_metacall(_c, _id, _a);
+    _id = QDialog::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
