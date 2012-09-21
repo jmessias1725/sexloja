@@ -34,6 +34,7 @@
         <file>img/arquivo_erro_50.png</file>
         <file>img/busar_clientes.png</file>
         <file>img/limpar.png</file>
+        <file>img/remover_cliente.png</file>
     </qresource>
     <qresource prefix="/operadoras">
         <file>img/claro.png</file>

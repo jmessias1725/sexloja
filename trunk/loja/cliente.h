@@ -58,7 +58,7 @@ public:
                                QString rua, QString cep, int numero, QString pt_referencia);
 
     bool salvar_dados_cliente(void);
-    bool salvar_alteracao_dados_cliente(void);
+    bool salvar_alteracao_dados_cliente(std::vector< std::string > lista_telefone_a_remover,std::vector< std::string > lista_email_a_remover);
 };
 
 #endif // CLIENTE_H

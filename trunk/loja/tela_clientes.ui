@@ -997,7 +997,7 @@ p, li { white-space: pre-wrap; }
     </rect>
    </property>
    <property name="frameShape">
-    <enum>QFrame::WinPanel</enum>
+    <enum>QFrame::Panel</enum>
    </property>
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
@@ -1054,8 +1054,56 @@ p, li { white-space: pre-wrap; }
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QToolButton" name="btn_remover_cliente">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>2</y>
+      <width>45</width>
+      <height>45</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>...</string>
+    </property>
+    <property name="icon">
+     <iconset resource="imagens.qrc">
+      <normaloff>:/img/img/remover_cliente.png</normaloff>:/img/img/remover_cliente.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>40</width>
+      <height>40</height>
+     </size>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>le_codigo</tabstop>
+  <tabstop>le_nome</tabstop>
+  <tabstop>le_rg</tabstop>
+  <tabstop>le_cpf</tabstop>
+  <tabstop>cb_email</tabstop>
+  <tabstop>cb_telefone</tabstop>
+  <tabstop>te_comentario_cliente</tabstop>
+  <tabstop>tv_comentario_produtos</tabstop>
+  <tabstop>le_cep</tabstop>
+  <tabstop>le_rua</tabstop>
+  <tabstop>le_numero</tabstop>
+  <tabstop>le_bairro</tabstop>
+  <tabstop>le_cidade</tabstop>
+  <tabstop>gv_estado</tabstop>
+  <tabstop>le_estado</tabstop>
+  <tabstop>le_uf</tabstop>
+  <tabstop>te_ponto_referencia</tabstop>
+  <tabstop>tv_historico_compras</tabstop>
+  <tabstop>btn_editar_cliente</tabstop>
+  <tabstop>btn_adicionar_cliente</tabstop>
+ </tabstops>
  <resources>
   <include location="imagens.qrc"/>
  </resources>

@@ -119,7 +119,7 @@ void tela_listar_clientes::on_btn_buscar_clicked()
             QSqlQuery consultar(bd);
 
             //realiza a consulta
-            consultar.exec("SELECT DISTINCT "+campos_consulta+" FROM cliente,tel_cliente WHERE cliente.id_cliente LIKE '%"+id_cliente+"%' AND cliente.nome LIKE '%"+nome_cliente+"%' AND tel_cliente.telefone LIKE '%"+QString::fromStdString(telefone)+"%' AND tel_cliente.id_cliente = cliente.id_cliente;");
+            consultar.exec("SELECT DISTINCT "+campos_consulta+" FROM cliente,tel_cliente WHERE cliente.id_cliente LIKE '%"+id_cliente+"%' AND cliente.nome LIKE '%"+nome_cliente+"%' AND tel_cliente.telefone LIKE '%"+QString::fromStdString(telefone)+"%' AND tel_cliente.id_cliente = cliente.id_cliente ORDER BY  cliente.nome ASC;");
             while(consultar.next()){
                 lista_id.push_back(consultar.value(0).toString().toStdString());
                 lista_nomes.push_back(consultar.value(1).toString().toStdString());

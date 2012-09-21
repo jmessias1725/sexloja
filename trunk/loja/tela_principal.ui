@@ -114,10 +114,10 @@
   <action name="consultar_clientes">
    <property name="icon">
     <iconset resource="imagens.qrc">
-     <normaloff>:/img/img/Usuario.png</normaloff>:/img/img/Usuario.png</iconset>
+     <normaloff>:/img/img/busar_clientes.png</normaloff>:/img/img/busar_clientes.png</iconset>
    </property>
    <property name="text">
-    <string>Clientes</string>
+    <string>Buscar Clientes</string>
    </property>
   </action>
   <action name="consultar_caixa">
@@ -201,10 +201,10 @@
   <action name="buscar_clientes">
    <property name="icon">
     <iconset resource="imagens.qrc">
-     <normaloff>:/img/img/Usuario.png</normaloff>:/img/img/Usuario.png</iconset>
+     <normaloff>:/img/img/busar_clientes.png</normaloff>:/img/img/busar_clientes.png</iconset>
    </property>
    <property name="text">
-    <string>Clientes</string>
+    <string>Buscar Clientes</string>
    </property>
   </action>
   <action name="buscar_produtos">

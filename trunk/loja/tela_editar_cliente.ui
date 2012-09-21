@@ -1312,6 +1312,28 @@ p, li { white-space: pre-wrap; }
    <zorder>le_rg</zorder>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>le_nome</tabstop>
+  <tabstop>le_rg</tabstop>
+  <tabstop>le_cpf</tabstop>
+  <tabstop>cb_email</tabstop>
+  <tabstop>tb_mais_email</tabstop>
+  <tabstop>tb_menos_email</tabstop>
+  <tabstop>cb_telefone</tabstop>
+  <tabstop>tb_mais_telefone</tabstop>
+  <tabstop>tb_menos_telefone</tabstop>
+  <tabstop>te_comentario</tabstop>
+  <tabstop>le_cep</tabstop>
+  <tabstop>le_rua</tabstop>
+  <tabstop>le_numero</tabstop>
+  <tabstop>le_bairro</tabstop>
+  <tabstop>le_cidade</tabstop>
+  <tabstop>cb_estado</tabstop>
+  <tabstop>le_uf</tabstop>
+  <tabstop>te_ponto_referencia</tabstop>
+  <tabstop>btn_confirmar</tabstop>
+  <tabstop>btn_cancelar</tabstop>
+ </tabstops>
  <resources>
   <include location="imagens.qrc"/>
  </resources>
