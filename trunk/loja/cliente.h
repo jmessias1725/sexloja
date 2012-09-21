@@ -49,16 +49,16 @@ public:
     std::vector< std::string > retorna_lista_email(void);
     std::vector< std::string > retorna_lista_telefone(void);
     std::vector< std::string > retorna_lista_operadora(void);
-
+    void altera_id_cliente(int id_cliente);
     void alterar_dados_cliente(QString cliente_nome,QString cliente_rg,QString cliente_cpf,
                                QString cliente_comentario,std::vector< std::string > lista_email_cliente,
                                std::vector< std::string > lista_telefone_cliente,
                                std::vector< std::string > lista_operadora_cliente,
                                QString uf_sigla, QString uf_nome, QString cidade, QString bairro,
                                QString rua, QString cep, int numero, QString pt_referencia);
-
     bool salvar_dados_cliente(void);
     bool salvar_alteracao_dados_cliente(std::vector< std::string > lista_telefone_a_remover,std::vector< std::string > lista_email_a_remover);
+    bool remover_cadastro_cliente(int id_cliente);
 };
 
 #endif // CLIENTE_H

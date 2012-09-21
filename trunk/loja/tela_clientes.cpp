@@ -115,3 +115,22 @@ void tela_clientes::on_btn_adicionar_cliente_clicked()
 {
     tl_cadastro_clientes.show();
 }
+
+void tela_clientes::on_btn_remover_cliente_clicked()
+{
+    //Gera mensagem perguntando se é para salvar alterações.
+    QPixmap icone_titulo_janela(":img/img/logo_sex.png");
+    QPixmap icone_janela(":img/img/cliente_pergunta_50.png");
+    QMessageBox msg(0);
+    msg.setIconPixmap(icone_janela);
+    msg.setWindowIcon(icone_titulo_janela);
+    msg.setWindowTitle("Cadastro");
+    msg.addButton("Sim", QMessageBox::AcceptRole);
+    msg.addButton("Não", QMessageBox::RejectRole);
+    msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+    msg.setText("\nDeseja remover o cadastro do cliente ?");
+    if(!msg.exec()){
+        informacoes_cliente->altera_id_cliente(-1);
+        this->close();
+    }
+}

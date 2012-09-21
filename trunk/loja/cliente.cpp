@@ -28,7 +28,7 @@ cliente::cliente(QString cliente_nome,QString cliente_rg,QString cliente_cpf,
                  QString uf_sigla, QString uf_nome, QString cidade, QString bairro,
                  QString rua, QString cep, int numero, QString pt_referencia)
                  :endereco(uf_sigla,uf_nome,cidade,bairro,rua, cep,numero,pt_referencia){
-    id = -1;
+
     nome =cliente_nome;
     rg =cliente_rg;
     cpf =cliente_cpf;
@@ -68,6 +68,10 @@ std::vector< std::string > cliente::retorna_lista_telefone(void){
 
 std::vector< std::string > cliente::retorna_lista_operadora(void){
     return lista_operadora;
+}
+
+void cliente::altera_id_cliente(int id_cliente){
+    id = id_cliente;
 }
 
 void cliente::alterar_dados_cliente(QString cliente_nome,QString cliente_rg,QString cliente_cpf,
@@ -164,7 +168,7 @@ bool cliente::salvar_dados_cliente(void){
             msg.setWindowTitle("Cadastro");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
-            msg.setText("\nCadastro efetuado com sucesso!!!!");
+            msg.setText("\nCadastro alterado com sucesso!!!!");
             msg.exec();
 
             //Fecha a conexão com o banco de dados
@@ -185,7 +189,7 @@ bool cliente::salvar_dados_cliente(void){
             msg.setWindowTitle("Cadastro");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
-            msg.setText("\nNão foi possível salvar o cadastro do cliente!!!!");
+            msg.setText("\nNão foi possível alterar o cadastro do cliente!!!!");
             msg.exec();
 
             //Fecha a conexão com o banco de dados
@@ -311,6 +315,77 @@ bool cliente::salvar_alteracao_dados_cliente(std::vector< std::string > lista_te
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
             msg.setText("\nNão foi possível alterar o cadastro do Cliente!!!!");
+            msg.exec();
+
+            //Fecha a conexão com o banco de dados
+            conexao.fechar_conexao();
+            return false;
+        }
+    }
+    else{
+        return false;
+    }
+}
+
+bool cliente::remover_cadastro_cliente(int id_cliente){
+    conexao_bd conexao;
+    bool verifica_conexao;
+    QSqlDatabase bd;
+
+    //realiza conexão ao banco de dados
+    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
+
+    if (verifica_conexao){
+
+        //Retorna o banco de dados
+        bd = conexao.retorna_bd();
+
+        bd.transaction();
+
+        //Declara as variáves que irão alterar os dados no banco de dados.
+        QSqlQuery remover_cadastro_cliente(bd);
+
+        remover_cadastro_cliente.prepare("DELETE FROM cliente WHERE id_cliente = :id_cliente;");
+        remover_cadastro_cliente.bindValue(":id_cliente",id_cliente);
+        remover_cadastro_cliente.exec();
+
+        //Verifica se os dados podem ser salvos, caso sim realiza o Commite, do contrário o Rollback.
+        if((remover_cadastro_cliente.lastError().number()<=0)){
+
+            //Finaliza a alteraçao dos dados.
+            bd.commit();
+
+            //Gera mensagem de que tudo ocorreu direito.
+            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
+            QPixmap icone_janela(":img/img/arquivo_50.png");
+            QMessageBox msg(0);
+            msg.setIconPixmap(icone_janela);
+            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowTitle("Cadastro");
+            msg.addButton("OK", QMessageBox::AcceptRole);
+            msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+            msg.setText("\nCadastro removido com sucesso!!!!");
+            msg.exec();
+
+            //Fecha a conexão com o banco de dados
+            conexao.fechar_conexao();
+            return true;
+        }
+        else{
+
+            //Desfaz as alterações no banco de dados.
+            bd.rollback();
+
+            //Gera a mensagem de erro.
+            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
+            QPixmap icone_janela(":img/img/arquivo_erro_50.png");
+            QMessageBox msg(0);
+            msg.setIconPixmap(icone_janela);
+            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowTitle("Cadastro");
+            msg.addButton("OK", QMessageBox::AcceptRole);
+            msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+            msg.setText("\nNão foi possível remover o cadastro do Cliente!!!!");
             msg.exec();
 
             //Fecha a conexão com o banco de dados
