@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_editar_cliente.ui'
 **
-** Created: Thu 20. Sep 21:46:38 2012
+** Created: Fri 21. Sep 10:39:10 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -440,6 +440,25 @@ public:
         le_nome->raise();
         lb_rg->raise();
         le_rg->raise();
+        QWidget::setTabOrder(le_nome, le_rg);
+        QWidget::setTabOrder(le_rg, le_cpf);
+        QWidget::setTabOrder(le_cpf, cb_email);
+        QWidget::setTabOrder(cb_email, tb_mais_email);
+        QWidget::setTabOrder(tb_mais_email, tb_menos_email);
+        QWidget::setTabOrder(tb_menos_email, cb_telefone);
+        QWidget::setTabOrder(cb_telefone, tb_mais_telefone);
+        QWidget::setTabOrder(tb_mais_telefone, tb_menos_telefone);
+        QWidget::setTabOrder(tb_menos_telefone, te_comentario);
+        QWidget::setTabOrder(te_comentario, le_cep);
+        QWidget::setTabOrder(le_cep, le_rua);
+        QWidget::setTabOrder(le_rua, le_numero);
+        QWidget::setTabOrder(le_numero, le_bairro);
+        QWidget::setTabOrder(le_bairro, le_cidade);
+        QWidget::setTabOrder(le_cidade, cb_estado);
+        QWidget::setTabOrder(cb_estado, le_uf);
+        QWidget::setTabOrder(le_uf, te_ponto_referencia);
+        QWidget::setTabOrder(te_ponto_referencia, btn_confirmar);
+        QWidget::setTabOrder(btn_confirmar, btn_cancelar);
 
         retranslateUi(tela_editar_cliente);
 

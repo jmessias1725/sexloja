@@ -58,7 +58,9 @@ void tela_editar_cliente::on_tb_menos_email_clicked()
         while((lista_email[i]!=email_a_remover)&&(i<=(int(lista_email.size())-1))){
             i++;
         }
+        lista_email_a_remover.push_back(lista_email[i]);
         for (int j = i; j<(int(lista_email.size())); j++){
+            //Remove a ultima posiçao do vetor
             if ((j+1)>=(int(lista_email.size())))
                 lista_email.pop_back();
             else{
@@ -300,7 +302,9 @@ void tela_editar_cliente::on_tb_menos_telefone_clicked()
         while((lista_telefone[i]+espaco+lista_operadora[i]!=telefone_a_remover)&&(i<=(int(lista_telefone.size())-1))){
             i++;
         }
+        lista_telefone_a_remover.push_back(lista_telefone[i]);
         for (int j = i; j<(int(lista_telefone.size())); j++){
+            //Remove o ultimo telefone
             if ((j+1)>=(int(lista_telefone.size()))){
                 lista_telefone.pop_back();
                 lista_operadora.pop_back();
@@ -626,7 +630,9 @@ void tela_editar_cliente::on_btn_confirmar_clicked()
                                                       ui->le_uf->text(), ui->cb_estado->currentText(), ui->le_cidade->text(),ui->le_bairro->text(),
                                                       ui->le_rua->text(), ui->le_cep->text(), ui->le_numero->text().toInt(), QString::fromStdString(ponto_referencia_aux));
 
-        if(informacao_cad_cliente->salvar_alteracao_dados_cliente()){
+        if(informacao_cad_cliente->salvar_alteracao_dados_cliente(lista_telefone_a_remover,lista_email_a_remover)){
+            lista_telefone_a_remover.clear();
+            lista_email_a_remover.clear();
             this->close();
         }
     }
