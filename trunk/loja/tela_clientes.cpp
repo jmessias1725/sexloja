@@ -2,7 +2,7 @@
 #include "ui_tela_clientes.h"
 
 tela_clientes::tela_clientes(QWidget *parent) :
-    QMainWindow(parent),
+    QDialog(parent),
     ui(new Ui::tela_clientes)
 {
     ui->setupUi(this);
@@ -11,21 +11,6 @@ tela_clientes::tela_clientes(QWidget *parent) :
 tela_clientes::~tela_clientes()
 {
     delete ui;
-}
-
-void tela_clientes::on_actionEditar_Contato_triggered()
-{
-    tl_editar_cliente.definir_dados_cliente(informacoes_cliente);
-    if(!tl_editar_cliente.exec()){
-        informacoes_cliente = tl_editar_cliente.retorna_novo_cadastro();
-        tela_clientes::limpar_dados();
-        tela_clientes::definir_dados_cliente(informacoes_cliente);
-    }
-}
-
-void tela_clientes::on_actionAdicionar_Contato_triggered()
-{
-    tl_cadastro_clientes.show();
 }
 
 void tela_clientes::definir_dados_cliente(cliente *cad_cliente){
@@ -114,4 +99,19 @@ void tela_clientes::limpar_dados(void){
     ui->te_comentario_cliente->clear();
     ui->cb_email->clear();
     ui->cb_telefone->clear();
+}
+
+void tela_clientes::on_btn_editar_cliente_clicked()
+{
+    tl_editar_cliente.definir_dados_cliente(informacoes_cliente);
+    if(!tl_editar_cliente.exec()){
+        informacoes_cliente = tl_editar_cliente.retorna_novo_cadastro();
+        tela_clientes::limpar_dados();
+        tela_clientes::definir_dados_cliente(informacoes_cliente);
+    }
+}
+
+void tela_clientes::on_btn_adicionar_cliente_clicked()
+{
+    tl_cadastro_clientes.show();
 }

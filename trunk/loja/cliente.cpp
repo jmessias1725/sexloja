@@ -199,5 +199,5 @@ bool cliente::salvar_dados_cliente(void){
 }
 
 bool cliente::salvar_alteracao_dados_cliente(void){
-
+    return true;
 }
