@@ -614,52 +614,65 @@ void tela_editar_cliente::on_btn_cancelar_clicked()
 
 void tela_editar_cliente::on_btn_confirmar_clicked()
 {
-    if((ui->le_nome->text().toStdString()!="")&&(lista_telefone.size()>0)){
-        std::string comentario_Aux,ponto_referencia_aux;
-        comentario_Aux = ui->te_comentario->toPlainText().toStdString();
-        ponto_referencia_aux = ui->te_ponto_referencia->toPlainText().toStdString();
-        if (comentario_Aux.size()>=200){
-            comentario_Aux = comentario_Aux.substr(0,200);
-        }
-        if(ponto_referencia_aux.size()>=150){
-            ponto_referencia_aux = ponto_referencia_aux.substr(0,150);
-        }
+    //Gera mensagem perguntando se é para salvar alterações.
+    QPixmap icone_titulo_janela(":img/img/logo_sex.png");
+    QPixmap icone_janela(":img/img/arquivo_pergunta_50.png");
+    QMessageBox msg(0);
+    msg.setIconPixmap(icone_janela);
+    msg.setWindowIcon(icone_titulo_janela);
+    msg.setWindowTitle("Cadastro");
+    msg.addButton("Sim", QMessageBox::AcceptRole);
+    msg.addButton("Não", QMessageBox::RejectRole);
+    msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+    msg.setText("\nSalvar alterações no cadastro do cliente ?");
+    if(msg.exec()<=0){
+        if((ui->le_nome->text().toStdString()!="")&&(lista_telefone.size()>0)){
+            std::string comentario_Aux,ponto_referencia_aux;
+            comentario_Aux = ui->te_comentario->toPlainText().toStdString();
+            ponto_referencia_aux = ui->te_ponto_referencia->toPlainText().toStdString();
+            if (comentario_Aux.size()>=200){
+                comentario_Aux = comentario_Aux.substr(0,200);
+            }
+            if(ponto_referencia_aux.size()>=150){
+                ponto_referencia_aux = ponto_referencia_aux.substr(0,150);
+            }
 
-        informacao_cad_cliente->alterar_dados_cliente(ui->le_nome->text(),ui->le_rg->text(),ui->le_cpf->text(),
-                                                      QString::fromStdString(comentario_Aux),lista_email,lista_telefone, lista_operadora,
-                                                      ui->le_uf->text(), ui->cb_estado->currentText(), ui->le_cidade->text(),ui->le_bairro->text(),
-                                                      ui->le_rua->text(), ui->le_cep->text(), ui->le_numero->text().toInt(), QString::fromStdString(ponto_referencia_aux));
+            informacao_cad_cliente->alterar_dados_cliente(ui->le_nome->text(),ui->le_rg->text(),ui->le_cpf->text(),
+                                                          QString::fromStdString(comentario_Aux),lista_email,lista_telefone, lista_operadora,
+                                                          ui->le_uf->text(), ui->cb_estado->currentText(), ui->le_cidade->text(),ui->le_bairro->text(),
+                                                          ui->le_rua->text(), ui->le_cep->text(), ui->le_numero->text().toInt(), QString::fromStdString(ponto_referencia_aux));
 
-        if(informacao_cad_cliente->salvar_alteracao_dados_cliente(lista_telefone_a_remover,lista_email_a_remover)){
-            lista_telefone_a_remover.clear();
-            lista_email_a_remover.clear();
-            this->close();
-        }
-    }
-    else{
-        if(ui->le_nome->text().toStdString()==""){
-            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
-            QPixmap icone_janela(":img/img/error_50.png");
-            QMessageBox msg(0);
-            msg.setIconPixmap(icone_janela);
-            msg.setWindowIcon(icone_titulo_janela);
-            msg.setWindowTitle("Nome do Cliente");
-            msg.addButton("OK", QMessageBox::AcceptRole);
-            msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
-            msg.setText("\nDigite o nome do Cliente!");
-            msg.exec();
+            if(informacao_cad_cliente->salvar_alteracao_dados_cliente(lista_telefone_a_remover,lista_email_a_remover)){
+                lista_telefone_a_remover.clear();
+                lista_email_a_remover.clear();
+                this->close();
+            }
         }
         else{
-            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
-            QPixmap icone_janela(":img/img/telefone_50.png");
-            QMessageBox msg(0);
-            msg.setIconPixmap(icone_janela);
-            msg.setWindowIcon(icone_titulo_janela);
-            msg.setWindowTitle("Telefone");
-            msg.addButton("OK", QMessageBox::AcceptRole);
-            msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
-            msg.setText("\nDigite pelo menos um telefone!");
-            msg.exec();
+            if(ui->le_nome->text().toStdString()==""){
+                QPixmap icone_titulo_janela(":img/img/logo_sex.png");
+                QPixmap icone_janela(":img/img/error_50.png");
+                QMessageBox msg(0);
+                msg.setIconPixmap(icone_janela);
+                msg.setWindowIcon(icone_titulo_janela);
+                msg.setWindowTitle("Nome do Cliente");
+                msg.addButton("OK", QMessageBox::AcceptRole);
+                msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+                msg.setText("\nDigite o nome do Cliente!");
+                msg.exec();
+            }
+            else{
+                QPixmap icone_titulo_janela(":img/img/logo_sex.png");
+                QPixmap icone_janela(":img/img/telefone_50.png");
+                QMessageBox msg(0);
+                msg.setIconPixmap(icone_janela);
+                msg.setWindowIcon(icone_titulo_janela);
+                msg.setWindowTitle("Telefone");
+                msg.addButton("OK", QMessageBox::AcceptRole);
+                msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+                msg.setText("\nDigite pelo menos um telefone!");
+                msg.exec();
+            }
         }
     }
 }

@@ -2,7 +2,7 @@
 
 bool conexao_bd::conetar_bd(const QString hostname,int porta,const QString nome_bd,const QString usuario,const QString senha){
 
-    bd_loja = QSqlDatabase::addDatabase("QMYSQL","conect");
+    bd_loja = QSqlDatabase::addDatabase("QMYSQL","conexao");
 
     bd_loja.setHostName(hostname);
     bd_loja.setPort(porta);
@@ -19,6 +19,7 @@ bool conexao_bd::conetar_bd(const QString hostname,int porta,const QString nome_
 }
 
 void conexao_bd::fechar_conexao(void){
+    bd_loja.connectionNames().removeDuplicates();
     bd_loja.close();
 }
 

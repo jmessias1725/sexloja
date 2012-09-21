@@ -35,6 +35,8 @@
         <file>img/busar_clientes.png</file>
         <file>img/limpar.png</file>
         <file>img/remover_cliente.png</file>
+        <file>img/arquivo_pergunta_50.png</file>
+        <file>img/cliente_pergunta_50.png</file>
     </qresource>
     <qresource prefix="/operadoras">
         <file>img/claro.png</file>

@@ -179,14 +179,41 @@ void tela_listar_clientes::on_btn_buscar_clicked()
 
 void tela_listar_clientes::on_tv_clientes_doubleClicked(const QModelIndex &index)
 {
-    tl_cliente.definir_dados_cliente(lista_clientes[index.row()]);
-    lista_clientes[index.row()] = tl_cliente.retorna_novo_cadastro();
+    int posicao_remover,i;
+    posicao_remover = -1;
+    i=0;
 
-    std::vector< std::string > aux_lista_email;
-    std::vector< std::string > aux_lista_telefone;
-    std::vector< std::string > aux_lista_operadora;
+    int id_atual = lista_clientes[index.row()]->retornar_id();
+
+    tl_cliente.definir_dados_cliente(lista_clientes[index.row()]);
+    lista_clientes[index.row()] = tl_cliente.retorna_novo_cadastro();    
 
     if(!tl_cliente.exec()){
+        //If que verifica se é para remover o cliente, para isso seu id será -1
+        if(lista_clientes[index.row()]->retornar_id()==-1){
+            if(lista_clientes[index.row()]->remover_cadastro_cliente(id_atual)){
+                while((lista_clientes[i]->retornar_id()!=-1)&&(i<=(int(lista_clientes.size())-1))){
+                    i++;
+                }
+                for (int j = i; j<(int(lista_clientes.size())); j++){
+                    //Remove o ultimo telefone
+                    if ((j+1)>=(int(lista_clientes.size()))){
+                        lista_clientes.pop_back();
+                    }
+                    else{
+                        lista_clientes[j]=lista_clientes[j+1];
+                    }
+                }
+            }
+            else{
+                lista_clientes[index.row()]->altera_id_cliente(id_atual);
+            }
+        }
+
+        std::vector< std::string > aux_lista_email;
+        std::vector< std::string > aux_lista_telefone;
+        std::vector< std::string > aux_lista_operadora;
+
         modelo = new QStandardItemModel(int(lista_clientes.size()),3,this);
         modelo->clear();
         modelo->setHorizontalHeaderItem(0, new QStandardItem(QString("Código:")));
