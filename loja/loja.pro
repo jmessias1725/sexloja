@@ -23,7 +23,8 @@ SOURCES += main.cpp\
     funcoes_extras.cpp \
     tela_listar_clientes.cpp \
     tela_editar_cliente.cpp \
-    tela_clientes.cpp
+    tela_clientes.cpp \
+    tela_cadastro_fornecedor.cpp
 
 HEADERS  += \
     conexao_bd.h \
@@ -37,7 +38,8 @@ HEADERS  += \
     funcoes_extras.h \
     tela_listar_clientes.h \
     tela_editar_cliente.h \
-    tela_clientes.h
+    tela_clientes.h \
+    tela_cadastro_fornecedor.h
 
 FORMS    += \
     tela_login.ui \
@@ -46,7 +48,8 @@ FORMS    += \
     tela_cadastro_telefone.ui \
     tela_listar_clientes.ui \
     tela_editar_cliente.ui \
-    tela_clientes.ui
+    tela_clientes.ui \
+    tela_cadastro_fornecedor.ui
 
 RESOURCES += \
     imagens.qrc

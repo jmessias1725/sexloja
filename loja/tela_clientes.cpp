@@ -130,7 +130,9 @@ void tela_clientes::on_btn_remover_cliente_clicked()
     msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
     msg.setText("\nDeseja remover o cadastro do cliente ?");
     if(!msg.exec()){
-        informacoes_cliente->altera_id_cliente(-1);
+        if(informacoes_cliente->remover_cadastro_cliente(informacoes_cliente->retornar_id())){
+            informacoes_cliente->altera_id_cliente(-1);
+        }
         this->close();
     }
 }

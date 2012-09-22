@@ -97,7 +97,7 @@ void tela_listar_clientes::on_btn_buscar_clicked()
             if(int(ta_string_telefone) < 13){
                 if(ta_string_telefone <= 5){
                     telefone = telefone.substr(0,ta_string_telefone-1);
-                    telefone = telefone.substr(0,ta_string_telefone-1);
+                    telefone = telefone.substr(0,ta_string_telefone-2);
                 }
                 else{
                     if ((ta_string_telefone > 5)&&(ta_string_telefone <= 10)){
@@ -183,62 +183,55 @@ void tela_listar_clientes::on_tv_clientes_doubleClicked(const QModelIndex &index
     posicao_remover = -1;
     i=0;
 
-    int id_atual = lista_clientes[index.row()]->retornar_id();
-
     tl_cliente.definir_dados_cliente(lista_clientes[index.row()]);
     lista_clientes[index.row()] = tl_cliente.retorna_novo_cadastro();    
 
     if(!tl_cliente.exec()){
         //If que verifica se é para remover o cliente, para isso seu id será -1
         if(lista_clientes[index.row()]->retornar_id()==-1){
-            if(lista_clientes[index.row()]->remover_cadastro_cliente(id_atual)){
-                while((lista_clientes[i]->retornar_id()!=-1)&&(i<=(int(lista_clientes.size())-1))){
-                    i++;
+            while((lista_clientes[i]->retornar_id()!=-1)&&(i<=(int(lista_clientes.size())-1))){
+                i++;
+            }
+            for (int j = i; j<(int(lista_clientes.size())); j++){
+                //Remove o ultimo telefone
+                if ((j+1)>=(int(lista_clientes.size()))){
+                    lista_clientes.pop_back();
                 }
-                for (int j = i; j<(int(lista_clientes.size())); j++){
-                    //Remove o ultimo telefone
-                    if ((j+1)>=(int(lista_clientes.size()))){
-                        lista_clientes.pop_back();
-                    }
-                    else{
-                        lista_clientes[j]=lista_clientes[j+1];
-                    }
+                else{
+                    lista_clientes[j]=lista_clientes[j+1];
                 }
             }
-            else{
-                lista_clientes[index.row()]->altera_id_cliente(id_atual);
-            }
         }
-
-        std::vector< std::string > aux_lista_email;
-        std::vector< std::string > aux_lista_telefone;
-        std::vector< std::string > aux_lista_operadora;
-
-        modelo = new QStandardItemModel(int(lista_clientes.size()),3,this);
-        modelo->clear();
-        modelo->setHorizontalHeaderItem(0, new QStandardItem(QString("Código:")));
-        modelo->setHorizontalHeaderItem(1, new QStandardItem(QString("Nome:")));
-        modelo->setHorizontalHeaderItem(2, new QStandardItem(QString("Telefone:")));
-        for (int i=0;i<int(lista_clientes.size());i++){
-            aux_lista_email=lista_clientes[i]->retorna_lista_email();
-            aux_lista_telefone=lista_clientes[i]->retorna_lista_telefone();
-            aux_lista_operadora=lista_clientes[i]->retorna_lista_operadora();
-
-            modelo->setItem(i,0,new QStandardItem(QString::number(lista_clientes[i]->retornar_id())));
-            modelo->setItem(i,1,new QStandardItem(lista_clientes[i]->retornar_nome()));
-            modelo->setItem(i,2,new QStandardItem(QString::fromStdString(aux_lista_telefone[aux_lista_telefone.size()-1]+" "+aux_lista_operadora[aux_lista_operadora.size()-1])));
-
-            aux_lista_telefone.clear();
-            aux_lista_operadora.clear();
-            aux_lista_email.clear();
-        }
-        ui->tv_clientes->setSelectionMode(QAbstractItemView::SingleSelection);
-        ui->tv_clientes->setSelectionBehavior(QAbstractItemView::SelectRows);
-        ui->tv_clientes->setEditTriggers(QAbstractItemView::NoEditTriggers);
-        ui->tv_clientes->setModel(modelo);
-        ui->tv_clientes->resizeColumnToContents(0);
-        ui->tv_clientes->resizeColumnToContents(2);
     }
+
+    std::vector< std::string > aux_lista_email;
+    std::vector< std::string > aux_lista_telefone;
+    std::vector< std::string > aux_lista_operadora;
+
+    modelo = new QStandardItemModel(int(lista_clientes.size()),3,this);
+    modelo->clear();
+    modelo->setHorizontalHeaderItem(0, new QStandardItem(QString("Código:")));
+    modelo->setHorizontalHeaderItem(1, new QStandardItem(QString("Nome:")));
+    modelo->setHorizontalHeaderItem(2, new QStandardItem(QString("Telefone:")));
+    for (int i=0;i<int(lista_clientes.size());i++){
+        aux_lista_email=lista_clientes[i]->retorna_lista_email();
+        aux_lista_telefone=lista_clientes[i]->retorna_lista_telefone();
+        aux_lista_operadora=lista_clientes[i]->retorna_lista_operadora();
+
+        modelo->setItem(i,0,new QStandardItem(QString::number(lista_clientes[i]->retornar_id())));
+        modelo->setItem(i,1,new QStandardItem(lista_clientes[i]->retornar_nome()));
+        modelo->setItem(i,2,new QStandardItem(QString::fromStdString(aux_lista_telefone[aux_lista_telefone.size()-1]+" "+aux_lista_operadora[aux_lista_operadora.size()-1])));
+
+        aux_lista_telefone.clear();
+        aux_lista_operadora.clear();
+        aux_lista_email.clear();
+    }
+    ui->tv_clientes->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->tv_clientes->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tv_clientes->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tv_clientes->setModel(modelo);
+    ui->tv_clientes->resizeColumnToContents(0);
+    ui->tv_clientes->resizeColumnToContents(2);
 }
 
 void tela_listar_clientes::on_btn_limpar_clicked()

@@ -91,7 +91,7 @@ void tela_cadastro_cliente::adicionar_email(){
     bool ja_cadastrado;
     ja_cadastrado = false;
     ui->cb_email->setInsertPolicy(QComboBox::InsertAtTop);
-    if (le_email->text()!=""){    
+    if (le_email->text()!=""){
         email_digitado = le_email->text().toStdString();
         if((le_email->text().contains("@"))&&(le_email->text().contains("."))){
             for (int i=0; i<int(lista_email.size()); i++){

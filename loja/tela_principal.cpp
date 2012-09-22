@@ -32,3 +32,8 @@ void tela_principal::on_buscar_clientes_triggered()
 {
     tl_listar_clientes.show();
 }
+
+void tela_principal::on_cadastrar_forncecedor_triggered()
+{
+    tl_fornecedor.show();
+}

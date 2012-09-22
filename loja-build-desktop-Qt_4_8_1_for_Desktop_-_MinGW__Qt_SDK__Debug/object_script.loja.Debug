@@ -12,11 +12,13 @@ INPUT(
 ./debug\tela_listar_clientes.o
 ./debug\tela_editar_cliente.o
 ./debug\tela_clientes.o
+./debug\tela_cadastro_fornecedor.o
 ./debug\moc_tela_login.o
 ./debug\moc_tela_principal.o
 ./debug\moc_tela_cadastro_cliente.o
 ./debug\moc_tela_listar_clientes.o
 ./debug\moc_tela_editar_cliente.o
 ./debug\moc_tela_clientes.o
+./debug\moc_tela_cadastro_fornecedor.o
 ./debug\qrc_imagens.o
 );

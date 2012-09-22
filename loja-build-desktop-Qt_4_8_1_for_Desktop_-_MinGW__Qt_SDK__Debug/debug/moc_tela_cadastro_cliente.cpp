@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_cadastro_cliente.h'
 **
-** Created: Fri 21. Sep 17:42:08 2012
+** Created: Sat 22. Sep 11:16:47 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -37,14 +37,14 @@ static const uint qt_meta_data_tela_cadastro_cliente[] = {
       96,   22,   22,   22, 0x08,
      113,   22,   22,   22, 0x08,
      143,   22,   22,   22, 0x08,
-     170,   22,   22,   22, 0x08,
-     191,   22,   22,   22, 0x08,
-     211,   22,   22,   22, 0x08,
-     239,   22,   22,   22, 0x08,
-     273,  267,   22,   22, 0x08,
-     311,   22,   22,   22, 0x08,
-     337,   22,   22,   22, 0x08,
-     364,   22,   22,   22, 0x08,
+     174,   22,   22,   22, 0x08,
+     201,   22,   22,   22, 0x08,
+     222,   22,   22,   22, 0x08,
+     242,   22,   22,   22, 0x08,
+     270,   22,   22,   22, 0x08,
+     304,  298,   22,   22, 0x08,
+     342,   22,   22,   22, 0x08,
+     368,   22,   22,   22, 0x08,
      401,  395,   22,   22, 0x08,
 
        0        // eod
@@ -55,14 +55,14 @@ static const char qt_meta_stringdata_tela_cadastro_cliente[] = {
     "on_tb_menos_email_clicked()\0"
     "on_tb_mais_email_clicked()\0adicionar_email()\0"
     "cancelar_email()\0on_tb_mais_telefone_clicked()\0"
+    "on_tb_menos_telefone_clicked()\0"
     "definir_mascara_telefone()\0"
     "adicionar_telefone()\0cancelar_telefone()\0"
     "on_le_cpf_editingFinished()\0"
     "on_le_cep_editingFinished()\0index\0"
     "on_cb_estado_currentIndexChanged(int)\0"
     "on_btn_cancelar_clicked()\0"
-    "on_btn_confirmar_clicked()\0"
-    "on_tb_menos_telefone_clicked()\0event\0"
+    "on_btn_confirmar_clicked()\0event\0"
     "closeEvent(QCloseEvent*)\0"
 };
 
@@ -77,15 +77,15 @@ void tela_cadastro_cliente::qt_static_metacall(QObject *_o, QMetaObject::Call _c
         case 2: _t->adicionar_email(); break;
         case 3: _t->cancelar_email(); break;
         case 4: _t->on_tb_mais_telefone_clicked(); break;
-        case 5: _t->definir_mascara_telefone(); break;
-        case 6: _t->adicionar_telefone(); break;
-        case 7: _t->cancelar_telefone(); break;
-        case 8: _t->on_le_cpf_editingFinished(); break;
-        case 9: _t->on_le_cep_editingFinished(); break;
-        case 10: _t->on_cb_estado_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 11: _t->on_btn_cancelar_clicked(); break;
-        case 12: _t->on_btn_confirmar_clicked(); break;
-        case 13: _t->on_tb_menos_telefone_clicked(); break;
+        case 5: _t->on_tb_menos_telefone_clicked(); break;
+        case 6: _t->definir_mascara_telefone(); break;
+        case 7: _t->adicionar_telefone(); break;
+        case 8: _t->cancelar_telefone(); break;
+        case 9: _t->on_le_cpf_editingFinished(); break;
+        case 10: _t->on_le_cep_editingFinished(); break;
+        case 11: _t->on_cb_estado_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 12: _t->on_btn_cancelar_clicked(); break;
+        case 13: _t->on_btn_confirmar_clicked(); break;
         case 14: _t->closeEvent((*reinterpret_cast< QCloseEvent*(*)>(_a[1]))); break;
         default: ;
         }
