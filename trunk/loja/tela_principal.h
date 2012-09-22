@@ -6,6 +6,7 @@
 #include "tela_clientes.h"
 #include "tela_cadastro_cliente.h"
 #include "tela_listar_clientes.h"
+#include "tela_cadastro_fornecedor.h"
 
 namespace Ui {
 class tela_principal;
@@ -29,11 +30,14 @@ private slots:
 
     void on_buscar_clientes_triggered();
 
+    void on_cadastrar_forncecedor_triggered();
+
 private:
     Ui::tela_principal *ui;
     tela_clientes tl_clientes;
     tela_cadastro_cliente tl_cadastro_clientes;
     tela_listar_clientes tl_listar_clientes;
+    tela_cadastro_fornecedor tl_fornecedor;
 };
 
 #endif // TELA_PRINCIPAL_H
