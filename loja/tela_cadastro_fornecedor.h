@@ -9,6 +9,7 @@
 #include <sstream>
 #include <vector>
 
+#include "fornecedor.h"
 #include "cep.h"
 #include "funcoes_extras.h"
 
@@ -53,6 +54,8 @@ private:
     std::vector< std::string > lista_telefone;
     std::vector< std::string > lista_operadora;
     QString cnpj_forncecedor;
+    fornecedor *cad_fornecedor;
+    funcoes_extras funcao;
     cep *aux_cep;
 };
 

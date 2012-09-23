@@ -75,11 +75,11 @@ void cliente::altera_id_cliente(int id_cliente){
 }
 
 void cliente::alterar_dados_cliente(QString cliente_nome,QString cliente_rg,QString cliente_cpf,
-                           QString cliente_comentario,std::vector< std::string > lista_email_cliente,
-                           std::vector< std::string > lista_telefone_cliente,
-                           std::vector< std::string > lista_operadora_cliente,
-                           QString uf_sigla, QString uf_nome, QString cidade, QString bairro,
-                           QString rua, QString cep, int numero, QString pt_referencia){
+                                   QString cliente_comentario,std::vector< std::string > lista_email_cliente,
+                                   std::vector< std::string > lista_telefone_cliente,
+                                   std::vector< std::string > lista_operadora_cliente,
+                                   QString uf_sigla, QString uf_nome, QString cidade, QString bairro,
+                                   QString rua, QString cep, int numero, QString pt_referencia){
     nome =cliente_nome;
     rg =cliente_rg;
     cpf =cliente_cpf;
@@ -132,24 +132,24 @@ bool cliente::salvar_dados_cliente(void){
 
         //realiza a consulta para determinar  o id do cliente.
         consultar.exec("SELECT id_cliente FROM cliente");
-        while(consultar.next()){
+        if(consultar.last()){
             id_cliente = consultar.value(0).toString();
         }
 
         //Insere os números de telefone no cadastro dos clientes
         for (int i=0;i<int(lista_telefone.size());i++){
-            salvar_dados_telefone_cliente.prepare("INSERT INTO tel_cliente(id_cliente,telefone,Operadora) VALUES(:id_cliente, :telefone, :Operadora)");
+            salvar_dados_telefone_cliente.prepare("INSERT INTO tel_cliente(id_cliente,telefone,operadora) VALUES(:id_cliente, :telefone, :operadora)");
             salvar_dados_telefone_cliente.bindValue(":id_cliente",id_cliente);
             salvar_dados_telefone_cliente.bindValue(":telefone",QString::fromStdString(lista_telefone[i]));
-            salvar_dados_telefone_cliente.bindValue(":Operadora",QString::fromStdString(lista_operadora[i]));
+            salvar_dados_telefone_cliente.bindValue(":operadora",QString::fromStdString(lista_operadora[i]));
             salvar_dados_telefone_cliente.exec();
         }
 
         //Insere os emails no cadastro dos clientes
         for (int i=0;i<int(lista_email.size());i++){
-            salvar_dados_email_cliente.prepare("INSERT INTO email_cliente(id_cliente,e_mail) VALUES(:id_cliente, :email)");
+            salvar_dados_email_cliente.prepare("INSERT INTO email_cliente(id_cliente,e_mail) VALUES(:id_cliente, :e_mail)");
             salvar_dados_email_cliente.bindValue(":id_cliente",id_cliente);
-            salvar_dados_email_cliente.bindValue(":email",QString::fromStdString(lista_email[i]));
+            salvar_dados_email_cliente.bindValue(":e_mail",QString::fromStdString(lista_email[i]));
             salvar_dados_email_cliente.exec();
         }
 
@@ -168,7 +168,7 @@ bool cliente::salvar_dados_cliente(void){
             msg.setWindowTitle("Cadastro");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
-            msg.setText("\nCadastro alterado com sucesso!!!!");
+            msg.setText("\nCadastro efetuado com sucesso!!!!");
             msg.exec();
 
             //Fecha a conexão com o banco de dados
@@ -189,7 +189,7 @@ bool cliente::salvar_dados_cliente(void){
             msg.setWindowTitle("Cadastro");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
-            msg.setText("\nNão foi possível alterar o cadastro do cliente!!!!");
+            msg.setText("\nNão foi possível efetuar o cadastro do cliente!!!!");
             msg.exec();
 
             //Fecha a conexão com o banco de dados
@@ -202,7 +202,11 @@ bool cliente::salvar_dados_cliente(void){
     }
 }
 
-bool cliente::salvar_alteracao_dados_cliente(std::vector< std::string > lista_telefone_a_remover,std::vector< std::string > lista_email_a_remover){
+bool cliente::salvar_alteracao_dados_cliente(std::vector< std::string > lista_telefone_a_remover,
+                                             std::vector< std::string > lista_telefone_a_adicionar,
+                                             std::vector< std::string > lista_operadora_a_adicionar,
+                                             std::vector< std::string > lista_email_a_remover,
+                                             std::vector< std::string > lista_email_a_adicionar){
     conexao_bd conexao;
     bool verifica_conexao;
     QSqlDatabase bd;
@@ -249,37 +253,39 @@ bool cliente::salvar_alteracao_dados_cliente(std::vector< std::string > lista_te
                 remover_dados_telefone_cliente.bindValue(":telefone",QString::fromStdString(lista_telefone_a_remover[i]));
                 remover_dados_telefone_cliente.exec();
             }
-
-            //Adicionar números de telefone ao cadastro do cliente
-            for (int i=0;i<int(lista_telefone.size());i++){
-                salvar_dados_telefone_cliente.prepare("INSERT INTO tel_cliente(id_cliente,telefone,Operadora) VALUES(:id_cliente, :telefone, :Operadora)");
-                salvar_dados_telefone_cliente.bindValue(":id_cliente",id);
-                salvar_dados_telefone_cliente.bindValue(":telefone",QString::fromStdString(lista_telefone[i]));
-                salvar_dados_telefone_cliente.bindValue(":Operadora",QString::fromStdString(lista_operadora[i]));
-                salvar_dados_telefone_cliente.exec();
-            }
+        }
+        //Adicionar números de telefone ao cadastro do cliente
+        for (int i=0;i<int(lista_telefone_a_adicionar.size());i++){
+            salvar_dados_telefone_cliente.prepare("INSERT INTO tel_cliente(id_cliente,telefone,operadora) VALUES(:id_cliente, :telefone, :operadora)");
+            salvar_dados_telefone_cliente.bindValue(":id_cliente",id);
+            salvar_dados_telefone_cliente.bindValue(":telefone",QString::fromStdString(lista_telefone_a_adicionar[i]));
+            salvar_dados_telefone_cliente.bindValue(":operadora",QString::fromStdString(lista_operadora_a_adicionar[i]));
+            salvar_dados_telefone_cliente.exec();
         }
 
         if(lista_email_a_remover.size()>0){
             //Remover emails do cadastro do cliente
             for (int i=0;i<int(lista_email_a_remover.size());i++){
-                remover_dados_email_cliente.prepare("DELETE FROM email_cliente WHERE id_cliente = :id_cliente AND email = email;");
-                remover_dados_email_cliente.bindValue(":id_cliente",id);
-                remover_dados_email_cliente.bindValue(":email",QString::fromStdString(lista_email_a_remover[i]));
+                remover_dados_email_cliente.prepare("DELETE FROM email_cliente WHERE id_cliente='"+QString::number(id)+"' AND e_mail='"+QString::fromStdString(lista_email_a_remover[i])+"';");
                 remover_dados_email_cliente.exec();
-            }
-
-            //Insere os emails no cadastro dos clientes
-            for (int i=0;i<int(lista_email.size());i++){
-                salvar_dados_email_cliente.prepare("INSERT INTO email_cliente(id_cliente,e_mail) VALUES(:id_cliente, :email)");
-                salvar_dados_email_cliente.bindValue(":id_cliente",id);
-                salvar_dados_email_cliente.bindValue(":email",QString::fromStdString(lista_email[i]));
-                salvar_dados_email_cliente.exec();
             }
         }
 
+        //Insere os emails no cadastro dos clientes
+        for (int i=0;i<int(lista_email_a_adicionar.size());i++){
+            salvar_dados_email_cliente.prepare("INSERT INTO email_cliente(id_cliente,e_mail) VALUES(:id_cliente, :e_mail)");
+            salvar_dados_email_cliente.bindValue(":id_cliente",id);
+            salvar_dados_email_cliente.bindValue(":e_mail",QString::fromStdString(lista_email_a_adicionar[i]));
+            salvar_dados_email_cliente.exec();
+        }
+
+
         //Verifica se os dados podem ser salvos, caso sim realiza o Commite, do contrário o Rollback.
-        if((alterar_dados_cliente.lastError().number()<=0)&&(salvar_dados_telefone_cliente.lastError().number()<=0)&&(salvar_dados_email_cliente.lastError().number()<=0)&&(remover_dados_telefone_cliente.lastError().number()<=0)&&(remover_dados_email_cliente.lastError().number()<=0)){
+        if((alterar_dados_cliente.lastError().number()<=0)&&
+            ((salvar_dados_telefone_cliente.lastError().number()<=0)||(salvar_dados_telefone_cliente.lastError().number()==1062))&&
+            ((salvar_dados_email_cliente.lastError().number()<=0)||(salvar_dados_email_cliente.lastError().number()==1062))&&
+            (remover_dados_telefone_cliente.lastError().number()<=0)&&
+            (remover_dados_email_cliente.lastError().number()<=0)){
 
             //Finaliza a alteraçao dos dados.
             bd.commit();

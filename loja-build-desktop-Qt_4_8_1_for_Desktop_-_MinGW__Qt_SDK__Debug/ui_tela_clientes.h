@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_clientes.ui'
 **
-** Created: Sat 22. Sep 10:58:02 2012
+** Created: Sun 23. Sep 14:45:52 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -108,6 +108,7 @@ public:
         font2.setPointSize(10);
         font2.setBold(true);
         font2.setWeight(75);
+        font2.setStrikeOut(false);
         font2.setKerning(false);
         gb_dados_cliente->setFont(font2);
         lb_telefone = new QLabel(gb_dados_cliente);
@@ -218,7 +219,13 @@ public:
         gb_endereo = new QGroupBox(tela_clientes);
         gb_endereo->setObjectName(QString::fromUtf8("gb_endereo"));
         gb_endereo->setGeometry(QRect(5, 225, 790, 192));
-        gb_endereo->setFont(font2);
+        QFont font5;
+        font5.setFamily(QString::fromUtf8("Calibri"));
+        font5.setPointSize(10);
+        font5.setBold(true);
+        font5.setWeight(75);
+        font5.setKerning(false);
+        gb_endereo->setFont(font5);
         le_cep = new QLineEdit(gb_endereo);
         le_cep->setObjectName(QString::fromUtf8("le_cep"));
         le_cep->setGeometry(QRect(35, 23, 91, 20));
@@ -238,12 +245,12 @@ public:
         le_rua = new QLineEdit(gb_endereo);
         le_rua->setObjectName(QString::fromUtf8("le_rua"));
         le_rua->setGeometry(QRect(160, 23, 621, 20));
-        QFont font5;
-        font5.setPointSize(10);
-        font5.setBold(false);
-        font5.setWeight(50);
-        font5.setKerning(false);
-        le_rua->setFont(font5);
+        QFont font6;
+        font6.setPointSize(10);
+        font6.setBold(false);
+        font6.setWeight(50);
+        font6.setKerning(false);
+        le_rua->setFont(font6);
         le_rua->setMaxLength(100);
         le_rua->setCursorPosition(0);
         le_rua->setReadOnly(true);
@@ -254,21 +261,21 @@ public:
         le_numero = new QLineEdit(gb_endereo);
         le_numero->setObjectName(QString::fromUtf8("le_numero"));
         le_numero->setGeometry(QRect(54, 50, 70, 20));
-        le_numero->setFont(font5);
+        le_numero->setFont(font6);
         le_numero->setMaxLength(9);
         le_numero->setReadOnly(true);
         lb_bairro = new QLabel(gb_endereo);
         lb_bairro->setObjectName(QString::fromUtf8("lb_bairro"));
         lb_bairro->setGeometry(QRect(132, 50, 46, 20));
-        QFont font6;
-        font6.setBold(false);
-        font6.setWeight(50);
-        font6.setKerning(false);
-        lb_bairro->setFont(font6);
+        QFont font7;
+        font7.setBold(false);
+        font7.setWeight(50);
+        font7.setKerning(false);
+        lb_bairro->setFont(font7);
         le_bairro = new QLineEdit(gb_endereo);
         le_bairro->setObjectName(QString::fromUtf8("le_bairro"));
         le_bairro->setGeometry(QRect(172, 50, 361, 20));
-        le_bairro->setFont(font5);
+        le_bairro->setFont(font6);
         le_bairro->setMaxLength(70);
         le_bairro->setReadOnly(true);
         lb_cidade = new QLabel(gb_endereo);
@@ -278,7 +285,7 @@ public:
         le_cidade = new QLineEdit(gb_endereo);
         le_cidade->setObjectName(QString::fromUtf8("le_cidade"));
         le_cidade->setGeometry(QRect(581, 50, 201, 20));
-        le_cidade->setFont(font5);
+        le_cidade->setFont(font6);
         le_cidade->setMaxLength(50);
         le_cidade->setCursorPosition(0);
         le_cidade->setReadOnly(true);
@@ -294,7 +301,8 @@ public:
         te_ponto_referencia->setObjectName(QString::fromUtf8("te_ponto_referencia"));
         te_ponto_referencia->setGeometry(QRect(10, 132, 770, 51));
         te_ponto_referencia->setFont(font4);
-        te_ponto_referencia->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        te_ponto_referencia->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        te_ponto_referencia->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         te_ponto_referencia->setReadOnly(true);
         lb_uf = new QLabel(gb_endereo);
         lb_uf->setObjectName(QString::fromUtf8("lb_uf"));

@@ -13,6 +13,8 @@ INPUT(
 ./debug\tela_editar_cliente.o
 ./debug\tela_clientes.o
 ./debug\tela_cadastro_fornecedor.o
+./debug\fornecedor.o
+./debug\tela_listar_fornecedores.o
 ./debug\moc_tela_login.o
 ./debug\moc_tela_principal.o
 ./debug\moc_tela_cadastro_cliente.o
@@ -20,5 +22,6 @@ INPUT(
 ./debug\moc_tela_editar_cliente.o
 ./debug\moc_tela_clientes.o
 ./debug\moc_tela_cadastro_fornecedor.o
+./debug\moc_tela_listar_fornecedores.o
 ./debug\qrc_imagens.o
 );

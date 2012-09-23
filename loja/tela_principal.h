@@ -7,6 +7,7 @@
 #include "tela_cadastro_cliente.h"
 #include "tela_listar_clientes.h"
 #include "tela_cadastro_fornecedor.h"
+#include "tela_listar_fornecedores.h"
 
 namespace Ui {
 class tela_principal;
@@ -21,16 +22,13 @@ public:
     ~tela_principal();
 
 private slots:
-
     void on_consultar_clientes_triggered();
-
-    void on_botao_sair_triggered();
-
-    void on_Cadastrar_cliente_triggered();
-
     void on_buscar_clientes_triggered();
-
+    void on_botao_sair_triggered();
+    void on_Cadastrar_cliente_triggered();
     void on_cadastrar_forncecedor_triggered();
+    void on_buscar_fornecedores_triggered();
+    void on_consultar_fornecedores_triggered();
 
 private:
     Ui::tela_principal *ui;
@@ -38,6 +36,7 @@ private:
     tela_cadastro_cliente tl_cadastro_clientes;
     tela_listar_clientes tl_listar_clientes;
     tela_cadastro_fornecedor tl_fornecedor;
+    tela_listar_fornecedores tl_listar_fornecedores;
 };
 
 #endif // TELA_PRINCIPAL_H

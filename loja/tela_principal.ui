@@ -132,10 +132,10 @@
   <action name="consultar_fornecedores">
    <property name="icon">
     <iconset resource="imagens.qrc">
-     <normaloff>:/img/img/fornecedor.png</normaloff>:/img/img/fornecedor.png</iconset>
+     <normaloff>:/img/img/fornecedor_buscar.png</normaloff>:/img/img/fornecedor_buscar.png</iconset>
    </property>
    <property name="text">
-    <string>Forncedores</string>
+    <string>Buscar Forncedores</string>
    </property>
   </action>
   <action name="consultar_estoque">
@@ -219,10 +219,10 @@
   <action name="buscar_fornecedores">
    <property name="icon">
     <iconset resource="imagens.qrc">
-     <normaloff>:/img/img/fornecedor.png</normaloff>:/img/img/fornecedor.png</iconset>
+     <normaloff>:/img/img/fornecedor_buscar.png</normaloff>:/img/img/fornecedor_buscar.png</iconset>
    </property>
    <property name="text">
-    <string>Fornecedores</string>
+    <string>Buscar Fornecedores</string>
    </property>
   </action>
   <action name="buscar_estoque">

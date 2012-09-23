@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_principal.h'
 **
-** Created: Sat 22. Sep 11:16:43 2012
+** Created: Sun 23. Sep 17:13:34 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_tela_principal[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -33,19 +33,23 @@ static const uint qt_meta_data_tela_principal[] = {
  // slots: signature, parameters, type, tag, flags
       16,   15,   15,   15, 0x08,
       50,   15,   15,   15, 0x08,
-      76,   15,   15,   15, 0x08,
-     109,   15,   15,   15, 0x08,
+      81,   15,   15,   15, 0x08,
+     107,   15,   15,   15, 0x08,
      140,   15,   15,   15, 0x08,
+     177,   15,   15,   15, 0x08,
+     212,   15,   15,   15, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_tela_principal[] = {
     "tela_principal\0\0on_consultar_clientes_triggered()\0"
+    "on_buscar_clientes_triggered()\0"
     "on_botao_sair_triggered()\0"
     "on_Cadastrar_cliente_triggered()\0"
-    "on_buscar_clientes_triggered()\0"
     "on_cadastrar_forncecedor_triggered()\0"
+    "on_buscar_fornecedores_triggered()\0"
+    "on_consultar_fornecedores_triggered()\0"
 };
 
 void tela_principal::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -55,10 +59,12 @@ void tela_principal::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         tela_principal *_t = static_cast<tela_principal *>(_o);
         switch (_id) {
         case 0: _t->on_consultar_clientes_triggered(); break;
-        case 1: _t->on_botao_sair_triggered(); break;
-        case 2: _t->on_Cadastrar_cliente_triggered(); break;
-        case 3: _t->on_buscar_clientes_triggered(); break;
+        case 1: _t->on_buscar_clientes_triggered(); break;
+        case 2: _t->on_botao_sair_triggered(); break;
+        case 3: _t->on_Cadastrar_cliente_triggered(); break;
         case 4: _t->on_cadastrar_forncecedor_triggered(); break;
+        case 5: _t->on_buscar_fornecedores_triggered(); break;
+        case 6: _t->on_consultar_fornecedores_triggered(); break;
         default: ;
         }
     }
@@ -97,9 +103,9 @@ int tela_principal::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 7;
     }
     return _id;
 }
