@@ -146,6 +146,7 @@ void tela_editar_cliente::adicionar_email(){
             }
             if(!ja_cadastrado){
                 lista_email.push_back(le_email->text().toLower().toStdString());
+                lista_email_a_adicionar.push_back(le_email->text().toLower().toStdString());
                 ui->cb_email->clear();
                 int i = lista_email.size();
                 for (i = i-1; i>=0 ;i--){
@@ -390,6 +391,8 @@ void tela_editar_cliente::adicionar_telefone(){
             if(!ja_cadastrado){
                 lista_telefone.push_back(telefone);
                 lista_operadora.push_back(operadora);
+                lista_telefone_a_adicionar.push_back(telefone);
+                lista_operadora_a_adicionar.push_back(operadora);
                 ui->cb_telefone->clear();
 
                 int i = lista_telefone.size();
@@ -640,12 +643,27 @@ void tela_editar_cliente::on_btn_confirmar_clicked()
             informacao_cad_cliente->alterar_dados_cliente(ui->le_nome->text(),ui->le_rg->text(),ui->le_cpf->text(),
                                                           QString::fromStdString(comentario_Aux),lista_email,lista_telefone, lista_operadora,
                                                           ui->le_uf->text(), ui->cb_estado->currentText(), ui->le_cidade->text(),ui->le_bairro->text(),
-                                                          ui->le_rua->text(), ui->le_cep->text(), ui->le_numero->text().toInt(), QString::fromStdString(ponto_referencia_aux));
+                                                          ui->le_rua->text(), ui->le_cep->text(), ui->le_numero->text().toInt(),
+                                                          QString::fromStdString(ponto_referencia_aux));
 
-            if(informacao_cad_cliente->salvar_alteracao_dados_cliente(lista_telefone_a_remover,lista_email_a_remover)){
+            if(informacao_cad_cliente->salvar_alteracao_dados_cliente(lista_telefone_a_remover,
+                                                                      lista_telefone_a_adicionar,
+                                                                      lista_operadora_a_adicionar,
+                                                                      lista_email_a_remover,
+                                                                      lista_email_a_adicionar)){
                 lista_telefone_a_remover.clear();
+                lista_telefone_a_adicionar.clear();
+                lista_operadora_a_adicionar.clear();
                 lista_email_a_remover.clear();
+                lista_email_a_adicionar.clear();
                 this->close();
+            }
+            else{
+                lista_telefone_a_remover.clear();
+                lista_telefone_a_adicionar.clear();
+                lista_operadora_a_adicionar.clear();
+                lista_email_a_remover.clear();
+                lista_email_a_adicionar.clear();
             }
         }
         else{

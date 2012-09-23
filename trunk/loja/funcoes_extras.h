@@ -13,6 +13,8 @@ public:
     QString retorna_nome_imagem_estado(std::string uf);
     QIcon retorna_icone_operadora(std::string operadora);
     int determinar_posicao_caractere(std::string palavra,const char *caractere);
+    bool verifica_cpf(std::string cpf);
+    bool verifica_cnpj(std::string cnpj);
 };
 
 #endif // FUNCOES_EXTRAS_H

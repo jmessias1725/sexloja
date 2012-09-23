@@ -55,6 +55,7 @@ private:
     std::vector< std::string > lista_operadora;
     cliente *cad_cliente;
     cep *aux_cep;
+    funcoes_extras funcao;
 };
 
 #endif // TELA_CADASTRO_CLIENTE_H

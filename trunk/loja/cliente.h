@@ -57,7 +57,11 @@ public:
                                QString uf_sigla, QString uf_nome, QString cidade, QString bairro,
                                QString rua, QString cep, int numero, QString pt_referencia);
     bool salvar_dados_cliente(void);
-    bool salvar_alteracao_dados_cliente(std::vector< std::string > lista_telefone_a_remover,std::vector< std::string > lista_email_a_remover);
+    bool salvar_alteracao_dados_cliente(std::vector< std::string > lista_telefone_a_remover,
+                                      std::vector< std::string > lista_telefone_a_adicionar,
+                                      std::vector< std::string > lista_operadora_a_adicionar,
+                                      std::vector< std::string > lista_email_a_remover,
+                                      std::vector< std::string > lista_email_a_adicionar);
     bool remover_cadastro_cliente(int id_cliente);
 };
 

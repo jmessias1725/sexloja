@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_principal.ui'
 **
-** Created: Sat 22. Sep 10:58:02 2012
+** Created: Sun 23. Sep 14:50:16 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -73,7 +73,7 @@ public:
         consultar_fornecedores = new QAction(tela_principal);
         consultar_fornecedores->setObjectName(QString::fromUtf8("consultar_fornecedores"));
         QIcon icon3;
-        icon3.addFile(QString::fromUtf8(":/img/img/fornecedor.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon3.addFile(QString::fromUtf8(":/img/img/fornecedor_buscar.png"), QSize(), QIcon::Normal, QIcon::Off);
         consultar_fornecedores->setIcon(icon3);
         consultar_estoque = new QAction(tela_principal);
         consultar_estoque->setObjectName(QString::fromUtf8("consultar_estoque"));
@@ -185,7 +185,7 @@ public:
         tela_principal->setWindowTitle(QApplication::translate("tela_principal", "Sex Shop", 0, QApplication::UnicodeUTF8));
         consultar_clientes->setText(QApplication::translate("tela_principal", "Buscar Clientes", 0, QApplication::UnicodeUTF8));
         consultar_caixa->setText(QApplication::translate("tela_principal", "Caixa", 0, QApplication::UnicodeUTF8));
-        consultar_fornecedores->setText(QApplication::translate("tela_principal", "Forncedores", 0, QApplication::UnicodeUTF8));
+        consultar_fornecedores->setText(QApplication::translate("tela_principal", "Buscar Forncedores", 0, QApplication::UnicodeUTF8));
         consultar_estoque->setText(QApplication::translate("tela_principal", "Estoque", 0, QApplication::UnicodeUTF8));
         cadastrar_forncecedor->setText(QApplication::translate("tela_principal", "Fornecedor", 0, QApplication::UnicodeUTF8));
         cadastrar_produto->setText(QApplication::translate("tela_principal", "Produto", 0, QApplication::UnicodeUTF8));
@@ -194,7 +194,7 @@ public:
         botao_sair->setText(QApplication::translate("tela_principal", "Sair", 0, QApplication::UnicodeUTF8));
         buscar_clientes->setText(QApplication::translate("tela_principal", "Buscar Clientes", 0, QApplication::UnicodeUTF8));
         buscar_produtos->setText(QApplication::translate("tela_principal", "Produtos", 0, QApplication::UnicodeUTF8));
-        buscar_fornecedores->setText(QApplication::translate("tela_principal", "Fornecedores", 0, QApplication::UnicodeUTF8));
+        buscar_fornecedores->setText(QApplication::translate("tela_principal", "Buscar Fornecedores", 0, QApplication::UnicodeUTF8));
         buscar_estoque->setText(QApplication::translate("tela_principal", "Estoque", 0, QApplication::UnicodeUTF8));
         menuArquivo->setTitle(QApplication::translate("tela_principal", "Arquivo", 0, QApplication::UnicodeUTF8));
         menuNovo->setTitle(QApplication::translate("tela_principal", "Novo", 0, QApplication::UnicodeUTF8));

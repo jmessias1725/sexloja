@@ -49,7 +49,10 @@ private:
     std::vector< std::string > lista_telefone;
     std::vector< std::string > lista_operadora;
     std::vector< std::string > lista_email_a_remover;
+    std::vector< std::string > lista_email_a_adicionar;
     std::vector< std::string > lista_telefone_a_remover;
+    std::vector< std::string > lista_telefone_a_adicionar;
+    std::vector< std::string > lista_operadora_a_adicionar;
     cliente *informacao_cad_cliente;
     cep *aux_cep;
     funcoes_extras funcoes;

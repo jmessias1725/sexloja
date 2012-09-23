@@ -389,12 +389,23 @@ void tela_cadastro_fornecedor::cancelar_telefone(){
 }
 
 
-void tela_cadastro_fornecedor::on_le_cnpj_editingFinished()
-{
-
+void tela_cadastro_fornecedor::on_le_cnpj_editingFinished(){
+    if(!funcao.verifica_cnpj(ui->le_cnpj->text().toStdString())){
+        QPixmap icone_titulo_janela(":img/img/logo_sex.png");
+        QPixmap icone_janela(":img/img/cnpj_erro_50.png");
+        QMessageBox msg(0);
+        msg.setIconPixmap(icone_janela);
+        msg.setWindowIcon(icone_titulo_janela);
+        msg.setWindowTitle("Erro no número do CNPJ");
+        msg.addButton("OK", QMessageBox::AcceptRole);
+        msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+        msg.setText("\nNúmero de CNPJ inválido!");
+        msg.exec();
+        ui->le_cnpj->clear();
+    }
 }
-void tela_cadastro_fornecedor::on_le_cep_editingFinished()
-{
+
+void tela_cadastro_fornecedor::on_le_cep_editingFinished(){
     aux_cep = new cep;
     bool possui_cep;
     if (ui->le_cep->text().size()>=9){
@@ -531,14 +542,14 @@ void tela_cadastro_fornecedor::on_btn_confirmar_clicked()
             ponto_referencia_aux = ponto_referencia_aux.substr(0,150);
         }
 
-        /*cad_cliente = new cliente(ui->le_nome->text(),ui->le_rg->text(),ui->le_cpf->text(),
+        cad_fornecedor = new fornecedor(ui->le_cnpj->text(),ui->le_razao_social->text(),ui->le_nome->text(),
                     QString::fromStdString(comentario_Aux),lista_email,lista_telefone, lista_operadora,
                     ui->le_uf->text(), ui->cb_estado->currentText(), ui->le_cidade->text(),ui->le_bairro->text(),
                     ui->le_rua->text(), ui->le_cep->text(), ui->le_numero->text().toInt(), QString::fromStdString(ponto_referencia_aux));
 
-        if(cad_cliente->salvar_dados_cliente()){
+        if(cad_fornecedor->salvar_dados_fornecedor()){
             this->close();
-        }*/
+        }
     }
     else{
         if(ui->le_nome->text().toStdString()==""){

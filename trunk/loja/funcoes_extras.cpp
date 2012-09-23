@@ -351,3 +351,113 @@ int funcoes_extras::determinar_posicao_caractere(std::string palavra, const char
     }
     return -1;
 }
+
+bool funcoes_extras::verifica_cpf(std::string cpf){
+    int soma,resultado1,resultado2,digito1,digito2;
+
+    soma = 0;
+    if(cpf.size()>=14)
+    {
+        cpf = cpf.substr(0,3)+cpf.substr(4,3)+cpf.substr(8,3)+cpf.substr(12,2);
+        for (int i = 0; i <9;i++){
+            soma = soma+(int(cpf[i]-48)*(10-i));
+        }
+        resultado1 = soma%11;
+        if (resultado1<=1)
+            digito1 = 0;
+        else
+            digito1 = 11-resultado1;
+
+        soma = 0;
+
+        for (int i = 0; i <10;i++){
+            soma = soma+(int(cpf[i]-48)*(11-i));
+        }
+
+        resultado2 = soma%11;
+
+        if (resultado2<=1)
+            digito2 = 0;
+        else
+            digito2 = 11-resultado2;
+
+        if((digito1 == int(cpf[9]-48))&&(digito2 == int(cpf[10]-48))){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    else{
+        if(cpf!="..-"){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+}
+
+bool funcoes_extras::verifica_cnpj(std::string cnpj){
+    int soma, resto_div, dig1, dig2;
+
+    if(cnpj.size()>=18){
+
+        cnpj = cnpj.substr(0,2)+cnpj.substr(3,3)+cnpj.substr(7,3)+cnpj.substr(11,4)+cnpj.substr(16,2);
+
+        soma =((int(cnpj[0]-48) * 5) +
+                (int(cnpj[1]-48) * 4) +
+                (int(cnpj[2]-48) * 3) +
+                (int(cnpj[3]-48) * 2) +
+                (int(cnpj[4]-48) * 9) +
+                (int(cnpj[5]-48) * 8) +
+                (int(cnpj[6]-48) * 7) +
+                (int(cnpj[7]-48) * 6) +
+                (int(cnpj[8]-48) * 5) +
+                (int(cnpj[9]-48) * 4) +
+                (int(cnpj[10]-48) * 3) +
+                (int(cnpj[11]-48) * 2));
+
+        resto_div = int(soma%11);
+
+        dig1   = ( 11 - resto_div);
+        if (dig1 > 9) dig1 = 0;
+
+        soma = 0;
+        resto_div = 0;
+
+        soma = ((int(cnpj[0]-48) * 6) +
+                (int(cnpj[1]-48) * 5) +
+                (int(cnpj[2]-48) * 4) +
+                (int(cnpj[3]-48) * 3) +
+                (int(cnpj[4]-48) * 2) +
+                (int(cnpj[5]-48) * 9) +
+                (int(cnpj[6]-48) * 8) +
+                (int(cnpj[7]-48) * 7) +
+                (int(cnpj[8]-48) * 6) +
+                (int(cnpj[9]-48) * 5) +
+                (int(cnpj[10]-48) * 4) +
+                (int(cnpj[11]-48) * 3) +
+                (dig1 * 2));
+
+        resto_div = int(soma % 11);
+
+        dig2   = (11 - resto_div);
+        if (dig2 > 9) dig2 = 0;
+
+        if ((dig1==int(cnpj[12]-48))&&(dig2==int(cnpj[13]-48))){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    else{
+        if(cnpj!="../-"){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+}
