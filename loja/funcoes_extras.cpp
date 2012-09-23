@@ -404,7 +404,6 @@ bool funcoes_extras::verifica_cnpj(std::string cnpj){
     if(cnpj.size()>=18){
 
         cnpj = cnpj.substr(0,2)+cnpj.substr(3,3)+cnpj.substr(7,3)+cnpj.substr(11,4)+cnpj.substr(16,2);
-
         soma =((int(cnpj[0]-48) * 5) +
                 (int(cnpj[1]-48) * 4) +
                 (int(cnpj[2]-48) * 3) +
@@ -420,7 +419,7 @@ bool funcoes_extras::verifica_cnpj(std::string cnpj){
 
         resto_div = int(soma%11);
 
-        dig1   = ( 11 - resto_div);
+        dig1   = (11 - resto_div);
         if (dig1 > 9) dig1 = 0;
 
         soma = 0;
