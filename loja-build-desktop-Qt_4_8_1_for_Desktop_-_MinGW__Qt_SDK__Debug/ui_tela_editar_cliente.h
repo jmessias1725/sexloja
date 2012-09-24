@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_editar_cliente.ui'
 **
-** Created: Sun 23. Sep 14:45:52 2012
+** Created: Mon 24. Sep 15:20:35 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -187,7 +187,7 @@ public:
         font6.setBold(false);
         font6.setWeight(50);
         te_ponto_referencia->setFont(font6);
-        te_ponto_referencia->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        te_ponto_referencia->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
         te_ponto_referencia->setReadOnly(false);
         lb_uf = new QLabel(gb_endereo);
         lb_uf->setObjectName(QString::fromUtf8("lb_uf"));

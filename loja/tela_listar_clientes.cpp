@@ -85,9 +85,9 @@ void tela_listar_clientes::on_btn_buscar_clicked()
     nome_cliente = ui->le_nome->text();
     lista_clientes.clear();
 
-    if (((id_cliente.toStdString()!="")&&(id_cliente.toStdString()!=""))||((nome_cliente.toStdString()!="")&&(nome_cliente.toStdString()!=" "))||(telefone!="()-")){
+    if (((id_cliente.toStdString()!="")&&(id_cliente.toStdString()!=" "))||((nome_cliente.toStdString()!="")&&(nome_cliente.toStdString()!=" "))||(telefone!="()-")){
 
-        campos_consulta = "cliente.id_cliente, cliente.nome, cliente.rg, cliente.cpf, cliente.comentario,cliente.cep, cliente.rua, cliente.bairro, cliente.ponto_referencia, cliente.cidade, cliente.uf, cliente.numero, cliente.estado";
+        campos_consulta = "c.id_cliente, c.nome, c.rg, c.cpf, c.comentario,c.cep, c.rua, c.bairro, c.ponto_referencia, c.cidade, c.uf, c.numero, c.estado";
 
         if(telefone == "()-"){
            telefone = "";
@@ -119,7 +119,7 @@ void tela_listar_clientes::on_btn_buscar_clicked()
             QSqlQuery consultar(bd);
 
             //realiza a consulta
-            consultar.exec("SELECT DISTINCT "+campos_consulta+" FROM cliente,tel_cliente WHERE cliente.id_cliente LIKE '%"+id_cliente+"%' AND cliente.nome LIKE '%"+nome_cliente+"%' AND tel_cliente.telefone LIKE '%"+QString::fromStdString(telefone)+"%' AND tel_cliente.id_cliente = cliente.id_cliente ORDER BY  cliente.nome ASC;");
+            consultar.exec("SELECT DISTINCT "+campos_consulta+" FROM cliente c,tel_cliente tc WHERE c.id_cliente LIKE '%"+id_cliente+"%' AND c.nome LIKE '%"+nome_cliente+"%' AND tc.telefone LIKE '%"+QString::fromStdString(telefone)+"%' AND tc.id_cliente = c.id_cliente ORDER BY  c.nome ASC;");
             while(consultar.next()){
                 lista_id.push_back(consultar.value(0).toString().toStdString());
                 lista_nomes.push_back(consultar.value(1).toString().toStdString());
@@ -152,10 +152,12 @@ void tela_listar_clientes::on_btn_buscar_clicked()
                     aux_lista_email.push_back(consultar.value(0).toString().toStdString());
                 }
 
-                lista_clientes.push_back(new cliente(QString::fromStdString(lista_id[i]).toInt(),QString::fromStdString(lista_nomes[i]),QString::fromStdString(lista_rgs[i]),
-                                                     QString::fromStdString(lista_cpfs[i]),QString::fromStdString(lista_comentario[i]),aux_lista_email,aux_lista_telefone,
-                                                     aux_lista_operadora,QString::fromStdString(lista_uf[i]),QString::fromStdString(lista_estado[i]),QString::fromStdString(lista_cidade[i]),
-                                                     QString::fromStdString(lista_bairro[i]),QString::fromStdString(lista_rua[i]),QString::fromStdString(lista_cep[i]),
+                lista_clientes.push_back(new cliente(QString::fromStdString(lista_id[i]).toInt(),QString::fromStdString(lista_nomes[i]),
+                                                     QString::fromStdString(lista_rgs[i]),QString::fromStdString(lista_cpfs[i]),
+                                                     QString::fromStdString(lista_comentario[i]),aux_lista_email,aux_lista_telefone,
+                                                     aux_lista_operadora,QString::fromStdString(lista_uf[i]),QString::fromStdString(lista_estado[i]),
+                                                     QString::fromStdString(lista_cidade[i]),QString::fromStdString(lista_bairro[i]),
+                                                     QString::fromStdString(lista_rua[i]),QString::fromStdString(lista_cep[i]),
                                                      QString::fromStdString(lista_numero[i]).toInt(),QString::fromStdString(lista_ponto_referencia[i])));
 
                 modelo->setItem(i,0,new QStandardItem(QString::fromStdString(lista_id[i])));

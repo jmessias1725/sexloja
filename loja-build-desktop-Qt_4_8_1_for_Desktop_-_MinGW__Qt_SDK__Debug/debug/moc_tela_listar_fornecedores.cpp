@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_listar_fornecedores.h'
 **
-** Created: Sun 23. Sep 14:46:46 2012
+** Created: Mon 24. Sep 17:23:50 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,26 +23,49 @@ static const uint qt_meta_data_tela_listar_fornecedores[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       0,    0, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
        0,       // signalCount
 
+ // slots: signature, parameters, type, tag, flags
+      26,   25,   25,   25, 0x08,
+      59,   25,   25,   25, 0x08,
+      85,   25,   25,   25, 0x08,
+     115,  109,   25,   25, 0x08,
+     161,   25,   25,   25, 0x08,
+     191,  185,   25,   25, 0x08,
+
        0        // eod
 };
 
 static const char qt_meta_stringdata_tela_listar_fornecedores[] = {
-    "tela_listar_fornecedores\0"
+    "tela_listar_fornecedores\0\0"
+    "on_le_telefone_editingFinished()\0"
+    "on_btn_cancelar_clicked()\0"
+    "on_btn_buscar_clicked()\0index\0"
+    "on_tv_fornecedores_doubleClicked(QModelIndex)\0"
+    "on_btn_limpar_clicked()\0event\0"
+    "closeEvent(QCloseEvent*)\0"
 };
 
 void tela_listar_fornecedores::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    Q_UNUSED(_o);
-    Q_UNUSED(_id);
-    Q_UNUSED(_c);
-    Q_UNUSED(_a);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        tela_listar_fornecedores *_t = static_cast<tela_listar_fornecedores *>(_o);
+        switch (_id) {
+        case 0: _t->on_le_telefone_editingFinished(); break;
+        case 1: _t->on_btn_cancelar_clicked(); break;
+        case 2: _t->on_btn_buscar_clicked(); break;
+        case 3: _t->on_tv_fornecedores_doubleClicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
+        case 4: _t->on_btn_limpar_clicked(); break;
+        case 5: _t->closeEvent((*reinterpret_cast< QCloseEvent*(*)>(_a[1]))); break;
+        default: ;
+        }
+    }
 }
 
 const QMetaObjectExtraData tela_listar_fornecedores::staticMetaObjectExtraData = {
@@ -76,6 +99,11 @@ int tela_listar_fornecedores::qt_metacall(QMetaObject::Call _c, int _id, void **
     _id = QDialog::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 6)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 6;
+    }
     return _id;
 }
 QT_END_MOC_NAMESPACE
