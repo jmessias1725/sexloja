@@ -11,9 +11,16 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Selecionar Fornecedores</string>
   </property>
-  <widget class="QGroupBox" name="gb_clientes">
+  <property name="windowIcon">
+   <iconset resource="imagens.qrc">
+    <normaloff>:/img/img/logo_sex.png</normaloff>:/img/img/logo_sex.png</iconset>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <widget class="QGroupBox" name="gb_fornecedores">
    <property name="geometry">
     <rect>
      <x>5</x>
@@ -33,7 +40,7 @@
    <property name="title">
     <string>Fornecedores</string>
    </property>
-   <widget class="QTableView" name="tv_clientes">
+   <widget class="QTableView" name="tv_fornecedores">
     <property name="geometry">
      <rect>
       <x>7</x>
@@ -59,10 +66,10 @@
      <bool>false</bool>
     </property>
     <attribute name="horizontalHeaderVisible">
-     <bool>true</bool>
+     <bool>false</bool>
     </attribute>
     <attribute name="horizontalHeaderDefaultSectionSize">
-     <number>450</number>
+     <number>390</number>
     </attribute>
     <attribute name="horizontalHeaderMinimumSectionSize">
      <number>15</number>

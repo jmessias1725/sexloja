@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_clientes.ui'
 **
-** Created: Sun 23. Sep 14:45:52 2012
+** Created: Mon 24. Sep 17:26:17 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -77,6 +77,7 @@ public:
     {
         if (tela_clientes->objectName().isEmpty())
             tela_clientes->setObjectName(QString::fromUtf8("tela_clientes"));
+        tela_clientes->setWindowModality(Qt::ApplicationModal);
         tela_clientes->resize(800, 656);
         tela_clientes->setMaximumSize(QSize(800, 656));
         QFont font;
@@ -366,7 +367,11 @@ public:
         icon3.addFile(QString::fromUtf8(":/img/img/remover_cliente.png"), QSize(), QIcon::Normal, QIcon::Off);
         btn_remover_cliente->setIcon(icon3);
         btn_remover_cliente->setIconSize(QSize(40, 40));
+        btn_remover_cliente->setToolButtonStyle(Qt::ToolButtonIconOnly);
         btn_remover_cliente->setAutoRaise(true);
+        QWidget::setTabOrder(btn_editar_cliente, btn_adicionar_cliente);
+        QWidget::setTabOrder(btn_adicionar_cliente, btn_remover_cliente);
+        QWidget::setTabOrder(btn_remover_cliente, le_codigo);
         QWidget::setTabOrder(le_codigo, le_nome);
         QWidget::setTabOrder(le_nome, le_rg);
         QWidget::setTabOrder(le_rg, le_cpf);
@@ -384,8 +389,6 @@ public:
         QWidget::setTabOrder(le_estado, le_uf);
         QWidget::setTabOrder(le_uf, te_ponto_referencia);
         QWidget::setTabOrder(te_ponto_referencia, tv_historico_compras);
-        QWidget::setTabOrder(tv_historico_compras, btn_editar_cliente);
-        QWidget::setTabOrder(btn_editar_cliente, btn_adicionar_cliente);
 
         retranslateUi(tela_clientes);
 
@@ -435,9 +438,9 @@ public:
         lb_uf->setText(QApplication::translate("tela_clientes", "UF:", 0, QApplication::UnicodeUTF8));
         le_uf->setText(QApplication::translate("tela_clientes", "--", 0, QApplication::UnicodeUTF8));
         le_estado->setText(QString());
-        btn_editar_cliente->setText(QApplication::translate("tela_clientes", "...", 0, QApplication::UnicodeUTF8));
-        btn_adicionar_cliente->setText(QApplication::translate("tela_clientes", "...", 0, QApplication::UnicodeUTF8));
-        btn_remover_cliente->setText(QApplication::translate("tela_clientes", "...", 0, QApplication::UnicodeUTF8));
+        btn_editar_cliente->setText(QApplication::translate("tela_clientes", "Editar Cliente", 0, QApplication::UnicodeUTF8));
+        btn_adicionar_cliente->setText(QApplication::translate("tela_clientes", "Adiconar Cliente", 0, QApplication::UnicodeUTF8));
+        btn_remover_cliente->setText(QApplication::translate("tela_clientes", "Remover Cliente", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>tela_clientes</class>
  <widget class="QDialog" name="tela_clientes">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -1016,7 +1019,7 @@ p, li { white-space: pre-wrap; }
      </rect>
     </property>
     <property name="text">
-     <string>...</string>
+     <string>Editar Cliente</string>
     </property>
     <property name="icon">
      <iconset resource="imagens.qrc">
@@ -1042,7 +1045,7 @@ p, li { white-space: pre-wrap; }
      </rect>
     </property>
     <property name="text">
-     <string>...</string>
+     <string>Adiconar Cliente</string>
     </property>
     <property name="icon">
      <iconset resource="imagens.qrc">
@@ -1068,7 +1071,7 @@ p, li { white-space: pre-wrap; }
      </rect>
     </property>
     <property name="text">
-     <string>...</string>
+     <string>Remover Cliente</string>
     </property>
     <property name="icon">
      <iconset resource="imagens.qrc">
@@ -1080,6 +1083,9 @@ p, li { white-space: pre-wrap; }
       <height>40</height>
      </size>
     </property>
+    <property name="toolButtonStyle">
+     <enum>Qt::ToolButtonIconOnly</enum>
+    </property>
     <property name="autoRaise">
      <bool>true</bool>
     </property>
@@ -1087,6 +1093,9 @@ p, li { white-space: pre-wrap; }
   </widget>
  </widget>
  <tabstops>
+  <tabstop>btn_editar_cliente</tabstop>
+  <tabstop>btn_adicionar_cliente</tabstop>
+  <tabstop>btn_remover_cliente</tabstop>
   <tabstop>le_codigo</tabstop>
   <tabstop>le_nome</tabstop>
   <tabstop>le_rg</tabstop>
@@ -1105,8 +1114,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>le_uf</tabstop>
   <tabstop>te_ponto_referencia</tabstop>
   <tabstop>tv_historico_compras</tabstop>
-  <tabstop>btn_editar_cliente</tabstop>
-  <tabstop>btn_adicionar_cliente</tabstop>
  </tabstops>
  <resources>
   <include location="imagens.qrc"/>

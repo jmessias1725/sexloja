@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_listar_fornecedores.ui'
 **
-** Created: Sun 23. Sep 15:29:18 2012
+** Created: Mon 24. Sep 17:26:17 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -27,8 +27,8 @@ QT_BEGIN_NAMESPACE
 class Ui_tela_listar_fornecedores
 {
 public:
-    QGroupBox *gb_clientes;
-    QTableView *tv_clientes;
+    QGroupBox *gb_fornecedores;
+    QTableView *tv_fornecedores;
     QGroupBox *gb_buscar;
     QLabel *lb_codigo;
     QLineEdit *le_codigo;
@@ -49,35 +49,39 @@ public:
         if (tela_listar_fornecedores->objectName().isEmpty())
             tela_listar_fornecedores->setObjectName(QString::fromUtf8("tela_listar_fornecedores"));
         tela_listar_fornecedores->resize(767, 355);
-        gb_clientes = new QGroupBox(tela_listar_fornecedores);
-        gb_clientes->setObjectName(QString::fromUtf8("gb_clientes"));
-        gb_clientes->setGeometry(QRect(5, 110, 756, 240));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/img/img/logo_sex.png"), QSize(), QIcon::Normal, QIcon::Off);
+        tela_listar_fornecedores->setWindowIcon(icon);
+        tela_listar_fornecedores->setModal(true);
+        gb_fornecedores = new QGroupBox(tela_listar_fornecedores);
+        gb_fornecedores->setObjectName(QString::fromUtf8("gb_fornecedores"));
+        gb_fornecedores->setGeometry(QRect(5, 110, 756, 240));
         QFont font;
         font.setFamily(QString::fromUtf8("Calibri"));
         font.setPointSize(10);
         font.setBold(true);
         font.setWeight(75);
-        gb_clientes->setFont(font);
-        tv_clientes = new QTableView(gb_clientes);
-        tv_clientes->setObjectName(QString::fromUtf8("tv_clientes"));
-        tv_clientes->setGeometry(QRect(7, 15, 742, 218));
+        gb_fornecedores->setFont(font);
+        tv_fornecedores = new QTableView(gb_fornecedores);
+        tv_fornecedores->setObjectName(QString::fromUtf8("tv_fornecedores"));
+        tv_fornecedores->setGeometry(QRect(7, 15, 742, 218));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Calibri"));
         font1.setPointSize(10);
         font1.setKerning(false);
-        tv_clientes->setFont(font1);
-        tv_clientes->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-        tv_clientes->setAlternatingRowColors(true);
-        tv_clientes->setSortingEnabled(false);
-        tv_clientes->horizontalHeader()->setVisible(true);
-        tv_clientes->horizontalHeader()->setDefaultSectionSize(450);
-        tv_clientes->horizontalHeader()->setMinimumSectionSize(15);
-        tv_clientes->horizontalHeader()->setStretchLastSection(true);
-        tv_clientes->verticalHeader()->setVisible(false);
-        tv_clientes->verticalHeader()->setCascadingSectionResizes(false);
-        tv_clientes->verticalHeader()->setDefaultSectionSize(30);
-        tv_clientes->verticalHeader()->setMinimumSectionSize(20);
-        tv_clientes->verticalHeader()->setStretchLastSection(false);
+        tv_fornecedores->setFont(font1);
+        tv_fornecedores->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        tv_fornecedores->setAlternatingRowColors(true);
+        tv_fornecedores->setSortingEnabled(false);
+        tv_fornecedores->horizontalHeader()->setVisible(false);
+        tv_fornecedores->horizontalHeader()->setDefaultSectionSize(390);
+        tv_fornecedores->horizontalHeader()->setMinimumSectionSize(15);
+        tv_fornecedores->horizontalHeader()->setStretchLastSection(true);
+        tv_fornecedores->verticalHeader()->setVisible(false);
+        tv_fornecedores->verticalHeader()->setCascadingSectionResizes(false);
+        tv_fornecedores->verticalHeader()->setDefaultSectionSize(30);
+        tv_fornecedores->verticalHeader()->setMinimumSectionSize(20);
+        tv_fornecedores->verticalHeader()->setStretchLastSection(false);
         gb_buscar = new QGroupBox(tela_listar_fornecedores);
         gb_buscar->setObjectName(QString::fromUtf8("gb_buscar"));
         gb_buscar->setGeometry(QRect(5, 0, 756, 108));
@@ -143,9 +147,9 @@ public:
         font5.setBold(false);
         font5.setWeight(50);
         btn_buscar->setFont(font5);
-        QIcon icon;
-        icon.addFile(QString::fromUtf8(":/img/img/busar_clientes.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_buscar->setIcon(icon);
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/img/img/busar_clientes.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_buscar->setIcon(icon1);
         btn_buscar->setIconSize(QSize(20, 20));
         btn_cancelar = new QPushButton(gb_buscar);
         btn_cancelar->setObjectName(QString::fromUtf8("btn_cancelar"));
@@ -153,9 +157,9 @@ public:
         btn_cancelar->setMinimumSize(QSize(0, 24));
         btn_cancelar->setMaximumSize(QSize(90, 24));
         btn_cancelar->setFont(font5);
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/img/img/1345902747_button_cancel.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_cancelar->setIcon(icon1);
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/img/img/1345902747_button_cancel.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_cancelar->setIcon(icon2);
         btn_cancelar->setIconSize(QSize(18, 18));
         btn_limpar = new QPushButton(gb_buscar);
         btn_limpar->setObjectName(QString::fromUtf8("btn_limpar"));
@@ -163,9 +167,9 @@ public:
         btn_limpar->setMinimumSize(QSize(0, 24));
         btn_limpar->setMaximumSize(QSize(90, 24));
         btn_limpar->setFont(font5);
-        QIcon icon2;
-        icon2.addFile(QString::fromUtf8(":/img/img/limpar.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_limpar->setIcon(icon2);
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/img/img/limpar.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_limpar->setIcon(icon3);
         btn_limpar->setIconSize(QSize(20, 20));
         le_razao_social = new QLineEdit(gb_buscar);
         le_razao_social->setObjectName(QString::fromUtf8("le_razao_social"));
@@ -198,8 +202,8 @@ public:
 
     void retranslateUi(QDialog *tela_listar_fornecedores)
     {
-        tela_listar_fornecedores->setWindowTitle(QApplication::translate("tela_listar_fornecedores", "Dialog", 0, QApplication::UnicodeUTF8));
-        gb_clientes->setTitle(QApplication::translate("tela_listar_fornecedores", "Fornecedores", 0, QApplication::UnicodeUTF8));
+        tela_listar_fornecedores->setWindowTitle(QApplication::translate("tela_listar_fornecedores", "Selecionar Fornecedores", 0, QApplication::UnicodeUTF8));
+        gb_fornecedores->setTitle(QApplication::translate("tela_listar_fornecedores", "Fornecedores", 0, QApplication::UnicodeUTF8));
         gb_buscar->setTitle(QApplication::translate("tela_listar_fornecedores", "Buscar por:", 0, QApplication::UnicodeUTF8));
         lb_codigo->setText(QApplication::translate("tela_listar_fornecedores", "C\303\263digo:", 0, QApplication::UnicodeUTF8));
         le_codigo->setInputMask(QApplication::translate("tela_listar_fornecedores", "000000000; ", 0, QApplication::UnicodeUTF8));

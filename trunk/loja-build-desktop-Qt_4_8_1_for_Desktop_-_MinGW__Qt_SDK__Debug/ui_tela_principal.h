@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_principal.ui'
 **
-** Created: Sun 23. Sep 14:50:16 2012
+** Created: Mon 24. Sep 17:26:17 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -52,6 +52,7 @@ public:
     {
         if (tela_principal->objectName().isEmpty())
             tela_principal->setObjectName(QString::fromUtf8("tela_principal"));
+        tela_principal->setWindowModality(Qt::WindowModal);
         tela_principal->resize(1024, 768);
         tela_principal->setMouseTracking(false);
         QIcon icon;

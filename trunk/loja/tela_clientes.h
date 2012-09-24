@@ -26,7 +26,6 @@ private slots:
     void limpar_dados(void);
     void on_btn_editar_cliente_clicked();
     void on_btn_adicionar_cliente_clicked();
-
     void on_btn_remover_cliente_clicked();
 
 private:

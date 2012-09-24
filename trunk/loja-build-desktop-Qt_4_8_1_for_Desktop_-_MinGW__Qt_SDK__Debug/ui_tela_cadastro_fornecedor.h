@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_cadastro_fornecedor.ui'
 **
-** Created: Sun 23. Sep 14:45:52 2012
+** Created: Mon 24. Sep 17:26:17 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -72,6 +72,7 @@ public:
     {
         if (tela_cadastro_fornecedor->objectName().isEmpty())
             tela_cadastro_fornecedor->setObjectName(QString::fromUtf8("tela_cadastro_fornecedor"));
+        tela_cadastro_fornecedor->setWindowModality(Qt::ApplicationModal);
         tela_cadastro_fornecedor->resize(800, 414);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/img/img/logo_sex.png"), QSize(), QIcon::Normal, QIcon::Off);
