@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_listar_fornecedores.ui'
 **
-** Created: Mon 24. Sep 17:26:17 2012
+** Created: Tue 25. Sep 17:43:40 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -73,7 +73,7 @@ public:
         tv_fornecedores->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
         tv_fornecedores->setAlternatingRowColors(true);
         tv_fornecedores->setSortingEnabled(false);
-        tv_fornecedores->horizontalHeader()->setVisible(false);
+        tv_fornecedores->horizontalHeader()->setVisible(true);
         tv_fornecedores->horizontalHeader()->setDefaultSectionSize(390);
         tv_fornecedores->horizontalHeader()->setMinimumSectionSize(15);
         tv_fornecedores->horizontalHeader()->setStretchLastSection(true);
@@ -194,8 +194,21 @@ public:
         lb_cnpj->setObjectName(QString::fromUtf8("lb_cnpj"));
         lb_cnpj->setGeometry(QRect(588, 50, 40, 20));
         lb_cnpj->setFont(font3);
+        QWidget::setTabOrder(le_codigo, le_nome);
+        QWidget::setTabOrder(le_nome, le_telefone);
+        QWidget::setTabOrder(le_telefone, le_razao_social);
+        QWidget::setTabOrder(le_razao_social, le_cnpj);
+        QWidget::setTabOrder(le_cnpj, btn_buscar);
+        QWidget::setTabOrder(btn_buscar, btn_limpar);
+        QWidget::setTabOrder(btn_limpar, btn_cancelar);
+        QWidget::setTabOrder(btn_cancelar, tv_fornecedores);
 
         retranslateUi(tela_listar_fornecedores);
+        QObject::connect(btn_limpar, SIGNAL(clicked()), le_codigo, SLOT(clear()));
+        QObject::connect(btn_limpar, SIGNAL(clicked()), le_nome, SLOT(clear()));
+        QObject::connect(btn_limpar, SIGNAL(clicked()), le_telefone, SLOT(clear()));
+        QObject::connect(btn_limpar, SIGNAL(clicked()), le_razao_social, SLOT(clear()));
+        QObject::connect(btn_limpar, SIGNAL(clicked()), le_cnpj, SLOT(clear()));
 
         QMetaObject::connectSlotsByName(tela_listar_fornecedores);
     } // setupUi

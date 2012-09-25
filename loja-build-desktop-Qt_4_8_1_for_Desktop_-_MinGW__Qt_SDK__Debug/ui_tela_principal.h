@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_principal.ui'
 **
-** Created: Mon 24. Sep 17:26:17 2012
+** Created: Tue 25. Sep 17:34:48 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -33,13 +33,14 @@ public:
     QAction *consultar_estoque;
     QAction *cadastrar_forncecedor;
     QAction *cadastrar_produto;
-    QAction *realizaar_venda;
+    QAction *realizar_venda;
     QAction *Cadastrar_cliente;
     QAction *botao_sair;
     QAction *buscar_clientes;
     QAction *buscar_produtos;
     QAction *buscar_fornecedores;
     QAction *buscar_estoque;
+    QAction *actionCadastrar_Loja;
     QWidget *centralwidget;
     QMenuBar *menubar;
     QMenu *menuArquivo;
@@ -91,15 +92,15 @@ public:
         QIcon icon6;
         icon6.addFile(QString::fromUtf8(":/img/img/cadastrar_produto.png"), QSize(), QIcon::Normal, QIcon::Off);
         cadastrar_produto->setIcon(icon6);
-        realizaar_venda = new QAction(tela_principal);
-        realizaar_venda->setObjectName(QString::fromUtf8("realizaar_venda"));
+        realizar_venda = new QAction(tela_principal);
+        realizar_venda->setObjectName(QString::fromUtf8("realizar_venda"));
         QIcon icon7;
         icon7.addFile(QString::fromUtf8(":/img/img/vender.png"), QSize(), QIcon::Normal, QIcon::Off);
-        realizaar_venda->setIcon(icon7);
+        realizar_venda->setIcon(icon7);
         QFont font;
         font.setFamily(QString::fromUtf8("Calibri"));
         font.setPointSize(10);
-        realizaar_venda->setFont(font);
+        realizar_venda->setFont(font);
         Cadastrar_cliente = new QAction(tela_principal);
         Cadastrar_cliente->setObjectName(QString::fromUtf8("Cadastrar_cliente"));
         QIcon icon8;
@@ -124,6 +125,8 @@ public:
         buscar_estoque = new QAction(tela_principal);
         buscar_estoque->setObjectName(QString::fromUtf8("buscar_estoque"));
         buscar_estoque->setIcon(icon4);
+        actionCadastrar_Loja = new QAction(tela_principal);
+        actionCadastrar_Loja->setObjectName(QString::fromUtf8("actionCadastrar_Loja"));
         centralwidget = new QWidget(tela_principal);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         tela_principal->setCentralWidget(centralwidget);
@@ -162,10 +165,11 @@ public:
         menuArquivo->addSeparator();
         menuArquivo->addAction(menuNovo->menuAction());
         menuArquivo->addAction(botao_sair);
-        menuNovo->addAction(realizaar_venda);
+        menuNovo->addAction(realizar_venda);
         menuNovo->addAction(Cadastrar_cliente);
         menuNovo->addAction(cadastrar_forncecedor);
         menuNovo->addAction(cadastrar_produto);
+        menuNovo->addAction(actionCadastrar_Loja);
         menuListar->addAction(buscar_clientes);
         menuListar->addAction(buscar_produtos);
         menuListar->addAction(buscar_fornecedores);
@@ -190,13 +194,14 @@ public:
         consultar_estoque->setText(QApplication::translate("tela_principal", "Estoque", 0, QApplication::UnicodeUTF8));
         cadastrar_forncecedor->setText(QApplication::translate("tela_principal", "Fornecedor", 0, QApplication::UnicodeUTF8));
         cadastrar_produto->setText(QApplication::translate("tela_principal", "Produto", 0, QApplication::UnicodeUTF8));
-        realizaar_venda->setText(QApplication::translate("tela_principal", "Venda", 0, QApplication::UnicodeUTF8));
+        realizar_venda->setText(QApplication::translate("tela_principal", "Venda", 0, QApplication::UnicodeUTF8));
         Cadastrar_cliente->setText(QApplication::translate("tela_principal", "Cliente", 0, QApplication::UnicodeUTF8));
         botao_sair->setText(QApplication::translate("tela_principal", "Sair", 0, QApplication::UnicodeUTF8));
         buscar_clientes->setText(QApplication::translate("tela_principal", "Buscar Clientes", 0, QApplication::UnicodeUTF8));
         buscar_produtos->setText(QApplication::translate("tela_principal", "Produtos", 0, QApplication::UnicodeUTF8));
         buscar_fornecedores->setText(QApplication::translate("tela_principal", "Buscar Fornecedores", 0, QApplication::UnicodeUTF8));
         buscar_estoque->setText(QApplication::translate("tela_principal", "Estoque", 0, QApplication::UnicodeUTF8));
+        actionCadastrar_Loja->setText(QApplication::translate("tela_principal", "Cadastrar Loja", 0, QApplication::UnicodeUTF8));
         menuArquivo->setTitle(QApplication::translate("tela_principal", "Arquivo", 0, QApplication::UnicodeUTF8));
         menuNovo->setTitle(QApplication::translate("tela_principal", "Novo", 0, QApplication::UnicodeUTF8));
         menuListar->setTitle(QApplication::translate("tela_principal", "Buscar", 0, QApplication::UnicodeUTF8));

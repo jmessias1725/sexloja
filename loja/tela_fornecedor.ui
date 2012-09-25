@@ -476,7 +476,7 @@
      <number>100</number>
     </property>
     <property name="readOnly">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLineEdit" name="le_nome">
@@ -525,7 +525,7 @@
      <number>32767</number>
     </property>
     <property name="readOnly">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLabel" name="lb_nome">
@@ -595,6 +595,9 @@
     </property>
     <property name="text">
      <string>../-</string>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>

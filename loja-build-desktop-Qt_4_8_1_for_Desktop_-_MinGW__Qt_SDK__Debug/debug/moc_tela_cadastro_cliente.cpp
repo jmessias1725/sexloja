@@ -1,13 +1,13 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_cadastro_cliente.h'
 **
-** Created: Sun 23. Sep 16:32:36 2012
+** Created: Tue 25. Sep 17:35:49 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../../Programa Paula/loja/tela_cadastro_cliente.h"
+#include "../../loja/tela_cadastro_cliente.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'tela_cadastro_cliente.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 63

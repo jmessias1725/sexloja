@@ -6,6 +6,8 @@ tela_listar_fornecedores::tela_listar_fornecedores(QWidget *parent) :
     ui(new Ui::tela_listar_fornecedores)
 {
     ui->setupUi(this);
+    ui->le_codigo->setCursorPosition(0);
+    modelo = new QStandardItemModel();
 }
 
 tela_listar_fornecedores::~tela_listar_fornecedores()
@@ -139,12 +141,13 @@ void tela_listar_fornecedores::on_btn_buscar_clicked()
                 lista_estado.push_back(consultar.value(12).toString().toStdString());
             }
 
-            modelo = new QStandardItemModel(int(lista_id.size()),4,this);
+            modelo = new QStandardItemModel(int(lista_id.size()),5,this);
             modelo->clear();
             modelo->setHorizontalHeaderItem(0, new QStandardItem(QString("Código:")));
             modelo->setHorizontalHeaderItem(1, new QStandardItem(QString("Nome:")));
-            modelo->setHorizontalHeaderItem(2, new QStandardItem(QString("CNPJ:")));
-            modelo->setHorizontalHeaderItem(3, new QStandardItem(QString("Telefone:")));
+            modelo->setHorizontalHeaderItem(2, new QStandardItem(QString("Razão Social:")));
+            modelo->setHorizontalHeaderItem(3, new QStandardItem(QString("CNPJ:")));
+            modelo->setHorizontalHeaderItem(4, new QStandardItem(QString("Telefone:")));
             for (int i=0;i<int(lista_id.size());i++){
                 consultar.exec("SELECT telefone,operadora FROM tel_fornecedor WHERE id_fornecedor = "+QString::fromStdString(lista_id[i])+";");
                 while(consultar.next()){
@@ -164,10 +167,11 @@ void tela_listar_fornecedores::on_btn_buscar_clicked()
                                                             QString::fromStdString(lista_rua[i]),QString::fromStdString(lista_cep[i]),
                                                             QString::fromStdString(lista_numero[i]).toInt(),QString::fromStdString(lista_ponto_referencia[i])));
 
-                modelo->setItem(i,0,new QStandardItem(QString::fromStdString(lista_id[i])));
-                modelo->setItem(i,1,new QStandardItem(QString::fromStdString(lista_nome[i])));
-                modelo->setItem(i,2,new QStandardItem(QString::fromStdString(lista_cnpj[i])));
-                modelo->setItem(i,3,new QStandardItem(QString::fromStdString(aux_lista_telefone[aux_lista_telefone.size()-1]+" "+aux_lista_operadora[aux_lista_operadora.size()-1])));
+                modelo->setItem(i,0,new QStandardItem(QString::number(lista_fornecedores[i]->retornar_id())));
+                modelo->setItem(i,1,new QStandardItem(lista_fornecedores[i]->retornar_nome()));
+                modelo->setItem(i,2,new QStandardItem(lista_fornecedores[i]->retornar_razao_social()));
+                modelo->setItem(i,3,new QStandardItem(lista_fornecedores[i]->retornar_cnpj()));
+                modelo->setItem(i,4,new QStandardItem(QString::fromStdString(aux_lista_telefone[aux_lista_telefone.size()-1]+" "+aux_lista_operadora[aux_lista_operadora.size()-1])));
 
                 aux_lista_telefone.clear();
                 aux_lista_operadora.clear();
@@ -178,8 +182,8 @@ void tela_listar_fornecedores::on_btn_buscar_clicked()
             ui->tv_fornecedores->setEditTriggers(QAbstractItemView::NoEditTriggers);
             ui->tv_fornecedores->setModel(modelo);
             ui->tv_fornecedores->resizeColumnToContents(0);
-            ui->tv_fornecedores->resizeColumnToContents(2);
             ui->tv_fornecedores->resizeColumnToContents(3);
+            ui->tv_fornecedores->resizeColumnToContents(4);
         conexao.fechar_conexao();
         }
     }
@@ -216,12 +220,13 @@ void tela_listar_fornecedores::on_tv_fornecedores_doubleClicked(const QModelInde
     std::vector< std::string > aux_lista_telefone;
     std::vector< std::string > aux_lista_operadora;
 
-    modelo = new QStandardItemModel(int(lista_fornecedores.size()),3,this);
+    modelo = new QStandardItemModel(int(lista_fornecedores.size()),5,this);
     modelo->clear();
     modelo->setHorizontalHeaderItem(0, new QStandardItem(QString("Código:")));
     modelo->setHorizontalHeaderItem(1, new QStandardItem(QString("Nome:")));
-    modelo->setHorizontalHeaderItem(2, new QStandardItem(QString("CNPJ:")));
-    modelo->setHorizontalHeaderItem(3, new QStandardItem(QString("Telefone:")));
+    modelo->setHorizontalHeaderItem(2, new QStandardItem(QString("Razão Social:")));
+    modelo->setHorizontalHeaderItem(3, new QStandardItem(QString("CNPJ:")));
+    modelo->setHorizontalHeaderItem(4, new QStandardItem(QString("Telefone:")));
     for (int i=0;i<int(lista_fornecedores.size());i++){
         aux_lista_email=lista_fornecedores[i]->retorna_lista_email();
         aux_lista_telefone=lista_fornecedores[i]->retorna_lista_telefone();
@@ -229,8 +234,9 @@ void tela_listar_fornecedores::on_tv_fornecedores_doubleClicked(const QModelInde
 
         modelo->setItem(i,0,new QStandardItem(QString::number(lista_fornecedores[i]->retornar_id())));
         modelo->setItem(i,1,new QStandardItem(lista_fornecedores[i]->retornar_nome()));
-        modelo->setItem(i,2,new QStandardItem(lista_fornecedores[i]->retornar_cnpj()));
-        modelo->setItem(i,3,new QStandardItem(QString::fromStdString(aux_lista_telefone[aux_lista_telefone.size()-1]+" "+aux_lista_operadora[aux_lista_operadora.size()-1])));
+        modelo->setItem(i,2,new QStandardItem(lista_fornecedores[i]->retornar_razao_social()));
+        modelo->setItem(i,3,new QStandardItem(lista_fornecedores[i]->retornar_cnpj()));
+        modelo->setItem(i,4,new QStandardItem(QString::fromStdString(aux_lista_telefone[aux_lista_telefone.size()-1]+" "+aux_lista_operadora[aux_lista_operadora.size()-1])));
 
         aux_lista_telefone.clear();
         aux_lista_operadora.clear();
@@ -241,7 +247,8 @@ void tela_listar_fornecedores::on_tv_fornecedores_doubleClicked(const QModelInde
     ui->tv_fornecedores->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tv_fornecedores->setModel(modelo);
     ui->tv_fornecedores->resizeColumnToContents(0);
-    ui->tv_fornecedores->resizeColumnToContents(2);
+    ui->tv_fornecedores->resizeColumnToContents(3);
+    ui->tv_fornecedores->resizeColumnToContents(4);
 }
 
 void tela_listar_fornecedores::on_btn_limpar_clicked()

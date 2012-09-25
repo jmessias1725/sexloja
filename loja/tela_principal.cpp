@@ -48,3 +48,8 @@ void tela_principal::on_consultar_fornecedores_triggered()
 {
     tl_listar_fornecedores.show();
 }
+
+void tela_principal::on_actionCadastrar_Loja_triggered()
+{
+    tl_cadastro_loja.exec();
+}

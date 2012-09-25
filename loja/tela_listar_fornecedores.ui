@@ -66,7 +66,7 @@
      <bool>false</bool>
     </property>
     <attribute name="horizontalHeaderVisible">
-     <bool>false</bool>
+     <bool>true</bool>
     </attribute>
     <attribute name="horizontalHeaderDefaultSectionSize">
      <number>390</number>
@@ -520,8 +520,100 @@
    </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>le_codigo</tabstop>
+  <tabstop>le_nome</tabstop>
+  <tabstop>le_telefone</tabstop>
+  <tabstop>le_razao_social</tabstop>
+  <tabstop>le_cnpj</tabstop>
+  <tabstop>btn_buscar</tabstop>
+  <tabstop>btn_limpar</tabstop>
+  <tabstop>btn_cancelar</tabstop>
+  <tabstop>tv_fornecedores</tabstop>
+ </tabstops>
  <resources>
   <include location="imagens.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>btn_limpar</sender>
+   <signal>clicked()</signal>
+   <receiver>le_codigo</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>373</x>
+     <y>92</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>93</x>
+     <y>32</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_limpar</sender>
+   <signal>clicked()</signal>
+   <receiver>le_nome</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>374</x>
+     <y>84</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>201</x>
+     <y>34</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_limpar</sender>
+   <signal>clicked()</signal>
+   <receiver>le_telefone</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>383</x>
+     <y>86</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>683</x>
+     <y>36</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_limpar</sender>
+   <signal>clicked()</signal>
+   <receiver>le_razao_social</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>385</x>
+     <y>89</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>181</x>
+     <y>64</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_limpar</sender>
+   <signal>clicked()</signal>
+   <receiver>le_cnpj</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>406</x>
+     <y>87</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>677</x>
+     <y>61</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

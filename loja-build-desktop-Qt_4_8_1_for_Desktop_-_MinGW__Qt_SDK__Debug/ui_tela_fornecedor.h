@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_fornecedor.ui'
 **
-** Created: Mon 24. Sep 16:40:59 2012
+** Created: Tue 25. Sep 17:34:49 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -211,7 +211,7 @@ public:
         le_razao_social->setMaximumSize(QSize(800, 20));
         le_razao_social->setFont(font2);
         le_razao_social->setMaxLength(100);
-        le_razao_social->setReadOnly(false);
+        le_razao_social->setReadOnly(true);
         le_nome = new QLineEdit(gb_dados_fornecedor);
         le_nome->setObjectName(QString::fromUtf8("le_nome"));
         le_nome->setGeometry(QRect(39, 47, 588, 20));
@@ -221,7 +221,7 @@ public:
         le_nome->setMaximumSize(QSize(800, 20));
         le_nome->setFont(font2);
         le_nome->setMaxLength(32767);
-        le_nome->setReadOnly(false);
+        le_nome->setReadOnly(true);
         lb_nome = new QLabel(gb_dados_fornecedor);
         lb_nome->setObjectName(QString::fromUtf8("lb_nome"));
         lb_nome->setGeometry(QRect(5, 47, 34, 20));
@@ -235,6 +235,7 @@ public:
         le_cnpj->setObjectName(QString::fromUtf8("le_cnpj"));
         le_cnpj->setGeometry(QRect(665, 47, 120, 20));
         le_cnpj->setFont(font3);
+        le_cnpj->setReadOnly(true);
         gb_endereo = new QGroupBox(tela_fornecedor);
         gb_endereo->setObjectName(QString::fromUtf8("gb_endereo"));
         gb_endereo->setGeometry(QRect(5, 250, 790, 192));

@@ -1,13 +1,13 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_fornecedor.h'
 **
-** Created: Mon 24. Sep 17:23:53 2012
+** Created: Tue 25. Sep 17:36:15 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../../Programa Paula/loja/tela_fornecedor.h"
+#include "../../loja/tela_fornecedor.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'tela_fornecedor.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 63
