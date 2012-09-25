@@ -103,9 +103,9 @@ void tela_fornecedor::limpar_dados(){
 
 void tela_fornecedor::on_btn_editar_fornecedor_clicked()
 {
-    //tl_editar_fornecedor.definir_dados_fornecedor(informacoes_fornecedor);
+    tl_editar_fornecedor.definir_dados_fornecedor(informacoes_fornecedor);
     if(!tl_editar_fornecedor.exec()){
-        //informacoes_fornecedor = tl_editar_fornecedor.retorna_novo_cadastro();
+        informacoes_fornecedor = tl_editar_fornecedor.retorna_novo_cadastro();
         tela_fornecedor::limpar_dados();
         tela_fornecedor::definir_dados_fornecedor(informacoes_fornecedor);
     }

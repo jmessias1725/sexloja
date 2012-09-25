@@ -58,10 +58,11 @@
      <property name="title">
       <string>Novo</string>
      </property>
-     <addaction name="realizaar_venda"/>
+     <addaction name="realizar_venda"/>
      <addaction name="Cadastrar_cliente"/>
      <addaction name="cadastrar_forncecedor"/>
      <addaction name="cadastrar_produto"/>
+     <addaction name="actionCadastrar_Loja"/>
     </widget>
     <addaction name="separator"/>
     <addaction name="menuNovo"/>
@@ -168,7 +169,7 @@
     <string>Produto</string>
    </property>
   </action>
-  <action name="realizaar_venda">
+  <action name="realizar_venda">
    <property name="icon">
     <iconset resource="imagens.qrc">
      <normaloff>:/img/img/vender.png</normaloff>:/img/img/vender.png</iconset>
@@ -235,6 +236,11 @@
    </property>
    <property name="text">
     <string>Estoque</string>
+   </property>
+  </action>
+  <action name="actionCadastrar_Loja">
+   <property name="text">
+    <string>Cadastrar Loja</string>
    </property>
   </action>
  </widget>

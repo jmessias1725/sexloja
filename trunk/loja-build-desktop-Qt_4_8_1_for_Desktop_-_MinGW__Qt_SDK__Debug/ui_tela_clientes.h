@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_clientes.ui'
 **
-** Created: Mon 24. Sep 17:26:17 2012
+** Created: Tue 25. Sep 17:34:48 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
