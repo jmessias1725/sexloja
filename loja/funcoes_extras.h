@@ -15,6 +15,7 @@ public:
     int determinar_posicao_caractere(std::string palavra,const char *caractere);
     bool verifica_cpf(std::string cpf);
     bool verifica_cnpj(std::string cnpj);
+    const char* retorna_extensao_arquivo(QString nome_arquivo);
 };
 
 #endif // FUNCOES_EXTRAS_H
