@@ -460,3 +460,16 @@ bool funcoes_extras::verifica_cnpj(std::string cnpj){
         }
     }
 }
+
+const char* funcoes_extras::retorna_extensao_arquivo(QString nome_arquivo){
+    std::string aux_nome_arquivo = nome_arquivo.toStdString();
+    QString extensao;
+    int posicao_do_ponto = 0;
+    for(int i = 0; i<int(aux_nome_arquivo.size());i++){
+        if(aux_nome_arquivo[i]=='.')
+            posicao_do_ponto = i;
+    }
+    extensao=QString::fromStdString(aux_nome_arquivo.substr((posicao_do_ponto+1),(aux_nome_arquivo.size()-1)));
+    extensao = extensao.toUpper();
+    return extensao.toStdString().c_str();
+}

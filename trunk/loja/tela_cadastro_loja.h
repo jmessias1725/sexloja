@@ -11,6 +11,9 @@
 #include <QBuffer>
 #include <QFile>
 #include <QImage>
+#include <iostream>
+
+#include "funcoes_extras.h"
 
 namespace Ui {
 class tela_cadastro_loja;
@@ -29,7 +32,8 @@ private slots:
 
 private:
     Ui::tela_cadastro_loja *ui;
-    QString fileName;
+    QImage logo_imagem;
+    funcoes_extras funcao;
 };
 
 #endif // TELA_CADASTRO_LOJA_H
