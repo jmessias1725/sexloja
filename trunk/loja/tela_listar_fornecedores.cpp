@@ -81,6 +81,7 @@ void tela_listar_fornecedores::on_btn_buscar_clicked()
     std::string razao_social;
     std::string cnpj;
     int ta_string_telefone;
+    int ta_string_cnpj;
 
     id = ui->le_codigo->text().toStdString();
     nome = ui->le_nome->text().toStdString();
@@ -95,19 +96,44 @@ void tela_listar_fornecedores::on_btn_buscar_clicked()
         if(telefone == "()-"){
            telefone = "";
         }
-        if(cnpj == "../-")
-            cnpj = "";
         else{
             ta_string_telefone = telefone.size();
-            if(int(ta_string_telefone) < 13){
+            if(int(ta_string_telefone) < 11){
                 if(ta_string_telefone <= 5){
                     telefone = telefone.substr(0,ta_string_telefone-1);
                     telefone = telefone.substr(0,ta_string_telefone-2);
                 }
                 else{
-                    if ((ta_string_telefone > 5)&&(ta_string_telefone <= 10)){
-                        if((funcao.determinar_posicao_caractere(telefone,"-")+1)==ta_string_telefone){
-                           telefone = telefone.substr(0,ta_string_telefone-1);
+                    if((funcao.determinar_posicao_caractere(telefone,"-")+1)==ta_string_telefone){
+                       telefone = telefone.substr(0,ta_string_telefone-1);
+                    }
+                }
+            }
+        }
+        if(cnpj == "../-"){
+            cnpj = "";
+        }
+        else{
+            ta_string_cnpj = cnpj.size();
+            if(ta_string_cnpj<=16){
+                if (ta_string_cnpj<=3){
+                    cnpj = cnpj.substr(0,ta_string_cnpj-1);
+                    cnpj = cnpj.substr(0,ta_string_cnpj-2);
+                    cnpj = cnpj.substr(0,ta_string_cnpj-3);
+                    cnpj = cnpj.substr(0,ta_string_cnpj-4);
+                }
+                else{
+                    if ((ta_string_cnpj>3)&&(ta_string_cnpj<=7)){
+                        cnpj = cnpj.substr(0,ta_string_cnpj-1);
+                        cnpj = cnpj.substr(0,ta_string_cnpj-2);
+                        cnpj = cnpj.substr(0,ta_string_cnpj-3);
+                    }else{
+                        if ((ta_string_cnpj>7)&&(ta_string_cnpj<=11)){
+                            cnpj = cnpj.substr(0,ta_string_cnpj-1);
+                            cnpj = cnpj.substr(0,ta_string_cnpj-2);
+                        }
+                        else{
+                            cnpj = cnpj.substr(0,ta_string_cnpj-1);
                         }
                     }
                 }
