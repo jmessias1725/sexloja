@@ -29,7 +29,8 @@ SOURCES += main.cpp\
     tela_listar_fornecedores.cpp \
     tela_fornecedor.cpp \
     tela_editar_fornecedor.cpp \
-    tela_cadastro_loja.cpp
+    tela_cadastro_loja.cpp \
+    imagem.cpp
 
 HEADERS  += \
     conexao_bd.h \
@@ -49,7 +50,8 @@ HEADERS  += \
     tela_listar_fornecedores.h \
     tela_fornecedor.h \
     tela_editar_fornecedor.h \
-    tela_cadastro_loja.h
+    tela_cadastro_loja.h \
+    imagem.h
 
 FORMS    += \
     tela_login.ui \
