@@ -19,6 +19,8 @@ protected:
 
 public:
     endereco();
+    endereco(QString uf_sigla, QString uf_nome, QString cidade, QString bairro,
+             QString rua, QString cep, int numero);
     endereco(QString uf_sigla, QString uf_nome, QString cidade,
              QString bairro, QString rua, QString cep, int numero,
              QString pt_referencia);

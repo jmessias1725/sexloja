@@ -19,6 +19,7 @@ INPUT(
 ./release\tela_editar_fornecedor.o
 ./release\tela_cadastro_loja.o
 ./release\imagem.o
+./release\loja.o
 ./release\moc_tela_login.o
 ./release\moc_tela_principal.o
 ./release\moc_tela_cadastro_cliente.o

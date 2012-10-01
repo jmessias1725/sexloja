@@ -43,6 +43,7 @@
         <file>img/fornecedor_editar.png</file>
         <file>img/fornecedor_remover.png</file>
         <file>img/fornecedor_pergunta_50.png</file>
+        <file>img/Oemlogo.jpg</file>
     </qresource>
     <qresource prefix="/operadoras">
         <file>img/claro.png</file>

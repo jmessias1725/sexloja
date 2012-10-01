@@ -13,11 +13,16 @@
 class imagem
 {
 public:
-    imagem(QString nome_arquivo);
+    imagem();
+    imagem(QString nome_arquivo, int largura, int altura);
     QPixmap retorna_QPixmap_imagem(void);
-private:
+    void alterar_imagem(QString nome_arquivo, int largura, int altura);
+
+protected:
     QByteArray vetor_bytes_imagem;
-    QString extensao;
+    std::string extensao;
+
+private:
     funcoes_extras funcao;
 };
 
