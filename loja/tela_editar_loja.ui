@@ -34,7 +34,7 @@
    <property name="title">
     <string>Dados da Loja</string>
    </property>
-   <widget class="QLabel" name="lb_telefone_2">
+   <widget class="QLabel" name="lb_telefone">
     <property name="geometry">
      <rect>
       <x>181</x>
@@ -56,7 +56,7 @@
      <string>Telefone:</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="cb_telefone_2">
+   <widget class="QComboBox" name="cb_telefone">
     <property name="geometry">
      <rect>
       <x>234</x>
@@ -87,7 +87,7 @@
      <number>20</number>
     </property>
    </widget>
-   <widget class="QLabel" name="lb_nome_2">
+   <widget class="QLabel" name="lb_nome">
     <property name="geometry">
      <rect>
       <x>7</x>
@@ -115,7 +115,7 @@
      <string>Nome:</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="le_nome_2">
+   <widget class="QLineEdit" name="le_nome">
     <property name="geometry">
      <rect>
       <x>41</x>
@@ -164,7 +164,7 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QToolButton" name="tb_mais_telefone_2">
+   <widget class="QToolButton" name="tb_mais_telefone">
     <property name="geometry">
      <rect>
       <x>451</x>
@@ -193,7 +193,7 @@
      <enum>Qt::NoArrow</enum>
     </property>
    </widget>
-   <widget class="QToolButton" name="tb_menos_telefone_2">
+   <widget class="QToolButton" name="tb_menos_telefone">
     <property name="geometry">
      <rect>
       <x>451</x>
@@ -219,7 +219,7 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="lb_razao_social_2">
+   <widget class="QLabel" name="lb_razao_social">
     <property name="geometry">
      <rect>
       <x>7</x>
@@ -247,7 +247,7 @@
      <string>Razão Social:</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="le_razao_social_2">
+   <widget class="QLineEdit" name="le_razao_social">
     <property name="geometry">
      <rect>
       <x>82</x>
@@ -293,7 +293,7 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="lb_cnpj_2">
+   <widget class="QLabel" name="lb_cnpj">
     <property name="geometry">
      <rect>
       <x>8</x>
@@ -312,7 +312,7 @@
      <string>CNPJ:</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="le_cnpj_2">
+   <widget class="QLineEdit" name="le_cnpj">
     <property name="geometry">
      <rect>
       <x>41</x>
@@ -344,17 +344,17 @@
      <height>217</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_4">
+   <layout class="QVBoxLayout" name="verticalLayout">
     <property name="spacing">
      <number>10</number>
     </property>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_5">
+     <layout class="QVBoxLayout" name="verticalLayout_3">
       <property name="spacing">
        <number>1</number>
       </property>
       <item>
-       <widget class="QGraphicsView" name="gv_logo_2">
+       <widget class="QGraphicsView" name="gv_logo">
         <property name="minimumSize">
          <size>
           <width>128</width>
@@ -370,7 +370,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="btn_adicionar_logo_2">
+       <widget class="QPushButton" name="btn_adicionar_logo">
         <property name="font">
          <font>
           <weight>50</weight>
@@ -385,12 +385,12 @@
      </layout>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_6">
+     <layout class="QVBoxLayout" name="verticalLayout_2">
       <property name="spacing">
        <number>1</number>
       </property>
       <item>
-       <widget class="QPushButton" name="btn_confirmar_2">
+       <widget class="QPushButton" name="btn_confirmar">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -425,7 +425,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="btn_cancelar_2">
+       <widget class="QPushButton" name="btn_cancelar">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -484,7 +484,7 @@
    <property name="title">
     <string>Endereço</string>
    </property>
-   <widget class="QLineEdit" name="le_cep_2">
+   <widget class="QLineEdit" name="le_cep">
     <property name="geometry">
      <rect>
       <x>35</x>
@@ -524,7 +524,7 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="lb_cep_2">
+   <widget class="QLabel" name="lb_cep">
     <property name="geometry">
      <rect>
       <x>8</x>
@@ -546,7 +546,7 @@
      <string>CEP:</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lb_rua_2">
+   <widget class="QLabel" name="lb_rua">
     <property name="geometry">
      <rect>
       <x>133</x>
@@ -568,7 +568,7 @@
      <string>Rua:</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="le_rua_2">
+   <widget class="QLineEdit" name="le_rua">
     <property name="geometry">
      <rect>
       <x>160</x>
@@ -598,7 +598,7 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="lb_numero_2">
+   <widget class="QLabel" name="lb_numero">
     <property name="geometry">
      <rect>
       <x>7</x>
@@ -620,7 +620,7 @@
      <string>Número:</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="le_numero_2">
+   <widget class="QLineEdit" name="le_numero">
     <property name="geometry">
      <rect>
       <x>54</x>
@@ -650,7 +650,7 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="lb_bairro_2">
+   <widget class="QLabel" name="lb_bairro">
     <property name="geometry">
      <rect>
       <x>132</x>
@@ -670,7 +670,7 @@
      <string>Bairro:</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="le_bairro_2">
+   <widget class="QLineEdit" name="le_bairro">
     <property name="geometry">
      <rect>
       <x>172</x>
@@ -697,7 +697,7 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="lb_cidade_2">
+   <widget class="QLabel" name="lb_cidade">
     <property name="geometry">
      <rect>
       <x>429</x>
@@ -719,7 +719,7 @@
      <string>Cidade:</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="le_cidade_2">
+   <widget class="QLineEdit" name="le_cidade">
     <property name="geometry">
      <rect>
       <x>472</x>
@@ -749,7 +749,7 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="lb_estado_2">
+   <widget class="QLabel" name="lb_estado">
     <property name="geometry">
      <rect>
       <x>8</x>
@@ -771,7 +771,7 @@
      <string>Estado:</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lb_uf_2">
+   <widget class="QLabel" name="lb_uf">
     <property name="geometry">
      <rect>
       <x>225</x>
@@ -790,7 +790,7 @@
      <string>UF:</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="le_uf_2">
+   <widget class="QLineEdit" name="le_uf">
     <property name="geometry">
      <rect>
       <x>245</x>
@@ -812,7 +812,7 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QComboBox" name="cb_estado_2">
+   <widget class="QComboBox" name="cb_estado">
     <property name="geometry">
      <rect>
       <x>53</x>

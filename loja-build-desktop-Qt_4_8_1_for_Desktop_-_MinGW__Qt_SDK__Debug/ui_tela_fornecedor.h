@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_fornecedor.ui'
 **
-** Created: Fri 28. Sep 19:34:42 2012
+** Created: Tue 2. Oct 17:51:47 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -391,7 +391,7 @@ public:
         btn_editar_fornecedor->setText(QApplication::translate("tela_fornecedor", "Editar Fornecedor", 0, QApplication::UnicodeUTF8));
         btn_adicionar_fornecedor->setText(QApplication::translate("tela_fornecedor", "Adicionar Fornecedor", 0, QApplication::UnicodeUTF8));
         btn_remover_fornecedor->setText(QApplication::translate("tela_fornecedor", "Remover fornecedor", 0, QApplication::UnicodeUTF8));
-        gb_dados_fornecedor->setTitle(QApplication::translate("tela_fornecedor", "Dados do Cliente", 0, QApplication::UnicodeUTF8));
+        gb_dados_fornecedor->setTitle(QApplication::translate("tela_fornecedor", "Dados do Fornecedor", 0, QApplication::UnicodeUTF8));
         lb_telefone->setText(QApplication::translate("tela_fornecedor", "Telefone:", 0, QApplication::UnicodeUTF8));
         lb_email->setText(QApplication::translate("tela_fornecedor", "E-mail:", 0, QApplication::UnicodeUTF8));
         lb_comentario_fornecedor->setText(QApplication::translate("tela_fornecedor", "Coment\303\241rio sobre cliente", 0, QApplication::UnicodeUTF8));

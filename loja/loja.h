@@ -12,7 +12,7 @@
 #include "endereco.h"
 #include "conexao_bd.h"
 
-class loja : public endereco, imagem
+class loja :public endereco, public imagem
 {
 private:
     int id;
@@ -20,7 +20,8 @@ private:
     QString razao_social;
     QString nome;
     QString comentario;
-    endereco *endereco_loja;
+    //endereco *endereco_loja;
+    //imagem *imagem_logomarca;
     std::vector< std::string > lista_telefone;
     std::vector< std::string > lista_operadora;
 

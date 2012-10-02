@@ -20,6 +20,8 @@ INPUT(
 ./release\tela_cadastro_loja.o
 ./release\imagem.o
 ./release\loja.o
+./release\tela_editar_loja.o
+./release\tela_loja.o
 ./release\moc_tela_login.o
 ./release\moc_tela_principal.o
 ./release\moc_tela_cadastro_cliente.o
@@ -31,5 +33,7 @@ INPUT(
 ./release\moc_tela_fornecedor.o
 ./release\moc_tela_editar_fornecedor.o
 ./release\moc_tela_cadastro_loja.o
+./release\moc_tela_editar_loja.o
+./release\moc_tela_loja.o
 ./release\qrc_imagens.o
 );

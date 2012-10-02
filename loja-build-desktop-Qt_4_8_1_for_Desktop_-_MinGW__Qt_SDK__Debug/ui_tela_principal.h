@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_principal.ui'
 **
-** Created: Fri 28. Sep 19:34:42 2012
+** Created: Tue 2. Oct 17:18:04 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -40,12 +40,14 @@ public:
     QAction *buscar_produtos;
     QAction *buscar_fornecedores;
     QAction *buscar_estoque;
-    QAction *actionCadastrar_Loja;
+    QAction *Cadastro_da_Loja;
+    QAction *Estoque;
     QWidget *centralwidget;
     QMenuBar *menubar;
     QMenu *menuArquivo;
     QMenu *menuNovo;
     QMenu *menuListar;
+    QMenu *menuConfigura_oes;
     QStatusBar *statusbar;
     QToolBar *barra_de_menus;
 
@@ -125,8 +127,14 @@ public:
         buscar_estoque = new QAction(tela_principal);
         buscar_estoque->setObjectName(QString::fromUtf8("buscar_estoque"));
         buscar_estoque->setIcon(icon4);
-        actionCadastrar_Loja = new QAction(tela_principal);
-        actionCadastrar_Loja->setObjectName(QString::fromUtf8("actionCadastrar_Loja"));
+        Cadastro_da_Loja = new QAction(tela_principal);
+        Cadastro_da_Loja->setObjectName(QString::fromUtf8("Cadastro_da_Loja"));
+        QIcon icon11;
+        icon11.addFile(QString::fromUtf8(":/img/img/loja.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Cadastro_da_Loja->setIcon(icon11);
+        Estoque = new QAction(tela_principal);
+        Estoque->setObjectName(QString::fromUtf8("Estoque"));
+        Estoque->setIcon(icon4);
         centralwidget = new QWidget(tela_principal);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         tela_principal->setCentralWidget(centralwidget);
@@ -145,6 +153,8 @@ public:
         menuNovo->setFont(font1);
         menuListar = new QMenu(menubar);
         menuListar->setObjectName(QString::fromUtf8("menuListar"));
+        menuConfigura_oes = new QMenu(menubar);
+        menuConfigura_oes->setObjectName(QString::fromUtf8("menuConfigura_oes"));
         tela_principal->setMenuBar(menubar);
         statusbar = new QStatusBar(tela_principal);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -162,6 +172,7 @@ public:
 
         menubar->addAction(menuArquivo->menuAction());
         menubar->addAction(menuListar->menuAction());
+        menubar->addAction(menuConfigura_oes->menuAction());
         menuArquivo->addSeparator();
         menuArquivo->addAction(menuNovo->menuAction());
         menuArquivo->addAction(botao_sair);
@@ -169,11 +180,12 @@ public:
         menuNovo->addAction(Cadastrar_cliente);
         menuNovo->addAction(cadastrar_forncecedor);
         menuNovo->addAction(cadastrar_produto);
-        menuNovo->addAction(actionCadastrar_Loja);
         menuListar->addAction(buscar_clientes);
         menuListar->addAction(buscar_produtos);
         menuListar->addAction(buscar_fornecedores);
-        menuListar->addAction(buscar_estoque);
+        menuConfigura_oes->addSeparator();
+        menuConfigura_oes->addAction(Cadastro_da_Loja);
+        menuConfigura_oes->addAction(Estoque);
         barra_de_menus->addSeparator();
         barra_de_menus->addAction(consultar_caixa);
         barra_de_menus->addAction(consultar_clientes);
@@ -201,10 +213,12 @@ public:
         buscar_produtos->setText(QApplication::translate("tela_principal", "Produtos", 0, QApplication::UnicodeUTF8));
         buscar_fornecedores->setText(QApplication::translate("tela_principal", "Buscar Fornecedores", 0, QApplication::UnicodeUTF8));
         buscar_estoque->setText(QApplication::translate("tela_principal", "Estoque", 0, QApplication::UnicodeUTF8));
-        actionCadastrar_Loja->setText(QApplication::translate("tela_principal", "Cadastrar Loja", 0, QApplication::UnicodeUTF8));
+        Cadastro_da_Loja->setText(QApplication::translate("tela_principal", "Cadastro da Loja", 0, QApplication::UnicodeUTF8));
+        Estoque->setText(QApplication::translate("tela_principal", "Estoque", 0, QApplication::UnicodeUTF8));
         menuArquivo->setTitle(QApplication::translate("tela_principal", "Arquivo", 0, QApplication::UnicodeUTF8));
         menuNovo->setTitle(QApplication::translate("tela_principal", "Novo", 0, QApplication::UnicodeUTF8));
         menuListar->setTitle(QApplication::translate("tela_principal", "Buscar", 0, QApplication::UnicodeUTF8));
+        menuConfigura_oes->setTitle(QApplication::translate("tela_principal", "Visualizar", 0, QApplication::UnicodeUTF8));
         barra_de_menus->setWindowTitle(QApplication::translate("tela_principal", "Barra de menus", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

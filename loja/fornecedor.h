@@ -19,7 +19,7 @@ private:
     QString razao_social;
     QString nome;
     QString comentario;
-    endereco *endereco_fornecedor;
+    //endereco *endereco_fornecedor;
     std::vector< std::string > lista_email;
     std::vector< std::string > lista_telefone;
     std::vector< std::string > lista_operadora;
