@@ -165,7 +165,7 @@
     </font>
    </property>
    <property name="title">
-    <string>Dados do Cliente</string>
+    <string>Dados do Fornecedor</string>
    </property>
    <widget class="QLabel" name="lb_telefone">
     <property name="geometry">

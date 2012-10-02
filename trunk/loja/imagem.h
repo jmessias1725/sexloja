@@ -12,18 +12,18 @@
 
 class imagem
 {
-public:
-    imagem();
-    imagem(QString nome_arquivo, int largura, int altura);
-    QPixmap retorna_QPixmap_imagem(void);
-    void alterar_imagem(QString nome_arquivo, int largura, int altura);
-
 protected:
     QByteArray vetor_bytes_imagem;
     std::string extensao;
 
 private:
     funcoes_extras funcao;
+
+public:
+    imagem();
+    imagem(QString nome_arquivo, int largura, int altura);
+    QPixmap retorna_QPixmap_imagem(void);
+    void alterar_imagem(QString nome_arquivo, int largura, int altura);
 };
 
 #endif // IMAGEM_H
