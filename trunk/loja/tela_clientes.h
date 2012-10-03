@@ -20,6 +20,7 @@ public:
     ~tela_clientes();
     void definir_dados_cliente(cliente *cad_cliente);
     cliente * retorna_novo_cadastro(void);
+    void definir_icone_janela(QPixmap logo);
 
 private slots:
     void closeEvent( QCloseEvent * event );
@@ -34,6 +35,7 @@ private:
     tela_editar_cliente tl_editar_cliente;
     cliente *informacoes_cliente;
     funcoes_extras funcoes;
+    QPixmap logomarca;
 };
 
 #endif // TELA_CLIENTES_H

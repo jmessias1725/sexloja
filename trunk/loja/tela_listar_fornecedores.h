@@ -23,6 +23,7 @@ public:
     explicit tela_listar_fornecedores(QWidget *parent = 0);
     ~tela_listar_fornecedores();
     void limpar_dados_tela(void);
+    void definir_icone_janela(QPixmap logo);
 
 private slots:
     void on_le_telefone_editingFinished();
@@ -37,6 +38,7 @@ private:
     std::vector< fornecedor * > lista_fornecedores;
     tela_fornecedor tl_fornecedor;
     QStandardItemModel *modelo;
+    QPixmap logomarca;
 };
 
 #endif // TELA_LISTAR_FORNECEDORES_H

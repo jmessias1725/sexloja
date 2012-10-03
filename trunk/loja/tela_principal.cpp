@@ -15,11 +15,13 @@ tela_principal::~tela_principal()
 
 void tela_principal::on_consultar_clientes_triggered()
 {
+    tl_listar_clientes.definir_icone_janela(logomarca);
     tl_listar_clientes.show();
 }
 
 void tela_principal::on_buscar_clientes_triggered()
 {
+    tl_listar_clientes.definir_icone_janela(logomarca);
     tl_listar_clientes.show();
 }
 
@@ -30,20 +32,38 @@ void tela_principal::on_botao_sair_triggered()
 
 void tela_principal::on_Cadastrar_cliente_triggered()
 {
+    tl_cadastro_clientes.definir_icone_janela(logomarca);
     tl_cadastro_clientes.show();
 }
 
 void tela_principal::on_cadastrar_forncecedor_triggered()
 {
+    tl_cadastro_fornecedor.definir_icone_janela(logomarca);
     tl_cadastro_fornecedor.show();
 }
 
 void tela_principal::on_buscar_fornecedores_triggered()
 {
+    tl_listar_fornecedores.definir_icone_janela(logomarca);
     tl_listar_fornecedores.show();
 }
 
 void tela_principal::on_consultar_fornecedores_triggered()
 {
+    tl_listar_fornecedores.definir_icone_janela(logomarca);
     tl_listar_fornecedores.show();
+}
+
+void tela_principal::on_Cadastro_da_Loja_triggered()
+{
+    if(!tl_loja.exec()){
+        informacao_loja = tl_loja.retorna_novo_cadastro();
+        tela_principal::definir_dados_loja(informacao_loja);
+    }
+}
+
+void  tela_principal::definir_dados_loja(loja * info_loja){
+    informacao_loja = info_loja;
+    logomarca = informacao_loja->retorna_QPixmap_imagem();
+    this->setWindowIcon(logomarca);
 }

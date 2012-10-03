@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="imagens.qrc">
+    <normaloff>:/img/img/logo_sex.png</normaloff>:/img/img/logo_sex.png</iconset>
+  </property>
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
@@ -28,7 +32,7 @@
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QToolButton" name="btn_editar_fornecedor">
+   <widget class="QToolButton" name="btn_editar_loja">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -77,6 +81,9 @@
     <string>Endereço</string>
    </property>
    <widget class="QLineEdit" name="le_cep">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>35</x>
@@ -161,6 +168,9 @@
     </property>
    </widget>
    <widget class="QLineEdit" name="le_rua">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>160</x>
@@ -213,6 +223,9 @@
     </property>
    </widget>
    <widget class="QLineEdit" name="le_numero">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>54</x>
@@ -263,6 +276,9 @@
     </property>
    </widget>
    <widget class="QLineEdit" name="le_bairro">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>172</x>
@@ -312,6 +328,9 @@
     </property>
    </widget>
    <widget class="QLineEdit" name="le_cidade">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>581</x>
@@ -383,6 +402,9 @@
     </property>
    </widget>
    <widget class="QLineEdit" name="le_uf">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>230</x>
@@ -415,6 +437,9 @@
     </property>
    </widget>
    <widget class="QLineEdit" name="le_estado">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>91</x>
@@ -452,7 +477,7 @@
    <zorder>gv_estado</zorder>
    <zorder>le_estado</zorder>
   </widget>
-  <widget class="QGroupBox" name="gb_dados_fornecedor">
+  <widget class="QGroupBox" name="gb_dados_loja">
    <property name="geometry">
     <rect>
      <x>5</x>
@@ -477,7 +502,7 @@
    <widget class="QLabel" name="lb_telefone">
     <property name="geometry">
      <rect>
-      <x>159</x>
+      <x>169</x>
       <y>100</y>
       <width>51</width>
       <height>20</height>
@@ -499,7 +524,7 @@
    <widget class="QComboBox" name="cb_telefone">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>220</x>
       <y>100</y>
       <width>217</width>
       <height>22</height>
@@ -556,6 +581,9 @@
     </property>
    </widget>
    <widget class="QLineEdit" name="le_razao_social">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -602,6 +630,9 @@
     </property>
    </widget>
    <widget class="QLineEdit" name="le_nome">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>39</x>
@@ -698,6 +729,9 @@
     </property>
    </widget>
    <widget class="QLineEdit" name="le_cnpj">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -742,6 +776,9 @@
       <width>128</width>
       <height>128</height>
      </size>
+    </property>
+    <property name="interactive">
+     <bool>false</bool>
     </property>
    </widget>
   </widget>

@@ -13,6 +13,11 @@ tela_cadastro_fornecedor::~tela_cadastro_fornecedor()
     delete ui;
 }
 
+void tela_cadastro_fornecedor::definir_icone_janela(QPixmap logo){
+    logomarca = logo;
+    this->setWindowIcon(logomarca);
+}
+
 void tela_cadastro_fornecedor::on_tb_menos_email_clicked()
 {
     std::string email_a_remover;
@@ -50,9 +55,7 @@ void tela_cadastro_fornecedor::on_tb_mais_email_clicked()
     font.setFamily(QString::fromUtf8("Calibri"));
     font.setPointSize(10);
     tela_cadastro_email->setFont(font);
-    QIcon icon;
-    icon.addFile(QString::fromUtf8(":/img/img/logo_sex.png"), QSize(), QIcon::Normal, QIcon::Off);
-    tela_cadastro_email->setWindowIcon(icon);
+    tela_cadastro_email->setWindowIcon(logomarca);
     le_email = new QLineEdit(tela_cadastro_email);
     le_email->setObjectName(QString::fromUtf8("ld_email"));
     le_email->setGeometry(QRect(10, 10, 490, 20));
@@ -96,11 +99,10 @@ void tela_cadastro_fornecedor::adicionar_email(){
         if((le_email->text().contains("@"))&&(le_email->text().contains("."))){
             for (int i=0; i<int(lista_email.size()); i++){
                 if (lista_email[i]==email_digitado){
-                    QPixmap icone_titulo_janela(":img/img/logo_sex.png");
                     QPixmap icone_janela(":img/img/email_invalido_50.png");
                     QMessageBox msg(0);
                     msg.setIconPixmap(icone_janela);
-                    msg.setWindowIcon(icone_titulo_janela);
+                    msg.setWindowIcon(logomarca);
                     msg.setWindowTitle("E-mail");
                     msg.addButton("OK", QMessageBox::AcceptRole);
                     msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -120,11 +122,10 @@ void tela_cadastro_fornecedor::adicionar_email(){
             tela_cadastro_email->close();
         }
         else{
-            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
             QPixmap icone_janela(":img/img/email_invalido_50.png");
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
-            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowIcon(logomarca);
             msg.setWindowTitle("Erro de e-mail");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -156,9 +157,7 @@ void tela_cadastro_fornecedor::on_tb_mais_telefone_clicked()
         tela_cadastro_telefone->setObjectName(QString::fromUtf8("tela_cadastro_telefone"));
     tela_cadastro_telefone->setWindowModality(Qt::ApplicationModal);
     tela_cadastro_telefone->resize(370, 76);
-    QIcon icon;
-    icon.addFile(QString::fromUtf8(":/img/img/logo_sex.png"), QSize(), QIcon::Normal, QIcon::Off);
-    tela_cadastro_telefone->setWindowIcon(icon);
+    tela_cadastro_telefone->setWindowIcon(logomarca);
     lb_telefone = new QLabel(tela_cadastro_telefone);
     lb_telefone->setObjectName(QString::fromUtf8("lb_telefone"));
     lb_telefone->setGeometry(QRect(10, 10, 51, 20));
@@ -323,11 +322,10 @@ void tela_cadastro_fornecedor::adicionar_telefone(){
 
     if(telefone.size()>=13){
         if (cb_operadora->currentText()=="------------------------"){
-            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
             QPixmap icone_janela(":img/img/telefone_invalido_50.png");
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
-            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowIcon(logomarca);
             msg.setWindowTitle("Operadora");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -337,11 +335,10 @@ void tela_cadastro_fornecedor::adicionar_telefone(){
         else{
             for (int i=0; i<int(lista_telefone.size()); i++){
                 if (lista_telefone[i]==telefone){
-                    QPixmap icone_titulo_janela(":img/img/logo_sex.png");
                     QPixmap icone_janela(":img/img/telefone_invalido_50.png");
                     QMessageBox msg(0);
                     msg.setIconPixmap(icone_janela);
-                    msg.setWindowIcon(icone_titulo_janela);
+                    msg.setWindowIcon(logomarca);
                     msg.setWindowTitle("Telefone");
                     msg.addButton("OK", QMessageBox::AcceptRole);
                     msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -365,11 +362,10 @@ void tela_cadastro_fornecedor::adicionar_telefone(){
         }
     }
     else{
-        QPixmap icone_titulo_janela(":img/img/logo_sex.png");
         QPixmap icone_janela(":img/img/telefone_invalido_50.png");
         QMessageBox msg(0);
         msg.setIconPixmap(icone_janela);
-        msg.setWindowIcon(icone_titulo_janela);
+        msg.setWindowIcon(logomarca);
         msg.setWindowTitle("Erro no número do telefone");
         msg.addButton("OK", QMessageBox::AcceptRole);
         msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -391,11 +387,10 @@ void tela_cadastro_fornecedor::cancelar_telefone(){
 
 void tela_cadastro_fornecedor::on_le_cnpj_editingFinished(){
     if(!funcao.verifica_cnpj(ui->le_cnpj->text().toStdString())){
-        QPixmap icone_titulo_janela(":img/img/logo_sex.png");
         QPixmap icone_janela(":img/img/cnpj_erro_50.png");
         QMessageBox msg(0);
         msg.setIconPixmap(icone_janela);
-        msg.setWindowIcon(icone_titulo_janela);
+        msg.setWindowIcon(logomarca);
         msg.setWindowTitle("Erro no número do CNPJ");
         msg.addButton("OK", QMessageBox::AcceptRole);
         msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -420,11 +415,10 @@ void tela_cadastro_fornecedor::on_le_cep_editingFinished(){
     }
     else{
         if (ui->le_cep->text().toStdString()!="-"){
-            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
             QPixmap icone_janela(":img/img/cep_invalido_50.png");
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
-            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowIcon(logomarca);
             msg.setWindowTitle("CEP");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -553,11 +547,10 @@ void tela_cadastro_fornecedor::on_btn_confirmar_clicked()
     }
     else{
         if(ui->le_nome->text().toStdString()==""){
-            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
             QPixmap icone_janela(":img/img/error_50.png");
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
-            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowIcon(logomarca);
             msg.setWindowTitle("Nome do Fornecedor");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -565,11 +558,10 @@ void tela_cadastro_fornecedor::on_btn_confirmar_clicked()
             msg.exec();
         }
         else{
-            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
             QPixmap icone_janela(":img/img/telefone_50.png");
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
-            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowIcon(logomarca);
             msg.setWindowTitle("Telefone");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));

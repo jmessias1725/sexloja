@@ -13,6 +13,11 @@ tela_clientes::~tela_clientes()
     delete ui;
 }
 
+void tela_clientes::definir_icone_janela(QPixmap logo){
+    logomarca = logo;
+    this->setWindowIcon(logomarca);
+}
+
 void tela_clientes::definir_dados_cliente(cliente *cad_cliente){
     informacoes_cliente = cad_cliente;
 
@@ -103,6 +108,7 @@ void tela_clientes::limpar_dados(void){
 
 void tela_clientes::on_btn_editar_cliente_clicked()
 {
+    tl_editar_cliente.definir_icone_janela(logomarca);
     tl_editar_cliente.definir_dados_cliente(informacoes_cliente);
     if(!tl_editar_cliente.exec()){
         informacoes_cliente = tl_editar_cliente.retorna_novo_cadastro();
@@ -113,17 +119,17 @@ void tela_clientes::on_btn_editar_cliente_clicked()
 
 void tela_clientes::on_btn_adicionar_cliente_clicked()
 {
+    tl_cadastro_clientes.definir_icone_janela(logomarca);
     tl_cadastro_clientes.show();
 }
 
 void tela_clientes::on_btn_remover_cliente_clicked()
 {
     //Gera mensagem perguntando se é para salvar alterações.
-    QPixmap icone_titulo_janela(":img/img/logo_sex.png");
     QPixmap icone_janela(":img/img/cliente_pergunta_50.png");
     QMessageBox msg(0);
     msg.setIconPixmap(icone_janela);
-    msg.setWindowIcon(icone_titulo_janela);
+    msg.setWindowIcon(logomarca);
     msg.setWindowTitle("Cadastro");
     msg.addButton("Sim", QMessageBox::AcceptRole);
     msg.addButton("Não", QMessageBox::RejectRole);

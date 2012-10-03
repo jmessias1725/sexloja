@@ -24,6 +24,7 @@ class tela_cadastro_fornecedor : public QMainWindow
 public:
     explicit tela_cadastro_fornecedor(QWidget *parent = 0);
     ~tela_cadastro_fornecedor();
+    void definir_icone_janela(QPixmap logo);
 
 private slots:
     void on_tb_menos_email_clicked();
@@ -57,6 +58,7 @@ private:
     fornecedor *cad_fornecedor;
     funcoes_extras funcao;
     cep *aux_cep;
+    QPixmap logomarca;
 };
 
 #endif // TELA_CADASTRO_FORNECEDOR_H

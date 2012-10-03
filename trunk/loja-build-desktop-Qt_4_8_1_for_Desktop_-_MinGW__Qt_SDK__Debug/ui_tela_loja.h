@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_loja.ui'
 **
-** Created: Tue 2. Oct 17:51:47 2012
+** Created: Wed 3. Oct 11:32:31 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -30,7 +30,7 @@ class Ui_tela_loja
 {
 public:
     QFrame *frame;
-    QToolButton *btn_editar_fornecedor;
+    QToolButton *btn_editar_loja;
     QGroupBox *gb_endereo;
     QLineEdit *le_cep;
     QLabel *lb_cep;
@@ -47,7 +47,7 @@ public:
     QLineEdit *le_uf;
     QGraphicsView *gv_estado;
     QLineEdit *le_estado;
-    QGroupBox *gb_dados_fornecedor;
+    QGroupBox *gb_dados_loja;
     QLabel *lb_telefone;
     QComboBox *cb_telefone;
     QLabel *lb_razao_social;
@@ -63,19 +63,22 @@ public:
         if (tela_loja->objectName().isEmpty())
             tela_loja->setObjectName(QString::fromUtf8("tela_loja"));
         tela_loja->resize(800, 317);
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/img/img/logo_sex.png"), QSize(), QIcon::Normal, QIcon::Off);
+        tela_loja->setWindowIcon(icon);
         frame = new QFrame(tela_loja);
         frame->setObjectName(QString::fromUtf8("frame"));
         frame->setGeometry(QRect(0, 0, 800, 50));
         frame->setFrameShape(QFrame::Panel);
         frame->setFrameShadow(QFrame::Raised);
-        btn_editar_fornecedor = new QToolButton(frame);
-        btn_editar_fornecedor->setObjectName(QString::fromUtf8("btn_editar_fornecedor"));
-        btn_editar_fornecedor->setGeometry(QRect(10, 2, 45, 45));
-        QIcon icon;
-        icon.addFile(QString::fromUtf8(":/img/img/loja_editar.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_editar_fornecedor->setIcon(icon);
-        btn_editar_fornecedor->setIconSize(QSize(40, 40));
-        btn_editar_fornecedor->setAutoRaise(true);
+        btn_editar_loja = new QToolButton(frame);
+        btn_editar_loja->setObjectName(QString::fromUtf8("btn_editar_loja"));
+        btn_editar_loja->setGeometry(QRect(10, 2, 45, 45));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/img/img/loja_editar.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_editar_loja->setIcon(icon1);
+        btn_editar_loja->setIconSize(QSize(40, 40));
+        btn_editar_loja->setAutoRaise(true);
         gb_endereo = new QGroupBox(tela_loja);
         gb_endereo->setObjectName(QString::fromUtf8("gb_endereo"));
         gb_endereo->setGeometry(QRect(5, 200, 790, 111));
@@ -88,6 +91,7 @@ public:
         gb_endereo->setFont(font);
         le_cep = new QLineEdit(gb_endereo);
         le_cep->setObjectName(QString::fromUtf8("le_cep"));
+        le_cep->setEnabled(false);
         le_cep->setGeometry(QRect(35, 23, 91, 20));
         le_cep->setMaximumSize(QSize(100, 20));
         QFont font1;
@@ -110,6 +114,7 @@ public:
         lb_rua->setFont(font1);
         le_rua = new QLineEdit(gb_endereo);
         le_rua->setObjectName(QString::fromUtf8("le_rua"));
+        le_rua->setEnabled(false);
         le_rua->setGeometry(QRect(160, 23, 621, 20));
         QFont font2;
         font2.setPointSize(10);
@@ -126,6 +131,7 @@ public:
         lb_numero->setFont(font1);
         le_numero = new QLineEdit(gb_endereo);
         le_numero->setObjectName(QString::fromUtf8("le_numero"));
+        le_numero->setEnabled(false);
         le_numero->setGeometry(QRect(54, 50, 70, 20));
         le_numero->setFont(font2);
         le_numero->setMaxLength(9);
@@ -140,6 +146,7 @@ public:
         lb_bairro->setFont(font3);
         le_bairro = new QLineEdit(gb_endereo);
         le_bairro->setObjectName(QString::fromUtf8("le_bairro"));
+        le_bairro->setEnabled(false);
         le_bairro->setGeometry(QRect(172, 50, 361, 20));
         le_bairro->setFont(font2);
         le_bairro->setMaxLength(70);
@@ -150,6 +157,7 @@ public:
         lb_cidade->setFont(font1);
         le_cidade = new QLineEdit(gb_endereo);
         le_cidade->setObjectName(QString::fromUtf8("le_cidade"));
+        le_cidade->setEnabled(false);
         le_cidade->setGeometry(QRect(581, 50, 201, 20));
         le_cidade->setFont(font2);
         le_cidade->setMaxLength(50);
@@ -168,6 +176,7 @@ public:
         lb_uf->setFont(font4);
         le_uf = new QLineEdit(gb_endereo);
         le_uf->setObjectName(QString::fromUtf8("le_uf"));
+        le_uf->setEnabled(false);
         le_uf->setGeometry(QRect(230, 80, 25, 20));
         le_uf->setFont(font4);
         le_uf->setReadOnly(true);
@@ -176,6 +185,7 @@ public:
         gv_estado->setGeometry(QRect(50, 77, 40, 25));
         le_estado = new QLineEdit(gb_endereo);
         le_estado->setObjectName(QString::fromUtf8("le_estado"));
+        le_estado->setEnabled(false);
         le_estado->setGeometry(QRect(91, 80, 110, 20));
         le_estado->setFont(font4);
         le_estado->setReadOnly(true);
@@ -194,9 +204,9 @@ public:
         le_uf->raise();
         gv_estado->raise();
         le_estado->raise();
-        gb_dados_fornecedor = new QGroupBox(tela_loja);
-        gb_dados_fornecedor->setObjectName(QString::fromUtf8("gb_dados_fornecedor"));
-        gb_dados_fornecedor->setGeometry(QRect(5, 50, 790, 147));
+        gb_dados_loja = new QGroupBox(tela_loja);
+        gb_dados_loja->setObjectName(QString::fromUtf8("gb_dados_loja"));
+        gb_dados_loja->setGeometry(QRect(5, 50, 790, 147));
         QFont font5;
         font5.setFamily(QString::fromUtf8("Calibri"));
         font5.setPointSize(10);
@@ -204,25 +214,26 @@ public:
         font5.setWeight(75);
         font5.setStrikeOut(false);
         font5.setKerning(false);
-        gb_dados_fornecedor->setFont(font5);
-        lb_telefone = new QLabel(gb_dados_fornecedor);
+        gb_dados_loja->setFont(font5);
+        lb_telefone = new QLabel(gb_dados_loja);
         lb_telefone->setObjectName(QString::fromUtf8("lb_telefone"));
-        lb_telefone->setGeometry(QRect(159, 100, 51, 20));
+        lb_telefone->setGeometry(QRect(169, 100, 51, 20));
         lb_telefone->setFont(font1);
-        cb_telefone = new QComboBox(gb_dados_fornecedor);
+        cb_telefone = new QComboBox(gb_dados_loja);
         cb_telefone->setObjectName(QString::fromUtf8("cb_telefone"));
-        cb_telefone->setGeometry(QRect(210, 100, 217, 22));
+        cb_telefone->setGeometry(QRect(220, 100, 217, 22));
         cb_telefone->setMaximumSize(QSize(16777215, 22));
         cb_telefone->setFont(font1);
         cb_telefone->setEditable(false);
         cb_telefone->setMaxVisibleItems(20);
-        lb_razao_social = new QLabel(gb_dados_fornecedor);
+        lb_razao_social = new QLabel(gb_dados_loja);
         lb_razao_social->setObjectName(QString::fromUtf8("lb_razao_social"));
         lb_razao_social->setGeometry(QRect(5, 40, 75, 20));
         lb_razao_social->setMaximumSize(QSize(100, 20));
         lb_razao_social->setFont(font1);
-        le_razao_social = new QLineEdit(gb_dados_fornecedor);
+        le_razao_social = new QLineEdit(gb_dados_loja);
         le_razao_social->setObjectName(QString::fromUtf8("le_razao_social"));
+        le_razao_social->setEnabled(false);
         le_razao_social->setGeometry(QRect(80, 40, 571, 20));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
@@ -234,8 +245,9 @@ public:
         le_razao_social->setFont(font1);
         le_razao_social->setMaxLength(100);
         le_razao_social->setReadOnly(true);
-        le_nome = new QLineEdit(gb_dados_fornecedor);
+        le_nome = new QLineEdit(gb_dados_loja);
         le_nome->setObjectName(QString::fromUtf8("le_nome"));
+        le_nome->setEnabled(false);
         le_nome->setGeometry(QRect(39, 69, 612, 20));
         sizePolicy.setHeightForWidth(le_nome->sizePolicy().hasHeightForWidth());
         le_nome->setSizePolicy(sizePolicy);
@@ -244,25 +256,27 @@ public:
         le_nome->setFont(font1);
         le_nome->setMaxLength(32767);
         le_nome->setReadOnly(true);
-        lb_nome = new QLabel(gb_dados_fornecedor);
+        lb_nome = new QLabel(gb_dados_loja);
         lb_nome->setObjectName(QString::fromUtf8("lb_nome"));
         lb_nome->setGeometry(QRect(5, 69, 34, 20));
         lb_nome->setMaximumSize(QSize(40, 20));
         lb_nome->setFont(font1);
-        lb_cnpj = new QLabel(gb_dados_fornecedor);
+        lb_cnpj = new QLabel(gb_dados_loja);
         lb_cnpj->setObjectName(QString::fromUtf8("lb_cnpj"));
         lb_cnpj->setGeometry(QRect(7, 100, 32, 20));
         lb_cnpj->setFont(font4);
-        le_cnpj = new QLineEdit(gb_dados_fornecedor);
+        le_cnpj = new QLineEdit(gb_dados_loja);
         le_cnpj->setObjectName(QString::fromUtf8("le_cnpj"));
+        le_cnpj->setEnabled(false);
         le_cnpj->setGeometry(QRect(40, 100, 120, 20));
         le_cnpj->setFont(font4);
         le_cnpj->setReadOnly(true);
-        gv_logo = new QGraphicsView(gb_dados_fornecedor);
+        gv_logo = new QGraphicsView(gb_dados_loja);
         gv_logo->setObjectName(QString::fromUtf8("gv_logo"));
         gv_logo->setGeometry(QRect(657, 13, 128, 128));
         gv_logo->setMinimumSize(QSize(128, 128));
         gv_logo->setMaximumSize(QSize(128, 128));
+        gv_logo->setInteractive(false);
 
         retranslateUi(tela_loja);
 
@@ -272,7 +286,7 @@ public:
     void retranslateUi(QDialog *tela_loja)
     {
         tela_loja->setWindowTitle(QApplication::translate("tela_loja", "Dialog", 0, QApplication::UnicodeUTF8));
-        btn_editar_fornecedor->setText(QApplication::translate("tela_loja", "Editar Fornecedor", 0, QApplication::UnicodeUTF8));
+        btn_editar_loja->setText(QApplication::translate("tela_loja", "Editar Fornecedor", 0, QApplication::UnicodeUTF8));
         gb_endereo->setTitle(QApplication::translate("tela_loja", "Endere\303\247o", 0, QApplication::UnicodeUTF8));
         le_cep->setInputMask(QApplication::translate("tela_loja", "00000-000; ", 0, QApplication::UnicodeUTF8));
         le_cep->setText(QApplication::translate("tela_loja", "-", 0, QApplication::UnicodeUTF8));
@@ -290,7 +304,7 @@ public:
         lb_uf->setText(QApplication::translate("tela_loja", "UF:", 0, QApplication::UnicodeUTF8));
         le_uf->setText(QApplication::translate("tela_loja", "--", 0, QApplication::UnicodeUTF8));
         le_estado->setText(QString());
-        gb_dados_fornecedor->setTitle(QApplication::translate("tela_loja", "Dados da Loja", 0, QApplication::UnicodeUTF8));
+        gb_dados_loja->setTitle(QApplication::translate("tela_loja", "Dados da Loja", 0, QApplication::UnicodeUTF8));
         lb_telefone->setText(QApplication::translate("tela_loja", "Telefone:", 0, QApplication::UnicodeUTF8));
         lb_razao_social->setText(QApplication::translate("tela_loja", "Raz\303\243o Social:", 0, QApplication::UnicodeUTF8));
         le_razao_social->setText(QString());

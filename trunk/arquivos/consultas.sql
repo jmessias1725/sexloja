@@ -42,3 +42,6 @@ DELETE FROM email_cliente WHERE id_cliente = :id_cliente AND email = email;
 DELETE FROM tel_cliente(id_cliente,telefone,Operadora) VALUES(:id_cliente, :telefone, :Operadora)
 
 DELETE FROM cliente WHERE id_cliente = :id_cliente
+
+SELECT 
+cnpj,razao_social,nome,cep,rua,numero,bairro,cidade,uf,estado,logomarca,extensao FROM loja;

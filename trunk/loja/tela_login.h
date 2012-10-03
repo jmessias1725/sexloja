@@ -7,6 +7,7 @@
 #include "conexao_bd.h"
 #include "usuario.h"
 #include "tela_principal.h"
+#include "loja.h"
 
 namespace Ui {
 class tela_login;
@@ -28,6 +29,7 @@ private slots:
 private:
     Ui::tela_login *ui;
     usuario *user;
+    loja *informacao_loja;
     bool usuario_logado;
     tela_principal tl_principal;
 };

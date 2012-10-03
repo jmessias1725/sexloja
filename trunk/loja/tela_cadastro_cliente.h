@@ -24,6 +24,7 @@ class tela_cadastro_cliente : public QMainWindow
 public:
     explicit tela_cadastro_cliente(QWidget *parent = 0);
     ~tela_cadastro_cliente();
+    void definir_icone_janela(QPixmap logo);
 
 private slots:
     void on_tb_menos_email_clicked();
@@ -56,6 +57,7 @@ private:
     cliente *cad_cliente;
     cep *aux_cep;
     funcoes_extras funcao;
+    QPixmap logomarca;
 };
 
 #endif // TELA_CADASTRO_CLIENTE_H

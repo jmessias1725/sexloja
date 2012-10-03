@@ -15,6 +15,11 @@ tela_listar_fornecedores::~tela_listar_fornecedores()
     delete ui;
 }
 
+void tela_listar_fornecedores::definir_icone_janela(QPixmap logo){
+    logomarca = logo;
+    this->setWindowIcon(logomarca);
+}
+
 void tela_listar_fornecedores::on_le_telefone_editingFinished()
 {
     std::string telefone;
@@ -221,6 +226,7 @@ void tela_listar_fornecedores::on_tv_fornecedores_doubleClicked(const QModelInde
     posicao_remover = -1;
     i=0;
 
+    tl_fornecedor.definir_icone_janela(logomarca);
     tl_fornecedor.definir_dados_fornecedor(lista_fornecedores[index.row()]);
     lista_fornecedores[index.row()] = tl_fornecedor.retorna_novo_cadastro();
 
