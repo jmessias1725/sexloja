@@ -196,7 +196,7 @@ bool loja::salvar_alteracao_dados_loja(std::vector< std::string > lista_telefone
         QSqlQuery remover_dados_telefone_loja(bd);
         QSqlQuery salvar_dados_telefone_loja(bd);
 
-        campos = "cnpj = :cnpj, razao_social = :razao_social, nome = :nome, comentario = :comentario, cep = :numero_cep, rua = :nome_rua, bairro = :nome_bairro, ponto_referencia = :ponto_referencia, cidade = :nome_cidade, uf = :sigla_estado, numero = :numero_residencia, estado = :nome_estado , logomarca = :logomarca , extensao = :formato_logo";
+        campos = "cnpj=:cnpj, razao_social=:razao_social, nome=:nome, cep=:numero_cep, rua=:nome_rua, bairro=:nome_bairro, cidade=:nome_cidade, uf=:sigla_estado, numero=:numero_residencia, estado=:nome_estado , logomarca=:logomarca , extensao=:formato_logo";
 
         //Alterar os dados no cadastro do loja
         alterar_dados_loja.prepare("UPDATE loja SET "+campos+" WHERE id_loja = '"+QString::number(id)+"';");
@@ -232,7 +232,6 @@ bool loja::salvar_alteracao_dados_loja(std::vector< std::string > lista_telefone
             salvar_dados_telefone_loja.bindValue(":operadora",QString::fromStdString(lista_operadora_a_adicionar[i]));
             salvar_dados_telefone_loja.exec();
         }
-
 
         //Verifica se os dados podem ser salvos, caso sim realiza o Commite, do contrário o Rollback.
         if((alterar_dados_loja.lastError().number()<=0)&&
@@ -282,4 +281,46 @@ bool loja::salvar_alteracao_dados_loja(std::vector< std::string > lista_telefone
     else{
         return false;
     }
+}
+
+loja * loja::busca_loja(void){
+    conexao_bd conexao;
+    bool verifica_conexao;
+    QSqlDatabase bd;
+
+    //realiza conexão ao banco de dados
+    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
+
+    if (verifica_conexao){
+        //Retorna o banco de dados
+        bd = conexao.retorna_bd();
+
+        //Declara a variável que irá fazer a consulta
+        QSqlQuery consultar(bd);
+
+        //realiza a consulta
+        consultar.exec("SELECT * FROM loja");
+        if (consultar.last()){
+            id = consultar.value(0).toInt();
+            cnpj = consultar.value(1).toString();
+            razao_social = consultar.value(2).toString();
+            nome = consultar.value(3).toString();
+            numero_cep = consultar.value(4).toString();
+            nome_rua = consultar.value(5).toString();
+            numero_residencia = consultar.value(6).toInt();
+            nome_bairro = consultar.value(7).toString();
+            nome_cidade = consultar.value(8).toString();
+            sigla_estado = consultar.value(9).toString();
+            nome_estado = consultar.value(10).toString();
+            vetor_bytes_imagem = consultar.value(11).toByteArray();
+            extensao = consultar.value(12).toString().toStdString();
+        }
+        consultar.exec("SELECT telefone,operadora FROM tel_loja WHERE id_loja = "+QString::number(id)+";");
+        while(consultar.next()){
+            lista_telefone.push_back(consultar.value(0).toString().toStdString());
+            lista_operadora.push_back(consultar.value(1).toString().toStdString());
+        }
+        conexao.fechar_conexao();
+    }
+    return this;
 }

@@ -54,6 +54,7 @@ public:
     bool salvar_alteracao_dados_loja(std::vector< std::string > lista_telefone_a_remover,
                                     std::vector< std::string > lista_telefone_a_adicionar,
                                     std::vector< std::string > lista_operadora_a_adicionar);
+    loja * busca_loja(void);
 };
 
 #endif // LOJA_H

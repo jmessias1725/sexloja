@@ -20,6 +20,7 @@ public:
     ~tela_fornecedor();
     void definir_dados_fornecedor(fornecedor *cad_fornecedor);
     fornecedor * retorna_novo_cadastro(void);
+    void definir_icone_janela(QPixmap logo);
 
 private slots:
     void closeEvent( QCloseEvent * event );
@@ -34,6 +35,7 @@ private:
     tela_editar_fornecedor tl_editar_fornecedor;
     fornecedor *informacoes_fornecedor;
     funcoes_extras funcoes;
+    QPixmap logomarca;
 };
 
 #endif // TELA_FORNECEDOR_H

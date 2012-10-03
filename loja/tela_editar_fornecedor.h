@@ -20,6 +20,7 @@ public:
     void definir_dados_fornecedor(fornecedor *cad_fornecedor);
     fornecedor * retorna_novo_cadastro(void);
     void closeEvent( QCloseEvent * event );
+    void definir_icone_janela(QPixmap logo);
 
 private slots:
     void on_tb_menos_email_clicked();
@@ -56,6 +57,8 @@ private:
     fornecedor *informacao_cad_fornecedor;
     cep *aux_cep;
     funcoes_extras funcoes;
+    QPixmap logomarca;
+
 };
 
 #endif // TELA_EDITAR_FORNECEDOR_H

@@ -44,8 +44,6 @@ void tela_editar_loja::definir_dados_loja(loja *cad_loja){
     nome_arquivo_imagem = "";
 }
 
-
-
 void tela_editar_loja::on_btn_adicionar_logo_clicked()
 {
     imagem imagem_logomarca;
@@ -465,7 +463,6 @@ void tela_editar_loja::on_btn_confirmar_clicked()
     msg.setText("\nSalvar alterações no cadastro da loja ?");
     if(msg.exec()<=0){
         if((ui->le_nome->text().toStdString()!="")&&(lista_telefone.size()>0)){
-
             informacao_cad_loja->alterar_dados_loja(ui->le_cnpj->text(),ui->le_razao_social->text(),ui->le_nome->text(),
                                                     lista_telefone, lista_operadora,ui->le_uf->text(), ui->cb_estado->currentText(),
                                                     ui->le_cidade->text(),ui->le_bairro->text(),ui->le_rua->text(), ui->le_cep->text(),
@@ -513,6 +510,10 @@ void tela_editar_loja::on_btn_confirmar_clicked()
         }
     }
 
+}
+
+loja * tela_editar_loja::retorna_novo_cadastro(void){
+    return informacao_cad_loja;
 }
 
 void tela_editar_loja::closeEvent( QCloseEvent * event ){

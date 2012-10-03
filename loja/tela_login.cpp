@@ -8,6 +8,9 @@ tela_login::tela_login(QWidget *parent) :
 {
     ui->setupUi(this);
     usuario_logado = false;
+    informacao_loja = new loja;
+    informacao_loja->busca_loja();
+    this->setWindowIcon(informacao_loja->retorna_QPixmap_imagem());
 }
 
 tela_login::~tela_login()
@@ -41,6 +44,7 @@ void tela_login::on_btn_confrimar_clicked()
     else{
         usuario_logado = true;
         this->close();
+        tl_principal.definir_dados_loja(informacao_loja);
         tl_principal.show();
     }
 }

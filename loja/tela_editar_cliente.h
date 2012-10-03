@@ -20,6 +20,7 @@ public:
     void definir_dados_cliente(cliente *cad_cliente);
     cliente * retorna_novo_cadastro(void);
     void closeEvent( QCloseEvent * event );
+    void definir_icone_janela(QPixmap logo);
 
 private slots:
     void on_tb_menos_email_clicked();
@@ -56,6 +57,7 @@ private:
     cliente *informacao_cad_cliente;
     cep *aux_cep;
     funcoes_extras funcoes;
+    QPixmap logomarca;
 };
 
 #endif // TELA_EDITAR_CLIENTE_H

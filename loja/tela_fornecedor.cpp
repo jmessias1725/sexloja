@@ -13,6 +13,11 @@ tela_fornecedor::~tela_fornecedor()
     delete ui;
 }
 
+void tela_fornecedor::definir_icone_janela(QPixmap logo){
+    logomarca = logo;
+    this->setWindowIcon(logomarca);
+}
+
 void tela_fornecedor::definir_dados_fornecedor(fornecedor *cad_fornecedor){
     informacoes_fornecedor = cad_fornecedor;
 
@@ -103,6 +108,7 @@ void tela_fornecedor::limpar_dados(){
 
 void tela_fornecedor::on_btn_editar_fornecedor_clicked()
 {
+    tl_editar_fornecedor.definir_icone_janela(logomarca);
     tl_editar_fornecedor.definir_dados_fornecedor(informacoes_fornecedor);
     if(!tl_editar_fornecedor.exec()){
         informacoes_fornecedor = tl_editar_fornecedor.retorna_novo_cadastro();
@@ -113,17 +119,17 @@ void tela_fornecedor::on_btn_editar_fornecedor_clicked()
 
 void tela_fornecedor::on_btn_adicionar_fornecedor_clicked()
 {
+    tl_cadastro_fornecedor.definir_icone_janela(logomarca);
     tl_cadastro_fornecedor.show();
 }
 
 void tela_fornecedor::on_btn_remover_fornecedor_clicked()
 {
     //Gera mensagem perguntando se é para salvar alterações.
-    QPixmap icone_titulo_janela(":img/img/logo_sex.png");
     QPixmap icone_janela(":img/img/fornecedor_pergunta_50.png");
     QMessageBox msg(0);
     msg.setIconPixmap(icone_janela);
-    msg.setWindowIcon(icone_titulo_janela);
+    msg.setWindowIcon(logomarca);
     msg.setWindowTitle("Cadastro");
     msg.addButton("Sim", QMessageBox::AcceptRole);
     msg.addButton("Não", QMessageBox::RejectRole);

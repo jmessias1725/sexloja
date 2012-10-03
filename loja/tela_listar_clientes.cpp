@@ -15,6 +15,11 @@ tela_listar_clientes::~tela_listar_clientes()
     delete ui;
 }
 
+void tela_listar_clientes::definir_icone_janela(QPixmap logo){
+    logomarca = logo;
+    this->setWindowIcon(logomarca);
+}
+
 void tela_listar_clientes::on_le_telefone_editingFinished()
 {
     std::string telefone;
@@ -185,6 +190,7 @@ void tela_listar_clientes::on_tv_clientes_doubleClicked(const QModelIndex &index
     posicao_remover = -1;
     i=0;
 
+    tl_cliente.definir_icone_janela(logomarca);
     tl_cliente.definir_dados_cliente(lista_clientes[index.row()]);
     lista_clientes[index.row()] = tl_cliente.retorna_novo_cadastro();    
 
