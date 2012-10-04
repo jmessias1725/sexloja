@@ -20,7 +20,8 @@ class tela_cadastro_loja : public QDialog
     
 public:
     explicit tela_cadastro_loja(QWidget *parent = 0);
-    ~tela_cadastro_loja();    
+    ~tela_cadastro_loja();
+    void definir_icone_janela(QPixmap logo);
     
 private slots:
     void on_btn_adicionar_logo_clicked();
@@ -52,6 +53,7 @@ private:
     loja *cad_loja;
     funcoes_extras funcao;
     cep *aux_cep;
+    QPixmap logomarca;
 };
 
 #endif // TELA_CADASTRO_LOJA_H

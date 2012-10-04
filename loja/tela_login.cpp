@@ -44,7 +44,7 @@ void tela_login::on_btn_confrimar_clicked()
     else{
         usuario_logado = true;
         this->close();
-        tl_principal.definir_dados_loja(informacao_loja);
+        tl_principal.dados_loja(informacao_loja);
         tl_principal.show();
     }
 }

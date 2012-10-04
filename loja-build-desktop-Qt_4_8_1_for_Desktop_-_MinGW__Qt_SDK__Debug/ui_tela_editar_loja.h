@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_editar_loja.ui'
 **
-** Created: Tue 2. Oct 11:38:33 2012
+** Created: Thu 4. Oct 09:28:18 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -70,6 +70,7 @@ public:
     {
         if (tela_editar_loja->objectName().isEmpty())
             tela_editar_loja->setObjectName(QString::fromUtf8("tela_editar_loja"));
+        tela_editar_loja->setWindowModality(Qt::ApplicationModal);
         tela_editar_loja->resize(800, 237);
         gb_dados_fornecedor = new QGroupBox(tela_editar_loja);
         gb_dados_fornecedor->setObjectName(QString::fromUtf8("gb_dados_fornecedor"));
@@ -394,7 +395,7 @@ public:
 
     void retranslateUi(QDialog *tela_editar_loja)
     {
-        tela_editar_loja->setWindowTitle(QApplication::translate("tela_editar_loja", "Dialog", 0, QApplication::UnicodeUTF8));
+        tela_editar_loja->setWindowTitle(QApplication::translate("tela_editar_loja", "Editar Cadastro da Loja", 0, QApplication::UnicodeUTF8));
         gb_dados_fornecedor->setTitle(QApplication::translate("tela_editar_loja", "Dados da Loja", 0, QApplication::UnicodeUTF8));
         lb_telefone->setText(QApplication::translate("tela_editar_loja", "Telefone:", 0, QApplication::UnicodeUTF8));
         lb_nome->setText(QApplication::translate("tela_editar_loja", "Nome:", 0, QApplication::UnicodeUTF8));
