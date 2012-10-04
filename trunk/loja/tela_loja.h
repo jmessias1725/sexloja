@@ -20,6 +20,7 @@ public:
     ~tela_loja();
     void definir_dados_loja(loja *cad_loja);
     loja * retorna_novo_cadastro(void);
+    void definir_icone_janela(QPixmap logo);
 
 private slots:
     void closeEvent( QCloseEvent * event );
@@ -34,6 +35,7 @@ private:
     funcoes_extras funcoes;
     std::vector< std::string > lista_telefone;
     std::vector< std::string > lista_operadora;
+    QPixmap logomarca;
 };
 
 #endif // TELA_LOJA_H

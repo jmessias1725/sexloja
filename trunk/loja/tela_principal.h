@@ -22,7 +22,7 @@ class tela_principal : public QMainWindow
 public:
     explicit tela_principal(QWidget *parent = 0);
     ~tela_principal();
-    void definir_dados_loja(loja *info_loja);
+    void dados_loja(loja *info_loja);
 
 private slots:
     void on_consultar_clientes_triggered();

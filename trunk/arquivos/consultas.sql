@@ -45,3 +45,18 @@ DELETE FROM cliente WHERE id_cliente = :id_cliente
 
 SELECT 
 cnpj,razao_social,nome,cep,rua,numero,bairro,cidade,uf,estado,logomarca,extensao FROM loja;
+
+
+cnpj=:cnpj, 
+razao_social=:razao_social, 
+nome=:nome, 
+cep=:numero_cep, 
+rua=:nome_rua, 
+bairro = :nome_bairro, 
+ponto_referencia = :ponto_referencia, 
+cidade = :nome_cidade, 
+uf = :sigla_estado, 
+numero = :numero_residencia, 
+estado = :nome_estado , 
+logomarca = :logomarca , 
+extensao = :formato_logo

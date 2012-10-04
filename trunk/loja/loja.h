@@ -20,8 +20,6 @@ private:
     QString razao_social;
     QString nome;
     QString comentario;
-    //endereco *endereco_loja;
-    //imagem *imagem_logomarca;
     std::vector< std::string > lista_telefone;
     std::vector< std::string > lista_operadora;
 

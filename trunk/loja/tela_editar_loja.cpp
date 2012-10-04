@@ -13,10 +13,15 @@ tela_editar_loja::~tela_editar_loja()
     delete ui;
 }
 
-void tela_editar_loja::definir_dados_loja(loja *cad_loja){
+void tela_editar_loja::definir_icone_janela(QPixmap logo){
+    logomarca = logo;
+    this->setWindowIcon(logomarca);
+}
 
+void tela_editar_loja::definir_dados_loja(loja *cad_loja){
     QGraphicsScene *cena = new QGraphicsScene;
     informacao_cad_loja = cad_loja;
+    logomarca = informacao_cad_loja->retorna_QPixmap_imagem();
     lista_telefone = cad_loja->retorna_lista_telefone();
     lista_operadora = cad_loja->retorna_lista_operadora();
 
@@ -39,7 +44,7 @@ void tela_editar_loja::definir_dados_loja(loja *cad_loja){
     }
     ui->gv_logo->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->gv_logo->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    cena->addPixmap(informacao_cad_loja->retorna_QPixmap_imagem());
+    cena->addPixmap(logomarca);
     ui->gv_logo->setScene(cena);
     nome_arquivo_imagem = "";
 }
@@ -56,8 +61,10 @@ void tela_editar_loja::on_btn_adicionar_logo_clicked()
     imagem_logomarca = imagem(nome_arquivo_imagem,largura,altura);
     ui->gv_logo->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->gv_logo->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    cena->addPixmap(imagem_logomarca.retorna_QPixmap_imagem());
+    logomarca = imagem_logomarca.retorna_QPixmap_imagem();
+    cena->addPixmap(logomarca);
     ui->gv_logo->setScene(cena);
+    this->setWindowIcon(logomarca);
 }
 
 
@@ -75,9 +82,7 @@ void tela_editar_loja::on_tb_mais_telefone_clicked()
         tela_cadastro_telefone->setObjectName(QString::fromUtf8("tela_cadastro_telefone"));
     tela_cadastro_telefone->setWindowModality(Qt::ApplicationModal);
     tela_cadastro_telefone->resize(370, 76);
-    QIcon icon;
-    icon.addFile(QString::fromUtf8(":/img/img/logo_sex.png"), QSize(), QIcon::Normal, QIcon::Off);
-    tela_cadastro_telefone->setWindowIcon(icon);
+    tela_cadastro_telefone->setWindowIcon(logomarca);
     lb_telefone = new QLabel(tela_cadastro_telefone);
     lb_telefone->setObjectName(QString::fromUtf8("lb_telefone"));
     lb_telefone->setGeometry(QRect(10, 10, 51, 20));
@@ -242,11 +247,10 @@ void tela_editar_loja::adicionar_telefone(){
 
     if(telefone.size()>=13){
         if (cb_operadora->currentText()=="------------------------"){
-            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
             QPixmap icone_janela(":img/img/telefone_invalido_50.png");
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
-            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowIcon(logomarca);
             msg.setWindowTitle("Operadora");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -256,11 +260,10 @@ void tela_editar_loja::adicionar_telefone(){
         else{
             for (int i=0; i<int(lista_telefone.size()); i++){
                 if (lista_telefone[i]==telefone){
-                    QPixmap icone_titulo_janela(":img/img/logo_sex.png");
                     QPixmap icone_janela(":img/img/telefone_invalido_50.png");
                     QMessageBox msg(0);
                     msg.setIconPixmap(icone_janela);
-                    msg.setWindowIcon(icone_titulo_janela);
+                    msg.setWindowIcon(logomarca);
                     msg.setWindowTitle("Telefone");
                     msg.addButton("OK", QMessageBox::AcceptRole);
                     msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -284,11 +287,10 @@ void tela_editar_loja::adicionar_telefone(){
         }
     }
     else{
-        QPixmap icone_titulo_janela(":img/img/logo_sex.png");
         QPixmap icone_janela(":img/img/telefone_invalido_50.png");
         QMessageBox msg(0);
         msg.setIconPixmap(icone_janela);
-        msg.setWindowIcon(icone_titulo_janela);
+        msg.setWindowIcon(logomarca);
         msg.setWindowTitle("Erro no número do telefone");
         msg.addButton("OK", QMessageBox::AcceptRole);
         msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -310,11 +312,10 @@ void tela_editar_loja::cancelar_telefone(){
 
 void tela_editar_loja::on_le_cnpj_editingFinished(){
     if(!funcao.verifica_cnpj(ui->le_cnpj->text().toStdString())){
-        QPixmap icone_titulo_janela(":img/img/logo_sex.png");
         QPixmap icone_janela(":img/img/cnpj_erro_50.png");
         QMessageBox msg(0);
         msg.setIconPixmap(icone_janela);
-        msg.setWindowIcon(icone_titulo_janela);
+        msg.setWindowIcon(logomarca);
         msg.setWindowTitle("Erro no número do CNPJ");
         msg.addButton("OK", QMessageBox::AcceptRole);
         msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -339,11 +340,10 @@ void tela_editar_loja::on_le_cep_editingFinished(){
     }
     else{
         if (ui->le_cep->text().toStdString()!="-"){
-            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
             QPixmap icone_janela(":img/img/cep_invalido_50.png");
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
-            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowIcon(logomarca);
             msg.setWindowTitle("CEP");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -451,11 +451,10 @@ void tela_editar_loja::on_btn_cancelar_clicked()
 void tela_editar_loja::on_btn_confirmar_clicked()
 {
     //Gera mensagem perguntando se é para salvar alterações.
-    QPixmap icone_titulo_janela(":img/img/logo_sex.png");
     QPixmap icone_janela(":img/img/arquivo_pergunta_50.png");
     QMessageBox msg(0);
     msg.setIconPixmap(icone_janela);
-    msg.setWindowIcon(icone_titulo_janela);
+    msg.setWindowIcon(logomarca);
     msg.setWindowTitle("Cadastro");
     msg.addButton("Sim", QMessageBox::AcceptRole);
     msg.addButton("Não", QMessageBox::RejectRole);
@@ -484,11 +483,10 @@ void tela_editar_loja::on_btn_confirmar_clicked()
         }
         else{
             if(ui->le_nome->text().toStdString()==""){
-                QPixmap icone_titulo_janela(":img/img/logo_sex.png");
                 QPixmap icone_janela(":img/img/error_50.png");
                 QMessageBox msg(0);
                 msg.setIconPixmap(icone_janela);
-                msg.setWindowIcon(icone_titulo_janela);
+                msg.setWindowIcon(logomarca);
                 msg.setWindowTitle("Nome da Loja");
                 msg.addButton("OK", QMessageBox::AcceptRole);
                 msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -496,11 +494,10 @@ void tela_editar_loja::on_btn_confirmar_clicked()
                 msg.exec();
             }
             else{
-                QPixmap icone_titulo_janela(":img/img/logo_sex.png");
                 QPixmap icone_janela(":img/img/telefone_50.png");
                 QMessageBox msg(0);
                 msg.setIconPixmap(icone_janela);
-                msg.setWindowIcon(icone_titulo_janela);
+                msg.setWindowIcon(logomarca);
                 msg.setWindowTitle("Telefone");
                 msg.addButton("OK", QMessageBox::AcceptRole);
                 msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));

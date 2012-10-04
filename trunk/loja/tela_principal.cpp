@@ -56,13 +56,15 @@ void tela_principal::on_consultar_fornecedores_triggered()
 
 void tela_principal::on_Cadastro_da_Loja_triggered()
 {
+    tl_loja.definir_icone_janela(logomarca);
+    tl_loja.definir_dados_loja(informacao_loja);
     if(!tl_loja.exec()){
         informacao_loja = tl_loja.retorna_novo_cadastro();
-        tela_principal::definir_dados_loja(informacao_loja);
+        tela_principal::dados_loja(informacao_loja);
     }
 }
 
-void  tela_principal::definir_dados_loja(loja * info_loja){
+void  tela_principal::dados_loja(loja * info_loja){
     informacao_loja = info_loja;
     logomarca = informacao_loja->retorna_QPixmap_imagem();
     this->setWindowIcon(logomarca);

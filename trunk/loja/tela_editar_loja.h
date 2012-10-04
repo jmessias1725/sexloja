@@ -19,6 +19,7 @@ public:
     ~tela_editar_loja();
     void definir_dados_loja(loja *cad_loja);
     loja * retorna_novo_cadastro(void);
+    void definir_icone_janela(QPixmap logo);
 
 private slots:
     void on_btn_adicionar_logo_clicked();
@@ -52,6 +53,7 @@ private:
     funcoes_extras funcao;
     int largura;
     int altura;
+    QPixmap logomarca;
 };
 
 #endif // TELA_EDITAR_LOJA_H
