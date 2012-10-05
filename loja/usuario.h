@@ -17,9 +17,11 @@ private:
     float rg;
     QString login;
     QString senha;
+    QPixmap logomarca;
 
 public:
     bool verifica_login_senha( QString login, QString senha);
+    void definir_icone_janela(QPixmap logo);
 };
 
 #endif // USUARIO_H

@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <iostream>
+#include <QtGui>
 
 class endereco
 {

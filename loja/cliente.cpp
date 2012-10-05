@@ -38,6 +38,10 @@ cliente::cliente(QString cliente_nome,QString cliente_rg,QString cliente_cpf,
     lista_operadora =lista_operadora_cliente;
 }
 
+void cliente::definir_icone_janela(QPixmap logo){
+    logomarca = logo;
+}
+
 int cliente::retornar_id(){
     return id;
 }
@@ -160,11 +164,10 @@ bool cliente::salvar_dados_cliente(void){
             bd.commit();
 
             //Gera mensagem de que tudo ocorreu direito.
-            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
             QPixmap icone_janela(":img/img/arquivo_50.png");
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
-            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowIcon(logomarca);
             msg.setWindowTitle("Cadastro");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -181,11 +184,10 @@ bool cliente::salvar_dados_cliente(void){
             bd.rollback();
 
             //Gera a mensagem de erro.
-            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
             QPixmap icone_janela(":img/img/arquivo_erro_50.png");
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
-            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowIcon(logomarca);
             msg.setWindowTitle("Cadastro");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -291,11 +293,10 @@ bool cliente::salvar_alteracao_dados_cliente(std::vector< std::string > lista_te
             bd.commit();
 
             //Gera mensagem de que tudo ocorreu direito.
-            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
             QPixmap icone_janela(":img/img/arquivo_50.png");
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
-            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowIcon(logomarca);
             msg.setWindowTitle("Cadastro");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -312,11 +313,10 @@ bool cliente::salvar_alteracao_dados_cliente(std::vector< std::string > lista_te
             bd.rollback();
 
             //Gera a mensagem de erro.
-            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
             QPixmap icone_janela(":img/img/arquivo_erro_50.png");
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
-            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowIcon(logomarca);
             msg.setWindowTitle("Cadastro");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -362,11 +362,10 @@ bool cliente::remover_cadastro_cliente(int id_cliente){
             bd.commit();
 
             //Gera mensagem de que tudo ocorreu direito.
-            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
             QPixmap icone_janela(":img/img/arquivo_50.png");
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
-            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowIcon(logomarca);
             msg.setWindowTitle("Cadastro");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -383,11 +382,10 @@ bool cliente::remover_cadastro_cliente(int id_cliente){
             bd.rollback();
 
             //Gera a mensagem de erro.
-            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
             QPixmap icone_janela(":img/img/arquivo_erro_50.png");
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
-            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowIcon(logomarca);
             msg.setWindowTitle("Cadastro");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));

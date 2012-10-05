@@ -32,6 +32,10 @@ loja::loja(QString loja_cnpj,QString loja_razao_social,QString loja_nome,
     lista_operadora =lista_operadora_loja;
 }
 
+void loja::definir_icone_janela(QPixmap logo){
+    logomarca = logo;
+}
+
 int loja::retornar_id(){
     return id;
 }
@@ -131,11 +135,10 @@ bool loja::salvar_dados_loja(void){
             bd.commit();
 
             //Gera mensagem de que tudo ocorreu direito.
-            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
             QPixmap icone_janela(":img/img/arquivo_50.png");
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
-            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowIcon(logomarca);
             msg.setWindowTitle("Cadastro");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -152,11 +155,10 @@ bool loja::salvar_dados_loja(void){
             bd.rollback();
 
             //Gera a mensagem de erro.
-            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
             QPixmap icone_janela(":img/img/arquivo_erro_50.png");
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
-            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowIcon(logomarca);
             msg.setWindowTitle("Cadastro");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -241,11 +243,10 @@ bool loja::salvar_alteracao_dados_loja(std::vector< std::string > lista_telefone
             bd.commit();
 
             //Gera mensagem de que tudo ocorreu direito.
-            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
             QPixmap icone_janela(":img/img/arquivo_50.png");
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
-            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowIcon(logomarca);
             msg.setWindowTitle("Cadastro");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -262,11 +263,10 @@ bool loja::salvar_alteracao_dados_loja(std::vector< std::string > lista_telefone
             bd.rollback();
 
             //Gera a mensagem de erro.
-            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
             QPixmap icone_janela(":img/img/arquivo_erro_50.png");
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
-            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowIcon(logomarca);
             msg.setWindowTitle("Cadastro");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));

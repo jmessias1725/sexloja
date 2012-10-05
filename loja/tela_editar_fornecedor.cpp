@@ -594,6 +594,7 @@ void tela_editar_fornecedor::on_btn_confirmar_clicked()
                                                           ui->le_rua->text(), ui->le_cep->text(), ui->le_numero->text().toInt(),
                                                           QString::fromStdString(ponto_referencia_aux));
 
+            informacao_cad_fornecedor->definir_icone_janela(logomarca);
             if(informacao_cad_fornecedor->salvar_alteracao_dados_fornecedor(lista_telefone_a_remover,
                                                                       lista_telefone_a_adicionar,
                                                                       lista_operadora_a_adicionar,

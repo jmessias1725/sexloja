@@ -19,7 +19,6 @@ void tela_editar_cliente::definir_icone_janela(QPixmap logo){
 }
 
 void tela_editar_cliente::definir_dados_cliente(cliente *cad_cliente){
-
     informacao_cad_cliente = cad_cliente;
     lista_email = cad_cliente->retorna_lista_email();
     lista_telefone = cad_cliente->retorna_lista_telefone();
@@ -594,6 +593,7 @@ void tela_editar_cliente::on_btn_confirmar_clicked()
                                                           ui->le_rua->text(), ui->le_cep->text(), ui->le_numero->text().toInt(),
                                                           QString::fromStdString(ponto_referencia_aux));
 
+            informacao_cad_cliente->definir_icone_janela(logomarca);
             if(informacao_cad_cliente->salvar_alteracao_dados_cliente(lista_telefone_a_remover,
                                                                       lista_telefone_a_adicionar,
                                                                       lista_operadora_a_adicionar,

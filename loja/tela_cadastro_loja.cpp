@@ -433,6 +433,7 @@ void tela_cadastro_loja::on_btn_confirmar_clicked()
                             ui->le_uf->text(), ui->cb_estado->currentText(), ui->le_cidade->text(),
                             ui->le_bairro->text(),ui->le_rua->text(), ui->le_cep->text(),
                             ui->le_numero->text().toInt(),nome_arquivo_imagem , largura, altura);
+        cad_loja->definir_icone_janela(logomarca);
         if(cad_loja->salvar_dados_loja()){
             this->close();
         }

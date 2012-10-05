@@ -466,7 +466,7 @@ void tela_editar_loja::on_btn_confirmar_clicked()
                                                     lista_telefone, lista_operadora,ui->le_uf->text(), ui->cb_estado->currentText(),
                                                     ui->le_cidade->text(),ui->le_bairro->text(),ui->le_rua->text(), ui->le_cep->text(),
                                                     ui->le_numero->text().toInt(), nome_arquivo_imagem, altura, largura);
-
+            informacao_cad_loja->definir_icone_janela(logomarca);
             if(informacao_cad_loja->salvar_alteracao_dados_loja(lista_telefone_a_remover,
                                                                 lista_telefone_a_adicionar,
                                                                 lista_operadora_a_adicionar)){
