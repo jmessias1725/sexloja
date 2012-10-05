@@ -39,6 +39,10 @@ fornecedor::fornecedor(QString fornecedor_cnpj,QString fornecedor_razao_social,Q
     lista_operadora =lista_operadora_fornecedor;
 }
 
+void fornecedor::definir_icone_janela(QPixmap logo){
+    logomarca = logo;
+}
+
 int fornecedor::retornar_id(){
     return id;
 }
@@ -161,11 +165,10 @@ bool fornecedor::salvar_dados_fornecedor(void){
             bd.commit();
 
             //Gera mensagem de que tudo ocorreu direito.
-            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
             QPixmap icone_janela(":img/img/arquivo_50.png");
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
-            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowIcon(logomarca);
             msg.setWindowTitle("Cadastro");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -182,11 +185,10 @@ bool fornecedor::salvar_dados_fornecedor(void){
             bd.rollback();
 
             //Gera a mensagem de erro.
-            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
             QPixmap icone_janela(":img/img/arquivo_erro_50.png");
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
-            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowIcon(logomarca);
             msg.setWindowTitle("Cadastro");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -290,11 +292,10 @@ bool fornecedor::salvar_alteracao_dados_fornecedor(std::vector< std::string > li
             bd.commit();
 
             //Gera mensagem de que tudo ocorreu direito.
-            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
             QPixmap icone_janela(":img/img/arquivo_50.png");
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
-            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowIcon(logomarca);
             msg.setWindowTitle("Cadastro");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -311,11 +312,10 @@ bool fornecedor::salvar_alteracao_dados_fornecedor(std::vector< std::string > li
             bd.rollback();
 
             //Gera a mensagem de erro.
-            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
             QPixmap icone_janela(":img/img/arquivo_erro_50.png");
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
-            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowIcon(logomarca);
             msg.setWindowTitle("Cadastro");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -361,11 +361,10 @@ bool fornecedor::remover_cadastro_fornecedor(int id_fornecedor){
             bd.commit();
 
             //Gera mensagem de que tudo ocorreu direito.
-            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
             QPixmap icone_janela(":img/img/arquivo_50.png");
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
-            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowIcon(logomarca);
             msg.setWindowTitle("Cadastro");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
@@ -382,11 +381,10 @@ bool fornecedor::remover_cadastro_fornecedor(int id_fornecedor){
             bd.rollback();
 
             //Gera a mensagem de erro.
-            QPixmap icone_titulo_janela(":img/img/logo_sex.png");
             QPixmap icone_janela(":img/img/arquivo_erro_50.png");
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
-            msg.setWindowIcon(icone_titulo_janela);
+            msg.setWindowIcon(logomarca);
             msg.setWindowTitle("Cadastro");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));

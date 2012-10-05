@@ -136,6 +136,7 @@ void tela_fornecedor::on_btn_remover_fornecedor_clicked()
     msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
     msg.setText("\nDeseja remover o cadastro do fornecedor ?");
     if(!msg.exec()){
+        informacoes_fornecedor->definir_icone_janela(logomarca);
         if(informacoes_fornecedor->remover_cadastro_fornecedor(informacoes_fornecedor->retornar_id())){
             informacoes_fornecedor->altera_id_fornecedor(-1);
         }

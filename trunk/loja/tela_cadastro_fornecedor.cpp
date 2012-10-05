@@ -541,6 +541,7 @@ void tela_cadastro_fornecedor::on_btn_confirmar_clicked()
                     ui->le_uf->text(), ui->cb_estado->currentText(), ui->le_cidade->text(),ui->le_bairro->text(),
                     ui->le_rua->text(), ui->le_cep->text(), ui->le_numero->text().toInt(), QString::fromStdString(ponto_referencia_aux));
 
+        cad_fornecedor->definir_icone_janela(logomarca);
         if(cad_fornecedor->salvar_dados_fornecedor()){
             this->close();
         }

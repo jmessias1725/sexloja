@@ -22,6 +22,7 @@ private:
     QString comentario;
     std::vector< std::string > lista_telefone;
     std::vector< std::string > lista_operadora;
+    QPixmap logomarca;
 
 public:
     loja();
@@ -53,6 +54,7 @@ public:
                                     std::vector< std::string > lista_telefone_a_adicionar,
                                     std::vector< std::string > lista_operadora_a_adicionar);
     loja * busca_loja(void);
+    void definir_icone_janela(QPixmap logo);
 };
 
 #endif // LOJA_H

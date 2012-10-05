@@ -22,6 +22,7 @@ private:
     std::vector< std::string > lista_email;
     std::vector< std::string > lista_telefone;
     std::vector< std::string > lista_operadora;
+    QPixmap logomarca;
 public:
     fornecedor();
 
@@ -61,6 +62,7 @@ public:
                                            std::vector< std::string > lista_email_a_remover,
                                            std::vector< std::string > lista_email_a_adicionar);
     bool remover_cadastro_fornecedor(int id_fornecedor);
+    void definir_icone_janela(QPixmap logo);
 };
 
 #endif // FORNECEDOR_H
