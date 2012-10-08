@@ -69,3 +69,8 @@ void  tela_principal::dados_loja(loja * info_loja){
     logomarca = informacao_loja->retorna_QPixmap_imagem();
     this->setWindowIcon(logomarca);
 }
+
+void tela_principal::on_cadastrar_produto_triggered()
+{
+    tl_cadastro_produto.show();
+}

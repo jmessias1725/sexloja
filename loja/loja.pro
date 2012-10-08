@@ -33,7 +33,8 @@ SOURCES += main.cpp\
     imagem.cpp \
     loja.cpp \
     tela_editar_loja.cpp \
-    tela_loja.cpp
+    tela_loja.cpp \
+    tela_cadastro_produto.cpp
 
 HEADERS  += \
     conexao_bd.h \
@@ -57,7 +58,8 @@ HEADERS  += \
     imagem.h \
     loja.h \
     tela_editar_loja.h \
-    tela_loja.h
+    tela_loja.h \
+    tela_cadastro_produto.h
 
 FORMS    += \
     tela_login.ui \
@@ -73,7 +75,8 @@ FORMS    += \
     tela_editar_fornecedor.ui \
     tela_cadastro_loja.ui \
     tela_editar_loja.ui \
-    tela_loja.ui
+    tela_loja.ui \
+    tela_cadastro_produto.ui
 
 RESOURCES += \
     imagens.qrc
