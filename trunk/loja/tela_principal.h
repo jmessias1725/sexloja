@@ -8,6 +8,7 @@
 #include "tela_listar_clientes.h"
 #include "tela_cadastro_fornecedor.h"
 #include "tela_listar_fornecedores.h"
+#include "tela_cadastro_produto.h"
 #include "tela_loja.h"
 #include "loja.h"
 
@@ -34,12 +35,15 @@ private slots:
     void on_consultar_fornecedores_triggered();
     void on_Cadastro_da_Loja_triggered();
 
+    void on_cadastrar_produto_triggered();
+
 private:
     Ui::tela_principal *ui;
     tela_cadastro_cliente tl_cadastro_clientes;
     tela_listar_clientes tl_listar_clientes;
     tela_cadastro_fornecedor tl_cadastro_fornecedor;
     tela_listar_fornecedores tl_listar_fornecedores;
+    tela_cadastro_produto tl_cadastro_produto;
     tela_loja tl_loja;
     loja *informacao_loja;
     QPixmap logomarca;

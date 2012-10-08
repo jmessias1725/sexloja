@@ -22,6 +22,7 @@ INPUT(
 ./debug\loja.o
 ./debug\tela_editar_loja.o
 ./debug\tela_loja.o
+./debug\tela_cadastro_produto.o
 ./debug\moc_tela_login.o
 ./debug\moc_tela_principal.o
 ./debug\moc_tela_cadastro_cliente.o
@@ -35,5 +36,6 @@ INPUT(
 ./debug\moc_tela_cadastro_loja.o
 ./debug\moc_tela_editar_loja.o
 ./debug\moc_tela_loja.o
+./debug\moc_tela_cadastro_produto.o
 ./debug\qrc_imagens.o
 );
