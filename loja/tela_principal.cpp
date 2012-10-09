@@ -72,5 +72,6 @@ void  tela_principal::dados_loja(loja * info_loja){
 
 void tela_principal::on_cadastrar_produto_triggered()
 {
+    tl_cadastro_produto.definir_icone_janela(logomarca);
     tl_cadastro_produto.show();
 }
