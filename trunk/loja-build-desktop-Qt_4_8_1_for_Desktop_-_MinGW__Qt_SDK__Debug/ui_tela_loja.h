@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_loja.ui'
 **
-** Created: Wed 3. Oct 11:32:31 2012
+** Created: Tue 9. Oct 17:02:18 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -91,7 +91,7 @@ public:
         gb_endereo->setFont(font);
         le_cep = new QLineEdit(gb_endereo);
         le_cep->setObjectName(QString::fromUtf8("le_cep"));
-        le_cep->setEnabled(false);
+        le_cep->setEnabled(true);
         le_cep->setGeometry(QRect(35, 23, 91, 20));
         le_cep->setMaximumSize(QSize(100, 20));
         QFont font1;
@@ -114,7 +114,7 @@ public:
         lb_rua->setFont(font1);
         le_rua = new QLineEdit(gb_endereo);
         le_rua->setObjectName(QString::fromUtf8("le_rua"));
-        le_rua->setEnabled(false);
+        le_rua->setEnabled(true);
         le_rua->setGeometry(QRect(160, 23, 621, 20));
         QFont font2;
         font2.setPointSize(10);
@@ -131,7 +131,7 @@ public:
         lb_numero->setFont(font1);
         le_numero = new QLineEdit(gb_endereo);
         le_numero->setObjectName(QString::fromUtf8("le_numero"));
-        le_numero->setEnabled(false);
+        le_numero->setEnabled(true);
         le_numero->setGeometry(QRect(54, 50, 70, 20));
         le_numero->setFont(font2);
         le_numero->setMaxLength(9);
@@ -146,7 +146,7 @@ public:
         lb_bairro->setFont(font3);
         le_bairro = new QLineEdit(gb_endereo);
         le_bairro->setObjectName(QString::fromUtf8("le_bairro"));
-        le_bairro->setEnabled(false);
+        le_bairro->setEnabled(true);
         le_bairro->setGeometry(QRect(172, 50, 361, 20));
         le_bairro->setFont(font2);
         le_bairro->setMaxLength(70);
@@ -157,7 +157,7 @@ public:
         lb_cidade->setFont(font1);
         le_cidade = new QLineEdit(gb_endereo);
         le_cidade->setObjectName(QString::fromUtf8("le_cidade"));
-        le_cidade->setEnabled(false);
+        le_cidade->setEnabled(true);
         le_cidade->setGeometry(QRect(581, 50, 201, 20));
         le_cidade->setFont(font2);
         le_cidade->setMaxLength(50);
@@ -176,7 +176,7 @@ public:
         lb_uf->setFont(font4);
         le_uf = new QLineEdit(gb_endereo);
         le_uf->setObjectName(QString::fromUtf8("le_uf"));
-        le_uf->setEnabled(false);
+        le_uf->setEnabled(true);
         le_uf->setGeometry(QRect(230, 80, 25, 20));
         le_uf->setFont(font4);
         le_uf->setReadOnly(true);
@@ -185,7 +185,7 @@ public:
         gv_estado->setGeometry(QRect(50, 77, 40, 25));
         le_estado = new QLineEdit(gb_endereo);
         le_estado->setObjectName(QString::fromUtf8("le_estado"));
-        le_estado->setEnabled(false);
+        le_estado->setEnabled(true);
         le_estado->setGeometry(QRect(91, 80, 110, 20));
         le_estado->setFont(font4);
         le_estado->setReadOnly(true);
@@ -233,7 +233,7 @@ public:
         lb_razao_social->setFont(font1);
         le_razao_social = new QLineEdit(gb_dados_loja);
         le_razao_social->setObjectName(QString::fromUtf8("le_razao_social"));
-        le_razao_social->setEnabled(false);
+        le_razao_social->setEnabled(true);
         le_razao_social->setGeometry(QRect(80, 40, 571, 20));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
@@ -247,7 +247,7 @@ public:
         le_razao_social->setReadOnly(true);
         le_nome = new QLineEdit(gb_dados_loja);
         le_nome->setObjectName(QString::fromUtf8("le_nome"));
-        le_nome->setEnabled(false);
+        le_nome->setEnabled(true);
         le_nome->setGeometry(QRect(39, 69, 612, 20));
         sizePolicy.setHeightForWidth(le_nome->sizePolicy().hasHeightForWidth());
         le_nome->setSizePolicy(sizePolicy);
@@ -267,7 +267,7 @@ public:
         lb_cnpj->setFont(font4);
         le_cnpj = new QLineEdit(gb_dados_loja);
         le_cnpj->setObjectName(QString::fromUtf8("le_cnpj"));
-        le_cnpj->setEnabled(false);
+        le_cnpj->setEnabled(true);
         le_cnpj->setGeometry(QRect(40, 100, 120, 20));
         le_cnpj->setFont(font4);
         le_cnpj->setReadOnly(true);

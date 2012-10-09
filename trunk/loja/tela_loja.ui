@@ -82,7 +82,7 @@
    </property>
    <widget class="QLineEdit" name="le_cep">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -169,7 +169,7 @@
    </widget>
    <widget class="QLineEdit" name="le_rua">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -224,7 +224,7 @@
    </widget>
    <widget class="QLineEdit" name="le_numero">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -277,7 +277,7 @@
    </widget>
    <widget class="QLineEdit" name="le_bairro">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -329,7 +329,7 @@
    </widget>
    <widget class="QLineEdit" name="le_cidade">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -403,7 +403,7 @@
    </widget>
    <widget class="QLineEdit" name="le_uf">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -438,7 +438,7 @@
    </widget>
    <widget class="QLineEdit" name="le_estado">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -582,7 +582,7 @@
    </widget>
    <widget class="QLineEdit" name="le_razao_social">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -631,7 +631,7 @@
    </widget>
    <widget class="QLineEdit" name="le_nome">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -730,7 +730,7 @@
    </widget>
    <widget class="QLineEdit" name="le_cnpj">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
