@@ -34,7 +34,8 @@ SOURCES += main.cpp\
     loja.cpp \
     tela_editar_loja.cpp \
     tela_loja.cpp \
-    tela_cadastro_produto.cpp
+    tela_cadastro_produto.cpp \
+    produto.cpp
 
 HEADERS  += \
     conexao_bd.h \
@@ -59,7 +60,8 @@ HEADERS  += \
     loja.h \
     tela_editar_loja.h \
     tela_loja.h \
-    tela_cadastro_produto.h
+    tela_cadastro_produto.h \
+    produto.h
 
 FORMS    += \
     tela_login.ui \

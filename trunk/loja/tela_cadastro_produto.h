@@ -7,6 +7,7 @@
 
 #include "funcoes_extras.h"
 #include "imagem.h"
+#include "produto.h"
 
 namespace Ui {
 class tela_cadastro_produto;
@@ -23,6 +24,9 @@ public:
 
 private slots:
     void on_btn_adicionar_imagem_clicked();
+    void on_btn_confirmar_clicked();
+    void on_btn_cancelar_clicked();
+    void closeEvent( QCloseEvent * event );
 
 private:
     Ui::tela_cadastro_produto *ui;
@@ -30,6 +34,7 @@ private:
     int largura;
     int altura;
     QPixmap logomarca;
+    produto *cad_produto;
 };
 
 #endif // TELA_CADASTRO_PRODUTO_H
