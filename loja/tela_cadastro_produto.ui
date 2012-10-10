@@ -229,7 +229,7 @@
      <string>Quantidade:</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="te_comentario">
+   <widget class="QTextEdit" name="te_des_utilizacao">
     <property name="geometry">
      <rect>
       <x>5</x>
@@ -592,7 +592,7 @@ p, li { white-space: pre-wrap; }
   <connection>
    <sender>btn_cancelar</sender>
    <signal>clicked()</signal>
-   <receiver>te_comentario</receiver>
+   <receiver>te_des_utilizacao</receiver>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">

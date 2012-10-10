@@ -6,6 +6,7 @@ imagem::imagem(){
 imagem::imagem(QString nome_arquivo,int largura, int altura)
 {
     QPixmap malha_pixels;
+    nome_imagem = nome_arquivo;
     extensao = funcao.retorna_extensao_arquivo(nome_arquivo);
     QBuffer buffer_imagem(&vetor_bytes_imagem);
 
@@ -30,6 +31,7 @@ void imagem::alterar_imagem(QString nome_arquivo,int largura, int altura){
             vetor_bytes_imagem.clear();
         }
         QPixmap malha_pixels;
+        nome_imagem = nome_arquivo;
         extensao = funcao.retorna_extensao_arquivo(nome_arquivo);
         QBuffer buffer_imagem(&vetor_bytes_imagem);
 

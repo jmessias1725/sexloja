@@ -15,6 +15,7 @@ class imagem
 protected:
     QByteArray vetor_bytes_imagem;
     std::string extensao;
+    QString nome_imagem;
 
 private:
     funcoes_extras funcao;

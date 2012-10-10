@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_cadastro_produto.h'
 **
-** Created: Tue 9. Oct 17:21:47 2012
+** Created: Wed 10. Oct 17:08:48 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_tela_cadastro_produto[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -32,6 +32,9 @@ static const uint qt_meta_data_tela_cadastro_produto[] = {
 
  // slots: signature, parameters, type, tag, flags
       23,   22,   22,   22, 0x08,
+      57,   22,   22,   22, 0x08,
+      84,   22,   22,   22, 0x08,
+     116,  110,   22,   22, 0x08,
 
        0        // eod
 };
@@ -39,6 +42,9 @@ static const uint qt_meta_data_tela_cadastro_produto[] = {
 static const char qt_meta_stringdata_tela_cadastro_produto[] = {
     "tela_cadastro_produto\0\0"
     "on_btn_adicionar_imagem_clicked()\0"
+    "on_btn_confirmar_clicked()\0"
+    "on_btn_cancelar_clicked()\0event\0"
+    "closeEvent(QCloseEvent*)\0"
 };
 
 void tela_cadastro_produto::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -48,10 +54,12 @@ void tela_cadastro_produto::qt_static_metacall(QObject *_o, QMetaObject::Call _c
         tela_cadastro_produto *_t = static_cast<tela_cadastro_produto *>(_o);
         switch (_id) {
         case 0: _t->on_btn_adicionar_imagem_clicked(); break;
+        case 1: _t->on_btn_confirmar_clicked(); break;
+        case 2: _t->on_btn_cancelar_clicked(); break;
+        case 3: _t->closeEvent((*reinterpret_cast< QCloseEvent*(*)>(_a[1]))); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObjectExtraData tela_cadastro_produto::staticMetaObjectExtraData = {
@@ -86,9 +94,9 @@ int tela_cadastro_produto::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 4;
     }
     return _id;
 }

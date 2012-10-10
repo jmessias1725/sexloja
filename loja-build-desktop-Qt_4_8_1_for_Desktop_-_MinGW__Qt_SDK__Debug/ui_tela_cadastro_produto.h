@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_cadastro_produto.ui'
 **
-** Created: Tue 9. Oct 17:21:27 2012
+** Created: Wed 10. Oct 17:07:40 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -38,7 +38,7 @@ public:
     QLineEdit *le_codigo_barras;
     QLineEdit *le_quantidade;
     QLabel *lb_quantidade;
-    QTextEdit *te_comentario;
+    QTextEdit *te_des_utilizacao;
     QLabel *lb_comentario;
     QGraphicsView *gv_imagem_produto;
     QPushButton *btn_cancelar;
@@ -105,15 +105,15 @@ public:
         lb_quantidade->setObjectName(QString::fromUtf8("lb_quantidade"));
         lb_quantidade->setGeometry(QRect(224, 80, 67, 20));
         lb_quantidade->setFont(font1);
-        te_comentario = new QTextEdit(gb_dados_produto);
-        te_comentario->setObjectName(QString::fromUtf8("te_comentario"));
-        te_comentario->setGeometry(QRect(5, 160, 410, 100));
+        te_des_utilizacao = new QTextEdit(gb_dados_produto);
+        te_des_utilizacao->setObjectName(QString::fromUtf8("te_des_utilizacao"));
+        te_des_utilizacao->setGeometry(QRect(5, 160, 410, 100));
         QFont font2;
         font2.setBold(false);
         font2.setWeight(50);
-        te_comentario->setFont(font2);
-        te_comentario->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-        te_comentario->setReadOnly(false);
+        te_des_utilizacao->setFont(font2);
+        te_des_utilizacao->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        te_des_utilizacao->setReadOnly(false);
         lb_comentario = new QLabel(gb_dados_produto);
         lb_comentario->setObjectName(QString::fromUtf8("lb_comentario"));
         lb_comentario->setGeometry(QRect(5, 140, 133, 20));
@@ -172,7 +172,7 @@ public:
         QObject::connect(btn_cancelar, SIGNAL(clicked()), le_fabricante, SLOT(clear()));
         QObject::connect(btn_cancelar, SIGNAL(clicked()), le_codigo_barras, SLOT(clear()));
         QObject::connect(btn_cancelar, SIGNAL(clicked()), le_quantidade, SLOT(clear()));
-        QObject::connect(btn_cancelar, SIGNAL(clicked()), te_comentario, SLOT(clear()));
+        QObject::connect(btn_cancelar, SIGNAL(clicked()), te_des_utilizacao, SLOT(clear()));
 
         QMetaObject::connectSlotsByName(tela_cadastro_produto);
     } // setupUi
@@ -193,7 +193,7 @@ public:
         le_quantidade->setInputMask(QApplication::translate("tela_cadastro_produto", "0000000000; ", 0, QApplication::UnicodeUTF8));
         le_quantidade->setText(QString());
         lb_quantidade->setText(QApplication::translate("tela_cadastro_produto", "Quantidade:", 0, QApplication::UnicodeUTF8));
-        te_comentario->setHtml(QApplication::translate("tela_cadastro_produto", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        te_des_utilizacao->setHtml(QApplication::translate("tela_cadastro_produto", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Calibri'; font-size:10pt; font-weight:400; font-style:normal;\">\n"

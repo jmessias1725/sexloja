@@ -37,6 +37,9 @@ void tela_cadastro_loja::on_btn_adicionar_logo_clicked()
                                      "Imagem JPG (*.jpg)\nImagem JPEG (*.jpeg)\nImagem PNG (*.png)\nImagem BMP (*.bmp)");
     largura = ui->gv_logo->width();
     altura = ui->gv_logo->height();
+    if (nome_arquivo_imagem.toStdString()==""){
+    nome_arquivo_imagem =":/img/img/produto.png";
+    }
     imagem_logomarca = imagem(nome_arquivo_imagem,largura,altura);
     ui->gv_logo->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->gv_logo->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
