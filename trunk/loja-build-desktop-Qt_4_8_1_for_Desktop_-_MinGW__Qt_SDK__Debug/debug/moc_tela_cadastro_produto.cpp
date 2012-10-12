@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_cadastro_produto.h'
 **
-** Created: Wed 10. Oct 17:08:48 2012
+** Created: Fri 12. Oct 14:57:37 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_tela_cadastro_produto[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -35,6 +35,10 @@ static const uint qt_meta_data_tela_cadastro_produto[] = {
       57,   22,   22,   22, 0x08,
       84,   22,   22,   22, 0x08,
      116,  110,   22,   22, 0x08,
+     146,  141,   22,   22, 0x08,
+     178,  141,   22,   22, 0x08,
+     216,   22,   22,   22, 0x08,
+     253,   22,   22,   22, 0x08,
 
        0        // eod
 };
@@ -44,7 +48,11 @@ static const char qt_meta_stringdata_tela_cadastro_produto[] = {
     "on_btn_adicionar_imagem_clicked()\0"
     "on_btn_confirmar_clicked()\0"
     "on_btn_cancelar_clicked()\0event\0"
-    "closeEvent(QCloseEvent*)\0"
+    "closeEvent(QCloseEvent*)\0arg1\0"
+    "on_le_nome_textChanged(QString)\0"
+    "on_le_fabricante_textChanged(QString)\0"
+    "on_le_valor_compra_editingFinished()\0"
+    "on_le_valor_venda_editingFinished()\0"
 };
 
 void tela_cadastro_produto::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -57,6 +65,10 @@ void tela_cadastro_produto::qt_static_metacall(QObject *_o, QMetaObject::Call _c
         case 1: _t->on_btn_confirmar_clicked(); break;
         case 2: _t->on_btn_cancelar_clicked(); break;
         case 3: _t->closeEvent((*reinterpret_cast< QCloseEvent*(*)>(_a[1]))); break;
+        case 4: _t->on_le_nome_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 5: _t->on_le_fabricante_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 6: _t->on_le_valor_compra_editingFinished(); break;
+        case 7: _t->on_le_valor_venda_editingFinished(); break;
         default: ;
         }
     }
@@ -94,9 +106,9 @@ int tela_cadastro_produto::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 8;
     }
     return _id;
 }

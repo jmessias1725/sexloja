@@ -100,3 +100,27 @@ void tela_cadastro_produto::closeEvent( QCloseEvent * event ){
     cena->addPixmap(imagem_produto.retorna_QPixmap_imagem());
     ui->gv_imagem_produto->setScene(cena);
 }
+
+void tela_cadastro_produto::on_le_nome_textChanged(const QString &arg1)
+{
+    ui->le_nome->setText(ui->le_nome->text().toUpper());
+}
+
+void tela_cadastro_produto::on_le_fabricante_textChanged(const QString &arg1)
+{
+    ui->le_fabricante->setText(ui->le_fabricante->text().toUpper());
+}
+
+void tela_cadastro_produto::on_le_valor_compra_editingFinished()
+{
+    QString aux;
+    aux =  funcao.retorna_valor_dinheiro(ui->le_valor_compra->text());
+    ui->le_valor_compra->setText(aux);
+}
+
+void tela_cadastro_produto::on_le_valor_venda_editingFinished()
+{
+    QString aux;
+    aux =  funcao.retorna_valor_dinheiro(ui->le_valor_venda->text());
+    ui->le_valor_venda->setText(aux);
+}

@@ -40,6 +40,9 @@
    <property name="title">
     <string>Fornecedores</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
    <widget class="QTableView" name="tv_fornecedores">
     <property name="geometry">
      <rect>
@@ -114,6 +117,9 @@
    </property>
    <property name="title">
     <string>Buscar por:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
    <widget class="QLabel" name="lb_codigo">
     <property name="geometry">

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_cadastro_loja.ui'
 **
-** Created: Tue 9. Oct 17:02:18 2012
+** Created: Fri 12. Oct 13:57:39 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -57,7 +57,7 @@ public:
     QLabel *lb_uf;
     QLineEdit *le_uf;
     QComboBox *cb_estado;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_3;
     QVBoxLayout *verticalLayout;
     QGraphicsView *gv_logo;
@@ -85,6 +85,7 @@ public:
         font.setWeight(75);
         font.setKerning(false);
         gb_dados_fornecedor->setFont(font);
+        gb_dados_fornecedor->setAlignment(Qt::AlignCenter);
         lb_telefone = new QLabel(gb_dados_fornecedor);
         lb_telefone->setObjectName(QString::fromUtf8("lb_telefone"));
         lb_telefone->setGeometry(QRect(181, 80, 50, 20));
@@ -177,6 +178,7 @@ public:
         gb_endereo->setObjectName(QString::fromUtf8("gb_endereo"));
         gb_endereo->setGeometry(QRect(5, 120, 658, 111));
         gb_endereo->setFont(font);
+        gb_endereo->setAlignment(Qt::AlignCenter);
         le_cep = new QLineEdit(gb_endereo);
         le_cep->setObjectName(QString::fromUtf8("le_cep"));
         le_cep->setGeometry(QRect(35, 23, 91, 20));
@@ -355,24 +357,24 @@ public:
         lb_uf->raise();
         le_uf->raise();
         cb_estado->raise();
-        widget = new QWidget(tela_cadastro_loja);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(667, 12, 132, 217));
-        verticalLayout_3 = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(tela_cadastro_loja);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(667, 12, 132, 217));
+        verticalLayout_3 = new QVBoxLayout(layoutWidget);
         verticalLayout_3->setSpacing(10);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(1);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        gv_logo = new QGraphicsView(widget);
+        gv_logo = new QGraphicsView(layoutWidget);
         gv_logo->setObjectName(QString::fromUtf8("gv_logo"));
         gv_logo->setMinimumSize(QSize(128, 128));
         gv_logo->setMaximumSize(QSize(128, 128));
 
         verticalLayout->addWidget(gv_logo);
 
-        btn_adicionar_logo = new QPushButton(widget);
+        btn_adicionar_logo = new QPushButton(layoutWidget);
         btn_adicionar_logo->setObjectName(QString::fromUtf8("btn_adicionar_logo"));
         btn_adicionar_logo->setFont(font2);
 
@@ -384,7 +386,7 @@ public:
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setSpacing(1);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        btn_confirmar = new QPushButton(widget);
+        btn_confirmar = new QPushButton(layoutWidget);
         btn_confirmar->setObjectName(QString::fromUtf8("btn_confirmar"));
         btn_confirmar->setMinimumSize(QSize(0, 24));
         btn_confirmar->setMaximumSize(QSize(150, 24));
@@ -399,7 +401,7 @@ public:
 
         verticalLayout_2->addWidget(btn_confirmar);
 
-        btn_cancelar = new QPushButton(widget);
+        btn_cancelar = new QPushButton(layoutWidget);
         btn_cancelar->setObjectName(QString::fromUtf8("btn_cancelar"));
         btn_cancelar->setMinimumSize(QSize(0, 24));
         btn_cancelar->setMaximumSize(QSize(150, 24));

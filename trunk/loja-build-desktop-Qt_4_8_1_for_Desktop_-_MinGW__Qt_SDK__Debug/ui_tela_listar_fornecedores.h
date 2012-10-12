@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_listar_fornecedores.ui'
 **
-** Created: Tue 9. Oct 17:02:18 2012
+** Created: Fri 12. Oct 13:57:39 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -62,6 +62,7 @@ public:
         font.setBold(true);
         font.setWeight(75);
         gb_fornecedores->setFont(font);
+        gb_fornecedores->setAlignment(Qt::AlignCenter);
         tv_fornecedores = new QTableView(gb_fornecedores);
         tv_fornecedores->setObjectName(QString::fromUtf8("tv_fornecedores"));
         tv_fornecedores->setGeometry(QRect(7, 15, 742, 218));
@@ -92,6 +93,7 @@ public:
         font2.setWeight(75);
         font2.setKerning(false);
         gb_buscar->setFont(font2);
+        gb_buscar->setAlignment(Qt::AlignCenter);
         lb_codigo = new QLabel(gb_buscar);
         lb_codigo->setObjectName(QString::fromUtf8("lb_codigo"));
         lb_codigo->setGeometry(QRect(7, 20, 46, 20));

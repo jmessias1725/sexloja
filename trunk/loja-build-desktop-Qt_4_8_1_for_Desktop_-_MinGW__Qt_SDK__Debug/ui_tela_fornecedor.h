@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_fornecedor.ui'
 **
-** Created: Tue 9. Oct 17:02:18 2012
+** Created: Fri 12. Oct 13:57:39 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -91,6 +91,7 @@ public:
         font.setBold(true);
         font.setWeight(75);
         groupBox->setFont(font);
+        groupBox->setAlignment(Qt::AlignCenter);
         tv_historico_compras = new QTableView(groupBox);
         tv_historico_compras->setObjectName(QString::fromUtf8("tv_historico_compras"));
         tv_historico_compras->setGeometry(QRect(5, 20, 780, 205));
@@ -134,6 +135,7 @@ public:
         font1.setStrikeOut(false);
         font1.setKerning(false);
         gb_dados_fornecedor->setFont(font1);
+        gb_dados_fornecedor->setAlignment(Qt::AlignCenter);
         lb_telefone = new QLabel(gb_dados_fornecedor);
         lb_telefone->setObjectName(QString::fromUtf8("lb_telefone"));
         lb_telefone->setGeometry(QRect(387, 73, 51, 20));
@@ -246,6 +248,7 @@ public:
         font4.setWeight(75);
         font4.setKerning(false);
         gb_endereo->setFont(font4);
+        gb_endereo->setAlignment(Qt::AlignCenter);
         le_cep = new QLineEdit(gb_endereo);
         le_cep->setObjectName(QString::fromUtf8("le_cep"));
         le_cep->setGeometry(QRect(35, 23, 91, 20));
