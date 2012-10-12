@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_listar_clientes.ui'
 **
-** Created: Tue 9. Oct 17:02:18 2012
+** Created: Fri 12. Oct 13:57:39 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -59,6 +59,7 @@ public:
         font.setWeight(75);
         font.setKerning(false);
         gb_buscar->setFont(font);
+        gb_buscar->setAlignment(Qt::AlignCenter);
         lb_codigo = new QLabel(gb_buscar);
         lb_codigo->setObjectName(QString::fromUtf8("lb_codigo"));
         lb_codigo->setGeometry(QRect(7, 20, 46, 20));
@@ -147,6 +148,7 @@ public:
         font4.setBold(true);
         font4.setWeight(75);
         gb_clientes->setFont(font4);
+        gb_clientes->setAlignment(Qt::AlignCenter);
         tv_clientes = new QTableView(gb_clientes);
         tv_clientes->setObjectName(QString::fromUtf8("tv_clientes"));
         tv_clientes->setGeometry(QRect(7, 15, 742, 218));

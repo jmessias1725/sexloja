@@ -61,7 +61,7 @@ tela_loja::~tela_loja()
 void tela_loja::closeEvent(QCloseEvent *event){
     ui->le_nome->clear();
     ui->le_razao_social->clear();
-    ui->lb_cnpj->clear();
+    ui->le_cnpj->clear();
     ui->le_cep->clear();
     ui->le_rua->clear();
     ui->le_bairro->clear();
@@ -75,7 +75,7 @@ void tela_loja::closeEvent(QCloseEvent *event){
 void tela_loja::limpar_dados(){
     ui->le_nome->clear();
     ui->le_razao_social->clear();
-    ui->lb_cnpj->clear();
+    ui->le_cnpj->clear();
     ui->le_cep->clear();
     ui->le_rua->clear();
     ui->le_bairro->clear();

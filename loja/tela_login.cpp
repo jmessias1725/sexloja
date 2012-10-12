@@ -38,13 +38,13 @@ void tela_login::on_btn_confrimar_clicked()
     usuario_logado = false;
     login = ui->le_login->text();
     senha = ui->le_senha->text();
-    if(!user->verifica_login_senha(login,senha)){
+    /*if(!user->verifica_login_senha(login,senha)){
         ui->le_senha->clear();
     }
-    else{
+    else{*/
         usuario_logado = true;
         this->close();
         tl_principal.dados_loja(informacao_loja);
         tl_principal.show();
-    }
+    //}
 }

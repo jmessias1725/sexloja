@@ -473,3 +473,40 @@ const char* funcoes_extras::retorna_extensao_arquivo(QString nome_arquivo){
     extensao = extensao.toUpper();
     return extensao.toStdString().c_str();
 }
+
+QString funcoes_extras::retorna_valor_dinheiro(QString valor){
+    std::string valor_final,valor_aux;
+    QString aux;
+    int posicao;
+
+    valor_final = "";
+    valor_aux = valor.toStdString();
+    for (int i = 0; i< int(valor.size());i++){
+        if((valor_aux[i]=='0')||(valor_aux[i]=='1')||(valor_aux[i]=='2')||
+           (valor_aux[i]=='3')||(valor_aux[i]=='4')||(valor_aux[i]=='5')||
+           (valor_aux[i]=='6')||(valor_aux[i]=='7')||(valor_aux[i]=='8')||
+           (valor_aux[i]=='9')||(valor_aux[i]==',')||(valor_aux[i]=='.')){
+            valor_final = valor_final+valor_aux[i];
+        }
+    }
+    aux = QString::fromStdString(valor_final);
+    if (aux.contains(",")||aux.contains(".")){
+        aux.replace(".",",");
+        valor_final = "R$ "+aux.toStdString();
+        posicao = funcoes_extras::determinar_posicao_caractere(aux.toStdString(), ",");
+        if(posicao!=-1){
+            if ((posicao+3)!=int(aux.size())){
+                if((posicao+2)==int(aux.size())){
+                    valor_final = valor_final+"0";
+                }
+                else{
+                    valor_final = valor_final+"00";
+                }
+            }
+        }
+    }
+    else{
+        valor_final = "R$ "+valor_final+",00";
+    }
+    return QString::fromStdString(valor_final);
+}

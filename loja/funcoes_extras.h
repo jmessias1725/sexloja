@@ -16,6 +16,7 @@ public:
     bool verifica_cpf(std::string cpf);
     bool verifica_cnpj(std::string cnpj);
     const char* retorna_extensao_arquivo(QString nome_arquivo);
+    QString retorna_valor_dinheiro(QString valor);
 };
 
 #endif // FUNCOES_EXTRAS_H

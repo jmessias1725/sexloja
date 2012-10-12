@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>615</width>
+    <width>826</width>
     <height>275</height>
    </rect>
   </property>
@@ -21,7 +21,7 @@
     <rect>
      <x>5</x>
      <y>5</y>
-     <width>605</width>
+     <width>816</width>
      <height>265</height>
     </rect>
    </property>
@@ -48,7 +48,7 @@
    <widget class="QLabel" name="lb_nome">
     <property name="geometry">
      <rect>
-      <x>5</x>
+      <x>140</x>
       <y>20</y>
       <width>35</width>
       <height>20</height>
@@ -68,9 +68,9 @@
    <widget class="QLineEdit" name="le_nome">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>175</x>
       <y>20</y>
-      <width>375</width>
+      <width>451</width>
       <height>20</height>
      </rect>
     </property>
@@ -80,6 +80,9 @@
       <bold>false</bold>
       <kerning>false</kerning>
      </font>
+    </property>
+    <property name="inputMethodHints">
+     <set>Qt::ImhNone</set>
     </property>
     <property name="inputMask">
      <string/>
@@ -106,6 +109,9 @@
       <bold>false</bold>
       <kerning>false</kerning>
      </font>
+    </property>
+    <property name="inputMethodHints">
+     <set>Qt::ImhNone</set>
     </property>
     <property name="inputMask">
      <string/>
@@ -140,8 +146,8 @@
    <widget class="QLabel" name="lb_codigo_barras">
     <property name="geometry">
      <rect>
-      <x>5</x>
-      <y>80</y>
+      <x>422</x>
+      <y>50</y>
       <width>99</width>
       <height>20</height>
      </rect>
@@ -160,8 +166,8 @@
    <widget class="QLineEdit" name="le_codigo_barras">
     <property name="geometry">
      <rect>
-      <x>104</x>
-      <y>80</y>
+      <x>521</x>
+      <y>50</y>
       <width>105</width>
       <height>20</height>
      </rect>
@@ -186,7 +192,7 @@
    <widget class="QLineEdit" name="le_quantidade">
     <property name="geometry">
      <rect>
-      <x>292</x>
+      <x>72</x>
       <y>80</y>
       <width>80</width>
       <height>20</height>
@@ -212,7 +218,7 @@
    <widget class="QLabel" name="lb_quantidade">
     <property name="geometry">
      <rect>
-      <x>224</x>
+      <x>5</x>
       <y>80</y>
       <width>67</width>
       <height>20</height>
@@ -233,9 +239,9 @@
     <property name="geometry">
      <rect>
       <x>5</x>
-      <y>160</y>
-      <width>410</width>
-      <height>100</height>
+      <y>130</y>
+      <width>621</width>
+      <height>130</height>
      </rect>
     </property>
     <property name="font">
@@ -262,7 +268,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>5</x>
-      <y>140</y>
+      <y>110</y>
       <width>133</width>
       <height>20</height>
      </rect>
@@ -283,7 +289,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QGraphicsView" name="gv_imagem_produto">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>631</x>
       <y>20</y>
       <width>180</width>
       <height>180</height>
@@ -305,7 +311,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="btn_cancelar">
     <property name="geometry">
      <rect>
-      <x>510</x>
+      <x>721</x>
       <y>236</y>
       <width>90</width>
       <height>24</height>
@@ -348,7 +354,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="btn_confirmar">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>631</x>
       <y>236</y>
       <width>90</width>
       <height>24</height>
@@ -391,8 +397,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QLabel" name="lb_tipo">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>110</y>
+      <x>5</x>
+      <y>20</y>
       <width>28</width>
       <height>20</height>
      </rect>
@@ -411,9 +417,9 @@ p, li { white-space: pre-wrap; }
    <widget class="QComboBox" name="cb_tipo">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>110</y>
-      <width>101</width>
+      <x>33</x>
+      <y>20</y>
+      <width>100</width>
       <height>20</height>
      </rect>
     </property>
@@ -503,10 +509,10 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="btn_adicionar_imagem">
     <property name="geometry">
      <rect>
-      <x>455</x>
+      <x>666</x>
       <y>205</y>
       <width>110</width>
-      <height>23</height>
+      <height>24</height>
      </rect>
     </property>
     <property name="font">
@@ -519,8 +525,120 @@ p, li { white-space: pre-wrap; }
      <string>Adicionar imagem</string>
     </property>
    </widget>
+   <widget class="QLabel" name="lb_valorvenda">
+    <property name="geometry">
+     <rect>
+      <x>352</x>
+      <y>80</y>
+      <width>88</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>Valor de Venda:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lb_valor_compra">
+    <property name="geometry">
+     <rect>
+      <x>159</x>
+      <y>80</y>
+      <width>95</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>Valor de compra:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="le_valor_venda">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>80</y>
+      <width>85</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="inputMethodHints">
+     <set>Qt::ImhNone</set>
+    </property>
+    <property name="inputMask">
+     <string>R$ xxxxxxxxx; </string>
+    </property>
+    <property name="text">
+     <string>R$ </string>
+    </property>
+    <property name="maxLength">
+     <number>12</number>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="le_valor_compra">
+    <property name="geometry">
+     <rect>
+      <x>254</x>
+      <y>80</y>
+      <width>85</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="inputMethodHints">
+     <set>Qt::ImhNone</set>
+    </property>
+    <property name="inputMask">
+     <string>R$ xxxxxxxxx; </string>
+    </property>
+    <property name="text">
+     <string>R$ </string>
+    </property>
+    <property name="maxLength">
+     <number>12</number>
+    </property>
+   </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>cb_tipo</tabstop>
+  <tabstop>le_nome</tabstop>
+  <tabstop>le_fabricante</tabstop>
+  <tabstop>le_codigo_barras</tabstop>
+  <tabstop>le_quantidade</tabstop>
+  <tabstop>le_valor_compra</tabstop>
+  <tabstop>le_valor_venda</tabstop>
+  <tabstop>btn_adicionar_imagem</tabstop>
+  <tabstop>te_des_utilizacao</tabstop>
+  <tabstop>btn_confirmar</tabstop>
+  <tabstop>btn_cancelar</tabstop>
+  <tabstop>gv_imagem_produto</tabstop>
+ </tabstops>
  <resources>
   <include location="imagens.qrc"/>
  </resources>

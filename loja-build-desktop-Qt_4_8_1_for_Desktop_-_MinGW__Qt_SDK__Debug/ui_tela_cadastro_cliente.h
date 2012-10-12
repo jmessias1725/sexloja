@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_cadastro_cliente.ui'
 **
-** Created: Tue 9. Oct 17:02:18 2012
+** Created: Fri 12. Oct 13:57:39 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -90,6 +90,7 @@ public:
         font.setWeight(75);
         font.setKerning(false);
         gb_dados_cliente->setFont(font);
+        gb_dados_cliente->setAlignment(Qt::AlignCenter);
         lb_telefone = new QLabel(gb_dados_cliente);
         lb_telefone->setObjectName(QString::fromUtf8("lb_telefone"));
         lb_telefone->setGeometry(QRect(487, 53, 50, 20));
@@ -227,6 +228,7 @@ public:
         gb_endereo->setObjectName(QString::fromUtf8("gb_endereo"));
         gb_endereo->setGeometry(QRect(5, 164, 790, 192));
         gb_endereo->setFont(font);
+        gb_endereo->setAlignment(Qt::AlignCenter);
         le_cep = new QLineEdit(gb_endereo);
         le_cep->setObjectName(QString::fromUtf8("le_cep"));
         le_cep->setGeometry(QRect(35, 23, 91, 20));

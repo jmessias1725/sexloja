@@ -74,7 +74,7 @@ void tela_fornecedor::closeEvent(QCloseEvent *event){
     ui->le_codigo->clear();
     ui->le_nome->clear();
     ui->le_razao_social->clear();
-    ui->lb_cnpj->clear();
+    ui->le_cnpj->clear();
     ui->le_cep->clear();
     ui->le_rua->clear();
     ui->le_bairro->clear();
@@ -92,7 +92,7 @@ void tela_fornecedor::limpar_dados(){
     ui->le_codigo->clear();
     ui->le_nome->clear();
     ui->le_razao_social->clear();
-    ui->lb_cnpj->clear();
+    ui->le_cnpj->clear();
     ui->le_cep->clear();
     ui->le_rua->clear();
     ui->le_bairro->clear();

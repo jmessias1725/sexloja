@@ -27,6 +27,10 @@ private slots:
     void on_btn_confirmar_clicked();
     void on_btn_cancelar_clicked();
     void closeEvent( QCloseEvent * event );
+    void on_le_nome_textChanged(const QString &arg1);
+    void on_le_fabricante_textChanged(const QString &arg1);
+    void on_le_valor_compra_editingFinished();
+    void on_le_valor_venda_editingFinished();
 
 private:
     Ui::tela_cadastro_produto *ui;
@@ -35,6 +39,7 @@ private:
     int altura;
     QPixmap logomarca;
     produto *cad_produto;
+    funcoes_extras funcao;
 };
 
 #endif // TELA_CADASTRO_PRODUTO_H

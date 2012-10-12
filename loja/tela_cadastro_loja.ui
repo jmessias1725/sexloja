@@ -41,6 +41,9 @@
    <property name="title">
     <string>Dados da Loja</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
    <widget class="QLabel" name="lb_telefone">
     <property name="geometry">
      <rect>
@@ -372,6 +375,9 @@
    </property>
    <property name="title">
     <string>Endereço</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
    <widget class="QLineEdit" name="le_cep">
     <property name="geometry">
@@ -984,7 +990,7 @@
    <zorder>le_uf</zorder>
    <zorder>cb_estado</zorder>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>667</x>
