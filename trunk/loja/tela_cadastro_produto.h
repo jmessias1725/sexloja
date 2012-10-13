@@ -31,6 +31,7 @@ private slots:
     void on_le_fabricante_textChanged(const QString &arg1);
     void on_le_valor_compra_editingFinished();
     void on_le_valor_venda_editingFinished();
+    void limpar_tela(void);
 
 private:
     Ui::tela_cadastro_produto *ui;

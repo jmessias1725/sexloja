@@ -28,12 +28,12 @@ private:
 
 public:
     produto();
-    produto(int id_produto,QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
+    produto(int id_pro,QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
             int quant_disponivel_produto,QString cod_barras_produto,QString tipo_produto,
-            QString nome_arquivo_imagem, int altura, int largura,float valor_pro);
+            QString nome_arquivo_imagem, int altura, int largura,float valor_com,float valor_ven);
     produto(QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
             int quant_disponivel_produto,QString cod_barras_produto,QString tipo_produto,
-            QString nome_arquivo_imagem, int altura, int largura, float valor_pro);
+            QString nome_arquivo_imagem, int altura, int largura,float valor_com,float valor_ven);
     int retorna_id(void);
     QString retorna_nome(void);
     QString retorna_fabricante(void);
@@ -42,8 +42,8 @@ public:
     QString retorna_cod_barras(void);
     QString retorna_tipo(void);
     void alterar_dados_produto(QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
-                               int quant_disponivel_produto,QString cod_barras_produto,QPixmap img_produto,
-                               QString tipo_produto, QString nome_arquivo_imagem, int altura, int largura);
+                               int quant_disponivel_produto,QString cod_barras_produto,QString tipo_produto,
+                               QString nome_arquivo_imagem, int altura, int largura,float valor_com,float valor_ven);
     bool salvar_dados_produto(void);
     bool salvar_alteracao_dados_produto(void);
     produto * busca_produto(void);

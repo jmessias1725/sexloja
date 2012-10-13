@@ -54,13 +54,16 @@ void tela_cadastro_produto::on_btn_confirmar_clicked()
     if (descricao_Aux.size()>=300){
         descricao_Aux = descricao_Aux.substr(0,300);
     }
+
     if((ui->le_nome->text().toStdString()!="")){
+        float valor_compra = funcao.converter_para_float(ui->le_valor_compra->text());
+        float valor_venda = funcao.converter_para_float(ui->le_valor_venda->text());
         cad_produto = new produto(ui->le_nome->text(),ui->le_fabricante->text(),QString::fromStdString(descricao_Aux),
                                   ui->le_quantidade->text().toInt(),ui->le_codigo_barras->text(),ui->cb_tipo->currentText()
-                                  ,nome_arquivo_imagem,largura,altura,funcao.converter_para_float(ui->le_valor_venda->text()));
+                                  ,nome_arquivo_imagem,largura,altura,valor_compra,valor_venda);
         cad_produto->definir_icone_janela(logomarca);
         if(cad_produto->salvar_dados_produto()){
-            this->close();
+            tela_cadastro_produto::limpar_tela();
         }
     }
     else{
@@ -83,13 +86,15 @@ void tela_cadastro_produto::on_btn_cancelar_clicked()
     this->close();
 }
 
-void tela_cadastro_produto::closeEvent( QCloseEvent * event ){
+void tela_cadastro_produto::limpar_tela(void){
     ui->le_codigo_barras->clear();
     ui->le_fabricante->clear();
     ui->le_nome->clear();
     ui->le_quantidade->clear();
     ui->cb_tipo->setCurrentIndex(0);
     ui->te_des_utilizacao->clear();
+    ui->le_valor_compra->clear();
+    ui->le_valor_venda->clear();
 
     imagem imagem_produto;
     QGraphicsScene *cena = new QGraphicsScene;
@@ -99,6 +104,10 @@ void tela_cadastro_produto::closeEvent( QCloseEvent * event ){
     ui->gv_imagem_produto->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     cena->addPixmap(imagem_produto.retorna_QPixmap_imagem());
     ui->gv_imagem_produto->setScene(cena);
+}
+
+void tela_cadastro_produto::closeEvent( QCloseEvent * event ){
+    tela_cadastro_produto::limpar_tela();
 }
 
 void tela_cadastro_produto::on_le_nome_textChanged(const QString &arg1)
