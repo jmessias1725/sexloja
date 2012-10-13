@@ -76,6 +76,7 @@ bool produto::salvar_dados_produto(void){
     conexao_bd conexao;
     bool verifica_conexao;
     QSqlDatabase bd;
+    int id_produto;
 
     //realiza conexão ao banco de dados
     verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
@@ -90,6 +91,7 @@ bool produto::salvar_dados_produto(void){
         //Declara as variáves que irão inserir os dados no banco de dados.
         QSqlQuery salvar_dados_produto(bd);
         QSqlQuery salvar_dados_imagem(bd);
+        QSqlQuery salvar_dados_valor(bd);
 
         //Declara a variável que irá fazer a consulta para determinar o id do produto;
         QSqlQuery consultar(bd);
@@ -122,8 +124,22 @@ bool produto::salvar_dados_produto(void){
         salvar_dados_produto.bindValue(":id_imagem", id_imagem);
         salvar_dados_produto.exec();
 
+        //realiza a consulta para determinar  o id da imagem.
+        consultar.exec("SELECT id_produto FROM produto");
+        if(consultar.last()){
+            id_produto = consultar.value(0).toInt();
+        }
+
+        //Insere os dados no cadastro de valores
+        salvar_dados_valor.prepare("INSERT INTO his_val_quant_com_pro(id_produto,data,valor,quantidade) VALUES(:id_produto, :data, :valor, :quantidade);");
+        salvar_dados_valor.bindValue(":id_produto", id_produto);
+        salvar_dados_valor.bindValue(":data", data);
+        salvar_dados_valor.bindValue(":valor",valor);
+        salvar_dados_valor.bindValue(":quantidade", quantidade);
+        salvar_dados_valor.exec();
+
         //Verifica se os dados podem ser salvos, caso sim realiza o Commite, do contrário o Rollback.
-        if((salvar_dados_produto.lastError().number()<=0)&&(salvar_dados_imagem.lastError().number()<=0)){
+        if((salvar_dados_produto.lastError().number()<=0)&&(salvar_dados_imagem.lastError().number()<=0)&&(salvar_dados_valor.lastError().number()<=0)){
 
             //Finaliza a inserçao dos dados.
             bd.commit();
