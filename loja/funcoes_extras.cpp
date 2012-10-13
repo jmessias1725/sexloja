@@ -510,3 +510,10 @@ QString funcoes_extras::retorna_valor_dinheiro(QString valor){
     }
     return QString::fromStdString(valor_final);
 }
+
+float funcoes_extras::converter_para_float(QString numero){
+    numero.replace(",",".");
+    numero.replace("R","");
+    numero.replace("$","");
+    return numero.toFloat();
+}

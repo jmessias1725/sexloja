@@ -5,8 +5,8 @@ produto::produto()
 }
 produto::produto(int id_produto,QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
                  int quant_disponivel_produto,QString cod_barras_produto,QString tipo_produto,
-                 QString nome_arquivo_imagem, int altura, int largura)
-                 :imagem(nome_arquivo_imagem, largura, altura){
+                 QString nome_arquivo_imagem, int altura, int largura,float valor_pro)
+    :imagem(nome_arquivo_imagem, largura, altura), valor_produto(valor_pro,quant_disponivel_produto){
     id = id_produto;
     nome = nome_produto;
     fabricante = fabricante_produto;
@@ -18,8 +18,8 @@ produto::produto(int id_produto,QString nome_produto,QString fabricante_produto,
 
 produto::produto(QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
                  int quant_disponivel_produto,QString cod_barras_produto,QString tipo_produto,
-                 QString nome_arquivo_imagem, int altura, int largura)
-                 :imagem(nome_arquivo_imagem, largura, altura){
+                 QString nome_arquivo_imagem, int altura, int largura,float valor_pro)
+                 :imagem(nome_arquivo_imagem, largura, altura), valor_produto(valor_pro,quant_disponivel_produto){
     nome = nome_produto;
     fabricante = fabricante_produto;
     desc_utilizacao = desc_utilizacao_produto;
