@@ -490,29 +490,33 @@ QString funcoes_extras::retorna_valor_dinheiro(QString valor){
         }
     }
     aux = QString::fromStdString(valor_final);
-    if (aux.contains(",")||aux.contains(".")){
-        aux.replace(".",",");
-        valor_final = "R$ "+aux.toStdString();
-        posicao = funcoes_extras::determinar_posicao_caractere(aux.toStdString(), ",");
-        if(posicao!=-1){
-            if ((posicao+3)!=int(aux.size())){
-                if((posicao+2)==int(aux.size())){
-                    valor_final = valor_final+"0";
-                }
-                else{
-                    valor_final = valor_final+"00";
+    if(aux.toStdString()!=""){
+        if (aux.contains(",")||aux.contains(".")){
+            aux.replace(".",",");
+            valor_final = "R$ "+aux.toStdString();
+            posicao = funcoes_extras::determinar_posicao_caractere(aux.toStdString(), ",");
+            if(posicao!=-1){
+                if ((posicao+3)!=int(aux.size())){
+                    if((posicao+2)==int(aux.size())){
+                        valor_final = valor_final+"0";
+                    }
+                    else{
+                        valor_final = valor_final+"00";
+                    }
                 }
             }
         }
+        else{
+            valor_final = "R$ "+valor_final+",00";
+        }
     }
     else{
-        valor_final = "R$ "+valor_final+",00";
+        valor_final = "R$ 0,00";
     }
     return QString::fromStdString(valor_final);
 }
 
 float funcoes_extras::converter_para_float(QString numero){
-    numero.replace(",",".");
     numero.replace("R","");
     numero.replace("$","");
     return numero.toFloat();

@@ -3,23 +3,23 @@
 produto::produto()
 {
 }
-produto::produto(int id_produto,QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
+produto::produto(int id_pro,QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
                  int quant_disponivel_produto,QString cod_barras_produto,QString tipo_produto,
-                 QString nome_arquivo_imagem, int altura, int largura,float valor_pro)
-    :imagem(nome_arquivo_imagem, largura, altura), valor_produto(valor_pro,quant_disponivel_produto){
-    id = id_produto;
-    nome = nome_produto;
-    fabricante = fabricante_produto;
-    desc_utilizacao = desc_utilizacao_produto;
-    quant_disponivel = quant_disponivel_produto;
-    cod_barras = cod_barras_produto;
-    tipo = tipo_produto;
+                 QString nome_arquivo_imagem, int altura, int largura,float valor_com,float valor_ven)
+    :imagem(nome_arquivo_imagem, largura, altura), valor_produto(quant_disponivel_produto,valor_com,valor_ven){
+    produto::id = id_pro;
+    produto::nome = nome_produto;
+    produto::fabricante = fabricante_produto;
+    produto::desc_utilizacao = desc_utilizacao_produto;
+    produto::quant_disponivel = quant_disponivel_produto;
+    produto::cod_barras = cod_barras_produto;
+    produto::tipo = tipo_produto;
 }
 
 produto::produto(QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
                  int quant_disponivel_produto,QString cod_barras_produto,QString tipo_produto,
-                 QString nome_arquivo_imagem, int altura, int largura,float valor_pro)
-                 :imagem(nome_arquivo_imagem, largura, altura), valor_produto(valor_pro,quant_disponivel_produto){
+                 QString nome_arquivo_imagem, int altura, int largura,float valor_com,float valor_ven)
+    :imagem(nome_arquivo_imagem, largura, altura), valor_produto(quant_disponivel_produto,valor_com,valor_ven){
     nome = nome_produto;
     fabricante = fabricante_produto;
     desc_utilizacao = desc_utilizacao_produto;
@@ -61,8 +61,8 @@ QString produto::retorna_tipo(void){
 }
 
 void produto::alterar_dados_produto(QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
-                           int quant_disponivel_produto,QString cod_barras_produto,QPixmap img_produto,
-                           QString tipo_produto, QString nome_arquivo_imagem, int altura, int largura){
+                                    int quant_disponivel_produto,QString cod_barras_produto,QString tipo_produto,
+                                    QString nome_arquivo_imagem, int altura, int largura,float valor_com,float valor_ven){
     nome = nome_produto;
     fabricante = fabricante_produto;
     desc_utilizacao = desc_utilizacao_produto;
@@ -70,13 +70,13 @@ void produto::alterar_dados_produto(QString nome_produto,QString fabricante_prod
     cod_barras = cod_barras_produto;
     tipo = tipo_produto;
     alterar_imagem(nome_arquivo_imagem, largura, altura);
+    alterar_valor_produto(quant_disponivel_produto,valor_com,valor_ven);
 }
 
 bool produto::salvar_dados_produto(void){
     conexao_bd conexao;
     bool verifica_conexao;
     QSqlDatabase bd;
-    int id_produto;
 
     //realiza conexão ao banco de dados
     verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
@@ -94,7 +94,8 @@ bool produto::salvar_dados_produto(void){
         QSqlQuery salvar_dados_valor(bd);
 
         //Declara a variável que irá fazer a consulta para determinar o id do produto;
-        QSqlQuery consultar(bd);
+        QSqlQuery consultar_imagem(bd);
+        QSqlQuery consultar_produto(bd);
 
         if (nome_imagem.toStdString()!=":/img/img/produto.png"){
             //Insere os dados no cadastro de imagem
@@ -104,15 +105,14 @@ bool produto::salvar_dados_produto(void){
             salvar_dados_imagem.exec();
 
             //realiza a consulta para determinar  o id da imagem.
-            consultar.exec("SELECT id_imagem FROM imagem");
-            if(consultar.last()){
-                id_imagem = consultar.value(0).toInt();
+            consultar_imagem.exec("SELECT id_imagem FROM imagem");
+            if(consultar_imagem.last()){
+                id_imagem = consultar_imagem.value(0).toInt();
             }
         }
         else{
             id_imagem = 1;
         }
-
         //Insere os dados no cadastro dos produtos
         salvar_dados_produto.prepare("INSERT INTO produto(nome,fabricante,desc_utilizacao,quant_disponivel,cod_barras,tipo,id_imagem) VALUES(:nome, :fabricante, :desc_utilizacao, :quant_disponivel, :cod_barras, :tipo, :id_imagem);");
         salvar_dados_produto.bindValue(":nome", nome);
@@ -124,18 +124,19 @@ bool produto::salvar_dados_produto(void){
         salvar_dados_produto.bindValue(":id_imagem", id_imagem);
         salvar_dados_produto.exec();
 
-        //realiza a consulta para determinar  o id da imagem.
-        consultar.exec("SELECT id_produto FROM produto");
-        if(consultar.last()){
-            id_produto = consultar.value(0).toInt();
-        }
+        //realiza a consulta para determinar  o id do produto.
+        consultar_produto.exec("SELECT * FROM produto");
+        while(consultar_produto.next()){
+            id = consultar_produto.value(0).toInt();
+        }        
 
-        //Insere os dados no cadastro de valores
-        salvar_dados_valor.prepare("INSERT INTO his_val_quant_com_pro(id_produto,data,valor,quantidade) VALUES(:id_produto, :data, :valor, :quantidade);");
-        salvar_dados_valor.bindValue(":id_produto", id_produto);
+        //Insere os dados no cadastro de histórico de valores e quantidades do produto
+        salvar_dados_valor.prepare("INSERT INTO his_valores_quantidade(id_produto,data,quantidade,valor_compra,valor_venda) VALUES(:id_produto,:data,:quantidade,:valor_compra,:valor_venda);");
+        salvar_dados_valor.bindValue(":id_produto", id);
         salvar_dados_valor.bindValue(":data", data);
-        salvar_dados_valor.bindValue(":valor",valor);
         salvar_dados_valor.bindValue(":quantidade", quantidade);
+        salvar_dados_valor.bindValue(":valor_compra", valor_compra);
+        salvar_dados_valor.bindValue(":valor_venda", valor_venda);
         salvar_dados_valor.exec();
 
         //Verifica se os dados podem ser salvos, caso sim realiza o Commite, do contrário o Rollback.
