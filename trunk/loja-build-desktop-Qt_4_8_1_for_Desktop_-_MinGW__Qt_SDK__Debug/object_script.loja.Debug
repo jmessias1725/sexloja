@@ -24,6 +24,7 @@ INPUT(
 ./debug\tela_loja.o
 ./debug\tela_cadastro_produto.o
 ./debug\produto.o
+./debug\valor_produto.o
 ./debug\moc_tela_login.o
 ./debug\moc_tela_principal.o
 ./debug\moc_tela_cadastro_cliente.o

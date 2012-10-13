@@ -24,6 +24,7 @@ INPUT(
 ./release\tela_loja.o
 ./release\tela_cadastro_produto.o
 ./release\produto.o
+./release\valor_produto.o
 ./release\moc_tela_login.o
 ./release\moc_tela_principal.o
 ./release\moc_tela_cadastro_cliente.o

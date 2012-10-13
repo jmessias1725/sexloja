@@ -11,8 +11,9 @@
 #include "imagem.h"
 #include "endereco.h"
 #include "conexao_bd.h"
+#include "valor_produto.h"
 
-class produto :public imagem
+class produto :public imagem, public valor_produto
 {
 private:
     int id;
@@ -29,10 +30,10 @@ public:
     produto();
     produto(int id_produto,QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
             int quant_disponivel_produto,QString cod_barras_produto,QString tipo_produto,
-            QString nome_arquivo_imagem, int altura, int largura);
+            QString nome_arquivo_imagem, int altura, int largura,float valor_pro);
     produto(QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
             int quant_disponivel_produto,QString cod_barras_produto,QString tipo_produto,
-            QString nome_arquivo_imagem, int altura, int largura);
+            QString nome_arquivo_imagem, int altura, int largura, float valor_pro);
     int retorna_id(void);
     QString retorna_nome(void);
     QString retorna_fabricante(void);

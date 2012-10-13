@@ -17,6 +17,7 @@ public:
     bool verifica_cnpj(std::string cnpj);
     const char* retorna_extensao_arquivo(QString nome_arquivo);
     QString retorna_valor_dinheiro(QString valor);
+    float converter_para_float(QString numero);
 };
 
 #endif // FUNCOES_EXTRAS_H
