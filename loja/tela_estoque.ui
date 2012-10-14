@@ -1,19 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>tela_estoque</class>
- <widget class="QDialog" name="tela_estoque">
+ <widget class="QMainWindow" name="tela_estoque">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>513</height>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>MainWindow</string>
   </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="mb_lateral">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="tb_principal">
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>10</pointsize>
+     <kerning>false</kerning>
+    </font>
+   </property>
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>40</width>
+     <height>40</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextUnderIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>LeftToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="separator"/>
+   <addaction name="actionNovo_Produto"/>
+   <addaction name="actionEntrada_de_Produto"/>
+   <addaction name="actionSaida_de_Produto"/>
+   <addaction name="actionReajustar_Estoque"/>
+  </widget>
+  <action name="actionNovo_Produto">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/img/img/cadastrar_produto.png</normaloff>:/img/img/cadastrar_produto.png</iconset>
+   </property>
+   <property name="text">
+    <string>Novo Produto</string>
+   </property>
+   <property name="toolTip">
+    <string>Clique para adicionar um novo produto.</string>
+   </property>
+  </action>
+  <action name="actionEntrada_de_Produto">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/img/img/estoque_entrada_produto2.png</normaloff>:/img/img/estoque_entrada_produto2.png</iconset>
+   </property>
+   <property name="text">
+    <string>Entrada de Produto</string>
+   </property>
+   <property name="toolTip">
+    <string>Clique para dar entrada dos produtos no estoque.</string>
+   </property>
+  </action>
+  <action name="actionSaida_de_Produto">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/img/img/estoque_saida_produto2.png</normaloff>:/img/img/estoque_saida_produto2.png</iconset>
+   </property>
+   <property name="text">
+    <string>Saída de Produto</string>
+   </property>
+   <property name="toolTip">
+    <string>Clique para dar saída dos produtos do estoque.</string>
+   </property>
+  </action>
+  <action name="actionReajustar_Estoque">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/img/img/estoque_reajuste.png</normaloff>:/img/img/estoque_reajuste.png</iconset>
+   </property>
+   <property name="text">
+    <string>Reajustar Estoque</string>
+   </property>
+   <property name="toolTip">
+    <string>Clique para reajustar percentualmente todos os produtos.</string>
+   </property>
+  </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="imagens.qrc"/>
+ </resources>
  <connections/>
 </ui>

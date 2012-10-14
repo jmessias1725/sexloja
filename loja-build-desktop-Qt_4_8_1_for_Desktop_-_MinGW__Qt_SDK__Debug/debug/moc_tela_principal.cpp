@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_principal.h'
 **
-** Created: Sat 13. Oct 10:38:00 2012
+** Created: Sun 14. Oct 12:06:12 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_tela_principal[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -40,6 +40,7 @@ static const uint qt_meta_data_tela_principal[] = {
      212,   15,   15,   15, 0x08,
      250,   15,   15,   15, 0x08,
      282,   15,   15,   15, 0x08,
+     315,   15,   15,   15, 0x08,
 
        0        // eod
 };
@@ -54,6 +55,7 @@ static const char qt_meta_stringdata_tela_principal[] = {
     "on_consultar_fornecedores_triggered()\0"
     "on_Cadastro_da_Loja_triggered()\0"
     "on_cadastrar_produto_triggered()\0"
+    "on_Estoque_triggered()\0"
 };
 
 void tela_principal::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -71,6 +73,7 @@ void tela_principal::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 6: _t->on_consultar_fornecedores_triggered(); break;
         case 7: _t->on_Cadastro_da_Loja_triggered(); break;
         case 8: _t->on_cadastrar_produto_triggered(); break;
+        case 9: _t->on_Estoque_triggered(); break;
         default: ;
         }
     }
@@ -109,9 +112,9 @@ int tela_principal::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 10;
     }
     return _id;
 }

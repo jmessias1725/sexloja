@@ -1,13 +1,13 @@
 #ifndef TELA_ESTOQUE_H
 #define TELA_ESTOQUE_H
 
-#include <QDialog>
+#include <QMainWindow>
 
 namespace Ui {
 class tela_estoque;
 }
 
-class tela_estoque : public QDialog
+class tela_estoque : public QMainWindow
 {
     Q_OBJECT
     

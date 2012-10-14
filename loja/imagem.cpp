@@ -11,7 +11,7 @@ imagem::imagem(QString nome_arquivo,int largura, int altura)
     QBuffer buffer_imagem(&vetor_bytes_imagem);
 
     malha_pixels = QPixmap(nome_arquivo);
-    malha_pixels = malha_pixels.scaled(QSize(largura,altura), Qt::IgnoreAspectRatio);
+    malha_pixels = malha_pixels.scaled(QSize(largura,altura), Qt::KeepAspectRatio);
     buffer_imagem.open(QIODevice::WriteOnly);
     QImage(malha_pixels.toImage()).save(&buffer_imagem,extensao.c_str());
 }
@@ -36,7 +36,7 @@ void imagem::alterar_imagem(QString nome_arquivo,int largura, int altura){
         QBuffer buffer_imagem(&vetor_bytes_imagem);
 
         malha_pixels = QPixmap(nome_arquivo);
-        malha_pixels = malha_pixels.scaled(QSize(largura,altura), Qt::IgnoreAspectRatio);
+        malha_pixels = malha_pixels.scaled(QSize(largura,altura), Qt::KeepAspectRatio);
         buffer_imagem.open(QIODevice::WriteOnly);
         QImage(malha_pixels.toImage()).save(&buffer_imagem,extensao.c_str());
     }
