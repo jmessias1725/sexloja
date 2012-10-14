@@ -2,7 +2,7 @@
 #include "ui_tela_estoque.h"
 
 tela_estoque::tela_estoque(QWidget *parent) :
-    QDialog(parent),
+    QMainWindow(parent),
     ui(new Ui::tela_estoque)
 {
     ui->setupUi(this);

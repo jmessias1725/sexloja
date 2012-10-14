@@ -46,6 +46,9 @@
         <file>img/loja.png</file>
         <file>img/loja_editar.png</file>
         <file>img/produto.png</file>
+        <file>img/estoque_entrada_produto2.png</file>
+        <file>img/estoque_saida_produto2.png</file>
+        <file>img/estoque_reajuste.png</file>
     </qresource>
     <qresource prefix="/operadoras">
         <file>img/claro.png</file>

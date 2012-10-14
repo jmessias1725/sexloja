@@ -10,6 +10,7 @@
 #include "tela_listar_fornecedores.h"
 #include "tela_cadastro_produto.h"
 #include "tela_loja.h"
+#include "tela_estoque.h"
 #include "loja.h"
 
 namespace Ui {
@@ -34,8 +35,8 @@ private slots:
     void on_buscar_fornecedores_triggered();
     void on_consultar_fornecedores_triggered();
     void on_Cadastro_da_Loja_triggered();
-
     void on_cadastrar_produto_triggered();
+    void on_Estoque_triggered();
 
 private:
     Ui::tela_principal *ui;
@@ -45,6 +46,7 @@ private:
     tela_listar_fornecedores tl_listar_fornecedores;
     tela_cadastro_produto tl_cadastro_produto;
     tela_loja tl_loja;
+    tela_estoque tl_estoque;
     loja *informacao_loja;
     QPixmap logomarca;
 };
