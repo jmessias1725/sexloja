@@ -78,5 +78,6 @@ void tela_principal::on_cadastrar_produto_triggered()
 
 void tela_principal::on_Estoque_triggered()
 {
+    tl_estoque.definir_icone_janela(logomarca);
     tl_estoque.show();
 }
