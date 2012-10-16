@@ -31,74 +31,112 @@ void tela_estoque::listar_produtos(void){
     int aux_quant_disponivel;
     QString aux_cod_barras;
     QString aux_tipo;
+    int aux_id_imagem;
+    QString aux_data;
+    float aux_valor_compra;
+    float aux_valor_venda;
+    QByteArray aux_imagem;
+    std::string aux_extensao;
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
+   verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
     if (verifica_conexao){
-
-        campos_consulta = "p.`id_produto`, p.`nome`, p.`fabricante`, p.`desc_utilizacao`, p.`quant_disponivel`, p.`cod_barras`, p.`tipo`";
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
 
         //Declara a variável que irá fazer a consulta
         QSqlQuery consultar(bd);
+        QSqlQuery consultar_imagem(bd);
+        QSqlQuery consultar_valor(bd);
 
         //realiza a consulta
-        consultar.exec("SELECT "+campos_consulta+" FROM produto p;");
+        consultar.exec("SELECT * FROM produto GROUP BY nome");
         while(consultar.next()){
             aux_id = consultar.value(0).toInt();
-            aux_nome = consultar.value(0).toString();
-            aux_fabricante = consultar.value(0).toString();
-            aux_desc_utilizacao = consultar.value(0).toString();
-            aux_quant_disponivel = consultar.value(0).toInt();
-            aux_cod_barras = consultar.value(0).toString();
-            aux_tipo = consultar.value(0).toString();
-        }
+            aux_nome = consultar.value(1).toString();
+            aux_fabricante = consultar.value(2).toString();
+            aux_desc_utilizacao = consultar.value(3).toString();
+            aux_quant_disponivel = consultar.value(4).toInt();
+            aux_cod_barras = consultar.value(5).toString();
+            aux_tipo = consultar.value(6).toString();
+            aux_id_imagem = consultar.value(7).toInt();
 
-        modelo = new QStandardItemModel(int(lista_id.size()),5,this);
-        modelo->clear();
-        modelo->setHorizontalHeaderItem(0, new QStandardItem(QString("Tipo:")));
-        modelo->setHorizontalHeaderItem(1, new QStandardItem(QString("Código:")));
-        modelo->setHorizontalHeaderItem(2, new QStandardItem(QString("Nome:")));
-        modelo->setHorizontalHeaderItem(3, new QStandardItem(QString("Fabricante:")));
-        modelo->setHorizontalHeaderItem(4, new QStandardItem(QString("Quantidade:")));
-        modelo->setHorizontalHeaderItem(5, new QStandardItem(QString("Código de barras:")));
-        for (int i=0;i<int(lista_id.size());i++){
-            consultar.exec("SELECT telefone,operadora FROM tel_fornecedor WHERE id_fornecedor = "+QString::fromStdString(lista_id[i])+";");
-            while(consultar.next()){
-                aux_lista_telefone.push_back(consultar.value(0).toString().toStdString());
-                aux_lista_operadora.push_back(consultar.value(1).toString().toStdString());
-            }
-            consultar.exec("SELECT e_mail FROM email_fornecedor WHERE id_fornecedor = "+QString::fromStdString(lista_id[i])+";");
-            while(consultar.next()){
-                aux_lista_email.push_back(consultar.value(0).toString().toStdString());
+            //realiza a consulta para buscar o valores e quantidades do produto.
+            consultar_valor.exec("SELECT data,valor_compra,valor_venda FROM his_valores_quantidade WHERE id_produto = '"+QString::number(aux_id)+"';");
+            if(consultar_valor.last()){
+                aux_data = consultar_valor.value(0).toString();
+                aux_valor_compra = consultar_valor.value(1).toFloat();
+                aux_valor_venda = consultar_valor.value(2).toFloat();
+                consultar_valor.clear();
             }
 
-            lista_fornecedores.push_back(new fornecedor(QString::fromStdString(lista_id[i]).toInt(),QString::fromStdString(lista_cnpj[i]),
-                                                        QString::fromStdString(lista_razao_social[i]),QString::fromStdString(lista_nome[i]),
-                                                        QString::fromStdString(lista_comentario[i]),aux_lista_email,aux_lista_telefone,
-                                                        aux_lista_operadora,QString::fromStdString(lista_uf[i]),QString::fromStdString(lista_estado[i]),
-                                                        QString::fromStdString(lista_cidade[i]),QString::fromStdString(lista_bairro[i]),
-                                                        QString::fromStdString(lista_rua[i]),QString::fromStdString(lista_cep[i]),
-                                                        QString::fromStdString(lista_numero[i]).toInt(),QString::fromStdString(lista_ponto_referencia[i])));
+            //realiza a consulta para buscar a imagem do produto.
+            consultar_imagem.exec("SELECT imagem,extensao FROM imagem WHERE id_imagem = '"+QString::number(aux_id_imagem)+"';");
+            if(consultar_imagem.last()){
+                aux_imagem = consultar_imagem.value(0).toByteArray();
+                aux_extensao = consultar_imagem.value(1).toString().toStdString();
+                consultar_imagem.clear();
+            }
+            lista_produtos.push_back(new produto(aux_id,aux_nome,aux_fabricante,aux_desc_utilizacao,aux_quant_disponivel,aux_cod_barras,
+                                                 aux_tipo, aux_id_imagem,aux_imagem,aux_extensao,aux_data ,aux_valor_compra,aux_valor_venda));
 
-            modelo->setItem(i,0,new QStandardItem(QString::number(lista_fornecedores[i]->retornar_id())));
-            modelo->setItem(i,1,new QStandardItem(lista_fornecedores[i]->retornar_nome()));
-            modelo->setItem(i,2,new QStandardItem(lista_fornecedores[i]->retornar_razao_social()));
-            modelo->setItem(i,3,new QStandardItem(lista_fornecedores[i]->retornar_cnpj()));
-            modelo->setItem(i,4,new QStandardItem(QString::fromStdString(aux_lista_telefone[aux_lista_telefone.size()-1]+" "+aux_lista_operadora[aux_lista_operadora.size()-1])));
-
-            aux_lista_telefone.clear();
-            aux_lista_operadora.clear();
-            aux_lista_email.clear();
         }
-        ui->tv_fornecedores->setSelectionMode(QAbstractItemView::SingleSelection);
-        ui->tv_fornecedores->setSelectionBehavior(QAbstractItemView::SelectRows);
-        ui->tv_fornecedores->setEditTriggers(QAbstractItemView::NoEditTriggers);
-        ui->tv_fornecedores->setModel(modelo);
-        ui->tv_fornecedores->resizeColumnToContents(0);
-        ui->tv_fornecedores->resizeColumnToContents(3);
-        ui->tv_fornecedores->resizeColumnToContents(4);
+        consultar.clear();
+
+        ui->tw_produtos->setRowCount(int(lista_produtos.size()));
+        ui->tw_produtos->setColumnCount(8);
+        ui->tw_produtos->horizontalHeader()->setResizeMode(QHeaderView::Fixed);
+        ui->tw_produtos->clear();
+        ui->tw_produtos->setHorizontalHeaderLabels(QString("Tipo;Código;Nome;Fabricante;Quantidade;Valor de compra;Valor de venda;Código de barras").split(";"));
+
+        for (int i=0;i<int(lista_produtos.size());i++){
+            ui->tw_produtos->setItem(i,0,new QTableWidgetItem(lista_produtos[i]->retorna_tipo()));
+            ui->tw_produtos->setItem(i,1,new QTableWidgetItem(QString::number(lista_produtos[i]->retorna_id())));
+            ui->tw_produtos->setItem(i,2,new QTableWidgetItem(lista_produtos[i]->retorna_nome()));
+            ui->tw_produtos->setItem(i,3,new QTableWidgetItem(lista_produtos[i]->retorna_fabricante()));
+            ui->tw_produtos->setItem(i,4,new QTableWidgetItem(QString::number(lista_produtos[i]->retorna_quant_disponivel())));
+            ui->tw_produtos->setItem(i,5,new QTableWidgetItem(funcao.retorna_valor_dinheiro(QString::number(lista_produtos[i]->retorna_valor_compra()))));
+            ui->tw_produtos->setItem(i,6,new QTableWidgetItem(funcao.retorna_valor_dinheiro(QString::number(lista_produtos[i]->retorna_valor_venda()))));
+            ui->tw_produtos->setItem(i,7,new QTableWidgetItem(lista_produtos[i]->retorna_cod_barras()));
+            ui->tw_produtos->item(i,0)->setTextAlignment(Qt::AlignHCenter);
+            ui->tw_produtos->item(i,1)->setTextAlignment(Qt::AlignHCenter);
+            ui->tw_produtos->item(i,2)->setTextAlignment(Qt::AlignHCenter);
+            ui->tw_produtos->item(i,3)->setTextAlignment(Qt::AlignHCenter);
+            ui->tw_produtos->item(i,4)->setTextAlignment(Qt::AlignHCenter);
+            ui->tw_produtos->item(i,5)->setTextAlignment(Qt::AlignHCenter);
+            ui->tw_produtos->item(i,6)->setTextAlignment(Qt::AlignHCenter);
+            ui->tw_produtos->item(i,7)->setTextAlignment(Qt::AlignHCenter);
+            if ((lista_produtos[i]->retorna_quant_disponivel())<=1){
+                ui->tw_produtos->item(i,0)->setBackgroundColor(QColor::fromRgb(255,150,150,255));
+                ui->tw_produtos->item(i,1)->setBackgroundColor(QColor::fromRgb(255,150,150,255));
+                ui->tw_produtos->item(i,2)->setBackgroundColor(QColor::fromRgb(255,150,150,255));
+                ui->tw_produtos->item(i,3)->setBackgroundColor(QColor::fromRgb(255,150,150,255));
+                ui->tw_produtos->item(i,4)->setBackgroundColor(QColor::fromRgb(255,150,150,255));
+                ui->tw_produtos->item(i,5)->setBackgroundColor(QColor::fromRgb(255,150,150,255));
+                ui->tw_produtos->item(i,6)->setBackgroundColor(QColor::fromRgb(255,150,150,255));
+                ui->tw_produtos->item(i,7)->setBackgroundColor(QColor::fromRgb(255,150,150,255));
+            }
+            if ((lista_produtos[i]->retorna_quant_disponivel())>2){
+                ui->tw_produtos->item(i,0)->setBackgroundColor(QColor::fromRgb(0,253,126,255));
+                ui->tw_produtos->item(i,1)->setBackgroundColor(QColor::fromRgb(0,253,126,255));
+                ui->tw_produtos->item(i,2)->setBackgroundColor(QColor::fromRgb(0,253,126,255));
+                ui->tw_produtos->item(i,3)->setBackgroundColor(QColor::fromRgb(0,253,126,255));
+                ui->tw_produtos->item(i,4)->setBackgroundColor(QColor::fromRgb(0,253,126,255));
+                ui->tw_produtos->item(i,5)->setBackgroundColor(QColor::fromRgb(0,253,126,255));
+                ui->tw_produtos->item(i,6)->setBackgroundColor(QColor::fromRgb(0,253,126,255));
+                ui->tw_produtos->item(i,7)->setBackgroundColor(QColor::fromRgb(0,253,126,255));
+            }
+        }
+        ui->tw_produtos->setSelectionMode(QAbstractItemView::SingleSelection);
+        ui->tw_produtos->setSelectionBehavior(QAbstractItemView::SelectRows);
+        ui->tw_produtos->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        ui->tw_produtos->resizeColumnToContents(0);
+        ui->tw_produtos->resizeColumnToContents(1);
+        ui->tw_produtos->resizeColumnToContents(4);
+        ui->tw_produtos->resizeColumnToContents(5);
+        ui->tw_produtos->resizeColumnToContents(6);
+        ui->tw_produtos->resizeColumnToContents(7);
     conexao.fechar_conexao();
+    }
 }

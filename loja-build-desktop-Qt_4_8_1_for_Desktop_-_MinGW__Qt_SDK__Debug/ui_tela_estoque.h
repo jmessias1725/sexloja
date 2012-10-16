@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_estoque.ui'
 **
-** Created: Mon 15. Oct 17:20:02 2012
+** Created: Mon 15. Oct 22:44:41 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -22,7 +22,7 @@
 #include <QtGui/QMainWindow>
 #include <QtGui/QPushButton>
 #include <QtGui/QStatusBar>
-#include <QtGui/QTableView>
+#include <QtGui/QTableWidget>
 #include <QtGui/QToolBar>
 #include <QtGui/QVBoxLayout>
 #include <QtGui/QWidget>
@@ -50,7 +50,7 @@ public:
     QPushButton *btn_limpar;
     QGroupBox *gb_clientes;
     QVBoxLayout *verticalLayout;
-    QTableView *tv_clientes;
+    QTableWidget *tw_produtos;
     QStatusBar *statusbar;
     QToolBar *tb_principal;
 
@@ -58,6 +58,7 @@ public:
     {
         if (tela_estoque->objectName().isEmpty())
             tela_estoque->setObjectName(QString::fromUtf8("tela_estoque"));
+        tela_estoque->setWindowModality(Qt::ApplicationModal);
         tela_estoque->resize(1024, 600);
         actionNovo_Produto = new QAction(tela_estoque);
         actionNovo_Produto->setObjectName(QString::fromUtf8("actionNovo_Produto"));
@@ -107,6 +108,7 @@ public:
         lb_tipo->setMinimumSize(QSize(28, 20));
         lb_tipo->setMaximumSize(QSize(28, 20));
         QFont font1;
+        font1.setFamily(QString::fromUtf8("Calibri"));
         font1.setBold(false);
         font1.setWeight(50);
         font1.setKerning(false);
@@ -114,7 +116,11 @@ public:
         le_fabricante = new QLineEdit(gb_filtrar);
         le_fabricante->setObjectName(QString::fromUtf8("le_fabricante"));
         le_fabricante->setGeometry(QRect(67, 47, 608, 21));
-        le_fabricante->setFont(font1);
+        QFont font2;
+        font2.setBold(false);
+        font2.setWeight(50);
+        font2.setKerning(false);
+        le_fabricante->setFont(font2);
         le_fabricante->setInputMethodHints(Qt::ImhNone);
         le_fabricante->setMaxLength(60);
         lb_fabricante = new QLabel(gb_filtrar);
@@ -128,7 +134,7 @@ public:
         le_nome->setGeometry(QRect(169, 17, 506, 20));
         le_nome->setMinimumSize(QSize(506, 20));
         le_nome->setMaximumSize(QSize(506, 20));
-        le_nome->setFont(font1);
+        le_nome->setFont(font2);
         le_nome->setInputMethodHints(Qt::ImhNone);
         le_nome->setMaxLength(60);
         le_codigo_barras = new QLineEdit(gb_filtrar);
@@ -136,7 +142,7 @@ public:
         le_codigo_barras->setGeometry(QRect(779, 17, 105, 20));
         le_codigo_barras->setMinimumSize(QSize(105, 20));
         le_codigo_barras->setMaximumSize(QSize(105, 20));
-        le_codigo_barras->setFont(font1);
+        le_codigo_barras->setFont(font2);
         le_codigo_barras->setMaxLength(15);
         lb_nome = new QLabel(gb_filtrar);
         lb_nome->setObjectName(QString::fromUtf8("lb_nome"));
@@ -146,9 +152,9 @@ public:
         lb_nome->setFont(font1);
         cb_tipo = new QComboBox(gb_filtrar);
         cb_tipo->setObjectName(QString::fromUtf8("cb_tipo"));
-        cb_tipo->setGeometry(QRect(32, 17, 95, 20));
+        cb_tipo->setGeometry(QRect(33, 17, 95, 20));
         cb_tipo->setMaximumSize(QSize(100, 20));
-        cb_tipo->setFont(font1);
+        cb_tipo->setFont(font2);
         lb_codigo_barras = new QLabel(gb_filtrar);
         lb_codigo_barras->setObjectName(QString::fromUtf8("lb_codigo_barras"));
         lb_codigo_barras->setGeometry(QRect(680, 17, 99, 20));
@@ -158,10 +164,10 @@ public:
         btn_limpar = new QPushButton(gb_filtrar);
         btn_limpar->setObjectName(QString::fromUtf8("btn_limpar"));
         btn_limpar->setGeometry(QRect(680, 45, 80, 24));
-        QFont font2;
-        font2.setBold(false);
-        font2.setWeight(50);
-        btn_limpar->setFont(font2);
+        QFont font3;
+        font3.setBold(false);
+        font3.setWeight(50);
+        btn_limpar->setFont(font3);
         QIcon icon4;
         icon4.addFile(QString::fromUtf8(":/img/img/limpar.png"), QSize(), QIcon::Normal, QIcon::Off);
         btn_limpar->setIcon(icon4);
@@ -171,39 +177,49 @@ public:
         gb_clientes = new QGroupBox(centralwidget);
         gb_clientes->setObjectName(QString::fromUtf8("gb_clientes"));
         gb_clientes->setMinimumSize(QSize(889, 251));
-        QFont font3;
-        font3.setFamily(QString::fromUtf8("Calibri"));
-        font3.setPointSize(10);
-        font3.setBold(true);
-        font3.setWeight(75);
-        gb_clientes->setFont(font3);
+        QFont font4;
+        font4.setFamily(QString::fromUtf8("Calibri"));
+        font4.setPointSize(10);
+        font4.setBold(true);
+        font4.setWeight(75);
+        gb_clientes->setFont(font4);
         gb_clientes->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         verticalLayout = new QVBoxLayout(gb_clientes);
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(5, 0, 5, 5);
-        tv_clientes = new QTableView(gb_clientes);
-        tv_clientes->setObjectName(QString::fromUtf8("tv_clientes"));
-        tv_clientes->setMinimumSize(QSize(869, 469));
-        QFont font4;
-        font4.setFamily(QString::fromUtf8("Calibri"));
-        font4.setPointSize(10);
-        font4.setKerning(false);
-        tv_clientes->setFont(font4);
-        tv_clientes->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-        tv_clientes->setAlternatingRowColors(true);
-        tv_clientes->setSortingEnabled(false);
-        tv_clientes->horizontalHeader()->setVisible(true);
-        tv_clientes->horizontalHeader()->setDefaultSectionSize(450);
-        tv_clientes->horizontalHeader()->setMinimumSectionSize(15);
-        tv_clientes->horizontalHeader()->setStretchLastSection(true);
-        tv_clientes->verticalHeader()->setVisible(false);
-        tv_clientes->verticalHeader()->setCascadingSectionResizes(false);
-        tv_clientes->verticalHeader()->setDefaultSectionSize(30);
-        tv_clientes->verticalHeader()->setMinimumSectionSize(20);
-        tv_clientes->verticalHeader()->setStretchLastSection(false);
+        tw_produtos = new QTableWidget(gb_clientes);
+        tw_produtos->setObjectName(QString::fromUtf8("tw_produtos"));
+        tw_produtos->setMinimumSize(QSize(869, 469));
+        QFont font5;
+        font5.setFamily(QString::fromUtf8("Calibri"));
+        font5.setPointSize(10);
+        font5.setKerning(false);
+        tw_produtos->setFont(font5);
+        tw_produtos->setFrameShape(QFrame::WinPanel);
+        tw_produtos->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        tw_produtos->setAutoScroll(true);
+        tw_produtos->setAlternatingRowColors(true);
+        tw_produtos->setSelectionBehavior(QAbstractItemView::SelectRows);
+        tw_produtos->setShowGrid(true);
+        tw_produtos->setGridStyle(Qt::SolidLine);
+        tw_produtos->setSortingEnabled(false);
+        tw_produtos->setWordWrap(true);
+        tw_produtos->setCornerButtonEnabled(true);
+        tw_produtos->setRowCount(0);
+        tw_produtos->setColumnCount(0);
+        tw_produtos->horizontalHeader()->setVisible(true);
+        tw_produtos->horizontalHeader()->setCascadingSectionResizes(false);
+        tw_produtos->horizontalHeader()->setDefaultSectionSize(450);
+        tw_produtos->horizontalHeader()->setMinimumSectionSize(100);
+        tw_produtos->horizontalHeader()->setProperty("showSortIndicator", QVariant(false));
+        tw_produtos->horizontalHeader()->setStretchLastSection(true);
+        tw_produtos->verticalHeader()->setVisible(false);
+        tw_produtos->verticalHeader()->setCascadingSectionResizes(false);
+        tw_produtos->verticalHeader()->setDefaultSectionSize(20);
+        tw_produtos->verticalHeader()->setMinimumSectionSize(20);
 
-        verticalLayout->addWidget(tv_clientes);
+        verticalLayout->addWidget(tw_produtos);
 
 
         verticalLayout_2->addWidget(gb_clientes);
@@ -214,12 +230,12 @@ public:
         tela_estoque->setStatusBar(statusbar);
         tb_principal = new QToolBar(tela_estoque);
         tb_principal->setObjectName(QString::fromUtf8("tb_principal"));
-        QFont font5;
-        font5.setFamily(QString::fromUtf8("Calibri"));
-        font5.setPointSize(9);
-        font5.setItalic(false);
-        font5.setKerning(false);
-        tb_principal->setFont(font5);
+        QFont font6;
+        font6.setFamily(QString::fromUtf8("Calibri"));
+        font6.setPointSize(9);
+        font6.setItalic(false);
+        font6.setKerning(false);
+        tb_principal->setFont(font6);
         tb_principal->setMovable(false);
         tb_principal->setIconSize(QSize(30, 30));
         tb_principal->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
@@ -228,7 +244,7 @@ public:
         QWidget::setTabOrder(le_nome, le_codigo_barras);
         QWidget::setTabOrder(le_codigo_barras, le_fabricante);
         QWidget::setTabOrder(le_fabricante, btn_limpar);
-        QWidget::setTabOrder(btn_limpar, tv_clientes);
+        QWidget::setTabOrder(btn_limpar, tw_produtos);
 
         tb_principal->addSeparator();
         tb_principal->addAction(actionNovo_Produto);
@@ -237,6 +253,9 @@ public:
         tb_principal->addAction(actionReajustar_Estoque);
 
         retranslateUi(tela_estoque);
+        QObject::connect(btn_limpar, SIGNAL(clicked()), le_nome, SLOT(clear()));
+        QObject::connect(btn_limpar, SIGNAL(clicked()), le_codigo_barras, SLOT(clear()));
+        QObject::connect(btn_limpar, SIGNAL(clicked()), le_fabricante, SLOT(clear()));
 
         QMetaObject::connectSlotsByName(tela_estoque);
     } // setupUi

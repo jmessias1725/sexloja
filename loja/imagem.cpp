@@ -3,6 +3,11 @@
 imagem::imagem(){
 }
 
+imagem::imagem(QByteArray vetor_bytes_img, std::string img_extensao){
+    vetor_bytes_imagem = vetor_bytes_img;
+    extensao = img_extensao;
+}
+
 imagem::imagem(QString nome_arquivo,int largura, int altura)
 {
     QPixmap malha_pixels;
