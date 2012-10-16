@@ -26,6 +26,7 @@ INPUT(
 ./debug\produto.o
 ./debug\valor_produto.o
 ./debug\tela_estoque.o
+./debug\tela_configurar_legenda_estoque.o
 ./debug\moc_tela_login.o
 ./debug\moc_tela_principal.o
 ./debug\moc_tela_cadastro_cliente.o
@@ -41,5 +42,6 @@ INPUT(
 ./debug\moc_tela_loja.o
 ./debug\moc_tela_cadastro_produto.o
 ./debug\moc_tela_estoque.o
+./debug\moc_tela_configurar_legenda_estoque.o
 ./debug\qrc_imagens.o
 );
