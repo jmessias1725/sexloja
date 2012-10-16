@@ -4,9 +4,9 @@ produto::produto()
 {
 }
 produto::produto(int id_pro,QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
-                 int quant_disponivel_produto,QString cod_barras_produto,QString tipo_produto,
-                 QString nome_arquivo_imagem, int altura, int largura,float valor_com,float valor_ven)
-    :imagem(nome_arquivo_imagem, largura, altura), valor_produto(quant_disponivel_produto,valor_com,valor_ven){
+                 int quant_disponivel_produto,QString cod_barras_produto,QString tipo_produto, int id_imag,
+                 QByteArray vetor_bytes_img, std::string img_extensao,QString dta ,float valor_com,float valor_ven)
+    :imagem(vetor_bytes_img, img_extensao), valor_produto(id_pro,dta,quant_disponivel_produto,valor_com,valor_ven){
     produto::id = id_pro;
     produto::nome = nome_produto;
     produto::fabricante = fabricante_produto;
@@ -14,6 +14,7 @@ produto::produto(int id_pro,QString nome_produto,QString fabricante_produto,QStr
     produto::quant_disponivel = quant_disponivel_produto;
     produto::cod_barras = cod_barras_produto;
     produto::tipo = tipo_produto;
+    produto::id_imagem = id_imag;
 }
 
 produto::produto(QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
