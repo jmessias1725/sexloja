@@ -6,6 +6,7 @@ tela_estoque::tela_estoque(QWidget *parent) :
     ui(new Ui::tela_estoque)
 {
     ui->setupUi(this);
+    ui->tw_legenda->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
 tela_estoque::~tela_estoque()
@@ -139,4 +140,16 @@ void tela_estoque::listar_produtos(void){
         ui->tw_produtos->resizeColumnToContents(7);
     conexao.fechar_conexao();
     }
+}
+
+void tela_estoque::on_pushButton_clicked()
+{
+    /*QColorDialog tl_cores;
+    QColor color = tl_cores.getColor(QColor(0, 0, 0, 100),this, "Selecione a cor desejada.");
+    tl_cores.setLocale(QLocale(QLocale::Portuguese,QLocale::Brazil));
+    std::cout<<color.toRgb().red()<<std::endl;
+    std::cout<<color.toRgb().green()<<std::endl;
+    std::cout<<color.toRgb().blue()<<std::endl;*/
+    tl_configurar_legenda_estoque.definir_icone_janela(logomarca);
+    tl_configurar_legenda_estoque.exec();
 }

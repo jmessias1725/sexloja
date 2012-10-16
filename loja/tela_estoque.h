@@ -9,6 +9,7 @@
 #include "conexao_bd.h"
 #include "funcoes_extras.h"
 #include "produto.h"
+#include "tela_configurar_legenda_estoque.h"
 
 namespace Ui {
 class tela_estoque;
@@ -24,10 +25,14 @@ public:
     void definir_icone_janela(QPixmap logo);
     void listar_produtos(void);
     
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::tela_estoque *ui;
     QPixmap logomarca;
     std::vector< produto* > lista_produtos;
+    tela_configurar_legenda_estoque tl_configurar_legenda_estoque;
 };
 
 #endif // TELA_ESTOQUE_H
