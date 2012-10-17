@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_configurar_legenda_estoque.h'
 **
-** Created: Tue 16. Oct 17:28:25 2012
+** Created: Tue 16. Oct 22:50:41 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,25 +23,43 @@ static const uint qt_meta_data_tela_configurar_legenda_estoque[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       0,    0, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
        0,       // signalCount
 
+ // slots: signature, parameters, type, tag, flags
+      33,   32,   32,   32, 0x08,
+      69,   32,   32,   32, 0x08,
+     105,   32,   32,   32, 0x08,
+     141,   32,   32,   32, 0x08,
+
        0        // eod
 };
 
 static const char qt_meta_stringdata_tela_configurar_legenda_estoque[] = {
-    "tela_configurar_legenda_estoque\0"
+    "tela_configurar_legenda_estoque\0\0"
+    "on_btn_alterar_cor_zerado_clicked()\0"
+    "on_btn_alterar_cor_minimo_clicked()\0"
+    "on_btn_alterar_cor_normal_clicked()\0"
+    "on_btn_alterar_cor_ideal_clicked()\0"
 };
 
 void tela_configurar_legenda_estoque::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    Q_UNUSED(_o);
-    Q_UNUSED(_id);
-    Q_UNUSED(_c);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        tela_configurar_legenda_estoque *_t = static_cast<tela_configurar_legenda_estoque *>(_o);
+        switch (_id) {
+        case 0: _t->on_btn_alterar_cor_zerado_clicked(); break;
+        case 1: _t->on_btn_alterar_cor_minimo_clicked(); break;
+        case 2: _t->on_btn_alterar_cor_normal_clicked(); break;
+        case 3: _t->on_btn_alterar_cor_ideal_clicked(); break;
+        default: ;
+        }
+    }
     Q_UNUSED(_a);
 }
 
@@ -76,6 +94,11 @@ int tela_configurar_legenda_estoque::qt_metacall(QMetaObject::Call _c, int _id, 
     _id = QDialog::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 4)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 4;
+    }
     return _id;
 }
 QT_END_MOC_NAMESPACE

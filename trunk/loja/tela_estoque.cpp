@@ -7,6 +7,7 @@ tela_estoque::tela_estoque(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->tw_legenda->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    legenda = new legenda_estoque();
 }
 
 tela_estoque::~tela_estoque()
@@ -40,7 +41,7 @@ void tela_estoque::listar_produtos(void){
     std::string aux_extensao;
 
     //realiza conexão ao banco de dados
-   verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
+    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
     if (verifica_conexao){
 
         //Retorna o banco de dados
@@ -108,27 +109,32 @@ void tela_estoque::listar_produtos(void){
             ui->tw_produtos->item(i,5)->setTextAlignment(Qt::AlignHCenter);
             ui->tw_produtos->item(i,6)->setTextAlignment(Qt::AlignHCenter);
             ui->tw_produtos->item(i,7)->setTextAlignment(Qt::AlignHCenter);
-            if ((lista_produtos[i]->retorna_quant_disponivel())<=1){
-                ui->tw_produtos->item(i,0)->setBackgroundColor(QColor::fromRgb(255,150,150,255));
-                ui->tw_produtos->item(i,1)->setBackgroundColor(QColor::fromRgb(255,150,150,255));
-                ui->tw_produtos->item(i,2)->setBackgroundColor(QColor::fromRgb(255,150,150,255));
-                ui->tw_produtos->item(i,3)->setBackgroundColor(QColor::fromRgb(255,150,150,255));
-                ui->tw_produtos->item(i,4)->setBackgroundColor(QColor::fromRgb(255,150,150,255));
-                ui->tw_produtos->item(i,5)->setBackgroundColor(QColor::fromRgb(255,150,150,255));
-                ui->tw_produtos->item(i,6)->setBackgroundColor(QColor::fromRgb(255,150,150,255));
-                ui->tw_produtos->item(i,7)->setBackgroundColor(QColor::fromRgb(255,150,150,255));
+            if ((lista_produtos[i]->retorna_quant_disponivel())==legenda->retorna_zerado_valor()){
+                for(int j=0;j<8;j++){
+                    ui->tw_produtos->item(i,j)->setBackgroundColor(QColor::fromRgb(legenda->retorna_z_cor_vermelho(),legenda->retorna_z_cor_verde(),legenda->retorna_z_cor_azul(),255));
+                }
             }
-            if ((lista_produtos[i]->retorna_quant_disponivel())>2){
-                ui->tw_produtos->item(i,0)->setBackgroundColor(QColor::fromRgb(0,253,126,255));
-                ui->tw_produtos->item(i,1)->setBackgroundColor(QColor::fromRgb(0,253,126,255));
-                ui->tw_produtos->item(i,2)->setBackgroundColor(QColor::fromRgb(0,253,126,255));
-                ui->tw_produtos->item(i,3)->setBackgroundColor(QColor::fromRgb(0,253,126,255));
-                ui->tw_produtos->item(i,4)->setBackgroundColor(QColor::fromRgb(0,253,126,255));
-                ui->tw_produtos->item(i,5)->setBackgroundColor(QColor::fromRgb(0,253,126,255));
-                ui->tw_produtos->item(i,6)->setBackgroundColor(QColor::fromRgb(0,253,126,255));
-                ui->tw_produtos->item(i,7)->setBackgroundColor(QColor::fromRgb(0,253,126,255));
+            if (((lista_produtos[i]->retorna_quant_disponivel())>legenda->retorna_zerado_valor())&&((lista_produtos[i]->retorna_quant_disponivel())<=legenda->retorna_minimo_valor())){
+                for(int j=0;j<8;j++){
+                    ui->tw_produtos->item(i,j)->setBackgroundColor(QColor::fromRgb(legenda->retorna_m_cor_vermelho(),legenda->retorna_m_cor_verde(),legenda->retorna_m_cor_azul(),255));
+                }
+            }
+            if (((lista_produtos[i]->retorna_quant_disponivel())>legenda->retorna_minimo_valor())&&((lista_produtos[i]->retorna_quant_disponivel())<=legenda->retorna_normal_valor())){
+                for(int j=0;j<8;j++){
+                    ui->tw_produtos->item(i,j)->setBackgroundColor(QColor::fromRgb(legenda->retorna_n_cor_vermelho(),legenda->retorna_n_cor_verde(),legenda->retorna_n_cor_azul(),255));
+                }
+            }
+            if ((lista_produtos[i]->retorna_quant_disponivel())>legenda->retorna_normal_valor()){
+                for(int j=0;j<8;j++){
+                    ui->tw_produtos->item(i,j)->setBackgroundColor(QColor::fromRgb(legenda->retorna_i_cor_vermelho(),legenda->retorna_i_cor_verde(),legenda->retorna_i_cor_azul(),255));
+                }
             }
         }
+        ui->tw_legenda->item(0,0)->setBackgroundColor(QColor::fromRgb(legenda->retorna_z_cor_vermelho(),legenda->retorna_z_cor_verde(),legenda->retorna_z_cor_azul(),255));
+        ui->tw_legenda->item(0,1)->setBackgroundColor(QColor::fromRgb(legenda->retorna_m_cor_vermelho(),legenda->retorna_m_cor_verde(),legenda->retorna_m_cor_azul(),255));
+        ui->tw_legenda->item(0,2)->setBackgroundColor(QColor::fromRgb(legenda->retorna_n_cor_vermelho(),legenda->retorna_n_cor_verde(),legenda->retorna_n_cor_azul(),255));
+        ui->tw_legenda->item(0,3)->setBackgroundColor(QColor::fromRgb(legenda->retorna_i_cor_vermelho(),legenda->retorna_i_cor_verde(),legenda->retorna_i_cor_azul(),255));
+
         ui->tw_produtos->setSelectionMode(QAbstractItemView::SingleSelection);
         ui->tw_produtos->setSelectionBehavior(QAbstractItemView::SelectRows);
         ui->tw_produtos->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -144,12 +150,7 @@ void tela_estoque::listar_produtos(void){
 
 void tela_estoque::on_pushButton_clicked()
 {
-    /*QColorDialog tl_cores;
-    QColor color = tl_cores.getColor(QColor(0, 0, 0, 100),this, "Selecione a cor desejada.");
-    tl_cores.setLocale(QLocale(QLocale::Portuguese,QLocale::Brazil));
-    std::cout<<color.toRgb().red()<<std::endl;
-    std::cout<<color.toRgb().green()<<std::endl;
-    std::cout<<color.toRgb().blue()<<std::endl;*/
     tl_configurar_legenda_estoque.definir_icone_janela(logomarca);
+    tl_configurar_legenda_estoque.configuracao_legenda(legenda);
     tl_configurar_legenda_estoque.exec();
 }

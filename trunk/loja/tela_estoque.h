@@ -9,6 +9,7 @@
 #include "conexao_bd.h"
 #include "funcoes_extras.h"
 #include "produto.h"
+#include "legenda_estoque.h"
 #include "tela_configurar_legenda_estoque.h"
 
 namespace Ui {
@@ -33,6 +34,7 @@ private:
     QPixmap logomarca;
     std::vector< produto* > lista_produtos;
     tela_configurar_legenda_estoque tl_configurar_legenda_estoque;
+    legenda_estoque *legenda;
 };
 
 #endif // TELA_ESTOQUE_H
