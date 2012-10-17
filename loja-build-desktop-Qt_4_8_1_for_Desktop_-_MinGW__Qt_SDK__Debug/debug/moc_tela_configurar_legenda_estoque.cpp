@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_configurar_legenda_estoque.h'
 **
-** Created: Wed 17. Oct 17:46:11 2012
+** Created: Wed 17. Oct 19:36:44 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_tela_configurar_legenda_estoque[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -38,6 +38,8 @@ static const uint qt_meta_data_tela_configurar_legenda_estoque[] = {
      176,   32,   32,   32, 0x08,
      207,   32,   32,   32, 0x08,
      238,   32,   32,   32, 0x08,
+     265,   32,   32,   32, 0x08,
+     291,   32,   32,   32, 0x08,
 
        0        // eod
 };
@@ -51,6 +53,8 @@ static const char qt_meta_stringdata_tela_configurar_legenda_estoque[] = {
     "on_le_normal_editingFinished()\0"
     "on_btn_voltar_padrao_clicked()\0"
     "on_btn_confirmar_clicked()\0"
+    "on_btn_cancelar_clicked()\0"
+    "on_le_minimo_editingFinished()\0"
 };
 
 void tela_configurar_legenda_estoque::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -66,6 +70,8 @@ void tela_configurar_legenda_estoque::qt_static_metacall(QObject *_o, QMetaObjec
         case 4: _t->on_le_normal_editingFinished(); break;
         case 5: _t->on_btn_voltar_padrao_clicked(); break;
         case 6: _t->on_btn_confirmar_clicked(); break;
+        case 7: _t->on_btn_cancelar_clicked(); break;
+        case 8: _t->on_le_minimo_editingFinished(); break;
         default: ;
         }
     }
@@ -104,9 +110,9 @@ int tela_configurar_legenda_estoque::qt_metacall(QMetaObject::Call _c, int _id, 
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 9;
     }
     return _id;
 }

@@ -27,7 +27,8 @@ public:
     void listar_produtos(void);
     
 private slots:
-    void on_pushButton_clicked();
+    void on_pushButton_clicked(void);
+    void definir_lista_produtos(void);
 
 private:
     Ui::tela_estoque *ui;

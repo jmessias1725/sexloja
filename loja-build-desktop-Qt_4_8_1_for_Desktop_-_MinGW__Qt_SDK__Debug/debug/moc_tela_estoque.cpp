@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_estoque.h'
 **
-** Created: Wed 17. Oct 17:46:07 2012
+** Created: Wed 17. Oct 19:36:42 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_tela_estoque[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       2,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -32,12 +32,14 @@ static const uint qt_meta_data_tela_estoque[] = {
 
  // slots: signature, parameters, type, tag, flags
       14,   13,   13,   13, 0x08,
+      38,   13,   13,   13, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_tela_estoque[] = {
     "tela_estoque\0\0on_pushButton_clicked()\0"
+    "definir_lista_produtos()\0"
 };
 
 void tela_estoque::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -47,6 +49,7 @@ void tela_estoque::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         tela_estoque *_t = static_cast<tela_estoque *>(_o);
         switch (_id) {
         case 0: _t->on_pushButton_clicked(); break;
+        case 1: _t->definir_lista_produtos(); break;
         default: ;
         }
     }
@@ -85,9 +88,9 @@ int tela_estoque::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 2;
     }
     return _id;
 }

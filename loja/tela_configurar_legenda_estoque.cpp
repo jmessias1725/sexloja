@@ -21,6 +21,7 @@ void tela_configurar_legenda_estoque::definir_icone_janela(QPixmap logo){
 
 void tela_configurar_legenda_estoque::configuracao_legenda(legenda_estoque *leg){
     legenda = leg;
+    aux_legenda = leg;
 
     zerado_valor = legenda->retorna_zerado_valor();
     z_cor_vermelho = legenda->retorna_z_cor_vermelho();
@@ -46,6 +47,10 @@ void tela_configurar_legenda_estoque::configuracao_legenda(legenda_estoque *leg)
     ui->le_minimo->setText(QString::number(minimo_valor));
     ui->le_normal->setText(QString::number(normal_valor));
     ui->le_ideal->setText(QString::number(ideal_valor));
+    ui->tw_legenda->item(0,0)->setBackgroundColor(QColor::fromRgb(z_cor_vermelho,z_cor_verde,z_cor_azul,255));
+    ui->tw_legenda->item(0,1)->setBackgroundColor(QColor::fromRgb(m_cor_vermelho,m_cor_verde,m_cor_azul,255));
+    ui->tw_legenda->item(0,2)->setBackgroundColor(QColor::fromRgb(n_cor_vermelho,n_cor_verde,n_cor_azul,255));
+    ui->tw_legenda->item(0,3)->setBackgroundColor(QColor::fromRgb(i_cor_vermelho,i_cor_verde,i_cor_azul,255));
 }
 
 void tela_configurar_legenda_estoque::on_btn_alterar_cor_zerado_clicked()
@@ -185,6 +190,10 @@ void tela_configurar_legenda_estoque::on_btn_confirmar_clicked()
     msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
     msg.setText("\nDeseja salvar as alterações?");
     if(msg.exec()<=0){
+        zerado_valor = ui->le_zerado->text().toInt();
+        minimo_valor = ui->le_minimo->text().toInt();
+        normal_valor = ui->le_normal->text().toInt();
+        ideal_valor = ui->le_ideal->text().toInt();
         legenda->definir_icone_janela(logomarca);
         legenda->alterar_configuracao_estoque(zerado_valor,z_cor_vermelho,z_cor_verde,z_cor_azul,
                                               minimo_valor,m_cor_vermelho,m_cor_verde,m_cor_azul,
@@ -193,5 +202,32 @@ void tela_configurar_legenda_estoque::on_btn_confirmar_clicked()
         if(legenda->salvar_alteracao_configuracao_estoque()){
             this->close();
         }
+    }
+    else{
+        legenda = aux_legenda;
+    }
+}
+
+legenda_estoque * tela_configurar_legenda_estoque::retorna_nova_configuracao(void){
+   return legenda;
+}
+
+void tela_configurar_legenda_estoque::on_btn_cancelar_clicked()
+{
+    this->close();
+}
+
+void tela_configurar_legenda_estoque::on_le_minimo_editingFinished()
+{
+    if((ui->le_normal->text().toInt()) <= (ui->le_minimo->text().toInt())){
+        QPixmap icone_janela(":img/img/error_50.png");
+        QMessageBox msg(0);
+        msg.setIconPixmap(icone_janela);
+        msg.setWindowIcon(logomarca);
+        msg.setWindowTitle("Valor normal");
+        msg.addButton("OK", QMessageBox::AcceptRole);
+        msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+        msg.setText("\nO valor normal deve ser maior que o valor mínimo!");
+        msg.exec();
     }
 }

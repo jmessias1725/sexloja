@@ -185,7 +185,7 @@ bool legenda_estoque::salvar_alteracao_configuracao_estoque(){
         alterar_dados_zerado.exec();
 
         //Altera os dados no cadastro da configuraçao zerado
-        alterar_dados_minimo.prepare("UPDATE definicoes_estoque SET "+campos+" WHERE id_definicao = '"+QString::number(id_zerado)+"';");
+        alterar_dados_minimo.prepare("UPDATE definicoes_estoque SET "+campos+" WHERE id_definicao = '"+QString::number(id_minimo)+"';");
         alterar_dados_minimo.bindValue(":valor",minimo_valor);
         alterar_dados_minimo.bindValue(":vermelho",m_cor_vermelho);
         alterar_dados_minimo.bindValue(":verde",m_cor_verde);
@@ -193,7 +193,7 @@ bool legenda_estoque::salvar_alteracao_configuracao_estoque(){
         alterar_dados_minimo.exec();
 
         //Altera os dados no cadastro da configuraçao zerado
-        alterar_dados_normal.prepare("UPDATE definicoes_estoque SET "+campos+" WHERE id_definicao = '"+QString::number(id_zerado)+"';");
+        alterar_dados_normal.prepare("UPDATE definicoes_estoque SET "+campos+" WHERE id_definicao = '"+QString::number(id_normal)+"';");
         alterar_dados_normal.bindValue(":valor",normal_valor);
         alterar_dados_normal.bindValue(":vermelho",n_cor_vermelho);
         alterar_dados_normal.bindValue(":verde",n_cor_verde);
@@ -201,7 +201,7 @@ bool legenda_estoque::salvar_alteracao_configuracao_estoque(){
         alterar_dados_normal.exec();
 
         //Altera os dados no cadastro da configuraçao zerado
-        alterar_dados_ideal.prepare("UPDATE definicoes_estoque SET "+campos+" WHERE id_definicao = '"+QString::number(id_zerado)+"';");
+        alterar_dados_ideal.prepare("UPDATE definicoes_estoque SET "+campos+" WHERE id_definicao = '"+QString::number(id_ideal)+"';");
         alterar_dados_ideal.bindValue(":valor",ideal_valor);
         alterar_dados_ideal.bindValue(":vermelho",i_cor_vermelho);
         alterar_dados_ideal.bindValue(":verde",i_cor_verde);
