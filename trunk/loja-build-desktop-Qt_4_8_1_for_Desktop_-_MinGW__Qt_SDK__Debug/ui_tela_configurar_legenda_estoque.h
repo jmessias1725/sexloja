@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_configurar_legenda_estoque.ui'
 **
-** Created: Tue 16. Oct 22:49:05 2012
+** Created: Wed 17. Oct 17:30:42 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -16,11 +16,13 @@
 #include <QtGui/QButtonGroup>
 #include <QtGui/QDialog>
 #include <QtGui/QGroupBox>
+#include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
 #include <QtGui/QPushButton>
 #include <QtGui/QTableWidget>
+#include <QtGui/QWidget>
 
 QT_BEGIN_NAMESPACE
 
@@ -43,8 +45,11 @@ public:
     QPushButton *btn_alterar_cor_minimo;
     QGroupBox *Pre_visualizar;
     QTableWidget *tw_legenda;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout;
     QPushButton *btn_confirmar;
     QPushButton *btn_cancelar;
+    QPushButton *btn_voltar_padrao;
 
     void setupUi(QDialog *tela_configurar_legenda_estoque)
     {
@@ -190,10 +195,16 @@ public:
         tw_legenda->verticalHeader()->setVisible(false);
         tw_legenda->verticalHeader()->setDefaultSectionSize(19);
         tw_legenda->verticalHeader()->setStretchLastSection(true);
-        btn_confirmar = new QPushButton(tela_configurar_legenda_estoque);
+        widget = new QWidget(tela_configurar_legenda_estoque);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(0, 120, 411, 34));
+        horizontalLayout = new QHBoxLayout(widget);
+        horizontalLayout->setSpacing(5);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setContentsMargins(35, 5, 35, 5);
+        btn_confirmar = new QPushButton(widget);
         btn_confirmar->setObjectName(QString::fromUtf8("btn_confirmar"));
-        btn_confirmar->setGeometry(QRect(110, 125, 90, 24));
-        btn_confirmar->setMinimumSize(QSize(0, 24));
+        btn_confirmar->setMinimumSize(QSize(90, 24));
         btn_confirmar->setMaximumSize(QSize(90, 24));
         QFont font5;
         font5.setFamily(QString::fromUtf8("Calibri"));
@@ -203,25 +214,44 @@ public:
         icon.addFile(QString::fromUtf8(":/img/img/1345902916_camera_test.png"), QSize(), QIcon::Normal, QIcon::Off);
         btn_confirmar->setIcon(icon);
         btn_confirmar->setIconSize(QSize(20, 20));
-        btn_cancelar = new QPushButton(tela_configurar_legenda_estoque);
+
+        horizontalLayout->addWidget(btn_confirmar);
+
+        btn_cancelar = new QPushButton(widget);
         btn_cancelar->setObjectName(QString::fromUtf8("btn_cancelar"));
-        btn_cancelar->setGeometry(QRect(210, 125, 90, 24));
-        btn_cancelar->setMinimumSize(QSize(0, 24));
+        btn_cancelar->setMinimumSize(QSize(90, 24));
         btn_cancelar->setMaximumSize(QSize(90, 24));
         btn_cancelar->setFont(font5);
         QIcon icon1;
         icon1.addFile(QString::fromUtf8(":/img/img/1345902747_button_cancel.png"), QSize(), QIcon::Normal, QIcon::Off);
         btn_cancelar->setIcon(icon1);
         btn_cancelar->setIconSize(QSize(18, 18));
-        QWidget::setTabOrder(le_zerado, le_minimo);
-        QWidget::setTabOrder(le_minimo, le_normal);
-        QWidget::setTabOrder(le_normal, le_ideal);
+
+        horizontalLayout->addWidget(btn_cancelar);
+
+        btn_voltar_padrao = new QPushButton(widget);
+        btn_voltar_padrao->setObjectName(QString::fromUtf8("btn_voltar_padrao"));
+        btn_voltar_padrao->setMinimumSize(QSize(151, 24));
+        btn_voltar_padrao->setMaximumSize(QSize(151, 24));
+        btn_voltar_padrao->setFont(font3);
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/img/img/reset.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_voltar_padrao->setIcon(icon2);
+        btn_voltar_padrao->setIconSize(QSize(18, 18));
+
+        horizontalLayout->addWidget(btn_voltar_padrao);
+
+        QWidget::setTabOrder(le_zerado, le_normal);
+        QWidget::setTabOrder(le_normal, le_minimo);
+        QWidget::setTabOrder(le_minimo, le_ideal);
         QWidget::setTabOrder(le_ideal, btn_alterar_cor_zerado);
         QWidget::setTabOrder(btn_alterar_cor_zerado, btn_alterar_cor_minimo);
         QWidget::setTabOrder(btn_alterar_cor_minimo, btn_alterar_cor_normal);
         QWidget::setTabOrder(btn_alterar_cor_normal, btn_alterar_cor_ideal);
         QWidget::setTabOrder(btn_alterar_cor_ideal, btn_confirmar);
         QWidget::setTabOrder(btn_confirmar, btn_cancelar);
+        QWidget::setTabOrder(btn_cancelar, btn_voltar_padrao);
+        QWidget::setTabOrder(btn_voltar_padrao, tw_legenda);
 
         retranslateUi(tela_configurar_legenda_estoque);
 
@@ -265,6 +295,7 @@ public:
 
         btn_confirmar->setText(QApplication::translate("tela_configurar_legenda_estoque", "Confirmar", 0, QApplication::UnicodeUTF8));
         btn_cancelar->setText(QApplication::translate("tela_configurar_legenda_estoque", "Cancelar", 0, QApplication::UnicodeUTF8));
+        btn_voltar_padrao->setText(QApplication::translate("tela_configurar_legenda_estoque", "Configura\303\247\303\243o padr\303\243o", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

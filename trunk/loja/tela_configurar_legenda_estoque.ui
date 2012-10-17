@@ -511,93 +511,144 @@
     </widget>
    </widget>
   </widget>
-  <widget class="QPushButton" name="btn_confirmar">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>125</y>
-     <width>90</width>
-     <height>24</height>
+     <x>0</x>
+     <y>120</y>
+     <width>411</width>
+     <height>34</height>
     </rect>
    </property>
-   <property name="minimumSize">
-    <size>
-     <width>0</width>
-     <height>24</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>90</width>
-     <height>24</height>
-    </size>
-   </property>
-   <property name="font">
-    <font>
-     <family>Calibri</family>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Confirmar</string>
-   </property>
-   <property name="icon">
-    <iconset resource="imagens.qrc">
-     <normaloff>:/img/img/1345902916_camera_test.png</normaloff>:/img/img/1345902916_camera_test.png</iconset>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>20</width>
-     <height>20</height>
-    </size>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="btn_cancelar">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>125</y>
-     <width>90</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>0</width>
-     <height>24</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>90</width>
-     <height>24</height>
-    </size>
-   </property>
-   <property name="font">
-    <font>
-     <family>Calibri</family>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Cancelar</string>
-   </property>
-   <property name="icon">
-    <iconset resource="imagens.qrc">
-     <normaloff>:/img/img/1345902747_button_cancel.png</normaloff>:/img/img/1345902747_button_cancel.png</iconset>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>18</width>
-     <height>18</height>
-    </size>
-   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="spacing">
+     <number>5</number>
+    </property>
+    <property name="leftMargin">
+     <number>35</number>
+    </property>
+    <property name="topMargin">
+     <number>5</number>
+    </property>
+    <property name="rightMargin">
+     <number>35</number>
+    </property>
+    <property name="bottomMargin">
+     <number>5</number>
+    </property>
+    <item>
+     <widget class="QPushButton" name="btn_confirmar">
+      <property name="minimumSize">
+       <size>
+        <width>90</width>
+        <height>24</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>90</width>
+        <height>24</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Calibri</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Confirmar</string>
+      </property>
+      <property name="icon">
+       <iconset resource="imagens.qrc">
+        <normaloff>:/img/img/1345902916_camera_test.png</normaloff>:/img/img/1345902916_camera_test.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btn_cancelar">
+      <property name="minimumSize">
+       <size>
+        <width>90</width>
+        <height>24</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>90</width>
+        <height>24</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Calibri</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Cancelar</string>
+      </property>
+      <property name="icon">
+       <iconset resource="imagens.qrc">
+        <normaloff>:/img/img/1345902747_button_cancel.png</normaloff>:/img/img/1345902747_button_cancel.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>18</width>
+        <height>18</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btn_voltar_padrao">
+      <property name="minimumSize">
+       <size>
+        <width>151</width>
+        <height>24</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>151</width>
+        <height>24</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Calibri</family>
+        <pointsize>10</pointsize>
+        <kerning>false</kerning>
+       </font>
+      </property>
+      <property name="text">
+       <string>Configuração padrão</string>
+      </property>
+      <property name="icon">
+       <iconset resource="imagens.qrc">
+        <normaloff>:/img/img/reset.png</normaloff>:/img/img/reset.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>18</width>
+        <height>18</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <tabstops>
   <tabstop>le_zerado</tabstop>
-  <tabstop>le_minimo</tabstop>
   <tabstop>le_normal</tabstop>
+  <tabstop>le_minimo</tabstop>
   <tabstop>le_ideal</tabstop>
   <tabstop>btn_alterar_cor_zerado</tabstop>
   <tabstop>btn_alterar_cor_minimo</tabstop>
@@ -605,6 +656,8 @@
   <tabstop>btn_alterar_cor_ideal</tabstop>
   <tabstop>btn_confirmar</tabstop>
   <tabstop>btn_cancelar</tabstop>
+  <tabstop>btn_voltar_padrao</tabstop>
+  <tabstop>tw_legenda</tabstop>
  </tabstops>
  <resources>
   <include location="imagens.qrc"/>

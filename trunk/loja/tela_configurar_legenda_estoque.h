@@ -28,6 +28,12 @@ private slots:
     void on_btn_alterar_cor_normal_clicked();
     void on_btn_alterar_cor_ideal_clicked();
 
+    void on_le_normal_editingFinished();
+
+    void on_btn_voltar_padrao_clicked();
+
+    void on_btn_confirmar_clicked();
+
 private:
     Ui::tela_configurar_legenda_estoque *ui;
     QPixmap logomarca;

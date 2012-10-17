@@ -49,6 +49,8 @@
         <file>img/estoque_entrada_produto2.png</file>
         <file>img/estoque_saida_produto2.png</file>
         <file>img/estoque_reajuste.png</file>
+        <file>img/reset.png</file>
+        <file>img/perguntar.png</file>
     </qresource>
     <qresource prefix="/operadoras">
         <file>img/claro.png</file>
