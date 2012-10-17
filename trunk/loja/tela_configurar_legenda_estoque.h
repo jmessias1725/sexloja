@@ -21,23 +21,26 @@ public:
     ~tela_configurar_legenda_estoque();
     void definir_icone_janela(QPixmap logo);
     void configuracao_legenda(legenda_estoque *leg);
+    legenda_estoque * retorna_nova_configuracao(void);
     
 private slots:
     void on_btn_alterar_cor_zerado_clicked();
     void on_btn_alterar_cor_minimo_clicked();
     void on_btn_alterar_cor_normal_clicked();
     void on_btn_alterar_cor_ideal_clicked();
-
     void on_le_normal_editingFinished();
-
     void on_btn_voltar_padrao_clicked();
-
     void on_btn_confirmar_clicked();
+
+    void on_btn_cancelar_clicked();
+
+    void on_le_minimo_editingFinished();
 
 private:
     Ui::tela_configurar_legenda_estoque *ui;
     QPixmap logomarca;
     legenda_estoque *legenda;
+    legenda_estoque *aux_legenda;
 
     int zerado_valor;
     int z_cor_vermelho;
