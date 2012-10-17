@@ -38,7 +38,8 @@ SOURCES += main.cpp\
     produto.cpp \
     valor_produto.cpp \
     tela_estoque.cpp \
-    tela_configurar_legenda_estoque.cpp
+    tela_configurar_legenda_estoque.cpp \
+    legenda_estoque.cpp
 
 HEADERS  += \
     conexao_bd.h \
@@ -67,7 +68,8 @@ HEADERS  += \
     produto.h \
     valor_produto.h \
     tela_estoque.h \
-    tela_configurar_legenda_estoque.h
+    tela_configurar_legenda_estoque.h \
+    legenda_estoque.h
 
 FORMS    += \
     tela_login.ui \

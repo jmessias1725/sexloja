@@ -27,6 +27,7 @@ INPUT(
 ./debug\valor_produto.o
 ./debug\tela_estoque.o
 ./debug\tela_configurar_legenda_estoque.o
+./debug\legenda_estoque.o
 ./debug\moc_tela_login.o
 ./debug\moc_tela_principal.o
 ./debug\moc_tela_cadastro_cliente.o
