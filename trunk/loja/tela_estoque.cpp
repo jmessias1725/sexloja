@@ -163,3 +163,16 @@ void tela_estoque::on_pushButton_clicked()
         tela_estoque::definir_lista_produtos();
     }
 }
+
+void tela_estoque::on_btn_adicionar_produto_clicked()
+{
+    tl_cadastro_produto.definir_icone_janela(logomarca);
+    if(tl_cadastro_produto.exec()<=0){
+        listar_produtos();
+    }
+}
+
+void tela_estoque::on_cb_tipo_currentIndexChanged(const QString &arg1)
+{
+    std::cout<<arg1.toStdString()<<std::endl;
+}
