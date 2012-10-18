@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1024</width>
+    <width>1026</width>
     <height>600</height>
    </rect>
   </property>
@@ -709,6 +709,11 @@
            <kerning>false</kerning>
           </font>
          </property>
+         <item>
+          <property name="text">
+           <string>Todos</string>
+          </property>
+         </item>
          <item>
           <property name="text">
            <string>Acessório</string>

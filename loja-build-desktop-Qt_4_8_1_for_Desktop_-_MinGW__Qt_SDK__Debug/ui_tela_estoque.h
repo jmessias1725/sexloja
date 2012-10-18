@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_estoque.ui'
 **
-** Created: Wed 17. Oct 18:50:35 2012
+** Created: Thu 18. Oct 10:03:59 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -68,7 +68,7 @@ public:
         if (tela_estoque->objectName().isEmpty())
             tela_estoque->setObjectName(QString::fromUtf8("tela_estoque"));
         tela_estoque->setWindowModality(Qt::ApplicationModal);
-        tela_estoque->resize(1024, 600);
+        tela_estoque->resize(1026, 600);
         centralwidget = new QWidget(tela_estoque);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         horizontalLayout = new QHBoxLayout(centralwidget);
@@ -421,6 +421,7 @@ public:
         lb_nome->setText(QApplication::translate("tela_estoque", "Nome:", 0, QApplication::UnicodeUTF8));
         cb_tipo->clear();
         cb_tipo->insertItems(0, QStringList()
+         << QApplication::translate("tela_estoque", "Todos", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("tela_estoque", "Acess\303\263rio", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("tela_estoque", "Cosm\303\251tico", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("tela_estoque", "Decora\303\247\303\243o", 0, QApplication::UnicodeUTF8)

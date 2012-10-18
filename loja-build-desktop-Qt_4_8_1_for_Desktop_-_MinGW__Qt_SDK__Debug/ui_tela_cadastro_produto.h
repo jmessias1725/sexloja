@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_cadastro_produto.ui'
 **
-** Created: Wed 17. Oct 18:50:34 2012
+** Created: Thu 18. Oct 10:05:18 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -57,6 +57,8 @@ public:
             tela_cadastro_produto->setObjectName(QString::fromUtf8("tela_cadastro_produto"));
         tela_cadastro_produto->setWindowModality(Qt::ApplicationModal);
         tela_cadastro_produto->resize(826, 275);
+        tela_cadastro_produto->setMinimumSize(QSize(826, 275));
+        tela_cadastro_produto->setMaximumSize(QSize(826, 275));
         gb_dados_produto = new QGroupBox(tela_cadastro_produto);
         gb_dados_produto->setObjectName(QString::fromUtf8("gb_dados_produto"));
         gb_dados_produto->setGeometry(QRect(5, 5, 816, 265));
