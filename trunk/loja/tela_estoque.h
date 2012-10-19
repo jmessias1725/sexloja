@@ -25,15 +25,19 @@ public:
     explicit tela_estoque(QWidget *parent = 0);
     ~tela_estoque();
     void definir_icone_janela(QPixmap logo);
-    void listar_produtos(void);
+    void buscar_produtos(void);
     
 private slots:
     void on_pushButton_clicked(void);
-    void definir_lista_produtos(void);
-
+    void mostrar_lista_produtos(void);
     void on_btn_adicionar_produto_clicked();
-
     void on_cb_tipo_currentIndexChanged(const QString &arg1);
+
+    void on_le_nome_textChanged(const QString &arg1);
+
+    void on_le_codigo_barras_textChanged(const QString &arg1);
+
+    void on_le_fabricante_textChanged(const QString &arg1);
 
 private:
     Ui::tela_estoque *ui;
@@ -42,6 +46,11 @@ private:
     tela_configurar_legenda_estoque tl_configurar_legenda_estoque;
     tela_cadastro_produto tl_cadastro_produto;
     legenda_estoque *legenda;
+    QString aux_cons_id_produto;
+    QString aux_cons_nome;
+    QString aux_cons_fabricante;
+    QString aux_cons_cod_barras;
+    QString aux_cons_tipo;
 };
 
 #endif // TELA_ESTOQUE_H
