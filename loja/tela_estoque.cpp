@@ -220,7 +220,6 @@ void tela_estoque::on_le_codigo_barras_textChanged(const QString &arg1)
             aux = aux.substr(0,(aux_cons_cod_barras.size()-2));
             aux_cons_cod_barras = QString::fromStdString(aux);
         }
-        std::cout<<aux_cons_cod_barras.toStdString()<<std::endl;
     }
     tela_estoque::mostrar_lista_produtos();
 }
