@@ -8,6 +8,11 @@ tela_estoque::tela_estoque(QWidget *parent) :
     ui->setupUi(this);
     ui->tw_legenda->setEditTriggers(QAbstractItemView::NoEditTriggers);
     legenda = new legenda_estoque();
+    aux_cons_id_produto = "";
+    aux_cons_nome = "";
+    aux_cons_fabricante = "";
+    aux_cons_cod_barras = "";
+    aux_cons_tipo = "";
 }
 
 tela_estoque::~tela_estoque()
@@ -20,7 +25,7 @@ void tela_estoque::definir_icone_janela(QPixmap logo){
     this->setWindowIcon(logomarca);
 }
 
-void tela_estoque::listar_produtos(void){
+void tela_estoque::buscar_produtos(void){
     conexao_bd conexao;
     bool verifica_conexao;
     QSqlDatabase bd;
@@ -54,7 +59,7 @@ void tela_estoque::listar_produtos(void){
         QSqlQuery consultar_valor(bd);
 
         //realiza a consulta
-        consultar.exec("SELECT * FROM produto GROUP BY nome");
+        consultar.exec("SELECT * FROM produto WHERE id_produto LIKE '%%' AND nome LIKE '%%' AND fabricante LIKE '%%' AND cod_barras  LIKE '%%' AND tipo LIKE '%%' GROUP BY nome;");
         while(consultar.next()){
             aux_id = consultar.value(0).toInt();
             aux_nome = consultar.value(1).toString();
@@ -86,29 +91,40 @@ void tela_estoque::listar_produtos(void){
 
         }
         consultar.clear();
-        tela_estoque::definir_lista_produtos();
+        tela_estoque::mostrar_lista_produtos();
     conexao.fechar_conexao();
     }
 }
 
-void tela_estoque::definir_lista_produtos(void){
+void tela_estoque::mostrar_lista_produtos(void){
     funcoes_extras funcao;
+    std::vector< produto* > aux_lista_produtos;
+    aux_lista_produtos.clear();
 
-    ui->tw_produtos->setRowCount(int(lista_produtos.size()));
+    for (int i=0;i<int(lista_produtos.size());i++){
+        if((lista_produtos[i]->retorna_tipo().contains(aux_cons_tipo))&&
+           (lista_produtos[i]->retorna_nome().contains(aux_cons_nome))&&
+           (lista_produtos[i]->retorna_fabricante().contains(aux_cons_fabricante))&&
+           (lista_produtos[i]->retorna_cod_barras().contains(aux_cons_cod_barras))){
+            aux_lista_produtos.push_back(lista_produtos[i]);
+        }
+    }
+
+    ui->tw_produtos->setRowCount(int(aux_lista_produtos.size()));
     ui->tw_produtos->setColumnCount(8);
     ui->tw_produtos->horizontalHeader()->setResizeMode(QHeaderView::Fixed);
     ui->tw_produtos->clear();
     ui->tw_produtos->setHorizontalHeaderLabels(QString("Tipo;Código;Nome;Fabricante;Quantidade;Valor de compra;Valor de venda;Código de barras").split(";"));
 
-    for (int i=0;i<int(lista_produtos.size());i++){
-        ui->tw_produtos->setItem(i,0,new QTableWidgetItem(lista_produtos[i]->retorna_tipo()));
-        ui->tw_produtos->setItem(i,1,new QTableWidgetItem(QString::number(lista_produtos[i]->retorna_id())));
-        ui->tw_produtos->setItem(i,2,new QTableWidgetItem(lista_produtos[i]->retorna_nome()));
-        ui->tw_produtos->setItem(i,3,new QTableWidgetItem(lista_produtos[i]->retorna_fabricante()));
-        ui->tw_produtos->setItem(i,4,new QTableWidgetItem(QString::number(lista_produtos[i]->retorna_quant_disponivel())));
-        ui->tw_produtos->setItem(i,5,new QTableWidgetItem(funcao.retorna_valor_dinheiro(QString::number(lista_produtos[i]->retorna_valor_compra()))));
-        ui->tw_produtos->setItem(i,6,new QTableWidgetItem(funcao.retorna_valor_dinheiro(QString::number(lista_produtos[i]->retorna_valor_venda()))));
-        ui->tw_produtos->setItem(i,7,new QTableWidgetItem(lista_produtos[i]->retorna_cod_barras()));
+    for (int i=0;i<int(aux_lista_produtos.size());i++){
+        ui->tw_produtos->setItem(i,0,new QTableWidgetItem(aux_lista_produtos[i]->retorna_tipo()));
+        ui->tw_produtos->setItem(i,1,new QTableWidgetItem(QString::number(aux_lista_produtos[i]->retorna_id())));
+        ui->tw_produtos->setItem(i,2,new QTableWidgetItem(aux_lista_produtos[i]->retorna_nome()));
+        ui->tw_produtos->setItem(i,3,new QTableWidgetItem(aux_lista_produtos[i]->retorna_fabricante()));
+        ui->tw_produtos->setItem(i,4,new QTableWidgetItem(QString::number(aux_lista_produtos[i]->retorna_quant_disponivel())));
+        ui->tw_produtos->setItem(i,5,new QTableWidgetItem(funcao.retorna_valor_dinheiro(QString::number(aux_lista_produtos[i]->retorna_valor_compra()))));
+        ui->tw_produtos->setItem(i,6,new QTableWidgetItem(funcao.retorna_valor_dinheiro(QString::number(aux_lista_produtos[i]->retorna_valor_venda()))));
+        ui->tw_produtos->setItem(i,7,new QTableWidgetItem(aux_lista_produtos[i]->retorna_cod_barras()));
         ui->tw_produtos->item(i,0)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_produtos->item(i,1)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_produtos->item(i,2)->setTextAlignment(Qt::AlignHCenter);
@@ -117,22 +133,22 @@ void tela_estoque::definir_lista_produtos(void){
         ui->tw_produtos->item(i,5)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_produtos->item(i,6)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_produtos->item(i,7)->setTextAlignment(Qt::AlignHCenter);
-        if ((lista_produtos[i]->retorna_quant_disponivel())==legenda->retorna_zerado_valor()){
+        if ((aux_lista_produtos[i]->retorna_quant_disponivel())==legenda->retorna_zerado_valor()){
             for(int j=0;j<8;j++){
                 ui->tw_produtos->item(i,j)->setBackgroundColor(QColor::fromRgb(legenda->retorna_z_cor_vermelho(),legenda->retorna_z_cor_verde(),legenda->retorna_z_cor_azul(),255));
             }
         }
-        if (((lista_produtos[i]->retorna_quant_disponivel()) > legenda->retorna_zerado_valor()) && ((lista_produtos[i]->retorna_quant_disponivel() )<= legenda->retorna_minimo_valor())){
+        if (((aux_lista_produtos[i]->retorna_quant_disponivel()) > legenda->retorna_zerado_valor()) && ((aux_lista_produtos[i]->retorna_quant_disponivel() )<= legenda->retorna_minimo_valor())){
             for(int j=0;j<8;j++){
                 ui->tw_produtos->item(i,j)->setBackgroundColor(QColor::fromRgb(legenda->retorna_m_cor_vermelho(),legenda->retorna_m_cor_verde(),legenda->retorna_m_cor_azul(),255));
             }
         }
-        if (((lista_produtos[i]->retorna_quant_disponivel())>legenda->retorna_minimo_valor())&&((lista_produtos[i]->retorna_quant_disponivel())<=legenda->retorna_normal_valor())){
+        if (((aux_lista_produtos[i]->retorna_quant_disponivel())>legenda->retorna_minimo_valor())&&((aux_lista_produtos[i]->retorna_quant_disponivel())<=legenda->retorna_normal_valor())){
             for(int j=0;j<8;j++){
                 ui->tw_produtos->item(i,j)->setBackgroundColor(QColor::fromRgb(legenda->retorna_n_cor_vermelho(),legenda->retorna_n_cor_verde(),legenda->retorna_n_cor_azul(),255));
             }
         }
-        if ((lista_produtos[i]->retorna_quant_disponivel())>=legenda->retorna_ideal_valor()){
+        if ((aux_lista_produtos[i]->retorna_quant_disponivel())>=legenda->retorna_ideal_valor()){
             for(int j=0;j<8;j++){
                 ui->tw_produtos->item(i,j)->setBackgroundColor(QColor::fromRgb(legenda->retorna_i_cor_vermelho(),legenda->retorna_i_cor_verde(),legenda->retorna_i_cor_azul(),255));
             }
@@ -160,7 +176,7 @@ void tela_estoque::on_pushButton_clicked()
     tl_configurar_legenda_estoque.configuracao_legenda(legenda);
     if(tl_configurar_legenda_estoque.exec()<=0){
         legenda = tl_configurar_legenda_estoque.retorna_nova_configuracao();
-        tela_estoque::definir_lista_produtos();
+        tela_estoque::mostrar_lista_produtos();
     }
 }
 
@@ -168,11 +184,50 @@ void tela_estoque::on_btn_adicionar_produto_clicked()
 {
     tl_cadastro_produto.definir_icone_janela(logomarca);
     if(tl_cadastro_produto.exec()<=0){
-        listar_produtos();
+        buscar_produtos();
     }
 }
 
 void tela_estoque::on_cb_tipo_currentIndexChanged(const QString &arg1)
 {
-    std::cout<<arg1.toStdString()<<std::endl;
+    if(arg1.toStdString() == "Todos")
+    {
+        aux_cons_tipo = "";
+    }
+    else{
+        aux_cons_tipo = arg1;
+    }
+    tela_estoque::mostrar_lista_produtos();
+}
+
+void tela_estoque::on_le_nome_textChanged(const QString &arg1)
+{
+    ui->le_nome->setText(ui->le_nome->text().toUpper());
+    aux_cons_nome = ui->le_nome->text();
+    tela_estoque::mostrar_lista_produtos();
+}
+
+void tela_estoque::on_le_codigo_barras_textChanged(const QString &arg1)
+{
+    std::string aux;
+    if(arg1.toStdString() == "  "){
+        aux_cons_cod_barras = "";
+    }
+    else{
+        aux_cons_cod_barras = arg1;
+        if(int(aux_cons_cod_barras.size())<9){
+            aux = aux_cons_cod_barras.toStdString();
+            aux = aux.substr(0,(aux_cons_cod_barras.size()-2));
+            aux_cons_cod_barras = QString::fromStdString(aux);
+        }
+        std::cout<<aux_cons_cod_barras.toStdString()<<std::endl;
+    }
+    tela_estoque::mostrar_lista_produtos();
+}
+
+void tela_estoque::on_le_fabricante_textChanged(const QString &arg1)
+{
+    ui->le_fabricante->setText(ui->le_fabricante->text().toUpper());
+    aux_cons_fabricante = ui->le_fabricante->text();
+    tela_estoque::mostrar_lista_produtos();
 }

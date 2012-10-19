@@ -60,3 +60,5 @@ numero = :numero_residencia,
 estado = :nome_estado , 
 logomarca = :logomarca , 
 extensao = :formato_logo
+
+SELECT * FROM produto WHERE id_produto LIKE '%%' AND nome LIKE '%%' AND fabricante LIKE '%%' AND cod_barras  LIKE '%%' AND tipo LIKE '%%' GROUP BY nome;

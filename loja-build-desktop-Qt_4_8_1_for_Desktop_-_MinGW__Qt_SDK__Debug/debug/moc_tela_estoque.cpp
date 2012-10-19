@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_estoque.h'
 **
-** Created: Thu 18. Oct 10:27:22 2012
+** Created: Fri 19. Oct 11:01:28 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_tela_estoque[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -35,15 +35,21 @@ static const uint qt_meta_data_tela_estoque[] = {
       38,   13,   13,   13, 0x08,
       63,   13,   13,   13, 0x08,
      103,   98,   13,   13, 0x08,
+     143,   98,   13,   13, 0x08,
+     175,   98,   13,   13, 0x08,
+     216,   98,   13,   13, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_tela_estoque[] = {
     "tela_estoque\0\0on_pushButton_clicked()\0"
-    "definir_lista_produtos()\0"
+    "mostrar_lista_produtos()\0"
     "on_btn_adicionar_produto_clicked()\0"
     "arg1\0on_cb_tipo_currentIndexChanged(QString)\0"
+    "on_le_nome_textChanged(QString)\0"
+    "on_le_codigo_barras_textChanged(QString)\0"
+    "on_le_fabricante_textChanged(QString)\0"
 };
 
 void tela_estoque::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -53,9 +59,12 @@ void tela_estoque::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         tela_estoque *_t = static_cast<tela_estoque *>(_o);
         switch (_id) {
         case 0: _t->on_pushButton_clicked(); break;
-        case 1: _t->definir_lista_produtos(); break;
+        case 1: _t->mostrar_lista_produtos(); break;
         case 2: _t->on_btn_adicionar_produto_clicked(); break;
         case 3: _t->on_cb_tipo_currentIndexChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 4: _t->on_le_nome_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 5: _t->on_le_codigo_barras_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 6: _t->on_le_fabricante_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -93,9 +102,9 @@ int tela_estoque::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 7;
     }
     return _id;
 }
