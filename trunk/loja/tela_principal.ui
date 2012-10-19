@@ -39,7 +39,7 @@
      <x>0</x>
      <y>0</y>
      <width>1024</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuArquivo">
@@ -120,7 +120,7 @@
    <addaction name="consultar_caixa"/>
    <addaction name="consultar_clientes"/>
    <addaction name="consultar_fornecedores"/>
-   <addaction name="consultar_estoque"/>
+   <addaction name="Estoque"/>
   </widget>
   <action name="consultar_clientes">
    <property name="icon">
@@ -147,15 +147,6 @@
    </property>
    <property name="text">
     <string>Buscar Forncedores</string>
-   </property>
-  </action>
-  <action name="consultar_estoque">
-   <property name="icon">
-    <iconset resource="imagens.qrc">
-     <normaloff>:/img/img/estoque2.png</normaloff>:/img/img/estoque2.png</iconset>
-   </property>
-   <property name="text">
-    <string>Estoque</string>
    </property>
   </action>
   <action name="cadastrar_forncecedor">
@@ -186,8 +177,8 @@
    </property>
    <property name="font">
     <font>
-     <family>Calibri</family>
-     <pointsize>10</pointsize>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>8</pointsize>
     </font>
    </property>
   </action>
@@ -236,15 +227,6 @@
     <string>Buscar Fornecedores</string>
    </property>
   </action>
-  <action name="buscar_estoque">
-   <property name="icon">
-    <iconset resource="imagens.qrc">
-     <normaloff>:/img/img/estoque2.png</normaloff>:/img/img/estoque2.png</iconset>
-   </property>
-   <property name="text">
-    <string>Estoque</string>
-   </property>
-  </action>
   <action name="Cadastro_da_Loja">
    <property name="icon">
     <iconset resource="imagens.qrc">
@@ -257,7 +239,7 @@
   <action name="Estoque">
    <property name="icon">
     <iconset resource="imagens.qrc">
-     <normaloff>:/img/img/estoque2.png</normaloff>:/img/img/estoque2.png</iconset>
+     <normaloff>:/img/img/estoque.png</normaloff>:/img/img/estoque.png</iconset>
    </property>
    <property name="text">
     <string>Estoque</string>

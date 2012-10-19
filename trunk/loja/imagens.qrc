@@ -9,11 +9,9 @@
         <file>img/1345902747_button_cancel.png</file>
         <file>img/Usuario.png</file>
         <file>img/Cash_register_Icon_256.png</file>
-        <file>img/estoque.png</file>
         <file>img/fornecedor.png</file>
         <file>img/caixa.png</file>
         <file>img/sair.png</file>
-        <file>img/estoque2.png</file>
         <file>img/adiciona_clientes.png</file>
         <file>img/cadastrar_fornecedor.png</file>
         <file>img/cadastrar_produto.png</file>
@@ -51,6 +49,7 @@
         <file>img/estoque_reajuste.png</file>
         <file>img/reset.png</file>
         <file>img/perguntar.png</file>
+        <file>img/estoque.png</file>
     </qresource>
     <qresource prefix="/operadoras">
         <file>img/claro.png</file>
