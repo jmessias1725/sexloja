@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_produto.ui'
 **
-** Created: Sat 20. Oct 16:41:10 2012
+** Created: Mon 22. Oct 14:10:07 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -60,10 +60,13 @@ public:
             tela_produto->setObjectName(QString::fromUtf8("tela_produto"));
         tela_produto->setWindowModality(Qt::ApplicationModal);
         tela_produto->resize(826, 295);
+        tela_produto->setMinimumSize(QSize(826, 295));
+        tela_produto->setMaximumSize(QSize(826, 295));
         tela_produto->setModal(true);
         gb_dados_produto = new QGroupBox(tela_produto);
         gb_dados_produto->setObjectName(QString::fromUtf8("gb_dados_produto"));
         gb_dados_produto->setGeometry(QRect(5, 55, 816, 235));
+        gb_dados_produto->setMaximumSize(QSize(816, 235));
         QFont font;
         font.setFamily(QString::fromUtf8("Calibri"));
         font.setPointSize(10);
@@ -184,27 +187,6 @@ public:
         lb_codigo->setObjectName(QString::fromUtf8("lb_codigo"));
         lb_codigo->setGeometry(QRect(5, 20, 42, 20));
         lb_codigo->setFont(font2);
-        lb_nome->raise();
-        le_nome->raise();
-        le_fabricante->raise();
-        lb_fabricante->raise();
-        lb_codigo_barras->raise();
-        le_codigo_barras->raise();
-        le_quantidade->raise();
-        lb_quantidade->raise();
-        te_des_utilizacao->raise();
-        lb_comentario->raise();
-        gv_imagem_produto->raise();
-        lb_tipo->raise();
-        lb_valorvenda->raise();
-        lb_valor_compra->raise();
-        le_valor_venda->raise();
-        le_valor_compra->raise();
-        le_tipo->raise();
-        lb_codigo->raise();
-        le_codigo->raise();
-        le_codigo->raise();
-        lb_codigo->raise();
         frame = new QFrame(tela_produto);
         frame->setObjectName(QString::fromUtf8("frame"));
         frame->setGeometry(QRect(0, 0, 826, 50));

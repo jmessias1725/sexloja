@@ -521,3 +521,77 @@ float funcoes_extras::converter_para_float(QString numero){
     numero.replace("$","");
     return numero.toFloat();
 }
+
+int funcoes_extras::retorna_id_tipo(std::string tipo){
+    if(tipo == "Acessório"){
+        return 0;
+    }
+    else{
+    if(tipo == "Cosmético"){
+        return 1;
+    }
+    else{
+    if(tipo == "Decoração"){
+        return 2;
+    }
+    else{
+    if(tipo == "Estimulante"){
+        return 3;
+    }
+    else{
+    if(tipo == "Fetish"){
+        return 4;
+    }
+    else{
+    if(tipo == "Gel"){
+        return 5;
+    }
+    else{
+    if(tipo == "Higiene"){
+        return 6;
+    }
+    else{
+    if(tipo == "Jogo"){
+        return 7;
+    }
+    else{
+    if(tipo == "Kit"){
+        return 8;
+    }
+    else{
+    if(tipo == "Lubrificante"){
+        return 9;
+    }
+    else{
+    if(tipo == "Perfumaria"){
+        return 10;
+    }
+    else{
+    if(tipo == "Preservativo"){
+        return 11;
+    }
+    else{
+    if(tipo == "Prótese"){
+        return 12;
+    }
+    else{
+    if(tipo == "Vestuário"){
+        return 13;
+    }
+    else{
+        return 14;
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+}

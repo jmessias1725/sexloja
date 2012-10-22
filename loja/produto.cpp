@@ -187,7 +187,7 @@ bool produto::salvar_dados_produto(void){
     }
 }
 
-bool produto::salvar_alteracao_dados_produto(void){
+bool produto::salvar_alteracao_dados_produto(bool alterou_imgem){
     conexao_bd conexao;
     bool verifica_conexao;
     QSqlDatabase bd;
@@ -206,6 +206,26 @@ bool produto::salvar_alteracao_dados_produto(void){
         //Declara as variáves que irão inserir os dados no banco de dados.
         QSqlQuery alterar_dados_produto(bd);
         QSqlQuery alterar_dados_imagem(bd);
+        QSqlQuery salvar_dados_imagem(bd);
+
+        if (alterou_imgem){
+            //realiza a consulta para determinar  o id da imagem.
+            consultar_imagem.exec("SELECT id_imagem FROM imagem");
+            if(consultar_imagem.last()){
+                id_imagem = consultar_imagem.value(0).toInt();
+            }
+
+            //Insere os dados no cadastro de imagem
+            salvar_dados_imagem.prepare("INSERT INTO imagem(imagem,extensao) VALUES(:imagem, :extensao);");
+            salvar_dados_imagem.bindValue(":imagem", vetor_bytes_imagem);
+            salvar_dados_imagem.bindValue(":extensao",QString::fromStdString(extensao));
+            salvar_dados_imagem.exec();
+
+
+        }
+        else{
+            id_imagem = 1;
+        }
 
         if (nome_imagem.toStdString()!=":/img/img/produto.png"){
             campos = "imagem=:imagem, extensao=:extensao";

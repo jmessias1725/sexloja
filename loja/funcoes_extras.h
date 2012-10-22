@@ -18,6 +18,7 @@ public:
     const char* retorna_extensao_arquivo(QString nome_arquivo);
     QString retorna_valor_dinheiro(QString valor);
     float converter_para_float(QString numero);
+    int retorna_id_tipo(std::string tipo);
 };
 
 #endif // FUNCOES_EXTRAS_H
