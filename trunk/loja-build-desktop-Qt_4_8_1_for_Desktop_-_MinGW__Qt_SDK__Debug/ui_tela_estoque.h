@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_estoque.ui'
 **
-** Created: Thu 18. Oct 10:03:59 2012
+** Created: Sat 20. Oct 17:11:45 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -61,7 +61,7 @@ public:
     QGroupBox *gb_clientes;
     QVBoxLayout *verticalLayout;
     QTableWidget *tw_produtos;
-    QStatusBar *statusbar;
+    QStatusBar *barra_de_status;
 
     void setupUi(QMainWindow *tela_estoque)
     {
@@ -371,9 +371,11 @@ public:
         horizontalLayout->addLayout(verticalLayout_2);
 
         tela_estoque->setCentralWidget(centralwidget);
-        statusbar = new QStatusBar(tela_estoque);
-        statusbar->setObjectName(QString::fromUtf8("statusbar"));
-        tela_estoque->setStatusBar(statusbar);
+        barra_de_status = new QStatusBar(tela_estoque);
+        barra_de_status->setObjectName(QString::fromUtf8("barra_de_status"));
+        barra_de_status->setFont(font7);
+        barra_de_status->setLayoutDirection(Qt::RightToLeft);
+        tela_estoque->setStatusBar(barra_de_status);
         QWidget::setTabOrder(cb_tipo, le_nome);
         QWidget::setTabOrder(le_nome, le_codigo_barras);
         QWidget::setTabOrder(le_codigo_barras, le_fabricante);
@@ -441,6 +443,9 @@ public:
         lb_codigo_barras->setText(QApplication::translate("tela_estoque", "C\303\263digo de Barras:", 0, QApplication::UnicodeUTF8));
         btn_limpar->setText(QApplication::translate("tela_estoque", "Limpar", 0, QApplication::UnicodeUTF8));
         gb_clientes->setTitle(QApplication::translate("tela_estoque", "Lista de Produtos", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_ACCESSIBILITY
+        barra_de_status->setAccessibleDescription(QString());
+#endif // QT_NO_ACCESSIBILITY
     } // retranslateUi
 
 };

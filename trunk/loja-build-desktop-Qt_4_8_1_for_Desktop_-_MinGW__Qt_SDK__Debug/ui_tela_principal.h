@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_principal.ui'
 **
-** Created: Thu 18. Oct 08:23:35 2012
+** Created: Sat 20. Oct 15:24:20 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -30,7 +30,6 @@ public:
     QAction *consultar_clientes;
     QAction *consultar_caixa;
     QAction *consultar_fornecedores;
-    QAction *consultar_estoque;
     QAction *cadastrar_forncecedor;
     QAction *cadastrar_produto;
     QAction *realizar_venda;
@@ -39,7 +38,6 @@ public:
     QAction *buscar_clientes;
     QAction *buscar_produtos;
     QAction *buscar_fornecedores;
-    QAction *buscar_estoque;
     QAction *Cadastro_da_Loja;
     QAction *Estoque;
     QWidget *centralwidget;
@@ -79,68 +77,62 @@ public:
         QIcon icon3;
         icon3.addFile(QString::fromUtf8(":/img/img/fornecedor_buscar.png"), QSize(), QIcon::Normal, QIcon::Off);
         consultar_fornecedores->setIcon(icon3);
-        consultar_estoque = new QAction(tela_principal);
-        consultar_estoque->setObjectName(QString::fromUtf8("consultar_estoque"));
-        QIcon icon4;
-        icon4.addFile(QString::fromUtf8(":/img/img/estoque2.png"), QSize(), QIcon::Normal, QIcon::Off);
-        consultar_estoque->setIcon(icon4);
         cadastrar_forncecedor = new QAction(tela_principal);
         cadastrar_forncecedor->setObjectName(QString::fromUtf8("cadastrar_forncecedor"));
-        QIcon icon5;
-        icon5.addFile(QString::fromUtf8(":/img/img/cadastrar_fornecedor.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cadastrar_forncecedor->setIcon(icon5);
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/img/img/cadastrar_fornecedor.png"), QSize(), QIcon::Normal, QIcon::Off);
+        cadastrar_forncecedor->setIcon(icon4);
         cadastrar_produto = new QAction(tela_principal);
         cadastrar_produto->setObjectName(QString::fromUtf8("cadastrar_produto"));
-        QIcon icon6;
-        icon6.addFile(QString::fromUtf8(":/img/img/cadastrar_produto.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cadastrar_produto->setIcon(icon6);
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8(":/img/img/cadastrar_produto.png"), QSize(), QIcon::Normal, QIcon::Off);
+        cadastrar_produto->setIcon(icon5);
         realizar_venda = new QAction(tela_principal);
         realizar_venda->setObjectName(QString::fromUtf8("realizar_venda"));
-        QIcon icon7;
-        icon7.addFile(QString::fromUtf8(":/img/img/vender.png"), QSize(), QIcon::Normal, QIcon::Off);
-        realizar_venda->setIcon(icon7);
+        QIcon icon6;
+        icon6.addFile(QString::fromUtf8(":/img/img/vender.png"), QSize(), QIcon::Normal, QIcon::Off);
+        realizar_venda->setIcon(icon6);
         QFont font;
-        font.setFamily(QString::fromUtf8("Calibri"));
-        font.setPointSize(10);
+        font.setFamily(QString::fromUtf8("MS Shell Dlg 2"));
+        font.setPointSize(8);
         realizar_venda->setFont(font);
         Cadastrar_cliente = new QAction(tela_principal);
         Cadastrar_cliente->setObjectName(QString::fromUtf8("Cadastrar_cliente"));
-        QIcon icon8;
-        icon8.addFile(QString::fromUtf8(":/img/img/adiciona_clientes.png"), QSize(), QIcon::Normal, QIcon::Off);
-        Cadastrar_cliente->setIcon(icon8);
+        QIcon icon7;
+        icon7.addFile(QString::fromUtf8(":/img/img/adiciona_clientes.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Cadastrar_cliente->setIcon(icon7);
         botao_sair = new QAction(tela_principal);
         botao_sair->setObjectName(QString::fromUtf8("botao_sair"));
-        QIcon icon9;
-        icon9.addFile(QString::fromUtf8(":/img/img/sair.png"), QSize(), QIcon::Normal, QIcon::Off);
-        botao_sair->setIcon(icon9);
+        QIcon icon8;
+        icon8.addFile(QString::fromUtf8(":/img/img/sair.png"), QSize(), QIcon::Normal, QIcon::Off);
+        botao_sair->setIcon(icon8);
         buscar_clientes = new QAction(tela_principal);
         buscar_clientes->setObjectName(QString::fromUtf8("buscar_clientes"));
         buscar_clientes->setIcon(icon1);
         buscar_produtos = new QAction(tela_principal);
         buscar_produtos->setObjectName(QString::fromUtf8("buscar_produtos"));
-        QIcon icon10;
-        icon10.addFile(QString::fromUtf8(":/img/img/produto.png"), QSize(), QIcon::Normal, QIcon::Off);
-        buscar_produtos->setIcon(icon10);
+        QIcon icon9;
+        icon9.addFile(QString::fromUtf8(":/img/img/produto.png"), QSize(), QIcon::Normal, QIcon::Off);
+        buscar_produtos->setIcon(icon9);
         buscar_fornecedores = new QAction(tela_principal);
         buscar_fornecedores->setObjectName(QString::fromUtf8("buscar_fornecedores"));
         buscar_fornecedores->setIcon(icon3);
-        buscar_estoque = new QAction(tela_principal);
-        buscar_estoque->setObjectName(QString::fromUtf8("buscar_estoque"));
-        buscar_estoque->setIcon(icon4);
         Cadastro_da_Loja = new QAction(tela_principal);
         Cadastro_da_Loja->setObjectName(QString::fromUtf8("Cadastro_da_Loja"));
-        QIcon icon11;
-        icon11.addFile(QString::fromUtf8(":/img/img/loja.png"), QSize(), QIcon::Normal, QIcon::Off);
-        Cadastro_da_Loja->setIcon(icon11);
+        QIcon icon10;
+        icon10.addFile(QString::fromUtf8(":/img/img/loja.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Cadastro_da_Loja->setIcon(icon10);
         Estoque = new QAction(tela_principal);
         Estoque->setObjectName(QString::fromUtf8("Estoque"));
-        Estoque->setIcon(icon4);
+        QIcon icon11;
+        icon11.addFile(QString::fromUtf8(":/img/img/estoque.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Estoque->setIcon(icon11);
         centralwidget = new QWidget(tela_principal);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         tela_principal->setCentralWidget(centralwidget);
         menubar = new QMenuBar(tela_principal);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1024, 21));
+        menubar->setGeometry(QRect(0, 0, 1024, 20));
         menuArquivo = new QMenu(menubar);
         menuArquivo->setObjectName(QString::fromUtf8("menuArquivo"));
         menuNovo = new QMenu(menuArquivo);
@@ -190,7 +182,7 @@ public:
         barra_de_menus->addAction(consultar_caixa);
         barra_de_menus->addAction(consultar_clientes);
         barra_de_menus->addAction(consultar_fornecedores);
-        barra_de_menus->addAction(consultar_estoque);
+        barra_de_menus->addAction(Estoque);
 
         retranslateUi(tela_principal);
 
@@ -203,7 +195,6 @@ public:
         consultar_clientes->setText(QApplication::translate("tela_principal", "Buscar Clientes", 0, QApplication::UnicodeUTF8));
         consultar_caixa->setText(QApplication::translate("tela_principal", "Caixa", 0, QApplication::UnicodeUTF8));
         consultar_fornecedores->setText(QApplication::translate("tela_principal", "Buscar Forncedores", 0, QApplication::UnicodeUTF8));
-        consultar_estoque->setText(QApplication::translate("tela_principal", "Estoque", 0, QApplication::UnicodeUTF8));
         cadastrar_forncecedor->setText(QApplication::translate("tela_principal", "Fornecedor", 0, QApplication::UnicodeUTF8));
         cadastrar_produto->setText(QApplication::translate("tela_principal", "Produto", 0, QApplication::UnicodeUTF8));
         realizar_venda->setText(QApplication::translate("tela_principal", "Venda", 0, QApplication::UnicodeUTF8));
@@ -212,7 +203,6 @@ public:
         buscar_clientes->setText(QApplication::translate("tela_principal", "Buscar Clientes", 0, QApplication::UnicodeUTF8));
         buscar_produtos->setText(QApplication::translate("tela_principal", "Produtos", 0, QApplication::UnicodeUTF8));
         buscar_fornecedores->setText(QApplication::translate("tela_principal", "Buscar Fornecedores", 0, QApplication::UnicodeUTF8));
-        buscar_estoque->setText(QApplication::translate("tela_principal", "Estoque", 0, QApplication::UnicodeUTF8));
         Cadastro_da_Loja->setText(QApplication::translate("tela_principal", "Cadastro da Loja", 0, QApplication::UnicodeUTF8));
         Estoque->setText(QApplication::translate("tela_principal", "Estoque", 0, QApplication::UnicodeUTF8));
         menuArquivo->setTitle(QApplication::translate("tela_principal", "Arquivo", 0, QApplication::UnicodeUTF8));
