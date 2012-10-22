@@ -12,6 +12,7 @@
 #include "legenda_estoque.h"
 #include "tela_configurar_legenda_estoque.h"
 #include "tela_cadastro_produto.h"
+#include "tela_produto.h"
 
 namespace Ui {
 class tela_estoque;
@@ -32,16 +33,17 @@ private slots:
     void mostrar_lista_produtos(void);
     void on_btn_adicionar_produto_clicked();
     void on_cb_tipo_currentIndexChanged(const QString &arg1);
-
     void on_le_nome_textChanged(const QString &arg1);
-
     void on_le_codigo_barras_textChanged(const QString &arg1);
-
     void on_le_fabricante_textChanged(const QString &arg1);
+    void on_tw_produtos_doubleClicked(const QModelIndex &index);
+
+    void on_btn_limpar_clicked();
 
 private:
     Ui::tela_estoque *ui;
     QPixmap logomarca;
+    tela_produto tl_produto;
     std::vector< produto* > lista_produtos;
     tela_configurar_legenda_estoque tl_configurar_legenda_estoque;
     tela_cadastro_produto tl_cadastro_produto;
@@ -51,6 +53,7 @@ private:
     QString aux_cons_fabricante;
     QString aux_cons_cod_barras;
     QString aux_cons_tipo;
+    std::vector< produto* > aux_lista_produtos;
 };
 
 #endif // TELA_ESTOQUE_H

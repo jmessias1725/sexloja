@@ -50,6 +50,10 @@
         <file>img/reset.png</file>
         <file>img/perguntar.png</file>
         <file>img/estoque.png</file>
+        <file>img/produto_cadastrar.png</file>
+        <file>img/produto_editar.png</file>
+        <file>img/produto_pergunta_50.png</file>
+        <file>img/produto_remover.png</file>
     </qresource>
     <qresource prefix="/operadoras">
         <file>img/claro.png</file>

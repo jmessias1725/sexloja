@@ -98,7 +98,6 @@ void tela_estoque::buscar_produtos(void){
 
 void tela_estoque::mostrar_lista_produtos(void){
     funcoes_extras funcao;
-    std::vector< produto* > aux_lista_produtos;
     aux_lista_produtos.clear();
 
     for (int i=0;i<int(lista_produtos.size());i++){
@@ -168,6 +167,7 @@ void tela_estoque::mostrar_lista_produtos(void){
     ui->tw_produtos->resizeColumnToContents(5);
     ui->tw_produtos->resizeColumnToContents(6);
     ui->tw_produtos->resizeColumnToContents(7);
+    ui->barra_de_status->showMessage("Total de produtos = "+QString::number(int(lista_produtos.size())));
 }
 
 void tela_estoque::on_pushButton_clicked()
@@ -229,4 +229,24 @@ void tela_estoque::on_le_fabricante_textChanged(const QString &arg1)
     ui->le_fabricante->setText(ui->le_fabricante->text().toUpper());
     aux_cons_fabricante = ui->le_fabricante->text();
     tela_estoque::mostrar_lista_produtos();
+}
+
+void tela_estoque::on_tw_produtos_doubleClicked(const QModelIndex &index)
+{
+    int posicao_remover,i;
+    posicao_remover = -1;
+    i=0;
+
+    tl_produto.definir_icone_janela(logomarca);
+    tl_produto.definir_dados_produto(aux_lista_produtos[index.row()]);
+    aux_lista_produtos[index.row()] = tl_produto.retorna_novo_cadastro();
+    if(!tl_produto.exec()){
+
+    }
+    tela_estoque::mostrar_lista_produtos();
+}
+
+void tela_estoque::on_btn_limpar_clicked()
+{
+    ui->cb_tipo->setCurrentIndex(0);
 }

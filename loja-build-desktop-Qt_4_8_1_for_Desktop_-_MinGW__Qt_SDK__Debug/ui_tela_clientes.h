@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_clientes.ui'
 **
-** Created: Thu 18. Oct 08:23:36 2012
+** Created: Sat 20. Oct 16:41:10 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -50,6 +50,8 @@ public:
     QComboBox *cb_telefone;
     QTableView *tv_comentario_produtos;
     QLabel *lb_comentario_produtos;
+    QLineEdit *le_codigo_2;
+    QLabel *lb_codigo_2;
     QGroupBox *gb_endereo;
     QLineEdit *le_cep;
     QLabel *lb_cep;
@@ -219,6 +221,16 @@ public:
         lb_comentario_produtos->setObjectName(QString::fromUtf8("lb_comentario_produtos"));
         lb_comentario_produtos->setGeometry(QRect(400, 75, 191, 20));
         lb_comentario_produtos->setFont(font3);
+        le_codigo_2 = new QLineEdit(gb_dados_cliente);
+        le_codigo_2->setObjectName(QString::fromUtf8("le_codigo_2"));
+        le_codigo_2->setGeometry(QRect(153, 60, 70, 20));
+        le_codigo_2->setFont(font4);
+        le_codigo_2->setCursorPosition(9);
+        le_codigo_2->setReadOnly(true);
+        lb_codigo_2 = new QLabel(gb_dados_cliente);
+        lb_codigo_2->setObjectName(QString::fromUtf8("lb_codigo_2"));
+        lb_codigo_2->setGeometry(QRect(110, 60, 46, 20));
+        lb_codigo_2->setFont(font4);
         gb_endereo = new QGroupBox(tela_clientes);
         gb_endereo->setObjectName(QString::fromUtf8("gb_endereo"));
         gb_endereo->setGeometry(QRect(5, 225, 790, 192));
@@ -418,6 +430,9 @@ public:
         le_rg->setInputMask(QApplication::translate("tela_clientes", "00000000000000000000; ", 0, QApplication::UnicodeUTF8));
         le_rg->setText(QString());
         lb_comentario_produtos->setText(QApplication::translate("tela_clientes", "Lista de produtos mais comprados", 0, QApplication::UnicodeUTF8));
+        le_codigo_2->setInputMask(QApplication::translate("tela_clientes", "000000000; ", 0, QApplication::UnicodeUTF8));
+        le_codigo_2->setText(QString());
+        lb_codigo_2->setText(QApplication::translate("tela_clientes", "C\303\263digo:", 0, QApplication::UnicodeUTF8));
         gb_endereo->setTitle(QApplication::translate("tela_clientes", "Endere\303\247o", 0, QApplication::UnicodeUTF8));
         le_cep->setInputMask(QApplication::translate("tela_clientes", "00000-000; ", 0, QApplication::UnicodeUTF8));
         le_cep->setText(QApplication::translate("tela_clientes", "-", 0, QApplication::UnicodeUTF8));

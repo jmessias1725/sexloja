@@ -28,6 +28,7 @@ INPUT(
 ./release\tela_estoque.o
 ./release\tela_configurar_legenda_estoque.o
 ./release\legenda_estoque.o
+./release\tela_produto.o
 ./release\moc_tela_login.o
 ./release\moc_tela_principal.o
 ./release\moc_tela_cadastro_cliente.o
@@ -44,5 +45,6 @@ INPUT(
 ./release\moc_tela_cadastro_produto.o
 ./release\moc_tela_estoque.o
 ./release\moc_tela_configurar_legenda_estoque.o
+./release\moc_tela_produto.o
 ./release\qrc_imagens.o
 );

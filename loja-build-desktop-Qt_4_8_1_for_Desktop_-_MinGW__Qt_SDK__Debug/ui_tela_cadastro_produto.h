@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_cadastro_produto.ui'
 **
-** Created: Thu 18. Oct 10:05:18 2012
+** Created: Sat 20. Oct 15:24:21 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
