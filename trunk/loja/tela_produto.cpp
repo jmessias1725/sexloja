@@ -67,3 +67,14 @@ void tela_produto::limpar_dados(void){
     ui->le_valor_venda->clear();
     ui->te_des_utilizacao->clear();
 }
+
+void tela_produto::on_btn_editar_produto_clicked()
+{
+    tl_editar_produto.definir_icone_janela(logomarca);
+    tl_editar_produto.definir_dados_produto(informacoes_produto);
+    if(!tl_editar_produto.exec()){
+        informacoes_produto = tl_editar_produto.retorna_novo_cadastro();
+        tela_produto::limpar_dados();
+        tela_produto::definir_dados_produto(informacoes_produto);
+    }
+}

@@ -13,6 +13,18 @@
     <height>295</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>826</width>
+    <height>295</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>826</width>
+    <height>295</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Produto</string>
   </property>
@@ -27,6 +39,12 @@
      <width>816</width>
      <height>235</height>
     </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>816</width>
+     <height>235</height>
+    </size>
    </property>
    <property name="font">
     <font>
@@ -517,27 +535,6 @@ p, li { white-space: pre-wrap; }
      <string>Código:</string>
     </property>
    </widget>
-   <zorder>lb_nome</zorder>
-   <zorder>le_nome</zorder>
-   <zorder>le_fabricante</zorder>
-   <zorder>lb_fabricante</zorder>
-   <zorder>lb_codigo_barras</zorder>
-   <zorder>le_codigo_barras</zorder>
-   <zorder>le_quantidade</zorder>
-   <zorder>lb_quantidade</zorder>
-   <zorder>te_des_utilizacao</zorder>
-   <zorder>lb_comentario</zorder>
-   <zorder>gv_imagem_produto</zorder>
-   <zorder>lb_tipo</zorder>
-   <zorder>lb_valorvenda</zorder>
-   <zorder>lb_valor_compra</zorder>
-   <zorder>le_valor_venda</zorder>
-   <zorder>le_valor_compra</zorder>
-   <zorder>le_tipo</zorder>
-   <zorder>lb_codigo</zorder>
-   <zorder>le_codigo</zorder>
-   <zorder>le_codigo</zorder>
-   <zorder>lb_codigo</zorder>
   </widget>
   <widget class="QFrame" name="frame">
    <property name="geometry">
