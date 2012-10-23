@@ -167,7 +167,7 @@ void tela_estoque::mostrar_lista_produtos(void){
     ui->tw_produtos->resizeColumnToContents(5);
     ui->tw_produtos->resizeColumnToContents(6);
     ui->tw_produtos->resizeColumnToContents(7);
-    ui->barra_de_status->showMessage("Total de produtos = "+QString::number(int(lista_produtos.size())));
+    ui->barra_de_status->showMessage("Total de produtos cadastrados = "+QString::number(int(lista_produtos.size())));
 }
 
 void tela_estoque::on_pushButton_clicked()
@@ -244,7 +244,6 @@ void tela_estoque::on_tw_produtos_doubleClicked(const QModelIndex &index)
 
     }
     tela_estoque::buscar_produtos();
-    tela_estoque::mostrar_lista_produtos();
 }
 
 void tela_estoque::on_btn_limpar_clicked()
@@ -252,3 +251,12 @@ void tela_estoque::on_btn_limpar_clicked()
     ui->cb_tipo->setCurrentIndex(0);
 }
 
+void tela_estoque::on_btn_restaurar_produto_clicked()
+{
+    tl_restaurar_produto.setWindowFlags(Qt::Window);
+    tl_restaurar_produto.definir_icone_janela(logomarca);
+    tl_restaurar_produto.buscar_produtos();
+    if(!tl_restaurar_produto.exec()){
+        tela_estoque::buscar_produtos();
+    }
+}
