@@ -15,6 +15,7 @@ produto::produto(int id_pro,QString nome_produto,QString fabricante_produto,QStr
     produto::cod_barras = cod_barras_produto;
     produto::tipo = tipo_produto;
     produto::id_imagem = id_imag;
+    removido = false;
 }
 
 produto::produto(QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
@@ -27,6 +28,7 @@ produto::produto(QString nome_produto,QString fabricante_produto,QString desc_ut
     quant_disponivel = quant_disponivel_produto;
     cod_barras = cod_barras_produto;
     tipo = tipo_produto;
+    removido = false;
 }
 
 void produto::definir_icone_janela(QPixmap logo){
@@ -207,37 +209,39 @@ bool produto::salvar_alteracao_dados_produto(bool alterou_imgem){
         QSqlQuery alterar_dados_produto(bd);
         QSqlQuery alterar_dados_imagem(bd);
         QSqlQuery salvar_dados_imagem(bd);
+        QSqlQuery consultar_imagem(bd);
 
-        if (alterou_imgem){
-            //realiza a consulta para determinar  o id da imagem.
-            consultar_imagem.exec("SELECT id_imagem FROM imagem");
-            if(consultar_imagem.last()){
-                id_imagem = consultar_imagem.value(0).toInt();
-            }
+        //realiza a consulta
+        consultar_imagem.exec("SELECT id_imagem FROM produto WHERE id_produto = "+QString::number(id_produto)+ ";");
+        if(consultar_imagem.last()){
+            id_imagem = consultar_imagem.value(0).toInt();
+        }
+        consultar_imagem.clear();
 
+
+        if ((id_imagem == 1)&&(alterou_imgem == true)&&(nome_imagem.toStdString()!=":/img/img/produto.png")){
             //Insere os dados no cadastro de imagem
             salvar_dados_imagem.prepare("INSERT INTO imagem(imagem,extensao) VALUES(:imagem, :extensao);");
             salvar_dados_imagem.bindValue(":imagem", vetor_bytes_imagem);
             salvar_dados_imagem.bindValue(":extensao",QString::fromStdString(extensao));
             salvar_dados_imagem.exec();
 
-
+            //realiza a consulta
+            consultar_imagem.exec("SELECT id_imagem FROM imagem;");
+            if(consultar_imagem.last()){
+                id_imagem = consultar_imagem.value(0).toInt();
+            }
         }
         else{
-            id_imagem = 1;
-        }
-
-        if (nome_imagem.toStdString()!=":/img/img/produto.png"){
-            campos = "imagem=:imagem, extensao=:extensao";
-
-            //Altera os dados no cadastro da imagem
-            alterar_dados_imagem.prepare("UPDATE imagem SET "+campos+" WHERE id_imagem = '"+QString::number(id_imagem)+"';");
-            alterar_dados_imagem.bindValue(":imagem", vetor_bytes_imagem);
-            alterar_dados_imagem.bindValue(":extensao",QString::fromStdString(extensao));
-            alterar_dados_imagem.exec();
-        }
-        else{
-            id_imagem = 1;
+            campos ="imagem=:imagem, extensao=:extensao";
+            if((alterou_imgem == true)&&(nome_imagem.toStdString()!=":/img/img/produto.png")){
+                //Altera os dados no cadastro da imagem
+                alterar_dados_imagem.prepare("UPDATE imagem SET "+campos+" WHERE id_imagem = '"+QString::number(id_imagem)+"';");
+                alterar_dados_imagem.bindValue(":imagem", vetor_bytes_imagem);
+                alterar_dados_imagem.bindValue(":extensao",QString::fromStdString(extensao));
+                alterar_dados_imagem.exec();
+            }
+            campos.clear();
         }
 
         campos = "nome=:nome, fabricante=:fabricante, desc_utilizacao=:desc_utilizacao, quant_disponivel=:quant_disponivel, cod_barras=:cod_barras, tipo=:tipo, id_imagem=:id_imagem";
@@ -288,6 +292,78 @@ bool produto::salvar_alteracao_dados_produto(bool alterou_imgem){
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
             msg.setText("\nNão foi possível alterar o cadastro do produto!!!!");
+            msg.exec();
+
+            //Fecha a conexão com o banco de dados
+            conexao.fechar_conexao();
+            return false;
+        }
+    }
+    else{
+        return false;
+    }
+}
+
+bool produto::remover_cadastro_produto(void){
+    conexao_bd conexao;
+    bool verifica_conexao;
+    QSqlDatabase bd;
+
+    //realiza conexão ao banco de dados
+    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
+
+    if (verifica_conexao){
+        //Retorna o banco de dados
+        bd = conexao.retorna_bd();
+
+        //Inicia a transaçao
+        bd.transaction();
+
+        removido = true;
+
+        //Declara as variáves que irão inserir os dados no banco de dados.
+        QSqlQuery remover_cadastro(bd);
+
+        //Alteras os dados no cadastro dos produtos
+        remover_cadastro.prepare("UPDATE produto SET removido=:removido WHERE id_produto = '"+QString::number(id)+"';");
+        remover_cadastro.bindValue("removido=:",removido);
+        remover_cadastro.exec();
+
+        //Verifica se os dados podem ser salvos, caso sim realiza o Commite, do contrário o Rollback.
+        if((remover_cadastro.lastError().number()<=0)){
+
+            //Finaliza a inserçao dos dados.
+            bd.commit();
+
+            //Gera mensagem de que tudo ocorreu direito.
+            QPixmap icone_janela(":img/img/arquivo_50.png");
+            QMessageBox msg(0);
+            msg.setIconPixmap(icone_janela);
+            msg.setWindowIcon(logomarca);
+            msg.setWindowTitle("Cadastro");
+            msg.addButton("OK", QMessageBox::AcceptRole);
+            msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+            msg.setText("\nCadastro removido com sucesso!!!!");
+            msg.exec();
+
+            //Fecha a conexão com o banco de dados
+            conexao.fechar_conexao();
+            return true;
+        }
+        else{
+
+            //Desfaz as alterações no banco de dados.
+            bd.rollback();
+
+            //Gera a mensagem de erro.
+            QPixmap icone_janela(":img/img/arquivo_erro_50.png");
+            QMessageBox msg(0);
+            msg.setIconPixmap(icone_janela);
+            msg.setWindowIcon(logomarca);
+            msg.setWindowTitle("Cadastro");
+            msg.addButton("OK", QMessageBox::AcceptRole);
+            msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+            msg.setText("\nNão foi possível remover o cadastro do produto!!!!");
             msg.exec();
 
             //Fecha a conexão com o banco de dados

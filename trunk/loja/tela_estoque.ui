@@ -114,6 +114,47 @@
           </widget>
          </item>
          <item>
+          <widget class="QToolButton" name="btn_restaurar_produto">
+           <property name="minimumSize">
+            <size>
+             <width>110</width>
+             <height>50</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>110</width>
+             <height>50</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Restaurar Produto</string>
+           </property>
+           <property name="icon">
+            <iconset resource="imagens.qrc">
+             <normaloff>:/img/img/produto_restaurar.png</normaloff>:/img/img/produto_restaurar.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QToolButton" name="btn_entrada_produto">
            <property name="minimumSize">
             <size>
@@ -227,7 +268,7 @@
            </property>
            <property name="iconSize">
             <size>
-             <width>30</width>
+             <width>40</width>
              <height>30</height>
             </size>
            </property>
@@ -247,7 +288,7 @@
            <property name="sizeHint" stdset="0">
             <size>
              <width>20</width>
-             <height>270</height>
+             <height>220</height>
             </size>
            </property>
           </spacer>
@@ -938,7 +979,7 @@
             <number>0</number>
            </property>
            <attribute name="horizontalHeaderVisible">
-            <bool>false</bool>
+            <bool>true</bool>
            </attribute>
            <attribute name="horizontalHeaderCascadingSectionResizes">
             <bool>false</bool>

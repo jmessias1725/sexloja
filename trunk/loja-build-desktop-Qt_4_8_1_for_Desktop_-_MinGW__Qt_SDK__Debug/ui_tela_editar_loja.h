@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_editar_loja.ui'
 **
-** Created: Mon 22. Oct 14:03:06 2012
+** Created: Mon 22. Oct 22:52:57 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -72,6 +72,8 @@ public:
             tela_editar_loja->setObjectName(QString::fromUtf8("tela_editar_loja"));
         tela_editar_loja->setWindowModality(Qt::ApplicationModal);
         tela_editar_loja->resize(800, 237);
+        tela_editar_loja->setMinimumSize(QSize(800, 237));
+        tela_editar_loja->setMaximumSize(QSize(800, 237));
         gb_dados_fornecedor = new QGroupBox(tela_editar_loja);
         gb_dados_fornecedor->setObjectName(QString::fromUtf8("gb_dados_fornecedor"));
         gb_dados_fornecedor->setGeometry(QRect(5, 4, 658, 111));

@@ -28,6 +28,10 @@ private slots:
     
     void on_btn_editar_produto_clicked();
 
+    void on_btn_adicionar_produto_clicked();
+
+    void on_btn_remover_produto_clicked();
+
 private:
     Ui::tela_produto *ui;
     tela_cadastro_produto tl_cadastro_produto;

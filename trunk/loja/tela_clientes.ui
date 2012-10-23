@@ -13,6 +13,12 @@
     <height>656</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>656</height>
+   </size>
+  </property>
   <property name="maximumSize">
    <size>
     <width>800</width>
@@ -544,53 +550,6 @@
     </property>
     <property name="text">
      <string>Lista de produtos mais comprados</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="le_codigo_2">
-    <property name="geometry">
-     <rect>
-      <x>153</x>
-      <y>60</y>
-      <width>70</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="inputMask">
-     <string>000000000; </string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="cursorPosition">
-     <number>9</number>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lb_codigo_2">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>60</y>
-      <width>46</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Código:</string>
     </property>
    </widget>
   </widget>

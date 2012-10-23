@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_login.ui'
 **
-** Created: Mon 22. Oct 14:03:06 2012
+** Created: Mon 22. Oct 22:52:57 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -45,6 +45,8 @@ public:
         if (tela_login->objectName().isEmpty())
             tela_login->setObjectName(QString::fromUtf8("tela_login"));
         tela_login->resize(208, 101);
+        tela_login->setMinimumSize(QSize(208, 101));
+        tela_login->setMaximumSize(QSize(208, 101));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/img/img/logo_sex.png"), QSize(), QIcon::Normal, QIcon::Off);
         tela_login->setWindowIcon(icon);

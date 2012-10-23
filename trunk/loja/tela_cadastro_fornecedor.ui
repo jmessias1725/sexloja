@@ -13,6 +13,18 @@
     <height>414</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>414</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>414</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Cadastrar novo Fornecedor</string>
   </property>

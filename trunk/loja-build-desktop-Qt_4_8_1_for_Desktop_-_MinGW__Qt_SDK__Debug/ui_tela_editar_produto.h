@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_editar_produto.ui'
 **
-** Created: Mon 22. Oct 16:16:15 2012
+** Created: Mon 22. Oct 22:52:58 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -56,6 +56,8 @@ public:
         if (tela_editar_produto->objectName().isEmpty())
             tela_editar_produto->setObjectName(QString::fromUtf8("tela_editar_produto"));
         tela_editar_produto->resize(826, 275);
+        tela_editar_produto->setMinimumSize(QSize(826, 275));
+        tela_editar_produto->setMaximumSize(QSize(826, 275));
         gb_dados_produto = new QGroupBox(tela_editar_produto);
         gb_dados_produto->setObjectName(QString::fromUtf8("gb_dados_produto"));
         gb_dados_produto->setGeometry(QRect(5, 5, 816, 265));
@@ -199,7 +201,7 @@ public:
 
     void retranslateUi(QDialog *tela_editar_produto)
     {
-        tela_editar_produto->setWindowTitle(QApplication::translate("tela_editar_produto", "Dialog", 0, QApplication::UnicodeUTF8));
+        tela_editar_produto->setWindowTitle(QApplication::translate("tela_editar_produto", "Editar Produto", 0, QApplication::UnicodeUTF8));
         gb_dados_produto->setTitle(QApplication::translate("tela_editar_produto", "Dados do produto", 0, QApplication::UnicodeUTF8));
         lb_nome->setText(QApplication::translate("tela_editar_produto", "Nome:", 0, QApplication::UnicodeUTF8));
         le_nome->setInputMask(QString());

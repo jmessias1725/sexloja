@@ -59,7 +59,7 @@ void tela_estoque::buscar_produtos(void){
         QSqlQuery consultar_valor(bd);
 
         //realiza a consulta
-        consultar.exec("SELECT * FROM produto WHERE id_produto LIKE '%%' AND nome LIKE '%%' AND fabricante LIKE '%%' AND cod_barras  LIKE '%%' AND tipo LIKE '%%' GROUP BY nome;");
+        consultar.exec("SELECT * FROM produto WHERE id_produto LIKE '%%' AND nome LIKE '%%' AND fabricante LIKE '%%' AND cod_barras  LIKE '%%' AND tipo LIKE '%%' AND removido=0 ORDER BY nome;");
         while(consultar.next()){
             aux_id = consultar.value(0).toInt();
             aux_nome = consultar.value(1).toString();
@@ -243,6 +243,7 @@ void tela_estoque::on_tw_produtos_doubleClicked(const QModelIndex &index)
     if(!tl_produto.exec()){
 
     }
+    tela_estoque::buscar_produtos();
     tela_estoque::mostrar_lista_produtos();
 }
 
@@ -250,3 +251,4 @@ void tela_estoque::on_btn_limpar_clicked()
 {
     ui->cb_tipo->setCurrentIndex(0);
 }
+
