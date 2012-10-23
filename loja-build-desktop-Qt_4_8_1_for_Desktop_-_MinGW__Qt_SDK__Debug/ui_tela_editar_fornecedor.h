@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_editar_fornecedor.ui'
 **
-** Created: Mon 22. Oct 14:03:06 2012
+** Created: Mon 22. Oct 22:52:57 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -71,6 +71,8 @@ public:
         if (tela_editar_fornecedor->objectName().isEmpty())
             tela_editar_fornecedor->setObjectName(QString::fromUtf8("tela_editar_fornecedor"));
         tela_editar_fornecedor->resize(800, 414);
+        tela_editar_fornecedor->setMinimumSize(QSize(800, 414));
+        tela_editar_fornecedor->setMaximumSize(QSize(800, 414));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/img/img/logo_sex.png"), QSize(), QIcon::Normal, QIcon::Off);
         tela_editar_fornecedor->setWindowIcon(icon);

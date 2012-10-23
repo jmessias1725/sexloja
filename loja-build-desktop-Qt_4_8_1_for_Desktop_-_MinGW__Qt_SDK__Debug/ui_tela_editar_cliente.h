@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_editar_cliente.ui'
 **
-** Created: Mon 22. Oct 14:03:06 2012
+** Created: Mon 22. Oct 22:52:57 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -71,6 +71,8 @@ public:
         if (tela_editar_cliente->objectName().isEmpty())
             tela_editar_cliente->setObjectName(QString::fromUtf8("tela_editar_cliente"));
         tela_editar_cliente->resize(800, 390);
+        tela_editar_cliente->setMinimumSize(QSize(800, 390));
+        tela_editar_cliente->setMaximumSize(QSize(800, 390));
         QFont font;
         font.setFamily(QString::fromUtf8("Calibri"));
         font.setPointSize(10);

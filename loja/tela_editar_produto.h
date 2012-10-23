@@ -43,6 +43,7 @@ private:
     QPixmap logomarca;
     funcoes_extras funcao;
     produto *informacoes_produto;
+    bool alterou_imgem;
 };
 
 #endif // TELA_EDITAR_PRODUTO_H

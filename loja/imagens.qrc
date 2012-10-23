@@ -54,6 +54,7 @@
         <file>img/produto_editar.png</file>
         <file>img/produto_pergunta_50.png</file>
         <file>img/produto_remover.png</file>
+        <file>img/produto_restaurar.png</file>
     </qresource>
     <qresource prefix="/operadoras">
         <file>img/claro.png</file>

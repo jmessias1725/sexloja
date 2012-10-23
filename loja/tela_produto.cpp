@@ -78,3 +78,28 @@ void tela_produto::on_btn_editar_produto_clicked()
         tela_produto::definir_dados_produto(informacoes_produto);
     }
 }
+
+void tela_produto::on_btn_adicionar_produto_clicked()
+{
+    tl_cadastro_produto.definir_icone_janela(logomarca);
+    tl_cadastro_produto.exec();
+}
+
+void tela_produto::on_btn_remover_produto_clicked()
+{
+    //Gera mensagem perguntando se é para salvar alterações.
+    QPixmap icone_janela(":img/img/produto_pergunta_50.png");
+    QMessageBox msg(0);
+    msg.setIconPixmap(icone_janela);
+    msg.setWindowIcon(logomarca);
+    msg.setWindowTitle("Cadastro");
+    msg.addButton("Sim", QMessageBox::AcceptRole);
+    msg.addButton("Não", QMessageBox::RejectRole);
+    msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+    msg.setText("\nDeseja remover o cadastro do Produto?");
+    if(!msg.exec()){
+        informacoes_produto->definir_icone_janela(logomarca);
+        informacoes_produto->remover_cadastro_produto();
+        this->close();
+    }
+}

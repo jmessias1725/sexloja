@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_loja.ui'
 **
-** Created: Mon 22. Oct 14:03:06 2012
+** Created: Mon 22. Oct 22:52:57 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -63,6 +63,8 @@ public:
         if (tela_loja->objectName().isEmpty())
             tela_loja->setObjectName(QString::fromUtf8("tela_loja"));
         tela_loja->resize(800, 317);
+        tela_loja->setMinimumSize(QSize(800, 317));
+        tela_loja->setMaximumSize(QSize(800, 317));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/img/img/logo_sex.png"), QSize(), QIcon::Normal, QIcon::Off);
         tela_loja->setWindowIcon(icon);

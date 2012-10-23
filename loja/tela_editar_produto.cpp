@@ -6,6 +6,7 @@ tela_editar_produto::tela_editar_produto(QWidget *parent) :
     ui(new Ui::tela_editar_produto)
 {
     ui->setupUi(this);
+    alterou_imgem = false;
 }
 
 tela_editar_produto::~tela_editar_produto()
@@ -50,16 +51,16 @@ void tela_editar_produto::on_btn_adicionar_imagem_clicked()
     nome_arquivo_imagem = QFileDialog::getOpenFileName(this,
                                      "Selecione a imagem do produto",".\\..",
                                      "Imagem JPG (*.jpg)\nImagem JPEG (*.jpeg)\nImagem PNG (*.png)\nImagem BMP (*.bmp)");
-    largura = ui->gv_imagem_produto->width();
-    altura = ui->gv_imagem_produto->height();
-    if (nome_arquivo_imagem.toStdString()==""){
-        nome_arquivo_imagem =":/img/img/produto.png";
+    if (nome_arquivo_imagem.toStdString()!=""){
+        largura = ui->gv_imagem_produto->width();
+        altura = ui->gv_imagem_produto->height();
+        imagem_produto = imagem(nome_arquivo_imagem,largura,altura);
+        ui->gv_imagem_produto->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        ui->gv_imagem_produto->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        cena->addPixmap(imagem_produto.retorna_QPixmap_imagem());
+        ui->gv_imagem_produto->setScene(cena);
+        alterou_imgem = true;
     }
-    imagem_produto = imagem(nome_arquivo_imagem,largura,altura);
-    ui->gv_imagem_produto->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    ui->gv_imagem_produto->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    cena->addPixmap(imagem_produto.retorna_QPixmap_imagem());
-    ui->gv_imagem_produto->setScene(cena);
 }
 
 void tela_editar_produto::on_btn_confirmar_clicked()
@@ -89,7 +90,7 @@ void tela_editar_produto::on_btn_confirmar_clicked()
                                       ui->le_quantidade->text().toInt(),ui->le_codigo_barras->text(),ui->cb_tipo->currentText()
                                       ,nome_arquivo_imagem,altura,largura,valor_compra,valor_venda);
             informacoes_produto->definir_icone_janela(logomarca);
-            if(informacoes_produto->salvar_alteracao_dados_produto()){
+            if(informacoes_produto->salvar_alteracao_dados_produto(alterou_imgem)){
                 tela_editar_produto::limpar_tela();
                 this->close();
             }

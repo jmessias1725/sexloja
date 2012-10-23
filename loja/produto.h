@@ -25,6 +25,7 @@ private:
     QString tipo;
     QPixmap logomarca;
     int id_imagem;
+    bool removido;
 
 public:
     produto();
@@ -48,7 +49,8 @@ public:
                                int quant_disponivel_produto,QString cod_barras_produto,QString tipo_produto,
                                QString nome_arquivo_imagem, int altura, int largura,float valor_com,float valor_ven);
     bool salvar_dados_produto(void);
-    bool salvar_alteracao_dados_produto(void);
+    bool salvar_alteracao_dados_produto(bool alterou_imgem);
+    bool remover_cadastro_produto(void);
     produto * busca_produto(void);
     void definir_icone_janela(QPixmap logo);
 };
