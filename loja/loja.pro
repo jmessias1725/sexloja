@@ -41,7 +41,8 @@ SOURCES += main.cpp\
     tela_configurar_legenda_estoque.cpp \
     legenda_estoque.cpp \
     tela_produto.cpp \
-    tela_editar_produto.cpp
+    tela_editar_produto.cpp \
+    tela_restaurar_produto.cpp
 
 HEADERS  += \
     conexao_bd.h \
@@ -73,7 +74,8 @@ HEADERS  += \
     tela_configurar_legenda_estoque.h \
     legenda_estoque.h \
     tela_produto.h \
-    tela_editar_produto.h
+    tela_editar_produto.h \
+    tela_restaurar_produto.h
 
 FORMS    += \
     tela_login.ui \
@@ -94,7 +96,8 @@ FORMS    += \
     tela_estoque.ui \
     tela_configurar_legenda_estoque.ui \
     tela_produto.ui \
-    tela_editar_produto.ui
+    tela_editar_produto.ui \
+    tela_restaurar_produto.ui
 
 RESOURCES += \
     imagens.qrc

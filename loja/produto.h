@@ -51,6 +51,7 @@ public:
     bool salvar_dados_produto(void);
     bool salvar_alteracao_dados_produto(bool alterou_imgem);
     bool remover_cadastro_produto(void);
+    bool recuperar_cadastro_produto(void);
     produto * busca_produto(void);
     void definir_icone_janela(QPixmap logo);
 };

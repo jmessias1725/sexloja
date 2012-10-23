@@ -13,6 +13,7 @@
 #include "tela_configurar_legenda_estoque.h"
 #include "tela_cadastro_produto.h"
 #include "tela_produto.h"
+#include "tela_restaurar_produto.h"
 
 namespace Ui {
 class tela_estoque;
@@ -38,6 +39,7 @@ private slots:
     void on_le_fabricante_textChanged(const QString &arg1);
     void on_tw_produtos_doubleClicked(const QModelIndex &index);
     void on_btn_limpar_clicked();
+    void on_btn_restaurar_produto_clicked();
 
 private:
     Ui::tela_estoque *ui;
@@ -46,6 +48,7 @@ private:
     std::vector< produto* > lista_produtos;
     tela_configurar_legenda_estoque tl_configurar_legenda_estoque;
     tela_cadastro_produto tl_cadastro_produto;
+    tela_restaurar_produto tl_restaurar_produto;
     legenda_estoque *legenda;
     QString aux_cons_id_produto;
     QString aux_cons_nome;

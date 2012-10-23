@@ -376,6 +376,78 @@ bool produto::remover_cadastro_produto(void){
     }
 }
 
+bool produto::recuperar_cadastro_produto(void){
+    conexao_bd conexao;
+    bool verifica_conexao;
+    QSqlDatabase bd;
+
+    //realiza conexão ao banco de dados
+    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
+
+    if (verifica_conexao){
+        //Retorna o banco de dados
+        bd = conexao.retorna_bd();
+
+        //Inicia a transaçao
+        bd.transaction();
+
+        removido = false;
+
+        //Declara as variáves que irão inserir os dados no banco de dados.
+        QSqlQuery remover_cadastro(bd);
+
+        //Alteras os dados no cadastro dos produtos
+        remover_cadastro.prepare("UPDATE produto SET removido=:removido WHERE id_produto = '"+QString::number(id)+"';");
+        remover_cadastro.bindValue("removido=:",removido);
+        remover_cadastro.exec();
+
+        //Verifica se os dados podem ser salvos, caso sim realiza o Commite, do contrário o Rollback.
+        if((remover_cadastro.lastError().number()<=0)){
+
+            //Finaliza a inserçao dos dados.
+            bd.commit();
+
+            //Gera mensagem de que tudo ocorreu direito.
+            QPixmap icone_janela(":img/img/arquivo_50.png");
+            QMessageBox msg(0);
+            msg.setIconPixmap(icone_janela);
+            msg.setWindowIcon(logomarca);
+            msg.setWindowTitle("Cadastro");
+            msg.addButton("OK", QMessageBox::AcceptRole);
+            msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+            msg.setText("\nCadastro restaurado com sucesso!!!!");
+            msg.exec();
+
+            //Fecha a conexão com o banco de dados
+            conexao.fechar_conexao();
+            return true;
+        }
+        else{
+
+            //Desfaz as alterações no banco de dados.
+            bd.rollback();
+
+            //Gera a mensagem de erro.
+            QPixmap icone_janela(":img/img/arquivo_erro_50.png");
+            QMessageBox msg(0);
+            msg.setIconPixmap(icone_janela);
+            msg.setWindowIcon(logomarca);
+            msg.setWindowTitle("Cadastro");
+            msg.addButton("OK", QMessageBox::AcceptRole);
+            msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+            msg.setText("\nNão foi possível restaurar o cadastro do produto!!!!");
+            msg.exec();
+
+            //Fecha a conexão com o banco de dados
+            conexao.fechar_conexao();
+            return false;
+        }
+    }
+    else{
+        return false;
+    }
+}
+
 produto * produto::busca_produto(void){
     return this;
 }
