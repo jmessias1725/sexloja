@@ -24,12 +24,9 @@ public:
 
 private slots:
     void closeEvent( QCloseEvent * event );
-    void limpar_dados(void);
-    
+    void limpar_dados(void);    
     void on_btn_editar_produto_clicked();
-
     void on_btn_adicionar_produto_clicked();
-
     void on_btn_remover_produto_clicked();
 
 private:

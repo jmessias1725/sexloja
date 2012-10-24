@@ -5,8 +5,8 @@ produto::produto()
 }
 produto::produto(int id_pro,QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
                  int quant_disponivel_produto,QString cod_barras_produto,QString tipo_produto, int id_imag,
-                 QByteArray vetor_bytes_img, std::string img_extensao,QString dta ,float valor_com,float valor_ven)
-    :imagem(vetor_bytes_img, img_extensao), valor_produto(id_pro,dta,quant_disponivel_produto,valor_com,valor_ven){
+                 QByteArray vetor_bytes_img, std::string img_extensao,QString dta ,float valor_com,float valor_ven,QString ho)
+    :imagem(vetor_bytes_img, img_extensao), valor_produto(id_pro,dta,quant_disponivel_produto,valor_com,valor_ven,ho){
     produto::id = id_pro;
     produto::nome = nome_produto;
     produto::fabricante = fabricante_produto;
@@ -134,12 +134,13 @@ bool produto::salvar_dados_produto(void){
         }        
 
         //Insere os dados no cadastro de histórico de valores e quantidades do produto
-        salvar_dados_valor.prepare("INSERT INTO his_valores_quantidade(id_produto,data,quantidade,valor_compra,valor_venda) VALUES(:id_produto,:data,:quantidade,:valor_compra,:valor_venda);");
+        salvar_dados_valor.prepare("INSERT INTO his_valores_quantidade(id_produto,data,quantidade,valor_compra,valor_venda,hora) VALUES(:id_produto,:data,:quantidade,:valor_compra,:valor_venda,:hora);");
         salvar_dados_valor.bindValue(":id_produto", id);
         salvar_dados_valor.bindValue(":data", data);
         salvar_dados_valor.bindValue(":quantidade", quantidade);
         salvar_dados_valor.bindValue(":valor_compra", valor_compra);
         salvar_dados_valor.bindValue(":valor_venda", valor_venda);
+        salvar_dados_valor.bindValue(":hora", hora);
         salvar_dados_valor.exec();
 
         //Verifica se os dados podem ser salvos, caso sim realiza o Commite, do contrário o Rollback.

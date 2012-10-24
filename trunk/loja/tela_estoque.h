@@ -41,6 +41,8 @@ private slots:
     void on_btn_limpar_clicked();
     void on_btn_restaurar_produto_clicked();
 
+    void on_le_codigo_textChanged(const QString &arg1);
+
 private:
     Ui::tela_estoque *ui;
     QPixmap logomarca;
@@ -56,6 +58,9 @@ private:
     QString aux_cons_cod_barras;
     QString aux_cons_tipo;
     std::vector< produto* > aux_lista_produtos;
+    QLabel *lb_quantidade_produtos;
+    QLabel *lb_data;
+    QString data_sistema;
 };
 
 #endif // TELA_ESTOQUE_H

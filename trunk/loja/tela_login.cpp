@@ -32,19 +32,20 @@ void tela_login::on_btn_cancelar_clicked()
 
 void tela_login::on_btn_confrimar_clicked()
 {
-    user = new usuario;
+    informacao_usuario = new usuario;
     QString login, senha;
 
     usuario_logado = false;
     login = ui->le_login->text();
     senha = ui->le_senha->text();
-    /*if(!user->verifica_login_senha(login,senha)){
+    if(!informacao_usuario->verifica_login_senha(login,senha)){
         ui->le_senha->clear();
     }
-    else{*/
+    else{
         usuario_logado = true;
         this->close();
         tl_principal.dados_loja(informacao_loja);
+        tl_principal.dados_usuario(informacao_usuario);
         tl_principal.show();
-    //}
+    }
 }

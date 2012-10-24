@@ -12,6 +12,8 @@ tela_restaurar_produto::tela_restaurar_produto(QWidget *parent) :
     aux_cons_fabricante = "";
     aux_cons_cod_barras = "";
     aux_cons_tipo = "";
+    ui->le_codigo->setCursorPosition(0);
+    ui->le_codigo_barras->setCursorPosition(0);
 }
 
 tela_restaurar_produto::~tela_restaurar_produto()
@@ -38,6 +40,7 @@ void tela_restaurar_produto::buscar_produtos(void){
     QString aux_tipo;
     int aux_id_imagem;
     QString aux_data;
+    QString aux_hora;
     float aux_valor_compra;
     float aux_valor_venda;
     QByteArray aux_imagem;
@@ -70,11 +73,12 @@ void tela_restaurar_produto::buscar_produtos(void){
             aux_id_imagem = consultar.value(7).toInt();
 
             //realiza a consulta para buscar o valores e quantidades do produto.
-            consultar_valor.exec("SELECT data,valor_compra,valor_venda FROM his_valores_quantidade WHERE id_produto = '"+QString::number(aux_id)+"';");
+            consultar_valor.exec("SELECT data,valor_compra,valor_venda,hora FROM his_valores_quantidade WHERE id_produto = '"+QString::number(aux_id)+"';");
             if(consultar_valor.last()){
                 aux_data = consultar_valor.value(0).toString();
                 aux_valor_compra = consultar_valor.value(1).toFloat();
                 aux_valor_venda = consultar_valor.value(2).toFloat();
+                aux_hora = consultar_valor.value(3).toString();
                 consultar_valor.clear();
             }
 
@@ -86,7 +90,7 @@ void tela_restaurar_produto::buscar_produtos(void){
                 consultar_imagem.clear();
             }
             lista_produtos.push_back(new produto(aux_id,aux_nome,aux_fabricante,aux_desc_utilizacao,aux_quant_disponivel,aux_cod_barras,
-                                                 aux_tipo, aux_id_imagem,aux_imagem,aux_extensao,aux_data ,aux_valor_compra,aux_valor_venda));
+                                                 aux_tipo, aux_id_imagem,aux_imagem,aux_extensao,aux_data ,aux_valor_compra,aux_valor_venda,aux_hora));
 
         }
         consultar.clear();
@@ -100,7 +104,8 @@ void tela_restaurar_produto::mostrar_lista_produtos(void){
     aux_lista_produtos.clear();
 
     for (int i=0;i<int(lista_produtos.size());i++){
-        if((lista_produtos[i]->retorna_tipo().contains(aux_cons_tipo))&&
+        if((QString::number(lista_produtos[i]->retorna_id()).contains(aux_cons_id_produto))&&
+           (lista_produtos[i]->retorna_tipo().contains(aux_cons_tipo))&&
            (lista_produtos[i]->retorna_nome().contains(aux_cons_nome))&&
            (lista_produtos[i]->retorna_fabricante().contains(aux_cons_fabricante))&&
            (lista_produtos[i]->retorna_cod_barras().contains(aux_cons_cod_barras))){
@@ -205,6 +210,12 @@ void tela_restaurar_produto::on_le_fabricante_textChanged(const QString &arg1)
 {
     ui->le_fabricante->setText(ui->le_fabricante->text().toUpper());
     aux_cons_fabricante = ui->le_fabricante->text();
+    tela_restaurar_produto::mostrar_lista_produtos();
+}
+
+void tela_restaurar_produto::on_le_codigo_textChanged(const QString &arg1)
+{
+    aux_cons_id_produto = ui->le_codigo->text();
     tela_restaurar_produto::mostrar_lista_produtos();
 }
 

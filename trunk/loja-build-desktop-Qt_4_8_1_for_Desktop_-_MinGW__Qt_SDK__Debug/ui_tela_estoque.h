@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_estoque.ui'
 **
-** Created: Tue 23. Oct 15:12:50 2012
+** Created: Wed 24. Oct 15:56:20 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -50,15 +50,17 @@ public:
     QPushButton *pushButton;
     QVBoxLayout *verticalLayout_2;
     QGroupBox *gb_filtrar;
-    QLabel *lb_tipo;
-    QLineEdit *le_fabricante;
-    QLabel *lb_fabricante;
-    QLineEdit *le_nome;
-    QLineEdit *le_codigo_barras;
     QLabel *lb_nome;
-    QComboBox *cb_tipo;
     QLabel *lb_codigo_barras;
+    QLineEdit *le_nome;
+    QComboBox *cb_tipo;
     QPushButton *btn_limpar;
+    QLabel *lb_fabricante;
+    QLabel *lb_tipo;
+    QLabel *lb_codigo;
+    QLineEdit *le_codigo;
+    QLineEdit *le_codigo_barras;
+    QLineEdit *le_fabricante;
     QGroupBox *gb_clientes;
     QVBoxLayout *verticalLayout;
     QTableWidget *tw_produtos;
@@ -271,64 +273,38 @@ public:
         font5.setWeight(75);
         font5.setKerning(false);
         gb_filtrar->setFont(font5);
-        lb_tipo = new QLabel(gb_filtrar);
-        lb_tipo->setObjectName(QString::fromUtf8("lb_tipo"));
-        lb_tipo->setGeometry(QRect(5, 17, 28, 20));
-        lb_tipo->setMinimumSize(QSize(28, 20));
-        lb_tipo->setMaximumSize(QSize(28, 20));
+        lb_nome = new QLabel(gb_filtrar);
+        lb_nome->setObjectName(QString::fromUtf8("lb_nome"));
+        lb_nome->setGeometry(QRect(284, 20, 35, 20));
+        lb_nome->setMinimumSize(QSize(35, 20));
+        lb_nome->setMaximumSize(QSize(35, 20));
         QFont font6;
         font6.setFamily(QString::fromUtf8("Calibri"));
         font6.setBold(false);
         font6.setWeight(50);
         font6.setKerning(false);
-        lb_tipo->setFont(font6);
-        le_fabricante = new QLineEdit(gb_filtrar);
-        le_fabricante->setObjectName(QString::fromUtf8("le_fabricante"));
-        le_fabricante->setGeometry(QRect(67, 47, 608, 21));
-        le_fabricante->setFont(font4);
-        le_fabricante->setInputMethodHints(Qt::ImhNone);
-        le_fabricante->setMaxLength(60);
-        lb_fabricante = new QLabel(gb_filtrar);
-        lb_fabricante->setObjectName(QString::fromUtf8("lb_fabricante"));
-        lb_fabricante->setGeometry(QRect(5, 47, 63, 20));
-        lb_fabricante->setMinimumSize(QSize(63, 20));
-        lb_fabricante->setMaximumSize(QSize(63, 20));
-        lb_fabricante->setFont(font6);
-        le_nome = new QLineEdit(gb_filtrar);
-        le_nome->setObjectName(QString::fromUtf8("le_nome"));
-        le_nome->setGeometry(QRect(169, 17, 506, 20));
-        le_nome->setMinimumSize(QSize(506, 20));
-        le_nome->setMaximumSize(QSize(506, 20));
-        le_nome->setFont(font4);
-        le_nome->setInputMethodHints(Qt::ImhNone);
-        le_nome->setMaxLength(60);
-        le_codigo_barras = new QLineEdit(gb_filtrar);
-        le_codigo_barras->setObjectName(QString::fromUtf8("le_codigo_barras"));
-        le_codigo_barras->setGeometry(QRect(779, 17, 105, 20));
-        le_codigo_barras->setMinimumSize(QSize(105, 20));
-        le_codigo_barras->setMaximumSize(QSize(105, 20));
-        le_codigo_barras->setFont(font4);
-        le_codigo_barras->setMaxLength(15);
-        lb_nome = new QLabel(gb_filtrar);
-        lb_nome->setObjectName(QString::fromUtf8("lb_nome"));
-        lb_nome->setGeometry(QRect(134, 17, 35, 20));
-        lb_nome->setMinimumSize(QSize(35, 20));
-        lb_nome->setMaximumSize(QSize(35, 20));
         lb_nome->setFont(font6);
-        cb_tipo = new QComboBox(gb_filtrar);
-        cb_tipo->setObjectName(QString::fromUtf8("cb_tipo"));
-        cb_tipo->setGeometry(QRect(33, 17, 95, 20));
-        cb_tipo->setMaximumSize(QSize(100, 20));
-        cb_tipo->setFont(font4);
         lb_codigo_barras = new QLabel(gb_filtrar);
         lb_codigo_barras->setObjectName(QString::fromUtf8("lb_codigo_barras"));
-        lb_codigo_barras->setGeometry(QRect(680, 17, 99, 20));
+        lb_codigo_barras->setGeometry(QRect(598, 50, 99, 20));
         lb_codigo_barras->setMinimumSize(QSize(99, 20));
         lb_codigo_barras->setMaximumSize(QSize(99, 20));
         lb_codigo_barras->setFont(font6);
+        le_nome = new QLineEdit(gb_filtrar);
+        le_nome->setObjectName(QString::fromUtf8("le_nome"));
+        le_nome->setGeometry(QRect(318, 20, 569, 20));
+        le_nome->setMinimumSize(QSize(506, 20));
+        le_nome->setFont(font4);
+        le_nome->setInputMethodHints(Qt::ImhNone);
+        le_nome->setMaxLength(60);
+        cb_tipo = new QComboBox(gb_filtrar);
+        cb_tipo->setObjectName(QString::fromUtf8("cb_tipo"));
+        cb_tipo->setGeometry(QRect(33, 20, 95, 20));
+        cb_tipo->setMaximumSize(QSize(100, 20));
+        cb_tipo->setFont(font4);
         btn_limpar = new QPushButton(gb_filtrar);
         btn_limpar->setObjectName(QString::fromUtf8("btn_limpar"));
-        btn_limpar->setGeometry(QRect(680, 45, 80, 24));
+        btn_limpar->setGeometry(QRect(808, 47, 80, 24));
         QFont font7;
         font7.setBold(false);
         font7.setWeight(50);
@@ -336,6 +312,42 @@ public:
         QIcon icon5;
         icon5.addFile(QString::fromUtf8(":/img/img/limpar.png"), QSize(), QIcon::Normal, QIcon::Off);
         btn_limpar->setIcon(icon5);
+        lb_fabricante = new QLabel(gb_filtrar);
+        lb_fabricante->setObjectName(QString::fromUtf8("lb_fabricante"));
+        lb_fabricante->setGeometry(QRect(5, 50, 63, 20));
+        lb_fabricante->setMinimumSize(QSize(63, 20));
+        lb_fabricante->setMaximumSize(QSize(63, 20));
+        lb_fabricante->setFont(font6);
+        lb_tipo = new QLabel(gb_filtrar);
+        lb_tipo->setObjectName(QString::fromUtf8("lb_tipo"));
+        lb_tipo->setGeometry(QRect(5, 20, 28, 20));
+        lb_tipo->setMinimumSize(QSize(28, 20));
+        lb_tipo->setMaximumSize(QSize(28, 20));
+        lb_tipo->setFont(font6);
+        lb_tipo->setFrameShape(QFrame::NoFrame);
+        lb_codigo = new QLabel(gb_filtrar);
+        lb_codigo->setObjectName(QString::fromUtf8("lb_codigo"));
+        lb_codigo->setGeometry(QRect(135, 20, 42, 20));
+        lb_codigo->setFont(font7);
+        le_codigo = new QLineEdit(gb_filtrar);
+        le_codigo->setObjectName(QString::fromUtf8("le_codigo"));
+        le_codigo->setGeometry(QRect(177, 20, 100, 20));
+        le_codigo->setFont(font7);
+        le_codigo->setCursorPosition(9);
+        le_codigo->setReadOnly(false);
+        le_codigo_barras = new QLineEdit(gb_filtrar);
+        le_codigo_barras->setObjectName(QString::fromUtf8("le_codigo_barras"));
+        le_codigo_barras->setGeometry(QRect(697, 50, 105, 20));
+        le_codigo_barras->setMinimumSize(QSize(105, 20));
+        le_codigo_barras->setMaximumSize(QSize(105, 20));
+        le_codigo_barras->setFont(font4);
+        le_codigo_barras->setMaxLength(15);
+        le_fabricante = new QLineEdit(gb_filtrar);
+        le_fabricante->setObjectName(QString::fromUtf8("le_fabricante"));
+        le_fabricante->setGeometry(QRect(68, 50, 523, 21));
+        le_fabricante->setFont(font4);
+        le_fabricante->setInputMethodHints(Qt::ImhNone);
+        le_fabricante->setMaxLength(60);
 
         verticalLayout_2->addWidget(gb_filtrar);
 
@@ -394,16 +406,25 @@ public:
         barra_de_status->setFont(font8);
         barra_de_status->setLayoutDirection(Qt::RightToLeft);
         tela_estoque->setStatusBar(barra_de_status);
-        QWidget::setTabOrder(cb_tipo, le_nome);
-        QWidget::setTabOrder(le_nome, le_codigo_barras);
-        QWidget::setTabOrder(le_codigo_barras, le_fabricante);
-        QWidget::setTabOrder(le_fabricante, btn_limpar);
-        QWidget::setTabOrder(btn_limpar, tw_produtos);
+        QWidget::setTabOrder(le_codigo, le_nome);
+        QWidget::setTabOrder(le_nome, le_fabricante);
+        QWidget::setTabOrder(le_fabricante, le_codigo_barras);
+        QWidget::setTabOrder(le_codigo_barras, btn_limpar);
+        QWidget::setTabOrder(btn_limpar, btn_adicionar_produto);
+        QWidget::setTabOrder(btn_adicionar_produto, btn_restaurar_produto);
+        QWidget::setTabOrder(btn_restaurar_produto, btn_entrada_produto);
+        QWidget::setTabOrder(btn_entrada_produto, btn_saida_produto);
+        QWidget::setTabOrder(btn_saida_produto, btn_reajustar_estoque);
+        QWidget::setTabOrder(btn_reajustar_estoque, pushButton);
+        QWidget::setTabOrder(pushButton, tw_produtos);
+        QWidget::setTabOrder(tw_produtos, cb_tipo);
+        QWidget::setTabOrder(cb_tipo, tw_legenda);
 
         retranslateUi(tela_estoque);
-        QObject::connect(btn_limpar, SIGNAL(clicked()), le_nome, SLOT(clear()));
         QObject::connect(btn_limpar, SIGNAL(clicked()), le_codigo_barras, SLOT(clear()));
         QObject::connect(btn_limpar, SIGNAL(clicked()), le_fabricante, SLOT(clear()));
+        QObject::connect(btn_limpar, SIGNAL(clicked()), le_nome, SLOT(clear()));
+        QObject::connect(btn_limpar, SIGNAL(clicked()), le_codigo, SLOT(clear()));
 
         QMetaObject::connectSlotsByName(tela_estoque);
     } // setupUi
@@ -431,15 +452,10 @@ public:
 
         pushButton->setText(QApplication::translate("tela_estoque", "Configurar legenda", 0, QApplication::UnicodeUTF8));
         gb_filtrar->setTitle(QApplication::translate("tela_estoque", "Filtrar por:", 0, QApplication::UnicodeUTF8));
-        lb_tipo->setText(QApplication::translate("tela_estoque", "Tipo:", 0, QApplication::UnicodeUTF8));
-        le_fabricante->setInputMask(QString());
-        le_fabricante->setText(QString());
-        lb_fabricante->setText(QApplication::translate("tela_estoque", "Fabricante:", 0, QApplication::UnicodeUTF8));
+        lb_nome->setText(QApplication::translate("tela_estoque", "Nome:", 0, QApplication::UnicodeUTF8));
+        lb_codigo_barras->setText(QApplication::translate("tela_estoque", "C\303\263digo de Barras:", 0, QApplication::UnicodeUTF8));
         le_nome->setInputMask(QString());
         le_nome->setText(QString());
-        le_codigo_barras->setInputMask(QApplication::translate("tela_estoque", "0 000000 000000; ", 0, QApplication::UnicodeUTF8));
-        le_codigo_barras->setText(QString());
-        lb_nome->setText(QApplication::translate("tela_estoque", "Nome:", 0, QApplication::UnicodeUTF8));
         cb_tipo->clear();
         cb_tipo->insertItems(0, QStringList()
          << QApplication::translate("tela_estoque", "Todos", 0, QApplication::UnicodeUTF8)
@@ -459,8 +475,16 @@ public:
          << QApplication::translate("tela_estoque", "Vestu\303\241rio", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("tela_estoque", "Vibrador", 0, QApplication::UnicodeUTF8)
         );
-        lb_codigo_barras->setText(QApplication::translate("tela_estoque", "C\303\263digo de Barras:", 0, QApplication::UnicodeUTF8));
         btn_limpar->setText(QApplication::translate("tela_estoque", "Limpar", 0, QApplication::UnicodeUTF8));
+        lb_fabricante->setText(QApplication::translate("tela_estoque", "Fabricante:", 0, QApplication::UnicodeUTF8));
+        lb_tipo->setText(QApplication::translate("tela_estoque", "Tipo:", 0, QApplication::UnicodeUTF8));
+        lb_codigo->setText(QApplication::translate("tela_estoque", "C\303\263digo:", 0, QApplication::UnicodeUTF8));
+        le_codigo->setInputMask(QApplication::translate("tela_estoque", "000000000; ", 0, QApplication::UnicodeUTF8));
+        le_codigo->setText(QString());
+        le_codigo_barras->setInputMask(QApplication::translate("tela_estoque", "0 000000 000000; ", 0, QApplication::UnicodeUTF8));
+        le_codigo_barras->setText(QString());
+        le_fabricante->setInputMask(QString());
+        le_fabricante->setText(QString());
         gb_clientes->setTitle(QApplication::translate("tela_estoque", "Lista de Produtos", 0, QApplication::UnicodeUTF8));
 #ifndef QT_NO_ACCESSIBILITY
         barra_de_status->setAccessibleDescription(QString());
