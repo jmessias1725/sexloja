@@ -23,12 +23,11 @@ public:
 
 private slots:
     void on_btn_cancelar_clicked();
-
     void on_btn_confrimar_clicked();
 
 private:
     Ui::tela_login *ui;
-    usuario *user;
+    usuario *informacao_usuario;
     loja *informacao_loja;
     bool usuario_logado;
     tela_principal tl_principal;

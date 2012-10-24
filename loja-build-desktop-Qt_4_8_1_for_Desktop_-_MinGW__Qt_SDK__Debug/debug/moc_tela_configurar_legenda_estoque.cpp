@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_configurar_legenda_estoque.h'
 **
-** Created: Tue 23. Oct 15:19:48 2012
+** Created: Wed 24. Oct 15:59:10 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_restaurar_produto.ui'
 **
-** Created: Tue 23. Oct 15:55:22 2012
+** Created: Wed 24. Oct 15:56:20 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -155,8 +155,8 @@ public:
         le_codigo->setObjectName(QString::fromUtf8("le_codigo"));
         le_codigo->setGeometry(QRect(177, 17, 100, 20));
         le_codigo->setFont(font3);
-        le_codigo->setCursorPosition(9);
-        le_codigo->setReadOnly(true);
+        le_codigo->setCursorPosition(0);
+        le_codigo->setReadOnly(false);
 
         verticalLayout_2->addWidget(gb_filtrar);
 
@@ -194,7 +194,7 @@ public:
         tw_produtos->setCornerButtonEnabled(true);
         tw_produtos->setRowCount(0);
         tw_produtos->setColumnCount(0);
-        tw_produtos->horizontalHeader()->setVisible(true);
+        tw_produtos->horizontalHeader()->setVisible(false);
         tw_produtos->horizontalHeader()->setCascadingSectionResizes(false);
         tw_produtos->horizontalHeader()->setDefaultSectionSize(450);
         tw_produtos->horizontalHeader()->setMinimumSectionSize(120);
@@ -225,6 +225,12 @@ public:
 
         verticalLayout_3->addWidget(frame);
 
+        QWidget::setTabOrder(le_codigo, le_nome);
+        QWidget::setTabOrder(le_nome, le_fabricante);
+        QWidget::setTabOrder(le_fabricante, le_codigo_barras);
+        QWidget::setTabOrder(le_codigo_barras, btn_limpar);
+        QWidget::setTabOrder(btn_limpar, cb_tipo);
+        QWidget::setTabOrder(cb_tipo, tw_produtos);
 
         retranslateUi(tela_restaurar_produto);
         QObject::connect(btn_limpar, SIGNAL(clicked()), le_fabricante, SLOT(clear()));

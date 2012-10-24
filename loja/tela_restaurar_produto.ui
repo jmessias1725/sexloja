@@ -461,10 +461,10 @@
          <string/>
         </property>
         <property name="cursorPosition">
-         <number>9</number>
+         <number>0</number>
         </property>
         <property name="readOnly">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
        </widget>
       </widget>
@@ -559,7 +559,7 @@
            <number>0</number>
           </property>
           <attribute name="horizontalHeaderVisible">
-           <bool>true</bool>
+           <bool>false</bool>
           </attribute>
           <attribute name="horizontalHeaderCascadingSectionResizes">
            <bool>false</bool>
@@ -635,6 +635,15 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>le_codigo</tabstop>
+  <tabstop>le_nome</tabstop>
+  <tabstop>le_fabricante</tabstop>
+  <tabstop>le_codigo_barras</tabstop>
+  <tabstop>btn_limpar</tabstop>
+  <tabstop>cb_tipo</tabstop>
+  <tabstop>tw_produtos</tabstop>
+ </tabstops>
  <resources>
   <include location="imagens.qrc"/>
  </resources>
@@ -646,12 +655,12 @@
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>704</x>
-     <y>63</y>
+     <x>813</x>
+     <y>68</y>
     </hint>
     <hint type="destinationlabel">
-     <x>637</x>
-     <y>64</y>
+     <x>595</x>
+     <y>69</y>
     </hint>
    </hints>
   </connection>
@@ -662,8 +671,8 @@
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>713</x>
-     <y>59</y>
+     <x>813</x>
+     <y>64</y>
     </hint>
     <hint type="destinationlabel">
      <x>524</x>
@@ -678,12 +687,12 @@
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>730</x>
-     <y>65</y>
+     <x>813</x>
+     <y>70</y>
     </hint>
     <hint type="destinationlabel">
-     <x>804</x>
-     <y>32</y>
+     <x>806</x>
+     <y>52</y>
     </hint>
    </hints>
   </connection>

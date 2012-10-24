@@ -12,6 +12,7 @@
 #include "tela_loja.h"
 #include "tela_estoque.h"
 #include "loja.h"
+#include "usuario.h"
 
 namespace Ui {
 class tela_principal;
@@ -25,6 +26,7 @@ public:
     explicit tela_principal(QWidget *parent = 0);
     ~tela_principal();
     void dados_loja(loja *info_loja);
+    void dados_usuario(usuario *info_usuario);
 
 private slots:
     void on_consultar_clientes_triggered();
@@ -48,7 +50,11 @@ private:
     tela_loja tl_loja;
     tela_estoque tl_estoque;
     loja *informacao_loja;
+    usuario *informacao_usuario;
     QPixmap logomarca;
+    QLabel *lb_dados_usuario;
+    QLabel *lb_data;
+    QString data_sistema;
 };
 
 #endif // TELA_PRINCIPAL_H

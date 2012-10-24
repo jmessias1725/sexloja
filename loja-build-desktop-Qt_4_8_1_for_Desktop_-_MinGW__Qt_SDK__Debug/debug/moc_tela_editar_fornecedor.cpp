@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_editar_fornecedor.h'
 **
-** Created: Tue 23. Oct 15:19:25 2012
+** Created: Wed 24. Oct 15:58:42 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!

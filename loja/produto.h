@@ -32,7 +32,7 @@ public:
 
     produto(int id_pro,QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
             int quant_disponivel_produto,QString cod_barras_produto,QString tipo_produto, int id_imag,
-            QByteArray vetor_bytes_img, std::string img_extensao,QString dta ,float valor_com,float valor_ven);
+            QByteArray vetor_bytes_img, std::string img_extensao,QString dta ,float valor_com,float valor_ven,QString ho);
 
     produto(QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
             int quant_disponivel_produto,QString cod_barras_produto,QString tipo_produto,

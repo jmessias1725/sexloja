@@ -34,6 +34,8 @@ private slots:
     void on_tw_produtos_doubleClicked(const QModelIndex &index);
     void on_btn_limpar_clicked();
     
+    void on_le_codigo_textChanged(const QString &arg1);
+
 private:
     Ui::tela_restaurar_produto *ui;
     QPixmap logomarca;

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_principal.ui'
 **
-** Created: Tue 23. Oct 15:12:50 2012
+** Created: Wed 24. Oct 16:37:50 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -46,7 +46,7 @@ public:
     QMenu *menuNovo;
     QMenu *menuListar;
     QMenu *menuConfigura_oes;
-    QStatusBar *statusbar;
+    QStatusBar *barra_de_status;
     QToolBar *barra_de_menus;
 
     void setupUi(QMainWindow *tela_principal)
@@ -54,7 +54,7 @@ public:
         if (tela_principal->objectName().isEmpty())
             tela_principal->setObjectName(QString::fromUtf8("tela_principal"));
         tela_principal->setWindowModality(Qt::WindowModal);
-        tela_principal->resize(1024, 768);
+        tela_principal->resize(1024, 500);
         tela_principal->setMouseTracking(false);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/img/img/logo_sex.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -132,7 +132,7 @@ public:
         tela_principal->setCentralWidget(centralwidget);
         menubar = new QMenuBar(tela_principal);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1024, 20));
+        menubar->setGeometry(QRect(0, 0, 1024, 21));
         menuArquivo = new QMenu(menubar);
         menuArquivo->setObjectName(QString::fromUtf8("menuArquivo"));
         menuNovo = new QMenu(menuArquivo);
@@ -148,15 +148,23 @@ public:
         menuConfigura_oes = new QMenu(menubar);
         menuConfigura_oes->setObjectName(QString::fromUtf8("menuConfigura_oes"));
         tela_principal->setMenuBar(menubar);
-        statusbar = new QStatusBar(tela_principal);
-        statusbar->setObjectName(QString::fromUtf8("statusbar"));
-        tela_principal->setStatusBar(statusbar);
-        barra_de_menus = new QToolBar(tela_principal);
-        barra_de_menus->setObjectName(QString::fromUtf8("barra_de_menus"));
+        barra_de_status = new QStatusBar(tela_principal);
+        barra_de_status->setObjectName(QString::fromUtf8("barra_de_status"));
         QFont font2;
         font2.setFamily(QString::fromUtf8("Calibri"));
-        font2.setPointSize(9);
-        barra_de_menus->setFont(font2);
+        font2.setPointSize(10);
+        font2.setBold(true);
+        font2.setWeight(75);
+        font2.setKerning(false);
+        barra_de_status->setFont(font2);
+        barra_de_status->setLayoutDirection(Qt::RightToLeft);
+        tela_principal->setStatusBar(barra_de_status);
+        barra_de_menus = new QToolBar(tela_principal);
+        barra_de_menus->setObjectName(QString::fromUtf8("barra_de_menus"));
+        QFont font3;
+        font3.setFamily(QString::fromUtf8("Calibri"));
+        font3.setPointSize(9);
+        barra_de_menus->setFont(font3);
         barra_de_menus->setMovable(false);
         barra_de_menus->setIconSize(QSize(40, 40));
         barra_de_menus->setFloatable(false);
