@@ -16,7 +16,7 @@
 class produto :public imagem, public valor_produto
 {
 private:
-    int id;
+    int id_produto;
     QString nome;
     QString fabricante;
     QString desc_utilizacao;
