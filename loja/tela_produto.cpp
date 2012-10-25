@@ -24,19 +24,19 @@ void tela_produto::definir_dados_produto(produto *cad_produto){
 
     QGraphicsScene *imagem_produto = new QGraphicsScene;
 
-    ui->le_codigo->setText(QString::number(cad_produto->retorna_id()));
-    ui->le_tipo->setText(cad_produto->retorna_tipo());
-    ui->le_nome->setText(cad_produto->retorna_nome());
-    ui->le_fabricante->setText(cad_produto->retorna_fabricante());
-    ui->le_codigo_barras->setText(cad_produto->retorna_cod_barras());
-    ui->le_quantidade->setText(QString::number(cad_produto->retorna_quant_disponivel()));
-    ui->le_valor_compra->setText(funcoes.retorna_valor_dinheiro(QString::number(cad_produto->retorna_valor_compra())));
-    ui->le_valor_venda->setText(funcoes.retorna_valor_dinheiro(QString::number(cad_produto->retorna_valor_venda())));
-    ui->te_des_utilizacao->setText(cad_produto->retorna_desc_utilizacao());
+    ui->le_codigo->setText(QString::number(informacoes_produto->retorna_id()));
+    ui->le_tipo->setText(informacoes_produto->retorna_tipo());
+    ui->le_nome->setText(informacoes_produto->retorna_nome());
+    ui->le_fabricante->setText(informacoes_produto->retorna_fabricante());
+    ui->le_codigo_barras->setText(informacoes_produto->retorna_cod_barras());
+    ui->le_quantidade->setText(QString::number(informacoes_produto->retorna_quant_disponivel()));
+    ui->le_valor_compra->setText(funcoes.retorna_valor_dinheiro(QString::number(informacoes_produto->retorna_valor_compra())));
+    ui->le_valor_venda->setText(funcoes.retorna_valor_dinheiro(QString::number(informacoes_produto->retorna_valor_venda())));
+    ui->te_des_utilizacao->setText(informacoes_produto->retorna_desc_utilizacao());
 
     ui->gv_imagem_produto->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->gv_imagem_produto->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    imagem_produto->addPixmap(cad_produto->retorna_QPixmap_imagem());
+    imagem_produto->addPixmap(informacoes_produto->retorna_QPixmap_imagem());
     ui->gv_imagem_produto->setScene(imagem_produto);
 }
 
@@ -45,15 +45,7 @@ produto * tela_produto::retorna_novo_cadastro(void){
 }
 
 void tela_produto::closeEvent(QCloseEvent *event){
-    ui->le_codigo->clear();
-    ui->le_tipo->clear();
-    ui->le_nome->clear();
-    ui->le_fabricante->clear();
-    ui->le_codigo_barras->clear();
-    ui->le_quantidade->clear();
-    ui->le_valor_compra->clear();
-    ui->le_valor_venda->clear();
-    ui->te_des_utilizacao->clear();
+    tela_produto::limpar_dados();
 }
 
 void tela_produto::limpar_dados(void){
@@ -73,9 +65,8 @@ void tela_produto::on_btn_editar_produto_clicked()
     tl_editar_produto.definir_icone_janela(logomarca);
     tl_editar_produto.definir_dados_produto(informacoes_produto);
     if(!tl_editar_produto.exec()){
-        informacoes_produto = tl_editar_produto.retorna_novo_cadastro();
         tela_produto::limpar_dados();
-        tela_produto::definir_dados_produto(informacoes_produto);
+        tela_produto::definir_dados_produto(tl_editar_produto.retorna_novo_cadastro());
     }
 }
 

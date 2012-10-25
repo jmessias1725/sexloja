@@ -209,6 +209,7 @@ bool produto::salvar_alteracao_dados_produto(bool alterou_imgem){
         //Declara as variáves que irão inserir os dados no banco de dados.
         QSqlQuery alterar_dados_produto(bd);
         QSqlQuery alterar_dados_imagem(bd);
+        QSqlQuery salvar_dados_valor(bd);
         QSqlQuery salvar_dados_imagem(bd);
         QSqlQuery consultar_imagem(bd);
 
@@ -220,29 +221,31 @@ bool produto::salvar_alteracao_dados_produto(bool alterou_imgem){
         consultar_imagem.clear();
 
 
-        if ((id_imagem == 1)&&(alterou_imgem == true)&&(nome_imagem.toStdString()!=":/img/img/produto.png")){
-            //Insere os dados no cadastro de imagem
-            salvar_dados_imagem.prepare("INSERT INTO imagem(imagem,extensao) VALUES(:imagem, :extensao);");
-            salvar_dados_imagem.bindValue(":imagem", vetor_bytes_imagem);
-            salvar_dados_imagem.bindValue(":extensao",QString::fromStdString(extensao));
-            salvar_dados_imagem.exec();
+        if(alterou_imgem){
+            if ((id_imagem == 1)&&(nome_imagem.toStdString()!=":/img/img/produto.png")){
+                //Insere os dados no cadastro de imagem
+                salvar_dados_imagem.prepare("INSERT INTO imagem(imagem,extensao) VALUES(:imagem, :extensao);");
+                salvar_dados_imagem.bindValue(":imagem", vetor_bytes_imagem);
+                salvar_dados_imagem.bindValue(":extensao",QString::fromStdString(extensao));
+                salvar_dados_imagem.exec();
 
-            //realiza a consulta
-            consultar_imagem.exec("SELECT id_imagem FROM imagem;");
-            if(consultar_imagem.last()){
-                id_imagem = consultar_imagem.value(0).toInt();
+                //realiza a consulta
+                consultar_imagem.exec("SELECT id_imagem FROM imagem;");
+                if(consultar_imagem.last()){
+                    id_imagem = consultar_imagem.value(0).toInt();
+                }
             }
-        }
-        else{
-            campos ="imagem=:imagem, extensao=:extensao";
-            if((alterou_imgem == true)&&(nome_imagem.toStdString()!=":/img/img/produto.png")){
-                //Altera os dados no cadastro da imagem
-                alterar_dados_imagem.prepare("UPDATE imagem SET "+campos+" WHERE id_imagem = '"+QString::number(id_imagem)+"';");
-                alterar_dados_imagem.bindValue(":imagem", vetor_bytes_imagem);
-                alterar_dados_imagem.bindValue(":extensao",QString::fromStdString(extensao));
-                alterar_dados_imagem.exec();
+            else{
+                campos ="imagem=:imagem, extensao=:extensao";
+                if((nome_imagem.toStdString()!=":/img/img/produto.png")){
+                    //Altera os dados no cadastro da imagem
+                    alterar_dados_imagem.prepare("UPDATE imagem SET "+campos+" WHERE id_imagem = '"+QString::number(id_imagem)+"';");
+                    alterar_dados_imagem.bindValue(":imagem", vetor_bytes_imagem);
+                    alterar_dados_imagem.bindValue(":extensao",QString::fromStdString(extensao));
+                    alterar_dados_imagem.exec();
+                }
+                campos.clear();
             }
-            campos.clear();
         }
 
         campos = "nome=:nome, fabricante=:fabricante, desc_utilizacao=:desc_utilizacao, quant_disponivel=:quant_disponivel, cod_barras=:cod_barras, tipo=:tipo, id_imagem=:id_imagem";
@@ -258,8 +261,19 @@ bool produto::salvar_alteracao_dados_produto(bool alterou_imgem){
         alterar_dados_produto.bindValue(":id_imagem", id_imagem);
         alterar_dados_produto.exec();
 
+        //Insere os dados no cadastro de histórico de valores e quantidades do produto
+        salvar_dados_valor.prepare("INSERT INTO his_valores_quantidade(id_produto,data,quantidade,valor_compra,valor_venda,hora) VALUES(:id_produto,:data,:quantidade,:valor_compra,:valor_venda,:hora);");
+        salvar_dados_valor.bindValue(":id_produto", id);
+        salvar_dados_valor.bindValue(":data", data);
+        salvar_dados_valor.bindValue(":quantidade", quantidade);
+        salvar_dados_valor.bindValue(":valor_compra", valor_compra);
+        salvar_dados_valor.bindValue(":valor_venda", valor_venda);
+        salvar_dados_valor.bindValue(":hora", hora);
+        salvar_dados_valor.exec();
+
         //Verifica se os dados podem ser salvos, caso sim realiza o Commite, do contrário o Rollback.
-        if((alterar_dados_produto.lastError().number()<=0)&&(alterar_dados_imagem.lastError().number()<=0)){
+        if((alterar_dados_produto.lastError().number()<=0)&&(alterar_dados_imagem.lastError().number()<=0)&&
+           (salvar_dados_valor.lastError().number()<=0)&&(salvar_dados_imagem.lastError().number()<=0)){
 
             //Finaliza a inserçao dos dados.
             bd.commit();
