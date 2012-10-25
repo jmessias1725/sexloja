@@ -45,12 +45,22 @@ float valor_produto::retorna_valor_venda(void){
     return valor_venda;
 }
 
-void valor_produto::alterar_valor_produto(int quantidade_produto,float valor_com,float valor_ven){
+bool valor_produto::alterar_valor_produto(int quantidade_produto,float valor_com,float valor_ven){
     QDate aux_data = QDate::currentDate();
     QTime aux_hora = QTime::currentTime();
     data = aux_data.toString(Qt::SystemLocaleShortDate);
     hora = aux_hora.toString();
-    quantidade = quantidade_produto;
-    valor_compra = valor_com;
-    valor_venda = valor_ven;
+    if((quantidade!=quantidade_produto)||(valor_compra!=valor_com)||(valor_venda!=valor_ven)){
+        quantidade = quantidade_produto;
+        valor_compra = valor_com;
+        valor_venda = valor_ven;
+        std::cout<<quantidade<<std::endl;
+        std::cout<<quantidade_produto<<std::endl;
+        std::cout<<valor_compra<<std::endl;
+        std::cout<<valor_com<<std::endl;
+        std::cout<<valor_venda<<std::endl;
+        std::cout<<valor_ven<<std::endl;
+        return true;
+    }
+    return false;
 }

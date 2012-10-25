@@ -26,6 +26,7 @@ private:
     QPixmap logomarca;
     int id_imagem;
     bool removido;
+    bool alterou_valores;
 
 public:
     produto();
