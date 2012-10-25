@@ -24,7 +24,7 @@ public:
     int retorna_quantidade(void);
     float retorna_valor_compra(void);
     float retorna_valor_venda(void);
-    void alterar_valor_produto(int quantidade_produto,float valor_com,float valor_ven);
+    bool alterar_valor_produto(int quantidade_produto,float valor_com,float valor_ven);
 };
 
 #endif // VALOR_PRODUTO_H

@@ -86,6 +86,7 @@ void tela_editar_produto::on_btn_confirmar_clicked()
         if((ui->le_nome->text().toStdString()!="")){
             float valor_compra = funcao.converter_para_float(ui->le_valor_compra->text());
             float valor_venda = funcao.converter_para_float(ui->le_valor_venda->text());
+
             informacoes_produto->alterar_dados_produto(ui->le_nome->text(),ui->le_fabricante->text(),QString::fromStdString(descricao_Aux),
                                       ui->le_quantidade->text().toInt(),ui->le_codigo_barras->text(),ui->cb_tipo->currentText()
                                       ,nome_arquivo_imagem,altura,largura,valor_compra,valor_venda);

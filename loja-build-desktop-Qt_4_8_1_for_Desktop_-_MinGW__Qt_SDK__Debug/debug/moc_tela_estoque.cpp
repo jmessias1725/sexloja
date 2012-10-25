@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_estoque.h'
 **
-** Created: Wed 24. Oct 17:41:29 2012
+** Created: Wed 24. Oct 23:35:03 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!

@@ -16,6 +16,7 @@ produto::produto(int id_pro,QString nome_produto,QString fabricante_produto,QStr
     produto::tipo = tipo_produto;
     produto::id_imagem = id_imag;
     removido = false;
+    alterou_valores = false;
 }
 
 produto::produto(QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
@@ -73,7 +74,7 @@ void produto::alterar_dados_produto(QString nome_produto,QString fabricante_prod
     cod_barras = cod_barras_produto;
     tipo = tipo_produto;
     alterar_imagem(nome_arquivo_imagem, largura, altura);
-    alterar_valor_produto(quant_disponivel_produto,valor_com,valor_ven);
+    alterou_valores = alterar_valor_produto(quant_disponivel_produto,valor_com,valor_ven);
 }
 
 bool produto::salvar_dados_produto(void){
@@ -133,6 +134,7 @@ bool produto::salvar_dados_produto(void){
             id = consultar_produto.value(0).toInt();
         }        
 
+
         //Insere os dados no cadastro de histórico de valores e quantidades do produto
         salvar_dados_valor.prepare("INSERT INTO his_valores_quantidade(id_produto,data,quantidade,valor_compra,valor_venda,hora) VALUES(:id_produto,:data,:quantidade,:valor_compra,:valor_venda,:hora);");
         salvar_dados_valor.bindValue(":id_produto", id);
@@ -142,6 +144,7 @@ bool produto::salvar_dados_produto(void){
         salvar_dados_valor.bindValue(":valor_venda", valor_venda);
         salvar_dados_valor.bindValue(":hora", hora);
         salvar_dados_valor.exec();
+
 
         //Verifica se os dados podem ser salvos, caso sim realiza o Commite, do contrário o Rollback.
         if((salvar_dados_produto.lastError().number()<=0)&&(salvar_dados_imagem.lastError().number()<=0)&&(salvar_dados_valor.lastError().number()<=0)){
@@ -220,7 +223,6 @@ bool produto::salvar_alteracao_dados_produto(bool alterou_imgem){
         }
         consultar_imagem.clear();
 
-
         if(alterou_imgem){
             if ((id_imagem == 1)&&(nome_imagem.toStdString()!=":/img/img/produto.png")){
                 //Insere os dados no cadastro de imagem
@@ -234,6 +236,7 @@ bool produto::salvar_alteracao_dados_produto(bool alterou_imgem){
                 if(consultar_imagem.last()){
                     id_imagem = consultar_imagem.value(0).toInt();
                 }
+                consultar_imagem.clear();
             }
             else{
                 campos ="imagem=:imagem, extensao=:extensao";
@@ -261,15 +264,17 @@ bool produto::salvar_alteracao_dados_produto(bool alterou_imgem){
         alterar_dados_produto.bindValue(":id_imagem", id_imagem);
         alterar_dados_produto.exec();
 
-        //Insere os dados no cadastro de histórico de valores e quantidades do produto
-        salvar_dados_valor.prepare("INSERT INTO his_valores_quantidade(id_produto,data,quantidade,valor_compra,valor_venda,hora) VALUES(:id_produto,:data,:quantidade,:valor_compra,:valor_venda,:hora);");
-        salvar_dados_valor.bindValue(":id_produto", id);
-        salvar_dados_valor.bindValue(":data", data);
-        salvar_dados_valor.bindValue(":quantidade", quantidade);
-        salvar_dados_valor.bindValue(":valor_compra", valor_compra);
-        salvar_dados_valor.bindValue(":valor_venda", valor_venda);
-        salvar_dados_valor.bindValue(":hora", hora);
-        salvar_dados_valor.exec();
+        if(alterou_valores==true){
+            //Insere os dados no cadastro de histórico de valores e quantidades do produto
+            salvar_dados_valor.prepare("INSERT INTO his_valores_quantidade(id_produto,data,quantidade,valor_compra,valor_venda,hora) VALUES(:id_produto,:data,:quantidade,:valor_compra,:valor_venda,:hora);");
+            salvar_dados_valor.bindValue(":id_produto", id);
+            salvar_dados_valor.bindValue(":data", data);
+            salvar_dados_valor.bindValue(":quantidade", quantidade);
+            salvar_dados_valor.bindValue(":valor_compra", valor_compra);
+            salvar_dados_valor.bindValue(":valor_venda", valor_venda);
+            salvar_dados_valor.bindValue(":hora", hora);
+            salvar_dados_valor.exec();
+        }
 
         //Verifica se os dados podem ser salvos, caso sim realiza o Commite, do contrário o Rollback.
         if((alterar_dados_produto.lastError().number()<=0)&&(alterar_dados_imagem.lastError().number()<=0)&&
@@ -315,8 +320,11 @@ bool produto::salvar_alteracao_dados_produto(bool alterou_imgem){
         }
     }
     else{
+        conexao.fechar_conexao();
         return false;
     }
+    conexao.fechar_conexao();
+    return false;
 }
 
 bool produto::remover_cadastro_produto(void){
