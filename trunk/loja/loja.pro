@@ -36,13 +36,15 @@ SOURCES += main.cpp\
     tela_loja.cpp \
     tela_cadastro_produto.cpp \
     produto.cpp \
-    valor_produto.cpp \
     tela_estoque.cpp \
     tela_configurar_legenda_estoque.cpp \
     legenda_estoque.cpp \
     tela_produto.cpp \
     tela_editar_produto.cpp \
-    tela_restaurar_produto.cpp
+    tela_restaurar_produto.cpp \
+    his_balanco_estoque.cpp \
+    his_entradas.cpp \
+    his_saidas.cpp
 
 HEADERS  += \
     conexao_bd.h \
@@ -69,13 +71,15 @@ HEADERS  += \
     tela_loja.h \
     tela_cadastro_produto.h \
     produto.h \
-    valor_produto.h \
     tela_estoque.h \
     tela_configurar_legenda_estoque.h \
     legenda_estoque.h \
     tela_produto.h \
     tela_editar_produto.h \
-    tela_restaurar_produto.h
+    tela_restaurar_produto.h \
+    his_balanco_estoque.h \
+    his_entradas.h \
+    his_saidas.h
 
 FORMS    += \
     tela_login.ui \
