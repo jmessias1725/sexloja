@@ -6,8 +6,6 @@
 #include <QDate>
 #include <QTime>
 
-#include "conexao_bd.h"
-
 class his_entradas
 {
 private:
@@ -18,8 +16,13 @@ private:
     QString data;
     QString hora;
 public:
-    his_entradas();
-    bool salvar_his_entradas(int id_pro,int quant, float val_compra, float val_venda);
+    his_entradas(int id_pro,int quant, float val_compra, float val_venda);
+    int retorna_id_produto(void);
+    int retorna_quantidade(void);
+    float retorna_valor_compra(void);
+    float retorna_valor_venda(void);
+    QString retorna_data(void);
+    QString retorna_hora(void);
 };
 
 #endif // HIS_ENTRADAS_H

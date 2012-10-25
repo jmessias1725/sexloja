@@ -42,7 +42,10 @@ SOURCES += main.cpp\
     legenda_estoque.cpp \
     tela_produto.cpp \
     tela_editar_produto.cpp \
-    tela_restaurar_produto.cpp
+    tela_restaurar_produto.cpp \
+    his_balanco_estoque.cpp \
+    his_entradas.cpp \
+    his_saidas.cpp
 
 HEADERS  += \
     conexao_bd.h \
@@ -75,7 +78,10 @@ HEADERS  += \
     legenda_estoque.h \
     tela_produto.h \
     tela_editar_produto.h \
-    tela_restaurar_produto.h
+    tela_restaurar_produto.h \
+    his_balanco_estoque.h \
+    his_entradas.h \
+    his_saidas.h
 
 FORMS    += \
     tela_login.ui \

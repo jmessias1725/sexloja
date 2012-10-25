@@ -58,11 +58,11 @@ void tela_cadastro_produto::on_btn_confirmar_clicked()
     if((ui->le_nome->text().toStdString()!="")){
         float valor_compra = funcao.converter_para_float(ui->le_valor_compra->text());
         float valor_venda = funcao.converter_para_float(ui->le_valor_venda->text());
-        cad_produto = new produto(ui->le_nome->text(),ui->le_fabricante->text(),QString::fromStdString(descricao_Aux),
-                                  ui->le_quantidade->text().toInt(),ui->le_codigo_barras->text(),ui->cb_tipo->currentText()
-                                  ,nome_arquivo_imagem,largura,altura,valor_compra,valor_venda);
+        cad_produto = new produto();
         cad_produto->definir_icone_janela(logomarca);
-        if(cad_produto->salvar_dados_produto()){
+        if(cad_produto->salvar_dados_produto(ui->le_nome->text(),ui->le_fabricante->text(),QString::fromStdString(descricao_Aux),
+                                             ui->le_quantidade->text().toInt(),ui->le_codigo_barras->text(),ui->cb_tipo->currentText()
+                                             ,nome_arquivo_imagem,largura,altura,valor_compra,valor_venda)){
             tela_cadastro_produto::limpar_tela();
         }
     }

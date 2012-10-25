@@ -31,6 +31,9 @@ INPUT(
 ./release\tela_produto.o
 ./release\tela_editar_produto.o
 ./release\tela_restaurar_produto.o
+./release\his_balanco_estoque.o
+./release\his_entradas.o
+./release\his_saidas.o
 ./release\moc_tela_login.o
 ./release\moc_tela_principal.o
 ./release\moc_tela_cadastro_cliente.o

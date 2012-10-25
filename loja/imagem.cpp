@@ -30,6 +30,14 @@ QPixmap imagem::retorna_QPixmap_imagem(){
     return malha_pixels;
 }
 
+QByteArray imagem::retorna_vetor_bytes_imagem(void){
+    return vetor_bytes_imagem;
+}
+
+QString imagem::retorna_extensao(void){
+    return QString::fromStdString(extensao);
+}
+
 void imagem::alterar_imagem(QString nome_arquivo,int largura, int altura){
     if(nome_arquivo.toStdString()!=""){
         if(int(vetor_bytes_imagem.size())>0){
