@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_editar_loja.ui'
 **
-** Created: Wed 24. Oct 23:33:22 2012
+** Created: Thu 25. Oct 18:10:39 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

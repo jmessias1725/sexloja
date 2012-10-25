@@ -31,6 +31,9 @@ INPUT(
 ./debug\tela_produto.o
 ./debug\tela_editar_produto.o
 ./debug\tela_restaurar_produto.o
+./debug\his_balanco_estoque.o
+./debug\his_entradas.o
+./debug\his_saidas.o
 ./debug\moc_tela_login.o
 ./debug\moc_tela_principal.o
 ./debug\moc_tela_cadastro_cliente.o

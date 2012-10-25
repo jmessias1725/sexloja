@@ -26,6 +26,8 @@ public:
     imagem(QString nome_arquivo, int largura, int altura);
     imagem(QByteArray vetor_bytes_img, std::string img_extensao);
     QPixmap retorna_QPixmap_imagem(void);
+    QByteArray retorna_vetor_bytes_imagem(void);
+    QString retorna_extensao(void);
     void alterar_imagem(QString nome_arquivo, int largura, int altura);
 };
 
