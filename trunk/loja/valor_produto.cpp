@@ -46,6 +46,10 @@ float valor_produto::retorna_valor_venda(void){
 }
 
 void valor_produto::alterar_valor_produto(int quantidade_produto,float valor_com,float valor_ven){
+    QDate aux_data = QDate::currentDate();
+    QTime aux_hora = QTime::currentTime();
+    data = aux_data.toString(Qt::SystemLocaleShortDate);
+    hora = aux_hora.toString();
     quantidade = quantidade_produto;
     valor_compra = valor_com;
     valor_venda = valor_ven;

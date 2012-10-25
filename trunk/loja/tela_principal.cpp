@@ -9,13 +9,11 @@ tela_principal::tela_principal(QWidget *parent) :
     lb_dados_usuario = new QLabel;
     lb_data = new QLabel;
     QDate aux_data = QDate::currentDate();
-    QTime aux_hora = QTime::currentTime();
     data_sistema = aux_data.toString(Qt::SystemLocaleShortDate);
     lb_dados_usuario->setFrameShape(QFrame::Panel);
     lb_dados_usuario->setFrameShadow(QFrame::Sunken);
     lb_data->setFrameShape(QFrame::Panel);
     lb_data->setFrameShadow(QFrame::Sunken);
-    std::cout<<aux_hora.toString().toStdString()<<std::endl;
 }
 
 tela_principal::~tela_principal()
