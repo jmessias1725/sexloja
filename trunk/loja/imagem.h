@@ -10,6 +10,7 @@
 #include <QImage>
 
 #include "funcoes_extras.h"
+#include "conexao_bd.h"
 
 class imagem
 {
@@ -29,6 +30,7 @@ public:
     QByteArray retorna_vetor_bytes_imagem(void);
     QString retorna_extensao(void);
     void alterar_imagem(QString nome_arquivo, int largura, int altura);
+    void buscar_imagem(int id);
 };
 
 #endif // IMAGEM_H

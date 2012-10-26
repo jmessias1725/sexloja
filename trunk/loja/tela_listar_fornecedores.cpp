@@ -146,7 +146,7 @@ void tela_listar_fornecedores::on_btn_buscar_clicked()
         }
 
         //realiza conexão ao banco de dados
-        verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
+        verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","on_btn_buscar_clicked");
         if (verifica_conexao){
             //Retorna o banco de dados
             bd = conexao.retorna_bd();
@@ -215,7 +215,7 @@ void tela_listar_fornecedores::on_btn_buscar_clicked()
             ui->tv_fornecedores->resizeColumnToContents(0);
             ui->tv_fornecedores->resizeColumnToContents(3);
             ui->tv_fornecedores->resizeColumnToContents(4);
-        conexao.fechar_conexao();
+        conexao.fechar_conexao("on_btn_buscar_clicked");
         }
     }
 }

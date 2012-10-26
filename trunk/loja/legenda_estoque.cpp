@@ -7,7 +7,7 @@ legenda_estoque::legenda_estoque()
     QSqlDatabase bd;
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
+    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","legenda_estoque");
     if (verifica_conexao){
 
         //Retorna o banco de dados
@@ -56,7 +56,7 @@ legenda_estoque::legenda_estoque()
             i_cor_azul = consultar_ideal.value(4).toInt();
         }
     }
-    conexao.fechar_conexao();
+    conexao.fechar_conexao("legenda_estoque");
 }
 
 void legenda_estoque::definir_icone_janela(QPixmap logo){
@@ -159,7 +159,7 @@ bool legenda_estoque::salvar_alteracao_configuracao_estoque(){
     QString campos;
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
+    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","salvar_alteracao_configuracao_estoque");
 
     if (verifica_conexao){
         //Retorna o banco de dados
@@ -227,7 +227,7 @@ bool legenda_estoque::salvar_alteracao_configuracao_estoque(){
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao();
+            conexao.fechar_conexao("salvar_alteracao_configuracao_estoque");
             return true;
         }
         else{
@@ -247,7 +247,7 @@ bool legenda_estoque::salvar_alteracao_configuracao_estoque(){
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao();
+            conexao.fechar_conexao("salvar_alteracao_configuracao_estoque");
             return false;
         }
     }

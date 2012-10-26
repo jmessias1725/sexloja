@@ -55,3 +55,27 @@ void imagem::alterar_imagem(QString nome_arquivo,int largura, int altura){
     }
 }
 
+void imagem::buscar_imagem(int id){
+    conexao_bd conexao;
+    QSqlDatabase bd;
+
+    //realiza conexão ao banco de dados
+    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","imagem::buscar_imagem")){
+
+        //Retorna o banco de dados
+        bd = conexao.retorna_bd();
+
+        //Declara a variável que irá fazer a consulta
+        QSqlQuery consultar_imagem(bd);
+
+        //realiza a consulta
+        consultar_imagem.exec("SELECT imagem,extensao FROM imagem WHERE id_imagem = "+QString::number(id)+";");
+        while(consultar_imagem.next()){
+            vetor_bytes_imagem = consultar_imagem.value(0).toByteArray();
+            extensao = consultar_imagem.value(1).toString().toStdString();
+        }
+        consultar_imagem.clear();
+    conexao.fechar_conexao("imagem::buscar_imagem");
+    }
+}
+

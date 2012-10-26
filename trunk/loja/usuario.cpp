@@ -31,7 +31,7 @@ bool usuario::verifica_login_senha(QString login_teclado, QString senha_teclado)
     QString senha_bd;
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
+    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","conc_login");
 
     if (verifica_conexao){
         //Retorna o banco de dados
@@ -94,6 +94,6 @@ bool usuario::verifica_login_senha(QString login_teclado, QString senha_teclado)
                 }
             }
     }
-    conexao.fechar_conexao();
+    conexao.fechar_conexao("conc_login");
     return false;
 }
