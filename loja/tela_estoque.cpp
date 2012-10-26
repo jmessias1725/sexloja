@@ -53,9 +53,10 @@ void tela_estoque::buscar_produtos(void){
     float aux_valor_venda;
 
     lista_produtos.clear();
+    lista_his_bal_est.clear();
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
+    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","buscar_produtos");
     if (verifica_conexao){
 
         //Retorna o banco de dados
@@ -99,7 +100,7 @@ void tela_estoque::buscar_produtos(void){
         }
         consultar.clear();
         tela_estoque::mostrar_lista_produtos();
-    conexao.fechar_conexao();
+    conexao.fechar_conexao("buscar_produtos");
     }
 }
 
@@ -142,22 +143,22 @@ void tela_estoque::mostrar_lista_produtos(void){
         ui->tw_produtos->item(i,5)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_produtos->item(i,6)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_produtos->item(i,7)->setTextAlignment(Qt::AlignHCenter);
-        if ((aux_lista_produtos[i]->retorna_quant_disponivel())==legenda->retorna_zerado_valor()){
+        if ((aux_lista_his_bal_est[i]->retorna_somatorio_quantidade())==legenda->retorna_zerado_valor()){
             for(int j=0;j<8;j++){
                 ui->tw_produtos->item(i,j)->setBackgroundColor(QColor::fromRgb(legenda->retorna_z_cor_vermelho(),legenda->retorna_z_cor_verde(),legenda->retorna_z_cor_azul(),255));
             }
         }
-        if (((aux_lista_produtos[i]->retorna_quant_disponivel()) > legenda->retorna_zerado_valor()) && ((aux_lista_produtos[i]->retorna_quant_disponivel() )<= legenda->retorna_minimo_valor())){
+        if (((aux_lista_his_bal_est[i]->retorna_somatorio_quantidade()) > legenda->retorna_zerado_valor()) && ((aux_lista_his_bal_est[i]->retorna_somatorio_quantidade())<= legenda->retorna_minimo_valor())){
             for(int j=0;j<8;j++){
                 ui->tw_produtos->item(i,j)->setBackgroundColor(QColor::fromRgb(legenda->retorna_m_cor_vermelho(),legenda->retorna_m_cor_verde(),legenda->retorna_m_cor_azul(),255));
             }
         }
-        if (((aux_lista_produtos[i]->retorna_quant_disponivel())>legenda->retorna_minimo_valor())&&((aux_lista_produtos[i]->retorna_quant_disponivel())<=legenda->retorna_normal_valor())){
+        if (((aux_lista_his_bal_est[i]->retorna_somatorio_quantidade())>legenda->retorna_minimo_valor())&&((aux_lista_his_bal_est[i]->retorna_somatorio_quantidade())<=legenda->retorna_normal_valor())){
             for(int j=0;j<8;j++){
                 ui->tw_produtos->item(i,j)->setBackgroundColor(QColor::fromRgb(legenda->retorna_n_cor_vermelho(),legenda->retorna_n_cor_verde(),legenda->retorna_n_cor_azul(),255));
             }
         }
-        if ((aux_lista_produtos[i]->retorna_quant_disponivel())>=legenda->retorna_ideal_valor()){
+        if ((aux_lista_his_bal_est[i]->retorna_somatorio_quantidade())>=legenda->retorna_ideal_valor()){
             for(int j=0;j<8;j++){
                 ui->tw_produtos->item(i,j)->setBackgroundColor(QColor::fromRgb(legenda->retorna_i_cor_vermelho(),legenda->retorna_i_cor_verde(),legenda->retorna_i_cor_azul(),255));
             }
@@ -259,7 +260,7 @@ void tela_estoque::on_tw_produtos_doubleClicked(const QModelIndex &index)
     i=0;
 
     tl_produto.definir_icone_janela(logomarca);
-    tl_produto.definir_dados_produto(aux_lista_produtos[index.row()]);
+    tl_produto.definir_dados_produto(aux_lista_produtos[index.row()],aux_lista_his_bal_est[index.row()]);
     aux_lista_produtos[index.row()] = tl_produto.retorna_novo_cadastro();
     if(!tl_produto.exec()){
 

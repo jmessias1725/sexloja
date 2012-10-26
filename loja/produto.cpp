@@ -35,16 +35,16 @@ QString produto::retorna_desc_utilizacao(void){
     return desc_utilizacao;
 }
 
-int produto::retorna_quant_disponivel(void){
-    return quant_disponivel;
-}
-
 QString produto::retorna_cod_barras(void){
     return cod_barras;
 }
 
 QString produto::retorna_tipo(void){
     return tipo;
+}
+
+int produto::retorna_id_imagem(void){
+    return id_imagem;
 }
 
 void produto::alterar_dados_produto(QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
@@ -67,7 +67,6 @@ bool produto::salvar_dados_produto(QString nome_produto,QString fabricante_produ
     nome = nome_produto;
     fabricante = fabricante_produto;
     desc_utilizacao = desc_utilizacao_produto;
-    quant_disponivel = quant_disponivel_produto;
     cod_barras = cod_barras_produto;
     tipo = tipo_produto;
     removido = false;
@@ -84,7 +83,7 @@ bool produto::salvar_dados_produto(QString nome_produto,QString fabricante_produ
     QSqlDatabase bd;
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
+    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","salvar_dados_produto");
 
     if (verifica_conexao){
         //Retorna o banco de dados
@@ -135,7 +134,7 @@ bool produto::salvar_dados_produto(QString nome_produto,QString fabricante_produ
             id_produto = consultar_produto.value(0).toInt();
         }        
 
-        nova_entrada = new his_entradas(id_produto,quant_disponivel,valor_com,valor_ven);
+        nova_entrada = new his_entradas(id_produto,quant_disponivel_produto,valor_com,valor_ven);
 
         //Insere os dados no cadastro de histórico de valores e quantidades do produto
         salvar_his_entradas.prepare("INSERT INTO his_entradas(id_produto,quantidade,valor_compra,valor_venda,data,hora) VALUES(:id_produto,:quantidade,:valor_compra,:valor_venda,:data,:hora);");
@@ -147,7 +146,7 @@ bool produto::salvar_dados_produto(QString nome_produto,QString fabricante_produ
         salvar_his_entradas.bindValue(":hora", nova_entrada->retorna_hora());
         salvar_his_entradas.exec();
 
-        novo_balanco_estoque = new his_balanco_estoque(id_produto,valor_com,valor_ven,quant_disponivel,quant_disponivel);
+        novo_balanco_estoque = new his_balanco_estoque(id_produto,valor_com,valor_ven,quant_disponivel_produto,quant_disponivel_produto);
 
         //Insere os dados no cadastro de histórico de valores e quantidades do produto
         salvar_his_balanco_estoque.prepare("INSERT INTO his_balanco_estoque(valor_compra,valor_venda,id_produto,total_comprado,total_disponivel) VALUES(:valor_compra,:valor_venda,:id_produto,:total_comprado,:total_disponivel);");
@@ -177,7 +176,7 @@ bool produto::salvar_dados_produto(QString nome_produto,QString fabricante_produ
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao();
+            conexao.fechar_conexao("salvar_dados_produto");
             return true;
         }
         else{
@@ -197,7 +196,7 @@ bool produto::salvar_dados_produto(QString nome_produto,QString fabricante_produ
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao();
+            conexao.fechar_conexao("salvar_dados_produto");
             return false;
         }
     }
@@ -341,12 +340,12 @@ bool produto::salvar_alteracao_dados_produto(bool alterou_imgem){
 }
 
 bool produto::remover_cadastro_produto(void){
-    /*conexao_bd conexao;
+    conexao_bd conexao;
     bool verifica_conexao;
     QSqlDatabase bd;
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
+    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","remover_cadastro_produto");
 
     if (verifica_conexao){
         //Retorna o banco de dados
@@ -383,7 +382,7 @@ bool produto::remover_cadastro_produto(void){
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao();
+            conexao.fechar_conexao("remover_cadastro_produto");
             return true;
         }
         else{
@@ -403,22 +402,22 @@ bool produto::remover_cadastro_produto(void){
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao();
+            conexao.fechar_conexao("remover_cadastro_produto");
             return false;
         }
     }
     else{
         return false;
-    }*/
+    }
 }
 
 bool produto::recuperar_cadastro_produto(void){
-    /*conexao_bd conexao;
+    conexao_bd conexao;
     bool verifica_conexao;
     QSqlDatabase bd;
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
+    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","recuperar_cadastro_produto");
 
     if (verifica_conexao){
         //Retorna o banco de dados
@@ -455,7 +454,7 @@ bool produto::recuperar_cadastro_produto(void){
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao();
+            conexao.fechar_conexao("recuperar_cadastro_produto");
             return true;
         }
         else{
@@ -475,13 +474,13 @@ bool produto::recuperar_cadastro_produto(void){
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao();
+            conexao.fechar_conexao("recuperar_cadastro_produto");
             return false;
         }
     }
     else{
         return false;
-    }*/
+    }
 }
 
 produto * produto::busca_produto(void){

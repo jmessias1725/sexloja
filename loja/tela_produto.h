@@ -6,6 +6,8 @@
 #include "tela_editar_produto.h"
 #include "produto.h"
 #include "funcoes_extras.h"
+#include "his_balanco_estoque.h"
+#include "imagem.h"
 
 namespace Ui {
 class tela_produto;
@@ -18,7 +20,7 @@ class tela_produto : public QDialog
 public:
     explicit tela_produto(QWidget *parent = 0);
     ~tela_produto();
-    void definir_dados_produto(produto *cad_produto);
+    void definir_dados_produto(produto *cad_produto,his_balanco_estoque *cad_his_balanco);
     produto * retorna_novo_cadastro(void);
     void definir_icone_janela(QPixmap logo);
 
@@ -34,6 +36,8 @@ private:
     tela_cadastro_produto tl_cadastro_produto;
     tela_editar_produto tl_editar_produto;
     produto *informacoes_produto;
+    his_balanco_estoque *informacoes_his_balanco_estoque;
+    imagem *imagem_produto;
     funcoes_extras funcoes;
     QPixmap logomarca;
 };

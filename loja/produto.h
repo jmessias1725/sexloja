@@ -22,7 +22,6 @@ private:
     QString nome;
     QString fabricante;
     QString desc_utilizacao;
-    int quant_disponivel;
     QString cod_barras;
     QString tipo;
     QPixmap logomarca;
@@ -40,9 +39,9 @@ public:
     QString retorna_nome(void);
     QString retorna_fabricante(void);
     QString retorna_desc_utilizacao(void);
-    int retorna_quant_disponivel(void);
     QString retorna_cod_barras(void);
     QString retorna_tipo(void);
+    int retorna_id_imagem(void);
 
     void alterar_dados_produto(QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
                                int quant_disponivel_produto,QString cod_barras_produto,QString tipo_produto,

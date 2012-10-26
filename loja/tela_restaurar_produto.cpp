@@ -49,7 +49,7 @@ void tela_restaurar_produto::buscar_produtos(void){
     lista_produtos.clear();
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
+    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_restaurar_produto::buscar_produtos");
     if (verifica_conexao){
 
         //Retorna o banco de dados
@@ -95,12 +95,12 @@ void tela_restaurar_produto::buscar_produtos(void){
         }
         consultar.clear();
         tela_restaurar_produto::mostrar_lista_produtos();
-    conexao.fechar_conexao();
+    conexao.fechar_conexao("tela_restaurar_produto::buscar_produtos");
     }
 }
 
 void tela_restaurar_produto::mostrar_lista_produtos(void){
-    funcoes_extras funcao;
+    /*funcoes_extras funcao;
     aux_lista_produtos.clear();
 
     for (int i=0;i<int(lista_produtos.size());i++){
@@ -166,7 +166,7 @@ void tela_restaurar_produto::mostrar_lista_produtos(void){
     ui->tw_produtos->resizeColumnToContents(5);
     ui->tw_produtos->resizeColumnToContents(6);
     ui->tw_produtos->resizeColumnToContents(7);
-    ui->lb_total_produtos->setText("Total de produtos removidos = "+QString::number(int(lista_produtos.size())));
+    ui->lb_total_produtos->setText("Total de produtos removidos = "+QString::number(int(lista_produtos.size())));*/
 }
 
 

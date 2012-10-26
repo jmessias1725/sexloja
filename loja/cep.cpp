@@ -17,7 +17,7 @@ bool cep::buscar_cep(QString cep_procurado){
     cep_procurado = QString::fromStdString(cep_aux);
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_cep","root","tiger270807");
+    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_cep","root","tiger270807","buscar_cep");
 
     if (verifica_conexao){
         //Retorna o banco de dados
@@ -62,16 +62,16 @@ bool cep::buscar_cep(QString cep_procurado){
                 nome_estado = consultar.value(1).toString();
                 consultar.finish();
             }
-            conexao.fechar_conexao();
+            conexao.fechar_conexao("buscar_cep");
             return true;
         }
         else{
-            conexao.fechar_conexao();
+            conexao.fechar_conexao("buscar_cep");
             return false;
         }
     }
     else{
-        conexao.fechar_conexao();
+        conexao.fechar_conexao("buscar_cep");
         return false;
     }
 }

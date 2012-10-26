@@ -102,7 +102,7 @@ bool fornecedor::salvar_dados_fornecedor(void){
     QString id_fornecedor;
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
+    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","salvar_dados_fornecedor");
 
     if (verifica_conexao){
 
@@ -176,7 +176,7 @@ bool fornecedor::salvar_dados_fornecedor(void){
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao();
+            conexao.fechar_conexao("salvar_dados_fornecedor");
             return true;
         }
         else{
@@ -196,7 +196,7 @@ bool fornecedor::salvar_dados_fornecedor(void){
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao();
+            conexao.fechar_conexao("salvar_dados_fornecedor");
             return false;
         }
     }
@@ -215,7 +215,7 @@ bool fornecedor::salvar_alteracao_dados_fornecedor(std::vector< std::string > li
     QSqlDatabase bd;
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
+    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","salvar_alteracao_dados_fornecedor");
 
     if (verifica_conexao){
 
@@ -303,7 +303,7 @@ bool fornecedor::salvar_alteracao_dados_fornecedor(std::vector< std::string > li
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao();
+            conexao.fechar_conexao("salvar_alteracao_dados_fornecedor");
             return true;
         }
         else{
@@ -323,7 +323,7 @@ bool fornecedor::salvar_alteracao_dados_fornecedor(std::vector< std::string > li
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao();
+            conexao.fechar_conexao("salvar_alteracao_dados_fornecedor");
             return false;
         }
     }
@@ -338,7 +338,7 @@ bool fornecedor::remover_cadastro_fornecedor(int id_fornecedor){
     QSqlDatabase bd;
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
+    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","remover_cadastro_fornecedor");
 
     if (verifica_conexao){
 
@@ -372,7 +372,7 @@ bool fornecedor::remover_cadastro_fornecedor(int id_fornecedor){
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao();
+            conexao.fechar_conexao("remover_cadastro_fornecedor");
             return true;
         }
         else{
@@ -392,7 +392,7 @@ bool fornecedor::remover_cadastro_fornecedor(int id_fornecedor){
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao();
+            conexao.fechar_conexao("remover_cadastro_fornecedor");
             return false;
         }
     }

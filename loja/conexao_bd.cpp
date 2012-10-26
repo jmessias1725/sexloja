@@ -1,8 +1,8 @@
 #include "conexao_bd.h"
 
-bool conexao_bd::conetar_bd(const QString hostname,int porta,const QString nome_bd,const QString usuario,const QString senha){
+bool conexao_bd::conetar_bd(const QString hostname,int porta,const QString nome_bd,const QString usuario,const QString senha,const QString nome_conexao){
 
-    bd_loja = QSqlDatabase::addDatabase("QMYSQL","conexao");
+    bd_loja = QSqlDatabase::addDatabase("QMYSQL",nome_conexao);
 
     bd_loja.setHostName(hostname);
     bd_loja.setPort(porta);
@@ -18,8 +18,8 @@ bool conexao_bd::conetar_bd(const QString hostname,int porta,const QString nome_
         return true;
 }
 
-void conexao_bd::fechar_conexao(void){
-    bd_loja.connectionNames().removeDuplicates();
+void conexao_bd::fechar_conexao(const QString nome_conexao){
+    bd_loja.removeDatabase(nome_conexao);
     bd_loja.close();
 }
 

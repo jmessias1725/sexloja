@@ -8,6 +8,7 @@
 #include "funcoes_extras.h"
 #include "imagem.h"
 #include "produto.h"
+#include "his_balanco_estoque.h"
 
 namespace Ui {
 class tela_editar_produto;
@@ -21,7 +22,7 @@ public:
     explicit tela_editar_produto(QWidget *parent = 0);
     ~tela_editar_produto();
     void definir_icone_janela(QPixmap logo);
-    void definir_dados_produto(produto *cad_produto);
+    void definir_dados_produto(produto *cad_produto, his_balanco_estoque *cad_his_balanco, imagem *imagem_pro);
     produto * retorna_novo_cadastro(void);
 
 private slots:
@@ -43,6 +44,8 @@ private:
     QPixmap logomarca;
     funcoes_extras funcao;
     produto *informacoes_produto;
+    imagem *imagem_produto;
+    his_balanco_estoque *informacoes_his_balanco_estoque;
     bool alterou_imgem;
 };
 

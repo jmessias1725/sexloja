@@ -81,7 +81,7 @@ bool loja::salvar_dados_loja(void){
     QString id_loja;
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
+    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","salvar_dados_loja");
 
     if (verifica_conexao){
 
@@ -146,7 +146,7 @@ bool loja::salvar_dados_loja(void){
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao();
+            conexao.fechar_conexao("salvar_dados_loja");
             return true;
         }
         else{
@@ -166,7 +166,7 @@ bool loja::salvar_dados_loja(void){
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao();
+            conexao.fechar_conexao("salvar_dados_loja");
             return false;
         }
     }
@@ -184,7 +184,7 @@ bool loja::salvar_alteracao_dados_loja(std::vector< std::string > lista_telefone
     QString campos;
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
+    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","salvar_alteracao_dados_loja");
 
     if (verifica_conexao){
 
@@ -254,7 +254,7 @@ bool loja::salvar_alteracao_dados_loja(std::vector< std::string > lista_telefone
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao();
+            conexao.fechar_conexao("salvar_alteracao_dados_loja");
             return true;
         }
         else{
@@ -274,7 +274,7 @@ bool loja::salvar_alteracao_dados_loja(std::vector< std::string > lista_telefone
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao();
+            conexao.fechar_conexao("salvar_alteracao_dados_loja");
             return false;
         }
     }
@@ -285,13 +285,10 @@ bool loja::salvar_alteracao_dados_loja(std::vector< std::string > lista_telefone
 
 loja * loja::busca_loja(void){
     conexao_bd conexao;
-    bool verifica_conexao;
     QSqlDatabase bd;
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807");
-
-    if (verifica_conexao){
+    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","busca_loja")){
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
 
@@ -320,7 +317,8 @@ loja * loja::busca_loja(void){
             lista_telefone.push_back(consultar.value(0).toString().toStdString());
             lista_operadora.push_back(consultar.value(1).toString().toStdString());
         }
-        conexao.fechar_conexao();
+        conexao.fechar_conexao("busca_loja");
     }
+    conexao.fechar_conexao("busca_loja");
     return this;
 }
