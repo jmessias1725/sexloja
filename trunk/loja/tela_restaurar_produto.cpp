@@ -89,9 +89,9 @@ void tela_restaurar_produto::buscar_produtos(void){
                 aux_extensao = consultar_imagem.value(1).toString().toStdString();
                 consultar_imagem.clear();
             }
-            lista_produtos.push_back(new produto(aux_id,aux_nome,aux_fabricante,aux_desc_utilizacao,aux_quant_disponivel,aux_cod_barras,
-                                                 aux_tipo, aux_id_imagem,aux_imagem,aux_extensao,aux_data ,aux_valor_compra,aux_valor_venda,aux_hora));
-
+            /*lista_produtos.push_back(new produto(aux_id,aux_nome,aux_fabricante,aux_desc_utilizacao,aux_quant_disponivel,aux_cod_barras,
+                                                 aux_tipo, aux_id_imagem,aux_imagem,aux_extensao,aux_data ,aux_valor_compra,aux_valor_venda,));
+*/
         }
         consultar.clear();
         tela_restaurar_produto::mostrar_lista_produtos();
@@ -125,8 +125,8 @@ void tela_restaurar_produto::mostrar_lista_produtos(void){
         ui->tw_produtos->setItem(i,2,new QTableWidgetItem(aux_lista_produtos[i]->retorna_nome()));
         ui->tw_produtos->setItem(i,3,new QTableWidgetItem(aux_lista_produtos[i]->retorna_fabricante()));
         ui->tw_produtos->setItem(i,4,new QTableWidgetItem(QString::number(aux_lista_produtos[i]->retorna_quant_disponivel())));
-        ui->tw_produtos->setItem(i,5,new QTableWidgetItem(funcao.retorna_valor_dinheiro(QString::number(aux_lista_produtos[i]->retorna_valor_compra()))));
-        ui->tw_produtos->setItem(i,6,new QTableWidgetItem(funcao.retorna_valor_dinheiro(QString::number(aux_lista_produtos[i]->retorna_valor_venda()))));
+        //ui->tw_produtos->setItem(i,5,new QTableWidgetItem(funcao.retorna_valor_dinheiro(QString::number(aux_lista_produtos[i]->retorna_valor_compra()))));
+        //ui->tw_produtos->setItem(i,6,new QTableWidgetItem(funcao.retorna_valor_dinheiro(QString::number(aux_lista_produtos[i]->retorna_valor_venda()))));
         ui->tw_produtos->setItem(i,7,new QTableWidgetItem(aux_lista_produtos[i]->retorna_cod_barras()));
         ui->tw_produtos->item(i,0)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_produtos->item(i,1)->setTextAlignment(Qt::AlignHCenter);

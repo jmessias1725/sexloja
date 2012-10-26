@@ -44,16 +44,13 @@ void tela_estoque::buscar_produtos(void){
     QString aux_nome;
     QString aux_fabricante;
     QString aux_desc_utilizacao;
-    int aux_quant_disponivel;
     QString aux_cod_barras;
     QString aux_tipo;
     int aux_id_imagem;
-    QString aux_data;
-    QString aux_hora;
+    int aux_id_balanco;
+    int aux_soma_total;
     float aux_valor_compra;
     float aux_valor_venda;
-    QByteArray aux_imagem;
-    std::string aux_extensao;
 
     lista_produtos.clear();
 
@@ -66,40 +63,38 @@ void tela_estoque::buscar_produtos(void){
 
         //Declara a variável que irá fazer a consulta
         QSqlQuery consultar(bd);
-        QSqlQuery consultar_imagem(bd);
         QSqlQuery consultar_valor(bd);
+        QSqlQuery consultar_soma_quant_disponivel(bd);
 
         //realiza a consulta
-        consultar.exec("SELECT * FROM produto WHERE id_produto LIKE '%%' AND nome LIKE '%%' AND fabricante LIKE '%%' AND cod_barras  LIKE '%%' AND tipo LIKE '%%' AND removido=0 ORDER BY nome;");
+        consultar.exec("SELECT id_produto,nome,fabricante,desc_utilizacao,cod_barras,tipo,id_imagem FROM produto WHERE removido=0 ORDER BY nome;");
         while(consultar.next()){
             aux_id = consultar.value(0).toInt();
             aux_nome = consultar.value(1).toString();
             aux_fabricante = consultar.value(2).toString();
             aux_desc_utilizacao = consultar.value(3).toString();
-            aux_quant_disponivel = consultar.value(4).toInt();
-            aux_cod_barras = consultar.value(5).toString();
-            aux_tipo = consultar.value(6).toString();
-            aux_id_imagem = consultar.value(7).toInt();
+            aux_cod_barras = consultar.value(4).toString();
+            aux_tipo = consultar.value(5).toString();
+            aux_id_imagem = consultar.value(6).toInt();
 
             //realiza a consulta para buscar o valores e quantidades do produto.
-            consultar_valor.exec("SELECT data,valor_compra,valor_venda,hora FROM his_valores_quantidade WHERE id_produto = '"+QString::number(aux_id)+"';");
+            consultar_valor.exec("SELECT id_balanco,valor_compra,valor_venda FROM his_balanco_estoque WHERE id_produto = "+QString::number(aux_id)+";");
             if(consultar_valor.last()){
-                aux_data = consultar_valor.value(0).toString();
+                aux_id_balanco = consultar_valor.value(0).toInt();
                 aux_valor_compra = consultar_valor.value(1).toFloat();
                 aux_valor_venda = consultar_valor.value(2).toFloat();
-                aux_hora =  consultar_valor.value(3).toString();
                 consultar_valor.clear();
             }
 
-            //realiza a consulta para buscar a imagem do produto.
-            consultar_imagem.exec("SELECT imagem,extensao FROM imagem WHERE id_imagem = '"+QString::number(aux_id_imagem)+"';");
-            if(consultar_imagem.last()){
-                aux_imagem = consultar_imagem.value(0).toByteArray();
-                aux_extensao = consultar_imagem.value(1).toString().toStdString();
-                consultar_imagem.clear();
+            //realiza a consulta para buscar o valores e quantidades do produto.
+            consultar_soma_quant_disponivel.exec("SELECT SUM(total_disponivel) FROM his_balanco_estoque WHERE id_produto = "+QString::number(aux_id)+";");
+            if(consultar_soma_quant_disponivel.last()){
+                aux_soma_total = consultar_soma_quant_disponivel.value(0).toInt();
+                consultar_soma_quant_disponivel.clear();
             }
-            lista_produtos.push_back(new produto(aux_id,aux_nome,aux_fabricante,aux_desc_utilizacao,aux_quant_disponivel,aux_cod_barras,
-                                                 aux_tipo, aux_id_imagem,aux_imagem,aux_extensao,aux_data ,aux_valor_compra,aux_valor_venda,aux_hora));
+
+            lista_produtos.push_back(new produto(aux_id,aux_nome,aux_fabricante,aux_desc_utilizacao,aux_cod_barras,aux_tipo,aux_id_imagem));
+            lista_his_bal_est.push_back(new his_balanco_estoque(aux_id_balanco,aux_valor_compra,aux_valor_venda,aux_soma_total));
 
         }
         consultar.clear();
@@ -111,6 +106,7 @@ void tela_estoque::buscar_produtos(void){
 void tela_estoque::mostrar_lista_produtos(void){
     funcoes_extras funcao;
     aux_lista_produtos.clear();
+    aux_lista_his_bal_est.clear();
 
     for (int i=0;i<int(lista_produtos.size());i++){
         if((QString::number(lista_produtos[i]->retorna_id()).contains(aux_cons_id_produto))&&
@@ -119,6 +115,7 @@ void tela_estoque::mostrar_lista_produtos(void){
            (lista_produtos[i]->retorna_fabricante().contains(aux_cons_fabricante))&&
            (lista_produtos[i]->retorna_cod_barras().contains(aux_cons_cod_barras))){
             aux_lista_produtos.push_back(lista_produtos[i]);
+            aux_lista_his_bal_est.push_back(lista_his_bal_est[i]);
         }
     }
 
@@ -133,9 +130,9 @@ void tela_estoque::mostrar_lista_produtos(void){
         ui->tw_produtos->setItem(i,1,new QTableWidgetItem(QString::number(aux_lista_produtos[i]->retorna_id())));
         ui->tw_produtos->setItem(i,2,new QTableWidgetItem(aux_lista_produtos[i]->retorna_nome()));
         ui->tw_produtos->setItem(i,3,new QTableWidgetItem(aux_lista_produtos[i]->retorna_fabricante()));
-        ui->tw_produtos->setItem(i,4,new QTableWidgetItem(QString::number(aux_lista_produtos[i]->retorna_quant_disponivel())));
-        ui->tw_produtos->setItem(i,5,new QTableWidgetItem(funcao.retorna_valor_dinheiro(QString::number(aux_lista_produtos[i]->retorna_valor_compra()))));
-        ui->tw_produtos->setItem(i,6,new QTableWidgetItem(funcao.retorna_valor_dinheiro(QString::number(aux_lista_produtos[i]->retorna_valor_venda()))));
+        ui->tw_produtos->setItem(i,4,new QTableWidgetItem(QString::number(aux_lista_his_bal_est[i]->retorna_somatorio_quantidade())));
+        ui->tw_produtos->setItem(i,5,new QTableWidgetItem(funcao.retorna_valor_dinheiro(QString::number(aux_lista_his_bal_est[i]->retorna_valor_compra()))));
+        ui->tw_produtos->setItem(i,6,new QTableWidgetItem(funcao.retorna_valor_dinheiro(QString::number(aux_lista_his_bal_est[i]->retorna_valor_venda()))));
         ui->tw_produtos->setItem(i,7,new QTableWidgetItem(aux_lista_produtos[i]->retorna_cod_barras()));
         ui->tw_produtos->item(i,0)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_produtos->item(i,1)->setTextAlignment(Qt::AlignHCenter);

@@ -30,13 +30,13 @@ void tela_produto::definir_dados_produto(produto *cad_produto){
     ui->le_fabricante->setText(informacoes_produto->retorna_fabricante());
     ui->le_codigo_barras->setText(informacoes_produto->retorna_cod_barras());
     ui->le_quantidade->setText(QString::number(informacoes_produto->retorna_quant_disponivel()));
-    ui->le_valor_compra->setText(funcoes.retorna_valor_dinheiro(QString::number(informacoes_produto->retorna_valor_compra())));
-    ui->le_valor_venda->setText(funcoes.retorna_valor_dinheiro(QString::number(informacoes_produto->retorna_valor_venda())));
+    //ui->le_valor_compra->setText(funcoes.retorna_valor_dinheiro(QString::number(informacoes_produto->retorna_valor_compra())));
+    //ui->le_valor_venda->setText(funcoes.retorna_valor_dinheiro(QString::number(informacoes_produto->retorna_valor_venda())));
     ui->te_des_utilizacao->setText(informacoes_produto->retorna_desc_utilizacao());
 
     ui->gv_imagem_produto->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->gv_imagem_produto->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    imagem_produto->addPixmap(informacoes_produto->retorna_QPixmap_imagem());
+    //imagem_produto->addPixmap(informacoes_produto->retorna_QPixmap_imagem());
     ui->gv_imagem_produto->setScene(imagem_produto);
 }
 
