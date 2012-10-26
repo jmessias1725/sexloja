@@ -1,7 +1,13 @@
 #include "his_balanco_estoque.h"
 
-his_balanco_estoque::his_balanco_estoque(int id_pro,float valor_com,float valor_ven,int total_com,int total_dis)
-{
+his_balanco_estoque::his_balanco_estoque(int id_bal,float valor_com,float valor_ven,int somatorio_quan){
+    id_balanco = id_bal;
+    valor_compra = valor_com;
+    valor_venda = valor_ven;
+    somatorio_quantidade = somatorio_quan;
+}
+
+his_balanco_estoque::his_balanco_estoque(int id_pro,float valor_com,float valor_ven,int total_com,int total_dis){
     id_produto = id_pro;
     valor_compra = valor_com;
     valor_venda = valor_ven;
@@ -30,5 +36,9 @@ int his_balanco_estoque::retorna_total_comprado(void){
 
 int his_balanco_estoque::retorna_total_disponivel(void){
     return total_disponivel;
+}
+
+int his_balanco_estoque::retorna_somatorio_quantidade(void){
+    return somatorio_quantidade;
 }
 

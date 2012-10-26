@@ -10,8 +10,10 @@ private:
     float valor_venda;
     int total_comprado;
     int total_disponivel;
+    int somatorio_quantidade;
 
 public:
+    his_balanco_estoque(int id_bal,float valor_com,float valor_ven,int somatorio_quan);
     his_balanco_estoque(int id_pro,float valor_com,float valor_ven,int total_com,int total_dis);
     int retorna_id_balanco(void);
     int retorna_id_produto(void);
@@ -19,6 +21,7 @@ public:
     float retorna_valor_venda(void);
     int retorna_total_comprado(void);
     int retorna_total_disponivel(void);
+    int retorna_somatorio_quantidade(void);
 };
 
 #endif // HIS_BALANCO_ESTOQUE_H

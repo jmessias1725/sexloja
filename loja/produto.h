@@ -15,7 +15,7 @@
 #include "his_entradas.h"
 #include "his_balanco_estoque.h"
 
-class produto :public imagem, public valor_produto
+class produto
 {
 private:
     int id_produto;
@@ -34,8 +34,7 @@ public:
     produto();
 
     produto(int id_pro,QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
-            int quant_disponivel_produto,QString cod_barras_produto,QString tipo_produto, int id_imag,
-            QByteArray vetor_bytes_img, std::string img_extensao,QString dta ,float valor_com,float valor_ven,QString ho);
+            QString cod_barras_produto,QString tipo_produto, int id_imag);
 
     int retorna_id(void);
     QString retorna_nome(void);

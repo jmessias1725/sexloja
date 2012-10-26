@@ -4,19 +4,15 @@ produto::produto()
 {
 }
 produto::produto(int id_pro,QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
-                 int quant_disponivel_produto,QString cod_barras_produto,QString tipo_produto, int id_imag,
-                 QByteArray vetor_bytes_img, std::string img_extensao,QString dta ,float valor_com,float valor_ven,QString ho)
-    :imagem(vetor_bytes_img, img_extensao), valor_produto(id_pro,dta,quant_disponivel_produto,valor_com,valor_ven,ho){
+                 QString cod_barras_produto,QString tipo_produto, int id_imag){
     id_produto = id_pro;
-    produto::nome = nome_produto;
-    produto::fabricante = fabricante_produto;
-    produto::desc_utilizacao = desc_utilizacao_produto;
-    produto::quant_disponivel = quant_disponivel_produto;
-    produto::cod_barras = cod_barras_produto;
-    produto::tipo = tipo_produto;
-    produto::id_imagem = id_imag;
+    nome = nome_produto;
+    fabricante = fabricante_produto;
+    desc_utilizacao = desc_utilizacao_produto;
+    cod_barras = cod_barras_produto;
+    tipo = tipo_produto;
+    id_imagem = id_imag;
     removido = false;
-    alterou_valores = false;
 }
 
 void produto::definir_icone_janela(QPixmap logo){
@@ -54,14 +50,14 @@ QString produto::retorna_tipo(void){
 void produto::alterar_dados_produto(QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
                                     int quant_disponivel_produto,QString cod_barras_produto,QString tipo_produto,
                                     QString nome_arquivo_imagem, int altura, int largura,float valor_com,float valor_ven){
-    nome = nome_produto;
+   /* nome = nome_produto;
     fabricante = fabricante_produto;
     desc_utilizacao = desc_utilizacao_produto;
     quant_disponivel = quant_disponivel_produto;
     cod_barras = cod_barras_produto;
     tipo = tipo_produto;
     alterar_imagem(nome_arquivo_imagem, largura, altura);
-    alterou_valores = alterar_valor_produto(quant_disponivel_produto,valor_com,valor_ven);
+    alterou_valores = alterar_valor_produto(quant_disponivel_produto,valor_com,valor_ven);*/
 }
 
 bool produto::salvar_dados_produto(QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
@@ -211,7 +207,7 @@ bool produto::salvar_dados_produto(QString nome_produto,QString fabricante_produ
 }
 
 bool produto::salvar_alteracao_dados_produto(bool alterou_imgem){
-    conexao_bd conexao;
+    /*conexao_bd conexao;
     bool verifica_conexao;
     QSqlDatabase bd;
     QString campos;
@@ -341,11 +337,11 @@ bool produto::salvar_alteracao_dados_produto(bool alterou_imgem){
         return false;
     }
     conexao.fechar_conexao();
-    return false;
+    return false;*/
 }
 
 bool produto::remover_cadastro_produto(void){
-    conexao_bd conexao;
+    /*conexao_bd conexao;
     bool verifica_conexao;
     QSqlDatabase bd;
 
@@ -413,11 +409,11 @@ bool produto::remover_cadastro_produto(void){
     }
     else{
         return false;
-    }
+    }*/
 }
 
 bool produto::recuperar_cadastro_produto(void){
-    conexao_bd conexao;
+    /*conexao_bd conexao;
     bool verifica_conexao;
     QSqlDatabase bd;
 
@@ -485,7 +481,7 @@ bool produto::recuperar_cadastro_produto(void){
     }
     else{
         return false;
-    }
+    }*/
 }
 
 produto * produto::busca_produto(void){
