@@ -37,7 +37,6 @@ void tela_estoque::definir_icone_janela(QPixmap logo){
 
 void tela_estoque::buscar_produtos(void){
     conexao_bd conexao;
-    bool verifica_conexao;
     QSqlDatabase bd;
 
     int aux_id;
@@ -56,8 +55,7 @@ void tela_estoque::buscar_produtos(void){
     lista_his_bal_est.clear();
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","buscar_produtos");
-    if (verifica_conexao){
+    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_estoque::buscar_produtos")){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
@@ -68,7 +66,7 @@ void tela_estoque::buscar_produtos(void){
         QSqlQuery consultar_soma_quant_disponivel(bd);
 
         //realiza a consulta
-        consultar.exec("SELECT id_produto,nome,fabricante,desc_utilizacao,cod_barras,tipo,id_imagem FROM produto WHERE removido=0 ORDER BY nome;");
+        consultar.exec("SELECT id_produto,nome,fabricante,desc_utilizacao,cod_barras,tipo,id_imagem,valor_venda FROM produto WHERE removido=0 ORDER BY nome;");
         while(consultar.next()){
             aux_id = consultar.value(0).toInt();
             aux_nome = consultar.value(1).toString();
@@ -77,13 +75,13 @@ void tela_estoque::buscar_produtos(void){
             aux_cod_barras = consultar.value(4).toString();
             aux_tipo = consultar.value(5).toString();
             aux_id_imagem = consultar.value(6).toInt();
+            aux_valor_venda = consultar.value(7).toInt();
 
             //realiza a consulta para buscar o valores e quantidades do produto.
-            consultar_valor.exec("SELECT id_balanco,valor_compra,valor_venda FROM his_balanco_estoque WHERE id_produto = "+QString::number(aux_id)+";");
+            consultar_valor.exec("SELECT id_balanco,valor_compra FROM his_balanco_estoque WHERE id_produto = "+QString::number(aux_id)+";");
             if(consultar_valor.last()){
                 aux_id_balanco = consultar_valor.value(0).toInt();
                 aux_valor_compra = consultar_valor.value(1).toFloat();
-                aux_valor_venda = consultar_valor.value(2).toFloat();
                 consultar_valor.clear();
             }
 
@@ -94,13 +92,14 @@ void tela_estoque::buscar_produtos(void){
                 consultar_soma_quant_disponivel.clear();
             }
 
-            lista_produtos.push_back(new produto(aux_id,aux_nome,aux_fabricante,aux_desc_utilizacao,aux_cod_barras,aux_tipo,aux_id_imagem));
-            lista_his_bal_est.push_back(new his_balanco_estoque(aux_id_balanco,aux_valor_compra,aux_valor_venda,aux_soma_total));
+            lista_produtos.push_back(new produto(aux_id,aux_nome,aux_fabricante,aux_desc_utilizacao,aux_cod_barras,aux_tipo,aux_id_imagem,aux_valor_venda));
+            lista_his_bal_est.push_back(new his_balanco_estoque(aux_id_balanco,aux_valor_compra,aux_soma_total));
 
         }
         consultar.clear();
         tela_estoque::mostrar_lista_produtos();
-    conexao.fechar_conexao("buscar_produtos");
+        bd.close();
+        conexao.fechar_conexao();
     }
 }
 
@@ -133,7 +132,7 @@ void tela_estoque::mostrar_lista_produtos(void){
         ui->tw_produtos->setItem(i,3,new QTableWidgetItem(aux_lista_produtos[i]->retorna_fabricante()));
         ui->tw_produtos->setItem(i,4,new QTableWidgetItem(QString::number(aux_lista_his_bal_est[i]->retorna_somatorio_quantidade())));
         ui->tw_produtos->setItem(i,5,new QTableWidgetItem(funcao.retorna_valor_dinheiro(QString::number(aux_lista_his_bal_est[i]->retorna_valor_compra()))));
-        ui->tw_produtos->setItem(i,6,new QTableWidgetItem(funcao.retorna_valor_dinheiro(QString::number(aux_lista_his_bal_est[i]->retorna_valor_venda()))));
+        ui->tw_produtos->setItem(i,6,new QTableWidgetItem(funcao.retorna_valor_dinheiro(QString::number(aux_lista_produtos[i]->retorna_valor_venda()))));
         ui->tw_produtos->setItem(i,7,new QTableWidgetItem(aux_lista_produtos[i]->retorna_cod_barras()));
         ui->tw_produtos->item(i,0)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_produtos->item(i,1)->setTextAlignment(Qt::AlignHCenter);

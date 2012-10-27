@@ -75,7 +75,8 @@ void imagem::buscar_imagem(int id){
             extensao = consultar_imagem.value(1).toString().toStdString();
         }
         consultar_imagem.clear();
-    conexao.fechar_conexao("imagem::buscar_imagem");
+        bd.close();
+        conexao.fechar_conexao();
     }
 }
 

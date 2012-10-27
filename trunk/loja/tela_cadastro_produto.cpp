@@ -62,7 +62,7 @@ void tela_cadastro_produto::on_btn_confirmar_clicked()
         cad_produto->definir_icone_janela(logomarca);
         if(cad_produto->salvar_dados_produto(ui->le_nome->text(),ui->le_fabricante->text(),QString::fromStdString(descricao_Aux),
                                              ui->le_quantidade->text().toInt(),ui->le_codigo_barras->text(),ui->cb_tipo->currentText()
-                                             ,nome_arquivo_imagem,largura,altura,valor_compra,valor_venda)){
+                                             ,nome_arquivo_imagem,altura,largura,valor_compra,valor_venda)){
             tela_cadastro_produto::limpar_tela();
         }
     }

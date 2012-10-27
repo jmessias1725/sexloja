@@ -59,7 +59,6 @@ void tela_listar_clientes::on_btn_cancelar_clicked()
 void tela_listar_clientes::on_btn_buscar_clicked()
 {
     conexao_bd conexao;
-    bool verifica_conexao;
     QSqlDatabase bd;
     funcoes_extras funcao;
     std::vector< std::string > lista_id;
@@ -115,8 +114,7 @@ void tela_listar_clientes::on_btn_buscar_clicked()
         }
 
         //realiza conexão ao banco de dados
-        verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","on_btn_buscar_clicked");
-        if (verifica_conexao){
+        if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_listar_clientes::on_btn_buscar_clicked()")){
             //Retorna o banco de dados
             bd = conexao.retorna_bd();
 
@@ -179,7 +177,8 @@ void tela_listar_clientes::on_btn_buscar_clicked()
             ui->tv_clientes->setModel(modelo);
             ui->tv_clientes->resizeColumnToContents(0);
             ui->tv_clientes->resizeColumnToContents(2);
-        conexao.fechar_conexao("on_btn_buscar_clicked");
+        bd.close();
+        conexao.fechar_conexao();
         }
     }
 }

@@ -23,10 +23,9 @@ produto * tela_editar_produto::retorna_novo_cadastro(void){
     return informacoes_produto;
 }
 
-void tela_editar_produto::definir_dados_produto(produto *cad_produto, his_balanco_estoque *cad_his_balanco, imagem *imagem_pro){
+void tela_editar_produto::definir_dados_produto(produto *cad_produto, imagem *imagem_pro){
     informacoes_produto = cad_produto;
     imagem_produto = imagem_pro;
-    informacoes_his_balanco_estoque = cad_his_balanco;
 
     QGraphicsScene *GS_imagem_produto = new QGraphicsScene;
 
@@ -34,15 +33,13 @@ void tela_editar_produto::definir_dados_produto(produto *cad_produto, his_balanc
     ui->le_nome->setText(informacoes_produto->retorna_nome());
     ui->le_fabricante->setText(informacoes_produto->retorna_fabricante());
     ui->le_codigo_barras->setText(informacoes_produto->retorna_cod_barras());
-    ui->le_quantidade->setText(QString::number(informacoes_his_balanco_estoque->retorna_somatorio_quantidade()));
-    ui->le_valor_compra->setText(funcao.retorna_valor_dinheiro(QString::number(informacoes_his_balanco_estoque->retorna_valor_compra())));
-    ui->le_valor_venda->setText(funcao.retorna_valor_dinheiro(QString::number(informacoes_his_balanco_estoque->retorna_valor_venda())));
     ui->te_des_utilizacao->setText(informacoes_produto->retorna_desc_utilizacao());
 
     ui->gv_imagem_produto->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->gv_imagem_produto->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     GS_imagem_produto->addPixmap(imagem_produto->retorna_QPixmap_imagem());
     ui->gv_imagem_produto->setScene(GS_imagem_produto);
+    nome_arquivo_imagem = ":/img/img/produto.png";
 }
 
 
@@ -63,11 +60,14 @@ void tela_editar_produto::on_btn_adicionar_imagem_clicked()
         ui->gv_imagem_produto->setScene(cena);
         alterou_imgem = true;
     }
+    else{
+        nome_arquivo_imagem = ":/img/img/produto.png";
+    }
 }
 
 void tela_editar_produto::on_btn_confirmar_clicked()
 {
-    /*std::string descricao_Aux;
+    std::string descricao_Aux;
     descricao_Aux = ui->te_des_utilizacao->toPlainText().toStdString();
 
     //Gera mensagem perguntando se é para salvar alterações.
@@ -86,14 +86,10 @@ void tela_editar_produto::on_btn_confirmar_clicked()
         }
 
         if((ui->le_nome->text().toStdString()!="")){
-            float valor_compra = funcao.converter_para_float(ui->le_valor_compra->text());
-            float valor_venda = funcao.converter_para_float(ui->le_valor_venda->text());
-
-            informacoes_produto->alterar_dados_produto(ui->le_nome->text(),ui->le_fabricante->text(),QString::fromStdString(descricao_Aux),
-                                      ui->le_quantidade->text().toInt(),ui->le_codigo_barras->text(),ui->cb_tipo->currentText()
-                                      ,nome_arquivo_imagem,altura,largura,valor_compra,valor_venda);
             informacoes_produto->definir_icone_janela(logomarca);
-            if(informacoes_produto->salvar_alteracao_dados_produto(alterou_imgem)){
+            if(informacoes_produto->salvar_alteracao_dados_produto(ui->le_nome->text(),ui->le_fabricante->text(),QString::fromStdString(descricao_Aux),
+                                                                   ui->le_codigo_barras->text(),ui->cb_tipo->currentText(),nome_arquivo_imagem,altura,
+                                                                   largura,alterou_imgem)){
                 tela_editar_produto::limpar_tela();
                 this->close();
             }
@@ -111,7 +107,7 @@ void tela_editar_produto::on_btn_confirmar_clicked()
                 msg.exec();
             }
         }
-    }*/
+    }
 }
 
 void tela_editar_produto::on_btn_cancelar_clicked()
@@ -123,11 +119,8 @@ void tela_editar_produto::limpar_tela(void){
     ui->le_codigo_barras->clear();
     ui->le_fabricante->clear();
     ui->le_nome->clear();
-    ui->le_quantidade->clear();
     ui->cb_tipo->setCurrentIndex(0);
     ui->te_des_utilizacao->clear();
-    ui->le_valor_compra->clear();
-    ui->le_valor_venda->clear();
 }
 
 void tela_editar_produto::closeEvent( QCloseEvent * event ){
@@ -144,16 +137,3 @@ void tela_editar_produto::on_le_fabricante_textChanged(const QString &arg1)
     ui->le_fabricante->setText(ui->le_fabricante->text().toUpper());
 }
 
-void tela_editar_produto::on_le_valor_compra_editingFinished()
-{
-    QString aux;
-    aux =  funcao.retorna_valor_dinheiro(ui->le_valor_compra->text());
-    ui->le_valor_compra->setText(aux);
-}
-
-void tela_editar_produto::on_le_valor_venda_editingFinished()
-{
-    QString aux;
-    aux =  funcao.retorna_valor_dinheiro(ui->le_valor_venda->text());
-    ui->le_valor_venda->setText(aux);
-}

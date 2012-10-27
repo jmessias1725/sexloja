@@ -96,14 +96,11 @@ void cliente::alterar_dados_cliente(QString cliente_nome,QString cliente_rg,QStr
 
 bool cliente::salvar_dados_cliente(void){
     conexao_bd conexao;
-    bool verifica_conexao;
     QSqlDatabase bd;
     QString id_cliente;
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","conec_cliente");
-
-    if (verifica_conexao){
+    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","conec_cliente")){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
@@ -175,7 +172,8 @@ bool cliente::salvar_dados_cliente(void){
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao("conec_cliente");
+            bd.close();
+            conexao.fechar_conexao();
             return true;
         }
         else{
@@ -195,7 +193,8 @@ bool cliente::salvar_dados_cliente(void){
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao("conec_cliente");
+            bd.close();
+            conexao.fechar_conexao();
             return false;
         }
     }
@@ -210,13 +209,10 @@ bool cliente::salvar_alteracao_dados_cliente(std::vector< std::string > lista_te
                                              std::vector< std::string > lista_email_a_remover,
                                              std::vector< std::string > lista_email_a_adicionar){
     conexao_bd conexao;
-    bool verifica_conexao;
     QSqlDatabase bd;
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","conect_dados_cliente");
-
-    if (verifica_conexao){
+    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","cliente::salvar_alteracao_dados_cliente")){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
@@ -304,7 +300,8 @@ bool cliente::salvar_alteracao_dados_cliente(std::vector< std::string > lista_te
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao("conect_dados_cliente");
+            bd.close();
+            conexao.fechar_conexao();
             return true;
         }
         else{
@@ -324,7 +321,8 @@ bool cliente::salvar_alteracao_dados_cliente(std::vector< std::string > lista_te
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao("conect_dados_cliente");
+            bd.close();
+            conexao.fechar_conexao();
             return false;
         }
     }
@@ -335,13 +333,11 @@ bool cliente::salvar_alteracao_dados_cliente(std::vector< std::string > lista_te
 
 bool cliente::remover_cadastro_cliente(int id_cliente){
     conexao_bd conexao;
-    bool verifica_conexao;
     QSqlDatabase bd;
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","remover_cadastro_cliente");
 
-    if (verifica_conexao){
+    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","cliente::remover_cadastro_cliente")){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
@@ -373,7 +369,8 @@ bool cliente::remover_cadastro_cliente(int id_cliente){
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao("remover_cadastro_cliente");
+            bd.close();
+            conexao.fechar_conexao();
             return true;
         }
         else{
@@ -393,7 +390,8 @@ bool cliente::remover_cadastro_cliente(int id_cliente){
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao("remover_cadastro_cliente");
+            bd.close();
+            conexao.fechar_conexao();
             return false;
         }
     }

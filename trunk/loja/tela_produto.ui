@@ -9,20 +9,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>826</width>
-    <height>295</height>
+    <width>846</width>
+    <height>467</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>826</width>
-    <height>295</height>
-   </size>
-  </property>
-  <property name="maximumSize">
-   <size>
-    <width>826</width>
-    <height>295</height>
+    <width>846</width>
+    <height>265</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -36,15 +30,9 @@
     <rect>
      <x>5</x>
      <y>55</y>
-     <width>816</width>
-     <height>235</height>
+     <width>836</width>
+     <height>206</height>
     </rect>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>816</width>
-     <height>235</height>
-    </size>
    </property>
    <property name="font">
     <font>
@@ -91,7 +79,7 @@
      <rect>
       <x>293</x>
       <y>20</y>
-      <width>518</width>
+      <width>538</width>
       <height>20</height>
      </rect>
     </property>
@@ -272,9 +260,9 @@
     <property name="geometry">
      <rect>
       <x>5</x>
-      <y>130</y>
+      <y>128</y>
       <width>621</width>
-      <height>100</height>
+      <height>72</height>
      </rect>
     </property>
     <property name="font">
@@ -301,7 +289,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>5</x>
-      <y>110</y>
+      <y>108</y>
       <width>133</width>
       <height>20</height>
      </rect>
@@ -324,8 +312,8 @@ p, li { white-space: pre-wrap; }
      <rect>
       <x>631</x>
       <y>50</y>
-      <width>180</width>
-      <height>180</height>
+      <width>200</width>
+      <height>150</height>
      </rect>
     </property>
     <property name="minimumSize">
@@ -364,9 +352,9 @@ p, li { white-space: pre-wrap; }
    <widget class="QLabel" name="lb_valorvenda">
     <property name="geometry">
      <rect>
-      <x>352</x>
+      <x>388</x>
       <y>80</y>
-      <width>88</width>
+      <width>120</width>
       <height>20</height>
      </rect>
     </property>
@@ -378,15 +366,15 @@ p, li { white-space: pre-wrap; }
      </font>
     </property>
     <property name="text">
-     <string>Valor de Venda:</string>
+     <string>Valor de venda atual:</string>
     </property>
    </widget>
    <widget class="QLabel" name="lb_valor_compra">
     <property name="geometry">
      <rect>
-      <x>159</x>
+      <x>164</x>
       <y>80</y>
-      <width>95</width>
+      <width>127</width>
       <height>20</height>
      </rect>
     </property>
@@ -398,13 +386,13 @@ p, li { white-space: pre-wrap; }
      </font>
     </property>
     <property name="text">
-     <string>Valor de compra:</string>
+     <string>Valor de compra atual:</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="le_valor_venda">
     <property name="geometry">
      <rect>
-      <x>440</x>
+      <x>508</x>
       <y>80</y>
       <width>85</width>
       <height>20</height>
@@ -436,7 +424,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QLineEdit" name="le_valor_compra">
     <property name="geometry">
      <rect>
-      <x>254</x>
+      <x>290</x>
       <y>80</y>
       <width>85</width>
       <height>20</height>
@@ -541,7 +529,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>826</width>
+     <width>846</width>
      <height>50</height>
     </rect>
    </property>
@@ -632,6 +620,41 @@ p, li { white-space: pre-wrap; }
      <bool>true</bool>
     </property>
    </widget>
+  </widget>
+  <widget class="QTableWidget" name="tw_historico_estoque">
+   <property name="geometry">
+    <rect>
+     <x>525</x>
+     <y>270</y>
+     <width>316</width>
+     <height>192</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>10</pointsize>
+     <kerning>false</kerning>
+    </font>
+   </property>
+   <property name="verticalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOn</enum>
+   </property>
+   <attribute name="horizontalHeaderDefaultSectionSize">
+    <number>100</number>
+   </attribute>
+   <attribute name="horizontalHeaderMinimumSectionSize">
+    <number>20</number>
+   </attribute>
+   <attribute name="horizontalHeaderStretchLastSection">
+    <bool>true</bool>
+   </attribute>
+   <attribute name="verticalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
+   <attribute name="verticalHeaderDefaultSectionSize">
+    <number>20</number>
+   </attribute>
   </widget>
  </widget>
  <resources>

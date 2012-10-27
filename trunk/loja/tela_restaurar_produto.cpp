@@ -28,7 +28,6 @@ void tela_restaurar_produto::definir_icone_janela(QPixmap logo){
 
 void tela_restaurar_produto::buscar_produtos(void){
     conexao_bd conexao;
-    bool verifica_conexao;
     QSqlDatabase bd;
 
     int aux_id;
@@ -49,8 +48,7 @@ void tela_restaurar_produto::buscar_produtos(void){
     lista_produtos.clear();
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_restaurar_produto::buscar_produtos");
-    if (verifica_conexao){
+    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_restaurar_produto::buscar_produtos")){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
@@ -95,7 +93,8 @@ void tela_restaurar_produto::buscar_produtos(void){
         }
         consultar.clear();
         tela_restaurar_produto::mostrar_lista_produtos();
-    conexao.fechar_conexao("tela_restaurar_produto::buscar_produtos");
+        bd.close();
+        conexao.fechar_conexao();
     }
 }
 

@@ -25,6 +25,8 @@ public:
     void definir_icone_janela(QPixmap logo);
 
 private slots:
+    std::vector< his_balanco_estoque * > buscar_his_estoque_produto(int id);
+    void mostrar_lista_his_estoque(std::vector< his_balanco_estoque * > aux_his);
     void closeEvent( QCloseEvent * event );
     void limpar_dados(void);    
     void on_btn_editar_produto_clicked();
