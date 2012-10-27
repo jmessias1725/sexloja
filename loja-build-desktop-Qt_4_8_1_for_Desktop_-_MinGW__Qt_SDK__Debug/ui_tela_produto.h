@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_produto.ui'
 **
-** Created: Sat 27. Oct 13:45:15 2012
+** Created: Sat 27. Oct 18:38:06 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -21,9 +21,11 @@
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
+#include <QtGui/QTabWidget>
 #include <QtGui/QTableWidget>
 #include <QtGui/QTextEdit>
 #include <QtGui/QToolButton>
+#include <QtGui/QWidget>
 
 QT_BEGIN_NAMESPACE
 
@@ -46,7 +48,7 @@ public:
     QLabel *lb_valorvenda;
     QLabel *lb_valor_compra;
     QLineEdit *le_valor_venda;
-    QLineEdit *le_valor_compra;
+    QLineEdit *le_custo_medio;
     QLineEdit *le_tipo;
     QLineEdit *le_codigo;
     QLabel *lb_codigo;
@@ -54,15 +56,22 @@ public:
     QToolButton *btn_editar_produto;
     QToolButton *btn_adicionar_produto;
     QToolButton *btn_remover_produto;
+    QGroupBox *gb_balanco_pro_estoque;
     QTableWidget *tw_historico_estoque;
+    QTabWidget *tabw_historico_ent_sai;
+    QWidget *entradas;
+    QTableWidget *tw_historico_entradas;
+    QWidget *saidas;
+    QTableWidget *tw_historico_saidas;
 
     void setupUi(QDialog *tela_produto)
     {
         if (tela_produto->objectName().isEmpty())
             tela_produto->setObjectName(QString::fromUtf8("tela_produto"));
         tela_produto->setWindowModality(Qt::ApplicationModal);
-        tela_produto->resize(846, 467);
-        tela_produto->setMinimumSize(QSize(846, 265));
+        tela_produto->resize(846, 466);
+        tela_produto->setMinimumSize(QSize(846, 466));
+        tela_produto->setMaximumSize(QSize(846, 466));
         tela_produto->setModal(true);
         gb_dados_produto = new QGroupBox(tela_produto);
         gb_dados_produto->setObjectName(QString::fromUtf8("gb_dados_produto"));
@@ -152,26 +161,26 @@ public:
         lb_tipo->setFont(font1);
         lb_valorvenda = new QLabel(gb_dados_produto);
         lb_valorvenda->setObjectName(QString::fromUtf8("lb_valorvenda"));
-        lb_valorvenda->setGeometry(QRect(388, 80, 120, 20));
+        lb_valorvenda->setGeometry(QRect(337, 80, 86, 20));
         lb_valorvenda->setFont(font1);
         lb_valor_compra = new QLabel(gb_dados_produto);
         lb_valor_compra->setObjectName(QString::fromUtf8("lb_valor_compra"));
-        lb_valor_compra->setGeometry(QRect(164, 80, 127, 20));
+        lb_valor_compra->setGeometry(QRect(164, 80, 72, 20));
         lb_valor_compra->setFont(font1);
         le_valor_venda = new QLineEdit(gb_dados_produto);
         le_valor_venda->setObjectName(QString::fromUtf8("le_valor_venda"));
-        le_valor_venda->setGeometry(QRect(508, 80, 85, 20));
+        le_valor_venda->setGeometry(QRect(424, 80, 85, 20));
         le_valor_venda->setFont(font1);
         le_valor_venda->setInputMethodHints(Qt::ImhNone);
         le_valor_venda->setMaxLength(12);
         le_valor_venda->setReadOnly(true);
-        le_valor_compra = new QLineEdit(gb_dados_produto);
-        le_valor_compra->setObjectName(QString::fromUtf8("le_valor_compra"));
-        le_valor_compra->setGeometry(QRect(290, 80, 85, 20));
-        le_valor_compra->setFont(font1);
-        le_valor_compra->setInputMethodHints(Qt::ImhNone);
-        le_valor_compra->setMaxLength(12);
-        le_valor_compra->setReadOnly(true);
+        le_custo_medio = new QLineEdit(gb_dados_produto);
+        le_custo_medio->setObjectName(QString::fromUtf8("le_custo_medio"));
+        le_custo_medio->setGeometry(QRect(237, 80, 85, 20));
+        le_custo_medio->setFont(font1);
+        le_custo_medio->setInputMethodHints(Qt::ImhNone);
+        le_custo_medio->setMaxLength(12);
+        le_custo_medio->setReadOnly(true);
         le_tipo = new QLineEdit(gb_dados_produto);
         le_tipo->setObjectName(QString::fromUtf8("le_tipo"));
         le_tipo->setGeometry(QRect(151, 20, 100, 20));
@@ -217,22 +226,60 @@ public:
         btn_remover_produto->setIconSize(QSize(40, 40));
         btn_remover_produto->setToolButtonStyle(Qt::ToolButtonIconOnly);
         btn_remover_produto->setAutoRaise(true);
-        tw_historico_estoque = new QTableWidget(tela_produto);
-        tw_historico_estoque->setObjectName(QString::fromUtf8("tw_historico_estoque"));
-        tw_historico_estoque->setGeometry(QRect(525, 270, 316, 192));
+        gb_balanco_pro_estoque = new QGroupBox(tela_produto);
+        gb_balanco_pro_estoque->setObjectName(QString::fromUtf8("gb_balanco_pro_estoque"));
+        gb_balanco_pro_estoque->setGeometry(QRect(515, 260, 326, 202));
         QFont font4;
         font4.setFamily(QString::fromUtf8("Calibri"));
         font4.setPointSize(10);
+        font4.setBold(true);
+        font4.setWeight(75);
         font4.setKerning(false);
-        tw_historico_estoque->setFont(font4);
+        gb_balanco_pro_estoque->setFont(font4);
+        tw_historico_estoque = new QTableWidget(gb_balanco_pro_estoque);
+        tw_historico_estoque->setObjectName(QString::fromUtf8("tw_historico_estoque"));
+        tw_historico_estoque->setGeometry(QRect(5, 17, 316, 180));
+        QFont font5;
+        font5.setFamily(QString::fromUtf8("Calibri"));
+        font5.setPointSize(10);
+        font5.setKerning(false);
+        tw_historico_estoque->setFont(font5);
         tw_historico_estoque->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
         tw_historico_estoque->horizontalHeader()->setDefaultSectionSize(100);
         tw_historico_estoque->horizontalHeader()->setMinimumSectionSize(20);
         tw_historico_estoque->horizontalHeader()->setStretchLastSection(true);
         tw_historico_estoque->verticalHeader()->setVisible(false);
         tw_historico_estoque->verticalHeader()->setDefaultSectionSize(20);
+        tabw_historico_ent_sai = new QTabWidget(tela_produto);
+        tabw_historico_ent_sai->setObjectName(QString::fromUtf8("tabw_historico_ent_sai"));
+        tabw_historico_ent_sai->setGeometry(QRect(5, 265, 508, 197));
+        tabw_historico_ent_sai->setFont(font);
+        tabw_historico_ent_sai->setTabPosition(QTabWidget::North);
+        tabw_historico_ent_sai->setTabShape(QTabWidget::Triangular);
+        tabw_historico_ent_sai->setElideMode(Qt::ElideNone);
+        entradas = new QWidget();
+        entradas->setObjectName(QString::fromUtf8("entradas"));
+        tw_historico_entradas = new QTableWidget(entradas);
+        tw_historico_entradas->setObjectName(QString::fromUtf8("tw_historico_entradas"));
+        tw_historico_entradas->setGeometry(QRect(-1, -1, 504, 177));
+        tw_historico_entradas->setFont(font5);
+        tw_historico_entradas->horizontalHeader()->setDefaultSectionSize(98);
+        tw_historico_entradas->horizontalHeader()->setMinimumSectionSize(20);
+        tw_historico_entradas->horizontalHeader()->setStretchLastSection(false);
+        tw_historico_entradas->verticalHeader()->setVisible(false);
+        tw_historico_entradas->verticalHeader()->setDefaultSectionSize(20);
+        tabw_historico_ent_sai->addTab(entradas, QString());
+        saidas = new QWidget();
+        saidas->setObjectName(QString::fromUtf8("saidas"));
+        tw_historico_saidas = new QTableWidget(saidas);
+        tw_historico_saidas->setObjectName(QString::fromUtf8("tw_historico_saidas"));
+        tw_historico_saidas->setGeometry(QRect(-1, -1, 504, 177));
+        tabw_historico_ent_sai->addTab(saidas, QString());
 
         retranslateUi(tela_produto);
+
+        tabw_historico_ent_sai->setCurrentIndex(0);
+
 
         QMetaObject::connectSlotsByName(tela_produto);
     } // setupUi
@@ -260,12 +307,12 @@ public:
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>", 0, QApplication::UnicodeUTF8));
         lb_comentario->setText(QApplication::translate("tela_produto", "Descri\303\247\303\243o da utiliza\303\247\303\243o:", 0, QApplication::UnicodeUTF8));
         lb_tipo->setText(QApplication::translate("tela_produto", "Tipo:", 0, QApplication::UnicodeUTF8));
-        lb_valorvenda->setText(QApplication::translate("tela_produto", "Valor de venda atual:", 0, QApplication::UnicodeUTF8));
-        lb_valor_compra->setText(QApplication::translate("tela_produto", "Valor de compra atual:", 0, QApplication::UnicodeUTF8));
+        lb_valorvenda->setText(QApplication::translate("tela_produto", "Valor de venda:", 0, QApplication::UnicodeUTF8));
+        lb_valor_compra->setText(QApplication::translate("tela_produto", "Custo m\303\251dio:", 0, QApplication::UnicodeUTF8));
         le_valor_venda->setInputMask(QApplication::translate("tela_produto", "R$ xxxxxxxxx; ", 0, QApplication::UnicodeUTF8));
         le_valor_venda->setText(QApplication::translate("tela_produto", "R$ ", 0, QApplication::UnicodeUTF8));
-        le_valor_compra->setInputMask(QApplication::translate("tela_produto", "R$ xxxxxxxxx; ", 0, QApplication::UnicodeUTF8));
-        le_valor_compra->setText(QApplication::translate("tela_produto", "R$ ", 0, QApplication::UnicodeUTF8));
+        le_custo_medio->setInputMask(QApplication::translate("tela_produto", "R$ xxxxxxxxx; ", 0, QApplication::UnicodeUTF8));
+        le_custo_medio->setText(QApplication::translate("tela_produto", "R$ ", 0, QApplication::UnicodeUTF8));
         le_tipo->setText(QString());
         le_codigo->setInputMask(QApplication::translate("tela_produto", "000000000; ", 0, QApplication::UnicodeUTF8));
         le_codigo->setText(QString());
@@ -273,6 +320,9 @@ public:
         btn_editar_produto->setText(QApplication::translate("tela_produto", "Editar Produto", 0, QApplication::UnicodeUTF8));
         btn_adicionar_produto->setText(QApplication::translate("tela_produto", "Adiconar Produto", 0, QApplication::UnicodeUTF8));
         btn_remover_produto->setText(QApplication::translate("tela_produto", "Remover Produto", 0, QApplication::UnicodeUTF8));
+        gb_balanco_pro_estoque->setTitle(QApplication::translate("tela_produto", "Balan\303\247o do produto no estoque.", 0, QApplication::UnicodeUTF8));
+        tabw_historico_ent_sai->setTabText(tabw_historico_ent_sai->indexOf(entradas), QApplication::translate("tela_produto", "Hist\303\263rico de entradas", 0, QApplication::UnicodeUTF8));
+        tabw_historico_ent_sai->setTabText(tabw_historico_ent_sai->indexOf(saidas), QApplication::translate("tela_produto", "Hist\303\263rico de sa\303\255das", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

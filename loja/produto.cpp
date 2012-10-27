@@ -3,8 +3,8 @@
 produto::produto()
 {
 }
-produto::produto(int id_pro,QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
-                 QString cod_barras_produto,QString tipo_produto, int id_imag, float valor_ven){
+produto::produto(int id_pro, QString nome_produto, QString fabricante_produto, QString desc_utilizacao_produto,
+                 QString cod_barras_produto, QString tipo_produto, int id_imag, float valor_ven, float custo_med, int qt_disponivel){
     id_produto = id_pro;
     nome = nome_produto;
     fabricante = fabricante_produto;
@@ -14,6 +14,8 @@ produto::produto(int id_pro,QString nome_produto,QString fabricante_produto,QStr
     id_imagem = id_imag;
     removido = false;
     valor_venda  = valor_ven;
+    custo_medio = custo_med;
+    quantidade_disponivel = qt_disponivel;
 }
 
 void produto::definir_icone_janela(QPixmap logo){
@@ -52,6 +54,14 @@ float produto::retorna_valor_venda(void){
     return valor_venda;
 }
 
+float produto::retorna_custo_medio(void){
+    return custo_medio;
+}
+
+int produto::retorna_quantidade_disponivel(void){
+    return quantidade_disponivel;
+}
+
 bool produto::salvar_dados_produto(QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
                                    int quant_disponivel_produto,QString cod_barras_produto,QString tipo_produto,
                                    QString nome_arquivo_imagem, int altura, int largura,float valor_com,float valor_ven){
@@ -68,6 +78,8 @@ bool produto::salvar_dados_produto(QString nome_produto,QString fabricante_produ
     his_balanco_estoque  *novo_balanco_estoque;
     imagem *nova_imagem;
     int aux_id_imagem;
+
+    int id_balanco;
 
     nova_imagem = new imagem(nome_arquivo_imagem,largura,altura);
 
@@ -92,6 +104,7 @@ bool produto::salvar_dados_produto(QString nome_produto,QString fabricante_produ
         //Declara a variável que irá fazer a consulta para determinar o id do produto;
         QSqlQuery consultar_imagem(bd);
         QSqlQuery consultar_produto(bd);
+        QSqlQuery consultar_balanco(bd);
 
         if (nome_arquivo_imagem.toStdString()!=":/img/img/produto.png"){
             //Insere os dados no cadastro de imagem
@@ -122,21 +135,9 @@ bool produto::salvar_dados_produto(QString nome_produto,QString fabricante_produ
 
         //realiza a consulta para determinar  o id do produto.
         consultar_produto.exec("SELECT * FROM produto");
-        while(consultar_produto.next()){
+        if(consultar_produto.last()){
             id_produto = consultar_produto.value(0).toInt();
-        }        
-
-        nova_entrada = new his_entradas(id_produto,quant_disponivel_produto,valor_com,valor_ven);
-
-        //Insere os dados no cadastro de histórico de valores e quantidades do produto
-        salvar_his_entradas.prepare("INSERT INTO his_entradas(id_produto,quantidade,valor_compra,valor_venda,data,hora) VALUES(:id_produto,:quantidade,:valor_compra,:valor_venda,:data,:hora);");
-        salvar_his_entradas.bindValue(":id_produto", nova_entrada->retorna_id_produto());
-        salvar_his_entradas.bindValue(":quantidade", nova_entrada->retorna_quantidade());
-        salvar_his_entradas.bindValue(":valor_compra", nova_entrada->retorna_valor_compra());
-        salvar_his_entradas.bindValue(":valor_venda", nova_entrada->retorna_valor_venda());
-        salvar_his_entradas.bindValue(":data", nova_entrada->retorna_data());
-        salvar_his_entradas.bindValue(":hora", nova_entrada->retorna_hora());
-        salvar_his_entradas.exec();
+        }
 
         novo_balanco_estoque = new his_balanco_estoque(id_produto,valor_com,quant_disponivel_produto,quant_disponivel_produto);
 
@@ -147,6 +148,26 @@ bool produto::salvar_dados_produto(QString nome_produto,QString fabricante_produ
         salvar_his_balanco_estoque.bindValue(":total_comprado", novo_balanco_estoque->retorna_total_comprado());
         salvar_his_balanco_estoque.bindValue(":total_disponivel", novo_balanco_estoque->retorna_total_disponivel());
         salvar_his_balanco_estoque.exec();
+
+        //realiza a consulta para determinar  o id do produto.
+        consultar_balanco.exec("SELECT * FROM his_balanco_estoque");
+        if(consultar_balanco.last()){
+            id_balanco = consultar_balanco.value(0).toInt();
+        }
+
+        nova_entrada = new his_entradas(id_produto,quant_disponivel_produto,valor_com,valor_ven,0,id_balanco);
+
+        //Insere os dados no cadastro de histórico de valores e quantidades do produto
+        salvar_his_entradas.prepare("INSERT INTO his_entradas(id_produto,quantidade,valor_compra,valor_venda,data,hora,origem,id_balanco) VALUES(:id_produto,:quantidade,:valor_compra,:valor_venda,:data,:hora,:origem,:id_balanco);");
+        salvar_his_entradas.bindValue(":id_produto", nova_entrada->retorna_id_produto());
+        salvar_his_entradas.bindValue(":quantidade", nova_entrada->retorna_quantidade());
+        salvar_his_entradas.bindValue(":valor_compra", nova_entrada->retorna_valor_compra());
+        salvar_his_entradas.bindValue(":valor_venda", nova_entrada->retorna_valor_venda());
+        salvar_his_entradas.bindValue(":data", nova_entrada->retorna_data());
+        salvar_his_entradas.bindValue(":hora", nova_entrada->retorna_hora());
+        salvar_his_entradas.bindValue(":origem", nova_entrada->retorna_origem());
+        salvar_his_entradas.bindValue(":id_balanco", nova_entrada->retorna_id_balanco());
+        salvar_his_entradas.exec();
 
         //Verifica se os dados podem ser salvos, caso sim realiza o Commite, do contrário o Rollback.
         if((salvar_dados_produto.lastError().number()<=0)&&(salvar_dados_imagem.lastError().number()<=0)&&

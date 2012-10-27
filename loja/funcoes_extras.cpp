@@ -595,3 +595,12 @@ int funcoes_extras::retorna_id_tipo(std::string tipo){
     }
     }
 }
+QString funcoes_extras::converte_numero_origem_nome(int ori){
+    if(ori==0)
+    {
+        return "Avulsa";
+    }
+    else{
+        return "Compra";
+    }
+}

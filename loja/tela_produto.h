@@ -20,13 +20,14 @@ class tela_produto : public QDialog
 public:
     explicit tela_produto(QWidget *parent = 0);
     ~tela_produto();
-    void definir_dados_produto(produto *cad_produto,his_balanco_estoque *cad_his_balanco);
+    void definir_dados_produto(produto *cad_produto);
     produto * retorna_novo_cadastro(void);
     void definir_icone_janela(QPixmap logo);
 
 private slots:
-    std::vector< his_balanco_estoque * > buscar_his_estoque_produto(int id);
-    void mostrar_lista_his_estoque(std::vector< his_balanco_estoque * > aux_his);
+    void buscar_informacoes_his_estoque_produto(int id);
+    std::vector< his_entradas * > buscar_informacoes_his_entrada(int id);
+    void mostrar_informacoes_his_entrada(std::vector< his_entradas * > aux_his);
     void closeEvent( QCloseEvent * event );
     void limpar_dados(void);    
     void on_btn_editar_produto_clicked();
@@ -38,10 +39,10 @@ private:
     tela_cadastro_produto tl_cadastro_produto;
     tela_editar_produto tl_editar_produto;
     produto *informacoes_produto;
-    his_balanco_estoque *informacoes_his_balanco_estoque;
     imagem *imagem_produto;
     funcoes_extras funcoes;
     QPixmap logomarca;
+    std::vector< his_entradas * > informacoes_his_entrada;
 };
 
 #endif // TELA_PRODUTO_H

@@ -49,8 +49,6 @@ private:
     tela_produto tl_produto;
     std::vector< produto* > lista_produtos;
     std::vector< produto* > aux_lista_produtos;
-    std::vector< his_balanco_estoque* > lista_his_bal_est;
-    std::vector< his_balanco_estoque* > aux_lista_his_bal_est;
     tela_configurar_legenda_estoque tl_configurar_legenda_estoque;
     tela_cadastro_produto tl_cadastro_produto;
     tela_restaurar_produto tl_restaurar_produto;
@@ -62,7 +60,9 @@ private:
     QString aux_cons_tipo;
     QLabel *lb_quantidade_produtos;
     QLabel *lb_data;
+    QLabel *lb_custo_total;
     QString data_sistema;
+    float custo_total;
 };
 
 #endif // TELA_ESTOQUE_H
