@@ -3,12 +3,10 @@
 legenda_estoque::legenda_estoque()
 {
     conexao_bd conexao;
-    bool verifica_conexao;
     QSqlDatabase bd;
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","legenda_estoque");
-    if (verifica_conexao){
+    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","legenda_estoque::legenda_estoque")){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
@@ -56,7 +54,9 @@ legenda_estoque::legenda_estoque()
             i_cor_azul = consultar_ideal.value(4).toInt();
         }
     }
-    conexao.fechar_conexao("legenda_estoque");
+    //Fecha a conexão com o banco de dados
+    bd.close();
+    conexao.fechar_conexao();
 }
 
 void legenda_estoque::definir_icone_janela(QPixmap logo){
@@ -154,14 +154,12 @@ void legenda_estoque::alterar_configuracao_estoque(int zer_valor,int z_cor_verm,
 
 bool legenda_estoque::salvar_alteracao_configuracao_estoque(){
     conexao_bd conexao;
-    bool verifica_conexao;
     QSqlDatabase bd;
     QString campos;
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","salvar_alteracao_configuracao_estoque");
 
-    if (verifica_conexao){
+    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","legenda_estoque::salvar_alteracao_configuracao_estoque")){
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
 
@@ -227,7 +225,8 @@ bool legenda_estoque::salvar_alteracao_configuracao_estoque(){
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao("salvar_alteracao_configuracao_estoque");
+            bd.close();
+            conexao.fechar_conexao();
             return true;
         }
         else{
@@ -247,7 +246,8 @@ bool legenda_estoque::salvar_alteracao_configuracao_estoque(){
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao("salvar_alteracao_configuracao_estoque");
+            bd.close();
+            conexao.fechar_conexao();
             return false;
         }
     }

@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>826</width>
-    <height>275</height>
+    <width>846</width>
+    <height>242</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>826</width>
-    <height>275</height>
+    <width>846</width>
+    <height>242</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>826</width>
-    <height>275</height>
+    <width>846</width>
+    <height>242</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -30,8 +30,8 @@
     <rect>
      <x>5</x>
      <y>5</y>
-     <width>816</width>
-     <height>265</height>
+     <width>836</width>
+     <height>233</height>
     </rect>
    </property>
    <property name="font">
@@ -198,57 +198,11 @@
      <number>15</number>
     </property>
    </widget>
-   <widget class="QLineEdit" name="le_quantidade">
-    <property name="geometry">
-     <rect>
-      <x>72</x>
-      <y>80</y>
-      <width>80</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <weight>50</weight>
-      <bold>false</bold>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="inputMask">
-     <string>0000000000; </string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="maxLength">
-     <number>10</number>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lb_quantidade">
-    <property name="geometry">
-     <rect>
-      <x>5</x>
-      <y>80</y>
-      <width>67</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <weight>50</weight>
-      <bold>false</bold>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="text">
-     <string>Quantidade:</string>
-    </property>
-   </widget>
    <widget class="QTextEdit" name="te_des_utilizacao">
     <property name="geometry">
      <rect>
       <x>5</x>
-      <y>130</y>
+      <y>97</y>
       <width>621</width>
       <height>130</height>
      </rect>
@@ -277,7 +231,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>5</x>
-      <y>110</y>
+      <y>77</y>
       <width>133</width>
       <height>20</height>
      </rect>
@@ -300,8 +254,8 @@ p, li { white-space: pre-wrap; }
      <rect>
       <x>631</x>
       <y>20</y>
-      <width>180</width>
-      <height>180</height>
+      <width>200</width>
+      <height>150</height>
      </rect>
     </property>
     <property name="minimumSize">
@@ -320,23 +274,11 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="btn_cancelar">
     <property name="geometry">
      <rect>
-      <x>721</x>
-      <y>236</y>
-      <width>90</width>
+      <x>731</x>
+      <y>203</y>
+      <width>100</width>
       <height>24</height>
      </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>0</width>
-      <height>24</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>90</width>
-      <height>24</height>
-     </size>
     </property>
     <property name="font">
      <font>
@@ -364,22 +306,10 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>631</x>
-      <y>236</y>
-      <width>90</width>
+      <y>203</y>
+      <width>100</width>
       <height>24</height>
      </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>0</width>
-      <height>24</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>90</width>
-      <height>24</height>
-     </size>
     </property>
     <property name="font">
      <font>
@@ -518,8 +448,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="btn_adicionar_imagem">
     <property name="geometry">
      <rect>
-      <x>666</x>
-      <y>205</y>
+      <x>676</x>
+      <y>175</y>
       <width>110</width>
       <height>24</height>
      </rect>
@@ -532,104 +462,6 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="text">
      <string>Adicionar imagem</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lb_valorvenda">
-    <property name="geometry">
-     <rect>
-      <x>352</x>
-      <y>80</y>
-      <width>88</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <weight>50</weight>
-      <bold>false</bold>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="text">
-     <string>Valor de Venda:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lb_valor_compra">
-    <property name="geometry">
-     <rect>
-      <x>159</x>
-      <y>80</y>
-      <width>95</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <weight>50</weight>
-      <bold>false</bold>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="text">
-     <string>Valor de compra:</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="le_valor_venda">
-    <property name="geometry">
-     <rect>
-      <x>440</x>
-      <y>80</y>
-      <width>85</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <weight>50</weight>
-      <bold>false</bold>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="inputMethodHints">
-     <set>Qt::ImhNone</set>
-    </property>
-    <property name="inputMask">
-     <string>R$ xxxxxxxxx; </string>
-    </property>
-    <property name="text">
-     <string>R$ </string>
-    </property>
-    <property name="maxLength">
-     <number>12</number>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="le_valor_compra">
-    <property name="geometry">
-     <rect>
-      <x>254</x>
-      <y>80</y>
-      <width>85</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <weight>50</weight>
-      <bold>false</bold>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="inputMethodHints">
-     <set>Qt::ImhNone</set>
-    </property>
-    <property name="inputMask">
-     <string>R$ xxxxxxxxx; </string>
-    </property>
-    <property name="text">
-     <string>R$ </string>
-    </property>
-    <property name="maxLength">
-     <number>12</number>
     </property>
    </widget>
   </widget>

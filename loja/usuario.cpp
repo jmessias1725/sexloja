@@ -26,14 +26,12 @@ QString usuario::retorna_senha(void){
 
 bool usuario::verifica_login_senha(QString login_teclado, QString senha_teclado){
     conexao_bd conexao;
-    bool verifica_conexao;
     QSqlDatabase bd;
     QString senha_bd;
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","conc_login");
 
-    if (verifica_conexao){
+    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","usuario::verifica_login_senha")){
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
 
@@ -59,6 +57,8 @@ bool usuario::verifica_login_senha(QString login_teclado, QString senha_teclado)
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
             msg.setText("\nLogin inválido!");
             msg.exec();
+            bd.close();
+            conexao.fechar_conexao();
             return false;
         }
         else{
@@ -76,6 +76,8 @@ bool usuario::verifica_login_senha(QString login_teclado, QString senha_teclado)
                 }
                 login = login_teclado;
                 senha = senha_teclado;
+                bd.close();
+                conexao.fechar_conexao();
                 return true;
             }
             else{
@@ -90,10 +92,12 @@ bool usuario::verifica_login_senha(QString login_teclado, QString senha_teclado)
                 msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
                 msg.setText("\nSenha inválida!");
                 msg.exec();
+                bd.close();
+                conexao.fechar_conexao();
                 return false;
                 }
             }
     }
-    conexao.fechar_conexao("conc_login");
+    conexao.fechar_conexao();
     return false;
 }

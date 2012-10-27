@@ -97,14 +97,11 @@ void fornecedor::alterar_dados_fornecedor(QString fornecedor_cnpj,QString fornec
 
 bool fornecedor::salvar_dados_fornecedor(void){
     conexao_bd conexao;
-    bool verifica_conexao;
     QSqlDatabase bd;
     QString id_fornecedor;
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","salvar_dados_fornecedor");
-
-    if (verifica_conexao){
+    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","fornecedor::salvar_dados_fornecedor")){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
@@ -176,7 +173,8 @@ bool fornecedor::salvar_dados_fornecedor(void){
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao("salvar_dados_fornecedor");
+            bd.close();
+            conexao.fechar_conexao();
             return true;
         }
         else{
@@ -196,7 +194,8 @@ bool fornecedor::salvar_dados_fornecedor(void){
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao("salvar_dados_fornecedor");
+            bd.close();
+            conexao.fechar_conexao();
             return false;
         }
     }
@@ -211,13 +210,10 @@ bool fornecedor::salvar_alteracao_dados_fornecedor(std::vector< std::string > li
                                                    std::vector< std::string > lista_email_a_remover,
                                                    std::vector< std::string > lista_email_a_adicionar){
     conexao_bd conexao;
-    bool verifica_conexao;
     QSqlDatabase bd;
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","salvar_alteracao_dados_fornecedor");
-
-    if (verifica_conexao){
+    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","fornecedor::salvar_alteracao_dados_fornecedor")){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
@@ -303,7 +299,8 @@ bool fornecedor::salvar_alteracao_dados_fornecedor(std::vector< std::string > li
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao("salvar_alteracao_dados_fornecedor");
+            bd.close();
+            conexao.fechar_conexao();
             return true;
         }
         else{
@@ -323,7 +320,8 @@ bool fornecedor::salvar_alteracao_dados_fornecedor(std::vector< std::string > li
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao("salvar_alteracao_dados_fornecedor");
+            bd.close();
+            conexao.fechar_conexao();
             return false;
         }
     }
@@ -334,13 +332,11 @@ bool fornecedor::salvar_alteracao_dados_fornecedor(std::vector< std::string > li
 
 bool fornecedor::remover_cadastro_fornecedor(int id_fornecedor){
     conexao_bd conexao;
-    bool verifica_conexao;
     QSqlDatabase bd;
 
     //realiza conexão ao banco de dados
-    verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","remover_cadastro_fornecedor");
 
-    if (verifica_conexao){
+    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","fornecedor::remover_cadastro_fornecedor")){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
@@ -372,7 +368,8 @@ bool fornecedor::remover_cadastro_fornecedor(int id_fornecedor){
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao("remover_cadastro_fornecedor");
+            bd.close();
+            conexao.fechar_conexao();
             return true;
         }
         else{
@@ -392,7 +389,8 @@ bool fornecedor::remover_cadastro_fornecedor(int id_fornecedor){
             msg.exec();
 
             //Fecha a conexão com o banco de dados
-            conexao.fechar_conexao("remover_cadastro_fornecedor");
+            bd.close();
+            conexao.fechar_conexao();
             return false;
         }
     }

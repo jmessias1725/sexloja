@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_produto.ui'
 **
-** Created: Fri 26. Oct 08:25:48 2012
+** Created: Sat 27. Oct 13:45:15 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -21,6 +21,7 @@
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
+#include <QtGui/QTableWidget>
 #include <QtGui/QTextEdit>
 #include <QtGui/QToolButton>
 
@@ -53,20 +54,19 @@ public:
     QToolButton *btn_editar_produto;
     QToolButton *btn_adicionar_produto;
     QToolButton *btn_remover_produto;
+    QTableWidget *tw_historico_estoque;
 
     void setupUi(QDialog *tela_produto)
     {
         if (tela_produto->objectName().isEmpty())
             tela_produto->setObjectName(QString::fromUtf8("tela_produto"));
         tela_produto->setWindowModality(Qt::ApplicationModal);
-        tela_produto->resize(826, 295);
-        tela_produto->setMinimumSize(QSize(826, 295));
-        tela_produto->setMaximumSize(QSize(826, 295));
+        tela_produto->resize(846, 467);
+        tela_produto->setMinimumSize(QSize(846, 265));
         tela_produto->setModal(true);
         gb_dados_produto = new QGroupBox(tela_produto);
         gb_dados_produto->setObjectName(QString::fromUtf8("gb_dados_produto"));
-        gb_dados_produto->setGeometry(QRect(5, 55, 816, 235));
-        gb_dados_produto->setMaximumSize(QSize(816, 235));
+        gb_dados_produto->setGeometry(QRect(5, 55, 836, 206));
         QFont font;
         font.setFamily(QString::fromUtf8("Calibri"));
         font.setPointSize(10);
@@ -86,7 +86,7 @@ public:
         lb_nome->setFont(font1);
         le_nome = new QLineEdit(gb_dados_produto);
         le_nome->setObjectName(QString::fromUtf8("le_nome"));
-        le_nome->setGeometry(QRect(293, 20, 518, 20));
+        le_nome->setGeometry(QRect(293, 20, 538, 20));
         le_nome->setFont(font1);
         le_nome->setInputMethodHints(Qt::ImhNone);
         le_nome->setMaxLength(60);
@@ -124,7 +124,7 @@ public:
         lb_quantidade->setFont(font1);
         te_des_utilizacao = new QTextEdit(gb_dados_produto);
         te_des_utilizacao->setObjectName(QString::fromUtf8("te_des_utilizacao"));
-        te_des_utilizacao->setGeometry(QRect(5, 130, 621, 100));
+        te_des_utilizacao->setGeometry(QRect(5, 128, 621, 72));
         QFont font2;
         font2.setBold(false);
         font2.setWeight(50);
@@ -133,7 +133,7 @@ public:
         te_des_utilizacao->setReadOnly(true);
         lb_comentario = new QLabel(gb_dados_produto);
         lb_comentario->setObjectName(QString::fromUtf8("lb_comentario"));
-        lb_comentario->setGeometry(QRect(5, 110, 133, 20));
+        lb_comentario->setGeometry(QRect(5, 108, 133, 20));
         QFont font3;
         font3.setFamily(QString::fromUtf8("Calibri"));
         font3.setPointSize(10);
@@ -143,7 +143,7 @@ public:
         lb_comentario->setFont(font3);
         gv_imagem_produto = new QGraphicsView(gb_dados_produto);
         gv_imagem_produto->setObjectName(QString::fromUtf8("gv_imagem_produto"));
-        gv_imagem_produto->setGeometry(QRect(631, 50, 180, 180));
+        gv_imagem_produto->setGeometry(QRect(631, 50, 200, 150));
         gv_imagem_produto->setMinimumSize(QSize(150, 150));
         gv_imagem_produto->setMaximumSize(QSize(200, 200));
         lb_tipo = new QLabel(gb_dados_produto);
@@ -152,22 +152,22 @@ public:
         lb_tipo->setFont(font1);
         lb_valorvenda = new QLabel(gb_dados_produto);
         lb_valorvenda->setObjectName(QString::fromUtf8("lb_valorvenda"));
-        lb_valorvenda->setGeometry(QRect(352, 80, 88, 20));
+        lb_valorvenda->setGeometry(QRect(388, 80, 120, 20));
         lb_valorvenda->setFont(font1);
         lb_valor_compra = new QLabel(gb_dados_produto);
         lb_valor_compra->setObjectName(QString::fromUtf8("lb_valor_compra"));
-        lb_valor_compra->setGeometry(QRect(159, 80, 95, 20));
+        lb_valor_compra->setGeometry(QRect(164, 80, 127, 20));
         lb_valor_compra->setFont(font1);
         le_valor_venda = new QLineEdit(gb_dados_produto);
         le_valor_venda->setObjectName(QString::fromUtf8("le_valor_venda"));
-        le_valor_venda->setGeometry(QRect(440, 80, 85, 20));
+        le_valor_venda->setGeometry(QRect(508, 80, 85, 20));
         le_valor_venda->setFont(font1);
         le_valor_venda->setInputMethodHints(Qt::ImhNone);
         le_valor_venda->setMaxLength(12);
         le_valor_venda->setReadOnly(true);
         le_valor_compra = new QLineEdit(gb_dados_produto);
         le_valor_compra->setObjectName(QString::fromUtf8("le_valor_compra"));
-        le_valor_compra->setGeometry(QRect(254, 80, 85, 20));
+        le_valor_compra->setGeometry(QRect(290, 80, 85, 20));
         le_valor_compra->setFont(font1);
         le_valor_compra->setInputMethodHints(Qt::ImhNone);
         le_valor_compra->setMaxLength(12);
@@ -189,7 +189,7 @@ public:
         lb_codigo->setFont(font2);
         frame = new QFrame(tela_produto);
         frame->setObjectName(QString::fromUtf8("frame"));
-        frame->setGeometry(QRect(0, 0, 826, 50));
+        frame->setGeometry(QRect(0, 0, 846, 50));
         frame->setFrameShape(QFrame::Panel);
         frame->setFrameShadow(QFrame::Raised);
         btn_editar_produto = new QToolButton(frame);
@@ -217,6 +217,20 @@ public:
         btn_remover_produto->setIconSize(QSize(40, 40));
         btn_remover_produto->setToolButtonStyle(Qt::ToolButtonIconOnly);
         btn_remover_produto->setAutoRaise(true);
+        tw_historico_estoque = new QTableWidget(tela_produto);
+        tw_historico_estoque->setObjectName(QString::fromUtf8("tw_historico_estoque"));
+        tw_historico_estoque->setGeometry(QRect(525, 270, 316, 192));
+        QFont font4;
+        font4.setFamily(QString::fromUtf8("Calibri"));
+        font4.setPointSize(10);
+        font4.setKerning(false);
+        tw_historico_estoque->setFont(font4);
+        tw_historico_estoque->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        tw_historico_estoque->horizontalHeader()->setDefaultSectionSize(100);
+        tw_historico_estoque->horizontalHeader()->setMinimumSectionSize(20);
+        tw_historico_estoque->horizontalHeader()->setStretchLastSection(true);
+        tw_historico_estoque->verticalHeader()->setVisible(false);
+        tw_historico_estoque->verticalHeader()->setDefaultSectionSize(20);
 
         retranslateUi(tela_produto);
 
@@ -246,8 +260,8 @@ public:
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>", 0, QApplication::UnicodeUTF8));
         lb_comentario->setText(QApplication::translate("tela_produto", "Descri\303\247\303\243o da utiliza\303\247\303\243o:", 0, QApplication::UnicodeUTF8));
         lb_tipo->setText(QApplication::translate("tela_produto", "Tipo:", 0, QApplication::UnicodeUTF8));
-        lb_valorvenda->setText(QApplication::translate("tela_produto", "Valor de Venda:", 0, QApplication::UnicodeUTF8));
-        lb_valor_compra->setText(QApplication::translate("tela_produto", "Valor de compra:", 0, QApplication::UnicodeUTF8));
+        lb_valorvenda->setText(QApplication::translate("tela_produto", "Valor de venda atual:", 0, QApplication::UnicodeUTF8));
+        lb_valor_compra->setText(QApplication::translate("tela_produto", "Valor de compra atual:", 0, QApplication::UnicodeUTF8));
         le_valor_venda->setInputMask(QApplication::translate("tela_produto", "R$ xxxxxxxxx; ", 0, QApplication::UnicodeUTF8));
         le_valor_venda->setText(QApplication::translate("tela_produto", "R$ ", 0, QApplication::UnicodeUTF8));
         le_valor_compra->setInputMask(QApplication::translate("tela_produto", "R$ xxxxxxxxx; ", 0, QApplication::UnicodeUTF8));

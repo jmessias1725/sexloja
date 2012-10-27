@@ -27,13 +27,14 @@ private:
     QPixmap logomarca;
     int id_imagem;
     bool removido;
+    float valor_venda;
     bool alterou_valores;
 
 public:
     produto();
 
     produto(int id_pro,QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
-            QString cod_barras_produto,QString tipo_produto, int id_imag);
+            QString cod_barras_produto,QString tipo_produto, int id_imag, float valor_ven);
 
     int retorna_id(void);
     QString retorna_nome(void);
@@ -42,19 +43,18 @@ public:
     QString retorna_cod_barras(void);
     QString retorna_tipo(void);
     int retorna_id_imagem(void);
-
-    void alterar_dados_produto(QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
-                               int quant_disponivel_produto,QString cod_barras_produto,QString tipo_produto,
-                               QString nome_arquivo_imagem, int altura, int largura,float valor_com,float valor_ven);
+    float retorna_valor_venda(void);
 
     bool salvar_dados_produto(QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
                               int quant_disponivel_produto,QString cod_barras_produto,QString tipo_produto,
                               QString nome_arquivo_imagem, int altura, int largura,float valor_com,float valor_ven);
 
-    bool salvar_alteracao_dados_produto(bool alterou_imgem);
+    bool salvar_alteracao_dados_produto(QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
+                                        QString cod_barras_produto,QString tipo_produto,QString nome_arquivo_imagem,
+                                        int altura, int largura,bool alterou_imgem);
     bool remover_cadastro_produto(void);
     bool recuperar_cadastro_produto(void);
-    produto * busca_produto(void);
+    produto * retorna_novo_cadastro_produto(void);
     void definir_icone_janela(QPixmap logo);
 };
 

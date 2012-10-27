@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_cadastro_produto.ui'
 **
-** Created: Fri 26. Oct 08:25:48 2012
+** Created: Sat 27. Oct 10:12:33 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -56,12 +56,12 @@ public:
         if (tela_cadastro_produto->objectName().isEmpty())
             tela_cadastro_produto->setObjectName(QString::fromUtf8("tela_cadastro_produto"));
         tela_cadastro_produto->setWindowModality(Qt::ApplicationModal);
-        tela_cadastro_produto->resize(826, 275);
-        tela_cadastro_produto->setMinimumSize(QSize(826, 275));
-        tela_cadastro_produto->setMaximumSize(QSize(826, 275));
+        tela_cadastro_produto->resize(846, 242);
+        tela_cadastro_produto->setMinimumSize(QSize(846, 242));
+        tela_cadastro_produto->setMaximumSize(QSize(846, 242));
         gb_dados_produto = new QGroupBox(tela_cadastro_produto);
         gb_dados_produto->setObjectName(QString::fromUtf8("gb_dados_produto"));
-        gb_dados_produto->setGeometry(QRect(5, 5, 816, 265));
+        gb_dados_produto->setGeometry(QRect(5, 5, 836, 233));
         QFont font;
         font.setFamily(QString::fromUtf8("Calibri"));
         font.setPointSize(10);
@@ -115,7 +115,7 @@ public:
         lb_quantidade->setFont(font1);
         te_des_utilizacao = new QTextEdit(gb_dados_produto);
         te_des_utilizacao->setObjectName(QString::fromUtf8("te_des_utilizacao"));
-        te_des_utilizacao->setGeometry(QRect(5, 130, 621, 130));
+        te_des_utilizacao->setGeometry(QRect(5, 129, 621, 98));
         QFont font2;
         font2.setBold(false);
         font2.setWeight(50);
@@ -124,7 +124,7 @@ public:
         te_des_utilizacao->setReadOnly(false);
         lb_comentario = new QLabel(gb_dados_produto);
         lb_comentario->setObjectName(QString::fromUtf8("lb_comentario"));
-        lb_comentario->setGeometry(QRect(5, 110, 133, 20));
+        lb_comentario->setGeometry(QRect(5, 109, 133, 20));
         QFont font3;
         font3.setFamily(QString::fromUtf8("Calibri"));
         font3.setPointSize(10);
@@ -134,14 +134,10 @@ public:
         lb_comentario->setFont(font3);
         gv_imagem_produto = new QGraphicsView(gb_dados_produto);
         gv_imagem_produto->setObjectName(QString::fromUtf8("gv_imagem_produto"));
-        gv_imagem_produto->setGeometry(QRect(631, 20, 180, 180));
-        gv_imagem_produto->setMinimumSize(QSize(150, 150));
-        gv_imagem_produto->setMaximumSize(QSize(200, 200));
+        gv_imagem_produto->setGeometry(QRect(631, 20, 200, 150));
         btn_cancelar = new QPushButton(gb_dados_produto);
         btn_cancelar->setObjectName(QString::fromUtf8("btn_cancelar"));
-        btn_cancelar->setGeometry(QRect(721, 236, 90, 24));
-        btn_cancelar->setMinimumSize(QSize(0, 24));
-        btn_cancelar->setMaximumSize(QSize(90, 24));
+        btn_cancelar->setGeometry(QRect(731, 203, 100, 24));
         QFont font4;
         font4.setFamily(QString::fromUtf8("Calibri"));
         font4.setPointSize(10);
@@ -154,9 +150,7 @@ public:
         btn_cancelar->setIconSize(QSize(18, 18));
         btn_confirmar = new QPushButton(gb_dados_produto);
         btn_confirmar->setObjectName(QString::fromUtf8("btn_confirmar"));
-        btn_confirmar->setGeometry(QRect(631, 236, 90, 24));
-        btn_confirmar->setMinimumSize(QSize(0, 24));
-        btn_confirmar->setMaximumSize(QSize(90, 24));
+        btn_confirmar->setGeometry(QRect(631, 203, 100, 24));
         btn_confirmar->setFont(font4);
         QIcon icon1;
         icon1.addFile(QString::fromUtf8(":/img/img/1345902916_camera_test.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -172,7 +166,7 @@ public:
         cb_tipo->setFont(font1);
         btn_adicionar_imagem = new QPushButton(gb_dados_produto);
         btn_adicionar_imagem->setObjectName(QString::fromUtf8("btn_adicionar_imagem"));
-        btn_adicionar_imagem->setGeometry(QRect(666, 205, 110, 24));
+        btn_adicionar_imagem->setGeometry(QRect(676, 175, 110, 24));
         btn_adicionar_imagem->setFont(font2);
         lb_valorvenda = new QLabel(gb_dados_produto);
         lb_valorvenda->setObjectName(QString::fromUtf8("lb_valorvenda"));

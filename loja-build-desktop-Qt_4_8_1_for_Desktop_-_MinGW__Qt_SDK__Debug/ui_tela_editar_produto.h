@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_editar_produto.ui'
 **
-** Created: Fri 26. Oct 08:25:48 2012
+** Created: Sat 27. Oct 10:12:33 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -36,8 +36,6 @@ public:
     QLabel *lb_fabricante;
     QLabel *lb_codigo_barras;
     QLineEdit *le_codigo_barras;
-    QLineEdit *le_quantidade;
-    QLabel *lb_quantidade;
     QTextEdit *te_des_utilizacao;
     QLabel *lb_comentario;
     QGraphicsView *gv_imagem_produto;
@@ -46,21 +44,17 @@ public:
     QLabel *lb_tipo;
     QComboBox *cb_tipo;
     QPushButton *btn_adicionar_imagem;
-    QLabel *lb_valorvenda;
-    QLabel *lb_valor_compra;
-    QLineEdit *le_valor_venda;
-    QLineEdit *le_valor_compra;
 
     void setupUi(QDialog *tela_editar_produto)
     {
         if (tela_editar_produto->objectName().isEmpty())
             tela_editar_produto->setObjectName(QString::fromUtf8("tela_editar_produto"));
-        tela_editar_produto->resize(826, 275);
-        tela_editar_produto->setMinimumSize(QSize(826, 275));
-        tela_editar_produto->setMaximumSize(QSize(826, 275));
+        tela_editar_produto->resize(846, 242);
+        tela_editar_produto->setMinimumSize(QSize(846, 242));
+        tela_editar_produto->setMaximumSize(QSize(846, 242));
         gb_dados_produto = new QGroupBox(tela_editar_produto);
         gb_dados_produto->setObjectName(QString::fromUtf8("gb_dados_produto"));
-        gb_dados_produto->setGeometry(QRect(5, 5, 816, 265));
+        gb_dados_produto->setGeometry(QRect(5, 5, 836, 233));
         QFont font;
         font.setFamily(QString::fromUtf8("Calibri"));
         font.setPointSize(10);
@@ -103,18 +97,9 @@ public:
         le_codigo_barras->setGeometry(QRect(521, 50, 105, 20));
         le_codigo_barras->setFont(font1);
         le_codigo_barras->setMaxLength(15);
-        le_quantidade = new QLineEdit(gb_dados_produto);
-        le_quantidade->setObjectName(QString::fromUtf8("le_quantidade"));
-        le_quantidade->setGeometry(QRect(72, 80, 80, 20));
-        le_quantidade->setFont(font1);
-        le_quantidade->setMaxLength(10);
-        lb_quantidade = new QLabel(gb_dados_produto);
-        lb_quantidade->setObjectName(QString::fromUtf8("lb_quantidade"));
-        lb_quantidade->setGeometry(QRect(5, 80, 67, 20));
-        lb_quantidade->setFont(font1);
         te_des_utilizacao = new QTextEdit(gb_dados_produto);
         te_des_utilizacao->setObjectName(QString::fromUtf8("te_des_utilizacao"));
-        te_des_utilizacao->setGeometry(QRect(5, 130, 621, 130));
+        te_des_utilizacao->setGeometry(QRect(5, 97, 621, 130));
         QFont font2;
         font2.setBold(false);
         font2.setWeight(50);
@@ -123,7 +108,7 @@ public:
         te_des_utilizacao->setReadOnly(false);
         lb_comentario = new QLabel(gb_dados_produto);
         lb_comentario->setObjectName(QString::fromUtf8("lb_comentario"));
-        lb_comentario->setGeometry(QRect(5, 110, 133, 20));
+        lb_comentario->setGeometry(QRect(5, 77, 133, 20));
         QFont font3;
         font3.setFamily(QString::fromUtf8("Calibri"));
         font3.setPointSize(10);
@@ -133,14 +118,12 @@ public:
         lb_comentario->setFont(font3);
         gv_imagem_produto = new QGraphicsView(gb_dados_produto);
         gv_imagem_produto->setObjectName(QString::fromUtf8("gv_imagem_produto"));
-        gv_imagem_produto->setGeometry(QRect(631, 20, 180, 180));
+        gv_imagem_produto->setGeometry(QRect(631, 20, 200, 150));
         gv_imagem_produto->setMinimumSize(QSize(150, 150));
         gv_imagem_produto->setMaximumSize(QSize(200, 200));
         btn_cancelar = new QPushButton(gb_dados_produto);
         btn_cancelar->setObjectName(QString::fromUtf8("btn_cancelar"));
-        btn_cancelar->setGeometry(QRect(721, 236, 90, 24));
-        btn_cancelar->setMinimumSize(QSize(0, 24));
-        btn_cancelar->setMaximumSize(QSize(90, 24));
+        btn_cancelar->setGeometry(QRect(731, 203, 100, 24));
         QFont font4;
         font4.setFamily(QString::fromUtf8("Calibri"));
         font4.setPointSize(10);
@@ -153,9 +136,7 @@ public:
         btn_cancelar->setIconSize(QSize(18, 18));
         btn_confirmar = new QPushButton(gb_dados_produto);
         btn_confirmar->setObjectName(QString::fromUtf8("btn_confirmar"));
-        btn_confirmar->setGeometry(QRect(631, 236, 90, 24));
-        btn_confirmar->setMinimumSize(QSize(0, 24));
-        btn_confirmar->setMaximumSize(QSize(90, 24));
+        btn_confirmar->setGeometry(QRect(631, 203, 100, 24));
         btn_confirmar->setFont(font4);
         QIcon icon1;
         icon1.addFile(QString::fromUtf8(":/img/img/1345902916_camera_test.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -171,28 +152,8 @@ public:
         cb_tipo->setFont(font1);
         btn_adicionar_imagem = new QPushButton(gb_dados_produto);
         btn_adicionar_imagem->setObjectName(QString::fromUtf8("btn_adicionar_imagem"));
-        btn_adicionar_imagem->setGeometry(QRect(666, 205, 110, 24));
+        btn_adicionar_imagem->setGeometry(QRect(676, 175, 110, 24));
         btn_adicionar_imagem->setFont(font2);
-        lb_valorvenda = new QLabel(gb_dados_produto);
-        lb_valorvenda->setObjectName(QString::fromUtf8("lb_valorvenda"));
-        lb_valorvenda->setGeometry(QRect(352, 80, 88, 20));
-        lb_valorvenda->setFont(font1);
-        lb_valor_compra = new QLabel(gb_dados_produto);
-        lb_valor_compra->setObjectName(QString::fromUtf8("lb_valor_compra"));
-        lb_valor_compra->setGeometry(QRect(159, 80, 95, 20));
-        lb_valor_compra->setFont(font1);
-        le_valor_venda = new QLineEdit(gb_dados_produto);
-        le_valor_venda->setObjectName(QString::fromUtf8("le_valor_venda"));
-        le_valor_venda->setGeometry(QRect(440, 80, 85, 20));
-        le_valor_venda->setFont(font1);
-        le_valor_venda->setInputMethodHints(Qt::ImhNone);
-        le_valor_venda->setMaxLength(12);
-        le_valor_compra = new QLineEdit(gb_dados_produto);
-        le_valor_compra->setObjectName(QString::fromUtf8("le_valor_compra"));
-        le_valor_compra->setGeometry(QRect(254, 80, 85, 20));
-        le_valor_compra->setFont(font1);
-        le_valor_compra->setInputMethodHints(Qt::ImhNone);
-        le_valor_compra->setMaxLength(12);
 
         retranslateUi(tela_editar_produto);
 
@@ -212,9 +173,6 @@ public:
         lb_codigo_barras->setText(QApplication::translate("tela_editar_produto", "C\303\263digo de Barras:", 0, QApplication::UnicodeUTF8));
         le_codigo_barras->setInputMask(QApplication::translate("tela_editar_produto", "0 000000 000000; ", 0, QApplication::UnicodeUTF8));
         le_codigo_barras->setText(QString());
-        le_quantidade->setInputMask(QApplication::translate("tela_editar_produto", "0000000000; ", 0, QApplication::UnicodeUTF8));
-        le_quantidade->setText(QString());
-        lb_quantidade->setText(QApplication::translate("tela_editar_produto", "Quantidade:", 0, QApplication::UnicodeUTF8));
         te_des_utilizacao->setHtml(QApplication::translate("tela_editar_produto", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -243,12 +201,6 @@ public:
          << QApplication::translate("tela_editar_produto", "Vibrador", 0, QApplication::UnicodeUTF8)
         );
         btn_adicionar_imagem->setText(QApplication::translate("tela_editar_produto", "Adicionar imagem", 0, QApplication::UnicodeUTF8));
-        lb_valorvenda->setText(QApplication::translate("tela_editar_produto", "Valor de Venda:", 0, QApplication::UnicodeUTF8));
-        lb_valor_compra->setText(QApplication::translate("tela_editar_produto", "Valor de compra:", 0, QApplication::UnicodeUTF8));
-        le_valor_venda->setInputMask(QApplication::translate("tela_editar_produto", "R$ xxxxxxxxx; ", 0, QApplication::UnicodeUTF8));
-        le_valor_venda->setText(QApplication::translate("tela_editar_produto", "R$ ", 0, QApplication::UnicodeUTF8));
-        le_valor_compra->setInputMask(QApplication::translate("tela_editar_produto", "R$ xxxxxxxxx; ", 0, QApplication::UnicodeUTF8));
-        le_valor_compra->setText(QApplication::translate("tela_editar_produto", "R$ ", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
