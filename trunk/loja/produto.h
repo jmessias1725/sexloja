@@ -29,12 +29,14 @@ private:
     bool removido;
     float valor_venda;
     bool alterou_valores;
+    float custo_medio;
+    int quantidade_disponivel;
 
 public:
     produto();
 
-    produto(int id_pro,QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
-            QString cod_barras_produto,QString tipo_produto, int id_imag, float valor_ven);
+    produto(int id_pro, QString nome_produto, QString fabricante_produto, QString desc_utilizacao_produto,
+            QString cod_barras_produto, QString tipo_produto, int id_imag, float valor_ven, float custo_med, int qt_disponivel);
 
     int retorna_id(void);
     QString retorna_nome(void);
@@ -44,6 +46,8 @@ public:
     QString retorna_tipo(void);
     int retorna_id_imagem(void);
     float retorna_valor_venda(void);
+    float retorna_custo_medio(void);
+    int retorna_quantidade_disponivel(void);
 
     bool salvar_dados_produto(QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
                               int quant_disponivel_produto,QString cod_barras_produto,QString tipo_produto,

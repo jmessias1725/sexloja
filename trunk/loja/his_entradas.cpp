@@ -1,6 +1,6 @@
 #include "his_entradas.h"
 
-his_entradas::his_entradas(int id_pro,int quant, float val_compra, float val_venda)
+his_entradas::his_entradas(int id_pro,int quant, float val_compra, float val_venda, int ori, int id_bal)
 {
     QDate aux_data = QDate::currentDate();
     QTime aux_hora = QTime::currentTime();
@@ -9,8 +9,21 @@ his_entradas::his_entradas(int id_pro,int quant, float val_compra, float val_ven
     quantidade = quant;
     valor_compra = val_compra;
     valor_venda = val_venda;
-    data = aux_data.toString(Qt::SystemLocaleShortDate);;
+    data = aux_data.toString(Qt::SystemLocaleShortDate);
     hora = aux_hora.toString();
+    origem = ori;
+    id_balanco = id_bal;
+}
+
+his_entradas::his_entradas(int id_ent,int quant, float val_compra, float val_venda, QString dta, QString ho, int ori,int id_bal){
+    id_entrada = id_ent;
+    quantidade = quant;
+    valor_compra = val_compra;
+    valor_venda = val_venda;
+    data = dta;
+    hora = ho;
+    origem = ori;
+    id_balanco = id_bal;
 }
 
 int his_entradas::retorna_id_produto(void){
@@ -35,4 +48,12 @@ QString his_entradas::retorna_data(void){
 
 QString his_entradas::retorna_hora(void){
     return hora;
+}
+
+int his_entradas::retorna_origem(void){
+    return origem;
+}
+
+int his_entradas::retorna_id_balanco(void){
+    return id_balanco;
 }

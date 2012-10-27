@@ -26,6 +26,7 @@ public:
     int retorna_total_comprado(void);
     int retorna_total_disponivel(void);
     int retorna_somatorio_quantidade(void);
+    int retorna_custo_medio(void);
 };
 
 #endif // HIS_BALANCO_ESTOQUE_H

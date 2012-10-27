@@ -19,6 +19,7 @@ public:
     QString retorna_valor_dinheiro(QString valor);
     float converter_para_float(QString numero);
     int retorna_id_tipo(std::string tipo);
+    QString converte_numero_origem_nome(int ori);
 };
 
 #endif // FUNCOES_EXTRAS_H
