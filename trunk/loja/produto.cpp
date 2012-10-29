@@ -497,3 +497,117 @@ bool produto::recuperar_cadastro_produto(void){
 produto * produto::retorna_novo_cadastro_produto(void){
     return this;
 }
+
+bool produto::reajustar_valor_venda_produto(int tp, QString porcentagem){
+    conexao_bd conexao;
+    QSqlDatabase bd;
+    int real;
+    int centavos;
+    int resto;
+
+    float aux_centavos;
+
+    porcentagem.replace("%","");
+    float por = porcentagem.toFloat();
+
+    //realiza conexão ao banco de dados
+    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","produto::reajustar_valor_venda_produto")){
+        //Retorna o banco de dados
+        bd = conexao.retorna_bd();
+
+        //Inicia a transaçao
+        bd.transaction();
+
+        removido = true;
+
+        //Declara as variáves que irão inserir os dados no banco de dados.
+        QSqlQuery consultar_valor_anterior(bd);
+        QSqlQuery atualizar_valor_venda(bd);
+
+        //realiza a consulta para determinar  o id do produto.
+        consultar_valor_anterior.exec("SELECT id_produto,valor_venda FROM produto");
+        while(consultar_valor_anterior.next()){
+            id_produto =  consultar_valor_anterior.value(0).toInt();
+            valor_venda = consultar_valor_anterior.value(1).toFloat();
+            if(tp==0){
+                valor_venda = valor_venda+(valor_venda*(por/100));
+                real = valor_venda;
+                resto = (valor_venda-real)*10000;
+                centavos = resto/100;
+                resto = resto - centavos*100;
+
+                if (resto>=56){
+                    centavos = centavos+1;
+                }
+                aux_centavos = centavos;
+                valor_venda = real+aux_centavos/100;
+            }
+            else{
+                valor_venda = valor_venda-(valor_venda*(por/100));
+                real = valor_venda;
+                resto = (valor_venda-real)*10000;
+                centavos = resto/100;
+                resto = resto - centavos*100;
+
+                if (resto>=56){
+                    centavos = centavos+1;
+                }
+                aux_centavos = centavos;
+                valor_venda = real+aux_centavos/100;
+            }
+            //Alteras os dados no cadastro dos produtos
+            atualizar_valor_venda.prepare("UPDATE produto SET valor_venda=:valor_venda WHERE id_produto = '"+QString::number(id_produto)+"';");
+            atualizar_valor_venda.bindValue("valor_venda=:",valor_venda);
+            atualizar_valor_venda.exec();
+            atualizar_valor_venda.clear();
+        }
+        consultar_valor_anterior.clear();
+
+        //Verifica se os dados podem ser salvos, caso sim realiza o Commite, do contrário o Rollback.
+        if((atualizar_valor_venda.lastError().number()<=0)){
+
+            //Finaliza a inserçao dos dados.
+            bd.commit();
+
+            //Gera mensagem de que tudo ocorreu direito.
+            QPixmap icone_janela(":img/img/arquivo_50.png");
+            QMessageBox msg(0);
+            msg.setIconPixmap(icone_janela);
+            msg.setWindowIcon(logomarca);
+            msg.setWindowTitle("Cadastro");
+            msg.addButton("OK", QMessageBox::AcceptRole);
+            msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+            msg.setText("\nCadastro removido com sucesso!!!!");
+            msg.exec();
+
+            //Fecha a conexão com o banco de dados
+            bd.close();
+            conexao.fechar_conexao();
+            return true;
+        }
+        else{
+
+            //Desfaz as alterações no banco de dados.
+            bd.rollback();
+
+            //Gera a mensagem de erro.
+            QPixmap icone_janela(":img/img/arquivo_erro_50.png");
+            QMessageBox msg(0);
+            msg.setIconPixmap(icone_janela);
+            msg.setWindowIcon(logomarca);
+            msg.setWindowTitle("Cadastro");
+            msg.addButton("OK", QMessageBox::AcceptRole);
+            msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+            msg.setText("\nNão foi possível remover o cadastro do produto!!!!");
+            msg.exec();
+
+            //Fecha a conexão com o banco de dados
+            bd.close();
+            conexao.fechar_conexao();
+            return false;
+        }
+    }
+    else{
+        return false;
+    }
+}

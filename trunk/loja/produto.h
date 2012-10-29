@@ -59,6 +59,7 @@ public:
     bool remover_cadastro_produto(void);
     bool recuperar_cadastro_produto(void);
     produto * retorna_novo_cadastro_produto(void);
+    bool reajustar_valor_venda_produto(int tp, QString porcentagem);
     void definir_icone_janela(QPixmap logo);
 };
 

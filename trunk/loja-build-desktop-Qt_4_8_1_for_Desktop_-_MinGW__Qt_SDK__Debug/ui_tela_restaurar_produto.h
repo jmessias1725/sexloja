@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_restaurar_produto.ui'
 **
-** Created: Sat 27. Oct 10:12:33 2012
+** Created: Sun 28. Oct 18:31:39 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -194,7 +194,7 @@ public:
         tw_produtos->setCornerButtonEnabled(true);
         tw_produtos->setRowCount(0);
         tw_produtos->setColumnCount(0);
-        tw_produtos->horizontalHeader()->setVisible(false);
+        tw_produtos->horizontalHeader()->setVisible(true);
         tw_produtos->horizontalHeader()->setCascadingSectionResizes(false);
         tw_produtos->horizontalHeader()->setDefaultSectionSize(450);
         tw_produtos->horizontalHeader()->setMinimumSectionSize(120);

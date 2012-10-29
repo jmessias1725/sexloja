@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>tela_reajustar_estoque</class>
+ <widget class="QDialog" name="tela_reajustar_estoque">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>280</width>
+    <height>130</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Reajustar preço dos produtos</string>
+  </property>
+  <widget class="QGroupBox" name="gb_reajuste">
+   <property name="geometry">
+    <rect>
+     <x>5</x>
+     <y>0</y>
+     <width>270</width>
+     <height>125</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+     <kerning>false</kerning>
+    </font>
+   </property>
+   <property name="title">
+    <string>Reajuste</string>
+   </property>
+   <widget class="QLabel" name="lb_texto">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>15</y>
+      <width>260</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Digite o valor percetual para definir o aumento
+ou a redução no valor de todos os produtos no
+estoque.</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lb_tipo">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>68</y>
+      <width>28</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Tipo:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lb_valor">
+    <property name="geometry">
+     <rect>
+      <x>148</x>
+      <y>68</y>
+      <width>62</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Percentual:</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cb_tipo">
+    <property name="geometry">
+     <rect>
+      <x>48</x>
+      <y>68</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <item>
+     <property name="text">
+      <string>Aumentar</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Reduzir</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLineEdit" name="le_porcentagem">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>68</y>
+      <width>40</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="inputMask">
+     <string>000%; </string>
+    </property>
+    <property name="text">
+     <string>%</string>
+    </property>
+    <property name="maxLength">
+     <number>4</number>
+    </property>
+    <property name="cursorPosition">
+     <number>4</number>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_confirmar">
+    <property name="geometry">
+     <rect>
+      <x>35</x>
+      <y>95</y>
+      <width>100</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Confirmar</string>
+    </property>
+    <property name="icon">
+     <iconset resource="imagens.qrc">
+      <normaloff>:/img/img/1345902916_camera_test.png</normaloff>:/img/img/1345902916_camera_test.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_cancelar">
+    <property name="geometry">
+     <rect>
+      <x>135</x>
+      <y>95</y>
+      <width>100</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Cancelar</string>
+    </property>
+    <property name="icon">
+     <iconset resource="imagens.qrc">
+      <normaloff>:/img/img/1345902747_button_cancel.png</normaloff>:/img/img/1345902747_button_cancel.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>18</width>
+      <height>18</height>
+     </size>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>cb_tipo</tabstop>
+  <tabstop>le_porcentagem</tabstop>
+  <tabstop>btn_confirmar</tabstop>
+  <tabstop>btn_cancelar</tabstop>
+ </tabstops>
+ <resources>
+  <include location="imagens.qrc"/>
+ </resources>
+ <connections/>
+</ui>

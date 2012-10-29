@@ -43,10 +43,6 @@
         <file>img/Oemlogo.jpg</file>
         <file>img/loja.png</file>
         <file>img/loja_editar.png</file>
-        <file>img/produto.png</file>
-        <file>img/estoque_entrada_produto2.png</file>
-        <file>img/estoque_saida_produto2.png</file>
-        <file>img/estoque_reajuste.png</file>
         <file>img/reset.png</file>
         <file>img/perguntar.png</file>
         <file>img/estoque.png</file>
@@ -55,6 +51,10 @@
         <file>img/produto_pergunta_50.png</file>
         <file>img/produto_remover.png</file>
         <file>img/produto_restaurar.png</file>
+        <file>img/estoque_entrada_produto2.png</file>
+        <file>img/estoque_reajuste.png</file>
+        <file>img/estoque_saida_produto2.png</file>
+        <file>img/produto.png</file>
     </qresource>
     <qresource prefix="/operadoras">
         <file>img/claro.png</file>

@@ -79,7 +79,7 @@ void tela_estoque::buscar_produtos(void){
             aux_cod_barras = consultar.value(4).toString();
             aux_tipo = consultar.value(5).toString();
             aux_id_imagem = consultar.value(6).toInt();
-            aux_valor_venda = consultar.value(7).toInt();
+            aux_valor_venda = consultar.value(7).toFloat();
 
             //realiza a consulta
             consultar_his_balanco_estoque.exec("SELECT valor_compra,total_disponivel FROM his_balanco_estoque WHERE id_produto = "+QString::number(aux_id)+";");
@@ -278,6 +278,14 @@ void tela_estoque::on_btn_restaurar_produto_clicked()
     tl_restaurar_produto.definir_icone_janela(logomarca);
     tl_restaurar_produto.buscar_produtos();
     if(!tl_restaurar_produto.exec()){
+        tela_estoque::buscar_produtos();
+    }
+}
+
+void tela_estoque::on_btn_reajustar_estoque_clicked()
+{
+    tl_reajustar_estoque.definir_icone_janela(logomarca);
+    if(!tl_reajustar_estoque.exec()){
         tela_estoque::buscar_produtos();
     }
 }

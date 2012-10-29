@@ -45,7 +45,8 @@ SOURCES += main.cpp\
     tela_restaurar_produto.cpp \
     his_balanco_estoque.cpp \
     his_entradas.cpp \
-    his_saidas.cpp
+    his_saidas.cpp \
+    tela_reajustar_estoque.cpp
 
 HEADERS  += \
     conexao_bd.h \
@@ -81,7 +82,8 @@ HEADERS  += \
     tela_restaurar_produto.h \
     his_balanco_estoque.h \
     his_entradas.h \
-    his_saidas.h
+    his_saidas.h \
+    tela_reajustar_estoque.h
 
 FORMS    += \
     tela_login.ui \
@@ -103,7 +105,8 @@ FORMS    += \
     tela_configurar_legenda_estoque.ui \
     tela_produto.ui \
     tela_editar_produto.ui \
-    tela_restaurar_produto.ui
+    tela_restaurar_produto.ui \
+    tela_reajustar_estoque.ui
 
 RESOURCES += \
     imagens.qrc
