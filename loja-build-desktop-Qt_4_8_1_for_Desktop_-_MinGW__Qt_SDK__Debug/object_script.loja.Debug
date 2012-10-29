@@ -34,6 +34,7 @@ INPUT(
 ./debug\his_balanco_estoque.o
 ./debug\his_entradas.o
 ./debug\his_saidas.o
+./debug\tela_reajustar_estoque.o
 ./debug\moc_tela_login.o
 ./debug\moc_tela_principal.o
 ./debug\moc_tela_cadastro_cliente.o
@@ -53,5 +54,6 @@ INPUT(
 ./debug\moc_tela_produto.o
 ./debug\moc_tela_editar_produto.o
 ./debug\moc_tela_restaurar_produto.o
+./debug\moc_tela_reajustar_estoque.o
 ./debug\qrc_imagens.o
 );

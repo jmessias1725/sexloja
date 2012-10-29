@@ -14,6 +14,7 @@
 #include "tela_cadastro_produto.h"
 #include "tela_produto.h"
 #include "tela_restaurar_produto.h"
+#include "tela_reajustar_estoque.h"
 #include "his_balanco_estoque.h"
 
 namespace Ui {
@@ -43,6 +44,8 @@ private slots:
     void on_btn_restaurar_produto_clicked();
     void on_le_codigo_textChanged(const QString &arg1);
 
+    void on_btn_reajustar_estoque_clicked();
+
 private:
     Ui::tela_estoque *ui;
     QPixmap logomarca;
@@ -52,6 +55,7 @@ private:
     tela_configurar_legenda_estoque tl_configurar_legenda_estoque;
     tela_cadastro_produto tl_cadastro_produto;
     tela_restaurar_produto tl_restaurar_produto;
+    tela_reajustar_estoque tl_reajustar_estoque;
     legenda_estoque *legenda;
     QString aux_cons_id_produto;
     QString aux_cons_nome;

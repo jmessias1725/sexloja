@@ -47,6 +47,7 @@ private:
     QString aux_cons_cod_barras;
     QString aux_cons_tipo;
     std::vector< produto* > aux_lista_produtos;
+    float custo_total;
 };
 
 #endif // TELA_RESTAURAR_PRODUTO_H

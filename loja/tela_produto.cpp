@@ -134,7 +134,7 @@ void tela_produto::buscar_informacoes_his_estoque_produto(int id){
         ui->tw_historico_estoque->setColumnCount(3);
         ui->tw_historico_estoque->horizontalHeader()->setResizeMode(QHeaderView::Fixed);
         ui->tw_historico_estoque->clear();
-        ui->tw_historico_estoque->setHorizontalHeaderLabels(QString("Valor de compra;Total comprado;Total disponível").split(";"));
+        ui->tw_historico_estoque->setHorizontalHeaderLabels(QString(" Valor de compra ; Total comprado ; Total disponível ").split(";"));
 
         for (int i=0;i<int(aux_his.size());i++){
             ui->tw_historico_estoque->setItem(i,0,new QTableWidgetItem(funcoes.retorna_valor_dinheiro(QString::number(aux_his[i]->retorna_valor_compra()))));
