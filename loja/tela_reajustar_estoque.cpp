@@ -46,7 +46,7 @@ void tela_reajustar_estoque::on_btn_confirmar_clicked()
         msg.addButton("Sim", QMessageBox::AcceptRole);
         msg.addButton("Não", QMessageBox::RejectRole);
         msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
-        msg.setText("\nDeseja "+ui->cb_tipo->currentText().toLower()+" o preço dos em:  "+ui->le_porcentagem->text()+"  ?");
+        msg.setText("\nDeseja "+ui->cb_tipo->currentText().toLower()+" o preço dos produtos em:  "+ui->le_porcentagem->text()+"  ?");
         if(!msg.exec()){
             informacoes_produto->definir_icone_janela(logomarca);
             informacoes_produto->reajustar_valor_venda_produto(ui->cb_tipo->currentIndex(),ui->le_porcentagem->text());

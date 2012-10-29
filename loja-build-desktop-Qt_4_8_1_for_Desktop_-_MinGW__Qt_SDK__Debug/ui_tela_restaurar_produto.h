@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_restaurar_produto.ui'
 **
-** Created: Sun 28. Oct 18:31:39 2012
+** Created: Mon 29. Oct 08:18:02 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

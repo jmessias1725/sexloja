@@ -33,6 +33,8 @@ private slots:
     void on_le_fabricante_textChanged(const QString &arg1);
     void limpar_tela(void);
     
+    void on_le_valor_venda_editingFinished();
+
 private:
     Ui::tela_editar_produto *ui;
     QString nome_arquivo_imagem;

@@ -202,9 +202,9 @@
     <property name="geometry">
      <rect>
       <x>5</x>
-      <y>97</y>
+      <y>127</y>
       <width>621</width>
-      <height>130</height>
+      <height>100</height>
      </rect>
     </property>
     <property name="font">
@@ -231,7 +231,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>5</x>
-      <y>77</y>
+      <y>107</y>
       <width>133</width>
       <height>20</height>
      </rect>
@@ -464,8 +464,72 @@ p, li { white-space: pre-wrap; }
      <string>Adicionar imagem</string>
     </property>
    </widget>
+   <widget class="QLabel" name="lb_valorvenda">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>80</y>
+      <width>86</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>Valor de venda:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="le_valor_venda">
+    <property name="geometry">
+     <rect>
+      <x>92</x>
+      <y>80</y>
+      <width>85</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="inputMethodHints">
+     <set>Qt::ImhNone</set>
+    </property>
+    <property name="inputMask">
+     <string>R$ xxxxxxxxx; </string>
+    </property>
+    <property name="text">
+     <string>R$ </string>
+    </property>
+    <property name="maxLength">
+     <number>12</number>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+   </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>le_nome</tabstop>
+  <tabstop>le_fabricante</tabstop>
+  <tabstop>le_codigo_barras</tabstop>
+  <tabstop>le_valor_venda</tabstop>
+  <tabstop>gv_imagem_produto</tabstop>
+  <tabstop>te_des_utilizacao</tabstop>
+  <tabstop>btn_adicionar_imagem</tabstop>
+  <tabstop>btn_confirmar</tabstop>
+  <tabstop>btn_cancelar</tabstop>
+  <tabstop>cb_tipo</tabstop>
+ </tabstops>
  <resources>
   <include location="imagens.qrc"/>
  </resources>

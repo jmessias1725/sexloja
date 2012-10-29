@@ -65,8 +65,11 @@ private:
     QLabel *lb_quantidade_produtos;
     QLabel *lb_data;
     QLabel *lb_custo_total;
+    QLabel *lb_renda_total;
+    QLabel *lb_saldo;
     QString data_sistema;
     float custo_total;
+    float renda_total;
 };
 
 #endif // TELA_ESTOQUE_H

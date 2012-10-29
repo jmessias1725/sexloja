@@ -220,13 +220,14 @@ bool produto::salvar_dados_produto(QString nome_produto,QString fabricante_produ
 }
 
 bool produto::salvar_alteracao_dados_produto(QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
-                                             QString cod_barras_produto,QString tipo_produto,QString nome_arquivo_imagem,
+                                             QString cod_barras_produto,QString tipo_produto,float valor_ven,QString nome_arquivo_imagem,
                                              int altura, int largura,bool alterou_imgem){
     nome = nome_produto;
     fabricante = fabricante_produto;
     desc_utilizacao = desc_utilizacao_produto;
     cod_barras = cod_barras_produto;
     tipo = tipo_produto;
+    valor_venda = valor_ven;
 
     conexao_bd conexao;
     QSqlDatabase bd;
@@ -244,7 +245,6 @@ bool produto::salvar_alteracao_dados_produto(QString nome_produto,QString fabric
         //Declara as variáves que irão inserir os dados no banco de dados.
         QSqlQuery alterar_dados_produto(bd);
         QSqlQuery alterar_dados_imagem(bd);
-        QSqlQuery salvar_dados_valor(bd);
         QSqlQuery salvar_dados_imagem(bd);
         QSqlQuery consultar_imagem(bd);
 
@@ -285,7 +285,7 @@ bool produto::salvar_alteracao_dados_produto(QString nome_produto,QString fabric
             }
         }
 
-        campos = "nome=:nome, fabricante=:fabricante, desc_utilizacao=:desc_utilizacao, cod_barras=:cod_barras, tipo=:tipo, id_imagem=:id_imagem";
+        campos = "nome=:nome, fabricante=:fabricante, desc_utilizacao=:desc_utilizacao, cod_barras=:cod_barras, tipo=:tipo, id_imagem=:id_imagem, valor_venda=:valor_venda";
 
         //Alteras os dados no cadastro dos produtos
         alterar_dados_produto.prepare("UPDATE produto SET "+campos+" WHERE id_produto = '"+QString::number(id_produto)+"';");
@@ -295,12 +295,12 @@ bool produto::salvar_alteracao_dados_produto(QString nome_produto,QString fabric
         alterar_dados_produto.bindValue(":cod_barras", cod_barras);
         alterar_dados_produto.bindValue(":tipo", tipo);
         alterar_dados_produto.bindValue(":id_imagem", id_imagem);
+        alterar_dados_produto.bindValue(":valor_venda", valor_venda);
         alterar_dados_produto.exec();
-
 
         //Verifica se os dados podem ser salvos, caso sim realiza o Commite, do contrário o Rollback.
         if((alterar_dados_produto.lastError().number()<=0)&&(alterar_dados_imagem.lastError().number()<=0)&&
-           (salvar_dados_valor.lastError().number()<=0)&&(salvar_dados_imagem.lastError().number()<=0)){
+           (salvar_dados_imagem.lastError().number()<=0)){
 
             //Finaliza a inserçao dos dados.
             bd.commit();
@@ -570,14 +570,14 @@ bool produto::reajustar_valor_venda_produto(int tp, QString porcentagem){
             bd.commit();
 
             //Gera mensagem de que tudo ocorreu direito.
-            QPixmap icone_janela(":img/img/arquivo_50.png");
+            QPixmap icone_janela(":img/img/dinheiro_50.png");
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
             msg.setWindowIcon(logomarca);
-            msg.setWindowTitle("Cadastro");
+            msg.setWindowTitle("Reajustar");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
-            msg.setText("\nCadastro removido com sucesso!!!!");
+            msg.setText("\nValores alterados com sucesso!!!!");
             msg.exec();
 
             //Fecha a conexão com o banco de dados
@@ -591,14 +591,14 @@ bool produto::reajustar_valor_venda_produto(int tp, QString porcentagem){
             bd.rollback();
 
             //Gera a mensagem de erro.
-            QPixmap icone_janela(":img/img/arquivo_erro_50.png");
+            QPixmap icone_janela(":img/img/dinheiro_erro_50.png");
             QMessageBox msg(0);
             msg.setIconPixmap(icone_janela);
             msg.setWindowIcon(logomarca);
-            msg.setWindowTitle("Cadastro");
+            msg.setWindowTitle("Reajustar");
             msg.addButton("OK", QMessageBox::AcceptRole);
             msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
-            msg.setText("\nNão foi possível remover o cadastro do produto!!!!");
+            msg.setText("\nNão foi possível alterar os valores!!!");
             msg.exec();
 
             //Fecha a conexão com o banco de dados
