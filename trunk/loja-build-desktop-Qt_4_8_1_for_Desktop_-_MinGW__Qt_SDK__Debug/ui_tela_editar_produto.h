@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_editar_produto.ui'
 **
-** Created: Sat 27. Oct 10:12:33 2012
+** Created: Mon 29. Oct 11:18:50 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -44,6 +44,8 @@ public:
     QLabel *lb_tipo;
     QComboBox *cb_tipo;
     QPushButton *btn_adicionar_imagem;
+    QLabel *lb_valorvenda;
+    QLineEdit *le_valor_venda;
 
     void setupUi(QDialog *tela_editar_produto)
     {
@@ -99,7 +101,7 @@ public:
         le_codigo_barras->setMaxLength(15);
         te_des_utilizacao = new QTextEdit(gb_dados_produto);
         te_des_utilizacao->setObjectName(QString::fromUtf8("te_des_utilizacao"));
-        te_des_utilizacao->setGeometry(QRect(5, 97, 621, 130));
+        te_des_utilizacao->setGeometry(QRect(5, 127, 621, 100));
         QFont font2;
         font2.setBold(false);
         font2.setWeight(50);
@@ -108,7 +110,7 @@ public:
         te_des_utilizacao->setReadOnly(false);
         lb_comentario = new QLabel(gb_dados_produto);
         lb_comentario->setObjectName(QString::fromUtf8("lb_comentario"));
-        lb_comentario->setGeometry(QRect(5, 77, 133, 20));
+        lb_comentario->setGeometry(QRect(5, 107, 133, 20));
         QFont font3;
         font3.setFamily(QString::fromUtf8("Calibri"));
         font3.setPointSize(10);
@@ -154,6 +156,26 @@ public:
         btn_adicionar_imagem->setObjectName(QString::fromUtf8("btn_adicionar_imagem"));
         btn_adicionar_imagem->setGeometry(QRect(676, 175, 110, 24));
         btn_adicionar_imagem->setFont(font2);
+        lb_valorvenda = new QLabel(gb_dados_produto);
+        lb_valorvenda->setObjectName(QString::fromUtf8("lb_valorvenda"));
+        lb_valorvenda->setGeometry(QRect(5, 80, 86, 20));
+        lb_valorvenda->setFont(font1);
+        le_valor_venda = new QLineEdit(gb_dados_produto);
+        le_valor_venda->setObjectName(QString::fromUtf8("le_valor_venda"));
+        le_valor_venda->setGeometry(QRect(92, 80, 85, 20));
+        le_valor_venda->setFont(font1);
+        le_valor_venda->setInputMethodHints(Qt::ImhNone);
+        le_valor_venda->setMaxLength(12);
+        le_valor_venda->setReadOnly(false);
+        QWidget::setTabOrder(le_nome, le_fabricante);
+        QWidget::setTabOrder(le_fabricante, le_codigo_barras);
+        QWidget::setTabOrder(le_codigo_barras, le_valor_venda);
+        QWidget::setTabOrder(le_valor_venda, gv_imagem_produto);
+        QWidget::setTabOrder(gv_imagem_produto, te_des_utilizacao);
+        QWidget::setTabOrder(te_des_utilizacao, btn_adicionar_imagem);
+        QWidget::setTabOrder(btn_adicionar_imagem, btn_confirmar);
+        QWidget::setTabOrder(btn_confirmar, btn_cancelar);
+        QWidget::setTabOrder(btn_cancelar, cb_tipo);
 
         retranslateUi(tela_editar_produto);
 
@@ -201,6 +223,9 @@ public:
          << QApplication::translate("tela_editar_produto", "Vibrador", 0, QApplication::UnicodeUTF8)
         );
         btn_adicionar_imagem->setText(QApplication::translate("tela_editar_produto", "Adicionar imagem", 0, QApplication::UnicodeUTF8));
+        lb_valorvenda->setText(QApplication::translate("tela_editar_produto", "Valor de venda:", 0, QApplication::UnicodeUTF8));
+        le_valor_venda->setInputMask(QApplication::translate("tela_editar_produto", "R$ xxxxxxxxx; ", 0, QApplication::UnicodeUTF8));
+        le_valor_venda->setText(QApplication::translate("tela_editar_produto", "R$ ", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

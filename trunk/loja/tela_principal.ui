@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>1024</width>
-    <height>500</height>
+    <height>768</height>
    </rect>
   </property>
   <property name="mouseTracking">
@@ -32,7 +32,123 @@
   <property name="dockOptions">
    <set>QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks|QMainWindow::ForceTabbedDocks</set>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="margin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="fr_central">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="fr_lateral">
+      <property name="maximumSize">
+       <size>
+        <width>230</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 0, 127);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QCalendarWidget" name="calendario">
+       <property name="geometry">
+        <rect>
+         <x>5</x>
+         <y>5</y>
+         <width>220</width>
+         <height>155</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Consolas</family>
+         <pointsize>9</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+         <kerning>false</kerning>
+        </font>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QMenu { font-size:16px; width: 150px; left: 20px;
+background-color:qlineargradient(x1:0, y1:0, x2:0, y2:1, stop: 0 #cccccc, stop: 1 #333333);}
+QToolButton {icon-size: 24px, 24px;background-color: qlineargradient(x1:0, y1:0, x2:0,y2:1, stop: 0 #cccccc, stop: 1 #333333);
+height: 24px; width: 220;}
+QAbstractItemView {selection-background-color: rgb(255, 174, 0);}
+QToolButton::menu-arrow {}
+QToolButton::menu-button {}
+QToolButton::menu-indicator{width: 50px;}
+QToolButton::menu-indicator:pressed,
+QToolButton::menu-indicator:open{top:10px; left: 10px;}
+QListView {background-color:white;}
+QSpinBox::up-button { subcontrol-origin: border;
+subcontrol-position: top right; width:50px; border-image: url(icons:arrow_up_n.png);}
+QSpinBox::down-button {subcontrol-origin: border; subcontrol-position: bottom right;
+border-width: 1px; width:50px;}
+QSpinBox::down-arrow { width:26px; height:17px;
+image: url(icons:arrow_down_n.png); } </string>
+       </property>
+       <property name="minimumDate">
+        <date>
+         <year>1900</year>
+         <month>9</month>
+         <day>14</day>
+        </date>
+       </property>
+       <property name="maximumDate">
+        <date>
+         <year>3000</year>
+         <month>12</month>
+         <day>31</day>
+        </date>
+       </property>
+       <property name="firstDayOfWeek">
+        <enum>Qt::Sunday</enum>
+       </property>
+       <property name="gridVisible">
+        <bool>false</bool>
+       </property>
+       <property name="selectionMode">
+        <enum>QCalendarWidget::SingleSelection</enum>
+       </property>
+       <property name="horizontalHeaderFormat">
+        <enum>QCalendarWidget::ShortDayNames</enum>
+       </property>
+       <property name="verticalHeaderFormat">
+        <enum>QCalendarWidget::ISOWeekNumbers</enum>
+       </property>
+       <property name="navigationBarVisible">
+        <bool>true</bool>
+       </property>
+       <property name="dateEditEnabled">
+        <bool>false</bool>
+       </property>
+      </widget>
+      <zorder>fr_central</zorder>
+      <zorder>calendario</zorder>
+     </widget>
+    </item>
+   </layout>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>

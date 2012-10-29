@@ -54,7 +54,7 @@ public:
                               QString nome_arquivo_imagem, int altura, int largura,float valor_com,float valor_ven);
 
     bool salvar_alteracao_dados_produto(QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
-                                        QString cod_barras_produto,QString tipo_produto,QString nome_arquivo_imagem,
+                                        QString cod_barras_produto,QString tipo_produto,float valor_ven,QString nome_arquivo_imagem,
                                         int altura, int largura,bool alterou_imgem);
     bool remover_cadastro_produto(void);
     bool recuperar_cadastro_produto(void);

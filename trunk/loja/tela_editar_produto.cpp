@@ -34,6 +34,7 @@ void tela_editar_produto::definir_dados_produto(produto *cad_produto, imagem *im
     ui->le_fabricante->setText(informacoes_produto->retorna_fabricante());
     ui->le_codigo_barras->setText(informacoes_produto->retorna_cod_barras());
     ui->te_des_utilizacao->setText(informacoes_produto->retorna_desc_utilizacao());
+    ui->le_valor_venda->setText(funcao.retorna_valor_dinheiro(QString::number(informacoes_produto->retorna_valor_venda())));
 
     ui->gv_imagem_produto->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->gv_imagem_produto->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -88,8 +89,8 @@ void tela_editar_produto::on_btn_confirmar_clicked()
         if((ui->le_nome->text().toStdString()!="")){
             informacoes_produto->definir_icone_janela(logomarca);
             if(informacoes_produto->salvar_alteracao_dados_produto(ui->le_nome->text(),ui->le_fabricante->text(),QString::fromStdString(descricao_Aux),
-                                                                   ui->le_codigo_barras->text(),ui->cb_tipo->currentText(),nome_arquivo_imagem,altura,
-                                                                   largura,alterou_imgem)){
+                                                                   ui->le_codigo_barras->text(),ui->cb_tipo->currentText(),funcao.converter_para_float(ui->le_valor_venda->text()),
+                                                                   nome_arquivo_imagem,altura,largura,alterou_imgem)){
                 tela_editar_produto::limpar_tela();
                 this->close();
             }
@@ -137,3 +138,7 @@ void tela_editar_produto::on_le_fabricante_textChanged(const QString &arg1)
     ui->le_fabricante->setText(ui->le_fabricante->text().toUpper());
 }
 
+void tela_editar_produto::on_le_valor_venda_editingFinished()
+{
+    ui->le_valor_venda->setText(funcao.retorna_valor_dinheiro(ui->le_valor_venda->text()));
+}

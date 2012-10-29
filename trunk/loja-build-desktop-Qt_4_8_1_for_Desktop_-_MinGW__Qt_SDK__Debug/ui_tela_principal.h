@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_principal.ui'
 **
-** Created: Sat 27. Oct 10:12:32 2012
+** Created: Mon 29. Oct 17:48:30 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -10,10 +10,14 @@
 #ifndef UI_TELA_PRINCIPAL_H
 #define UI_TELA_PRINCIPAL_H
 
+#include <QtCore/QDate>
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
+#include <QtGui/QCalendarWidget>
+#include <QtGui/QFrame>
+#include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QMainWindow>
 #include <QtGui/QMenu>
@@ -41,6 +45,10 @@ public:
     QAction *Cadastro_da_Loja;
     QAction *Estoque;
     QWidget *centralwidget;
+    QHBoxLayout *horizontalLayout;
+    QFrame *fr_central;
+    QFrame *fr_lateral;
+    QCalendarWidget *calendario;
     QMenuBar *menubar;
     QMenu *menuArquivo;
     QMenu *menuNovo;
@@ -54,7 +62,7 @@ public:
         if (tela_principal->objectName().isEmpty())
             tela_principal->setObjectName(QString::fromUtf8("tela_principal"));
         tela_principal->setWindowModality(Qt::WindowModal);
-        tela_principal->resize(1024, 500);
+        tela_principal->resize(1024, 768);
         tela_principal->setMouseTracking(false);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/img/img/logo_sex.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -129,6 +137,65 @@ public:
         Estoque->setIcon(icon11);
         centralwidget = new QWidget(tela_principal);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        horizontalLayout = new QHBoxLayout(centralwidget);
+        horizontalLayout->setSpacing(0);
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        fr_central = new QFrame(centralwidget);
+        fr_central->setObjectName(QString::fromUtf8("fr_central"));
+        fr_central->setFrameShape(QFrame::StyledPanel);
+        fr_central->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout->addWidget(fr_central);
+
+        fr_lateral = new QFrame(centralwidget);
+        fr_lateral->setObjectName(QString::fromUtf8("fr_lateral"));
+        fr_lateral->setMaximumSize(QSize(230, 16777215));
+        fr_lateral->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 127);"));
+        fr_lateral->setFrameShape(QFrame::StyledPanel);
+        fr_lateral->setFrameShadow(QFrame::Raised);
+        calendario = new QCalendarWidget(fr_lateral);
+        calendario->setObjectName(QString::fromUtf8("calendario"));
+        calendario->setGeometry(QRect(5, 5, 220, 155));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Consolas"));
+        font1.setPointSize(9);
+        font1.setBold(false);
+        font1.setWeight(50);
+        font1.setKerning(false);
+        calendario->setFont(font1);
+        calendario->setAutoFillBackground(false);
+        calendario->setStyleSheet(QString::fromUtf8("QMenu { font-size:16px; width: 150px; left: 20px;\n"
+"background-color:qlineargradient(x1:0, y1:0, x2:0, y2:1, stop: 0 #cccccc, stop: 1 #333333);}\n"
+"QToolButton {icon-size: 24px, 24px;background-color: qlineargradient(x1:0, y1:0, x2:0,y2:1, stop: 0 #cccccc, stop: 1 #333333);\n"
+"height: 24px; width: 220;}\n"
+"QAbstractItemView {selection-background-color: rgb(255, 174, 0);}\n"
+"QToolButton::menu-arrow {}\n"
+"QToolButton::menu-button {}\n"
+"QToolButton::menu-indicator{width: 50px;}\n"
+"QToolButton::menu-indicator:pressed,\n"
+"QToolButton::menu-indicator:open{top:10px; left: 10px;}\n"
+"QListView {background-color:white;}\n"
+"QSpinBox::up-button { subcontrol-origin: border;\n"
+"subcontrol-position: top right; width:50px; border-image: url(icons:arrow_up_n.png);}\n"
+"QSpinBox::down-button {subcontrol-origin: border; subcontrol-position: bottom right;\n"
+"border-width: 1px; width:50px;}\n"
+"QSpinBox::down-arrow { width:26px; height:17px;\n"
+"image: url(icons:arrow_down_n.png); } "));
+        calendario->setMinimumDate(QDate(1900, 9, 14));
+        calendario->setMaximumDate(QDate(3000, 12, 31));
+        calendario->setFirstDayOfWeek(Qt::Sunday);
+        calendario->setGridVisible(false);
+        calendario->setSelectionMode(QCalendarWidget::SingleSelection);
+        calendario->setHorizontalHeaderFormat(QCalendarWidget::ShortDayNames);
+        calendario->setVerticalHeaderFormat(QCalendarWidget::ISOWeekNumbers);
+        calendario->setNavigationBarVisible(true);
+        calendario->setDateEditEnabled(false);
+        fr_central->raise();
+        calendario->raise();
+
+        horizontalLayout->addWidget(fr_lateral);
+
         tela_principal->setCentralWidget(centralwidget);
         menubar = new QMenuBar(tela_principal);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -137,12 +204,12 @@ public:
         menuArquivo->setObjectName(QString::fromUtf8("menuArquivo"));
         menuNovo = new QMenu(menuArquivo);
         menuNovo->setObjectName(QString::fromUtf8("menuNovo"));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("MS Shell Dlg 2"));
-        font1.setPointSize(8);
-        font1.setBold(false);
-        font1.setWeight(50);
-        menuNovo->setFont(font1);
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("MS Shell Dlg 2"));
+        font2.setPointSize(8);
+        font2.setBold(false);
+        font2.setWeight(50);
+        menuNovo->setFont(font2);
         menuListar = new QMenu(menubar);
         menuListar->setObjectName(QString::fromUtf8("menuListar"));
         menuConfigura_oes = new QMenu(menubar);
@@ -150,21 +217,21 @@ public:
         tela_principal->setMenuBar(menubar);
         barra_de_status = new QStatusBar(tela_principal);
         barra_de_status->setObjectName(QString::fromUtf8("barra_de_status"));
-        QFont font2;
-        font2.setFamily(QString::fromUtf8("Calibri"));
-        font2.setPointSize(10);
-        font2.setBold(true);
-        font2.setWeight(75);
-        font2.setKerning(false);
-        barra_de_status->setFont(font2);
+        QFont font3;
+        font3.setFamily(QString::fromUtf8("Calibri"));
+        font3.setPointSize(10);
+        font3.setBold(true);
+        font3.setWeight(75);
+        font3.setKerning(false);
+        barra_de_status->setFont(font3);
         barra_de_status->setLayoutDirection(Qt::RightToLeft);
         tela_principal->setStatusBar(barra_de_status);
         barra_de_menus = new QToolBar(tela_principal);
         barra_de_menus->setObjectName(QString::fromUtf8("barra_de_menus"));
-        QFont font3;
-        font3.setFamily(QString::fromUtf8("Calibri"));
-        font3.setPointSize(9);
-        barra_de_menus->setFont(font3);
+        QFont font4;
+        font4.setFamily(QString::fromUtf8("Calibri"));
+        font4.setPointSize(9);
+        barra_de_menus->setFont(font4);
         barra_de_menus->setMovable(false);
         barra_de_menus->setIconSize(QSize(40, 40));
         barra_de_menus->setFloatable(false);

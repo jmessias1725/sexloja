@@ -18,6 +18,8 @@ tela_estoque::tela_estoque(QWidget *parent) :
     lb_quantidade_produtos = new QLabel;
     lb_data = new QLabel;
     lb_custo_total = new QLabel;
+    lb_renda_total = new QLabel;
+    lb_saldo = new QLabel;
     QDate aux_data = QDate::currentDate();
     data_sistema = aux_data.toString(Qt::SystemLocaleShortDate);
     lb_quantidade_produtos->setFrameShape(QFrame::Panel);
@@ -26,6 +28,10 @@ tela_estoque::tela_estoque(QWidget *parent) :
     lb_data->setFrameShadow(QFrame::Sunken);
     lb_custo_total->setFrameShape(QFrame::Panel);
     lb_custo_total->setFrameShadow(QFrame::Sunken);
+    lb_renda_total->setFrameShape(QFrame::Panel);
+    lb_renda_total->setFrameShadow(QFrame::Sunken);
+    lb_saldo->setFrameShape(QFrame::Panel);
+    lb_saldo->setFrameShadow(QFrame::Sunken);
 }
 
 tela_estoque::~tela_estoque()
@@ -49,13 +55,14 @@ void tela_estoque::buscar_produtos(void){
     QString aux_cod_barras;
     QString aux_tipo;
     int aux_id_imagem;
-    int aux_soma_total = 0;
+    int aux_soma_total_disponivel = 0;
     float aux_valor_venda;
     float aux_valor_compra;
     float aux_total_disponivel;
     float custo_medio_cada_produto = 0;
 
     custo_total = 0;
+    renda_total = 0;
 
     lista_produtos.clear();
 
@@ -87,13 +94,14 @@ void tela_estoque::buscar_produtos(void){
                 aux_valor_compra = consultar_his_balanco_estoque.value(0).toFloat();
                 aux_total_disponivel = consultar_his_balanco_estoque.value(1).toString().toInt();
                 custo_medio_cada_produto = custo_medio_cada_produto+(aux_valor_compra*aux_total_disponivel);
-                aux_soma_total = aux_soma_total+aux_total_disponivel;
+                aux_soma_total_disponivel = aux_soma_total_disponivel+aux_total_disponivel;
             }
 
             custo_total = custo_total+custo_medio_cada_produto;
-            custo_medio_cada_produto = custo_medio_cada_produto/aux_soma_total;
-            lista_produtos.push_back(new produto(aux_id,aux_nome,aux_fabricante,aux_desc_utilizacao,aux_cod_barras,aux_tipo,aux_id_imagem,aux_valor_venda,custo_medio_cada_produto,aux_soma_total));
-            aux_soma_total=0;
+            renda_total = renda_total+aux_soma_total_disponivel*aux_valor_venda;
+            custo_medio_cada_produto = custo_medio_cada_produto/aux_soma_total_disponivel;
+            lista_produtos.push_back(new produto(aux_id,aux_nome,aux_fabricante,aux_desc_utilizacao,aux_cod_barras,aux_tipo,aux_id_imagem,aux_valor_venda,custo_medio_cada_produto,aux_soma_total_disponivel));
+            aux_soma_total_disponivel=0;
             custo_medio_cada_produto = 0;
         }
         consultar.clear();
@@ -179,8 +187,12 @@ void tela_estoque::mostrar_lista_produtos(void){
     lb_data->setText("  "+data_sistema+"  ");
     lb_quantidade_produtos->setText("  Total de produtos = "+QString::number(int(lista_produtos.size()))+"  ");
     lb_custo_total->setText(" Custo total em produtos = "+funcao.retorna_valor_dinheiro(QString::number(custo_total))+"  ");
+    lb_renda_total->setText(" Renda total em produtos = "+funcao.retorna_valor_dinheiro(QString::number(renda_total))+"  ");
+    lb_saldo->setText(" Saldo = "+funcao.retorna_valor_dinheiro(QString::number(renda_total-custo_total))+"  ");
     ui->barra_de_status->addWidget(lb_data,0);
+    ui->barra_de_status->addWidget(lb_saldo,0);
     ui->barra_de_status->addWidget(lb_custo_total,0);
+    ui->barra_de_status->addWidget(lb_renda_total,0);
     ui->barra_de_status->addWidget(lb_quantidade_produtos,0);
 }
 

@@ -24,11 +24,6 @@ void tela_produto::definir_dados_produto(produto *cad_produto){
     QGraphicsScene *GS_imagem_produto = new QGraphicsScene;
     imagem_produto = new imagem();
 
-    buscar_informacoes_his_estoque_produto(informacoes_produto->retorna_id());
-    informacoes_his_entrada = buscar_informacoes_his_entrada(informacoes_produto->retorna_id());
-    mostrar_informacoes_his_entrada(informacoes_his_entrada);
-
-    imagem_produto->buscar_imagem(informacoes_produto->retorna_id_imagem());
     ui->le_codigo->setText(QString::number(informacoes_produto->retorna_id()));
     ui->le_tipo->setText(informacoes_produto->retorna_tipo());
     ui->le_nome->setText(informacoes_produto->retorna_nome());
@@ -39,10 +34,16 @@ void tela_produto::definir_dados_produto(produto *cad_produto){
     ui->le_valor_venda->setText(funcoes.retorna_valor_dinheiro(QString::number(informacoes_produto->retorna_valor_venda())));
     ui->te_des_utilizacao->setText(informacoes_produto->retorna_desc_utilizacao());
 
+    imagem_produto->buscar_imagem(informacoes_produto->retorna_id_imagem());
+
     ui->gv_imagem_produto->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->gv_imagem_produto->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     GS_imagem_produto->addPixmap(imagem_produto->retorna_QPixmap_imagem());
     ui->gv_imagem_produto->setScene(GS_imagem_produto);
+
+    buscar_informacoes_his_estoque_produto(informacoes_produto->retorna_id());
+    informacoes_his_entrada = buscar_informacoes_his_entrada(informacoes_produto->retorna_id());
+    mostrar_informacoes_his_entrada(informacoes_his_entrada);
 }
 
 produto * tela_produto::retorna_novo_cadastro(void){
