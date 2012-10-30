@@ -96,5 +96,5 @@ void tela_principal::on_Estoque_triggered()
 {
     tl_estoque.definir_icone_janela(logomarca);
     tl_estoque.buscar_produtos();
-    tl_estoque.show();
+    tl_estoque.showMaximized();
 }

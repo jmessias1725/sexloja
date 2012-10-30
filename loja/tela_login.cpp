@@ -46,6 +46,6 @@ void tela_login::on_btn_confrimar_clicked()
         this->close();
         tl_principal.dados_loja(informacao_loja);
         tl_principal.dados_usuario(informacao_usuario);
-        tl_principal.show();
+        tl_principal.showMaximized();
     }
 }

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_cadastro_telefone.ui'
 **
-** Created: Mon 29. Oct 08:18:02 2012
+** Created: Mon 29. Oct 20:34:17 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
