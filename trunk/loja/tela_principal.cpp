@@ -7,13 +7,13 @@ tela_principal::tela_principal(QWidget *parent) :
 {
     ui->setupUi(this);
     lb_dados_usuario = new QLabel;
-    lb_data = new QLabel;
     QDate aux_data = QDate::currentDate();
-    data_sistema = aux_data.toString(Qt::SystemLocaleShortDate);
     lb_dados_usuario->setFrameShape(QFrame::Panel);
     lb_dados_usuario->setFrameShadow(QFrame::Sunken);
-    lb_data->setFrameShape(QFrame::Panel);
-    lb_data->setFrameShadow(QFrame::Sunken);
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(atualizar_hora()));
+    timer->start(1000);
+    ui->lb_data->setText(aux_data.toString(Qt::SystemLocaleLongDate));
 }
 
 tela_principal::~tela_principal()
@@ -23,9 +23,7 @@ tela_principal::~tela_principal()
 
 void tela_principal::dados_usuario(usuario *info_usuario){
     informacao_usuario = info_usuario;
-    lb_data->setText("  "+data_sistema+"  ");
     lb_dados_usuario->setText("  Usuário = "+informacao_usuario->retorna_nome()+"  ");
-    ui->barra_de_status->addWidget(lb_data,0);
     ui->barra_de_status->addWidget(lb_dados_usuario,0);
 }
 
@@ -97,4 +95,9 @@ void tela_principal::on_Estoque_triggered()
     tl_estoque.definir_icone_janela(logomarca);
     tl_estoque.buscar_produtos();
     tl_estoque.showMaximized();
+}
+
+void tela_principal::atualizar_hora(void){
+    QTime aux_hora = QTime::currentTime();
+    ui->lb_hora->setText(aux_hora.toString());
 }

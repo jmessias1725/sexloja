@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_estoque.ui'
 **
-** Created: Mon 29. Oct 20:34:17 2012
+** Created: Tue 30. Oct 14:26:26 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -38,7 +38,7 @@ public:
     QWidget *centralwidget;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_4;
-    QFrame *frame;
+    QFrame *fr_menu_lateral;
     QVBoxLayout *verticalLayout_3;
     QToolButton *btn_adicionar_produto;
     QToolButton *btn_restaurar_produto;
@@ -72,6 +72,7 @@ public:
             tela_estoque->setObjectName(QString::fromUtf8("tela_estoque"));
         tela_estoque->setWindowModality(Qt::ApplicationModal);
         tela_estoque->resize(1026, 600);
+        tela_estoque->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(tela_estoque);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         horizontalLayout = new QHBoxLayout(centralwidget);
@@ -81,19 +82,20 @@ public:
         verticalLayout_4 = new QVBoxLayout();
         verticalLayout_4->setSpacing(0);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
-        frame = new QFrame(centralwidget);
-        frame->setObjectName(QString::fromUtf8("frame"));
-        frame->setMinimumSize(QSize(120, 480));
-        frame->setMaximumSize(QSize(120, 16777215));
-        frame->setAutoFillBackground(false);
-        frame->setStyleSheet(QString::fromUtf8("alternate-background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 178, 102, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(0, 0, 0, 255), stop:1 rgba(0, 0, 0, 0));"));
-        frame->setFrameShape(QFrame::StyledPanel);
-        frame->setFrameShadow(QFrame::Plain);
-        verticalLayout_3 = new QVBoxLayout(frame);
+        fr_menu_lateral = new QFrame(centralwidget);
+        fr_menu_lateral->setObjectName(QString::fromUtf8("fr_menu_lateral"));
+        fr_menu_lateral->setMinimumSize(QSize(120, 480));
+        fr_menu_lateral->setMaximumSize(QSize(120, 16777215));
+        fr_menu_lateral->setAutoFillBackground(false);
+        fr_menu_lateral->setStyleSheet(QString::fromUtf8("background-color: #505050;\n"
+"color: #FFFFFF;"));
+        fr_menu_lateral->setFrameShape(QFrame::StyledPanel);
+        fr_menu_lateral->setFrameShadow(QFrame::Plain);
+        verticalLayout_3 = new QVBoxLayout(fr_menu_lateral);
         verticalLayout_3->setSpacing(0);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(5, 5, 0, 0);
-        btn_adicionar_produto = new QToolButton(frame);
+        btn_adicionar_produto = new QToolButton(fr_menu_lateral);
         btn_adicionar_produto->setObjectName(QString::fromUtf8("btn_adicionar_produto"));
         btn_adicionar_produto->setMinimumSize(QSize(110, 50));
         btn_adicionar_produto->setMaximumSize(QSize(110, 50));
@@ -111,7 +113,7 @@ public:
 
         verticalLayout_3->addWidget(btn_adicionar_produto);
 
-        btn_restaurar_produto = new QToolButton(frame);
+        btn_restaurar_produto = new QToolButton(fr_menu_lateral);
         btn_restaurar_produto->setObjectName(QString::fromUtf8("btn_restaurar_produto"));
         btn_restaurar_produto->setMinimumSize(QSize(110, 50));
         btn_restaurar_produto->setMaximumSize(QSize(110, 50));
@@ -128,7 +130,7 @@ public:
 
         verticalLayout_3->addWidget(btn_restaurar_produto);
 
-        btn_entrada_produto = new QToolButton(frame);
+        btn_entrada_produto = new QToolButton(fr_menu_lateral);
         btn_entrada_produto->setObjectName(QString::fromUtf8("btn_entrada_produto"));
         btn_entrada_produto->setMinimumSize(QSize(110, 50));
         btn_entrada_produto->setMaximumSize(QSize(110, 50));
@@ -142,7 +144,7 @@ public:
 
         verticalLayout_3->addWidget(btn_entrada_produto);
 
-        btn_saida_produto = new QToolButton(frame);
+        btn_saida_produto = new QToolButton(fr_menu_lateral);
         btn_saida_produto->setObjectName(QString::fromUtf8("btn_saida_produto"));
         btn_saida_produto->setMinimumSize(QSize(110, 50));
         btn_saida_produto->setMaximumSize(QSize(110, 50));
@@ -156,7 +158,7 @@ public:
 
         verticalLayout_3->addWidget(btn_saida_produto);
 
-        btn_reajustar_estoque = new QToolButton(frame);
+        btn_reajustar_estoque = new QToolButton(fr_menu_lateral);
         btn_reajustar_estoque->setObjectName(QString::fromUtf8("btn_reajustar_estoque"));
         btn_reajustar_estoque->setMinimumSize(QSize(110, 50));
         btn_reajustar_estoque->setMaximumSize(QSize(110, 50));
@@ -175,7 +177,7 @@ public:
         verticalLayout_3->addItem(verticalSpacer);
 
 
-        verticalLayout_4->addWidget(frame);
+        verticalLayout_4->addWidget(fr_menu_lateral);
 
         tw_legenda = new QTableWidget(centralwidget);
         if (tw_legenda->columnCount() < 1)
@@ -273,6 +275,7 @@ public:
         font5.setWeight(75);
         font5.setKerning(false);
         gb_filtrar->setFont(font5);
+        gb_filtrar->setFlat(false);
         lb_nome = new QLabel(gb_filtrar);
         lb_nome->setObjectName(QString::fromUtf8("lb_nome"));
         lb_nome->setGeometry(QRect(284, 20, 35, 20));
@@ -361,6 +364,7 @@ public:
         font8.setWeight(75);
         gb_clientes->setFont(font8);
         gb_clientes->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        gb_clientes->setFlat(false);
         verticalLayout = new QVBoxLayout(gb_clientes);
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
@@ -369,6 +373,7 @@ public:
         tw_produtos->setObjectName(QString::fromUtf8("tw_produtos"));
         tw_produtos->setMinimumSize(QSize(869, 469));
         tw_produtos->setFont(font2);
+        tw_produtos->setStyleSheet(QString::fromUtf8(""));
         tw_produtos->setFrameShape(QFrame::WinPanel);
         tw_produtos->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
         tw_produtos->setAutoScroll(true);
@@ -403,8 +408,17 @@ public:
         tela_estoque->setCentralWidget(centralwidget);
         barra_de_status = new QStatusBar(tela_estoque);
         barra_de_status->setObjectName(QString::fromUtf8("barra_de_status"));
-        barra_de_status->setFont(font8);
+        QFont font9;
+        font9.setFamily(QString::fromUtf8("Calibri"));
+        font9.setPointSize(10);
+        font9.setBold(false);
+        font9.setItalic(false);
+        font9.setWeight(9);
+        barra_de_status->setFont(font9);
         barra_de_status->setLayoutDirection(Qt::RightToLeft);
+        barra_de_status->setStyleSheet(QString::fromUtf8("background-color: #505050;\n"
+"color: #FFFFFF;\n"
+"font: 75 10pt \"Calibri\";"));
         tela_estoque->setStatusBar(barra_de_status);
         QWidget::setTabOrder(le_codigo, le_nome);
         QWidget::setTabOrder(le_nome, le_fabricante);
