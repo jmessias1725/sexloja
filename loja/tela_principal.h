@@ -39,6 +39,7 @@ private slots:
     void on_Cadastro_da_Loja_triggered();
     void on_cadastrar_produto_triggered();
     void on_Estoque_triggered();
+    void atualizar_hora(void);
 
 private:
     Ui::tela_principal *ui;
@@ -53,8 +54,6 @@ private:
     usuario *informacao_usuario;
     QPixmap logomarca;
     QLabel *lb_dados_usuario;
-    QLabel *lb_data;
-    QString data_sistema;
 };
 
 #endif // TELA_PRINCIPAL_H

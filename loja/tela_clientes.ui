@@ -1018,6 +1018,11 @@ p, li { white-space: pre-wrap; }
      <height>50</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QFrame {
+   background-color: #505050;
+}</string>
+   </property>
    <property name="frameShape">
     <enum>QFrame::Panel</enum>
    </property>

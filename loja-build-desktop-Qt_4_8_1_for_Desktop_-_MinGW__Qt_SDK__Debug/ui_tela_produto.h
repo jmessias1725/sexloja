@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_produto.ui'
 **
-** Created: Mon 29. Oct 22:35:15 2012
+** Created: Tue 30. Oct 15:24:18 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -200,6 +200,9 @@ public:
         frame = new QFrame(tela_produto);
         frame->setObjectName(QString::fromUtf8("frame"));
         frame->setGeometry(QRect(0, 0, 846, 50));
+        frame->setStyleSheet(QString::fromUtf8("QFrame {\n"
+"   background-color: #505050;\n"
+"}"));
         frame->setFrameShape(QFrame::Panel);
         frame->setFrameShadow(QFrame::Raised);
         btn_editar_produto = new QToolButton(frame);

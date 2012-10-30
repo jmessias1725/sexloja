@@ -54,7 +54,7 @@
     <item>
      <widget class="QFrame" name="fr_central">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(203, 203, 203);</string>
+       <string notr="true"/>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -85,7 +85,7 @@
        <property name="geometry">
         <rect>
          <x>5</x>
-         <y>5</y>
+         <y>0</y>
          <width>220</width>
          <height>171</height>
         </rect>
@@ -102,8 +102,66 @@ QFrame {
 	alternate-background-color: #D2D2D2;
 }
 
-
+QAbstractItemView {
+	selection-background-color: rgb(255, 174, 0);
+}
 </string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lb_hora">
+       <property name="geometry">
+        <rect>
+         <x>5</x>
+         <y>200</y>
+         <width>220</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Comic Sans MS</family>
+         <pointsize>10</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+         <kerning>false</kerning>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(211, 211, 211);</string>
+       </property>
+       <property name="text">
+        <string>00:00:00</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lb_data">
+       <property name="geometry">
+        <rect>
+         <x>5</x>
+         <y>180</y>
+         <width>220</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Comic Sans MS</family>
+         <pointsize>9</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(211, 211, 211);</string>
+       </property>
+       <property name="text">
+        <string>Terça-feira, 30 de outubro de 2012</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </widget>

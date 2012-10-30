@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_clientes.ui'
 **
-** Created: Mon 29. Oct 20:34:17 2012
+** Created: Tue 30. Oct 15:21:41 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -346,6 +346,9 @@ public:
         frame = new QFrame(tela_clientes);
         frame->setObjectName(QString::fromUtf8("frame"));
         frame->setGeometry(QRect(0, 0, 800, 50));
+        frame->setStyleSheet(QString::fromUtf8("QFrame {\n"
+"   background-color: #505050;\n"
+"}"));
         frame->setFrameShape(QFrame::Panel);
         frame->setFrameShadow(QFrame::Raised);
         btn_editar_cliente = new QToolButton(frame);
