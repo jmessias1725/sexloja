@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_principal.ui'
 **
-** Created: Mon 29. Oct 17:48:30 2012
+** Created: Mon 29. Oct 23:12:06 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -10,7 +10,6 @@
 #ifndef UI_TELA_PRINCIPAL_H
 #define UI_TELA_PRINCIPAL_H
 
-#include <QtCore/QDate>
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
@@ -63,10 +62,17 @@ public:
             tela_principal->setObjectName(QString::fromUtf8("tela_principal"));
         tela_principal->setWindowModality(Qt::WindowModal);
         tela_principal->resize(1024, 768);
+        QFont font;
+        font.setFamily(QString::fromUtf8("Calibri"));
+        font.setPointSize(10);
+        font.setBold(true);
+        font.setWeight(75);
+        tela_principal->setFont(font);
         tela_principal->setMouseTracking(false);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/img/img/logo_sex.png"), QSize(), QIcon::Normal, QIcon::Off);
         tela_principal->setWindowIcon(icon);
+        tela_principal->setStyleSheet(QString::fromUtf8(""));
         tela_principal->setAnimated(true);
         tela_principal->setDockNestingEnabled(false);
         tela_principal->setDockOptions(QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks|QMainWindow::ForceTabbedDocks);
@@ -100,10 +106,10 @@ public:
         QIcon icon6;
         icon6.addFile(QString::fromUtf8(":/img/img/vender.png"), QSize(), QIcon::Normal, QIcon::Off);
         realizar_venda->setIcon(icon6);
-        QFont font;
-        font.setFamily(QString::fromUtf8("MS Shell Dlg 2"));
-        font.setPointSize(8);
-        realizar_venda->setFont(font);
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("MS Shell Dlg 2"));
+        font1.setPointSize(8);
+        realizar_venda->setFont(font1);
         Cadastrar_cliente = new QAction(tela_principal);
         Cadastrar_cliente->setObjectName(QString::fromUtf8("Cadastrar_cliente"));
         QIcon icon7;
@@ -143,6 +149,7 @@ public:
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         fr_central = new QFrame(centralwidget);
         fr_central->setObjectName(QString::fromUtf8("fr_central"));
+        fr_central->setStyleSheet(QString::fromUtf8("background-color: rgb(203, 203, 203);"));
         fr_central->setFrameShape(QFrame::StyledPanel);
         fr_central->setFrameShadow(QFrame::Raised);
 
@@ -151,87 +158,175 @@ public:
         fr_lateral = new QFrame(centralwidget);
         fr_lateral->setObjectName(QString::fromUtf8("fr_lateral"));
         fr_lateral->setMaximumSize(QSize(230, 16777215));
-        fr_lateral->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 127);"));
+        fr_lateral->setStyleSheet(QString::fromUtf8("background-color: #505050;"));
         fr_lateral->setFrameShape(QFrame::StyledPanel);
         fr_lateral->setFrameShadow(QFrame::Raised);
         calendario = new QCalendarWidget(fr_lateral);
         calendario->setObjectName(QString::fromUtf8("calendario"));
-        calendario->setGeometry(QRect(5, 5, 220, 155));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("Consolas"));
-        font1.setPointSize(9);
-        font1.setBold(false);
-        font1.setWeight(50);
-        font1.setKerning(false);
-        calendario->setFont(font1);
-        calendario->setAutoFillBackground(false);
-        calendario->setStyleSheet(QString::fromUtf8("QMenu { font-size:16px; width: 150px; left: 20px;\n"
-"background-color:qlineargradient(x1:0, y1:0, x2:0, y2:1, stop: 0 #cccccc, stop: 1 #333333);}\n"
-"QToolButton {icon-size: 24px, 24px;background-color: qlineargradient(x1:0, y1:0, x2:0,y2:1, stop: 0 #cccccc, stop: 1 #333333);\n"
-"height: 24px; width: 220;}\n"
-"QAbstractItemView {selection-background-color: rgb(255, 174, 0);}\n"
-"QToolButton::menu-arrow {}\n"
-"QToolButton::menu-button {}\n"
-"QToolButton::menu-indicator{width: 50px;}\n"
-"QToolButton::menu-indicator:pressed,\n"
-"QToolButton::menu-indicator:open{top:10px; left: 10px;}\n"
-"QListView {background-color:white;}\n"
-"QSpinBox::up-button { subcontrol-origin: border;\n"
-"subcontrol-position: top right; width:50px; border-image: url(icons:arrow_up_n.png);}\n"
-"QSpinBox::down-button {subcontrol-origin: border; subcontrol-position: bottom right;\n"
-"border-width: 1px; width:50px;}\n"
-"QSpinBox::down-arrow { width:26px; height:17px;\n"
-"image: url(icons:arrow_down_n.png); } "));
-        calendario->setMinimumDate(QDate(1900, 9, 14));
-        calendario->setMaximumDate(QDate(3000, 12, 31));
-        calendario->setFirstDayOfWeek(Qt::Sunday);
-        calendario->setGridVisible(false);
-        calendario->setSelectionMode(QCalendarWidget::SingleSelection);
-        calendario->setHorizontalHeaderFormat(QCalendarWidget::ShortDayNames);
-        calendario->setVerticalHeaderFormat(QCalendarWidget::ISOWeekNumbers);
-        calendario->setNavigationBarVisible(true);
-        calendario->setDateEditEnabled(false);
-        fr_central->raise();
-        calendario->raise();
+        calendario->setGeometry(QRect(5, 5, 220, 171));
+        calendario->setStyleSheet(QString::fromUtf8(" QWidget\n"
+"{ \n"
+"    background: qlineargradient(\n"
+"    x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"    stop: 0.1 #F0F0F0, stop: 0.6 #A3A3A3);\n"
+"}\n"
+"QFrame {\n"
+"    background-color:#FFFFFF;\n"
+"	alternate-background-color: #D2D2D2;\n"
+"}\n"
+"\n"
+"\n"
+""));
 
         horizontalLayout->addWidget(fr_lateral);
 
         tela_principal->setCentralWidget(centralwidget);
         menubar = new QMenuBar(tela_principal);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1024, 21));
+        menubar->setGeometry(QRect(0, 0, 1024, 18));
+        QPalette palette;
+        QBrush brush(QColor(0, 255, 0, 255));
+        brush.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        QLinearGradient gradient(0, 0, 0, 1);
+        gradient.setSpread(QGradient::PadSpread);
+        gradient.setCoordinateMode(QGradient::ObjectBoundingMode);
+        gradient.setColorAt(0.3, QColor(119, 119, 119, 255));
+        gradient.setColorAt(0.6, QColor(82, 82, 82, 255));
+        QBrush brush1(gradient);
+        palette.setBrush(QPalette::Active, QPalette::Button, brush1);
+        QLinearGradient gradient1(0, 0, 0, 1);
+        gradient1.setSpread(QGradient::PadSpread);
+        gradient1.setCoordinateMode(QGradient::ObjectBoundingMode);
+        gradient1.setColorAt(0.3, QColor(119, 119, 119, 255));
+        gradient1.setColorAt(0.6, QColor(82, 82, 82, 255));
+        QBrush brush2(gradient1);
+        palette.setBrush(QPalette::Active, QPalette::Base, brush2);
+        QLinearGradient gradient2(0, 0, 0, 1);
+        gradient2.setSpread(QGradient::PadSpread);
+        gradient2.setCoordinateMode(QGradient::ObjectBoundingMode);
+        gradient2.setColorAt(0.3, QColor(119, 119, 119, 255));
+        gradient2.setColorAt(0.6, QColor(82, 82, 82, 255));
+        QBrush brush3(gradient2);
+        palette.setBrush(QPalette::Active, QPalette::Window, brush3);
+        palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        QLinearGradient gradient3(0, 0, 0, 1);
+        gradient3.setSpread(QGradient::PadSpread);
+        gradient3.setCoordinateMode(QGradient::ObjectBoundingMode);
+        gradient3.setColorAt(0.3, QColor(119, 119, 119, 255));
+        gradient3.setColorAt(0.6, QColor(82, 82, 82, 255));
+        QBrush brush4(gradient3);
+        palette.setBrush(QPalette::Inactive, QPalette::Button, brush4);
+        QLinearGradient gradient4(0, 0, 0, 1);
+        gradient4.setSpread(QGradient::PadSpread);
+        gradient4.setCoordinateMode(QGradient::ObjectBoundingMode);
+        gradient4.setColorAt(0.3, QColor(119, 119, 119, 255));
+        gradient4.setColorAt(0.6, QColor(82, 82, 82, 255));
+        QBrush brush5(gradient4);
+        palette.setBrush(QPalette::Inactive, QPalette::Base, brush5);
+        QLinearGradient gradient5(0, 0, 0, 1);
+        gradient5.setSpread(QGradient::PadSpread);
+        gradient5.setCoordinateMode(QGradient::ObjectBoundingMode);
+        gradient5.setColorAt(0.3, QColor(119, 119, 119, 255));
+        gradient5.setColorAt(0.6, QColor(82, 82, 82, 255));
+        QBrush brush6(gradient5);
+        palette.setBrush(QPalette::Inactive, QPalette::Window, brush6);
+        QBrush brush7(QColor(120, 120, 120, 255));
+        brush7.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush7);
+        QLinearGradient gradient6(0, 0, 0, 1);
+        gradient6.setSpread(QGradient::PadSpread);
+        gradient6.setCoordinateMode(QGradient::ObjectBoundingMode);
+        gradient6.setColorAt(0.3, QColor(119, 119, 119, 255));
+        gradient6.setColorAt(0.6, QColor(82, 82, 82, 255));
+        QBrush brush8(gradient6);
+        palette.setBrush(QPalette::Disabled, QPalette::Button, brush8);
+        QLinearGradient gradient7(0, 0, 0, 1);
+        gradient7.setSpread(QGradient::PadSpread);
+        gradient7.setCoordinateMode(QGradient::ObjectBoundingMode);
+        gradient7.setColorAt(0.3, QColor(119, 119, 119, 255));
+        gradient7.setColorAt(0.6, QColor(82, 82, 82, 255));
+        QBrush brush9(gradient7);
+        palette.setBrush(QPalette::Disabled, QPalette::Base, brush9);
+        QLinearGradient gradient8(0, 0, 0, 1);
+        gradient8.setSpread(QGradient::PadSpread);
+        gradient8.setCoordinateMode(QGradient::ObjectBoundingMode);
+        gradient8.setColorAt(0.3, QColor(119, 119, 119, 255));
+        gradient8.setColorAt(0.6, QColor(82, 82, 82, 255));
+        QBrush brush10(gradient8);
+        palette.setBrush(QPalette::Disabled, QPalette::Window, brush10);
+        menubar->setPalette(palette);
+        QFont font2;
+        font2.setBold(true);
+        font2.setWeight(75);
+        menubar->setFont(font2);
+        menubar->setStyleSheet(QString::fromUtf8(" QMenuBar {\n"
+"     background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                       stop:0.3 #777777, stop:0.6 #525252); \n"
+" }\n"
+"\n"
+" QMenuBar::item {\n"
+"     spacing: 3px; /* spacing between menu bar items */\n"
+"     padding: 1px 4px;\n"
+"     background: transparent;\n"
+"	color: white;\n"
+" }\n"
+"\n"
+" QMenuBar::item:pressed {\n"
+"     background: #888888;\n"
+" }\n"
+"\n"
+" QMenu::item:selected {\n"
+"     background: rgba(100, 100, 100, 150);\n"
+" }"));
+        menubar->setDefaultUp(false);
+        menubar->setNativeMenuBar(true);
         menuArquivo = new QMenu(menubar);
         menuArquivo->setObjectName(QString::fromUtf8("menuArquivo"));
+        menuArquivo->setStyleSheet(QString::fromUtf8("background-color: #505050;\n"
+"color: #FFFFFF;"));
         menuNovo = new QMenu(menuArquivo);
         menuNovo->setObjectName(QString::fromUtf8("menuNovo"));
-        QFont font2;
-        font2.setFamily(QString::fromUtf8("MS Shell Dlg 2"));
-        font2.setPointSize(8);
-        font2.setBold(false);
-        font2.setWeight(50);
-        menuNovo->setFont(font2);
+        QFont font3;
+        font3.setFamily(QString::fromUtf8("MS Shell Dlg 2"));
+        font3.setPointSize(8);
+        font3.setBold(false);
+        font3.setWeight(50);
+        menuNovo->setFont(font3);
+        menuNovo->setStyleSheet(QString::fromUtf8("background-color: #505050;\n"
+"color: #FFFFFF;"));
         menuListar = new QMenu(menubar);
         menuListar->setObjectName(QString::fromUtf8("menuListar"));
+        menuListar->setStyleSheet(QString::fromUtf8("background-color: #505050;\n"
+"color: #FFFFFF;"));
         menuConfigura_oes = new QMenu(menubar);
         menuConfigura_oes->setObjectName(QString::fromUtf8("menuConfigura_oes"));
+        menuConfigura_oes->setStyleSheet(QString::fromUtf8(" background-color: #505050;\n"
+"color: #FFFFFF;"));
         tela_principal->setMenuBar(menubar);
         barra_de_status = new QStatusBar(tela_principal);
         barra_de_status->setObjectName(QString::fromUtf8("barra_de_status"));
-        QFont font3;
-        font3.setFamily(QString::fromUtf8("Calibri"));
-        font3.setPointSize(10);
-        font3.setBold(true);
-        font3.setWeight(75);
-        font3.setKerning(false);
-        barra_de_status->setFont(font3);
+        QFont font4;
+        font4.setFamily(QString::fromUtf8("Calibri"));
+        font4.setPointSize(10);
+        font4.setBold(false);
+        font4.setItalic(false);
+        font4.setWeight(9);
+        barra_de_status->setFont(font4);
         barra_de_status->setLayoutDirection(Qt::RightToLeft);
+        barra_de_status->setAutoFillBackground(false);
+        barra_de_status->setStyleSheet(QString::fromUtf8("background-color: #505050;\n"
+"color: #FFFFFF;\n"
+"font: 75 10pt \"Calibri\";"));
         tela_principal->setStatusBar(barra_de_status);
         barra_de_menus = new QToolBar(tela_principal);
         barra_de_menus->setObjectName(QString::fromUtf8("barra_de_menus"));
-        QFont font4;
-        font4.setFamily(QString::fromUtf8("Calibri"));
-        font4.setPointSize(9);
-        barra_de_menus->setFont(font4);
+        QFont font5;
+        font5.setFamily(QString::fromUtf8("Calibri"));
+        font5.setPointSize(9);
+        barra_de_menus->setFont(font5);
+        barra_de_menus->setStyleSheet(QString::fromUtf8("background-color: #505050;\n"
+"color: #FFFFFF;"));
         barra_de_menus->setMovable(false);
         barra_de_menus->setIconSize(QSize(40, 40));
         barra_de_menus->setFloatable(false);
@@ -240,7 +335,6 @@ public:
         menubar->addAction(menuArquivo->menuAction());
         menubar->addAction(menuListar->menuAction());
         menubar->addAction(menuConfigura_oes->menuAction());
-        menuArquivo->addSeparator();
         menuArquivo->addAction(menuNovo->menuAction());
         menuArquivo->addAction(botao_sair);
         menuNovo->addAction(realizar_venda);
