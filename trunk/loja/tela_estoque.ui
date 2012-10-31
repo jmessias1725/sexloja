@@ -17,11 +17,7 @@
    <string>Estoque</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QMainWindow{
-	background-color: rgb(203, 203, 203);
-	padding: 0;
-    margin: 0;
-}</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
@@ -532,23 +528,12 @@ QToolButton{
           <family>Calibri</family>
           <pointsize>10</pointsize>
           <weight>75</weight>
+          <italic>false</italic>
           <bold>true</bold>
-          <kerning>false</kerning>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true"> QGroupBox {
-     border: 1px solid white;
-     border-radius: 10px;
-     margin-top: 8px; /* leave space at the top for the title */
- }
-
- QGroupBox::title {
-     subcontrol-origin: margin;
-     subcontrol-position: top center; /* position at the top center */
-     padding: 0 0px;
-     background-color: none;
- }</string>
+         <string notr="true"/>
         </property>
         <property name="title">
          <string>Filtrar por:</string>
@@ -583,6 +568,7 @@ QToolButton{
          <property name="font">
           <font>
            <family>Calibri</family>
+           <pointsize>10</pointsize>
            <weight>50</weight>
            <bold>false</bold>
            <kerning>false</kerning>
@@ -616,6 +602,7 @@ QToolButton{
          <property name="font">
           <font>
            <family>Calibri</family>
+           <pointsize>10</pointsize>
            <weight>50</weight>
            <bold>false</bold>
            <kerning>false</kerning>
@@ -677,6 +664,8 @@ QToolButton{
          </property>
          <property name="font">
           <font>
+           <family>Calibri</family>
+           <pointsize>10</pointsize>
            <weight>50</weight>
            <bold>false</bold>
            <kerning>false</kerning>
@@ -774,6 +763,8 @@ QToolButton{
          </property>
          <property name="font">
           <font>
+           <family>Calibri</family>
+           <pointsize>10</pointsize>
            <weight>50</weight>
            <bold>false</bold>
           </font>
@@ -810,6 +801,7 @@ QToolButton{
          <property name="font">
           <font>
            <family>Calibri</family>
+           <pointsize>10</pointsize>
            <weight>50</weight>
            <bold>false</bold>
            <kerning>false</kerning>
@@ -843,6 +835,7 @@ QToolButton{
          <property name="font">
           <font>
            <family>Calibri</family>
+           <pointsize>10</pointsize>
            <weight>50</weight>
            <bold>false</bold>
            <kerning>false</kerning>
@@ -866,6 +859,8 @@ QToolButton{
          </property>
          <property name="font">
           <font>
+           <family>Calibri</family>
+           <pointsize>10</pointsize>
            <weight>50</weight>
            <bold>false</bold>
           </font>

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_fornecedor.ui'
 **
-** Created: Wed 31. Oct 10:35:10 2012
+** Created: Wed 31. Oct 17:38:50 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -98,6 +98,15 @@ public:
         frame = new QFrame(tela_fornecedor);
         frame->setObjectName(QString::fromUtf8("frame"));
         frame->setGeometry(QRect(0, 0, 800, 50));
+        frame->setStyleSheet(QString::fromUtf8("QFrame{\n"
+"	background-color: qlineargradient(x1:0, y1:1, x0:1, y0:0,\n"
+"                                       stop:0.1 #777777, stop:0.9 #525252);\n"
+"	border: none;\n"
+"}\n"
+"\n"
+"QToolButton{\n"
+"	color:#FFFFFF\n"
+"}"));
         frame->setFrameShape(QFrame::Panel);
         frame->setFrameShadow(QFrame::Raised);
         btn_editar_fornecedor = new QToolButton(frame);
@@ -160,7 +169,7 @@ public:
         cb_email->setMaxCount(60);
         lb_comentario_fornecedor = new QLabel(gb_dados_fornecedor);
         lb_comentario_fornecedor->setObjectName(QString::fromUtf8("lb_comentario_fornecedor"));
-        lb_comentario_fornecedor->setGeometry(QRect(10, 100, 139, 20));
+        lb_comentario_fornecedor->setGeometry(QRect(10, 100, 162, 20));
         lb_comentario_fornecedor->setFont(font2);
         te_comentario_fornecedor = new QTextEdit(gb_dados_fornecedor);
         te_comentario_fornecedor->setObjectName(QString::fromUtf8("te_comentario_fornecedor"));
@@ -397,11 +406,11 @@ public:
         gb_dados_fornecedor->setTitle(QApplication::translate("tela_fornecedor", "Dados do Fornecedor", 0, QApplication::UnicodeUTF8));
         lb_telefone->setText(QApplication::translate("tela_fornecedor", "Telefone:", 0, QApplication::UnicodeUTF8));
         lb_email->setText(QApplication::translate("tela_fornecedor", "E-mail:", 0, QApplication::UnicodeUTF8));
-        lb_comentario_fornecedor->setText(QApplication::translate("tela_fornecedor", "Coment\303\241rio sobre cliente", 0, QApplication::UnicodeUTF8));
+        lb_comentario_fornecedor->setText(QApplication::translate("tela_fornecedor", "Coment\303\241rio sobre fornecedor", 0, QApplication::UnicodeUTF8));
         lb_codigo->setText(QApplication::translate("tela_fornecedor", "C\303\263digo:", 0, QApplication::UnicodeUTF8));
         le_codigo->setInputMask(QApplication::translate("tela_fornecedor", "000000000; ", 0, QApplication::UnicodeUTF8));
         le_codigo->setText(QString());
-        lb_comentario_produtos->setText(QApplication::translate("tela_fornecedor", "Lista de produtos mais comprados", 0, QApplication::UnicodeUTF8));
+        lb_comentario_produtos->setText(QApplication::translate("tela_fornecedor", "Lista de produtos mais vendidos", 0, QApplication::UnicodeUTF8));
         lb_razao_social->setText(QApplication::translate("tela_fornecedor", "Raz\303\243o Social:", 0, QApplication::UnicodeUTF8));
         le_razao_social->setText(QString());
         le_nome->setInputMask(QString());
