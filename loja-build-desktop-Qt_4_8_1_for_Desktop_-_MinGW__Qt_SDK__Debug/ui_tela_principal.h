@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_principal.ui'
 **
-** Created: Tue 30. Oct 14:05:13 2012
+** Created: Tue 30. Oct 23:21:48 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -18,12 +18,14 @@
 #include <QtGui/QFrame>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
+#include <QtGui/QLCDNumber>
 #include <QtGui/QLabel>
 #include <QtGui/QMainWindow>
 #include <QtGui/QMenu>
 #include <QtGui/QMenuBar>
 #include <QtGui/QStatusBar>
 #include <QtGui/QToolBar>
+#include <QtGui/QToolButton>
 #include <QtGui/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -48,9 +50,14 @@ public:
     QHBoxLayout *horizontalLayout;
     QFrame *fr_central;
     QFrame *fr_lateral;
-    QCalendarWidget *calendario;
-    QLabel *lb_hora;
     QLabel *lb_data;
+    QCalendarWidget *calendario_mes_cor;
+    QCalendarWidget *calendario_mes_pos;
+    QLabel *lb_mes_pos;
+    QLCDNumber *lcd_hora;
+    QLabel *lb_mes_cor;
+    QToolButton *btn_cal_avanc;
+    QToolButton *btn_cal_voltar;
     QMenuBar *menubar;
     QMenu *menuArquivo;
     QMenu *menuNovo;
@@ -64,7 +71,7 @@ public:
         if (tela_principal->objectName().isEmpty())
             tela_principal->setObjectName(QString::fromUtf8("tela_principal"));
         tela_principal->setWindowModality(Qt::WindowModal);
-        tela_principal->resize(1024, 768);
+        tela_principal->resize(1044, 748);
         QFont font;
         font.setFamily(QString::fromUtf8("Calibri"));
         font.setPointSize(10);
@@ -160,14 +167,55 @@ public:
 
         fr_lateral = new QFrame(centralwidget);
         fr_lateral->setObjectName(QString::fromUtf8("fr_lateral"));
-        fr_lateral->setMaximumSize(QSize(230, 16777215));
-        fr_lateral->setStyleSheet(QString::fromUtf8("background-color: #505050;"));
+        fr_lateral->setMinimumSize(QSize(255, 0));
+        fr_lateral->setMaximumSize(QSize(255, 16777215));
+        fr_lateral->setStyleSheet(QString::fromUtf8("QFrame{\n"
+"	background-color: qlineargradient(x0:1, y1:1, x0:1, y0:0,\n"
+"                                       stop:0 #777777, stop:0.5 #525252);\n"
+"}"));
         fr_lateral->setFrameShape(QFrame::StyledPanel);
         fr_lateral->setFrameShadow(QFrame::Raised);
-        calendario = new QCalendarWidget(fr_lateral);
-        calendario->setObjectName(QString::fromUtf8("calendario"));
-        calendario->setGeometry(QRect(5, 0, 220, 171));
-        calendario->setStyleSheet(QString::fromUtf8(" QWidget\n"
+        lb_data = new QLabel(fr_lateral);
+        lb_data->setObjectName(QString::fromUtf8("lb_data"));
+        lb_data->setGeometry(QRect(30, 5, 101, 40));
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("Arial"));
+        font2.setPointSize(9);
+        font2.setBold(false);
+        font2.setWeight(50);
+        lb_data->setFont(font2);
+        lb_data->setStyleSheet(QString::fromUtf8("background-color: none;\n"
+"color: rgb(211, 211, 211);"));
+        lb_data->setAlignment(Qt::AlignCenter);
+        calendario_mes_cor = new QCalendarWidget(fr_lateral);
+        calendario_mes_cor->setObjectName(QString::fromUtf8("calendario_mes_cor"));
+        calendario_mes_cor->setGeometry(QRect(5, 70, 245, 135));
+        QFont font3;
+        font3.setFamily(QString::fromUtf8("Arial"));
+        font3.setPointSize(9);
+        calendario_mes_cor->setFont(font3);
+        calendario_mes_cor->setStyleSheet(QString::fromUtf8(" QWidget\n"
+"{ \n"
+"    background: qlineargradient(\n"
+"    x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"    stop: 0  #F0F0F0, stop: 0.6 #A3A3A3);\n"
+"}\n"
+"\n"
+"QFrame {\n"
+"    background-color:#FFFFFF;\n"
+"	alternate-background-color: #D2D2D2;\n"
+"}\n"
+"\n"
+"QAbstractItemView {\n"
+"	selection-background-color: rgb(255, 174, 0);\n"
+"}\n"
+""));
+        calendario_mes_cor->setNavigationBarVisible(false);
+        calendario_mes_pos = new QCalendarWidget(fr_lateral);
+        calendario_mes_pos->setObjectName(QString::fromUtf8("calendario_mes_pos"));
+        calendario_mes_pos->setGeometry(QRect(5, 235, 245, 135));
+        calendario_mes_pos->setFont(font3);
+        calendario_mes_pos->setStyleSheet(QString::fromUtf8(" QWidget\n"
 "{ \n"
 "    background: qlineargradient(\n"
 "    x1: 0, y1: 0, x2: 0, y2: 1,\n"
@@ -182,37 +230,89 @@ public:
 "	selection-background-color: rgb(255, 174, 0);\n"
 "}\n"
 ""));
-        lb_hora = new QLabel(fr_lateral);
-        lb_hora->setObjectName(QString::fromUtf8("lb_hora"));
-        lb_hora->setGeometry(QRect(5, 200, 220, 20));
-        QFont font2;
-        font2.setFamily(QString::fromUtf8("Comic Sans MS"));
-        font2.setPointSize(10);
-        font2.setBold(false);
-        font2.setItalic(false);
-        font2.setWeight(50);
-        font2.setKerning(false);
-        lb_hora->setFont(font2);
-        lb_hora->setStyleSheet(QString::fromUtf8("color: rgb(211, 211, 211);"));
-        lb_hora->setAlignment(Qt::AlignCenter);
-        lb_data = new QLabel(fr_lateral);
-        lb_data->setObjectName(QString::fromUtf8("lb_data"));
-        lb_data->setGeometry(QRect(5, 180, 220, 20));
-        QFont font3;
-        font3.setFamily(QString::fromUtf8("Comic Sans MS"));
-        font3.setPointSize(9);
-        font3.setBold(false);
-        font3.setWeight(50);
-        lb_data->setFont(font3);
-        lb_data->setStyleSheet(QString::fromUtf8("color: rgb(211, 211, 211);"));
-        lb_data->setAlignment(Qt::AlignCenter);
+        calendario_mes_pos->setSelectionMode(QCalendarWidget::NoSelection);
+        calendario_mes_pos->setNavigationBarVisible(false);
+        calendario_mes_pos->setDateEditEnabled(false);
+        lb_mes_pos = new QLabel(fr_lateral);
+        lb_mes_pos->setObjectName(QString::fromUtf8("lb_mes_pos"));
+        lb_mes_pos->setGeometry(QRect(5, 210, 245, 25));
+        QFont font4;
+        font4.setFamily(QString::fromUtf8("Arial"));
+        font4.setPointSize(10);
+        font4.setBold(true);
+        font4.setWeight(75);
+        lb_mes_pos->setFont(font4);
+        lb_mes_pos->setStyleSheet(QString::fromUtf8(" QWidget\n"
+"{ \n"
+"    background: qlineargradient(\n"
+"    x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"    stop: 0 #F0F0F0, stop: 0.6 #A3A3A3);\n"
+"	color:#FFFFFF;\n"
+"}"));
+        lb_mes_pos->setFrameShape(QFrame::Panel);
+        lb_mes_pos->setFrameShadow(QFrame::Raised);
+        lb_mes_pos->setAlignment(Qt::AlignCenter);
+        lcd_hora = new QLCDNumber(fr_lateral);
+        lcd_hora->setObjectName(QString::fromUtf8("lcd_hora"));
+        lcd_hora->setGeometry(QRect(130, 5, 101, 40));
+        lcd_hora->setStyleSheet(QString::fromUtf8("background-color: none;\n"
+"color: rgb(211, 211, 211);"));
+        lcd_hora->setFrameShape(QFrame::NoFrame);
+        lcd_hora->setFrameShadow(QFrame::Sunken);
+        lcd_hora->setLineWidth(0);
+        lcd_hora->setSmallDecimalPoint(false);
+        lcd_hora->setNumDigits(8);
+        lcd_hora->setMode(QLCDNumber::Dec);
+        lcd_hora->setSegmentStyle(QLCDNumber::Flat);
+        lcd_hora->setProperty("value", QVariant(1e+08));
+        lb_mes_cor = new QLabel(fr_lateral);
+        lb_mes_cor->setObjectName(QString::fromUtf8("lb_mes_cor"));
+        lb_mes_cor->setGeometry(QRect(5, 45, 245, 25));
+        lb_mes_cor->setFont(font4);
+        lb_mes_cor->setStyleSheet(QString::fromUtf8(" QWidget\n"
+"{ \n"
+"    background: qlineargradient(\n"
+"    x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"    stop: 0 #F0F0F0, stop: 0.6 #A3A3A3);\n"
+"	color:#FFFFFF;\n"
+"}"));
+        lb_mes_cor->setFrameShape(QFrame::Panel);
+        lb_mes_cor->setFrameShadow(QFrame::Raised);
+        lb_mes_cor->setAlignment(Qt::AlignCenter);
+        btn_cal_avanc = new QToolButton(fr_lateral);
+        btn_cal_avanc->setObjectName(QString::fromUtf8("btn_cal_avanc"));
+        btn_cal_avanc->setGeometry(QRect(220, 45, 25, 25));
+        btn_cal_avanc->setStyleSheet(QString::fromUtf8("background-color: none;"));
+        QIcon icon12;
+        icon12.addFile(QString::fromUtf8(":/img/img/botao_avancar.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_cal_avanc->setIcon(icon12);
+        btn_cal_avanc->setIconSize(QSize(25, 25));
+        btn_cal_avanc->setAutoRaise(true);
+        btn_cal_avanc->setArrowType(Qt::NoArrow);
+        btn_cal_voltar = new QToolButton(fr_lateral);
+        btn_cal_voltar->setObjectName(QString::fromUtf8("btn_cal_voltar"));
+        btn_cal_voltar->setGeometry(QRect(10, 45, 25, 25));
+        btn_cal_voltar->setStyleSheet(QString::fromUtf8("background-color: none;"));
+        QIcon icon13;
+        icon13.addFile(QString::fromUtf8(":/img/img/botao_voltar.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_cal_voltar->setIcon(icon13);
+        btn_cal_voltar->setIconSize(QSize(25, 25));
+        btn_cal_voltar->setAutoRaise(true);
+        calendario_mes_cor->raise();
+        calendario_mes_pos->raise();
+        lb_mes_pos->raise();
+        lcd_hora->raise();
+        lb_data->raise();
+        lb_mes_cor->raise();
+        btn_cal_avanc->raise();
+        btn_cal_voltar->raise();
 
         horizontalLayout->addWidget(fr_lateral);
 
         tela_principal->setCentralWidget(centralwidget);
         menubar = new QMenuBar(tela_principal);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1024, 18));
+        menubar->setGeometry(QRect(0, 0, 1044, 18));
         QPalette palette;
         QBrush brush(QColor(0, 255, 0, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -285,10 +385,10 @@ public:
         QBrush brush10(gradient8);
         palette.setBrush(QPalette::Disabled, QPalette::Window, brush10);
         menubar->setPalette(palette);
-        QFont font4;
-        font4.setBold(true);
-        font4.setWeight(75);
-        menubar->setFont(font4);
+        QFont font5;
+        font5.setBold(true);
+        font5.setWeight(75);
+        menubar->setFont(font5);
         menubar->setStyleSheet(QString::fromUtf8(" QMenuBar {\n"
 "     background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
 "                                       stop:0.3 #777777, stop:0.6 #525252); \n"
@@ -316,12 +416,12 @@ public:
 "color: #FFFFFF;"));
         menuNovo = new QMenu(menuArquivo);
         menuNovo->setObjectName(QString::fromUtf8("menuNovo"));
-        QFont font5;
-        font5.setFamily(QString::fromUtf8("MS Shell Dlg 2"));
-        font5.setPointSize(8);
-        font5.setBold(false);
-        font5.setWeight(50);
-        menuNovo->setFont(font5);
+        QFont font6;
+        font6.setFamily(QString::fromUtf8("MS Shell Dlg 2"));
+        font6.setPointSize(8);
+        font6.setBold(false);
+        font6.setWeight(50);
+        menuNovo->setFont(font6);
         menuNovo->setStyleSheet(QString::fromUtf8("background-color: #505050;\n"
 "color: #FFFFFF;"));
         menuListar = new QMenu(menubar);
@@ -335,27 +435,39 @@ public:
         tela_principal->setMenuBar(menubar);
         barra_de_status = new QStatusBar(tela_principal);
         barra_de_status->setObjectName(QString::fromUtf8("barra_de_status"));
-        QFont font6;
-        font6.setFamily(QString::fromUtf8("Calibri"));
-        font6.setPointSize(10);
-        font6.setBold(false);
-        font6.setItalic(false);
-        font6.setWeight(9);
-        barra_de_status->setFont(font6);
+        QFont font7;
+        font7.setFamily(QString::fromUtf8("Calibri"));
+        font7.setPointSize(10);
+        font7.setBold(false);
+        font7.setItalic(false);
+        font7.setWeight(50);
+        barra_de_status->setFont(font7);
         barra_de_status->setLayoutDirection(Qt::RightToLeft);
         barra_de_status->setAutoFillBackground(false);
-        barra_de_status->setStyleSheet(QString::fromUtf8("background-color: #505050;\n"
-"color: #FFFFFF;\n"
-"font: 75 10pt \"Calibri\";"));
+        barra_de_status->setStyleSheet(QString::fromUtf8("QLabel{\n"
+"	color: #FFFFFF;\n"
+"	font: 75 10pt \"Calibri\";\n"
+"}\n"
+"\n"
+"QStatusBar{\n"
+"	 background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                       stop:0.3 #777777, stop:0.6 #525252); \n"
+"}"));
         tela_principal->setStatusBar(barra_de_status);
         barra_de_menus = new QToolBar(tela_principal);
         barra_de_menus->setObjectName(QString::fromUtf8("barra_de_menus"));
-        QFont font7;
-        font7.setFamily(QString::fromUtf8("Calibri"));
-        font7.setPointSize(9);
-        barra_de_menus->setFont(font7);
-        barra_de_menus->setStyleSheet(QString::fromUtf8("background-color: #505050;\n"
-"color: #FFFFFF;"));
+        QFont font8;
+        font8.setFamily(QString::fromUtf8("Calibri"));
+        font8.setPointSize(9);
+        barra_de_menus->setFont(font8);
+        barra_de_menus->setStyleSheet(QString::fromUtf8("QToolButton {\n"
+"	background-color: none;\n"
+"}\n"
+"\n"
+"QToolBar{\n"
+"	 background-color: qlineargradient(x0:1, y1:1, x0:1, y0:0,\n"
+"                                       stop:0 #777777, stop:0.5 #525252);\n"
+"}"));
         barra_de_menus->setMovable(false);
         barra_de_menus->setIconSize(QSize(40, 40));
         barra_de_menus->setFloatable(false);
@@ -403,8 +515,12 @@ public:
         buscar_fornecedores->setText(QApplication::translate("tela_principal", "Buscar Fornecedores", 0, QApplication::UnicodeUTF8));
         Cadastro_da_Loja->setText(QApplication::translate("tela_principal", "Cadastro da Loja", 0, QApplication::UnicodeUTF8));
         Estoque->setText(QApplication::translate("tela_principal", "Estoque", 0, QApplication::UnicodeUTF8));
-        lb_hora->setText(QApplication::translate("tela_principal", "00:00:00", 0, QApplication::UnicodeUTF8));
-        lb_data->setText(QApplication::translate("tela_principal", "Ter\303\247a-feira, 30 de outubro de 2012", 0, QApplication::UnicodeUTF8));
+        lb_data->setText(QApplication::translate("tela_principal", "Segunda-Feira\n"
+"30/09/2012", 0, QApplication::UnicodeUTF8));
+        lb_mes_pos->setText(QApplication::translate("tela_principal", "novembro, 2012", 0, QApplication::UnicodeUTF8));
+        lb_mes_cor->setText(QApplication::translate("tela_principal", "novembro, 2012", 0, QApplication::UnicodeUTF8));
+        btn_cal_avanc->setText(QApplication::translate("tela_principal", "...", 0, QApplication::UnicodeUTF8));
+        btn_cal_voltar->setText(QApplication::translate("tela_principal", "...", 0, QApplication::UnicodeUTF8));
         menuArquivo->setTitle(QApplication::translate("tela_principal", "Arquivo", 0, QApplication::UnicodeUTF8));
         menuNovo->setTitle(QApplication::translate("tela_principal", "Novo", 0, QApplication::UnicodeUTF8));
         menuListar->setTitle(QApplication::translate("tela_principal", "Buscar", 0, QApplication::UnicodeUTF8));

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <iostream>
+
 #include "tela_clientes.h"
 #include "tela_cadastro_cliente.h"
 #include "tela_listar_clientes.h"
@@ -13,6 +14,7 @@
 #include "tela_estoque.h"
 #include "loja.h"
 #include "usuario.h"
+
 
 namespace Ui {
 class tela_principal;
@@ -40,6 +42,9 @@ private slots:
     void on_cadastrar_produto_triggered();
     void on_Estoque_triggered();
     void atualizar_hora(void);
+    void on_btn_cal_avanc_clicked();
+    void on_btn_cal_voltar_clicked();
+    void on_calendario_mes_cor_currentPageChanged(int year, int month);
 
 private:
     Ui::tela_principal *ui;

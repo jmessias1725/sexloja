@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1024</width>
-    <height>768</height>
+    <width>1044</width>
+    <height>748</height>
    </rect>
   </property>
   <property name="font">
@@ -66,14 +66,23 @@
     </item>
     <item>
      <widget class="QFrame" name="fr_lateral">
+      <property name="minimumSize">
+       <size>
+        <width>255</width>
+        <height>0</height>
+       </size>
+      </property>
       <property name="maximumSize">
        <size>
-        <width>230</width>
+        <width>255</width>
         <height>16777215</height>
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: #505050;</string>
+       <string notr="true">QFrame{
+	background-color: qlineargradient(x0:1, y1:1, x0:1, y0:0,
+                                       stop:0 #777777, stop:0.5 #525252);
+}</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -81,14 +90,86 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QCalendarWidget" name="calendario">
+      <widget class="QLabel" name="lb_data">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>5</y>
+         <width>101</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>9</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: none;
+color: rgb(211, 211, 211);</string>
+       </property>
+       <property name="text">
+        <string>Segunda-Feira
+30/09/2012</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QCalendarWidget" name="calendario_mes_cor">
        <property name="geometry">
         <rect>
          <x>5</x>
-         <y>0</y>
-         <width>220</width>
-         <height>171</height>
+         <y>70</y>
+         <width>245</width>
+         <height>135</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"> QWidget
+{ 
+    background: qlineargradient(
+    x1: 0, y1: 0, x2: 0, y2: 1,
+    stop: 0  #F0F0F0, stop: 0.6 #A3A3A3);
+}
+
+QFrame {
+    background-color:#FFFFFF;
+	alternate-background-color: #D2D2D2;
+}
+
+QAbstractItemView {
+	selection-background-color: rgb(255, 174, 0);
+}
+</string>
+       </property>
+       <property name="navigationBarVisible">
+        <bool>false</bool>
+       </property>
+      </widget>
+      <widget class="QCalendarWidget" name="calendario_mes_pos">
+       <property name="geometry">
+        <rect>
+         <x>5</x>
+         <y>235</y>
+         <width>245</width>
+         <height>135</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>9</pointsize>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true"> QWidget
@@ -107,63 +188,201 @@ QAbstractItemView {
 }
 </string>
        </property>
+       <property name="selectionMode">
+        <enum>QCalendarWidget::NoSelection</enum>
+       </property>
+       <property name="navigationBarVisible">
+        <bool>false</bool>
+       </property>
+       <property name="dateEditEnabled">
+        <bool>false</bool>
+       </property>
       </widget>
-      <widget class="QLabel" name="lb_hora">
+      <widget class="QLabel" name="lb_mes_pos">
        <property name="geometry">
         <rect>
          <x>5</x>
-         <y>200</y>
-         <width>220</width>
-         <height>20</height>
+         <y>210</y>
+         <width>245</width>
+         <height>25</height>
         </rect>
        </property>
        <property name="font">
         <font>
-         <family>Comic Sans MS</family>
+         <family>Arial</family>
          <pointsize>10</pointsize>
-         <weight>50</weight>
-         <italic>false</italic>
-         <bold>false</bold>
-         <kerning>false</kerning>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: rgb(211, 211, 211);</string>
+        <string notr="true"> QWidget
+{ 
+    background: qlineargradient(
+    x1: 0, y1: 0, x2: 0, y2: 1,
+    stop: 0 #F0F0F0, stop: 0.6 #A3A3A3);
+	color:#FFFFFF;
+}</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
        </property>
        <property name="text">
-        <string>00:00:00</string>
+        <string>novembro, 2012</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QLabel" name="lb_data">
+      <widget class="QLCDNumber" name="lcd_hora">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>5</y>
+         <width>101</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: none;
+color: rgb(211, 211, 211);</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Sunken</enum>
+       </property>
+       <property name="lineWidth">
+        <number>0</number>
+       </property>
+       <property name="smallDecimalPoint">
+        <bool>false</bool>
+       </property>
+       <property name="numDigits">
+        <number>8</number>
+       </property>
+       <property name="mode">
+        <enum>QLCDNumber::Dec</enum>
+       </property>
+       <property name="segmentStyle">
+        <enum>QLCDNumber::Flat</enum>
+       </property>
+       <property name="value" stdset="0">
+        <double>99999999.000000000000000</double>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lb_mes_cor">
        <property name="geometry">
         <rect>
          <x>5</x>
-         <y>180</y>
-         <width>220</width>
-         <height>20</height>
+         <y>45</y>
+         <width>245</width>
+         <height>25</height>
         </rect>
        </property>
        <property name="font">
         <font>
-         <family>Comic Sans MS</family>
-         <pointsize>9</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
+         <family>Arial</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: rgb(211, 211, 211);</string>
+        <string notr="true"> QWidget
+{ 
+    background: qlineargradient(
+    x1: 0, y1: 0, x2: 0, y2: 1,
+    stop: 0 #F0F0F0, stop: 0.6 #A3A3A3);
+	color:#FFFFFF;
+}</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
        </property>
        <property name="text">
-        <string>Terça-feira, 30 de outubro de 2012</string>
+        <string>novembro, 2012</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
+      <widget class="QToolButton" name="btn_cal_avanc">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>45</y>
+         <width>25</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: none;</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="imagens.qrc">
+         <normaloff>:/img/img/botao_avancar.png</normaloff>:/img/img/botao_avancar.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>25</width>
+         <height>25</height>
+        </size>
+       </property>
+       <property name="autoRaise">
+        <bool>true</bool>
+       </property>
+       <property name="arrowType">
+        <enum>Qt::NoArrow</enum>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="btn_cal_voltar">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>45</y>
+         <width>25</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: none;</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="imagens.qrc">
+         <normaloff>:/img/img/botao_voltar.png</normaloff>:/img/img/botao_voltar.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>25</width>
+         <height>25</height>
+        </size>
+       </property>
+       <property name="autoRaise">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <zorder>calendario_mes_cor</zorder>
+      <zorder>calendario_mes_pos</zorder>
+      <zorder>lb_mes_pos</zorder>
+      <zorder>lcd_hora</zorder>
+      <zorder>lb_data</zorder>
+      <zorder>lb_mes_cor</zorder>
+      <zorder>btn_cal_avanc</zorder>
+      <zorder>btn_cal_voltar</zorder>
      </widget>
     </item>
    </layout>
@@ -173,7 +392,7 @@ QAbstractItemView {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1024</width>
+     <width>1044</width>
      <height>18</height>
     </rect>
    </property>
@@ -492,7 +711,7 @@ color: #FFFFFF;</string>
     <font>
      <family>Calibri</family>
      <pointsize>10</pointsize>
-     <weight>9</weight>
+     <weight>50</weight>
      <italic>false</italic>
      <bold>false</bold>
     </font>
@@ -504,9 +723,15 @@ color: #FFFFFF;</string>
     <bool>false</bool>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: #505050;
-color: #FFFFFF;
-font: 75 10pt &quot;Calibri&quot;;</string>
+    <string notr="true">QLabel{
+	color: #FFFFFF;
+	font: 75 10pt &quot;Calibri&quot;;
+}
+
+QStatusBar{
+	 background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                       stop:0.3 #777777, stop:0.6 #525252); 
+}</string>
    </property>
   </widget>
   <widget class="QToolBar" name="barra_de_menus">
@@ -520,8 +745,14 @@ font: 75 10pt &quot;Calibri&quot;;</string>
     <string>Barra de menus</string>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: #505050;
-color: #FFFFFF;</string>
+    <string notr="true">QToolButton {
+	background-color: none;
+}
+
+QToolBar{
+	 background-color: qlineargradient(x0:1, y1:1, x0:1, y0:0,
+                                       stop:0 #777777, stop:0.5 #525252);
+}</string>
    </property>
    <property name="movable">
     <bool>false</bool>
