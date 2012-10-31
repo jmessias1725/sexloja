@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_loja.ui'
 **
-** Created: Tue 30. Oct 15:24:18 2012
+** Created: Tue 30. Oct 23:21:48 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

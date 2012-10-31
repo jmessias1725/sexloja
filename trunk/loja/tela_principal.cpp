@@ -5,15 +5,19 @@ tela_principal::tela_principal(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::tela_principal)
 {
+    QString aux_mes;
     ui->setupUi(this);
     lb_dados_usuario = new QLabel;
-    QDate aux_data = QDate::currentDate();
     lb_dados_usuario->setFrameShape(QFrame::Panel);
     lb_dados_usuario->setFrameShadow(QFrame::Sunken);
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(atualizar_hora()));
     timer->start(1000);
-    ui->lb_data->setText(aux_data.toString(Qt::SystemLocaleLongDate));
+    ui->calendario_mes_pos->showNextMonth();
+    aux_mes =QDate::longMonthName(ui->calendario_mes_pos->monthShown())+", "+QString::number((ui->calendario_mes_pos->yearShown()));
+    ui->lb_mes_pos->setText(aux_mes);
+    aux_mes =QDate::longMonthName(ui->calendario_mes_cor->monthShown())+", "+QString::number((ui->calendario_mes_cor->yearShown()));
+    ui->lb_mes_cor->setText(aux_mes);
 }
 
 tela_principal::~tela_principal()
@@ -99,5 +103,38 @@ void tela_principal::on_Estoque_triggered()
 
 void tela_principal::atualizar_hora(void){
     QTime aux_hora = QTime::currentTime();
-    ui->lb_hora->setText(aux_hora.toString());
+    QDate aux_data = QDate::currentDate();
+    ui->lcd_hora->display(aux_hora.toString());
+    ui->lb_data->setText(QDate::longDayName(aux_data.dayOfWeek())+"\n"+aux_data.toString(Qt::SystemLocaleShortDate));
+}
+
+void tela_principal::on_btn_cal_avanc_clicked()
+{
+    QString aux_mes;
+
+    ui->calendario_mes_cor->showNextMonth();
+    ui->calendario_mes_cor->showNextMonth();
+    aux_mes =QDate::longMonthName(ui->calendario_mes_cor->monthShown())+", "+QString::number((ui->calendario_mes_cor->yearShown()));
+    ui->lb_mes_cor->setText(aux_mes);
+}
+
+void tela_principal::on_btn_cal_voltar_clicked()
+{
+    QString aux_mes;
+
+    ui->calendario_mes_cor->showPreviousMonth();
+    ui->calendario_mes_cor->showPreviousMonth();
+    aux_mes =QDate::longMonthName(ui->calendario_mes_cor->monthShown())+", "+QString::number((ui->calendario_mes_cor->yearShown()));
+    ui->lb_mes_cor->setText(aux_mes);
+}
+
+void tela_principal::on_calendario_mes_cor_currentPageChanged(int year, int month)
+{
+    QString aux_mes;
+    aux_mes =QDate::longMonthName(ui->calendario_mes_cor->monthShown())+", "+QString::number((ui->calendario_mes_cor->yearShown()));
+    ui->lb_mes_cor->setText(aux_mes);
+    ui->calendario_mes_pos->setCurrentPage(year,month);
+    ui->calendario_mes_pos->showNextMonth();
+    aux_mes =QDate::longMonthName(ui->calendario_mes_pos->monthShown())+", "+QString::number((ui->calendario_mes_pos->yearShown()));
+    ui->lb_mes_pos->setText(aux_mes);
 }

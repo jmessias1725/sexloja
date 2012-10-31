@@ -57,6 +57,8 @@
         <file>img/dinheiro_50.png</file>
         <file>img/dinheiro_erro_50.png</file>
         <file>img/produto.png</file>
+        <file>img/botao_avancar.png</file>
+        <file>img/botao_voltar.png</file>
     </qresource>
     <qresource prefix="/operadoras">
         <file>img/claro.png</file>

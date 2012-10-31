@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_principal.h'
 **
-** Created: Tue 30. Oct 11:26:48 2012
+** Created: Tue 30. Oct 23:23:05 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_tela_principal[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      11,   14, // methods
+      14,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -42,6 +42,9 @@ static const uint qt_meta_data_tela_principal[] = {
      282,   15,   15,   15, 0x08,
      315,   15,   15,   15, 0x08,
      338,   15,   15,   15, 0x08,
+     355,   15,   15,   15, 0x08,
+     382,   15,   15,   15, 0x08,
+     421,  410,   15,   15, 0x08,
 
        0        // eod
 };
@@ -57,6 +60,9 @@ static const char qt_meta_stringdata_tela_principal[] = {
     "on_Cadastro_da_Loja_triggered()\0"
     "on_cadastrar_produto_triggered()\0"
     "on_Estoque_triggered()\0atualizar_hora()\0"
+    "on_btn_cal_avanc_clicked()\0"
+    "on_btn_cal_voltar_clicked()\0year,month\0"
+    "on_calendario_mes_cor_currentPageChanged(int,int)\0"
 };
 
 void tela_principal::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -76,10 +82,12 @@ void tela_principal::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 8: _t->on_cadastrar_produto_triggered(); break;
         case 9: _t->on_Estoque_triggered(); break;
         case 10: _t->atualizar_hora(); break;
+        case 11: _t->on_btn_cal_avanc_clicked(); break;
+        case 12: _t->on_btn_cal_voltar_clicked(); break;
+        case 13: _t->on_calendario_mes_cor_currentPageChanged((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObjectExtraData tela_principal::staticMetaObjectExtraData = {
@@ -114,9 +122,9 @@ int tela_principal::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 11)
+        if (_id < 14)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 14;
     }
     return _id;
 }
