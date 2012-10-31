@@ -1019,8 +1019,14 @@ p, li { white-space: pre-wrap; }
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QFrame {
-   background-color: #505050;
+    <string notr="true">QFrame{
+	background-color: qlineargradient(x1:0, y1:1, x0:1, y0:0,
+                                       stop:0.1 #777777, stop:0.9 #525252);
+	border: none;
+}
+
+QToolButton{
+	color:#FFFFFF
 }</string>
    </property>
    <property name="frameShape">

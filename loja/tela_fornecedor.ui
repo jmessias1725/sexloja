@@ -63,6 +63,17 @@
      <height>50</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QFrame{
+	background-color: qlineargradient(x1:0, y1:1, x0:1, y0:0,
+                                       stop:0.1 #777777, stop:0.9 #525252);
+	border: none;
+}
+
+QToolButton{
+	color:#FFFFFF
+}</string>
+   </property>
    <property name="frameShape">
     <enum>QFrame::Panel</enum>
    </property>
@@ -259,7 +270,7 @@
      <rect>
       <x>10</x>
       <y>100</y>
-      <width>139</width>
+      <width>162</width>
       <height>20</height>
      </rect>
     </property>
@@ -273,7 +284,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Comentário sobre cliente</string>
+     <string>Comentário sobre fornecedor</string>
     </property>
    </widget>
    <widget class="QTextEdit" name="te_comentario_fornecedor">
@@ -408,7 +419,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Lista de produtos mais comprados</string>
+     <string>Lista de produtos mais vendidos</string>
     </property>
    </widget>
    <widget class="QLabel" name="lb_razao_social">

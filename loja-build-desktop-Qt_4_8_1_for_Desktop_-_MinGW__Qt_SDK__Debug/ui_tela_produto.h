@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_produto.ui'
 **
-** Created: Wed 31. Oct 10:35:11 2012
+** Created: Wed 31. Oct 14:57:49 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -200,8 +200,14 @@ public:
         frame = new QFrame(tela_produto);
         frame->setObjectName(QString::fromUtf8("frame"));
         frame->setGeometry(QRect(0, 0, 846, 50));
-        frame->setStyleSheet(QString::fromUtf8("QFrame {\n"
-"   background-color: #505050;\n"
+        frame->setStyleSheet(QString::fromUtf8("QFrame{\n"
+"	background-color: qlineargradient(x1:0, y1:1, x0:1, y0:0,\n"
+"                                       stop:0.1 #777777, stop:0.9 #525252);\n"
+"	border: none;\n"
+"}\n"
+"\n"
+"QToolButton{\n"
+"	color:#FFFFFF\n"
 "}"));
         frame->setFrameShape(QFrame::Panel);
         frame->setFrameShadow(QFrame::Raised);

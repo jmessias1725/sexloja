@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_estoque.ui'
 **
-** Created: Wed 31. Oct 11:40:22 2012
+** Created: Wed 31. Oct 14:57:49 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -72,11 +72,7 @@ public:
             tela_estoque->setObjectName(QString::fromUtf8("tela_estoque"));
         tela_estoque->setWindowModality(Qt::ApplicationModal);
         tela_estoque->resize(1026, 600);
-        tela_estoque->setStyleSheet(QString::fromUtf8("QMainWindow{\n"
-"	background-color: rgb(203, 203, 203);\n"
-"	padding: 0;\n"
-"    margin: 0;\n"
-"}"));
+        tela_estoque->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(tela_estoque);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         centralwidget->setStyleSheet(QString::fromUtf8(""));
@@ -284,21 +280,10 @@ public:
         font5.setFamily(QString::fromUtf8("Calibri"));
         font5.setPointSize(10);
         font5.setBold(true);
+        font5.setItalic(false);
         font5.setWeight(75);
-        font5.setKerning(false);
         gb_filtrar->setFont(font5);
-        gb_filtrar->setStyleSheet(QString::fromUtf8(" QGroupBox {\n"
-"     border: 1px solid rgb(183, 183, 183);;\n"
-"     border-radius: 5px;\n"
-"     margin-top: 8px; /* leave space at the top for the title */\n"
-" }\n"
-"\n"
-" QGroupBox::title {\n"
-"     subcontrol-origin: margin;\n"
-"     subcontrol-position: top center; /* position at the top center */\n"
-"     padding: 0 0px;\n"
-"     background-color: none;\n"
-" }"));
+        gb_filtrar->setStyleSheet(QString::fromUtf8(""));
         gb_filtrar->setFlat(false);
         gb_filtrar->setCheckable(false);
         lb_nome = new QLabel(gb_filtrar);
@@ -308,6 +293,7 @@ public:
         lb_nome->setMaximumSize(QSize(35, 20));
         QFont font6;
         font6.setFamily(QString::fromUtf8("Calibri"));
+        font6.setPointSize(10);
         font6.setBold(false);
         font6.setWeight(50);
         font6.setKerning(false);
@@ -329,11 +315,13 @@ public:
         cb_tipo->setObjectName(QString::fromUtf8("cb_tipo"));
         cb_tipo->setGeometry(QRect(33, 20, 95, 20));
         cb_tipo->setMaximumSize(QSize(100, 20));
-        cb_tipo->setFont(font4);
+        cb_tipo->setFont(font6);
         btn_limpar = new QPushButton(gb_filtrar);
         btn_limpar->setObjectName(QString::fromUtf8("btn_limpar"));
         btn_limpar->setGeometry(QRect(808, 47, 80, 24));
         QFont font7;
+        font7.setFamily(QString::fromUtf8("Calibri"));
+        font7.setPointSize(10);
         font7.setBold(false);
         font7.setWeight(50);
         btn_limpar->setFont(font7);
@@ -360,7 +348,10 @@ public:
         le_codigo = new QLineEdit(gb_filtrar);
         le_codigo->setObjectName(QString::fromUtf8("le_codigo"));
         le_codigo->setGeometry(QRect(177, 20, 100, 20));
-        le_codigo->setFont(font7);
+        QFont font8;
+        font8.setBold(false);
+        font8.setWeight(50);
+        le_codigo->setFont(font8);
         le_codigo->setCursorPosition(9);
         le_codigo->setReadOnly(false);
         le_codigo_barras = new QLineEdit(gb_filtrar);
@@ -382,12 +373,12 @@ public:
         gb_clientes = new QGroupBox(centralwidget);
         gb_clientes->setObjectName(QString::fromUtf8("gb_clientes"));
         gb_clientes->setMinimumSize(QSize(889, 251));
-        QFont font8;
-        font8.setFamily(QString::fromUtf8("Calibri"));
-        font8.setPointSize(10);
-        font8.setBold(true);
-        font8.setWeight(75);
-        gb_clientes->setFont(font8);
+        QFont font9;
+        font9.setFamily(QString::fromUtf8("Calibri"));
+        font9.setPointSize(10);
+        font9.setBold(true);
+        font9.setWeight(75);
+        gb_clientes->setFont(font9);
         gb_clientes->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         gb_clientes->setFlat(false);
         verticalLayout = new QVBoxLayout(gb_clientes);
@@ -433,13 +424,13 @@ public:
         tela_estoque->setCentralWidget(centralwidget);
         barra_de_status = new QStatusBar(tela_estoque);
         barra_de_status->setObjectName(QString::fromUtf8("barra_de_status"));
-        QFont font9;
-        font9.setFamily(QString::fromUtf8("Calibri"));
-        font9.setPointSize(10);
-        font9.setBold(false);
-        font9.setItalic(false);
-        font9.setWeight(50);
-        barra_de_status->setFont(font9);
+        QFont font10;
+        font10.setFamily(QString::fromUtf8("Calibri"));
+        font10.setPointSize(10);
+        font10.setBold(false);
+        font10.setItalic(false);
+        font10.setWeight(50);
+        barra_de_status->setFont(font10);
         barra_de_status->setLayoutDirection(Qt::RightToLeft);
         barra_de_status->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "	color: #FFFFFF;\n"
