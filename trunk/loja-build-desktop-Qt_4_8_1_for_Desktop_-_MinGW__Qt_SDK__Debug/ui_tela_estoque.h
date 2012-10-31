@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_estoque.ui'
 **
-** Created: Tue 30. Oct 23:21:48 2012
+** Created: Wed 31. Oct 11:40:22 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -72,9 +72,14 @@ public:
             tela_estoque->setObjectName(QString::fromUtf8("tela_estoque"));
         tela_estoque->setWindowModality(Qt::ApplicationModal);
         tela_estoque->resize(1026, 600);
-        tela_estoque->setStyleSheet(QString::fromUtf8(""));
+        tela_estoque->setStyleSheet(QString::fromUtf8("QMainWindow{\n"
+"	background-color: rgb(203, 203, 203);\n"
+"	padding: 0;\n"
+"    margin: 0;\n"
+"}"));
         centralwidget = new QWidget(tela_estoque);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        centralwidget->setStyleSheet(QString::fromUtf8(""));
         horizontalLayout = new QHBoxLayout(centralwidget);
         horizontalLayout->setSpacing(5);
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -87,8 +92,15 @@ public:
         fr_menu_lateral->setMinimumSize(QSize(120, 480));
         fr_menu_lateral->setMaximumSize(QSize(120, 16777215));
         fr_menu_lateral->setAutoFillBackground(false);
-        fr_menu_lateral->setStyleSheet(QString::fromUtf8("background-color: #505050;\n"
-"color: #FFFFFF;"));
+        fr_menu_lateral->setStyleSheet(QString::fromUtf8("QFrame{\n"
+"	background-color: qlineargradient(x1:0, y1:1, x0:1, y0:0,\n"
+"                                       stop:0.3 #777777, stop:0.6 #525252);\n"
+"	border: none;\n"
+"}\n"
+"\n"
+"QToolButton{\n"
+"	color:#FFFFFF\n"
+"}"));
         fr_menu_lateral->setFrameShape(QFrame::StyledPanel);
         fr_menu_lateral->setFrameShadow(QFrame::Plain);
         verticalLayout_3 = new QVBoxLayout(fr_menu_lateral);
@@ -275,7 +287,20 @@ public:
         font5.setWeight(75);
         font5.setKerning(false);
         gb_filtrar->setFont(font5);
+        gb_filtrar->setStyleSheet(QString::fromUtf8(" QGroupBox {\n"
+"     border: 1px solid rgb(183, 183, 183);;\n"
+"     border-radius: 5px;\n"
+"     margin-top: 8px; /* leave space at the top for the title */\n"
+" }\n"
+"\n"
+" QGroupBox::title {\n"
+"     subcontrol-origin: margin;\n"
+"     subcontrol-position: top center; /* position at the top center */\n"
+"     padding: 0 0px;\n"
+"     background-color: none;\n"
+" }"));
         gb_filtrar->setFlat(false);
+        gb_filtrar->setCheckable(false);
         lb_nome = new QLabel(gb_filtrar);
         lb_nome->setObjectName(QString::fromUtf8("lb_nome"));
         lb_nome->setGeometry(QRect(284, 20, 35, 20));
@@ -413,12 +438,18 @@ public:
         font9.setPointSize(10);
         font9.setBold(false);
         font9.setItalic(false);
-        font9.setWeight(9);
+        font9.setWeight(50);
         barra_de_status->setFont(font9);
         barra_de_status->setLayoutDirection(Qt::RightToLeft);
-        barra_de_status->setStyleSheet(QString::fromUtf8("background-color: #505050;\n"
-"color: #FFFFFF;\n"
-"font: 75 10pt \"Calibri\";"));
+        barra_de_status->setStyleSheet(QString::fromUtf8("QLabel{\n"
+"	color: #FFFFFF;\n"
+"	font: 75 9pt \"Calibri\";\n"
+"}\n"
+"\n"
+"QStatusBar{\n"
+"	 background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                       stop:0.3 #777777, stop:0.6 #525252); \n"
+"}"));
         tela_estoque->setStatusBar(barra_de_status);
         QWidget::setTabOrder(le_codigo, le_nome);
         QWidget::setTabOrder(le_nome, le_fabricante);

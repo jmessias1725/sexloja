@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_principal.ui'
 **
-** Created: Tue 30. Oct 23:21:48 2012
+** Created: Wed 31. Oct 11:19:50 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -159,7 +159,7 @@ public:
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         fr_central = new QFrame(centralwidget);
         fr_central->setObjectName(QString::fromUtf8("fr_central"));
-        fr_central->setStyleSheet(QString::fromUtf8(""));
+        fr_central->setStyleSheet(QString::fromUtf8("background-color: rgb(203, 203, 203);"));
         fr_central->setFrameShape(QFrame::StyledPanel);
         fr_central->setFrameShadow(QFrame::Raised);
 
@@ -398,7 +398,7 @@ public:
 "     spacing: 3px; /* spacing between menu bar items */\n"
 "     padding: 1px 4px;\n"
 "     background: transparent;\n"
-"	color: white;\n"
+"	 color: white;\n"
 " }\n"
 "\n"
 " QMenuBar::item:pressed {\n"
@@ -446,7 +446,7 @@ public:
         barra_de_status->setAutoFillBackground(false);
         barra_de_status->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "	color: #FFFFFF;\n"
-"	font: 75 10pt \"Calibri\";\n"
+"	font: 75 9pt \"Calibri\";\n"
 "}\n"
 "\n"
 "QStatusBar{\n"
@@ -467,6 +467,7 @@ public:
 "QToolBar{\n"
 "	 background-color: qlineargradient(x0:1, y1:1, x0:1, y0:0,\n"
 "                                       stop:0 #777777, stop:0.5 #525252);\n"
+"	border: none;\n"
 "}"));
         barra_de_menus->setMovable(false);
         barra_de_menus->setIconSize(QSize(40, 40));

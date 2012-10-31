@@ -54,7 +54,7 @@
     <item>
      <widget class="QFrame" name="fr_central">
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">background-color: rgb(203, 203, 203);</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -629,7 +629,7 @@ color: rgb(211, 211, 211);</string>
      spacing: 3px; /* spacing between menu bar items */
      padding: 1px 4px;
      background: transparent;
-	color: white;
+	 color: white;
  }
 
  QMenuBar::item:pressed {
@@ -725,7 +725,7 @@ color: #FFFFFF;</string>
    <property name="styleSheet">
     <string notr="true">QLabel{
 	color: #FFFFFF;
-	font: 75 10pt &quot;Calibri&quot;;
+	font: 75 9pt &quot;Calibri&quot;;
 }
 
 QStatusBar{
@@ -752,6 +752,7 @@ QStatusBar{
 QToolBar{
 	 background-color: qlineargradient(x0:1, y1:1, x0:1, y0:0,
                                        stop:0 #777777, stop:0.5 #525252);
+	border: none;
 }</string>
    </property>
    <property name="movable">

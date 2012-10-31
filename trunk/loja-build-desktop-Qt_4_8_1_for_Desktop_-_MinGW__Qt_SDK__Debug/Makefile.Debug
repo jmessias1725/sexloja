@@ -521,14 +521,12 @@ debug/qrc_imagens.cpp: ../loja/imagens.qrc \
 		../loja/img/remover_cliente.png \
 		../loja/img/cpf_invalido_50.png \
 		../loja/img/fornecedor_cadastrar.png \
-		../loja/img/Cash_register_Icon_256.png \
 		../loja/img/perguntar.png \
 		../loja/img/produto_editar.png \
 		../loja/img/cadastrar_fornecedor.png \
 		../loja/img/estoque_entrada_produto2.png \
 		../loja/img/arquivo_pergunta_50.png \
 		../loja/img/produto_pergunta_50.png \
-		../loja/img/chave64x64.png \
 		../loja/img/cadastrar_produto.png \
 		../loja/img/estoque_saida_produto2.png \
 		../loja/img/menos.png \

@@ -1,4 +1,5 @@
 http://www.trinitydesktop.org/docs/qt4/stylesheet-examples.html#customizing-qmenu
+http://doc.qt.digia.com/4.6/stylesheet-examples.html#customizing-qgroupbox
 
 Padrão de cor para os menus
 background-color: #505050;

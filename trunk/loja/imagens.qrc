@@ -1,14 +1,12 @@
 <RCC>
     <qresource prefix="/img">
         <file>img/logo_sex.png</file>
-        <file>img/chave64x64.png</file>
         <file>img/chave40x40.png</file>
         <file>img/senha_cad_x_40.png</file>
         <file>img/login_40.png</file>
         <file>img/1345902916_camera_test.png</file>
         <file>img/1345902747_button_cancel.png</file>
         <file>img/Usuario.png</file>
-        <file>img/Cash_register_Icon_256.png</file>
         <file>img/fornecedor.png</file>
         <file>img/caixa.png</file>
         <file>img/sair.png</file>
