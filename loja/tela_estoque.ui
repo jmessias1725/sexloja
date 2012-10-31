@@ -17,9 +17,16 @@
    <string>Estoque</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">QMainWindow{
+	background-color: rgb(203, 203, 203);
+	padding: 0;
+    margin: 0;
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <property name="spacing">
      <number>5</number>
@@ -50,8 +57,15 @@
          <bool>false</bool>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: #505050;
-color: #FFFFFF;</string>
+         <string notr="true">QFrame{
+	background-color: qlineargradient(x1:0, y1:1, x0:1, y0:0,
+                                       stop:0.3 #777777, stop:0.6 #525252);
+	border: none;
+}
+
+QToolButton{
+	color:#FFFFFF
+}</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
@@ -522,10 +536,27 @@ color: #FFFFFF;</string>
           <kerning>false</kerning>
          </font>
         </property>
+        <property name="styleSheet">
+         <string notr="true"> QGroupBox {
+     border: 1px solid white;
+     border-radius: 10px;
+     margin-top: 8px; /* leave space at the top for the title */
+ }
+
+ QGroupBox::title {
+     subcontrol-origin: margin;
+     subcontrol-position: top center; /* position at the top center */
+     padding: 0 0px;
+     background-color: none;
+ }</string>
+        </property>
         <property name="title">
          <string>Filtrar por:</string>
         </property>
         <property name="flat">
+         <bool>false</bool>
+        </property>
+        <property name="checkable">
          <bool>false</bool>
         </property>
         <widget class="QLabel" name="lb_nome">
@@ -1079,7 +1110,7 @@ color: #FFFFFF;</string>
     <font>
      <family>Calibri</family>
      <pointsize>10</pointsize>
-     <weight>9</weight>
+     <weight>50</weight>
      <italic>false</italic>
      <bold>false</bold>
     </font>
@@ -1091,9 +1122,15 @@ color: #FFFFFF;</string>
     <enum>Qt::RightToLeft</enum>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: #505050;
-color: #FFFFFF;
-font: 75 10pt &quot;Calibri&quot;;</string>
+    <string notr="true">QLabel{
+	color: #FFFFFF;
+	font: 75 9pt &quot;Calibri&quot;;
+}
+
+QStatusBar{
+	 background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                       stop:0.3 #777777, stop:0.6 #525252); 
+}</string>
    </property>
   </widget>
  </widget>
