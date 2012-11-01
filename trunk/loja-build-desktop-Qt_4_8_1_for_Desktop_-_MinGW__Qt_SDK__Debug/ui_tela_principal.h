@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_principal.ui'
 **
-** Created: Wed 31. Oct 14:57:48 2012
+** Created: Wed 31. Oct 22:05:16 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -46,6 +46,7 @@ public:
     QAction *buscar_fornecedores;
     QAction *Cadastro_da_Loja;
     QAction *Estoque;
+    QAction *realizar_compra;
     QWidget *centralwidget;
     QHBoxLayout *horizontalLayout;
     QFrame *fr_central;
@@ -151,6 +152,11 @@ public:
         QIcon icon11;
         icon11.addFile(QString::fromUtf8(":/img/img/estoque.png"), QSize(), QIcon::Normal, QIcon::Off);
         Estoque->setIcon(icon11);
+        realizar_compra = new QAction(tela_principal);
+        realizar_compra->setObjectName(QString::fromUtf8("realizar_compra"));
+        QIcon icon12;
+        icon12.addFile(QString::fromUtf8(":/img/img/compra.png"), QSize(), QIcon::Normal, QIcon::Off);
+        realizar_compra->setIcon(icon12);
         centralwidget = new QWidget(tela_principal);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         horizontalLayout = new QHBoxLayout(centralwidget);
@@ -159,7 +165,7 @@ public:
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         fr_central = new QFrame(centralwidget);
         fr_central->setObjectName(QString::fromUtf8("fr_central"));
-        fr_central->setStyleSheet(QString::fromUtf8("background-color: rgb(203, 203, 203);"));
+        fr_central->setStyleSheet(QString::fromUtf8(""));
         fr_central->setFrameShape(QFrame::StyledPanel);
         fr_central->setFrameShadow(QFrame::Raised);
 
@@ -167,8 +173,8 @@ public:
 
         fr_lateral = new QFrame(centralwidget);
         fr_lateral->setObjectName(QString::fromUtf8("fr_lateral"));
-        fr_lateral->setMinimumSize(QSize(255, 0));
-        fr_lateral->setMaximumSize(QSize(255, 16777215));
+        fr_lateral->setMinimumSize(QSize(230, 0));
+        fr_lateral->setMaximumSize(QSize(230, 16777215));
         fr_lateral->setStyleSheet(QString::fromUtf8("QFrame{\n"
 "	background-color: qlineargradient(x0:1, y1:1, x0:1, y0:0,\n"
 "                                       stop:0 #777777, stop:0.5 #525252);\n"
@@ -177,7 +183,7 @@ public:
         fr_lateral->setFrameShadow(QFrame::Raised);
         lb_data = new QLabel(fr_lateral);
         lb_data->setObjectName(QString::fromUtf8("lb_data"));
-        lb_data->setGeometry(QRect(30, 5, 101, 40));
+        lb_data->setGeometry(QRect(15, 5, 101, 40));
         QFont font2;
         font2.setFamily(QString::fromUtf8("Arial"));
         font2.setPointSize(9);
@@ -189,10 +195,10 @@ public:
         lb_data->setAlignment(Qt::AlignCenter);
         calendario_mes_cor = new QCalendarWidget(fr_lateral);
         calendario_mes_cor->setObjectName(QString::fromUtf8("calendario_mes_cor"));
-        calendario_mes_cor->setGeometry(QRect(5, 70, 245, 135));
+        calendario_mes_cor->setGeometry(QRect(5, 70, 220, 135));
         QFont font3;
         font3.setFamily(QString::fromUtf8("Arial"));
-        font3.setPointSize(9);
+        font3.setPointSize(8);
         calendario_mes_cor->setFont(font3);
         calendario_mes_cor->setStyleSheet(QString::fromUtf8(" QWidget\n"
 "{ \n"
@@ -213,7 +219,7 @@ public:
         calendario_mes_cor->setNavigationBarVisible(false);
         calendario_mes_pos = new QCalendarWidget(fr_lateral);
         calendario_mes_pos->setObjectName(QString::fromUtf8("calendario_mes_pos"));
-        calendario_mes_pos->setGeometry(QRect(5, 235, 245, 135));
+        calendario_mes_pos->setGeometry(QRect(5, 235, 220, 135));
         calendario_mes_pos->setFont(font3);
         calendario_mes_pos->setStyleSheet(QString::fromUtf8(" QWidget\n"
 "{ \n"
@@ -235,7 +241,7 @@ public:
         calendario_mes_pos->setDateEditEnabled(false);
         lb_mes_pos = new QLabel(fr_lateral);
         lb_mes_pos->setObjectName(QString::fromUtf8("lb_mes_pos"));
-        lb_mes_pos->setGeometry(QRect(5, 210, 245, 25));
+        lb_mes_pos->setGeometry(QRect(5, 210, 220, 25));
         QFont font4;
         font4.setFamily(QString::fromUtf8("Arial"));
         font4.setPointSize(10);
@@ -254,7 +260,7 @@ public:
         lb_mes_pos->setAlignment(Qt::AlignCenter);
         lcd_hora = new QLCDNumber(fr_lateral);
         lcd_hora->setObjectName(QString::fromUtf8("lcd_hora"));
-        lcd_hora->setGeometry(QRect(130, 5, 101, 40));
+        lcd_hora->setGeometry(QRect(115, 5, 101, 40));
         lcd_hora->setStyleSheet(QString::fromUtf8("background-color: none;\n"
 "color: rgb(211, 211, 211);"));
         lcd_hora->setFrameShape(QFrame::NoFrame);
@@ -267,7 +273,7 @@ public:
         lcd_hora->setProperty("value", QVariant(1e+08));
         lb_mes_cor = new QLabel(fr_lateral);
         lb_mes_cor->setObjectName(QString::fromUtf8("lb_mes_cor"));
-        lb_mes_cor->setGeometry(QRect(5, 45, 245, 25));
+        lb_mes_cor->setGeometry(QRect(5, 45, 220, 25));
         lb_mes_cor->setFont(font4);
         lb_mes_cor->setStyleSheet(QString::fromUtf8(" QWidget\n"
 "{ \n"
@@ -281,11 +287,11 @@ public:
         lb_mes_cor->setAlignment(Qt::AlignCenter);
         btn_cal_avanc = new QToolButton(fr_lateral);
         btn_cal_avanc->setObjectName(QString::fromUtf8("btn_cal_avanc"));
-        btn_cal_avanc->setGeometry(QRect(220, 45, 25, 25));
+        btn_cal_avanc->setGeometry(QRect(195, 45, 25, 25));
         btn_cal_avanc->setStyleSheet(QString::fromUtf8("background-color: none;"));
-        QIcon icon12;
-        icon12.addFile(QString::fromUtf8(":/img/img/botao_avancar.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_cal_avanc->setIcon(icon12);
+        QIcon icon13;
+        icon13.addFile(QString::fromUtf8(":/img/img/botao_avancar.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_cal_avanc->setIcon(icon13);
         btn_cal_avanc->setIconSize(QSize(25, 25));
         btn_cal_avanc->setAutoRaise(true);
         btn_cal_avanc->setArrowType(Qt::NoArrow);
@@ -293,9 +299,9 @@ public:
         btn_cal_voltar->setObjectName(QString::fromUtf8("btn_cal_voltar"));
         btn_cal_voltar->setGeometry(QRect(10, 45, 25, 25));
         btn_cal_voltar->setStyleSheet(QString::fromUtf8("background-color: none;"));
-        QIcon icon13;
-        icon13.addFile(QString::fromUtf8(":/img/img/botao_voltar.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_cal_voltar->setIcon(icon13);
+        QIcon icon14;
+        icon14.addFile(QString::fromUtf8(":/img/img/botao_voltar.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_cal_voltar->setIcon(icon14);
         btn_cal_voltar->setIconSize(QSize(25, 25));
         btn_cal_voltar->setAutoRaise(true);
         calendario_mes_cor->raise();
@@ -480,6 +486,7 @@ public:
         menuArquivo->addAction(menuNovo->menuAction());
         menuArquivo->addAction(botao_sair);
         menuNovo->addAction(realizar_venda);
+        menuNovo->addAction(realizar_compra);
         menuNovo->addAction(Cadastrar_cliente);
         menuNovo->addAction(cadastrar_forncecedor);
         menuNovo->addAction(cadastrar_produto);
@@ -509,6 +516,9 @@ public:
         cadastrar_forncecedor->setText(QApplication::translate("tela_principal", "Fornecedor", 0, QApplication::UnicodeUTF8));
         cadastrar_produto->setText(QApplication::translate("tela_principal", "Produto", 0, QApplication::UnicodeUTF8));
         realizar_venda->setText(QApplication::translate("tela_principal", "Venda", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        realizar_venda->setToolTip(QApplication::translate("tela_principal", "Clique para realizar uma venda", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
         Cadastrar_cliente->setText(QApplication::translate("tela_principal", "Cliente", 0, QApplication::UnicodeUTF8));
         botao_sair->setText(QApplication::translate("tela_principal", "Sair", 0, QApplication::UnicodeUTF8));
         buscar_clientes->setText(QApplication::translate("tela_principal", "Buscar Clientes", 0, QApplication::UnicodeUTF8));
@@ -516,6 +526,10 @@ public:
         buscar_fornecedores->setText(QApplication::translate("tela_principal", "Buscar Fornecedores", 0, QApplication::UnicodeUTF8));
         Cadastro_da_Loja->setText(QApplication::translate("tela_principal", "Cadastro da Loja", 0, QApplication::UnicodeUTF8));
         Estoque->setText(QApplication::translate("tela_principal", "Estoque", 0, QApplication::UnicodeUTF8));
+        realizar_compra->setText(QApplication::translate("tela_principal", "Compra", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        realizar_compra->setToolTip(QApplication::translate("tela_principal", "Clique para adicionar uma nova compra", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
         lb_data->setText(QApplication::translate("tela_principal", "Segunda-Feira\n"
 "30/09/2012", 0, QApplication::UnicodeUTF8));
         lb_mes_pos->setText(QApplication::translate("tela_principal", "novembro, 2012", 0, QApplication::UnicodeUTF8));

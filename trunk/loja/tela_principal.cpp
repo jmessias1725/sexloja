@@ -138,3 +138,9 @@ void tela_principal::on_calendario_mes_cor_currentPageChanged(int year, int mont
     aux_mes =QDate::longMonthName(ui->calendario_mes_pos->monthShown())+", "+QString::number((ui->calendario_mes_pos->yearShown()));
     ui->lb_mes_pos->setText(aux_mes);
 }
+
+void tela_principal::on_realizar_compra_triggered()
+{
+    tl_comprar.definir_icone_janela(logomarca);
+    tl_comprar.exec();
+}
