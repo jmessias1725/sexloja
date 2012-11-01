@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "tela_listar_fornecedores.h"
+#include "tela_listar_produtos.h"
 #include "fornecedor.h"
 
 namespace Ui {
@@ -21,9 +22,12 @@ public:
 private slots:
     void on_btn_buscar_fornecedor_clicked();
 
+    void on_btn_adicionar_produto_clicked();
+
 private:
     Ui::tela_comprar *ui;
     tela_listar_fornecedores tl_listar_fornecedores;
+    tela_listar_produtos tl_listar_produtos;
     fornecedor * fornecedor_atual;
     QPixmap logomarca;
 };

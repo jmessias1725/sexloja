@@ -47,7 +47,8 @@ SOURCES += main.cpp\
     his_entradas.cpp \
     his_saidas.cpp \
     tela_reajustar_estoque.cpp \
-    tela_comprar.cpp
+    tela_comprar.cpp \
+    tela_listar_produtos.cpp
 
 HEADERS  += \
     conexao_bd.h \
@@ -85,7 +86,8 @@ HEADERS  += \
     his_entradas.h \
     his_saidas.h \
     tela_reajustar_estoque.h \
-    tela_comprar.h
+    tela_comprar.h \
+    tela_listar_produtos.h
 
 FORMS    += \
     tela_login.ui \
@@ -109,7 +111,8 @@ FORMS    += \
     tela_editar_produto.ui \
     tela_restaurar_produto.ui \
     tela_reajustar_estoque.ui \
-    tela_comprar.ui
+    tela_comprar.ui \
+    tela_listar_produtos.ui
 
 RESOURCES += \
     imagens.qrc

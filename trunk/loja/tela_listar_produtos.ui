@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>tela_listar_produtos</class>
+ <widget class="QDialog" name="tela_listar_produtos">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>903</width>
+    <height>581</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Lista de Produtos</string>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>903</width>
+     <height>581</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <property name="margin">
+     <number>5</number>
+    </property>
+    <item>
+     <widget class="QGroupBox" name="gb_filtrar">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <horstretch>5</horstretch>
+        <verstretch>5</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>893</width>
+        <height>74</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>893</width>
+        <height>74</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Calibri</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <kerning>false</kerning>
+       </font>
+      </property>
+      <property name="title">
+       <string>Filtrar por:</string>
+      </property>
+      <widget class="QLabel" name="lb_tipo">
+       <property name="geometry">
+        <rect>
+         <x>5</x>
+         <y>17</y>
+         <width>28</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>28</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>28</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Calibri</family>
+         <weight>50</weight>
+         <bold>false</bold>
+         <kerning>false</kerning>
+        </font>
+       </property>
+       <property name="text">
+        <string>Tipo:</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="le_fabricante">
+       <property name="geometry">
+        <rect>
+         <x>68</x>
+         <y>47</y>
+         <width>523</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <weight>50</weight>
+         <bold>false</bold>
+         <kerning>false</kerning>
+        </font>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhNone</set>
+       </property>
+       <property name="inputMask">
+        <string/>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="maxLength">
+        <number>60</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lb_fabricante">
+       <property name="geometry">
+        <rect>
+         <x>5</x>
+         <y>47</y>
+         <width>63</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>63</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>63</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Calibri</family>
+         <weight>50</weight>
+         <bold>false</bold>
+         <kerning>false</kerning>
+        </font>
+       </property>
+       <property name="text">
+        <string>Fabricante:</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="le_nome">
+       <property name="geometry">
+        <rect>
+         <x>318</x>
+         <y>17</y>
+         <width>569</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>506</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <weight>50</weight>
+         <bold>false</bold>
+         <kerning>false</kerning>
+        </font>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhNone</set>
+       </property>
+       <property name="inputMask">
+        <string/>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="maxLength">
+        <number>60</number>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="le_codigo_barras">
+       <property name="geometry">
+        <rect>
+         <x>697</x>
+         <y>47</y>
+         <width>105</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>105</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>105</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <weight>50</weight>
+         <bold>false</bold>
+         <kerning>false</kerning>
+        </font>
+       </property>
+       <property name="inputMask">
+        <string>0 000000 000000; </string>
+       </property>
+       <property name="text">
+        <string>  </string>
+       </property>
+       <property name="maxLength">
+        <number>15</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lb_nome">
+       <property name="geometry">
+        <rect>
+         <x>284</x>
+         <y>17</y>
+         <width>35</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>35</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>35</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Calibri</family>
+         <weight>50</weight>
+         <bold>false</bold>
+         <kerning>false</kerning>
+        </font>
+       </property>
+       <property name="text">
+        <string>Nome:</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cb_tipo">
+       <property name="geometry">
+        <rect>
+         <x>33</x>
+         <y>17</y>
+         <width>95</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <weight>50</weight>
+         <bold>false</bold>
+         <kerning>false</kerning>
+        </font>
+       </property>
+       <item>
+        <property name="text">
+         <string>Todos</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Acessório</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Cosmético</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Decoração</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Estimulante</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Fetish</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Gel</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Higiene</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Jogo</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Kit</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Lubrificante</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Perfumaria</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Preservativo</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Prótese</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Vestuário</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Vibrador</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="lb_codigo_barras">
+       <property name="geometry">
+        <rect>
+         <x>598</x>
+         <y>47</y>
+         <width>99</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>99</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>99</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Calibri</family>
+         <weight>50</weight>
+         <bold>false</bold>
+         <kerning>false</kerning>
+        </font>
+       </property>
+       <property name="text">
+        <string>Código de Barras:</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btn_limpar">
+       <property name="geometry">
+        <rect>
+         <x>808</x>
+         <y>44</y>
+         <width>80</width>
+         <height>24</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Limpar</string>
+       </property>
+       <property name="icon">
+        <iconset resource="imagens.qrc">
+         <normaloff>:/img/img/limpar.png</normaloff>:/img/img/limpar.png</iconset>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lb_codigo">
+       <property name="geometry">
+        <rect>
+         <x>135</x>
+         <y>17</y>
+         <width>42</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Código:</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="le_codigo">
+       <property name="geometry">
+        <rect>
+         <x>177</x>
+         <y>17</y>
+         <width>100</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="inputMask">
+        <string>000000000; </string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="cursorPosition">
+        <number>0</number>
+       </property>
+       <property name="readOnly">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="gb_clientes">
+      <property name="minimumSize">
+       <size>
+        <width>889</width>
+        <height>251</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Calibri</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="title">
+       <string>Lista de produtos</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>5</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>5</number>
+       </property>
+       <property name="bottomMargin">
+        <number>5</number>
+       </property>
+       <item>
+        <widget class="QTableWidget" name="tw_produtos">
+         <property name="minimumSize">
+          <size>
+           <width>869</width>
+           <height>469</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Calibri</family>
+           <pointsize>10</pointsize>
+           <kerning>false</kerning>
+          </font>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::WinPanel</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAsNeeded</enum>
+         </property>
+         <property name="autoScroll">
+          <bool>true</bool>
+         </property>
+         <property name="alternatingRowColors">
+          <bool>false</bool>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <property name="showGrid">
+          <bool>true</bool>
+         </property>
+         <property name="gridStyle">
+          <enum>Qt::SolidLine</enum>
+         </property>
+         <property name="sortingEnabled">
+          <bool>false</bool>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+         <property name="cornerButtonEnabled">
+          <bool>true</bool>
+         </property>
+         <property name="rowCount">
+          <number>0</number>
+         </property>
+         <property name="columnCount">
+          <number>0</number>
+         </property>
+         <attribute name="horizontalHeaderVisible">
+          <bool>true</bool>
+         </attribute>
+         <attribute name="horizontalHeaderCascadingSectionResizes">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="horizontalHeaderDefaultSectionSize">
+          <number>450</number>
+         </attribute>
+         <attribute name="horizontalHeaderMinimumSectionSize">
+          <number>120</number>
+         </attribute>
+         <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="horizontalHeaderStretchLastSection">
+          <bool>true</bool>
+         </attribute>
+         <attribute name="verticalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="verticalHeaderCascadingSectionResizes">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="verticalHeaderDefaultSectionSize">
+          <number>20</number>
+         </attribute>
+         <attribute name="verticalHeaderMinimumSectionSize">
+          <number>20</number>
+         </attribute>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="imagens.qrc"/>
+ </resources>
+ <connections/>
+</ui>

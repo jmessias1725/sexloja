@@ -34,7 +34,6 @@ private:
 
 public:
     produto();
-
     produto(int id_pro, QString nome_produto, QString fabricante_produto, QString desc_utilizacao_produto,
             QString cod_barras_produto, QString tipo_produto, int id_imag, float valor_ven, float custo_med, int qt_disponivel);
 

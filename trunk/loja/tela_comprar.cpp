@@ -37,3 +37,10 @@ void tela_comprar::on_btn_buscar_fornecedor_clicked()
         ui->le_cnpj->setText(fornecedor_atual->retornar_cnpj());
     }
 }
+
+void tela_comprar::on_btn_adicionar_produto_clicked()
+{
+    tl_listar_produtos.definir_icone_janela(logomarca);
+    tl_listar_produtos.buscar_produtos();
+    tl_listar_produtos.exec();
+}

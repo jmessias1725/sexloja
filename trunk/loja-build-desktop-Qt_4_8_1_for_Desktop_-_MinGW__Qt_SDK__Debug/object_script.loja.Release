@@ -36,6 +36,7 @@ INPUT(
 ./release\his_saidas.o
 ./release\tela_reajustar_estoque.o
 ./release\tela_comprar.o
+./release\tela_listar_produtos.o
 ./release\moc_tela_login.o
 ./release\moc_tela_principal.o
 ./release\moc_tela_cadastro_cliente.o
@@ -57,5 +58,6 @@ INPUT(
 ./release\moc_tela_restaurar_produto.o
 ./release\moc_tela_reajustar_estoque.o
 ./release\moc_tela_comprar.o
+./release\moc_tela_listar_produtos.o
 ./release\qrc_imagens.o
 );
