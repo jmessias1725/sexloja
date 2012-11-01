@@ -33,7 +33,6 @@ private slots:
     void on_le_fabricante_textChanged(const QString &arg1);
     void on_tw_produtos_doubleClicked(const QModelIndex &index);
     void on_btn_limpar_clicked();
-    
     void on_le_codigo_textChanged(const QString &arg1);
 
 private:
