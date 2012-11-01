@@ -12,6 +12,7 @@
 #include "tela_cadastro_produto.h"
 #include "tela_loja.h"
 #include "tela_estoque.h"
+#include "tela_comprar.h"
 #include "loja.h"
 #include "usuario.h"
 
@@ -45,6 +46,7 @@ private slots:
     void on_btn_cal_avanc_clicked();
     void on_btn_cal_voltar_clicked();
     void on_calendario_mes_cor_currentPageChanged(int year, int month);
+    void on_realizar_compra_triggered();
 
 private:
     Ui::tela_principal *ui;
@@ -55,6 +57,7 @@ private:
     tela_cadastro_produto tl_cadastro_produto;
     tela_loja tl_loja;
     tela_estoque tl_estoque;
+    tela_comprar tl_comprar;
     loja *informacao_loja;
     usuario *informacao_usuario;
     QPixmap logomarca;

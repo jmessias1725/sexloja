@@ -8,6 +8,7 @@ tela_listar_fornecedores::tela_listar_fornecedores(QWidget *parent) :
     ui->setupUi(this);
     ui->le_codigo->setCursorPosition(0);
     modelo = new QStandardItemModel();
+    editar = true;
 }
 
 tela_listar_fornecedores::~tela_listar_fornecedores()
@@ -226,62 +227,68 @@ void tela_listar_fornecedores::on_tv_fornecedores_doubleClicked(const QModelInde
     int posicao_remover,i;
     posicao_remover = -1;
     i=0;
+    if(editar){
+        tl_fornecedor.definir_icone_janela(logomarca);
+        tl_fornecedor.definir_dados_fornecedor(lista_fornecedores[index.row()]);
+        lista_fornecedores[index.row()] = tl_fornecedor.retorna_novo_cadastro();
 
-    tl_fornecedor.definir_icone_janela(logomarca);
-    tl_fornecedor.definir_dados_fornecedor(lista_fornecedores[index.row()]);
-    lista_fornecedores[index.row()] = tl_fornecedor.retorna_novo_cadastro();
-
-    if(!tl_fornecedor.exec()){
-        //If que verifica se é para remover o fornecedor, para isso seu id será -1
-        if(lista_fornecedores[index.row()]->retornar_id()==-1){
-            while((lista_fornecedores[i]->retornar_id()!=-1)&&(i<=(int(lista_fornecedores.size())-1))){
-                i++;
-            }
-            for (int j = i; j<(int(lista_fornecedores.size())); j++){
-                //Remove o ultimo telefone
-                if ((j+1)>=(int(lista_fornecedores.size()))){
-                    lista_fornecedores.pop_back();
+        if(!tl_fornecedor.exec()){
+            //If que verifica se é para remover o fornecedor, para isso seu id será -1
+            if(lista_fornecedores[index.row()]->retornar_id()==-1){
+                while((lista_fornecedores[i]->retornar_id()!=-1)&&(i<=(int(lista_fornecedores.size())-1))){
+                    i++;
                 }
-                else{
-                    lista_fornecedores[j]=lista_fornecedores[j+1];
+                for (int j = i; j<(int(lista_fornecedores.size())); j++){
+                    //Remove o ultimo telefone
+                    if ((j+1)>=(int(lista_fornecedores.size()))){
+                        lista_fornecedores.pop_back();
+                    }
+                    else{
+                        lista_fornecedores[j]=lista_fornecedores[j+1];
+                    }
                 }
             }
         }
+
+        std::vector< std::string > aux_lista_email;
+        std::vector< std::string > aux_lista_telefone;
+        std::vector< std::string > aux_lista_operadora;
+
+        modelo = new QStandardItemModel(int(lista_fornecedores.size()),5,this);
+        modelo->clear();
+        modelo->setHorizontalHeaderItem(0, new QStandardItem(QString("Código:")));
+        modelo->setHorizontalHeaderItem(1, new QStandardItem(QString("Nome:")));
+        modelo->setHorizontalHeaderItem(2, new QStandardItem(QString("Razão Social:")));
+        modelo->setHorizontalHeaderItem(3, new QStandardItem(QString("CNPJ:")));
+        modelo->setHorizontalHeaderItem(4, new QStandardItem(QString("Telefone:")));
+        for (int i=0;i<int(lista_fornecedores.size());i++){
+            aux_lista_email=lista_fornecedores[i]->retorna_lista_email();
+            aux_lista_telefone=lista_fornecedores[i]->retorna_lista_telefone();
+            aux_lista_operadora=lista_fornecedores[i]->retorna_lista_operadora();
+
+            modelo->setItem(i,0,new QStandardItem(QString::number(lista_fornecedores[i]->retornar_id())));
+            modelo->setItem(i,1,new QStandardItem(lista_fornecedores[i]->retornar_nome()));
+            modelo->setItem(i,2,new QStandardItem(lista_fornecedores[i]->retornar_razao_social()));
+            modelo->setItem(i,3,new QStandardItem(lista_fornecedores[i]->retornar_cnpj()));
+            modelo->setItem(i,4,new QStandardItem(QString::fromStdString(aux_lista_telefone[aux_lista_telefone.size()-1]+" "+aux_lista_operadora[aux_lista_operadora.size()-1])));
+
+            aux_lista_telefone.clear();
+            aux_lista_operadora.clear();
+            aux_lista_email.clear();
+        }
+        ui->tv_fornecedores->setSelectionMode(QAbstractItemView::SingleSelection);
+        ui->tv_fornecedores->setSelectionBehavior(QAbstractItemView::SelectRows);
+        ui->tv_fornecedores->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        ui->tv_fornecedores->setModel(modelo);
+        ui->tv_fornecedores->resizeColumnToContents(0);
+        ui->tv_fornecedores->resizeColumnToContents(3);
+        ui->tv_fornecedores->resizeColumnToContents(4);
     }
-
-    std::vector< std::string > aux_lista_email;
-    std::vector< std::string > aux_lista_telefone;
-    std::vector< std::string > aux_lista_operadora;
-
-    modelo = new QStandardItemModel(int(lista_fornecedores.size()),5,this);
-    modelo->clear();
-    modelo->setHorizontalHeaderItem(0, new QStandardItem(QString("Código:")));
-    modelo->setHorizontalHeaderItem(1, new QStandardItem(QString("Nome:")));
-    modelo->setHorizontalHeaderItem(2, new QStandardItem(QString("Razão Social:")));
-    modelo->setHorizontalHeaderItem(3, new QStandardItem(QString("CNPJ:")));
-    modelo->setHorizontalHeaderItem(4, new QStandardItem(QString("Telefone:")));
-    for (int i=0;i<int(lista_fornecedores.size());i++){
-        aux_lista_email=lista_fornecedores[i]->retorna_lista_email();
-        aux_lista_telefone=lista_fornecedores[i]->retorna_lista_telefone();
-        aux_lista_operadora=lista_fornecedores[i]->retorna_lista_operadora();
-
-        modelo->setItem(i,0,new QStandardItem(QString::number(lista_fornecedores[i]->retornar_id())));
-        modelo->setItem(i,1,new QStandardItem(lista_fornecedores[i]->retornar_nome()));
-        modelo->setItem(i,2,new QStandardItem(lista_fornecedores[i]->retornar_razao_social()));
-        modelo->setItem(i,3,new QStandardItem(lista_fornecedores[i]->retornar_cnpj()));
-        modelo->setItem(i,4,new QStandardItem(QString::fromStdString(aux_lista_telefone[aux_lista_telefone.size()-1]+" "+aux_lista_operadora[aux_lista_operadora.size()-1])));
-
-        aux_lista_telefone.clear();
-        aux_lista_operadora.clear();
-        aux_lista_email.clear();
+    else{
+        fornecedor_atual = new fornecedor();
+        fornecedor_atual = lista_fornecedores[index.row()];
+        this->close();
     }
-    ui->tv_fornecedores->setSelectionMode(QAbstractItemView::SingleSelection);
-    ui->tv_fornecedores->setSelectionBehavior(QAbstractItemView::SelectRows);
-    ui->tv_fornecedores->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    ui->tv_fornecedores->setModel(modelo);
-    ui->tv_fornecedores->resizeColumnToContents(0);
-    ui->tv_fornecedores->resizeColumnToContents(3);
-    ui->tv_fornecedores->resizeColumnToContents(4);
 }
 
 void tela_listar_fornecedores::on_btn_limpar_clicked()
@@ -296,4 +303,12 @@ void tela_listar_fornecedores::closeEvent(QCloseEvent *event){
     ui->le_cnpj->clear();
     ui->le_razao_social->clear();
     ui->le_telefone->clear();
+}
+
+void tela_listar_fornecedores::alterar_editar(bool edit){
+    editar = edit;
+}
+
+fornecedor * tela_listar_fornecedores::retorna_fornecedor(void){
+    return fornecedor_atual;
 }

@@ -57,6 +57,7 @@
         <file>img/produto.png</file>
         <file>img/botao_avancar.png</file>
         <file>img/botao_voltar.png</file>
+        <file>img/compra.png</file>
     </qresource>
     <qresource prefix="/operadoras">
         <file>img/claro.png</file>
