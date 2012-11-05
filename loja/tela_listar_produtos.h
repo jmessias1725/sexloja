@@ -6,7 +6,7 @@
 #include "conexao_bd.h"
 #include "funcoes_extras.h"
 #include "produto.h"
-#include "legenda_estoque.h"
+#include "tela_definir_valor.h"
 
 namespace Ui {
 class tela_listar_produtos;
@@ -21,6 +21,7 @@ public:
     ~tela_listar_produtos();
     void definir_icone_janela(QPixmap logo);
     void buscar_produtos(void);
+    std::vector< produto* > retorna_lista_produtos_desejados(void);
 
 private slots:
     void mostrar_lista_produtos(void);
@@ -34,16 +35,16 @@ private slots:
     
 private:
     Ui::tela_listar_produtos *ui;
+    tela_definir_valor tl_definir_valor;
     QPixmap logomarca;
-    legenda_estoque *legenda;
     std::vector< produto* > lista_produtos;
+    std::vector< produto* > aux_lista_produtos;
+    std::vector< produto* > lista_produtos_desejados;
     QString aux_cons_id_produto;
     QString aux_cons_nome;
     QString aux_cons_fabricante;
     QString aux_cons_cod_barras;
     QString aux_cons_tipo;
-    std::vector< produto* > aux_lista_produtos;
-    float custo_total;
 };
 
 #endif // TELA_LISTAR_PRODUTOS_H

@@ -6,6 +6,20 @@ tela_estoque::tela_estoque(QWidget *parent) :
     ui(new Ui::tela_estoque)
 {
     ui->setupUi(this);
+}
+
+tela_estoque::~tela_estoque()
+{
+    delete ui;
+}
+
+void tela_estoque::definir_icone_janela(QPixmap logo){
+    logomarca = logo;
+    this->setWindowIcon(logomarca);
+}
+
+void tela_estoque::buscar_produtos(void){
+
     ui->tw_legenda->setEditTriggers(QAbstractItemView::NoEditTriggers);
     legenda = new legenda_estoque();
     aux_cons_id_produto = "";
@@ -32,19 +46,7 @@ tela_estoque::tela_estoque(QWidget *parent) :
     lb_renda_total->setFrameShadow(QFrame::Sunken);
     lb_saldo->setFrameShape(QFrame::Panel);
     lb_saldo->setFrameShadow(QFrame::Sunken);
-}
 
-tela_estoque::~tela_estoque()
-{
-    delete ui;
-}
-
-void tela_estoque::definir_icone_janela(QPixmap logo){
-    logomarca = logo;
-    this->setWindowIcon(logomarca);
-}
-
-void tela_estoque::buscar_produtos(void){
     conexao_bd conexao;
     QSqlDatabase bd;
 

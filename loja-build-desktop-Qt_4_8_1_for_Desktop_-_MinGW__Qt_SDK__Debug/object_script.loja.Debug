@@ -37,6 +37,7 @@ INPUT(
 ./debug\tela_reajustar_estoque.o
 ./debug\tela_comprar.o
 ./debug\tela_listar_produtos.o
+./debug\tela_definir_valor.o
 ./debug\moc_tela_login.o
 ./debug\moc_tela_principal.o
 ./debug\moc_tela_cadastro_cliente.o
@@ -59,5 +60,6 @@ INPUT(
 ./debug\moc_tela_reajustar_estoque.o
 ./debug\moc_tela_comprar.o
 ./debug\moc_tela_listar_produtos.o
+./debug\moc_tela_definir_valor.o
 ./debug\qrc_imagens.o
 );

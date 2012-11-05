@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_listar_produtos.ui'
 **
-** Created: Thu 1. Nov 11:08:18 2012
+** Created: Thu 1. Nov 19:34:43 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -52,6 +52,7 @@ public:
     {
         if (tela_listar_produtos->objectName().isEmpty())
             tela_listar_produtos->setObjectName(QString::fromUtf8("tela_listar_produtos"));
+        tela_listar_produtos->setWindowModality(Qt::ApplicationModal);
         tela_listar_produtos->resize(903, 581);
         layoutWidget = new QWidget(tela_listar_produtos);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
@@ -182,7 +183,7 @@ public:
         tw_produtos->setFrameShape(QFrame::WinPanel);
         tw_produtos->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
         tw_produtos->setAutoScroll(true);
-        tw_produtos->setAlternatingRowColors(false);
+        tw_produtos->setAlternatingRowColors(true);
         tw_produtos->setSelectionBehavior(QAbstractItemView::SelectRows);
         tw_produtos->setShowGrid(true);
         tw_produtos->setGridStyle(Qt::SolidLine);

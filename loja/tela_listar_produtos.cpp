@@ -6,14 +6,6 @@ tela_listar_produtos::tela_listar_produtos(QWidget *parent) :
     ui(new Ui::tela_listar_produtos)
 {
     ui->setupUi(this);
-    legenda = new legenda_estoque();
-    aux_cons_id_produto = "";
-    aux_cons_nome = "";
-    aux_cons_fabricante = "";
-    aux_cons_cod_barras = "";
-    aux_cons_tipo = "";
-    ui->le_codigo->setCursorPosition(0);
-    ui->le_codigo_barras->setCursorPosition(0);
 }
 
 tela_listar_produtos::~tela_listar_produtos()
@@ -27,23 +19,26 @@ void tela_listar_produtos::definir_icone_janela(QPixmap logo){
 }
 
 void tela_listar_produtos::buscar_produtos(void){
+
+    lista_produtos_desejados.clear();
+
+    aux_cons_id_produto = "";
+    aux_cons_nome = "";
+    aux_cons_fabricante = "";
+    aux_cons_cod_barras = "";
+    aux_cons_tipo = "";
+    ui->le_codigo->setCursorPosition(0);
+    ui->le_codigo_barras->setCursorPosition(0);
+
     conexao_bd conexao;
     QSqlDatabase bd;
-
-    custo_total = 0;
 
     int aux_id;
     QString aux_nome;
     QString aux_fabricante;
-    QString aux_desc_utilizacao;
     QString aux_cod_barras;
     QString aux_tipo;
-    int aux_id_imagem;
-    int aux_soma_total = 0;
     float aux_valor_venda;
-    float aux_valor_compra;
-    float aux_total_disponivel;
-    float custo_medio_cada_produto = 0;
 
     lista_produtos.clear();
 
@@ -55,34 +50,17 @@ void tela_listar_produtos::buscar_produtos(void){
 
         //Declara a variável que irá fazer a consulta
         QSqlQuery consultar(bd);
-        QSqlQuery consultar_his_balanco_estoque(bd);
 
         //realiza a consulta
-        consultar.exec("SELECT id_produto,nome,fabricante,desc_utilizacao,cod_barras,tipo,id_imagem,valor_venda FROM produto WHERE removido=0 ORDER BY nome;");
+        consultar.exec("SELECT id_produto,nome,fabricante,cod_barras,tipo,valor_venda FROM produto WHERE removido=0 ORDER BY nome;");
         while(consultar.next()){
             aux_id = consultar.value(0).toInt();
             aux_nome = consultar.value(1).toString();
             aux_fabricante = consultar.value(2).toString();
-            aux_desc_utilizacao = consultar.value(3).toString();
-            aux_cod_barras = consultar.value(4).toString();
-            aux_tipo = consultar.value(5).toString();
-            aux_id_imagem = consultar.value(6).toInt();
-            aux_valor_venda = consultar.value(7).toInt();
-
-            //realiza a consulta
-            consultar_his_balanco_estoque.exec("SELECT valor_compra,total_disponivel FROM his_balanco_estoque WHERE id_produto = "+QString::number(aux_id)+";");
-            while(consultar_his_balanco_estoque.next()){
-                aux_valor_compra = consultar_his_balanco_estoque.value(0).toFloat();
-                aux_total_disponivel = consultar_his_balanco_estoque.value(1).toString().toInt();
-                custo_medio_cada_produto = custo_medio_cada_produto+(aux_valor_compra*aux_total_disponivel);
-                aux_soma_total = aux_soma_total+aux_total_disponivel;
-            }
-
-            custo_total = custo_total+custo_medio_cada_produto;
-            custo_medio_cada_produto = custo_medio_cada_produto/aux_soma_total;
-            lista_produtos.push_back(new produto(aux_id,aux_nome,aux_fabricante,aux_desc_utilizacao,aux_cod_barras,aux_tipo,aux_id_imagem,aux_valor_venda,custo_medio_cada_produto,aux_soma_total));
-            aux_soma_total=0;
-            custo_medio_cada_produto = 0;
+            aux_cod_barras = consultar.value(3).toString();
+            aux_tipo = consultar.value(4).toString();
+            aux_valor_venda = consultar.value(5).toFloat();
+            lista_produtos.push_back(new produto(aux_id,aux_nome,aux_fabricante,aux_cod_barras,aux_tipo,aux_valor_venda,0,0));
         }
         consultar.clear();
         tela_listar_produtos::mostrar_lista_produtos();
@@ -183,24 +161,33 @@ void tela_listar_produtos::on_le_codigo_textChanged(const QString &arg1)
 
 void tela_listar_produtos::on_tw_produtos_doubleClicked(const QModelIndex &index)
 {
-    //Gera mensagem perguntando se é para restaurar produto.
+    //Gera mensagem perguntando se é adicionar a lista o produto produto.
     QPixmap icone_janela(":img/img/produto_pergunta_50.png");
     QMessageBox msg(0);
     msg.setIconPixmap(icone_janela);
     msg.setWindowIcon(logomarca);
-    msg.setWindowTitle("Cadastro");
+    msg.setWindowTitle("Lista de Produtos");
     msg.addButton("Sim", QMessageBox::AcceptRole);
     msg.addButton("Não", QMessageBox::RejectRole);
     msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
-    msg.setText("\nDeseja restaurar o cadastro do Produto?");
+    msg.setText("\nDeseja adicionar o produto a lista?");
     if(!msg.exec()){
-        lista_produtos[index.row()]->definir_icone_janela(logomarca);
-        lista_produtos[index.row()]->recuperar_cadastro_produto();
-        tela_listar_produtos::buscar_produtos();
+        tl_definir_valor.definir_icone_janela(logomarca);
+        tl_definir_valor.definir_dados(aux_lista_produtos[index.row()]->retorna_valor_venda());
+        if(tl_definir_valor.exec()>=0){
+            aux_lista_produtos[index.row()]->altera_valor_compra(tl_definir_valor.retorna_custo());
+            aux_lista_produtos[index.row()]->altera_valor_venda(tl_definir_valor.retorna_valor_venda());
+            aux_lista_produtos[index.row()]->altera_quantidade(tl_definir_valor.retorna_quantidade());
+        }
+        lista_produtos_desejados.push_back(aux_lista_produtos[index.row()]);
     }
 }
 
 void tela_listar_produtos::on_btn_limpar_clicked()
 {
     ui->cb_tipo->setCurrentIndex(0);
+}
+
+std::vector< produto* > tela_listar_produtos::retorna_lista_produtos_desejados(void){
+    return lista_produtos_desejados;
 }
