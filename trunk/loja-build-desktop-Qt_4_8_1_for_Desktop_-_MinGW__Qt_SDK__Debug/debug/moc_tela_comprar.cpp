@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_comprar.h'
 **
-** Created: Thu 1. Nov 11:11:16 2012
+** Created: Fri 2. Nov 01:05:08 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_tela_comprar[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -31,15 +31,24 @@ static const uint qt_meta_data_tela_comprar[] = {
        0,       // signalCount
 
  // slots: signature, parameters, type, tag, flags
-      14,   13,   13,   13, 0x08,
-      49,   13,   13,   13, 0x08,
+      20,   14,   13,   13, 0x08,
+      45,   13,   13,   13, 0x08,
+      60,   13,   13,   13, 0x08,
+      95,   13,   13,   13, 0x08,
+     130,   13,   13,   13, 0x08,
+     161,  155,   13,   13, 0x08,
+     209,   13,   13,   13, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_tela_comprar[] = {
-    "tela_comprar\0\0on_btn_buscar_fornecedor_clicked()\0"
+    "tela_comprar\0\0event\0closeEvent(QCloseEvent*)\0"
+    "limpar_dados()\0on_btn_buscar_fornecedor_clicked()\0"
     "on_btn_adicionar_produto_clicked()\0"
+    "mostrar_lista_produtos()\0index\0"
+    "on_tw_lista_produtos_doubleClicked(QModelIndex)\0"
+    "on_tw_lista_produtos_itemSelectionChanged()\0"
 };
 
 void tela_comprar::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -48,12 +57,16 @@ void tela_comprar::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         Q_ASSERT(staticMetaObject.cast(_o));
         tela_comprar *_t = static_cast<tela_comprar *>(_o);
         switch (_id) {
-        case 0: _t->on_btn_buscar_fornecedor_clicked(); break;
-        case 1: _t->on_btn_adicionar_produto_clicked(); break;
+        case 0: _t->closeEvent((*reinterpret_cast< QCloseEvent*(*)>(_a[1]))); break;
+        case 1: _t->limpar_dados(); break;
+        case 2: _t->on_btn_buscar_fornecedor_clicked(); break;
+        case 3: _t->on_btn_adicionar_produto_clicked(); break;
+        case 4: _t->mostrar_lista_produtos(); break;
+        case 5: _t->on_tw_lista_produtos_doubleClicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
+        case 6: _t->on_tw_lista_produtos_itemSelectionChanged(); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObjectExtraData tela_comprar::staticMetaObjectExtraData = {
@@ -88,9 +101,9 @@ int tela_comprar::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 7;
     }
     return _id;
 }

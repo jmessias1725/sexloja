@@ -6,11 +6,8 @@ tela_comprar::tela_comprar(QWidget *parent) :
     ui(new Ui::tela_comprar)
 {
     ui->setupUi(this);
-    ui->tw_lista_produtos->resizeColumnToContents(0);
-    ui->tw_lista_produtos->resizeColumnToContents(2);
-    ui->tw_lista_produtos->resizeColumnToContents(3);
-    ui->tw_lista_produtos->resizeColumnToContents(4);
     ui->data->setDate(QDate::currentDate());
+    tela_comprar::mostrar_lista_produtos();
 }
 
 tela_comprar::~tela_comprar()
@@ -42,5 +39,71 @@ void tela_comprar::on_btn_adicionar_produto_clicked()
 {
     tl_listar_produtos.definir_icone_janela(logomarca);
     tl_listar_produtos.buscar_produtos();
-    tl_listar_produtos.exec();
+    if(!tl_listar_produtos.exec()){
+        aux_lista_produtos = tl_listar_produtos.retorna_lista_produtos_desejados();
+        for(int i=0;i<int(aux_lista_produtos.size());i++){
+            lista_produtos.push_back(new produto());
+            lista_produtos[(lista_produtos.size()-1)] = aux_lista_produtos[i];
+        }
+        tela_comprar::mostrar_lista_produtos();
+        aux_lista_produtos.clear();
+    }
 }
+
+void tela_comprar::mostrar_lista_produtos(void){
+    float aux_valor_total_por_produto = 0;
+    float valor_total = 0;
+    funcoes_extras funcao;
+
+    ui->tw_lista_produtos->setRowCount(int(lista_produtos.size()));
+    ui->tw_lista_produtos->setColumnCount(5);
+    ui->tw_lista_produtos->horizontalHeader()->setResizeMode(QHeaderView::Fixed);
+    ui->tw_lista_produtos->clear();
+    ui->tw_lista_produtos->setHorizontalHeaderLabels(QString("Código;Nome;Quantidade;Valor unitário;Total por produto").split(";"));
+
+    for (int i=0;i<int(lista_produtos.size());i++){
+        aux_valor_total_por_produto = (lista_produtos[i]->retorna_quantidade_disponivel())*(lista_produtos[i]->retorna_custo_medio());
+        ui->tw_lista_produtos->setItem(i,0,new QTableWidgetItem(QString::number(lista_produtos[i]->retorna_id())));
+        ui->tw_lista_produtos->setItem(i,1,new QTableWidgetItem(lista_produtos[i]->retorna_nome()));
+        ui->tw_lista_produtos->setItem(i,2,new QTableWidgetItem(QString::number(lista_produtos[i]->retorna_quantidade_disponivel())));
+        ui->tw_lista_produtos->setItem(i,3,new QTableWidgetItem(funcao.retorna_valor_dinheiro(QString::number(lista_produtos[i]->retorna_custo_medio()))));
+        ui->tw_lista_produtos->setItem(i,4,new QTableWidgetItem(funcao.retorna_valor_dinheiro(QString::number(aux_valor_total_por_produto))));
+        ui->tw_lista_produtos->item(i,0)->setTextAlignment(Qt::AlignHCenter);
+        ui->tw_lista_produtos->item(i,0)->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+
+        ui->tw_lista_produtos->item(i,1)->setTextAlignment(Qt::AlignHCenter);
+        ui->tw_lista_produtos->item(i,1)->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+
+        ui->tw_lista_produtos->item(i,2)->setTextAlignment(Qt::AlignHCenter);
+        ui->tw_lista_produtos->item(i,3)->setTextAlignment(Qt::AlignHCenter);
+
+        ui->tw_lista_produtos->item(i,4)->setTextAlignment(Qt::AlignHCenter);
+        ui->tw_lista_produtos->item(i,4)->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+
+        valor_total = valor_total + aux_valor_total_por_produto;
+    }
+    ui->tw_lista_produtos->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->tw_lista_produtos->resizeColumnToContents(0);
+    ui->tw_lista_produtos->resizeColumnToContents(2);
+    ui->tw_lista_produtos->resizeColumnToContents(3);
+    ui->tw_lista_produtos->resizeColumnToContents(4);
+    ui->le_total->setText(funcao.retorna_valor_dinheiro(QString::number(valor_total)));
+}
+
+void tela_comprar::closeEvent(QCloseEvent *event){
+    tela_comprar::limpar_dados();
+}
+
+void tela_comprar::limpar_dados(void){
+    ui->le_codigo->clear();
+    ui->le_cnpj->clear();
+    ui->le_nome->clear();
+    ui->le_numero_cupom_nota->clear();
+    ui->le_razao_social->clear();
+    ui->le_total->clear();
+    ui->tw_lista_produtos->repaint();
+    ui->data->setDate(QDate::currentDate());
+    lista_produtos.clear();
+    tela_comprar::mostrar_lista_produtos();
+}
+

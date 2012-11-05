@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_editar_loja.h'
 **
-** Created: Thu 1. Nov 11:10:43 2012
+** Created: Thu 1. Nov 15:06:08 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!

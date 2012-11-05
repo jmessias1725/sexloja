@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_principal.h'
 **
-** Created: Thu 1. Nov 11:32:38 2012
+** Created: Fri 2. Nov 01:05:05 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!

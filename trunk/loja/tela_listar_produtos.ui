@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>tela_listar_produtos</class>
  <widget class="QDialog" name="tela_listar_produtos">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -530,7 +533,7 @@
           <bool>true</bool>
          </property>
          <property name="alternatingRowColors">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="selectionBehavior">
           <enum>QAbstractItemView::SelectRows</enum>

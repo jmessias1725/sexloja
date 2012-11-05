@@ -4,6 +4,18 @@ produto::produto()
 {
 }
 
+produto::produto(int id_pro, QString nome_produto, QString fabricante_produto,QString cod_barras_produto, QString tipo_produto,
+        float valor_ven, float custo_med, int qt_disponivel){
+    id_produto = id_pro;
+    nome = nome_produto;
+    fabricante = fabricante_produto;
+    cod_barras = cod_barras_produto;
+    tipo = tipo_produto;
+    valor_venda  = valor_ven;
+    custo_medio = custo_med;
+    quantidade_disponivel = qt_disponivel;
+}
+
 produto::produto(int id_pro, QString nome_produto, QString fabricante_produto, QString desc_utilizacao_produto,
                  QString cod_barras_produto, QString tipo_produto, int id_imag, float valor_ven, float custo_med, int qt_disponivel){
     id_produto = id_pro;
@@ -61,6 +73,18 @@ float produto::retorna_custo_medio(void){
 
 int produto::retorna_quantidade_disponivel(void){
     return quantidade_disponivel;
+}
+
+void produto::altera_quantidade(int quant){
+    quantidade_disponivel = quant;
+}
+
+void produto::altera_valor_venda(float valor_ven){
+    valor_venda = valor_ven;
+}
+
+void produto::altera_valor_compra(float valor_com){
+    custo_medio = valor_com;
 }
 
 bool produto::salvar_dados_produto(QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
