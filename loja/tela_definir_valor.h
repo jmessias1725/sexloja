@@ -15,7 +15,7 @@ class tela_definir_valor : public QDialog
 public:
     explicit tela_definir_valor(QWidget *parent = 0);
     ~tela_definir_valor();
-    void definir_dados(float valor_ven);
+    void definir_dados(float valor_ven, float cus, int quan);
     void definir_icone_janela(QPixmap logo);
     int retorna_quantidade(void);
     float retorna_valor_venda(void);

@@ -6,9 +6,6 @@ tela_definir_valor::tela_definir_valor(QWidget *parent) :
     ui(new Ui::tela_definir_valor)
 {
     ui->setupUi(this);
-    ui->le_valor_venda->setCursorPosition(0);
-    ui->le_quantidade->setCursorPosition(0);
-    ui->le_custo_medio->setCursorPosition(0);
 }
 
 tela_definir_valor::~tela_definir_valor()
@@ -16,14 +13,20 @@ tela_definir_valor::~tela_definir_valor()
     delete ui;
 }
 
-void tela_definir_valor::definir_dados(float valor_ven){
+void tela_definir_valor::definir_dados(float valor_ven, float cus, int quan){
     funcoes_extras funcao;
 
     valor_venda = valor_ven;
-    custo = 0;
-    quantidade = 0;
+    custo = cus;
+    quantidade = quan;
 
     ui->le_valor_venda->setText(funcao.retorna_valor_dinheiro(QString::number(valor_venda)));
+    ui->le_quantidade->setText(QString::number(quantidade));
+    ui->le_custo_medio->setText(funcao.retorna_valor_dinheiro(QString::number(custo)));
+
+    ui->le_valor_venda->setCursorPosition(0);
+    ui->le_quantidade->setCursorPosition(0);
+    ui->le_custo_medio->setCursorPosition(0);
 }
 
 void tela_definir_valor::definir_icone_janela(QPixmap logo){
@@ -45,6 +48,7 @@ float tela_definir_valor::retorna_custo(void){
 
 void tela_definir_valor::on_btn_cancelar_clicked()
 {
+    this->reject();
     this->close();
 }
 
@@ -66,6 +70,7 @@ void tela_definir_valor::on_btn_confirmar_clicked()
     valor_venda = funcao.converter_para_float(ui->le_valor_venda->text());
     custo = funcao.converter_para_float(ui->le_custo_medio->text());
     quantidade = ui->le_quantidade->text().toInt();
+    this->accept();
     this->close();
 }
 

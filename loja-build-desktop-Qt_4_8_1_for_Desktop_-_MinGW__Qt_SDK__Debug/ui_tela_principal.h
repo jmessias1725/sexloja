@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_principal.ui'
 **
-** Created: Thu 1. Nov 15:04:21 2012
+** Created: Tue 6. Nov 15:54:26 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -183,7 +183,7 @@ public:
         fr_lateral->setFrameShadow(QFrame::Raised);
         lb_data = new QLabel(fr_lateral);
         lb_data->setObjectName(QString::fromUtf8("lb_data"));
-        lb_data->setGeometry(QRect(15, 5, 101, 40));
+        lb_data->setGeometry(QRect(15, 0, 101, 30));
         QFont font2;
         font2.setFamily(QString::fromUtf8("Arial"));
         font2.setPointSize(9);
@@ -195,7 +195,7 @@ public:
         lb_data->setAlignment(Qt::AlignCenter);
         calendario_mes_cor = new QCalendarWidget(fr_lateral);
         calendario_mes_cor->setObjectName(QString::fromUtf8("calendario_mes_cor"));
-        calendario_mes_cor->setGeometry(QRect(5, 70, 220, 135));
+        calendario_mes_cor->setGeometry(QRect(5, 57, 220, 135));
         QFont font3;
         font3.setFamily(QString::fromUtf8("Arial"));
         font3.setPointSize(8);
@@ -219,7 +219,7 @@ public:
         calendario_mes_cor->setNavigationBarVisible(false);
         calendario_mes_pos = new QCalendarWidget(fr_lateral);
         calendario_mes_pos->setObjectName(QString::fromUtf8("calendario_mes_pos"));
-        calendario_mes_pos->setGeometry(QRect(5, 235, 220, 135));
+        calendario_mes_pos->setGeometry(QRect(5, 222, 220, 135));
         calendario_mes_pos->setFont(font3);
         calendario_mes_pos->setStyleSheet(QString::fromUtf8(" QWidget\n"
 "{ \n"
@@ -241,7 +241,7 @@ public:
         calendario_mes_pos->setDateEditEnabled(false);
         lb_mes_pos = new QLabel(fr_lateral);
         lb_mes_pos->setObjectName(QString::fromUtf8("lb_mes_pos"));
-        lb_mes_pos->setGeometry(QRect(5, 210, 220, 25));
+        lb_mes_pos->setGeometry(QRect(5, 197, 220, 25));
         QFont font4;
         font4.setFamily(QString::fromUtf8("Arial"));
         font4.setPointSize(10);
@@ -260,7 +260,7 @@ public:
         lb_mes_pos->setAlignment(Qt::AlignCenter);
         lcd_hora = new QLCDNumber(fr_lateral);
         lcd_hora->setObjectName(QString::fromUtf8("lcd_hora"));
-        lcd_hora->setGeometry(QRect(115, 5, 101, 40));
+        lcd_hora->setGeometry(QRect(115, 0, 101, 30));
         lcd_hora->setStyleSheet(QString::fromUtf8("background-color: none;\n"
 "color: rgb(211, 211, 211);"));
         lcd_hora->setFrameShape(QFrame::NoFrame);
@@ -273,7 +273,7 @@ public:
         lcd_hora->setProperty("value", QVariant(1e+08));
         lb_mes_cor = new QLabel(fr_lateral);
         lb_mes_cor->setObjectName(QString::fromUtf8("lb_mes_cor"));
-        lb_mes_cor->setGeometry(QRect(5, 45, 220, 25));
+        lb_mes_cor->setGeometry(QRect(5, 32, 220, 25));
         lb_mes_cor->setFont(font4);
         lb_mes_cor->setStyleSheet(QString::fromUtf8(" QWidget\n"
 "{ \n"
@@ -287,7 +287,7 @@ public:
         lb_mes_cor->setAlignment(Qt::AlignCenter);
         btn_cal_avanc = new QToolButton(fr_lateral);
         btn_cal_avanc->setObjectName(QString::fromUtf8("btn_cal_avanc"));
-        btn_cal_avanc->setGeometry(QRect(195, 45, 25, 25));
+        btn_cal_avanc->setGeometry(QRect(195, 32, 25, 25));
         btn_cal_avanc->setStyleSheet(QString::fromUtf8("background-color: none;"));
         QIcon icon13;
         icon13.addFile(QString::fromUtf8(":/img/img/botao_avancar.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -297,7 +297,7 @@ public:
         btn_cal_avanc->setArrowType(Qt::NoArrow);
         btn_cal_voltar = new QToolButton(fr_lateral);
         btn_cal_voltar->setObjectName(QString::fromUtf8("btn_cal_voltar"));
-        btn_cal_voltar->setGeometry(QRect(10, 45, 25, 25));
+        btn_cal_voltar->setGeometry(QRect(10, 32, 25, 25));
         btn_cal_voltar->setStyleSheet(QString::fromUtf8("background-color: none;"));
         QIcon icon14;
         icon14.addFile(QString::fromUtf8(":/img/img/botao_voltar.png"), QSize(), QIcon::Normal, QIcon::Off);

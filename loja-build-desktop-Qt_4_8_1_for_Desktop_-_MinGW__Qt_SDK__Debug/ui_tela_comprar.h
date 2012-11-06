@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_comprar.ui'
 **
-** Created: Fri 2. Nov 00:16:43 2012
+** Created: Tue 6. Nov 15:49:37 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -63,6 +63,8 @@ public:
             tela_comprar->setObjectName(QString::fromUtf8("tela_comprar"));
         tela_comprar->setWindowModality(Qt::ApplicationModal);
         tela_comprar->resize(800, 615);
+        tela_comprar->setMinimumSize(QSize(800, 615));
+        tela_comprar->setMaximumSize(QSize(800, 615));
         tela_comprar->setModal(true);
         gb_dados_compra = new QGroupBox(tela_comprar);
         gb_dados_compra->setObjectName(QString::fromUtf8("gb_dados_compra"));
@@ -208,9 +210,8 @@ public:
         font5.setBold(true);
         font5.setWeight(75);
         lb_lista_de_produtos->setFont(font5);
-        lb_lista_de_produtos->setStyleSheet(QString::fromUtf8("QFrame{\n"
-"	\n"
-"	background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.147727 rgba(255, 255, 255, 0));\n"
+        lb_lista_de_produtos->setStyleSheet(QString::fromUtf8("QFrame{	\n"
+"	background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.3 rgba(255, 255, 255, 0));\n"
 "	border: none;\n"
 "	color:#000000\n"
 "}\n"
@@ -257,6 +258,7 @@ public:
         font7.setBold(false);
         font7.setWeight(50);
         le_total->setFont(font7);
+        le_total->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
         le_total->setReadOnly(true);
         lb_total = new QLabel(frame);
         lb_total->setObjectName(QString::fromUtf8("lb_total"));

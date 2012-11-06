@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_definir_valor.ui'
 **
-** Created: Thu 1. Nov 18:54:15 2012
+** Created: Tue 6. Nov 15:45:05 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -135,7 +135,7 @@ public:
 
     void retranslateUi(QDialog *tela_definir_valor)
     {
-        tela_definir_valor->setWindowTitle(QApplication::translate("tela_definir_valor", "Dialog", 0, QApplication::UnicodeUTF8));
+        tela_definir_valor->setWindowTitle(QApplication::translate("tela_definir_valor", "Valores", 0, QApplication::UnicodeUTF8));
         groupBox->setTitle(QApplication::translate("tela_definir_valor", "Produto", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("tela_definir_valor", "Defina o valor de venda, o custo\n"
 "e quantidade comprada. ", 0, QApplication::UnicodeUTF8));
