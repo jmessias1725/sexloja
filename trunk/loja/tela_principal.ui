@@ -94,9 +94,9 @@
        <property name="geometry">
         <rect>
          <x>15</x>
-         <y>5</y>
+         <y>0</y>
          <width>101</width>
-         <height>40</height>
+         <height>30</height>
         </rect>
        </property>
        <property name="font">
@@ -123,7 +123,7 @@ color: rgb(211, 211, 211);</string>
        <property name="geometry">
         <rect>
          <x>5</x>
-         <y>70</y>
+         <y>57</y>
          <width>220</width>
          <height>135</height>
         </rect>
@@ -160,7 +160,7 @@ QAbstractItemView {
        <property name="geometry">
         <rect>
          <x>5</x>
-         <y>235</y>
+         <y>222</y>
          <width>220</width>
          <height>135</height>
         </rect>
@@ -202,7 +202,7 @@ QAbstractItemView {
        <property name="geometry">
         <rect>
          <x>5</x>
-         <y>210</y>
+         <y>197</y>
          <width>220</width>
          <height>25</height>
         </rect>
@@ -241,9 +241,9 @@ QAbstractItemView {
        <property name="geometry">
         <rect>
          <x>115</x>
-         <y>5</y>
+         <y>0</y>
          <width>101</width>
-         <height>40</height>
+         <height>30</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -279,7 +279,7 @@ color: rgb(211, 211, 211);</string>
        <property name="geometry">
         <rect>
          <x>5</x>
-         <y>45</y>
+         <y>32</y>
          <width>220</width>
          <height>25</height>
         </rect>
@@ -318,7 +318,7 @@ color: rgb(211, 211, 211);</string>
        <property name="geometry">
         <rect>
          <x>195</x>
-         <y>45</y>
+         <y>32</y>
          <width>25</width>
          <height>25</height>
         </rect>
@@ -350,7 +350,7 @@ color: rgb(211, 211, 211);</string>
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>45</y>
+         <y>32</y>
          <width>25</width>
          <height>25</height>
         </rect>

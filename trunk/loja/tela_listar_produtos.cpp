@@ -173,13 +173,13 @@ void tela_listar_produtos::on_tw_produtos_doubleClicked(const QModelIndex &index
     msg.setText("\nDeseja adicionar o produto a lista?");
     if(!msg.exec()){
         tl_definir_valor.definir_icone_janela(logomarca);
-        tl_definir_valor.definir_dados(aux_lista_produtos[index.row()]->retorna_valor_venda());
-        if(tl_definir_valor.exec()>=0){
+        tl_definir_valor.definir_dados(aux_lista_produtos[index.row()]->retorna_valor_venda(),0,0);
+        if(tl_definir_valor.exec()){
             aux_lista_produtos[index.row()]->altera_valor_compra(tl_definir_valor.retorna_custo());
             aux_lista_produtos[index.row()]->altera_valor_venda(tl_definir_valor.retorna_valor_venda());
             aux_lista_produtos[index.row()]->altera_quantidade(tl_definir_valor.retorna_quantidade());
+            lista_produtos_desejados.push_back(aux_lista_produtos[index.row()]);
         }
-        lista_produtos_desejados.push_back(aux_lista_produtos[index.row()]);
     }
 }
 

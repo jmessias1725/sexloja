@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_comprar.h'
 **
-** Created: Fri 2. Nov 01:05:08 2012
+** Created: Tue 6. Nov 15:43:06 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -48,7 +48,7 @@ static const char qt_meta_stringdata_tela_comprar[] = {
     "on_btn_adicionar_produto_clicked()\0"
     "mostrar_lista_produtos()\0index\0"
     "on_tw_lista_produtos_doubleClicked(QModelIndex)\0"
-    "on_tw_lista_produtos_itemSelectionChanged()\0"
+    "on_btn_remover_produto_clicked()\0"
 };
 
 void tela_comprar::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -63,7 +63,7 @@ void tela_comprar::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 3: _t->on_btn_adicionar_produto_clicked(); break;
         case 4: _t->mostrar_lista_produtos(); break;
         case 5: _t->on_tw_lista_produtos_doubleClicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
-        case 6: _t->on_tw_lista_produtos_itemSelectionChanged(); break;
+        case 6: _t->on_btn_remover_produto_clicked(); break;
         default: ;
         }
     }
