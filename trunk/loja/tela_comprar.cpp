@@ -88,6 +88,7 @@ void tela_comprar::mostrar_lista_produtos(void){
     ui->tw_lista_produtos->resizeColumnToContents(2);
     ui->tw_lista_produtos->resizeColumnToContents(3);
     ui->tw_lista_produtos->resizeColumnToContents(4);
+
     ui->le_total->setText(funcao.retorna_valor_dinheiro(QString::number(valor_total)));
 }
 
@@ -138,4 +139,11 @@ void tela_comprar::on_btn_remover_produto_clicked()
         }
     }
     mostrar_lista_produtos();
+}
+
+void tela_comprar::on_btn_confirmar_clicked()
+{
+    tl_pagamento.definir_icone_janela(logomarca);
+    tl_pagamento.definir_dados(ui->le_total->text());
+    tl_pagamento.exec();
 }

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_estoque.ui'
 **
-** Created: Tue 6. Nov 20:28:51 2012
+** Created: Wed 7. Nov 08:21:32 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -440,7 +440,9 @@ public:
 "QStatusBar{\n"
 "	 background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
 "                                       stop:0.3 #777777, stop:0.6 #525252); \n"
-"}"));
+"	border: none;\n"
+"}\n"
+""));
         tela_estoque->setStatusBar(barra_de_status);
         QWidget::setTabOrder(le_codigo, le_nome);
         QWidget::setTabOrder(le_nome, le_fabricante);

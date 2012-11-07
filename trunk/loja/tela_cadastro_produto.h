@@ -29,7 +29,6 @@ private slots:
     void closeEvent( QCloseEvent * event );
     void on_le_nome_textChanged(const QString &arg1);
     void on_le_fabricante_textChanged(const QString &arg1);
-    void on_le_valor_compra_editingFinished();
     void on_le_valor_venda_editingFinished();
     void limpar_tela(void);
 

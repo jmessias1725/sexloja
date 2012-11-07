@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_cadastro_produto.ui'
 **
-** Created: Tue 6. Nov 20:28:51 2012
+** Created: Wed 7. Nov 08:37:56 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -36,8 +36,6 @@ public:
     QLabel *lb_fabricante;
     QLabel *lb_codigo_barras;
     QLineEdit *le_codigo_barras;
-    QLineEdit *le_quantidade;
-    QLabel *lb_quantidade;
     QTextEdit *te_des_utilizacao;
     QLabel *lb_comentario;
     QGraphicsView *gv_imagem_produto;
@@ -47,9 +45,7 @@ public:
     QComboBox *cb_tipo;
     QPushButton *btn_adicionar_imagem;
     QLabel *lb_valorvenda;
-    QLabel *lb_valor_compra;
     QLineEdit *le_valor_venda;
-    QLineEdit *le_valor_compra;
 
     void setupUi(QDialog *tela_cadastro_produto)
     {
@@ -104,15 +100,6 @@ public:
         le_codigo_barras->setGeometry(QRect(521, 50, 105, 20));
         le_codigo_barras->setFont(font1);
         le_codigo_barras->setMaxLength(15);
-        le_quantidade = new QLineEdit(gb_dados_produto);
-        le_quantidade->setObjectName(QString::fromUtf8("le_quantidade"));
-        le_quantidade->setGeometry(QRect(72, 80, 80, 20));
-        le_quantidade->setFont(font1);
-        le_quantidade->setMaxLength(10);
-        lb_quantidade = new QLabel(gb_dados_produto);
-        lb_quantidade->setObjectName(QString::fromUtf8("lb_quantidade"));
-        lb_quantidade->setGeometry(QRect(5, 80, 67, 20));
-        lb_quantidade->setFont(font1);
         te_des_utilizacao = new QTextEdit(gb_dados_produto);
         te_des_utilizacao->setObjectName(QString::fromUtf8("te_des_utilizacao"));
         te_des_utilizacao->setGeometry(QRect(5, 129, 621, 98));
@@ -170,30 +157,18 @@ public:
         btn_adicionar_imagem->setFont(font2);
         lb_valorvenda = new QLabel(gb_dados_produto);
         lb_valorvenda->setObjectName(QString::fromUtf8("lb_valorvenda"));
-        lb_valorvenda->setGeometry(QRect(352, 80, 88, 20));
+        lb_valorvenda->setGeometry(QRect(5, 80, 88, 20));
         lb_valorvenda->setFont(font1);
-        lb_valor_compra = new QLabel(gb_dados_produto);
-        lb_valor_compra->setObjectName(QString::fromUtf8("lb_valor_compra"));
-        lb_valor_compra->setGeometry(QRect(159, 80, 95, 20));
-        lb_valor_compra->setFont(font1);
         le_valor_venda = new QLineEdit(gb_dados_produto);
         le_valor_venda->setObjectName(QString::fromUtf8("le_valor_venda"));
-        le_valor_venda->setGeometry(QRect(440, 80, 85, 20));
+        le_valor_venda->setGeometry(QRect(93, 80, 85, 20));
         le_valor_venda->setFont(font1);
         le_valor_venda->setInputMethodHints(Qt::ImhNone);
         le_valor_venda->setMaxLength(12);
-        le_valor_compra = new QLineEdit(gb_dados_produto);
-        le_valor_compra->setObjectName(QString::fromUtf8("le_valor_compra"));
-        le_valor_compra->setGeometry(QRect(254, 80, 85, 20));
-        le_valor_compra->setFont(font1);
-        le_valor_compra->setInputMethodHints(Qt::ImhNone);
-        le_valor_compra->setMaxLength(12);
         QWidget::setTabOrder(cb_tipo, le_nome);
         QWidget::setTabOrder(le_nome, le_fabricante);
         QWidget::setTabOrder(le_fabricante, le_codigo_barras);
-        QWidget::setTabOrder(le_codigo_barras, le_quantidade);
-        QWidget::setTabOrder(le_quantidade, le_valor_compra);
-        QWidget::setTabOrder(le_valor_compra, le_valor_venda);
+        QWidget::setTabOrder(le_codigo_barras, le_valor_venda);
         QWidget::setTabOrder(le_valor_venda, btn_adicionar_imagem);
         QWidget::setTabOrder(btn_adicionar_imagem, te_des_utilizacao);
         QWidget::setTabOrder(te_des_utilizacao, btn_confirmar);
@@ -204,7 +179,6 @@ public:
         QObject::connect(btn_cancelar, SIGNAL(clicked()), le_nome, SLOT(clear()));
         QObject::connect(btn_cancelar, SIGNAL(clicked()), le_fabricante, SLOT(clear()));
         QObject::connect(btn_cancelar, SIGNAL(clicked()), le_codigo_barras, SLOT(clear()));
-        QObject::connect(btn_cancelar, SIGNAL(clicked()), le_quantidade, SLOT(clear()));
         QObject::connect(btn_cancelar, SIGNAL(clicked()), te_des_utilizacao, SLOT(clear()));
 
         QMetaObject::connectSlotsByName(tela_cadastro_produto);
@@ -223,9 +197,6 @@ public:
         lb_codigo_barras->setText(QApplication::translate("tela_cadastro_produto", "C\303\263digo de Barras:", 0, QApplication::UnicodeUTF8));
         le_codigo_barras->setInputMask(QApplication::translate("tela_cadastro_produto", "0 000000 000000; ", 0, QApplication::UnicodeUTF8));
         le_codigo_barras->setText(QString());
-        le_quantidade->setInputMask(QApplication::translate("tela_cadastro_produto", "0000000000; ", 0, QApplication::UnicodeUTF8));
-        le_quantidade->setText(QString());
-        lb_quantidade->setText(QApplication::translate("tela_cadastro_produto", "Quantidade:", 0, QApplication::UnicodeUTF8));
         te_des_utilizacao->setHtml(QApplication::translate("tela_cadastro_produto", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -255,11 +226,8 @@ public:
         );
         btn_adicionar_imagem->setText(QApplication::translate("tela_cadastro_produto", "Adicionar imagem", 0, QApplication::UnicodeUTF8));
         lb_valorvenda->setText(QApplication::translate("tela_cadastro_produto", "Valor de Venda:", 0, QApplication::UnicodeUTF8));
-        lb_valor_compra->setText(QApplication::translate("tela_cadastro_produto", "Valor de compra:", 0, QApplication::UnicodeUTF8));
         le_valor_venda->setInputMask(QApplication::translate("tela_cadastro_produto", "R$ xxxxxxxxx; ", 0, QApplication::UnicodeUTF8));
         le_valor_venda->setText(QApplication::translate("tela_cadastro_produto", "R$ ", 0, QApplication::UnicodeUTF8));
-        le_valor_compra->setInputMask(QApplication::translate("tela_cadastro_produto", "R$ xxxxxxxxx; ", 0, QApplication::UnicodeUTF8));
-        le_valor_compra->setText(QApplication::translate("tela_cadastro_produto", "R$ ", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

@@ -38,6 +38,7 @@ INPUT(
 ./release\tela_comprar.o
 ./release\tela_listar_produtos.o
 ./release\tela_definir_valor.o
+./release\tela_pagamento.o
 ./release\moc_tela_login.o
 ./release\moc_tela_principal.o
 ./release\moc_tela_cadastro_cliente.o
@@ -61,5 +62,6 @@ INPUT(
 ./release\moc_tela_comprar.o
 ./release\moc_tela_listar_produtos.o
 ./release\moc_tela_definir_valor.o
+./release\moc_tela_pagamento.o
 ./release\qrc_imagens.o
 );

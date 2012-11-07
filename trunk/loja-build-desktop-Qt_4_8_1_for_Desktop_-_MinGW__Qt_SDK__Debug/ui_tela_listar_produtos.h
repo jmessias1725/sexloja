@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_listar_produtos.ui'
 **
-** Created: Tue 6. Nov 20:28:52 2012
+** Created: Wed 7. Nov 08:02:24 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

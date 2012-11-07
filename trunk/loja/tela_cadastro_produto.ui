@@ -201,52 +201,6 @@
      <number>15</number>
     </property>
    </widget>
-   <widget class="QLineEdit" name="le_quantidade">
-    <property name="geometry">
-     <rect>
-      <x>72</x>
-      <y>80</y>
-      <width>80</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <weight>50</weight>
-      <bold>false</bold>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="inputMask">
-     <string>0000000000; </string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="maxLength">
-     <number>10</number>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lb_quantidade">
-    <property name="geometry">
-     <rect>
-      <x>5</x>
-      <y>80</y>
-      <width>67</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <weight>50</weight>
-      <bold>false</bold>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="text">
-     <string>Quantidade:</string>
-    </property>
-   </widget>
    <widget class="QTextEdit" name="te_des_utilizacao">
     <property name="geometry">
      <rect>
@@ -504,7 +458,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QLabel" name="lb_valorvenda">
     <property name="geometry">
      <rect>
-      <x>352</x>
+      <x>5</x>
       <y>80</y>
       <width>88</width>
       <height>20</height>
@@ -521,59 +475,10 @@ p, li { white-space: pre-wrap; }
      <string>Valor de Venda:</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lb_valor_compra">
-    <property name="geometry">
-     <rect>
-      <x>159</x>
-      <y>80</y>
-      <width>95</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <weight>50</weight>
-      <bold>false</bold>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="text">
-     <string>Valor de compra:</string>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="le_valor_venda">
     <property name="geometry">
      <rect>
-      <x>440</x>
-      <y>80</y>
-      <width>85</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <weight>50</weight>
-      <bold>false</bold>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="inputMethodHints">
-     <set>Qt::ImhNone</set>
-    </property>
-    <property name="inputMask">
-     <string>R$ xxxxxxxxx; </string>
-    </property>
-    <property name="text">
-     <string>R$ </string>
-    </property>
-    <property name="maxLength">
-     <number>12</number>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="le_valor_compra">
-    <property name="geometry">
-     <rect>
-      <x>254</x>
+      <x>93</x>
       <y>80</y>
       <width>85</width>
       <height>20</height>
@@ -606,8 +511,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>le_nome</tabstop>
   <tabstop>le_fabricante</tabstop>
   <tabstop>le_codigo_barras</tabstop>
-  <tabstop>le_quantidade</tabstop>
-  <tabstop>le_valor_compra</tabstop>
   <tabstop>le_valor_venda</tabstop>
   <tabstop>btn_adicionar_imagem</tabstop>
   <tabstop>te_des_utilizacao</tabstop>
@@ -664,22 +567,6 @@ p, li { white-space: pre-wrap; }
     <hint type="destinationlabel">
      <x>193</x>
      <y>95</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btn_cancelar</sender>
-   <signal>clicked()</signal>
-   <receiver>le_quantidade</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>558</x>
-     <y>257</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>348</x>
-     <y>96</y>
     </hint>
    </hints>
   </connection>

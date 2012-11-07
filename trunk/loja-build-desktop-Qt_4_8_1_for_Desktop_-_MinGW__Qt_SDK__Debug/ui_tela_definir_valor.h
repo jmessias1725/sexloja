@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_definir_valor.ui'
 **
-** Created: Tue 6. Nov 20:28:52 2012
+** Created: Wed 7. Nov 16:39:30 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -16,10 +16,13 @@
 #include <QtGui/QButtonGroup>
 #include <QtGui/QDialog>
 #include <QtGui/QGroupBox>
+#include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
 #include <QtGui/QPushButton>
+#include <QtGui/QVBoxLayout>
+#include <QtGui/QWidget>
 
 QT_BEGIN_NAMESPACE
 
@@ -28,12 +31,17 @@ class Ui_tela_definir_valor
 public:
     QGroupBox *groupBox;
     QLabel *label;
+    QWidget *widget;
+    QVBoxLayout *verticalLayout;
+    QHBoxLayout *horizontalLayout_2;
     QLabel *lb_valorvenda;
-    QLineEdit *le_custo_medio;
-    QLineEdit *le_quantidade;
-    QLabel *lb_valor_compra;
-    QLabel *lb_quantidade;
     QLineEdit *le_valor_venda;
+    QHBoxLayout *horizontalLayout;
+    QLabel *lb_valor_compra;
+    QLineEdit *le_custo_medio;
+    QHBoxLayout *horizontalLayout_3;
+    QLabel *lb_quantidade;
+    QLineEdit *le_quantidade;
     QPushButton *btn_confirmar;
     QPushButton *btn_cancelar;
 
@@ -47,7 +55,7 @@ public:
         tela_definir_valor->setMaximumSize(QSize(202, 160));
         groupBox = new QGroupBox(tela_definir_valor);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setGeometry(QRect(5, 0, 192, 125));
+        groupBox->setGeometry(QRect(5, 0, 192, 121));
         QFont font;
         font.setFamily(QString::fromUtf8("Calibri"));
         font.setPointSize(10);
@@ -64,42 +72,79 @@ public:
         font1.setItalic(true);
         font1.setWeight(50);
         label->setFont(font1);
-        lb_valorvenda = new QLabel(groupBox);
+        widget = new QWidget(groupBox);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(0, 50, 191, 71));
+        verticalLayout = new QVBoxLayout(widget);
+        verticalLayout->setSpacing(3);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(5, 0, 5, 0);
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(0);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        lb_valorvenda = new QLabel(widget);
         lb_valorvenda->setObjectName(QString::fromUtf8("lb_valorvenda"));
-        lb_valorvenda->setGeometry(QRect(10, 50, 86, 20));
         QFont font2;
         font2.setBold(false);
         font2.setWeight(50);
         font2.setKerning(false);
         lb_valorvenda->setFont(font2);
-        le_custo_medio = new QLineEdit(groupBox);
-        le_custo_medio->setObjectName(QString::fromUtf8("le_custo_medio"));
-        le_custo_medio->setGeometry(QRect(50, 75, 85, 20));
-        le_custo_medio->setFont(font2);
-        le_custo_medio->setInputMethodHints(Qt::ImhNone);
-        le_custo_medio->setMaxLength(12);
-        le_custo_medio->setReadOnly(false);
-        le_quantidade = new QLineEdit(groupBox);
-        le_quantidade->setObjectName(QString::fromUtf8("le_quantidade"));
-        le_quantidade->setGeometry(QRect(79, 100, 80, 20));
-        le_quantidade->setFont(font2);
-        le_quantidade->setMaxLength(10);
-        le_quantidade->setReadOnly(false);
-        lb_valor_compra = new QLabel(groupBox);
-        lb_valor_compra->setObjectName(QString::fromUtf8("lb_valor_compra"));
-        lb_valor_compra->setGeometry(QRect(10, 75, 38, 20));
-        lb_valor_compra->setFont(font2);
-        lb_quantidade = new QLabel(groupBox);
-        lb_quantidade->setObjectName(QString::fromUtf8("lb_quantidade"));
-        lb_quantidade->setGeometry(QRect(10, 100, 67, 20));
-        lb_quantidade->setFont(font2);
-        le_valor_venda = new QLineEdit(groupBox);
+
+        horizontalLayout_2->addWidget(lb_valorvenda);
+
+        le_valor_venda = new QLineEdit(widget);
         le_valor_venda->setObjectName(QString::fromUtf8("le_valor_venda"));
-        le_valor_venda->setGeometry(QRect(100, 50, 85, 20));
         le_valor_venda->setFont(font2);
         le_valor_venda->setInputMethodHints(Qt::ImhNone);
-        le_valor_venda->setMaxLength(12);
+        le_valor_venda->setMaxLength(32767);
         le_valor_venda->setReadOnly(false);
+
+        horizontalLayout_2->addWidget(le_valor_venda);
+
+
+        verticalLayout->addLayout(horizontalLayout_2);
+
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setSpacing(0);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        lb_valor_compra = new QLabel(widget);
+        lb_valor_compra->setObjectName(QString::fromUtf8("lb_valor_compra"));
+        lb_valor_compra->setFont(font2);
+
+        horizontalLayout->addWidget(lb_valor_compra);
+
+        le_custo_medio = new QLineEdit(widget);
+        le_custo_medio->setObjectName(QString::fromUtf8("le_custo_medio"));
+        le_custo_medio->setFont(font2);
+        le_custo_medio->setInputMethodHints(Qt::ImhNone);
+        le_custo_medio->setMaxLength(32767);
+        le_custo_medio->setReadOnly(false);
+
+        horizontalLayout->addWidget(le_custo_medio);
+
+
+        verticalLayout->addLayout(horizontalLayout);
+
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setSpacing(0);
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        lb_quantidade = new QLabel(widget);
+        lb_quantidade->setObjectName(QString::fromUtf8("lb_quantidade"));
+        lb_quantidade->setFont(font2);
+
+        horizontalLayout_3->addWidget(lb_quantidade);
+
+        le_quantidade = new QLineEdit(widget);
+        le_quantidade->setObjectName(QString::fromUtf8("le_quantidade"));
+        le_quantidade->setFont(font2);
+        le_quantidade->setMaxLength(32767);
+        le_quantidade->setReadOnly(false);
+
+        horizontalLayout_3->addWidget(le_quantidade);
+
+
+        verticalLayout->addLayout(horizontalLayout_3);
+
         btn_confirmar = new QPushButton(tela_definir_valor);
         btn_confirmar->setObjectName(QString::fromUtf8("btn_confirmar"));
         btn_confirmar->setGeometry(QRect(6, 130, 90, 25));
@@ -140,14 +185,13 @@ public:
         label->setText(QApplication::translate("tela_definir_valor", "Defina o valor de venda, o custo\n"
 "e quantidade comprada. ", 0, QApplication::UnicodeUTF8));
         lb_valorvenda->setText(QApplication::translate("tela_definir_valor", "Valor de venda:", 0, QApplication::UnicodeUTF8));
-        le_custo_medio->setInputMask(QApplication::translate("tela_definir_valor", "R$ xxxxxxxxx; ", 0, QApplication::UnicodeUTF8));
-        le_custo_medio->setText(QApplication::translate("tela_definir_valor", "R$ ", 0, QApplication::UnicodeUTF8));
-        le_quantidade->setInputMask(QApplication::translate("tela_definir_valor", "0000000000; ", 0, QApplication::UnicodeUTF8));
-        le_quantidade->setText(QString());
+        le_valor_venda->setInputMask(QString());
+        le_valor_venda->setText(QString());
         lb_valor_compra->setText(QApplication::translate("tela_definir_valor", "Custo :", 0, QApplication::UnicodeUTF8));
+        le_custo_medio->setText(QString());
         lb_quantidade->setText(QApplication::translate("tela_definir_valor", "Quantidade:", 0, QApplication::UnicodeUTF8));
-        le_valor_venda->setInputMask(QApplication::translate("tela_definir_valor", "R$ xxxxxxxxx; ", 0, QApplication::UnicodeUTF8));
-        le_valor_venda->setText(QApplication::translate("tela_definir_valor", "R$ ", 0, QApplication::UnicodeUTF8));
+        le_quantidade->setInputMask(QString());
+        le_quantidade->setText(QString());
         btn_confirmar->setText(QApplication::translate("tela_definir_valor", "Confirmar", 0, QApplication::UnicodeUTF8));
         btn_cancelar->setText(QApplication::translate("tela_definir_valor", "Cancelar", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
