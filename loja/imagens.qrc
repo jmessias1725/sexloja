@@ -58,6 +58,9 @@
         <file>img/botao_avancar.png</file>
         <file>img/botao_voltar.png</file>
         <file>img/compra.png</file>
+        <file>img/cartao_credito3.png</file>
+        <file>img/Cheque1.png</file>
+        <file>img/dinheiro_geral.png</file>
     </qresource>
     <qresource prefix="/operadoras">
         <file>img/claro.png</file>

@@ -15,10 +15,16 @@ tela_definir_valor::~tela_definir_valor()
 
 void tela_definir_valor::definir_dados(float valor_ven, float cus, int quan){
     funcoes_extras funcao;
-
     valor_venda = valor_ven;
     custo = cus;
     quantidade = quan;
+
+    QRegExp valida_dinheiro("^\\d{0,4}([,|.]*)(\\d{0,2})$");
+    QRegExp valida_quantidade("^\\d{0,4}");
+
+    ui->le_valor_venda->setValidator(new QRegExpValidator(valida_dinheiro, ui->le_valor_venda));
+    ui->le_custo_medio->setValidator(new QRegExpValidator(valida_dinheiro, ui->le_custo_medio));
+    ui->le_quantidade->setValidator(new QRegExpValidator(valida_quantidade, ui->le_quantidade));
 
     ui->le_valor_venda->setText(funcao.retorna_valor_dinheiro(QString::number(valor_venda)));
     ui->le_quantidade->setText(QString::number(quantidade));

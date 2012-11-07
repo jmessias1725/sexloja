@@ -56,13 +56,11 @@ void tela_cadastro_produto::on_btn_confirmar_clicked()
     }
 
     if((ui->le_nome->text().toStdString()!="")){
-        float valor_compra = funcao.converter_para_float(ui->le_valor_compra->text());
         float valor_venda = funcao.converter_para_float(ui->le_valor_venda->text());
         cad_produto = new produto();
         cad_produto->definir_icone_janela(logomarca);
         if(cad_produto->salvar_dados_produto(ui->le_nome->text(),ui->le_fabricante->text(),QString::fromStdString(descricao_Aux),
-                                             ui->le_quantidade->text().toInt(),ui->le_codigo_barras->text(),ui->cb_tipo->currentText()
-                                             ,nome_arquivo_imagem,altura,largura,valor_compra,valor_venda)){
+                                             ui->le_codigo_barras->text(),ui->cb_tipo->currentText(),nome_arquivo_imagem,altura,largura,valor_venda)){
             tela_cadastro_produto::limpar_tela();
         }
     }
@@ -90,10 +88,8 @@ void tela_cadastro_produto::limpar_tela(void){
     ui->le_codigo_barras->clear();
     ui->le_fabricante->clear();
     ui->le_nome->clear();
-    ui->le_quantidade->clear();
     ui->cb_tipo->setCurrentIndex(0);
     ui->te_des_utilizacao->clear();
-    ui->le_valor_compra->clear();
     ui->le_valor_venda->clear();
 
     imagem imagem_produto;
@@ -118,13 +114,6 @@ void tela_cadastro_produto::on_le_nome_textChanged(const QString &arg1)
 void tela_cadastro_produto::on_le_fabricante_textChanged(const QString &arg1)
 {
     ui->le_fabricante->setText(ui->le_fabricante->text().toUpper());
-}
-
-void tela_cadastro_produto::on_le_valor_compra_editingFinished()
-{
-    QString aux;
-    aux =  funcao.retorna_valor_dinheiro(ui->le_valor_compra->text());
-    ui->le_valor_compra->setText(aux);
 }
 
 void tela_cadastro_produto::on_le_valor_venda_editingFinished()

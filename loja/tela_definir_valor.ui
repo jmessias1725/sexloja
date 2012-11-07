@@ -34,7 +34,7 @@
      <x>5</x>
      <y>0</y>
      <width>192</width>
-     <height>125</height>
+     <height>121</height>
     </rect>
    </property>
    <property name="font">
@@ -71,158 +71,164 @@
 e quantidade comprada. </string>
     </property>
    </widget>
-   <widget class="QLabel" name="lb_valorvenda">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>0</x>
       <y>50</y>
-      <width>86</width>
-      <height>20</height>
+      <width>191</width>
+      <height>71</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <weight>50</weight>
-      <bold>false</bold>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="text">
-     <string>Valor de venda:</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="le_custo_medio">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>75</y>
-      <width>85</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <weight>50</weight>
-      <bold>false</bold>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="inputMethodHints">
-     <set>Qt::ImhNone</set>
-    </property>
-    <property name="inputMask">
-     <string>R$ xxxxxxxxx; </string>
-    </property>
-    <property name="text">
-     <string>R$ </string>
-    </property>
-    <property name="maxLength">
-     <number>12</number>
-    </property>
-    <property name="readOnly">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="le_quantidade">
-    <property name="geometry">
-     <rect>
-      <x>79</x>
-      <y>100</y>
-      <width>80</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <weight>50</weight>
-      <bold>false</bold>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="inputMask">
-     <string>0000000000; </string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="maxLength">
-     <number>10</number>
-    </property>
-    <property name="readOnly">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lb_valor_compra">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>75</y>
-      <width>38</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <weight>50</weight>
-      <bold>false</bold>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="text">
-     <string>Custo :</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lb_quantidade">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>100</y>
-      <width>67</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <weight>50</weight>
-      <bold>false</bold>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="text">
-     <string>Quantidade:</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="le_valor_venda">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>50</y>
-      <width>85</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <weight>50</weight>
-      <bold>false</bold>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="inputMethodHints">
-     <set>Qt::ImhNone</set>
-    </property>
-    <property name="inputMask">
-     <string>R$ xxxxxxxxx; </string>
-    </property>
-    <property name="text">
-     <string>R$ </string>
-    </property>
-    <property name="maxLength">
-     <number>12</number>
-    </property>
-    <property name="readOnly">
-     <bool>false</bool>
-    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="spacing">
+      <number>3</number>
+     </property>
+     <property name="leftMargin">
+      <number>5</number>
+     </property>
+     <property name="rightMargin">
+      <number>5</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="lb_valorvenda">
+         <property name="font">
+          <font>
+           <weight>50</weight>
+           <bold>false</bold>
+           <kerning>false</kerning>
+          </font>
+         </property>
+         <property name="text">
+          <string>Valor de venda:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="le_valor_venda">
+         <property name="font">
+          <font>
+           <weight>50</weight>
+           <bold>false</bold>
+           <kerning>false</kerning>
+          </font>
+         </property>
+         <property name="inputMethodHints">
+          <set>Qt::ImhNone</set>
+         </property>
+         <property name="inputMask">
+          <string/>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="maxLength">
+          <number>32767</number>
+         </property>
+         <property name="readOnly">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="lb_valor_compra">
+         <property name="font">
+          <font>
+           <weight>50</weight>
+           <bold>false</bold>
+           <kerning>false</kerning>
+          </font>
+         </property>
+         <property name="text">
+          <string>Custo :</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="le_custo_medio">
+         <property name="font">
+          <font>
+           <weight>50</weight>
+           <bold>false</bold>
+           <kerning>false</kerning>
+          </font>
+         </property>
+         <property name="inputMethodHints">
+          <set>Qt::ImhNone</set>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="maxLength">
+          <number>32767</number>
+         </property>
+         <property name="readOnly">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="lb_quantidade">
+         <property name="font">
+          <font>
+           <weight>50</weight>
+           <bold>false</bold>
+           <kerning>false</kerning>
+          </font>
+         </property>
+         <property name="text">
+          <string>Quantidade:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="le_quantidade">
+         <property name="font">
+          <font>
+           <weight>50</weight>
+           <bold>false</bold>
+           <kerning>false</kerning>
+          </font>
+         </property>
+         <property name="inputMask">
+          <string/>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="maxLength">
+          <number>32767</number>
+         </property>
+         <property name="readOnly">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QPushButton" name="btn_confirmar">

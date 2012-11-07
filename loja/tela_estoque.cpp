@@ -6,21 +6,6 @@ tela_estoque::tela_estoque(QWidget *parent) :
     ui(new Ui::tela_estoque)
 {
     ui->setupUi(this);
-}
-
-tela_estoque::~tela_estoque()
-{
-    delete ui;
-}
-
-void tela_estoque::definir_icone_janela(QPixmap logo){
-    logomarca = logo;
-    this->setWindowIcon(logomarca);
-}
-
-void tela_estoque::buscar_produtos(void){
-    ui->tw_legenda->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    legenda = new legenda_estoque();
     aux_cons_id_produto = "";
     aux_cons_nome = "";
     aux_cons_fabricante = "";
@@ -45,6 +30,26 @@ void tela_estoque::buscar_produtos(void){
     lb_renda_total->setFrameShadow(QFrame::Sunken);
     lb_saldo->setFrameShape(QFrame::Panel);
     lb_saldo->setFrameShadow(QFrame::Sunken);
+    ui->barra_de_status->insertWidget(0,lb_data,0);
+    ui->barra_de_status->insertWidget(1,lb_saldo,0);
+    ui->barra_de_status->insertWidget(2,lb_custo_total,0);
+    ui->barra_de_status->insertWidget(3,lb_renda_total,0);
+    ui->barra_de_status->insertWidget(4,lb_quantidade_produtos,0);
+}
+
+tela_estoque::~tela_estoque()
+{
+    delete ui;
+}
+
+void tela_estoque::definir_icone_janela(QPixmap logo){
+    logomarca = logo;
+    this->setWindowIcon(logomarca);
+}
+
+void tela_estoque::buscar_produtos(void){
+    ui->tw_legenda->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    legenda = new legenda_estoque();
 
     conexao_bd conexao;
     QSqlDatabase bd;
@@ -190,11 +195,7 @@ void tela_estoque::mostrar_lista_produtos(void){
     lb_custo_total->setText(" Custo total em produtos = "+funcao.retorna_valor_dinheiro(QString::number(custo_total))+"  ");
     lb_renda_total->setText(" Renda total em produtos = "+funcao.retorna_valor_dinheiro(QString::number(renda_total))+"  ");
     lb_saldo->setText(" Saldo = "+funcao.retorna_valor_dinheiro(QString::number(renda_total-custo_total))+"  ");
-    ui->barra_de_status->insertWidget(0,lb_data,0);
-    ui->barra_de_status->insertWidget(1,lb_saldo,0);
-    ui->barra_de_status->insertWidget(2,lb_custo_total,0);
-    ui->barra_de_status->insertWidget(3,lb_renda_total,0);
-    ui->barra_de_status->insertWidget(4,lb_quantidade_produtos,0);
+    ui->barra_de_status->update();
 }
 
 void tela_estoque::on_pushButton_clicked()

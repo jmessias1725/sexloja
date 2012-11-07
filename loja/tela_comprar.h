@@ -5,6 +5,7 @@
 #include "tela_listar_fornecedores.h"
 #include "tela_listar_produtos.h"
 #include "tela_definir_valor.h"
+#include "tela_pagamento.h"
 #include "fornecedor.h"
 #include "produto.h"
 #include "funcoes_extras.h"
@@ -31,10 +32,13 @@ private slots:
     void on_tw_lista_produtos_doubleClicked(const QModelIndex &index);
     void on_btn_remover_produto_clicked();
 
+    void on_btn_confirmar_clicked();
+
 private:
     Ui::tela_comprar *ui;
     tela_listar_fornecedores tl_listar_fornecedores;
     tela_definir_valor tl_definir_valor;
+    tela_pagamento tl_pagamento;
     std::vector< produto* > lista_produtos;
     std::vector< produto* > aux_lista_produtos;
     tela_listar_produtos tl_listar_produtos;

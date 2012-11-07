@@ -478,6 +478,10 @@ QString funcoes_extras::retorna_valor_dinheiro(QString valor){
     std::string valor_final,valor_aux;
     QString aux;
     int posicao;
+    float teste = valor.toFloat();
+    int radical = teste;
+    std::cout<<"radical = "<<radical<<std::endl;
+    std::cout<<"resto = "<<teste-radical<<std::endl;
 
     valor_final = "";
     valor_aux = valor.toStdString();
@@ -513,12 +517,26 @@ QString funcoes_extras::retorna_valor_dinheiro(QString valor){
     else{
         valor_final = "R$ 0,00";
     }
+
+    if(int(valor_final.size()) > 9){
+        int i;
+        int tam_string;
+        i = 6;
+        tam_string = int(valor_final.size());
+        while (i<tam_string-3){
+            valor_final.insert(int(valor_final.size())-i,".");
+            i = i+4;
+        }
+    }
     return QString::fromStdString(valor_final);
 }
 
 float funcoes_extras::converter_para_float(QString numero){
     numero.replace("R","");
     numero.replace("$","");
+    while(numero.contains(".")){
+        numero.replace(".","");
+    }
     return numero.toFloat();
 }
 

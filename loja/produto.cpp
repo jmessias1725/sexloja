@@ -88,8 +88,8 @@ void produto::altera_valor_compra(float valor_com){
 }
 
 bool produto::salvar_dados_produto(QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
-                                   int quant_disponivel_produto,QString cod_barras_produto,QString tipo_produto,
-                                   QString nome_arquivo_imagem, int altura, int largura,float valor_com,float valor_ven){
+                                   QString cod_barras_produto,QString tipo_produto,QString nome_arquivo_imagem, int altura,
+                                   int largura,float valor_ven){
 
     nome = nome_produto;
     fabricante = fabricante_produto;
@@ -99,12 +99,8 @@ bool produto::salvar_dados_produto(QString nome_produto,QString fabricante_produ
     removido = false;
     valor_venda = valor_ven;
 
-    his_entradas *nova_entrada;
-    his_balanco_estoque  *novo_balanco_estoque;
     imagem *nova_imagem;
     int aux_id_imagem;
-
-    int id_balanco;
 
     nova_imagem = new imagem(nome_arquivo_imagem,largura,altura);
 
@@ -123,13 +119,9 @@ bool produto::salvar_dados_produto(QString nome_produto,QString fabricante_produ
         //Declara as variáves que irão inserir os dados no banco de dados.
         QSqlQuery salvar_dados_produto(bd);
         QSqlQuery salvar_dados_imagem(bd);
-        QSqlQuery salvar_his_entradas(bd);
-        QSqlQuery salvar_his_balanco_estoque(bd);
 
         //Declara a variável que irá fazer a consulta para determinar o id do produto;
         QSqlQuery consultar_imagem(bd);
-        QSqlQuery consultar_produto(bd);
-        QSqlQuery consultar_balanco(bd);
 
         if (nome_arquivo_imagem.toStdString()!=":/img/img/produto.png"){
             //Insere os dados no cadastro de imagem
@@ -158,7 +150,7 @@ bool produto::salvar_dados_produto(QString nome_produto,QString fabricante_produ
         salvar_dados_produto.bindValue(":valor_venda", valor_venda);
         salvar_dados_produto.exec();
 
-        //realiza a consulta para determinar  o id do produto.
+        /*//realiza a consulta para determinar  o id do produto.
         consultar_produto.exec("SELECT * FROM produto");
         if(consultar_produto.last()){
             id_produto = consultar_produto.value(0).toInt();
@@ -192,11 +184,10 @@ bool produto::salvar_dados_produto(QString nome_produto,QString fabricante_produ
         salvar_his_entradas.bindValue(":hora", nova_entrada->retorna_hora());
         salvar_his_entradas.bindValue(":origem", nova_entrada->retorna_origem());
         salvar_his_entradas.bindValue(":id_balanco", nova_entrada->retorna_id_balanco());
-        salvar_his_entradas.exec();
+        salvar_his_entradas.exec();*/
 
         //Verifica se os dados podem ser salvos, caso sim realiza o Commite, do contrário o Rollback.
-        if((salvar_dados_produto.lastError().number()<=0)&&(salvar_dados_imagem.lastError().number()<=0)&&
-           (salvar_his_entradas.lastError().number()<=0)&&(salvar_his_balanco_estoque.lastError().number()<=0)){
+        if((salvar_dados_produto.lastError().number()<=0)&&(salvar_dados_imagem.lastError().number()<=0)){
 
             //Finaliza a inserçao dos dados.
             bd.commit();
