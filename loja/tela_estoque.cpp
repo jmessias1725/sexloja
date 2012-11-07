@@ -19,7 +19,6 @@ void tela_estoque::definir_icone_janela(QPixmap logo){
 }
 
 void tela_estoque::buscar_produtos(void){
-
     ui->tw_legenda->setEditTriggers(QAbstractItemView::NoEditTriggers);
     legenda = new legenda_estoque();
     aux_cons_id_produto = "";
@@ -191,11 +190,11 @@ void tela_estoque::mostrar_lista_produtos(void){
     lb_custo_total->setText(" Custo total em produtos = "+funcao.retorna_valor_dinheiro(QString::number(custo_total))+"  ");
     lb_renda_total->setText(" Renda total em produtos = "+funcao.retorna_valor_dinheiro(QString::number(renda_total))+"  ");
     lb_saldo->setText(" Saldo = "+funcao.retorna_valor_dinheiro(QString::number(renda_total-custo_total))+"  ");
-    ui->barra_de_status->addWidget(lb_data,0);
-    ui->barra_de_status->addWidget(lb_saldo,0);
-    ui->barra_de_status->addWidget(lb_custo_total,0);
-    ui->barra_de_status->addWidget(lb_renda_total,0);
-    ui->barra_de_status->addWidget(lb_quantidade_produtos,0);
+    ui->barra_de_status->insertWidget(0,lb_data,0);
+    ui->barra_de_status->insertWidget(1,lb_saldo,0);
+    ui->barra_de_status->insertWidget(2,lb_custo_total,0);
+    ui->barra_de_status->insertWidget(3,lb_renda_total,0);
+    ui->barra_de_status->insertWidget(4,lb_quantidade_produtos,0);
 }
 
 void tela_estoque::on_pushButton_clicked()
