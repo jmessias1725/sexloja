@@ -51,8 +51,8 @@ void tela_comprar::on_btn_adicionar_produto_clicked()
 }
 
 void tela_comprar::mostrar_lista_produtos(void){
-    float aux_valor_total_por_produto = 0;
-    float valor_total = 0;
+    float aux_valor_total_por_produto = 0.0;
+    float valor_total = 0.0;
     funcoes_extras funcao;
 
     ui->tw_lista_produtos->setRowCount(int(lista_produtos.size()));
@@ -78,9 +78,11 @@ void tela_comprar::mostrar_lista_produtos(void){
         //Define o íten como não editável
         //ui->tw_lista_produtos->item(i,0)->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
         //ui->tw_lista_produtos->item(i,1)->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
-
         valor_total = valor_total + aux_valor_total_por_produto;
     }
+    valor_total = 1.5589;
+    std::cout<<ceilf(valor_total * 100) / 100<<std::endl;
+
     ui->tw_lista_produtos->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tw_lista_produtos->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tw_lista_produtos->setEditTriggers(QAbstractItemView::NoEditTriggers);

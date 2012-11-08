@@ -2,6 +2,9 @@
 #define TELA_COMPRAR_H
 
 #include <QDialog>
+#include <stdio.h>
+#include <math.h>
+
 #include "tela_listar_fornecedores.h"
 #include "tela_listar_produtos.h"
 #include "tela_definir_valor.h"

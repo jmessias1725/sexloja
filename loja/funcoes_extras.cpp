@@ -518,7 +518,7 @@ QString funcoes_extras::retorna_valor_dinheiro(QString valor){
         valor_final = "R$ 0,00";
     }
 
-    if(int(valor_final.size()) > 9){
+    /*if(int(valor_final.size()) > 9){
         int i;
         int tam_string;
         i = 6;
@@ -527,7 +527,7 @@ QString funcoes_extras::retorna_valor_dinheiro(QString valor){
             valor_final.insert(int(valor_final.size())-i,".");
             i = i+4;
         }
-    }
+    }*/
     return QString::fromStdString(valor_final);
 }
 

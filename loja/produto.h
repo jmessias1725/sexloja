@@ -7,6 +7,7 @@
 #include <QtGui>
 #include <QMessageBox>
 #include <QSqlError>
+#include <sstream>
 
 #include "imagem.h"
 #include "endereco.h"

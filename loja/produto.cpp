@@ -545,6 +545,7 @@ bool produto::reajustar_valor_venda_produto(int tp, QString porcentagem){
         while(consultar_valor_anterior.next()){
             id_produto =  consultar_valor_anterior.value(0).toInt();
             valor_venda = consultar_valor_anterior.value(1).toFloat();
+
             if(tp==0){
                 valor_venda = valor_venda+(valor_venda*(por/100));
                 real = valor_venda;
@@ -571,6 +572,7 @@ bool produto::reajustar_valor_venda_produto(int tp, QString porcentagem){
                 aux_centavos = centavos;
                 valor_venda = real+aux_centavos/100;
             }
+            std::cout << "Valor venda " <<valor_venda<<std::endl;
             //Alteras os dados no cadastro dos produtos
             atualizar_valor_venda.prepare("UPDATE produto SET valor_venda=:valor_venda WHERE id_produto = '"+QString::number(id_produto)+"';");
             atualizar_valor_venda.bindValue("valor_venda=:",valor_venda);
