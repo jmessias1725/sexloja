@@ -474,41 +474,22 @@ const char* funcoes_extras::retorna_extensao_arquivo(QString nome_arquivo){
     return extensao.toStdString().c_str();
 }
 
-QString funcoes_extras::retorna_valor_dinheiro(QString valor){
-    std::string valor_final,valor_aux;
+QString funcoes_extras::retorna_valor_dinheiro(double valor){
+    std::stringstream valor_stream;
+    std::string valor_final;
     QString aux;
     int posicao;
-    float teste = valor.toFloat();
-    int radical = teste;
-    std::cout<<"radical = "<<radical<<std::endl;
-    std::cout<<"resto = "<<teste-radical<<std::endl;
 
-    valor_final = "";
-    valor_aux = valor.toStdString();
-    for (int i = 0; i< int(valor.size());i++){
-        if((valor_aux[i]=='0')||(valor_aux[i]=='1')||(valor_aux[i]=='2')||
-           (valor_aux[i]=='3')||(valor_aux[i]=='4')||(valor_aux[i]=='5')||
-           (valor_aux[i]=='6')||(valor_aux[i]=='7')||(valor_aux[i]=='8')||
-           (valor_aux[i]=='9')||(valor_aux[i]==',')||(valor_aux[i]=='.')){
-            valor_final = valor_final+valor_aux[i];
-        }
-    }
+    valor_stream << std::fixed << valor;
+    valor_final = valor_stream.str();
+
     aux = QString::fromStdString(valor_final);
+    aux.replace(".",",");
+    posicao = funcoes_extras::determinar_posicao_caractere(aux.toStdString(), ",");
+    aux.replace(posicao+3,int(aux.size()-1),"");
     if(aux.toStdString()!=""){
         if (aux.contains(",")||aux.contains(".")){
-            aux.replace(".",",");
             valor_final = "R$ "+aux.toStdString();
-            posicao = funcoes_extras::determinar_posicao_caractere(aux.toStdString(), ",");
-            if(posicao!=-1){
-                if ((posicao+3)!=int(aux.size())){
-                    if((posicao+2)==int(aux.size())){
-                        valor_final = valor_final+"0";
-                    }
-                    else{
-                        valor_final = valor_final+"00";
-                    }
-                }
-            }
         }
         else{
             valor_final = "R$ "+valor_final+",00";
@@ -517,23 +498,21 @@ QString funcoes_extras::retorna_valor_dinheiro(QString valor){
     else{
         valor_final = "R$ 0,00";
     }
-
-    /*if(int(valor_final.size()) > 9){
-        int i;
-        int tam_string;
-        i = 6;
-        tam_string = int(valor_final.size());
-        while (i<tam_string-3){
-            valor_final.insert(int(valor_final.size())-i,".");
-            i = i+4;
-        }
-    }*/
     return QString::fromStdString(valor_final);
 }
 
-float funcoes_extras::converter_para_float(QString numero){
-    numero.replace("R","");
-    numero.replace("$","");
+double funcoes_extras::converter_para_double(QString numero){
+    std::string valor_aux = numero.toStdString();
+    std::string valor_final = "";
+    for (int i = 0; i< int(valor_aux.size());i++){
+        if((valor_aux[i]=='0')||(valor_aux[i]=='1')||(valor_aux[i]=='2')||
+           (valor_aux[i]=='3')||(valor_aux[i]=='4')||(valor_aux[i]=='5')||
+           (valor_aux[i]=='6')||(valor_aux[i]=='7')||(valor_aux[i]=='8')||
+           (valor_aux[i]=='9')||(valor_aux[i]==',')){
+            valor_final = valor_final+valor_aux[i];
+        }
+    }
+
     while(numero.contains(".")){
         numero.replace(".","");
     }

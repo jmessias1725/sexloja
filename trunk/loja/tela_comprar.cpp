@@ -51,8 +51,8 @@ void tela_comprar::on_btn_adicionar_produto_clicked()
 }
 
 void tela_comprar::mostrar_lista_produtos(void){
-    float aux_valor_total_por_produto = 0.0;
-    float valor_total = 0.0;
+    double aux_valor_total_por_produto = 0.0;
+    double valor_total = 0.0;
     funcoes_extras funcao;
 
     ui->tw_lista_produtos->setRowCount(int(lista_produtos.size()));
@@ -66,8 +66,8 @@ void tela_comprar::mostrar_lista_produtos(void){
         ui->tw_lista_produtos->setItem(i,0,new QTableWidgetItem(QString::number(lista_produtos[i]->retorna_id())));
         ui->tw_lista_produtos->setItem(i,1,new QTableWidgetItem(lista_produtos[i]->retorna_nome()));
         ui->tw_lista_produtos->setItem(i,2,new QTableWidgetItem(QString::number(lista_produtos[i]->retorna_quantidade_disponivel())));
-        ui->tw_lista_produtos->setItem(i,3,new QTableWidgetItem(funcao.retorna_valor_dinheiro(QString::number(lista_produtos[i]->retorna_custo_medio()))));
-        ui->tw_lista_produtos->setItem(i,4,new QTableWidgetItem(funcao.retorna_valor_dinheiro(QString::number(aux_valor_total_por_produto))));
+        ui->tw_lista_produtos->setItem(i,3,new QTableWidgetItem(funcao.retorna_valor_dinheiro(lista_produtos[i]->retorna_custo_medio())));
+        ui->tw_lista_produtos->setItem(i,4,new QTableWidgetItem(funcao.retorna_valor_dinheiro(aux_valor_total_por_produto)));
         ui->tw_lista_produtos->item(i,0)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_lista_produtos->item(i,1)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_lista_produtos->item(i,2)->setTextAlignment(Qt::AlignHCenter);
@@ -78,10 +78,7 @@ void tela_comprar::mostrar_lista_produtos(void){
         //Define o íten como não editável
         //ui->tw_lista_produtos->item(i,0)->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
         //ui->tw_lista_produtos->item(i,1)->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
-        valor_total = valor_total + aux_valor_total_por_produto;
     }
-    valor_total = 1.5589;
-    std::cout<<ceilf(valor_total * 100) / 100<<std::endl;
 
     ui->tw_lista_produtos->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tw_lista_produtos->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -91,7 +88,7 @@ void tela_comprar::mostrar_lista_produtos(void){
     ui->tw_lista_produtos->resizeColumnToContents(3);
     ui->tw_lista_produtos->resizeColumnToContents(4);
 
-    ui->le_total->setText(funcao.retorna_valor_dinheiro(QString::number(valor_total)));
+    ui->le_total->setText(funcao.retorna_valor_dinheiro(valor_total));
 }
 
 void tela_comprar::closeEvent(QCloseEvent *event){

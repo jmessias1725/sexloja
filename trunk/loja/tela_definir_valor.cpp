@@ -26,9 +26,9 @@ void tela_definir_valor::definir_dados(float valor_ven, float cus, int quan){
     ui->le_custo_medio->setValidator(new QRegExpValidator(valida_dinheiro, ui->le_custo_medio));
     ui->le_quantidade->setValidator(new QRegExpValidator(valida_quantidade, ui->le_quantidade));
 
-    ui->le_valor_venda->setText(funcao.retorna_valor_dinheiro(QString::number(valor_venda)));
+    ui->le_valor_venda->setText(funcao.retorna_valor_dinheiro(valor_venda));
     ui->le_quantidade->setText(QString::number(quantidade));
-    ui->le_custo_medio->setText(funcao.retorna_valor_dinheiro(QString::number(custo)));
+    ui->le_custo_medio->setText(funcao.retorna_valor_dinheiro(custo));
 
     ui->le_valor_venda->setCursorPosition(0);
     ui->le_quantidade->setCursorPosition(0);
@@ -61,13 +61,13 @@ void tela_definir_valor::on_btn_cancelar_clicked()
 void tela_definir_valor::on_le_valor_venda_editingFinished()
 {
     funcoes_extras funcao;
-    ui->le_valor_venda->setText(funcao.retorna_valor_dinheiro(ui->le_valor_venda->text()));
+    ui->le_valor_venda->setText(funcao.retorna_valor_dinheiro(ui->le_valor_venda->text().toDouble()));
 }
 
 void tela_definir_valor::on_le_custo_medio_editingFinished()
 {
     funcoes_extras funcao;
-    ui->le_custo_medio->setText(funcao.retorna_valor_dinheiro(ui->le_custo_medio->text()));
+    ui->le_custo_medio->setText(funcao.retorna_valor_dinheiro(ui->le_custo_medio->text().toDouble()));
 }
 
 void tela_definir_valor::on_btn_confirmar_clicked()

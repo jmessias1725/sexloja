@@ -119,6 +119,6 @@ void tela_cadastro_produto::on_le_fabricante_textChanged(const QString &arg1)
 void tela_cadastro_produto::on_le_valor_venda_editingFinished()
 {
     QString aux;
-    aux =  funcao.retorna_valor_dinheiro(ui->le_valor_venda->text());
+    aux =  funcao.retorna_valor_dinheiro(ui->le_valor_venda->text().toDouble());
     ui->le_valor_venda->setText(aux);
 }

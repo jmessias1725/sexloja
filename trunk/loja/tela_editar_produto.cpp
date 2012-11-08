@@ -34,7 +34,7 @@ void tela_editar_produto::definir_dados_produto(produto *cad_produto, imagem *im
     ui->le_fabricante->setText(informacoes_produto->retorna_fabricante());
     ui->le_codigo_barras->setText(informacoes_produto->retorna_cod_barras());
     ui->te_des_utilizacao->setText(informacoes_produto->retorna_desc_utilizacao());
-    ui->le_valor_venda->setText(funcao.retorna_valor_dinheiro(QString::number(informacoes_produto->retorna_valor_venda())));
+    ui->le_valor_venda->setText(funcao.retorna_valor_dinheiro(informacoes_produto->retorna_valor_venda()));
 
     ui->gv_imagem_produto->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->gv_imagem_produto->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -140,5 +140,5 @@ void tela_editar_produto::on_le_fabricante_textChanged(const QString &arg1)
 
 void tela_editar_produto::on_le_valor_venda_editingFinished()
 {
-    ui->le_valor_venda->setText(funcao.retorna_valor_dinheiro(ui->le_valor_venda->text()));
+    ui->le_valor_venda->setText(funcao.retorna_valor_dinheiro(ui->le_valor_venda->text().toDouble()));
 }

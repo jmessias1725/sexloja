@@ -30,8 +30,8 @@ void tela_produto::definir_dados_produto(produto *cad_produto){
     ui->le_fabricante->setText(informacoes_produto->retorna_fabricante());
     ui->le_codigo_barras->setText(informacoes_produto->retorna_cod_barras());
     ui->le_quantidade->setText(QString::number(informacoes_produto->retorna_quantidade_disponivel()));
-    ui->le_custo_medio->setText(funcoes.retorna_valor_dinheiro(QString::number(informacoes_produto->retorna_custo_medio())));
-    ui->le_valor_venda->setText(funcoes.retorna_valor_dinheiro(QString::number(informacoes_produto->retorna_valor_venda())));
+    ui->le_custo_medio->setText(funcoes.retorna_valor_dinheiro(informacoes_produto->retorna_custo_medio()));
+    ui->le_valor_venda->setText(funcoes.retorna_valor_dinheiro(informacoes_produto->retorna_valor_venda()));
     ui->te_des_utilizacao->setText(informacoes_produto->retorna_desc_utilizacao());
 
     imagem_produto->buscar_imagem(informacoes_produto->retorna_id_imagem());
@@ -138,7 +138,7 @@ void tela_produto::buscar_informacoes_his_estoque_produto(int id){
         ui->tw_historico_estoque->setHorizontalHeaderLabels(QString(" Valor de compra ; Total comprado ; Total disponível ").split(";"));
 
         for (int i=0;i<int(aux_his.size());i++){
-            ui->tw_historico_estoque->setItem(i,0,new QTableWidgetItem(funcoes.retorna_valor_dinheiro(QString::number(aux_his[i]->retorna_valor_compra()))));
+            ui->tw_historico_estoque->setItem(i,0,new QTableWidgetItem(funcoes.retorna_valor_dinheiro(aux_his[i]->retorna_valor_compra())));
             ui->tw_historico_estoque->setItem(i,1,new QTableWidgetItem(QString::number(aux_his[i]->retorna_total_comprado())));
             ui->tw_historico_estoque->setItem(i,2,new QTableWidgetItem(QString::number(aux_his[i]->retorna_total_disponivel())));
             ui->tw_historico_estoque->item(i,0)->setTextAlignment(Qt::AlignHCenter);
@@ -210,8 +210,8 @@ void tela_produto::mostrar_informacoes_his_entrada(std::vector< his_entradas * >
     for (int i=0;i<int(aux_his.size());i++){
         ui->tw_historico_entradas->setItem(i,0,new QTableWidgetItem(funcoes.converte_numero_origem_nome(aux_his[i]->retorna_origem())));
         ui->tw_historico_entradas->setItem(i,1,new QTableWidgetItem(QString::number(aux_his[i]->retorna_quantidade())));
-        ui->tw_historico_entradas->setItem(i,2,new QTableWidgetItem(funcoes.retorna_valor_dinheiro(QString::number(aux_his[i]->retorna_valor_compra()))));
-        ui->tw_historico_entradas->setItem(i,3,new QTableWidgetItem(funcoes.retorna_valor_dinheiro(QString::number(aux_his[i]->retorna_valor_venda()))));
+        ui->tw_historico_entradas->setItem(i,2,new QTableWidgetItem(funcoes.retorna_valor_dinheiro(aux_his[i]->retorna_valor_compra())));
+        ui->tw_historico_entradas->setItem(i,3,new QTableWidgetItem(funcoes.retorna_valor_dinheiro(aux_his[i]->retorna_valor_venda())));
         ui->tw_historico_entradas->setItem(i,4,new QTableWidgetItem(aux_his[i]->retorna_data()));
         ui->tw_historico_entradas->setItem(i,5,new QTableWidgetItem(aux_his[i]->retorna_hora()));
         ui->tw_historico_entradas->item(i,0)->setTextAlignment(Qt::AlignHCenter);
