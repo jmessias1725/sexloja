@@ -143,8 +143,8 @@ void tela_estoque::mostrar_lista_produtos(void){
         ui->tw_produtos->setItem(i,2,new QTableWidgetItem(aux_lista_produtos[i]->retorna_nome()));
         ui->tw_produtos->setItem(i,3,new QTableWidgetItem(aux_lista_produtos[i]->retorna_fabricante()));
         ui->tw_produtos->setItem(i,4,new QTableWidgetItem(QString::number(aux_lista_produtos[i]->retorna_quantidade_disponivel())));
-        ui->tw_produtos->setItem(i,5,new QTableWidgetItem(funcao.retorna_valor_dinheiro(QString::number(aux_lista_produtos[i]->retorna_custo_medio()))));
-        ui->tw_produtos->setItem(i,6,new QTableWidgetItem(funcao.retorna_valor_dinheiro(QString::number(aux_lista_produtos[i]->retorna_valor_venda()))));
+        ui->tw_produtos->setItem(i,5,new QTableWidgetItem(funcao.retorna_valor_dinheiro(aux_lista_produtos[i]->retorna_custo_medio())));
+        ui->tw_produtos->setItem(i,6,new QTableWidgetItem(funcao.retorna_valor_dinheiro(aux_lista_produtos[i]->retorna_valor_venda())));
         ui->tw_produtos->setItem(i,7,new QTableWidgetItem(aux_lista_produtos[i]->retorna_cod_barras()));
         ui->tw_produtos->item(i,0)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_produtos->item(i,1)->setTextAlignment(Qt::AlignHCenter);
@@ -192,9 +192,9 @@ void tela_estoque::mostrar_lista_produtos(void){
 
     lb_data->setText("  "+data_sistema+"  ");
     lb_quantidade_produtos->setText("  Total de produtos = "+QString::number(int(lista_produtos.size()))+"  ");
-    lb_custo_total->setText(" Custo total em produtos = "+funcao.retorna_valor_dinheiro(QString::number(custo_total))+"  ");
-    lb_renda_total->setText(" Renda total em produtos = "+funcao.retorna_valor_dinheiro(QString::number(renda_total))+"  ");
-    lb_saldo->setText(" Saldo = "+funcao.retorna_valor_dinheiro(QString::number(renda_total-custo_total))+"  ");
+    lb_custo_total->setText(" Custo total em produtos = "+funcao.retorna_valor_dinheiro(custo_total)+"  ");
+    lb_renda_total->setText(" Renda total em produtos = "+funcao.retorna_valor_dinheiro(renda_total)+"  ");
+    lb_saldo->setText(" Saldo = "+funcao.retorna_valor_dinheiro(renda_total-custo_total)+"  ");
     ui->barra_de_status->update();
 }
 

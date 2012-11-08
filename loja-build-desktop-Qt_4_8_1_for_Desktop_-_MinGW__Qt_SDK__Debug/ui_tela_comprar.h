@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_comprar.ui'
 **
-** Created: Wed 7. Nov 11:34:27 2012
+** Created: Thu 8. Nov 18:15:09 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -251,7 +251,7 @@ public:
         frame->setFrameShadow(QFrame::Raised);
         le_total = new QLineEdit(frame);
         le_total->setObjectName(QString::fromUtf8("le_total"));
-        le_total->setGeometry(QRect(660, 2, 110, 30));
+        le_total->setGeometry(QRect(619, 2, 151, 30));
         QFont font7;
         font7.setFamily(QString::fromUtf8("Calibri"));
         font7.setPointSize(15);
@@ -262,7 +262,7 @@ public:
         le_total->setReadOnly(true);
         lb_total = new QLabel(frame);
         lb_total->setObjectName(QString::fromUtf8("lb_total"));
-        lb_total->setGeometry(QRect(600, 2, 61, 30));
+        lb_total->setGeometry(QRect(560, 2, 61, 30));
         QFont font8;
         font8.setFamily(QString::fromUtf8("Calibri"));
         font8.setPointSize(15);

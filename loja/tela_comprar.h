@@ -2,8 +2,6 @@
 #define TELA_COMPRAR_H
 
 #include <QDialog>
-#include <stdio.h>
-#include <math.h>
 
 #include "tela_listar_fornecedores.h"
 #include "tela_listar_produtos.h"
@@ -34,7 +32,6 @@ private slots:
     void mostrar_lista_produtos(void);
     void on_tw_lista_produtos_doubleClicked(const QModelIndex &index);
     void on_btn_remover_produto_clicked();
-
     void on_btn_confirmar_clicked();
 
 private:

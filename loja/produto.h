@@ -8,6 +8,7 @@
 #include <QMessageBox>
 #include <QSqlError>
 #include <sstream>
+#include <math.h>
 
 #include "imagem.h"
 #include "endereco.h"

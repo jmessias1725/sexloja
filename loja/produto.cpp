@@ -572,7 +572,6 @@ bool produto::reajustar_valor_venda_produto(int tp, QString porcentagem){
                 aux_centavos = centavos;
                 valor_venda = real+aux_centavos/100;
             }
-            std::cout << "Valor venda " <<valor_venda<<std::endl;
             //Alteras os dados no cadastro dos produtos
             atualizar_valor_venda.prepare("UPDATE produto SET valor_venda=:valor_venda WHERE id_produto = '"+QString::number(id_produto)+"';");
             atualizar_valor_venda.bindValue("valor_venda=:",valor_venda);
