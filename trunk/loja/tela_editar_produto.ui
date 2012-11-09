@@ -504,13 +504,13 @@ p, li { white-space: pre-wrap; }
      <set>Qt::ImhNone</set>
     </property>
     <property name="inputMask">
-     <string>R$ xxxxxxxxx; </string>
+     <string/>
     </property>
     <property name="text">
-     <string>R$ </string>
+     <string/>
     </property>
     <property name="maxLength">
-     <number>12</number>
+     <number>32767</number>
     </property>
     <property name="readOnly">
      <bool>false</bool>

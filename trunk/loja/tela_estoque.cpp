@@ -62,10 +62,10 @@ void tela_estoque::buscar_produtos(void){
     QString aux_tipo;
     int aux_id_imagem;
     int aux_soma_total_disponivel = 0;
-    float aux_valor_venda;
-    float aux_valor_compra;
-    float aux_total_disponivel;
-    float custo_medio_cada_produto = 0;
+    double aux_valor_venda;
+    double aux_valor_compra = 0;
+    int aux_total_disponivel = 0;
+    double custo_medio_cada_produto = 0;
 
     custo_total = 0;
     renda_total = 0;
@@ -105,10 +105,17 @@ void tela_estoque::buscar_produtos(void){
 
             custo_total = custo_total+custo_medio_cada_produto;
             renda_total = renda_total+aux_soma_total_disponivel*aux_valor_venda;
-            custo_medio_cada_produto = custo_medio_cada_produto/aux_soma_total_disponivel;
+            if(aux_soma_total_disponivel!=0){
+                custo_medio_cada_produto = custo_medio_cada_produto/aux_soma_total_disponivel;
+            }
+            else{
+                custo_medio_cada_produto = 0;
+            }
             lista_produtos.push_back(new produto(aux_id,aux_nome,aux_fabricante,aux_desc_utilizacao,aux_cod_barras,aux_tipo,aux_id_imagem,aux_valor_venda,custo_medio_cada_produto,aux_soma_total_disponivel));
             aux_soma_total_disponivel=0;
             custo_medio_cada_produto = 0;
+            aux_valor_compra = 0;
+            aux_total_disponivel =0;
         }
         consultar.clear();
         tela_estoque::mostrar_lista_produtos();

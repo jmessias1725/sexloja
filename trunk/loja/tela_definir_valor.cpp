@@ -61,20 +61,20 @@ void tela_definir_valor::on_btn_cancelar_clicked()
 void tela_definir_valor::on_le_valor_venda_editingFinished()
 {
     funcoes_extras funcao;
-    ui->le_valor_venda->setText(funcao.retorna_valor_dinheiro(ui->le_valor_venda->text().toDouble()));
+    ui->le_valor_venda->setText(funcao.retorna_valor_dinheiro(funcao.converter_para_double(ui->le_valor_venda->text())));
 }
 
 void tela_definir_valor::on_le_custo_medio_editingFinished()
 {
     funcoes_extras funcao;
-    ui->le_custo_medio->setText(funcao.retorna_valor_dinheiro(ui->le_custo_medio->text().toDouble()));
+    ui->le_custo_medio->setText(funcao.retorna_valor_dinheiro(funcao.converter_para_double(ui->le_custo_medio->text())));
 }
 
 void tela_definir_valor::on_btn_confirmar_clicked()
 {
     funcoes_extras funcao;
-    valor_venda = funcao.converter_para_float(ui->le_valor_venda->text());
-    custo = funcao.converter_para_float(ui->le_custo_medio->text());
+    valor_venda = funcao.converter_para_double(ui->le_valor_venda->text());
+    custo = funcao.converter_para_double(ui->le_custo_medio->text());
     quantidade = ui->le_quantidade->text().toInt();
     this->accept();
     this->close();

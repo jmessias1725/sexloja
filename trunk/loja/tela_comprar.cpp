@@ -74,7 +74,9 @@ void tela_comprar::mostrar_lista_produtos(void){
         ui->tw_lista_produtos->item(i,3)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_lista_produtos->item(i,4)->setTextAlignment(Qt::AlignHCenter);
 
-        ui->tw_lista_produtos->item(i,4)->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+        valor_total=valor_total+aux_valor_total_por_produto;
+        aux_valor_total_por_produto = 0.0;
+
         //Define o íten como não editável
         //ui->tw_lista_produtos->item(i,0)->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
         //ui->tw_lista_produtos->item(i,1)->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);

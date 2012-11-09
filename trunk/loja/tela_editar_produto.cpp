@@ -27,6 +27,9 @@ void tela_editar_produto::definir_dados_produto(produto *cad_produto, imagem *im
     informacoes_produto = cad_produto;
     imagem_produto = imagem_pro;
 
+    QRegExp valida_dinheiro("^\\d{0,4}([,|.]*)(\\d{0,2})$");
+    ui->le_valor_venda->setValidator(new QRegExpValidator(valida_dinheiro, ui->le_valor_venda));
+
     QGraphicsScene *GS_imagem_produto = new QGraphicsScene;
 
     ui->cb_tipo->setCurrentIndex(funcao.retorna_id_tipo(informacoes_produto->retorna_tipo().toStdString()));
@@ -89,7 +92,7 @@ void tela_editar_produto::on_btn_confirmar_clicked()
         if((ui->le_nome->text().toStdString()!="")){
             informacoes_produto->definir_icone_janela(logomarca);
             if(informacoes_produto->salvar_alteracao_dados_produto(ui->le_nome->text(),ui->le_fabricante->text(),QString::fromStdString(descricao_Aux),
-                                                                   ui->le_codigo_barras->text(),ui->cb_tipo->currentText(),funcao.converter_para_float(ui->le_valor_venda->text()),
+                                                                   ui->le_codigo_barras->text(),ui->cb_tipo->currentText(),funcao.converter_para_double(ui->le_valor_venda->text()),
                                                                    nome_arquivo_imagem,altura,largura,alterou_imgem)){
                 tela_editar_produto::limpar_tela();
                 this->close();
@@ -140,5 +143,5 @@ void tela_editar_produto::on_le_fabricante_textChanged(const QString &arg1)
 
 void tela_editar_produto::on_le_valor_venda_editingFinished()
 {
-    ui->le_valor_venda->setText(funcao.retorna_valor_dinheiro(ui->le_valor_venda->text().toDouble()));
+    ui->le_valor_venda->setText(funcao.retorna_valor_dinheiro(funcao.converter_para_double(ui->le_valor_venda->text())));
 }
