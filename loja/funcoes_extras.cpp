@@ -480,7 +480,7 @@ QString funcoes_extras::retorna_valor_dinheiro(double valor){
     QString aux;
     int posicao;
 
-    valor_stream << std::fixed << valor;
+    valor_stream << std::fixed << valor << std::flush;
     valor_final = valor_stream.str();
 
     aux = QString::fromStdString(valor_final);
@@ -508,15 +508,11 @@ double funcoes_extras::converter_para_double(QString numero){
         if((valor_aux[i]=='0')||(valor_aux[i]=='1')||(valor_aux[i]=='2')||
            (valor_aux[i]=='3')||(valor_aux[i]=='4')||(valor_aux[i]=='5')||
            (valor_aux[i]=='6')||(valor_aux[i]=='7')||(valor_aux[i]=='8')||
-           (valor_aux[i]=='9')||(valor_aux[i]==',')){
+           (valor_aux[i]=='9')||(valor_aux[i]==',')||(valor_aux[i]=='.')){
             valor_final = valor_final+valor_aux[i];
         }
     }
-
-    while(numero.contains(".")){
-        numero.replace(".","");
-    }
-    return numero.toFloat();
+    return QString::fromStdString(valor_final).toDouble();
 }
 
 int funcoes_extras::retorna_id_tipo(std::string tipo){

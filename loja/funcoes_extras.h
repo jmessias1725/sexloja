@@ -21,7 +21,7 @@ public:
     bool verifica_cnpj(std::string cnpj);
     const char* retorna_extensao_arquivo(QString nome_arquivo);
     QString retorna_valor_dinheiro(double valor);
-    float converter_para_float(QString numero);
+    double converter_para_double(QString numero);
     int retorna_id_tipo(std::string tipo);
     QString converte_numero_origem_nome(int ori);
 };

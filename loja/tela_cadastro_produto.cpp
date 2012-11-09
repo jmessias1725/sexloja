@@ -16,6 +16,9 @@ tela_cadastro_produto::tela_cadastro_produto(QWidget *parent) :
     ui->gv_imagem_produto->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     cena->addPixmap(imagem_produto.retorna_QPixmap_imagem());
     ui->gv_imagem_produto->setScene(cena);
+
+    QRegExp valida_dinheiro("^\\d{0,4}([,|.]*)(\\d{0,2})$");
+    ui->le_valor_venda->setValidator(new QRegExpValidator(valida_dinheiro, ui->le_valor_venda));
 }
 
 tela_cadastro_produto::~tela_cadastro_produto()
@@ -56,7 +59,7 @@ void tela_cadastro_produto::on_btn_confirmar_clicked()
     }
 
     if((ui->le_nome->text().toStdString()!="")){
-        float valor_venda = funcao.converter_para_float(ui->le_valor_venda->text());
+        double valor_venda = funcao.converter_para_double(ui->le_valor_venda->text());
         cad_produto = new produto();
         cad_produto->definir_icone_janela(logomarca);
         if(cad_produto->salvar_dados_produto(ui->le_nome->text(),ui->le_fabricante->text(),QString::fromStdString(descricao_Aux),
@@ -119,6 +122,6 @@ void tela_cadastro_produto::on_le_fabricante_textChanged(const QString &arg1)
 void tela_cadastro_produto::on_le_valor_venda_editingFinished()
 {
     QString aux;
-    aux =  funcao.retorna_valor_dinheiro(ui->le_valor_venda->text().toDouble());
+    aux =  funcao.retorna_valor_dinheiro(funcao.converter_para_double(ui->le_valor_venda->text()));
     ui->le_valor_venda->setText(aux);
 }

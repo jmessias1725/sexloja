@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_editar_produto.ui'
 **
-** Created: Thu 8. Nov 17:42:07 2012
+** Created: Fri 9. Nov 11:13:10 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -165,7 +165,7 @@ public:
         le_valor_venda->setGeometry(QRect(92, 80, 85, 20));
         le_valor_venda->setFont(font1);
         le_valor_venda->setInputMethodHints(Qt::ImhNone);
-        le_valor_venda->setMaxLength(12);
+        le_valor_venda->setMaxLength(32767);
         le_valor_venda->setReadOnly(false);
         QWidget::setTabOrder(le_nome, le_fabricante);
         QWidget::setTabOrder(le_fabricante, le_codigo_barras);
@@ -224,8 +224,8 @@ public:
         );
         btn_adicionar_imagem->setText(QApplication::translate("tela_editar_produto", "Adicionar imagem", 0, QApplication::UnicodeUTF8));
         lb_valorvenda->setText(QApplication::translate("tela_editar_produto", "Valor de venda:", 0, QApplication::UnicodeUTF8));
-        le_valor_venda->setInputMask(QApplication::translate("tela_editar_produto", "R$ xxxxxxxxx; ", 0, QApplication::UnicodeUTF8));
-        le_valor_venda->setText(QApplication::translate("tela_editar_produto", "R$ ", 0, QApplication::UnicodeUTF8));
+        le_valor_venda->setInputMask(QString());
+        le_valor_venda->setText(QString());
     } // retranslateUi
 
 };
