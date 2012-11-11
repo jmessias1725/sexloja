@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_cadastro_cliente.h'
 **
-** Created: Fri 9. Nov 11:00:54 2012
+** Created: Fri 9. Nov 17:57:03 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!

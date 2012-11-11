@@ -39,6 +39,8 @@ INPUT(
 ./release\tela_listar_produtos.o
 ./release\tela_definir_valor.o
 ./release\tela_pagamento.o
+./release\tela_pagamento_dinheiro.o
+./release\tela_pagamento_cartao.o
 ./release\moc_tela_login.o
 ./release\moc_tela_principal.o
 ./release\moc_tela_cadastro_cliente.o
@@ -63,5 +65,7 @@ INPUT(
 ./release\moc_tela_listar_produtos.o
 ./release\moc_tela_definir_valor.o
 ./release\moc_tela_pagamento.o
+./release\moc_tela_pagamento_dinheiro.o
+./release\moc_tela_pagamento_cartao.o
 ./release\qrc_imagens.o
 );
