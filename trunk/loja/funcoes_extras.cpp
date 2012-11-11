@@ -479,6 +479,7 @@ QString funcoes_extras::retorna_valor_dinheiro(double valor){
     std::string valor_final;
     QString aux;
     int posicao;
+    int menos;
 
     valor_stream << std::fixed << valor << std::flush;
     valor_final = valor_stream.str();
@@ -486,7 +487,25 @@ QString funcoes_extras::retorna_valor_dinheiro(double valor){
     aux = QString::fromStdString(valor_final);
     aux.replace(".",",");
     posicao = funcoes_extras::determinar_posicao_caractere(aux.toStdString(), ",");
+    menos = funcoes_extras::determinar_posicao_caractere(aux.toStdString(), "-");
     aux.replace(posicao+3,int(aux.size()-1),"");
+
+    int tamanho = int(aux.size());
+    std::cout<<"tamanho "<<tamanho<<std::endl;
+
+    if ((menos!=-1)&&(tamanho<6)){
+        tamanho = tamanho-1;
+    }
+
+    std::cout<<"tamanho depois "<<tamanho<<std::endl;
+
+    if (tamanho>6){
+        int i = 6;
+        while(i<=tamanho-1){
+            aux.insert(((tamanho)-i),".");
+            i = i + 3;
+        }
+    }
     if(aux.toStdString()!=""){
         if (aux.contains(",")||aux.contains(".")){
             valor_final = "R$ "+aux.toStdString();
@@ -504,15 +523,26 @@ QString funcoes_extras::retorna_valor_dinheiro(double valor){
 double funcoes_extras::converter_para_double(QString numero){
     std::string valor_aux = numero.toStdString();
     std::string valor_final = "";
+    double aux;
     for (int i = 0; i< int(valor_aux.size());i++){
         if((valor_aux[i]=='0')||(valor_aux[i]=='1')||(valor_aux[i]=='2')||
            (valor_aux[i]=='3')||(valor_aux[i]=='4')||(valor_aux[i]=='5')||
            (valor_aux[i]=='6')||(valor_aux[i]=='7')||(valor_aux[i]=='8')||
-           (valor_aux[i]=='9')||(valor_aux[i]==',')||(valor_aux[i]=='.')){
+           (valor_aux[i]=='9')/*||(valor_aux[i]==',')||(valor_aux[i]=='.')*/){
             valor_final = valor_final+valor_aux[i];
         }
     }
-    return QString::fromStdString(valor_final).toDouble();
+    aux = QString::fromStdString(valor_final).toDouble();
+    int posicao = funcoes_extras::determinar_posicao_caractere(numero.toStdString(), ",");
+    int posicao_ponto = funcoes_extras::determinar_posicao_caractere(numero.toStdString(), ".");
+
+    if ((posicao_ponto == numero.size()-3)&&(posicao_ponto!=-1)){
+        aux = aux/100.0;
+    }
+    if (posicao!=-1){
+        aux = aux/100.0;
+    }
+    return aux;
 }
 
 int funcoes_extras::retorna_id_tipo(std::string tipo){

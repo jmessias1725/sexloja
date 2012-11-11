@@ -50,7 +50,9 @@ SOURCES += main.cpp\
     tela_comprar.cpp \
     tela_listar_produtos.cpp \
     tela_definir_valor.cpp \
-    tela_pagamento.cpp
+    tela_pagamento.cpp \
+    tela_pagamento_dinheiro.cpp \
+    tela_pagamento_cartao.cpp
 
 HEADERS  += \
     conexao_bd.h \
@@ -91,7 +93,9 @@ HEADERS  += \
     tela_comprar.h \
     tela_listar_produtos.h \
     tela_definir_valor.h \
-    tela_pagamento.h
+    tela_pagamento.h \
+    tela_pagamento_dinheiro.h \
+    tela_pagamento_cartao.h
 
 FORMS    += \
     tela_login.ui \
@@ -118,7 +122,9 @@ FORMS    += \
     tela_comprar.ui \
     tela_listar_produtos.ui \
     tela_definir_valor.ui \
-    tela_pagamento.ui
+    tela_pagamento.ui \
+    tela_pagamento_dinheiro.ui \
+    tela_pagamento_cartao.ui
 
 RESOURCES += \
     imagens.qrc
