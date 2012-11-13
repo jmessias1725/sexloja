@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "funcoes_extras.h"
+#include "conexao_bd.h"
 
 namespace Ui {
 class tela_pagamento_cheque;
@@ -23,10 +24,9 @@ private slots:
     void on_le_valor_editingFinished();
     void on_btn_cancelar_clicked();
     void on_btn_confirmar_clicked();
-    
     void on_cb_a_vista_clicked();
-
     void on_gb_para_clicked();
+    void on_le_codigo_banco_editingFinished();
 
 private:
     Ui::tela_pagamento_cheque *ui;

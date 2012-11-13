@@ -139,7 +139,7 @@
      <string>valor</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="le_banco">
+   <widget class="QLineEdit" name="le_codigo_banco">
     <property name="geometry">
      <rect>
       <x>5</x>
@@ -252,6 +252,12 @@
       <width>408</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
     </property>
    </widget>
    <widget class="QLabel" name="label_6">
@@ -452,9 +458,6 @@
       <enum>Qt::LocalTime</enum>
      </property>
     </widget>
-    <zorder>cb_inserir_caixa_hoje</zorder>
-    <zorder>data</zorder>
-    <zorder>data</zorder>
    </widget>
    <widget class="QCheckBox" name="cb_a_vista">
     <property name="geometry">

@@ -62,3 +62,26 @@ void tela_pagamento_cheque::on_gb_para_clicked()
 {
     ui->cb_a_vista->setChecked(false);
 }
+
+void tela_pagamento_cheque::on_le_codigo_banco_editingFinished()
+{
+    conexao_bd conexao;
+    QSqlDatabase bd;
+
+    QString nome_banco = "Nome do banco não encontrado, insira o nome manualmente.";
+
+    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_pagamento_cheque")){
+        //Retorna o banco de dados
+       bd = conexao.retorna_bd();
+
+        //Declara a variável que irá fazer a consulta
+        QSqlQuery consultar(bd);
+
+        consultar.exec("SELECT nome FROM lista_bancos WHERE codigo = '"+ ui->le_codigo_banco->text() +"';");
+        while(consultar.next()){
+           nome_banco = consultar.value(0).toString();
+        }
+        bd.close();
+    }
+    ui->le_nome_banco->setText(nome_banco);
+}
