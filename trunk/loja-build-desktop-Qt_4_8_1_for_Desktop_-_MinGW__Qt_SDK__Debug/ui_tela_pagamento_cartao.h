@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_pagamento_cartao.ui'
 **
-** Created: Sun 11. Nov 12:11:37 2012
+** Created: Mon 12. Nov 11:36:45 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -33,8 +33,8 @@ public:
     QLineEdit *le_valor;
     QLabel *lb_dia;
     QSpinBox *sb_dia_vencimento;
-    QLabel *lb_dia_2;
-    QSpinBox *sb_dia_vencimento_2;
+    QLabel *lb_numero_parcelas;
+    QSpinBox *sb_num_parcelas;
     QPushButton *btn_cancelar;
 
     void setupUi(QDialog *tela_pagamento_cartao)
@@ -94,17 +94,17 @@ public:
         sb_dia_vencimento->setMinimum(1);
         sb_dia_vencimento->setMaximum(31);
         sb_dia_vencimento->setValue(1);
-        lb_dia_2 = new QLabel(groupBox);
-        lb_dia_2->setObjectName(QString::fromUtf8("lb_dia_2"));
-        lb_dia_2->setGeometry(QRect(5, 40, 114, 20));
-        lb_dia_2->setFont(font2);
-        sb_dia_vencimento_2 = new QSpinBox(groupBox);
-        sb_dia_vencimento_2->setObjectName(QString::fromUtf8("sb_dia_vencimento_2"));
-        sb_dia_vencimento_2->setGeometry(QRect(119, 40, 89, 20));
-        sb_dia_vencimento_2->setFont(font3);
-        sb_dia_vencimento_2->setMinimum(1);
-        sb_dia_vencimento_2->setMaximum(12);
-        sb_dia_vencimento_2->setValue(1);
+        lb_numero_parcelas = new QLabel(groupBox);
+        lb_numero_parcelas->setObjectName(QString::fromUtf8("lb_numero_parcelas"));
+        lb_numero_parcelas->setGeometry(QRect(5, 40, 114, 20));
+        lb_numero_parcelas->setFont(font2);
+        sb_num_parcelas = new QSpinBox(groupBox);
+        sb_num_parcelas->setObjectName(QString::fromUtf8("sb_num_parcelas"));
+        sb_num_parcelas->setGeometry(QRect(119, 40, 89, 20));
+        sb_num_parcelas->setFont(font3);
+        sb_num_parcelas->setMinimum(1);
+        sb_num_parcelas->setMaximum(12);
+        sb_num_parcelas->setValue(1);
         btn_cancelar = new QPushButton(tela_pagamento_cartao);
         btn_cancelar->setObjectName(QString::fromUtf8("btn_cancelar"));
         btn_cancelar->setGeometry(QRect(113, 95, 90, 25));
@@ -114,8 +114,8 @@ public:
         icon1.addFile(QString::fromUtf8(":/img/img/1345902747_button_cancel.png"), QSize(), QIcon::Normal, QIcon::Off);
         btn_cancelar->setIcon(icon1);
         btn_cancelar->setIconSize(QSize(18, 18));
-        QWidget::setTabOrder(le_valor, sb_dia_vencimento_2);
-        QWidget::setTabOrder(sb_dia_vencimento_2, sb_dia_vencimento);
+        QWidget::setTabOrder(le_valor, sb_num_parcelas);
+        QWidget::setTabOrder(sb_num_parcelas, sb_dia_vencimento);
         QWidget::setTabOrder(sb_dia_vencimento, btn_confirmar);
         QWidget::setTabOrder(btn_confirmar, btn_cancelar);
 
@@ -131,7 +131,7 @@ public:
         groupBox->setTitle(QApplication::translate("tela_pagamento_cartao", "Cart\303\243o", 0, QApplication::UnicodeUTF8));
         lb_valor->setText(QApplication::translate("tela_pagamento_cartao", "Valor:", 0, QApplication::UnicodeUTF8));
         lb_dia->setText(QApplication::translate("tela_pagamento_cartao", "Dia de vencimento do cart\303\243o:", 0, QApplication::UnicodeUTF8));
-        lb_dia_2->setText(QApplication::translate("tela_pagamento_cartao", "N\303\272mero de parcelas:", 0, QApplication::UnicodeUTF8));
+        lb_numero_parcelas->setText(QApplication::translate("tela_pagamento_cartao", "N\303\272mero de parcelas:", 0, QApplication::UnicodeUTF8));
         btn_cancelar->setText(QApplication::translate("tela_pagamento_cartao", "Cancelar", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

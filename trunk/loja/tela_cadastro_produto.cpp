@@ -6,17 +6,6 @@ tela_cadastro_produto::tela_cadastro_produto(QWidget *parent) :
     ui(new Ui::tela_cadastro_produto)
 {
     ui->setupUi(this);
-    imagem imagem_produto;
-    QGraphicsScene *cena = new QGraphicsScene;
-    nome_arquivo_imagem =":/img/img/produto.png";
-    largura = ui->gv_imagem_produto->width();
-    altura = ui->gv_imagem_produto->height();
-    imagem_produto = imagem(nome_arquivo_imagem,largura,altura);
-    ui->gv_imagem_produto->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    ui->gv_imagem_produto->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    cena->addPixmap(imagem_produto.retorna_QPixmap_imagem());
-    ui->gv_imagem_produto->setScene(cena);
-
     QRegExp valida_dinheiro("^\\d{0,4}([,|.]*)(\\d{0,2})$");
     ui->le_valor_venda->setValidator(new QRegExpValidator(valida_dinheiro, ui->le_valor_venda));
 }
@@ -29,6 +18,16 @@ tela_cadastro_produto::~tela_cadastro_produto()
 void tela_cadastro_produto::definir_icone_janela(QPixmap logo){
     logomarca = logo;
     this->setWindowIcon(logomarca);
+    imagem imagem_produto;
+    QGraphicsScene *cena = new QGraphicsScene;
+    nome_arquivo_imagem =":/img/img/produto.png";
+    largura = ui->gv_imagem_produto->width();
+    altura = ui->gv_imagem_produto->height();
+    imagem_produto = imagem(nome_arquivo_imagem,largura,altura);
+    ui->gv_imagem_produto->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->gv_imagem_produto->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    cena->addPixmap(imagem_produto.retorna_QPixmap_imagem());
+    ui->gv_imagem_produto->setScene(cena);
 }
 
 void tela_cadastro_produto::on_btn_adicionar_imagem_clicked()

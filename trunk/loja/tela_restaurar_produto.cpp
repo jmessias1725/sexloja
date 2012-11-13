@@ -6,14 +6,6 @@ tela_restaurar_produto::tela_restaurar_produto(QWidget *parent) :
     ui(new Ui::tela_restaurar_produto)
 {
     ui->setupUi(this);
-    legenda = new legenda_estoque();
-    aux_cons_id_produto = "";
-    aux_cons_nome = "";
-    aux_cons_fabricante = "";
-    aux_cons_cod_barras = "";
-    aux_cons_tipo = "";
-    ui->le_codigo->setCursorPosition(0);
-    ui->le_codigo_barras->setCursorPosition(0);
 }
 
 tela_restaurar_produto::~tela_restaurar_produto()
@@ -24,6 +16,14 @@ tela_restaurar_produto::~tela_restaurar_produto()
 void tela_restaurar_produto::definir_icone_janela(QPixmap logo){
     logomarca = logo;
     this->setWindowIcon(logomarca);
+    legenda = new legenda_estoque();
+    aux_cons_id_produto = "";
+    aux_cons_nome = "";
+    aux_cons_fabricante = "";
+    aux_cons_cod_barras = "";
+    aux_cons_tipo = "";
+    ui->le_codigo->setCursorPosition(0);
+    ui->le_codigo_barras->setCursorPosition(0);
 }
 
 void tela_restaurar_produto::buscar_produtos(void){

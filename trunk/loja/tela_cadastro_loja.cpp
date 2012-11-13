@@ -6,16 +6,6 @@ tela_cadastro_loja::tela_cadastro_loja(QWidget *parent) :
     ui(new Ui::tela_cadastro_loja)
 {
     ui->setupUi(this);
-    imagem imagem_logomarca;
-    QGraphicsScene *cena = new QGraphicsScene;
-    nome_arquivo_imagem =":/img/img/logo_sex.png";
-    largura = ui->gv_logo->width();
-    altura = ui->gv_logo->height();
-    imagem_logomarca = imagem(nome_arquivo_imagem,largura,altura);
-    ui->gv_logo->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    ui->gv_logo->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    cena->addPixmap(imagem_logomarca.retorna_QPixmap_imagem());
-    ui->gv_logo->setScene(cena);
 }
 
 tela_cadastro_loja::~tela_cadastro_loja()
@@ -26,6 +16,16 @@ tela_cadastro_loja::~tela_cadastro_loja()
 void tela_cadastro_loja::definir_icone_janela(QPixmap logo){
     logomarca = logo;
     this->setWindowIcon(logomarca);
+    imagem imagem_logomarca;
+    QGraphicsScene *cena = new QGraphicsScene;
+    nome_arquivo_imagem =":/img/img/logo_sex.png";
+    largura = ui->gv_logo->width();
+    altura = ui->gv_logo->height();
+    imagem_logomarca = imagem(nome_arquivo_imagem,largura,altura);
+    ui->gv_logo->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->gv_logo->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    cena->addPixmap(imagem_logomarca.retorna_QPixmap_imagem());
+    ui->gv_logo->setScene(cena);
 }
 
 void tela_cadastro_loja::on_btn_adicionar_logo_clicked()

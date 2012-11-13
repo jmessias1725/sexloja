@@ -6,8 +6,6 @@ tela_comprar::tela_comprar(QWidget *parent) :
     ui(new Ui::tela_comprar)
 {
     ui->setupUi(this);
-    ui->data->setDate(QDate::currentDate());
-    tela_comprar::mostrar_lista_produtos();
 }
 
 tela_comprar::~tela_comprar()
@@ -18,6 +16,8 @@ tela_comprar::~tela_comprar()
 void tela_comprar::definir_icone_janela(QPixmap logo){
     logomarca = logo;
     this->setWindowIcon(logomarca);
+    ui->data->setDate(QDate::currentDate());
+    tela_comprar::mostrar_lista_produtos();
 }
 
 void tela_comprar::on_btn_buscar_fornecedor_clicked()

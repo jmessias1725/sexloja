@@ -163,7 +163,7 @@
      <number>1</number>
     </property>
    </widget>
-   <widget class="QLabel" name="lb_dia_2">
+   <widget class="QLabel" name="lb_numero_parcelas">
     <property name="geometry">
      <rect>
       <x>5</x>
@@ -182,7 +182,7 @@
      <string>Número de parcelas:</string>
     </property>
    </widget>
-   <widget class="QSpinBox" name="sb_dia_vencimento_2">
+   <widget class="QSpinBox" name="sb_num_parcelas">
     <property name="geometry">
      <rect>
       <x>119</x>
@@ -246,7 +246,7 @@
  </widget>
  <tabstops>
   <tabstop>le_valor</tabstop>
-  <tabstop>sb_dia_vencimento_2</tabstop>
+  <tabstop>sb_num_parcelas</tabstop>
   <tabstop>sb_dia_vencimento</tabstop>
   <tabstop>btn_confirmar</tabstop>
   <tabstop>btn_cancelar</tabstop>

@@ -41,6 +41,7 @@ INPUT(
 ./release\tela_pagamento.o
 ./release\tela_pagamento_dinheiro.o
 ./release\tela_pagamento_cartao.o
+./release\tela_pagamento_cheque.o
 ./release\moc_tela_login.o
 ./release\moc_tela_principal.o
 ./release\moc_tela_cadastro_cliente.o
@@ -67,5 +68,6 @@ INPUT(
 ./release\moc_tela_pagamento.o
 ./release\moc_tela_pagamento_dinheiro.o
 ./release\moc_tela_pagamento_cartao.o
+./release\moc_tela_pagamento_cheque.o
 ./release\qrc_imagens.o
 );

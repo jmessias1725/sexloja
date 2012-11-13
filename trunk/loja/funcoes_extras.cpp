@@ -491,13 +491,9 @@ QString funcoes_extras::retorna_valor_dinheiro(double valor){
     aux.replace(posicao+3,int(aux.size()-1),"");
 
     int tamanho = int(aux.size());
-    std::cout<<"tamanho "<<tamanho<<std::endl;
-
-    if ((menos!=-1)&&(tamanho<6)){
+    if ((menos!=-1)&&(tamanho<=7)){
         tamanho = tamanho-1;
     }
-
-    std::cout<<"tamanho depois "<<tamanho<<std::endl;
 
     if (tamanho>6){
         int i = 6;
