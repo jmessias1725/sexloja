@@ -9,9 +9,8 @@
 
 class conexao_bd
 {
-private:
-    QSqlDatabase bd_loja;
 public:
+    QSqlDatabase bd_loja;
     bool conetar_bd(const QString hostname,int porta,const QString nome_bd,const QString usuario,const QString senha,const QString nome_conexao);
     void fechar_conexao();
     QSqlDatabase retorna_bd();

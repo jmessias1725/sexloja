@@ -4,7 +4,7 @@ bool conexao_bd::conetar_bd(const QString hostname,int porta,const QString nome_
     if(!bd_loja.isOpen()){
         bd_loja.removeDatabase(bd_loja.connectionName());
 
-        bd_loja = QSqlDatabase::addDatabase("QMYSQL",nome_conexao);
+        bd_loja = QSqlDatabase::addDatabase("QMYSQL",QDateTime::currentDateTime().toString());
 
         bd_loja.setHostName(hostname);
         bd_loja.setPort(porta);

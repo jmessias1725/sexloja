@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_pagamento_cheque.ui'
 **
-** Created: Mon 12. Nov 15:08:56 2012
+** Created: Tue 13. Nov 15:27:46 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -34,7 +34,7 @@ public:
     QLabel *label_3;
     QLabel *label_4;
     QLabel *label_5;
-    QLineEdit *le_banco;
+    QLineEdit *le_codigo_banco;
     QLineEdit *le_agencia;
     QLineEdit *le_conta;
     QLineEdit *le_numero_cheque;
@@ -88,13 +88,13 @@ public:
         label_5->setObjectName(QString::fromUtf8("label_5"));
         label_5->setGeometry(QRect(313, 15, 29, 20));
         label_5->setFont(font1);
-        le_banco = new QLineEdit(groupBox);
-        le_banco->setObjectName(QString::fromUtf8("le_banco"));
-        le_banco->setGeometry(QRect(5, 35, 40, 20));
+        le_codigo_banco = new QLineEdit(groupBox);
+        le_codigo_banco->setObjectName(QString::fromUtf8("le_codigo_banco"));
+        le_codigo_banco->setGeometry(QRect(5, 35, 40, 20));
         QFont font2;
         font2.setBold(false);
         font2.setWeight(50);
-        le_banco->setFont(font2);
+        le_codigo_banco->setFont(font2);
         le_agencia = new QLineEdit(groupBox);
         le_agencia->setObjectName(QString::fromUtf8("le_agencia"));
         le_agencia->setGeometry(QRect(52, 35, 80, 20));
@@ -121,6 +121,7 @@ public:
         le_nome_banco = new QLineEdit(groupBox);
         le_nome_banco->setObjectName(QString::fromUtf8("le_nome_banco"));
         le_nome_banco->setGeometry(QRect(5, 80, 408, 20));
+        le_nome_banco->setFont(font2);
         label_6 = new QLabel(groupBox);
         label_6->setObjectName(QString::fromUtf8("label_6"));
         label_6->setGeometry(QRect(5, 60, 89, 20));
@@ -174,9 +175,6 @@ public:
         data->setMinimumDateTime(QDateTime(QDate(2000, 9, 14), QTime(0, 0, 0)));
         data->setCalendarPopup(true);
         data->setTimeSpec(Qt::LocalTime);
-        cb_inserir_caixa_hoje->raise();
-        data->raise();
-        data->raise();
         cb_a_vista = new QCheckBox(groupBox);
         cb_a_vista->setObjectName(QString::fromUtf8("cb_a_vista"));
         cb_a_vista->setGeometry(QRect(13, 105, 60, 20));
@@ -196,7 +194,7 @@ public:
         label_3->setText(QApplication::translate("tela_pagamento_cheque", "Conta", 0, QApplication::UnicodeUTF8));
         label_4->setText(QApplication::translate("tela_pagamento_cheque", "N\302\272 cheque", 0, QApplication::UnicodeUTF8));
         label_5->setText(QApplication::translate("tela_pagamento_cheque", "valor", 0, QApplication::UnicodeUTF8));
-        le_banco->setText(QString());
+        le_codigo_banco->setText(QString());
         le_agencia->setText(QString());
         le_conta->setText(QString());
         le_numero_cheque->setText(QString());
