@@ -83,3 +83,26 @@ void tela_pagamento::on_btn_cartao_clicked()
         ui->le_cartao->setText(funcao.retorna_valor_dinheiro(valor_em_cartao));
     }
 }
+
+void tela_pagamento::on_btn_cheque_clicked()
+{
+    double restante_a_pagar=0.0;
+    total_pago = 0.0;
+    funcoes_extras funcao;
+
+    restante_a_pagar = total_pagar - valor_em_dinheiro - valor_em_cartao;
+
+    tl_pagamento_cheque.definir_icone_janela(logomarca);
+    tl_pagamento_cheque.definir_dados(restante_a_pagar);
+    if(tl_pagamento_cheque.exec()){
+        valor_em_cheque = tl_pagamento_cheque.retorna_valor_pago();
+        valor_em_dinheiro = funcao.converter_para_double(ui->le_dinheiro->text());
+        valor_em_cartao = funcao.converter_para_double(ui->le_cartao->text());
+        total_pago = valor_em_dinheiro+valor_em_cartao+valor_em_cheque;
+        troco = total_pago-total_pagar;
+
+        ui->le_troco->setText(funcao.retorna_valor_dinheiro(troco));
+        ui->le_total_pago->setText(funcao.retorna_valor_dinheiro(total_pago));
+        ui->le_cheque->setText(funcao.retorna_valor_dinheiro(valor_em_cheque));
+    }
+}

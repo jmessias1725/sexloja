@@ -52,7 +52,8 @@ SOURCES += main.cpp\
     tela_definir_valor.cpp \
     tela_pagamento.cpp \
     tela_pagamento_dinheiro.cpp \
-    tela_pagamento_cartao.cpp
+    tela_pagamento_cartao.cpp \
+    tela_pagamento_cheque.cpp
 
 HEADERS  += \
     conexao_bd.h \
@@ -95,7 +96,8 @@ HEADERS  += \
     tela_definir_valor.h \
     tela_pagamento.h \
     tela_pagamento_dinheiro.h \
-    tela_pagamento_cartao.h
+    tela_pagamento_cartao.h \
+    tela_pagamento_cheque.h
 
 FORMS    += \
     tela_login.ui \
@@ -124,7 +126,8 @@ FORMS    += \
     tela_definir_valor.ui \
     tela_pagamento.ui \
     tela_pagamento_dinheiro.ui \
-    tela_pagamento_cartao.ui
+    tela_pagamento_cartao.ui \
+    tela_pagamento_cheque.ui
 
 RESOURCES += \
     imagens.qrc

@@ -41,6 +41,7 @@ INPUT(
 ./debug\tela_pagamento.o
 ./debug\tela_pagamento_dinheiro.o
 ./debug\tela_pagamento_cartao.o
+./debug\tela_pagamento_cheque.o
 ./debug\moc_tela_login.o
 ./debug\moc_tela_principal.o
 ./debug\moc_tela_cadastro_cliente.o
@@ -67,5 +68,6 @@ INPUT(
 ./debug\moc_tela_pagamento.o
 ./debug\moc_tela_pagamento_dinheiro.o
 ./debug\moc_tela_pagamento_cartao.o
+./debug\moc_tela_pagamento_cheque.o
 ./debug\qrc_imagens.o
 );
