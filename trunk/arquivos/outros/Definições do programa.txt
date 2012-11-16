@@ -1,0 +1,24 @@
+Campo origem das tabelas, cartão, dinheiro e cheque.
+
+0 - dívida avulsa;
+1 - pagamento de compra;
+2 - entrada avulsa;
+3 - venda de produto.
+
+
+Campo origem tabela despesas.
+
+0 - cartão;
+1 - cheque;
+2 - dinheiro.
+
+campo status tabela despesas.
+
+0 - aberta;
+1 - paga;
+2 - atrasada.
+
+campo origem tabela his_entradas.
+
+0 - entrada avulsa;
+1 - compra;
