@@ -10,6 +10,7 @@
 #include "fornecedor.h"
 #include "produto.h"
 #include "funcoes_extras.h"
+#include "lista_compra.h"
 
 namespace Ui {
 class tela_comprar;
@@ -41,6 +42,7 @@ private:
     tela_pagamento tl_pagamento;
     std::vector< produto* > lista_produtos;
     std::vector< produto* > aux_lista_produtos;
+    std::vector< lista_compra* > lt_compra;
     tela_listar_produtos tl_listar_produtos;
     fornecedor * fornecedor_atual;
     QPixmap logomarca;

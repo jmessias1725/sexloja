@@ -53,7 +53,8 @@ SOURCES += main.cpp\
     tela_pagamento.cpp \
     tela_pagamento_dinheiro.cpp \
     tela_pagamento_cartao.cpp \
-    tela_pagamento_cheque.cpp
+    tela_pagamento_cheque.cpp \
+    lista_compra.cpp
 
 HEADERS  += \
     conexao_bd.h \
@@ -97,7 +98,8 @@ HEADERS  += \
     tela_pagamento.h \
     tela_pagamento_dinheiro.h \
     tela_pagamento_cartao.h \
-    tela_pagamento_cheque.h
+    tela_pagamento_cheque.h \
+    lista_compra.h
 
 FORMS    += \
     tela_login.ui \

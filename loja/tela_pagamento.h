@@ -23,9 +23,7 @@ public:
     
 private slots:
     void on_btn_dinheiro_clicked();
-
     void on_btn_cartao_clicked();
-
     void on_btn_cheque_clicked();
 
 private:
