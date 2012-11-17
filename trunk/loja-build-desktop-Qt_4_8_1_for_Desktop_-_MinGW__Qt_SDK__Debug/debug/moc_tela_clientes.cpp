@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_clientes.h'
 **
-** Created: Thu 15. Nov 21:19:09 2012
+** Created: Sat 17. Nov 07:43:06 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!

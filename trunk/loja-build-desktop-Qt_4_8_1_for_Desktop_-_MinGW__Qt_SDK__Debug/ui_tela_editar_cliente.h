@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_editar_cliente.ui'
 **
-** Created: Thu 15. Nov 21:17:12 2012
+** Created: Sat 17. Nov 07:40:31 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
