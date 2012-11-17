@@ -44,6 +44,10 @@ void tela_comprar::on_btn_adicionar_produto_clicked()
         for(int i=0;i<int(aux_lista_produtos.size());i++){
             lista_produtos.push_back(new produto());
             lista_produtos[(lista_produtos.size()-1)] = aux_lista_produtos[i];
+            lt_compra.push_back(new lista_compra(lista_produtos[i]->retorna_id(),0,0,
+                                                 lista_produtos[i]->retorna_quantidade_disponivel(),
+                                                 lista_produtos[i]->retorna_custo_medio(),
+                                                 lista_produtos[i]->retorna_valor_venda()));
         }
         tela_comprar::mostrar_lista_produtos();
         aux_lista_produtos.clear();

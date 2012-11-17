@@ -42,6 +42,7 @@ INPUT(
 ./debug\tela_pagamento_dinheiro.o
 ./debug\tela_pagamento_cartao.o
 ./debug\tela_pagamento_cheque.o
+./debug\lista_compra.o
 ./debug\moc_tela_login.o
 ./debug\moc_tela_principal.o
 ./debug\moc_tela_cadastro_cliente.o

@@ -42,6 +42,7 @@ INPUT(
 ./release\tela_pagamento_dinheiro.o
 ./release\tela_pagamento_cartao.o
 ./release\tela_pagamento_cheque.o
+./release\lista_compra.o
 ./release\moc_tela_login.o
 ./release\moc_tela_principal.o
 ./release\moc_tela_cadastro_cliente.o
