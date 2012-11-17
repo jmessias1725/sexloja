@@ -41,10 +41,32 @@ void tela_pagamento_cartao::on_btn_cancelar_clicked()
 
 void tela_pagamento_cartao::on_btn_confirmar_clicked()
 {
+
     funcoes_extras funcao;
-     valor_pago = funcao.converter_para_double(ui->le_valor->text());
-     this->accept();
-     this->close();
+    valor_pago = funcao.converter_para_double(ui->le_valor->text());
+    double valor_parcela = 0.0;
+
+    if((valor_pago!=0.0)&&(ui->sb_num_parcelas->text().toInt()!=0.0)){
+       valor_parcela = valor_pago/ui->sb_num_parcelas->text().toInt();
+    }
+
+    QPixmap icone_janela(":img/img/produto_pergunta_50.png");
+    QMessageBox msg(0);
+    msg.setIconPixmap(icone_janela);
+    msg.setWindowIcon(logomarca);
+    msg.setWindowTitle("Pagamento no cartão");
+    msg.addButton("Sim", QMessageBox::AcceptRole);
+    msg.addButton("Não", QMessageBox::RejectRole);
+    msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+    msg.setText("Deseja pagar: "+ui->le_valor->text()+" em "+ui->sb_num_parcelas->text()+" parcela(s) de "+funcao.retorna_valor_dinheiro(valor_parcela)+"\nno cartão de crédito com vencimento para o dia: "+ui->sb_dia_vencimento->text()+" ?");
+    if(!msg.exec()){
+        if (valor_pago!=0.0){
+            cartao_usado = new cartao(ui->sb_dia_vencimento->text().toInt(),ui->sb_num_parcelas->text().toInt(),
+                                      valor_pago,1,0);
+        }
+        this->accept();
+        this->close();
+    }
 }
 
 double tela_pagamento_cartao::retorna_valor_pago(){

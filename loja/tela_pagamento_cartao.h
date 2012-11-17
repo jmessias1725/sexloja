@@ -2,7 +2,9 @@
 #define TELA_PAGAMENTO_CARTAO_H
 
 #include <QDialog>
+#include <QMessageBox>
 #include "funcoes_extras.h"
+#include "cartao.h"
 
 namespace Ui {
 class tela_pagamento_cartao;
@@ -28,6 +30,7 @@ private:
     Ui::tela_pagamento_cartao *ui;
     QPixmap logomarca;
     double valor_pago;
+    cartao *cartao_usado;
 };
 
 #endif // TELA_PAGAMENTO_CARTAO_H
