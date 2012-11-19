@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_pagamento_cheque.ui'
 **
-** Created: Mon 19. Nov 15:48:54 2012
+** Created: Mon 19. Nov 17:38:21 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -197,6 +197,7 @@ public:
         le_codigo_banco->setText(QString());
         le_agencia->setText(QString());
         le_conta->setText(QString());
+        le_numero_cheque->setInputMask(QApplication::translate("tela_pagamento_cheque", "0000000000; ", 0, QApplication::UnicodeUTF8));
         le_numero_cheque->setText(QString());
         le_valor->setText(QString());
         label_6->setText(QApplication::translate("tela_pagamento_cheque", "Nome do  banco", 0, QApplication::UnicodeUTF8));

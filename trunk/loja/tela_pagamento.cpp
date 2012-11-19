@@ -96,7 +96,9 @@ void tela_pagamento::on_btn_cheque_clicked()
     tl_pagamento_cheque.definir_icone_janela(logomarca);
     tl_pagamento_cheque.definir_dados(restante_a_pagar);
     if(tl_pagamento_cheque.exec()){
-        valor_em_cheque = tl_pagamento_cheque.retorna_valor_pago();
+        cheque_usado = tl_pagamento_cheque.retorna_cheque();
+        valor_em_cheque = cheque_usado->retorna_valor();
+        std::cout<<cheque_usado->retorna_data_pagamento().toStdString()<<std::endl;
         valor_em_dinheiro = funcao.converter_para_double(ui->le_dinheiro->text());
         valor_em_cartao = funcao.converter_para_double(ui->le_cartao->text());
         total_pago = valor_em_dinheiro+valor_em_cartao+valor_em_cheque;

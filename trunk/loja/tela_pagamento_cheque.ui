@@ -217,6 +217,9 @@
       <bold>false</bold>
      </font>
     </property>
+    <property name="inputMask">
+     <string>0000000000; </string>
+    </property>
     <property name="text">
      <string/>
     </property>

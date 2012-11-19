@@ -8,7 +8,6 @@ tela_pagamento_cheque::tela_pagamento_cheque(QWidget *parent) :
     ui->setupUi(this);
     ui->gb_para->setChecked(false);
     cheque_usado = new cheque();
-    id_banco = 0;
 }
 
 tela_pagamento_cheque::~tela_pagamento_cheque()
@@ -47,13 +46,15 @@ void tela_pagamento_cheque::on_btn_confirmar_clicked()
 {
     funcoes_extras funcao;
     valor_pago = funcao.converter_para_double(ui->le_valor->text());
-    cheque_usado = new cheque()
+    cheque_usado = new cheque(ui->le_nome_banco->text(),ui->le_agencia->text(),ui->le_conta->text(),
+                              ui->le_numero_cheque->text().toInt(),valor_pago,1,0,ui->le_codigo_banco->text(),
+                              ui->data->date().currentDate().toString());
     this->accept();
     this->close();
 }
 
-double tela_pagamento_cheque::retorna_valor_pago(){
-    return valor_pago;
+cheque *tela_pagamento_cheque::retorna_cheque(){
+    return cheque_usado;
 }
 
 void tela_pagamento_cheque::on_cb_a_vista_clicked()
