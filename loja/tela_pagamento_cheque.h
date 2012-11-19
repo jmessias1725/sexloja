@@ -19,7 +19,7 @@ public:
     ~tela_pagamento_cheque();
     void definir_icone_janela(QPixmap logo);
     void definir_dados(double valor);
-    double retorna_valor_pago();
+    cheque *retorna_cheque();
 
 private slots:
     void on_le_valor_editingFinished();
@@ -34,7 +34,6 @@ private:
     QPixmap logomarca;
     double valor_pago;
     cheque* cheque_usado;
-    int id_banco;
 };
 
 #endif // TELA_PAGAMENTO_CHEQUE_H

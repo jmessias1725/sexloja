@@ -7,6 +7,7 @@
 #include "tela_pagamento_cartao.h"
 #include "tela_pagamento_cheque.h"
 #include "cartao.h"
+#include "cheque.h"
 
 namespace Ui {
 class tela_pagamento;
@@ -34,6 +35,7 @@ private:
     tela_pagamento_cartao tl_pagamento_cartao;
     tela_pagamento_cheque tl_pagamento_cheque;
     cartao* cartao_usado;
+    cheque* cheque_usado;
     double valor_em_dinheiro;
     double valor_em_cartao;
     double valor_em_cheque;
