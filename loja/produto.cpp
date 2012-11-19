@@ -515,13 +515,9 @@ produto * produto::retorna_novo_cadastro_produto(void){
 }
 
 bool produto::reajustar_valor_venda_produto(int tp, QString porcentagem){
+    funcoes_extras funcao;
     conexao_bd conexao;
     QSqlDatabase bd;
-    int real;
-    int centavos;
-    int resto;
-
-    float aux_centavos;
 
     porcentagem.replace("%","");
     float por = porcentagem.toFloat();
@@ -548,29 +544,11 @@ bool produto::reajustar_valor_venda_produto(int tp, QString porcentagem){
 
             if(tp==0){
                 valor_venda = valor_venda+(valor_venda*(por/100));
-                real = valor_venda;
-                resto = (valor_venda-real)*10000;
-                centavos = resto/100;
-                resto = resto - centavos*100;
-
-                if (resto>=56){
-                    centavos = centavos+1;
-                }
-                aux_centavos = centavos;
-                valor_venda = real+aux_centavos/100;
+                valor_venda = funcao.arredonda_para_duas_casas_decimais(valor_venda);
             }
             else{
                 valor_venda = valor_venda-(valor_venda*(por/100));
-                real = valor_venda;
-                resto = (valor_venda-real)*10000;
-                centavos = resto/100;
-                resto = resto - centavos*100;
-
-                if (resto>=56){
-                    centavos = centavos+1;
-                }
-                aux_centavos = centavos;
-                valor_venda = real+aux_centavos/100;
+                valor_venda = funcao.arredonda_para_duas_casas_decimais(valor_venda);
             }
             //Alteras os dados no cadastro dos produtos
             atualizar_valor_venda.prepare("UPDATE produto SET valor_venda=:valor_venda WHERE id_produto = '"+QString::number(id_produto)+"';");

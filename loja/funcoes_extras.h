@@ -24,6 +24,7 @@ public:
     double converter_para_double(QString numero);
     int retorna_id_tipo(std::string tipo);
     QString converte_numero_origem_nome(int ori);
+    double arredonda_para_duas_casas_decimais(double valor);
 };
 
 #endif // FUNCOES_EXTRAS_H

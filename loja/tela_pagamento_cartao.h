@@ -19,7 +19,7 @@ public:
     ~tela_pagamento_cartao();
     void definir_icone_janela(QPixmap logo);
     void definir_dados(double valor);
-    double retorna_valor_pago();
+    cartao *retorna_cartao();
 
 private slots:
     void on_le_valor_editingFinished();
