@@ -623,3 +623,24 @@ QString funcoes_extras::converte_numero_origem_nome(int ori){
         return "Compra";
     }
 }
+
+double funcoes_extras::arredonda_para_duas_casas_decimais(double valor){
+    int real;
+    int centavos;
+    int resto;
+
+    double aux_centavos;
+
+    real = valor;
+    resto = (valor-real)*10000;
+    centavos = resto/100;
+    resto = resto - centavos*100;
+
+    if (resto>=56){
+        centavos = centavos+1;
+    }
+    aux_centavos = centavos;
+    valor = real+aux_centavos/100;
+
+    return valor;
+}

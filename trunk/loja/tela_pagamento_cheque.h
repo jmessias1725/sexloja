@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "funcoes_extras.h"
 #include "conexao_bd.h"
+#include "cheque.h"
 
 namespace Ui {
 class tela_pagamento_cheque;
@@ -32,6 +33,8 @@ private:
     Ui::tela_pagamento_cheque *ui;
     QPixmap logomarca;
     double valor_pago;
+    cheque* cheque_usado;
+    int id_banco;
 };
 
 #endif // TELA_PAGAMENTO_CHEQUE_H

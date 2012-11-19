@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_pagamento_dinheiro.ui'
 **
-** Created: Sat 17. Nov 07:40:32 2012
+** Created: Mon 19. Nov 15:48:54 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

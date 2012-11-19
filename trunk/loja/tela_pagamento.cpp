@@ -72,7 +72,8 @@ void tela_pagamento::on_btn_cartao_clicked()
     tl_pagamento_cartao.definir_icone_janela(logomarca);
     tl_pagamento_cartao.definir_dados(restante_a_pagar);
     if(tl_pagamento_cartao.exec()){
-        valor_em_cartao = tl_pagamento_cartao.retorna_valor_pago();
+        cartao_usado = tl_pagamento_cartao.retorna_cartao();
+        valor_em_cartao = cartao_usado->retorna_valor();
         valor_em_dinheiro = funcao.converter_para_double(ui->le_dinheiro->text());
         valor_em_cheque = funcao.converter_para_double(ui->le_cheque->text());
         total_pago = valor_em_dinheiro+valor_em_cartao+valor_em_cheque;

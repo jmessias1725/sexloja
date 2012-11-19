@@ -6,6 +6,7 @@ tela_pagamento_cartao::tela_pagamento_cartao(QWidget *parent) :
     ui(new Ui::tela_pagamento_cartao)
 {
     ui->setupUi(this);
+    cartao_usado = new cartao();
 }
 
 tela_pagamento_cartao::~tela_pagamento_cartao()
@@ -41,13 +42,24 @@ void tela_pagamento_cartao::on_btn_cancelar_clicked()
 
 void tela_pagamento_cartao::on_btn_confirmar_clicked()
 {
-
+    QString parcelas;
     funcoes_extras funcao;
     valor_pago = funcao.converter_para_double(ui->le_valor->text());
     double valor_parcela = 0.0;
+    double primeira_parcela = 0.0;
+    int numero_pacelas = ui->sb_num_parcelas->text().toInt();
 
-    if((valor_pago!=0.0)&&(ui->sb_num_parcelas->text().toInt()!=0.0)){
-       valor_parcela = valor_pago/ui->sb_num_parcelas->text().toInt();
+    if((valor_pago!=0.0)){
+       valor_parcela = valor_pago/numero_pacelas;
+       valor_parcela = funcao.arredonda_para_duas_casas_decimais(valor_parcela);
+       primeira_parcela = valor_pago - valor_parcela*(numero_pacelas-1);
+    }
+
+    if (primeira_parcela!=valor_parcela){
+        parcelas = ",\nsendo a 1ª de "+funcao.retorna_valor_dinheiro(primeira_parcela)+" e "+QString::number(numero_pacelas-1)+" de "+funcao.retorna_valor_dinheiro(valor_parcela);
+    }
+    else{
+        parcelas = " de "+funcao.retorna_valor_dinheiro(valor_parcela);
     }
 
     QPixmap icone_janela(":img/img/produto_pergunta_50.png");
@@ -58,17 +70,15 @@ void tela_pagamento_cartao::on_btn_confirmar_clicked()
     msg.addButton("Sim", QMessageBox::AcceptRole);
     msg.addButton("Não", QMessageBox::RejectRole);
     msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
-    msg.setText("Deseja pagar: "+ui->le_valor->text()+" em "+ui->sb_num_parcelas->text()+" parcela(s) de "+funcao.retorna_valor_dinheiro(valor_parcela)+"\nno cartão de crédito com vencimento para o dia: "+ui->sb_dia_vencimento->text()+" ?");
+    msg.setText("Deseja pagar: "+ui->le_valor->text()+" em "+ui->sb_num_parcelas->text()+" parcela(s) "+parcelas+"\nno cartão de crédito com vencimento para o dia: "+ui->sb_dia_vencimento->text()+" ?");
     if(!msg.exec()){
-        if (valor_pago!=0.0){
-            cartao_usado = new cartao(ui->sb_dia_vencimento->text().toInt(),ui->sb_num_parcelas->text().toInt(),
-                                      valor_pago,1,0);
-        }
+        cartao_usado = new cartao(ui->sb_dia_vencimento->text().toInt(),ui->sb_num_parcelas->text().toInt(),
+                                  valor_pago,1,0);
         this->accept();
         this->close();
     }
 }
 
-double tela_pagamento_cartao::retorna_valor_pago(){
-    return valor_pago;
+cartao * tela_pagamento_cartao::retorna_cartao(){
+    return cartao_usado;
 }
