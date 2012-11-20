@@ -11,6 +11,7 @@
 #include "produto.h"
 #include "funcoes_extras.h"
 #include "lista_compra.h"
+#include "compra.h"
 
 namespace Ui {
 class tela_comprar;
@@ -34,6 +35,7 @@ private slots:
     void on_tw_lista_produtos_doubleClicked(const QModelIndex &index);
     void on_btn_remover_produto_clicked();
     void on_btn_confirmar_clicked();
+    void on_le_desconto_editingFinished();
 
 private:
     Ui::tela_comprar *ui;
@@ -46,6 +48,9 @@ private:
     tela_listar_produtos tl_listar_produtos;
     fornecedor * fornecedor_atual;
     QPixmap logomarca;
+    double total_a_pagar;
+    double valor_total;
+    compra *dados_compra;
 };
 
 #endif // TELA_COMPRAR_H

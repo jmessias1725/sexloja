@@ -19,7 +19,7 @@ void tela_definir_valor::definir_dados(float valor_ven, float cus, int quan){
     custo = cus;
     quantidade = quan;
 
-    QRegExp valida_dinheiro("^\\d{0,4}([,|.]*)(\\d{0,2})$");
+    QRegExp valida_dinheiro("^-?\\+?\\*?\\/?\\:?\\;?\\w?\\d{0,4}([,|.]*)(\\d{0,2})$");
     QRegExp valida_quantidade("^\\d{0,4}");
 
     ui->le_valor_venda->setValidator(new QRegExpValidator(valida_dinheiro, ui->le_valor_venda));

@@ -6,7 +6,7 @@ tela_cadastro_produto::tela_cadastro_produto(QWidget *parent) :
     ui(new Ui::tela_cadastro_produto)
 {
     ui->setupUi(this);
-    QRegExp valida_dinheiro("^\\d{0,4}([,|.]*)(\\d{0,2})$");
+    QRegExp valida_dinheiro("^-?\\+?\\*?\\/?\\:?\\;?\\w?\\d{0,4}([,|.]*)(\\d{0,2})$");
     ui->le_valor_venda->setValidator(new QRegExpValidator(valida_dinheiro, ui->le_valor_venda));
 }
 

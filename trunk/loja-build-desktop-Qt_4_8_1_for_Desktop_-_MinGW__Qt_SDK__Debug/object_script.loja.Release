@@ -46,6 +46,7 @@ INPUT(
 ./release\cartao.o
 ./release\cheque.o
 ./release\dinheiro.o
+./release\compra.o
 ./release\moc_tela_login.o
 ./release\moc_tela_principal.o
 ./release\moc_tela_cadastro_cliente.o

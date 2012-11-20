@@ -27,7 +27,7 @@ void tela_editar_produto::definir_dados_produto(produto *cad_produto, imagem *im
     informacoes_produto = cad_produto;
     imagem_produto = imagem_pro;
 
-    QRegExp valida_dinheiro("^\\d{0,4}([,|.]*)(\\d{0,2})$");
+    QRegExp valida_dinheiro("^-?\\+?\\*?\\/?\\:?\\;?\\w?\\d{0,4}([,|.]*)(\\d{0,2})$");
     ui->le_valor_venda->setValidator(new QRegExpValidator(valida_dinheiro, ui->le_valor_venda));
 
     QGraphicsScene *GS_imagem_produto = new QGraphicsScene;

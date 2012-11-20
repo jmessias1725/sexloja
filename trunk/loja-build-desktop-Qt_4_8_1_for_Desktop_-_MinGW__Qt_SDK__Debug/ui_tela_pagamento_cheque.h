@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_pagamento_cheque.ui'
 **
-** Created: Mon 19. Nov 17:38:21 2012
+** Created: Tue 20. Nov 14:55:36 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -52,10 +52,12 @@ public:
     {
         if (tela_pagamento_cheque->objectName().isEmpty())
             tela_pagamento_cheque->setObjectName(QString::fromUtf8("tela_pagamento_cheque"));
-        tela_pagamento_cheque->resize(428, 210);
+        tela_pagamento_cheque->resize(423, 185);
+        tela_pagamento_cheque->setMinimumSize(QSize(423, 185));
+        tela_pagamento_cheque->setMaximumSize(QSize(423, 185));
         groupBox = new QGroupBox(tela_pagamento_cheque);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setGeometry(QRect(5, 0, 418, 205));
+        groupBox->setGeometry(QRect(5, 0, 413, 181));
         QFont font;
         font.setFamily(QString::fromUtf8("Calibri"));
         font.setPointSize(10);
@@ -112,7 +114,7 @@ public:
         le_numero_cheque->setMaxLength(10);
         le_valor = new QLineEdit(groupBox);
         le_valor->setObjectName(QString::fromUtf8("le_valor"));
-        le_valor->setGeometry(QRect(313, 35, 100, 20));
+        le_valor->setGeometry(QRect(313, 35, 95, 20));
         QFont font3;
         font3.setBold(false);
         font3.setWeight(50);
@@ -120,7 +122,7 @@ public:
         le_valor->setFont(font3);
         le_nome_banco = new QLineEdit(groupBox);
         le_nome_banco->setObjectName(QString::fromUtf8("le_nome_banco"));
-        le_nome_banco->setGeometry(QRect(5, 80, 408, 20));
+        le_nome_banco->setGeometry(QRect(5, 80, 403, 20));
         le_nome_banco->setFont(font2);
         label_6 = new QLabel(groupBox);
         label_6->setObjectName(QString::fromUtf8("label_6"));
@@ -128,7 +130,7 @@ public:
         label_6->setFont(font1);
         btn_confirmar = new QPushButton(groupBox);
         btn_confirmar->setObjectName(QString::fromUtf8("btn_confirmar"));
-        btn_confirmar->setGeometry(QRect(200, 140, 90, 25));
+        btn_confirmar->setGeometry(QRect(286, 120, 120, 25));
         QFont font4;
         font4.setFamily(QString::fromUtf8("Arial"));
         font4.setPointSize(8);
@@ -142,7 +144,7 @@ public:
         btn_confirmar->setIconSize(QSize(20, 20));
         btn_cancelar = new QPushButton(groupBox);
         btn_cancelar->setObjectName(QString::fromUtf8("btn_cancelar"));
-        btn_cancelar->setGeometry(QRect(295, 140, 90, 25));
+        btn_cancelar->setGeometry(QRect(286, 150, 120, 25));
         btn_cancelar->setFont(font4);
         btn_cancelar->setStyleSheet(QString::fromUtf8("background-color: none;"));
         QIcon icon1;
@@ -151,7 +153,7 @@ public:
         btn_cancelar->setIconSize(QSize(18, 18));
         gb_para = new QGroupBox(groupBox);
         gb_para->setObjectName(QString::fromUtf8("gb_para"));
-        gb_para->setGeometry(QRect(5, 130, 162, 70));
+        gb_para->setGeometry(QRect(5, 130, 274, 45));
         gb_para->setFont(font2);
         gb_para->setFlat(false);
         gb_para->setCheckable(true);
@@ -159,7 +161,7 @@ public:
         cb_inserir_caixa_hoje = new QCheckBox(gb_para);
         cb_inserir_caixa_hoje->setObjectName(QString::fromUtf8("cb_inserir_caixa_hoje"));
         cb_inserir_caixa_hoje->setEnabled(true);
-        cb_inserir_caixa_hoje->setGeometry(QRect(5, 45, 157, 20));
+        cb_inserir_caixa_hoje->setGeometry(QRect(112, 20, 157, 20));
         cb_inserir_caixa_hoje->setFont(font2);
         data = new QDateEdit(gb_para);
         data->setObjectName(QString::fromUtf8("data"));
@@ -179,6 +181,17 @@ public:
         cb_a_vista->setObjectName(QString::fromUtf8("cb_a_vista"));
         cb_a_vista->setGeometry(QRect(13, 105, 60, 20));
         cb_a_vista->setFont(font2);
+        QWidget::setTabOrder(le_codigo_banco, le_agencia);
+        QWidget::setTabOrder(le_agencia, le_conta);
+        QWidget::setTabOrder(le_conta, le_numero_cheque);
+        QWidget::setTabOrder(le_numero_cheque, le_valor);
+        QWidget::setTabOrder(le_valor, le_nome_banco);
+        QWidget::setTabOrder(le_nome_banco, cb_a_vista);
+        QWidget::setTabOrder(cb_a_vista, gb_para);
+        QWidget::setTabOrder(gb_para, data);
+        QWidget::setTabOrder(data, cb_inserir_caixa_hoje);
+        QWidget::setTabOrder(cb_inserir_caixa_hoje, btn_confirmar);
+        QWidget::setTabOrder(btn_confirmar, btn_cancelar);
 
         retranslateUi(tela_pagamento_cheque);
 
@@ -187,7 +200,7 @@ public:
 
     void retranslateUi(QDialog *tela_pagamento_cheque)
     {
-        tela_pagamento_cheque->setWindowTitle(QApplication::translate("tela_pagamento_cheque", "Dialog", 0, QApplication::UnicodeUTF8));
+        tela_pagamento_cheque->setWindowTitle(QApplication::translate("tela_pagamento_cheque", "Pagamento", 0, QApplication::UnicodeUTF8));
         groupBox->setTitle(QApplication::translate("tela_pagamento_cheque", "Dados do Cheque", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("tela_pagamento_cheque", "Banco", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("tela_pagamento_cheque", "Ag\303\252ncia", 0, QApplication::UnicodeUTF8));

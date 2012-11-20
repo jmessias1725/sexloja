@@ -6,6 +6,8 @@ tela_comprar::tela_comprar(QWidget *parent) :
     ui(new Ui::tela_comprar)
 {
     ui->setupUi(this);
+    QRegExp valida_dinheiro("^-?\\+?\\*?\\/?\\:?\\;?\\w?\\d{0,4}([,|.]*)(\\d{0,2})$");
+    ui->le_desconto->setValidator(new QRegExpValidator(valida_dinheiro, ui->le_desconto));
 }
 
 tela_comprar::~tela_comprar()
@@ -14,10 +16,13 @@ tela_comprar::~tela_comprar()
 }
 
 void tela_comprar::definir_icone_janela(QPixmap logo){
+    funcoes_extras funcao;
     logomarca = logo;
     this->setWindowIcon(logomarca);
     ui->data->setDate(QDate::currentDate());
+    ui->le_desconto->setText(funcao.retorna_valor_dinheiro(0));
     tela_comprar::mostrar_lista_produtos();
+
 }
 
 void tela_comprar::on_btn_buscar_fornecedor_clicked()
@@ -56,7 +61,7 @@ void tela_comprar::on_btn_adicionar_produto_clicked()
 
 void tela_comprar::mostrar_lista_produtos(void){
     double aux_valor_total_por_produto = 0.0;
-    double valor_total = 0.0;
+    valor_total = 0.0;
     funcoes_extras funcao;
 
     ui->tw_lista_produtos->setRowCount(int(lista_produtos.size()));
@@ -95,6 +100,8 @@ void tela_comprar::mostrar_lista_produtos(void){
     ui->tw_lista_produtos->resizeColumnToContents(4);
 
     ui->le_total->setText(funcao.retorna_valor_dinheiro(valor_total));
+    total_a_pagar = valor_total - funcao.converter_para_double(ui->le_desconto->text());
+    ui->le_total_a_pagar->setText(funcao.retorna_valor_dinheiro(total_a_pagar));
 }
 
 void tela_comprar::closeEvent(QCloseEvent *event){
@@ -148,7 +155,45 @@ void tela_comprar::on_btn_remover_produto_clicked()
 
 void tela_comprar::on_btn_confirmar_clicked()
 {
-    tl_pagamento.definir_icone_janela(logomarca);
-    tl_pagamento.definir_dados(ui->le_total->text());
-    tl_pagamento.exec();
+    funcoes_extras funcao;
+    if(ui->le_codigo->text().toStdString()==""){
+        //Gera mensagem perguntando se é para salvar alterações.
+        QPixmap icone_janela(":img/img/perguntar.png");
+        QMessageBox msg(0);
+        msg.setIconPixmap(icone_janela);
+        msg.setWindowIcon(logomarca);
+        msg.setWindowTitle("Efetuar a compra");
+        msg.addButton("Sim", QMessageBox::AcceptRole);
+        msg.addButton("Não", QMessageBox::RejectRole);
+        msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+        msg.setText("\nDeseja efetuar a compra sem inserir os dados do fornecedor ?");
+        if(!msg.exec()){
+            dados_compra = new compra(ui->data->date().currentDate().toString(Qt::SystemLocaleShortDate),
+                                      ui->le_codigo->text().toInt(),ui->le_numero_cupom_nota->text().toInt(),
+                                      funcao.converter_para_double(ui->le_total_a_pagar->text()),
+                                      funcao.converter_para_double(ui->le_desconto->text()));
+            tl_pagamento.definir_icone_janela(logomarca);
+            tl_pagamento.definir_dados(dados_compra);
+            tl_pagamento.exec();
+        }
+    }
+    else{
+        dados_compra = new compra(ui->data->date().currentDate().toString(Qt::SystemLocaleShortDate),
+                                  ui->le_codigo->text().toInt(),ui->le_numero_cupom_nota->text().toInt(),
+                                  funcao.converter_para_double(ui->le_total_a_pagar->text()),
+                                  funcao.converter_para_double(ui->le_desconto->text()));
+        tl_pagamento.definir_icone_janela(logomarca);
+        tl_pagamento.definir_dados(dados_compra);
+        tl_pagamento.exec();
+    }
+}
+
+void tela_comprar::on_le_desconto_editingFinished()
+{
+    funcoes_extras funcao;
+    QString aux;
+    aux =  funcao.retorna_valor_dinheiro(funcao.converter_para_double(ui->le_desconto->text()));
+    ui->le_desconto->setText(aux);
+    total_a_pagar = valor_total - funcao.converter_para_double(ui->le_desconto->text());
+    ui->le_total_a_pagar->setText(funcao.retorna_valor_dinheiro(total_a_pagar));
 }
