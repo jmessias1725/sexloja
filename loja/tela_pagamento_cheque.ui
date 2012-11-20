@@ -6,20 +6,32 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>428</width>
-    <height>210</height>
+    <width>423</width>
+    <height>185</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>423</width>
+    <height>185</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>423</width>
+    <height>185</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Pagamento</string>
   </property>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
      <x>5</x>
      <y>0</y>
-     <width>418</width>
-     <height>205</height>
+     <width>413</width>
+     <height>181</height>
     </rect>
    </property>
    <property name="font">
@@ -232,7 +244,7 @@
      <rect>
       <x>313</x>
       <y>35</y>
-      <width>100</width>
+      <width>95</width>
       <height>20</height>
      </rect>
     </property>
@@ -252,7 +264,7 @@
      <rect>
       <x>5</x>
       <y>80</y>
-      <width>408</width>
+      <width>403</width>
       <height>20</height>
      </rect>
     </property>
@@ -287,9 +299,9 @@
    <widget class="QPushButton" name="btn_confirmar">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>140</y>
-      <width>90</width>
+      <x>286</x>
+      <y>120</y>
+      <width>120</width>
       <height>25</height>
      </rect>
     </property>
@@ -321,9 +333,9 @@
    <widget class="QPushButton" name="btn_cancelar">
     <property name="geometry">
      <rect>
-      <x>295</x>
-      <y>140</y>
-      <width>90</width>
+      <x>286</x>
+      <y>150</y>
+      <width>120</width>
       <height>25</height>
      </rect>
     </property>
@@ -357,8 +369,8 @@
      <rect>
       <x>5</x>
       <y>130</y>
-      <width>162</width>
-      <height>70</height>
+      <width>274</width>
+      <height>45</height>
      </rect>
     </property>
     <property name="font">
@@ -385,8 +397,8 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>5</x>
-       <y>45</y>
+       <x>112</x>
+       <y>20</y>
        <width>157</width>
        <height>20</height>
       </rect>
@@ -483,6 +495,20 @@
    </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>le_codigo_banco</tabstop>
+  <tabstop>le_agencia</tabstop>
+  <tabstop>le_conta</tabstop>
+  <tabstop>le_numero_cheque</tabstop>
+  <tabstop>le_valor</tabstop>
+  <tabstop>le_nome_banco</tabstop>
+  <tabstop>cb_a_vista</tabstop>
+  <tabstop>gb_para</tabstop>
+  <tabstop>data</tabstop>
+  <tabstop>cb_inserir_caixa_hoje</tabstop>
+  <tabstop>btn_confirmar</tabstop>
+  <tabstop>btn_cancelar</tabstop>
+ </tabstops>
  <resources>
   <include location="imagens.qrc"/>
  </resources>

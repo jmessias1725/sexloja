@@ -54,12 +54,6 @@ bool valor_produto::alterar_valor_produto(int quantidade_produto,float valor_com
         quantidade = quantidade_produto;
         valor_compra = valor_com;
         valor_venda = valor_ven;
-        std::cout<<quantidade<<std::endl;
-        std::cout<<quantidade_produto<<std::endl;
-        std::cout<<valor_compra<<std::endl;
-        std::cout<<valor_com<<std::endl;
-        std::cout<<valor_venda<<std::endl;
-        std::cout<<valor_ven<<std::endl;
         return true;
     }
     return false;

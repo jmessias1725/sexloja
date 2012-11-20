@@ -57,7 +57,8 @@ SOURCES += main.cpp\
     lista_compra.cpp \
     cartao.cpp \
     cheque.cpp \
-    dinheiro.cpp
+    dinheiro.cpp \
+    compra.cpp
 
 HEADERS  += \
     conexao_bd.h \
@@ -105,7 +106,8 @@ HEADERS  += \
     lista_compra.h \
     cartao.h \
     cheque.h \
-    dinheiro.h
+    dinheiro.h \
+    compra.h
 
 FORMS    += \
     tela_login.ui \

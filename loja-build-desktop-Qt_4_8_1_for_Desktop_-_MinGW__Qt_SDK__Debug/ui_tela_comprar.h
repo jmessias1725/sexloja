@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_comprar.ui'
 **
-** Created: Mon 19. Nov 15:48:53 2012
+** Created: Tue 20. Nov 10:13:20 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -47,24 +47,28 @@ public:
     QToolButton *btn_buscar_fornecedor;
     QTableWidget *tw_lista_produtos;
     QLabel *lb_lista_de_produtos;
-    QPushButton *btn_cancelar;
-    QPushButton *btn_confirmar;
     QFrame *frame;
     QLineEdit *le_total;
     QLabel *lb_total;
+    QLineEdit *le_desconto;
+    QLabel *lb_total_2;
+    QLabel *lb_total_3;
+    QLineEdit *le_total_a_pagar;
     QFrame *menu_produtos;
     QToolButton *btn_adicionar_produto;
     QToolButton *btn_remover_produto;
     QFrame *frame_3;
+    QPushButton *btn_cancelar;
+    QPushButton *btn_confirmar;
 
     void setupUi(QDialog *tela_comprar)
     {
         if (tela_comprar->objectName().isEmpty())
             tela_comprar->setObjectName(QString::fromUtf8("tela_comprar"));
         tela_comprar->setWindowModality(Qt::ApplicationModal);
-        tela_comprar->resize(800, 615);
-        tela_comprar->setMinimumSize(QSize(800, 615));
-        tela_comprar->setMaximumSize(QSize(800, 615));
+        tela_comprar->resize(800, 670);
+        tela_comprar->setMinimumSize(QSize(800, 630));
+        tela_comprar->setMaximumSize(QSize(800, 670));
         tela_comprar->setModal(true);
         gb_dados_compra = new QGroupBox(tela_comprar);
         gb_dados_compra->setObjectName(QString::fromUtf8("gb_dados_compra"));
@@ -217,32 +221,9 @@ public:
 "}\n"
 ""));
         lb_lista_de_produtos->setAlignment(Qt::AlignCenter);
-        btn_cancelar = new QPushButton(tela_comprar);
-        btn_cancelar->setObjectName(QString::fromUtf8("btn_cancelar"));
-        btn_cancelar->setGeometry(QRect(405, 585, 90, 25));
-        btn_cancelar->setMinimumSize(QSize(0, 25));
-        btn_cancelar->setMaximumSize(QSize(90, 25));
-        QFont font6;
-        font6.setFamily(QString::fromUtf8("Calibri"));
-        font6.setPointSize(10);
-        btn_cancelar->setFont(font6);
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/img/img/1345902747_button_cancel.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_cancelar->setIcon(icon1);
-        btn_cancelar->setIconSize(QSize(18, 18));
-        btn_confirmar = new QPushButton(tela_comprar);
-        btn_confirmar->setObjectName(QString::fromUtf8("btn_confirmar"));
-        btn_confirmar->setGeometry(QRect(305, 585, 90, 25));
-        btn_confirmar->setMinimumSize(QSize(0, 25));
-        btn_confirmar->setMaximumSize(QSize(90, 25));
-        btn_confirmar->setFont(font6);
-        QIcon icon2;
-        icon2.addFile(QString::fromUtf8(":/img/img/1345902916_camera_test.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_confirmar->setIcon(icon2);
-        btn_confirmar->setIconSize(QSize(20, 20));
         frame = new QFrame(tela_comprar);
         frame->setObjectName(QString::fromUtf8("frame"));
-        frame->setGeometry(QRect(5, 545, 790, 35));
+        frame->setGeometry(QRect(5, 545, 790, 90));
         frame->setStyleSheet(QString::fromUtf8("QFrame{\n"
 "	background-color: #505050;\n"
 "	border: none;\n"
@@ -251,26 +232,55 @@ public:
         frame->setFrameShadow(QFrame::Raised);
         le_total = new QLineEdit(frame);
         le_total->setObjectName(QString::fromUtf8("le_total"));
-        le_total->setGeometry(QRect(579, 2, 191, 30));
-        QFont font7;
-        font7.setFamily(QString::fromUtf8("Calibri"));
-        font7.setPointSize(15);
-        font7.setBold(false);
-        font7.setWeight(50);
-        le_total->setFont(font7);
-        le_total->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
+        le_total->setGeometry(QRect(579, 2, 191, 25));
+        QFont font6;
+        font6.setFamily(QString::fromUtf8("Calibri"));
+        font6.setPointSize(12);
+        font6.setBold(false);
+        font6.setWeight(50);
+        le_total->setFont(font6);
+        le_total->setStyleSheet(QString::fromUtf8(""));
         le_total->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         le_total->setReadOnly(true);
         lb_total = new QLabel(frame);
         lb_total->setObjectName(QString::fromUtf8("lb_total"));
-        lb_total->setGeometry(QRect(520, 2, 61, 30));
+        lb_total->setGeometry(QRect(537, 2, 40, 25));
+        lb_total->setFont(font);
+        lb_total->setStyleSheet(QString::fromUtf8("color: rgb(217, 217, 217);"));
+        le_desconto = new QLineEdit(frame);
+        le_desconto->setObjectName(QString::fromUtf8("le_desconto"));
+        le_desconto->setGeometry(QRect(579, 30, 191, 25));
+        le_desconto->setFont(font6);
+        le_desconto->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 255);"));
+        le_desconto->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        le_desconto->setReadOnly(false);
+        lb_total_2 = new QLabel(frame);
+        lb_total_2->setObjectName(QString::fromUtf8("lb_total_2"));
+        lb_total_2->setGeometry(QRect(508, 30, 69, 25));
+        lb_total_2->setFont(font);
+        lb_total_2->setStyleSheet(QString::fromUtf8("color: rgb(217, 217, 217);"));
+        lb_total_3 = new QLabel(frame);
+        lb_total_3->setObjectName(QString::fromUtf8("lb_total_3"));
+        lb_total_3->setGeometry(QRect(456, 58, 123, 25));
+        QFont font7;
+        font7.setFamily(QString::fromUtf8("Calibri"));
+        font7.setPointSize(13);
+        font7.setBold(true);
+        font7.setWeight(75);
+        lb_total_3->setFont(font7);
+        lb_total_3->setStyleSheet(QString::fromUtf8("color: rgb(217, 217, 217);"));
+        le_total_a_pagar = new QLineEdit(frame);
+        le_total_a_pagar->setObjectName(QString::fromUtf8("le_total_a_pagar"));
+        le_total_a_pagar->setGeometry(QRect(580, 58, 191, 25));
         QFont font8;
         font8.setFamily(QString::fromUtf8("Calibri"));
         font8.setPointSize(15);
-        font8.setBold(true);
-        font8.setWeight(75);
-        lb_total->setFont(font8);
-        lb_total->setStyleSheet(QString::fromUtf8("color: rgb(217, 217, 217);"));
+        font8.setBold(false);
+        font8.setWeight(50);
+        le_total_a_pagar->setFont(font8);
+        le_total_a_pagar->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
+        le_total_a_pagar->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        le_total_a_pagar->setReadOnly(true);
         menu_produtos = new QFrame(tela_comprar);
         menu_produtos->setObjectName(QString::fromUtf8("menu_produtos"));
         menu_produtos->setGeometry(QRect(5, 165, 20, 380));
@@ -288,17 +298,17 @@ public:
         btn_adicionar_produto = new QToolButton(menu_produtos);
         btn_adicionar_produto->setObjectName(QString::fromUtf8("btn_adicionar_produto"));
         btn_adicionar_produto->setGeometry(QRect(0, 0, 20, 20));
-        QIcon icon3;
-        icon3.addFile(QString::fromUtf8(":/img/img/mais.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_adicionar_produto->setIcon(icon3);
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/img/img/mais.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_adicionar_produto->setIcon(icon1);
         btn_adicionar_produto->setIconSize(QSize(16, 16));
         btn_adicionar_produto->setAutoRaise(true);
         btn_remover_produto = new QToolButton(menu_produtos);
         btn_remover_produto->setObjectName(QString::fromUtf8("btn_remover_produto"));
         btn_remover_produto->setGeometry(QRect(0, 20, 20, 20));
-        QIcon icon4;
-        icon4.addFile(QString::fromUtf8(":/img/img/menos.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_remover_produto->setIcon(icon4);
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/img/img/menos.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_remover_produto->setIcon(icon2);
         btn_remover_produto->setIconSize(QSize(16, 16));
         btn_remover_produto->setAutoRaise(true);
         frame_3 = new QFrame(tela_comprar);
@@ -312,6 +322,29 @@ public:
 ""));
         frame_3->setFrameShape(QFrame::StyledPanel);
         frame_3->setFrameShadow(QFrame::Raised);
+        btn_cancelar = new QPushButton(tela_comprar);
+        btn_cancelar->setObjectName(QString::fromUtf8("btn_cancelar"));
+        btn_cancelar->setGeometry(QRect(405, 640, 90, 25));
+        btn_cancelar->setMinimumSize(QSize(0, 25));
+        btn_cancelar->setMaximumSize(QSize(90, 25));
+        QFont font9;
+        font9.setFamily(QString::fromUtf8("Calibri"));
+        font9.setPointSize(10);
+        btn_cancelar->setFont(font9);
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/img/img/1345902747_button_cancel.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_cancelar->setIcon(icon3);
+        btn_cancelar->setIconSize(QSize(18, 18));
+        btn_confirmar = new QPushButton(tela_comprar);
+        btn_confirmar->setObjectName(QString::fromUtf8("btn_confirmar"));
+        btn_confirmar->setGeometry(QRect(305, 640, 90, 25));
+        btn_confirmar->setMinimumSize(QSize(0, 25));
+        btn_confirmar->setMaximumSize(QSize(90, 25));
+        btn_confirmar->setFont(font9);
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/img/img/1345902916_camera_test.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_confirmar->setIcon(icon4);
+        btn_confirmar->setIconSize(QSize(20, 20));
 
         retranslateUi(tela_comprar);
 
@@ -340,12 +373,17 @@ public:
         le_cnpj->setText(QApplication::translate("tela_comprar", "../-", 0, QApplication::UnicodeUTF8));
         btn_buscar_fornecedor->setText(QApplication::translate("tela_comprar", "Buscar", 0, QApplication::UnicodeUTF8));
         lb_lista_de_produtos->setText(QApplication::translate("tela_comprar", "Lista de Produtos", 0, QApplication::UnicodeUTF8));
-        btn_cancelar->setText(QApplication::translate("tela_comprar", "Cancelar", 0, QApplication::UnicodeUTF8));
-        btn_confirmar->setText(QApplication::translate("tela_comprar", "Confirmar", 0, QApplication::UnicodeUTF8));
         le_total->setText(QString());
         lb_total->setText(QApplication::translate("tela_comprar", "TOTAL:", 0, QApplication::UnicodeUTF8));
+        le_desconto->setInputMask(QString());
+        le_desconto->setText(QString());
+        lb_total_2->setText(QApplication::translate("tela_comprar", "DESCONTO:", 0, QApplication::UnicodeUTF8));
+        lb_total_3->setText(QApplication::translate("tela_comprar", "TOTAL A PAGAR:", 0, QApplication::UnicodeUTF8));
+        le_total_a_pagar->setText(QString());
         btn_adicionar_produto->setText(QApplication::translate("tela_comprar", "...", 0, QApplication::UnicodeUTF8));
         btn_remover_produto->setText(QApplication::translate("tela_comprar", "...", 0, QApplication::UnicodeUTF8));
+        btn_cancelar->setText(QApplication::translate("tela_comprar", "Cancelar", 0, QApplication::UnicodeUTF8));
+        btn_confirmar->setText(QApplication::translate("tela_comprar", "Confirmar", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

@@ -21,7 +21,7 @@ void tela_pagamento_cartao::definir_icone_janela(QPixmap logo){
 
 void tela_pagamento_cartao::definir_dados(double valor){
     funcoes_extras funcao;
-    QRegExp valida_dinheiro("^\\d{0,4}([,|.]*)(\\d{0,2})$");
+    QRegExp valida_dinheiro("^-?\\+?\\*?\\/?\\:?\\;?\\w?\\d{0,4}([,|.]*)(\\d{0,2})$");
     ui->le_valor->setValidator(new QRegExpValidator(valida_dinheiro, ui->le_valor));
     ui->le_valor->setText(funcao.retorna_valor_dinheiro(valor));
 }

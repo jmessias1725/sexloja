@@ -46,6 +46,7 @@ INPUT(
 ./debug\cartao.o
 ./debug\cheque.o
 ./debug\dinheiro.o
+./debug\compra.o
 ./debug\moc_tela_login.o
 ./debug\moc_tela_principal.o
 ./debug\moc_tela_cadastro_cliente.o

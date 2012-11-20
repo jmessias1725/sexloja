@@ -23,7 +23,7 @@ void tela_pagamento_cheque::definir_icone_janela(QPixmap logo){
 
 void tela_pagamento_cheque::definir_dados(double valor){
     funcoes_extras funcao;
-    QRegExp valida_dinheiro("^\\d{0,4}([,|.]*)(\\d{0,2})$");
+    QRegExp valida_dinheiro("^-?\\+?\\*?\\/?\\:?\\;?\\w?\\d{0,4}([,|.]*)(\\d{0,2})$");
     ui->le_valor->setValidator(new QRegExpValidator(valida_dinheiro, ui->le_valor));
     ui->le_valor->setText(funcao.retorna_valor_dinheiro(valor));
 }
@@ -48,7 +48,7 @@ void tela_pagamento_cheque::on_btn_confirmar_clicked()
     valor_pago = funcao.converter_para_double(ui->le_valor->text());
     cheque_usado = new cheque(ui->le_nome_banco->text(),ui->le_agencia->text(),ui->le_conta->text(),
                               ui->le_numero_cheque->text().toInt(),valor_pago,1,0,ui->le_codigo_banco->text(),
-                              ui->data->date().currentDate().toString());
+                              ui->data->date().currentDate().toString(Qt::SystemLocaleShortDate));
     this->accept();
     this->close();
 }

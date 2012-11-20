@@ -18,22 +18,22 @@ void tela_pagamento::definir_icone_janela(QPixmap logo){
     this->setWindowIcon(logomarca);
 }
 
-void tela_pagamento::definir_dados(QString valor){
+void tela_pagamento::definir_dados(compra* comp){
     funcoes_extras funcao;
+    dados_compra = comp;
 
     valor_em_dinheiro = 0.0;
     valor_em_cartao = 0.0;
     valor_em_cheque = 0.0;
     total_pago = 0.0;
     troco = 0.0;
-    total_pagar = funcao.converter_para_double(valor);
-
+    total_pagar = dados_compra->retorna_valor_total();
 
     ui->le_dinheiro->setText(funcao.retorna_valor_dinheiro(valor_em_dinheiro));
     ui->le_cartao->setText(funcao.retorna_valor_dinheiro(valor_em_cartao));
     ui->le_cheque->setText(funcao.retorna_valor_dinheiro(valor_em_cheque));
 
-    ui->le_total_pagar->setText(valor);
+    ui->le_total_pagar->setText(funcao.retorna_valor_dinheiro(total_pagar));
     ui->le_total_pago->setText(funcao.retorna_valor_dinheiro(0));
     ui->le_troco->setText(funcao.retorna_valor_dinheiro(0));
 }
@@ -98,7 +98,6 @@ void tela_pagamento::on_btn_cheque_clicked()
     if(tl_pagamento_cheque.exec()){
         cheque_usado = tl_pagamento_cheque.retorna_cheque();
         valor_em_cheque = cheque_usado->retorna_valor();
-        std::cout<<cheque_usado->retorna_data_pagamento().toStdString()<<std::endl;
         valor_em_dinheiro = funcao.converter_para_double(ui->le_dinheiro->text());
         valor_em_cartao = funcao.converter_para_double(ui->le_cartao->text());
         total_pago = valor_em_dinheiro+valor_em_cartao+valor_em_cheque;
@@ -108,4 +107,15 @@ void tela_pagamento::on_btn_cheque_clicked()
         ui->le_total_pago->setText(funcao.retorna_valor_dinheiro(total_pago));
         ui->le_cheque->setText(funcao.retorna_valor_dinheiro(valor_em_cheque));
     }
+}
+
+void tela_pagamento::on_btn_confirmar_clicked()
+{
+
+}
+
+void tela_pagamento::on_btn_cancelar_clicked()
+{
+    this->reject();
+    this->close();
 }
