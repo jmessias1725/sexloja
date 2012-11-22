@@ -49,10 +49,6 @@ void tela_comprar::on_btn_adicionar_produto_clicked()
         for(int i=0;i<int(aux_lista_produtos.size());i++){
             lista_produtos.push_back(new produto());
             lista_produtos[(lista_produtos.size()-1)] = aux_lista_produtos[i];
-            lt_compra.push_back(new lista_compra(lista_produtos[i]->retorna_id(),0,0,
-                                                 lista_produtos[i]->retorna_quantidade_disponivel(),
-                                                 lista_produtos[i]->retorna_custo_medio(),
-                                                 lista_produtos[i]->retorna_valor_venda()));
         }
         tela_comprar::mostrar_lista_produtos();
         aux_lista_produtos.clear();
@@ -155,6 +151,7 @@ void tela_comprar::on_btn_remover_produto_clicked()
 
 void tela_comprar::on_btn_confirmar_clicked()
 {
+    lt_compra.clear();
     funcoes_extras funcao;
     if(ui->le_codigo->text().toStdString()==""){
         //Gera mensagem perguntando se é para salvar alterações.
@@ -172,9 +169,19 @@ void tela_comprar::on_btn_confirmar_clicked()
                                       ui->le_codigo->text().toInt(),ui->le_numero_cupom_nota->text().toInt(),
                                       funcao.converter_para_double(ui->le_total_a_pagar->text()),
                                       funcao.converter_para_double(ui->le_desconto->text()));
+
+            for(int i=0;i<int(lista_produtos.size());i++){
+                lt_compra.push_back(new lista_compra(lista_produtos[i]->retorna_id(),0,0,
+                                                     lista_produtos[i]->retorna_quantidade_disponivel(),
+                                                     lista_produtos[i]->retorna_custo_medio(),
+                                                     lista_produtos[i]->retorna_valor_venda()));
+            }
+
             tl_pagamento.definir_icone_janela(logomarca);
             tl_pagamento.definir_dados(dados_compra,lt_compra);
-            tl_pagamento.exec();
+            if(tl_pagamento.exec()){
+                this->close();
+            }
         }
     }
     else{
@@ -182,9 +189,19 @@ void tela_comprar::on_btn_confirmar_clicked()
                                   ui->le_codigo->text().toInt(),ui->le_numero_cupom_nota->text().toInt(),
                                   funcao.converter_para_double(ui->le_total_a_pagar->text()),
                                   funcao.converter_para_double(ui->le_desconto->text()));
+
+        for(int i=0;i<int(lista_produtos.size());i++){
+            lt_compra.push_back(new lista_compra(lista_produtos[i]->retorna_id(),0,0,
+                                                 lista_produtos[i]->retorna_quantidade_disponivel(),
+                                                 lista_produtos[i]->retorna_custo_medio(),
+                                                 lista_produtos[i]->retorna_valor_venda()));
+        }
+
         tl_pagamento.definir_icone_janela(logomarca);
         tl_pagamento.definir_dados(dados_compra,lt_compra);
-        tl_pagamento.exec();
+        if(tl_pagamento.exec()){
+            this->close();
+        }
     }
 }
 
