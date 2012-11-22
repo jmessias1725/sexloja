@@ -44,3 +44,7 @@ double compra::retorna_valor_total(void){
 double compra::retorna_desconto(void){
     return desconto;
 }
+
+void compra::alterar_id_compra(int id_com){
+    id_compra = id_com;
+}

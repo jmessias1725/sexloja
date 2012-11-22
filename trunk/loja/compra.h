@@ -22,6 +22,7 @@ public:
     int retorna_num_cupom_nota(void);
     double retorna_valor_total(void);
     double retorna_desconto(void);
+    void alterar_id_compra(int id_com);
 };
 
 #endif // COMPRA_H
