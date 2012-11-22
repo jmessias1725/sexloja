@@ -173,7 +173,7 @@ void tela_comprar::on_btn_confirmar_clicked()
                                       funcao.converter_para_double(ui->le_total_a_pagar->text()),
                                       funcao.converter_para_double(ui->le_desconto->text()));
             tl_pagamento.definir_icone_janela(logomarca);
-            tl_pagamento.definir_dados(dados_compra);
+            tl_pagamento.definir_dados(dados_compra,lt_compra);
             tl_pagamento.exec();
         }
     }
@@ -183,7 +183,7 @@ void tela_comprar::on_btn_confirmar_clicked()
                                   funcao.converter_para_double(ui->le_total_a_pagar->text()),
                                   funcao.converter_para_double(ui->le_desconto->text()));
         tl_pagamento.definir_icone_janela(logomarca);
-        tl_pagamento.definir_dados(dados_compra);
+        tl_pagamento.definir_dados(dados_compra,lt_compra);
         tl_pagamento.exec();
     }
 }

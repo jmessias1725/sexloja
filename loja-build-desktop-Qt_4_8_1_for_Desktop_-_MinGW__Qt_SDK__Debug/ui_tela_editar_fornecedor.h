@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_editar_fornecedor.ui'
 **
-** Created: Mon 19. Nov 15:48:53 2012
+** Created: Tue 20. Nov 19:30:11 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

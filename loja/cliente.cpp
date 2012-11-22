@@ -228,7 +228,6 @@ bool cliente::salvar_alteracao_dados_cliente(std::vector< std::string > lista_te
 
         //Alterar os dados no cadastro do cliente
         alterar_dados_cliente.prepare("UPDATE cliente SET nome = :nome, rg = :rg, cpf = :cpf, comentario = :comentario, cep = :numero_cep, rua = :nome_rua, bairro = :nome_bairro, ponto_referencia = :ponto_referencia, cidade = :nome_cidade, uf = :sigla_estado, numero = :numero_residencia, estado = :nome_estado WHERE id_cliente = '"+QString::number(id)+"';");
-
         alterar_dados_cliente.bindValue(":nome",nome);
         alterar_dados_cliente.bindValue(":rg",rg);
         alterar_dados_cliente.bindValue(":cpf",cpf);

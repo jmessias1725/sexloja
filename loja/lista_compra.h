@@ -24,6 +24,7 @@ public:
     int retorna_quantidade(void);
     double retorna_valor_compra(void);
     double retorna_valor_venda(void);
+    void alterar_id_balanco(int id_bal);
 };
 
 #endif // LISTA_COMPRA_H

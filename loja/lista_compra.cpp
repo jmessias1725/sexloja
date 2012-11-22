@@ -46,3 +46,7 @@ double lista_compra::retorna_valor_compra(void){
 double lista_compra::retorna_valor_venda(void){
     return valor_venda;
 }
+
+void lista_compra::alterar_id_balanco(int id_bal){
+    id_balanco = id_bal;
+}
