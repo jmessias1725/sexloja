@@ -13,7 +13,7 @@ tela_definir_valor::~tela_definir_valor()
     delete ui;
 }
 
-void tela_definir_valor::definir_dados(float valor_ven, float cus, int quan){
+void tela_definir_valor::definir_dados(double valor_ven, double cus, int quan){
     funcoes_extras funcao;
     valor_venda = valor_ven;
     custo = cus;
@@ -44,11 +44,11 @@ int tela_definir_valor::retorna_quantidade(void){
     return quantidade;
 }
 
-float tela_definir_valor::retorna_valor_venda(void){
+double tela_definir_valor::retorna_valor_venda(void){
     return valor_venda;
 }
 
-float tela_definir_valor::retorna_custo(void){
+double tela_definir_valor::retorna_custo(void){
     return custo;
 }
 
