@@ -54,6 +54,7 @@ void tela_listar_fornecedores::on_le_telefone_editingFinished()
 
 void tela_listar_fornecedores::on_btn_cancelar_clicked()
 {
+    this->reject();
     this->close();
 }
 
@@ -303,6 +304,7 @@ void tela_listar_fornecedores::closeEvent(QCloseEvent *event){
     ui->le_cnpj->clear();
     ui->le_razao_social->clear();
     ui->le_telefone->clear();
+    this->reject();
 }
 
 void tela_listar_fornecedores::alterar_editar(bool edit){
