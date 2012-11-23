@@ -8,6 +8,8 @@ tela_comprar::tela_comprar(QWidget *parent) :
     ui->setupUi(this);
     QRegExp valida_dinheiro("^-?\\+?\\*?\\/?\\:?\\;?\\w?\\d{0,4}([,|.]*)(\\d{0,2})$");
     ui->le_desconto->setValidator(new QRegExpValidator(valida_dinheiro, ui->le_desconto));
+    fornecedor_atual = new fornecedor();
+    fornecedor_atual->altera_id_fornecedor(0);
 }
 
 tela_comprar::~tela_comprar()
