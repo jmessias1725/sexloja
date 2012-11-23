@@ -7,6 +7,7 @@ tela_pagamento_cheque::tela_pagamento_cheque(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->gb_para->setChecked(false);
+    ui->cb_a_vista->setChecked(true);
     cheque_usado = new cheque();
 }
 
@@ -48,7 +49,7 @@ void tela_pagamento_cheque::on_btn_confirmar_clicked()
     valor_pago = funcao.converter_para_double(ui->le_valor->text());
     cheque_usado = new cheque(ui->le_nome_banco->text(),ui->le_agencia->text(),ui->le_conta->text(),
                               ui->le_numero_cheque->text().toInt(),valor_pago,1,0,ui->le_codigo_banco->text(),
-                              ui->data->date().currentDate().toString(Qt::SystemLocaleShortDate));
+                              ui->data->date().toString(Qt::SystemLocaleShortDate));
     this->accept();
     this->close();
 }
@@ -59,12 +60,25 @@ cheque *tela_pagamento_cheque::retorna_cheque(){
 
 void tela_pagamento_cheque::on_cb_a_vista_clicked()
 {
-    ui->gb_para->setChecked(false);
+    if(ui->cb_a_vista->isChecked()){
+        ui->gb_para->setChecked(false);
+        cheque_usado->inserir_no_caixa_de_hoje(true);
+        ui->data->setDate(QDate::currentDate());
+    }
+    else{
+        ui->gb_para->setChecked(true);
+        cheque_usado->inserir_no_caixa_de_hoje(false);
+    }
 }
 
 void tela_pagamento_cheque::on_gb_para_clicked()
 {
-    ui->cb_a_vista->setChecked(false);
+    if(ui->gb_para->isChecked()){
+        ui->cb_a_vista->setChecked(false);
+    }
+    else{
+        ui->cb_a_vista->setChecked(true);
+    }
 }
 
 void tela_pagamento_cheque::on_le_codigo_banco_editingFinished()
@@ -88,4 +102,14 @@ void tela_pagamento_cheque::on_le_codigo_banco_editingFinished()
         bd.close();
     }
     ui->le_nome_banco->setText(nome_banco);
+}
+
+void tela_pagamento_cheque::on_cb_inserir_caixa_hoje_toggled(bool checked)
+{
+    if (checked == true){
+        cheque_usado->inserir_no_caixa_de_hoje(true);
+    }
+    else{
+        cheque_usado->inserir_no_caixa_de_hoje(false);
+    }
 }

@@ -29,6 +29,7 @@ void tela_comprar::definir_icone_janela(QPixmap logo){
 
 void tela_comprar::on_btn_buscar_fornecedor_clicked()
 {
+    fornecedor_atual->limpar_fornecedor();
     tl_listar_fornecedores.definir_icone_janela(logomarca);
     tl_listar_fornecedores.alterar_editar(false);
     if(tl_listar_fornecedores.exec()>=0){
@@ -167,7 +168,7 @@ void tela_comprar::on_btn_confirmar_clicked()
         msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
         msg.setText("\nDeseja efetuar a compra sem inserir os dados do fornecedor ?");
         if(!msg.exec()){
-            dados_compra = new compra(ui->data->date().currentDate().toString(Qt::SystemLocaleShortDate),
+            dados_compra = new compra(ui->data->date().toString(Qt::SystemLocaleShortDate),
                                       ui->le_codigo->text().toInt(),ui->le_numero_cupom_nota->text().toInt(),
                                       funcao.converter_para_double(ui->le_total_a_pagar->text()),
                                       funcao.converter_para_double(ui->le_desconto->text()));

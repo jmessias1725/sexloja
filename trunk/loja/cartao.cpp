@@ -1,6 +1,8 @@
 #include "cartao.h"
 
 cartao::cartao(){
+    id_cartao = 0;
+    valor = 0.0;
 }
 
 cartao::cartao(int dia_ven,int num_par,double val,int ori,int id_ori){
