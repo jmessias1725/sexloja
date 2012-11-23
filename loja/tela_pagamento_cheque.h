@@ -29,6 +29,8 @@ private slots:
     void on_gb_para_clicked();
     void on_le_codigo_banco_editingFinished();
 
+    void on_cb_inserir_caixa_hoje_toggled(bool checked);
+
 private:
     Ui::tela_pagamento_cheque *ui;
     QPixmap logomarca;

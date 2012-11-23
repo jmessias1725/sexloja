@@ -399,3 +399,13 @@ bool fornecedor::remover_cadastro_fornecedor(int id_fornecedor){
     }
 }
 
+void fornecedor::limpar_fornecedor(void){
+    id = 0;
+    cnpj ="";
+    razao_social ="";
+    nome ="";
+    comentario ="";
+    lista_email.clear();
+    lista_telefone.clear();
+    lista_operadora.clear();
+}

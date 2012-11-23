@@ -2,6 +2,7 @@
 
 dinheiro::dinheiro()
 {
+    valor = 0.0;
 }
 
 dinheiro::dinheiro(double val,int ori,int id_ori)

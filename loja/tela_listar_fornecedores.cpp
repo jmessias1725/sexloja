@@ -9,6 +9,7 @@ tela_listar_fornecedores::tela_listar_fornecedores(QWidget *parent) :
     ui->le_codigo->setCursorPosition(0);
     modelo = new QStandardItemModel();
     editar = true;
+    fornecedor_atual = new fornecedor();
 }
 
 tela_listar_fornecedores::~tela_listar_fornecedores()

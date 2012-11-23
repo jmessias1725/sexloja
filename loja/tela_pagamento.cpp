@@ -6,6 +6,8 @@ tela_pagamento::tela_pagamento(QWidget *parent) :
     ui(new Ui::tela_pagamento)
 {
     ui->setupUi(this);
+    cheque_usado = new cheque();
+    cartao_usado = new cartao();
 }
 
 tela_pagamento::~tela_pagamento()
@@ -150,6 +152,13 @@ void tela_pagamento::on_btn_confirmar_clicked()
             QSqlQuery alterar_dados_his_balanco_estoque(bd);
             QSqlQuery salvar_dados_his_balanco_estoque(bd);
             QSqlQuery salvar_dados_lista_compra(bd);
+            QSqlQuery atualiza_valor_venda_produto(bd);
+            QSqlQuery salvar_dados_cartao(bd);
+            QSqlQuery salvar_dados_despesa_cartao(bd);
+            QSqlQuery salvar_dados_cheque(bd);
+            QSqlQuery salvar_dados_despesa_cheque(bd);
+            QSqlQuery salvar_dados_dinheiro(bd);
+            QSqlQuery salvar_dados_despesa_dinheiro(bd);
 
             //Declara a variável que irá fazer a consulta para determinar o id do produto;
             QSqlQuery consultar_id_compra(bd);
@@ -169,8 +178,51 @@ void tela_pagamento::on_btn_confirmar_clicked()
             if(consultar_id_compra.last()){
                 id_compra = consultar_id_compra.value(0).toInt();
             }
-
             dados_compra->alterar_id_compra(id_compra);
+
+            if(cartao_usado->retorna_valor() > 0.0){
+                //Insere os dados referente ao cartão.
+                salvar_dados_cartao.prepare("INSERT INTO cartao(dia_vencimento,num_parcelas,valor,origem,id_origem) VALUES(:dia_vencimento, :num_parcelas, :valor, :origem, :id_origem);");
+                salvar_dados_cartao.bindValue(":dia_vencimento", cartao_usado->retorna_dia_vencimento());
+                salvar_dados_cartao.bindValue(":num_parcelas", cartao_usado->retorna_num_parcelas());
+                salvar_dados_cartao.bindValue(":valor", cartao_usado->retorna_valor());
+                salvar_dados_cartao.bindValue(":origem", 1);
+                salvar_dados_cartao.bindValue(":id_origem", dados_compra->retorna_id_compra());
+                salvar_dados_cartao.exec();
+            }
+
+            if(cheque_usado->retorna_valor() > 0.0){
+                //Insere os dados referente ao cheque
+                salvar_dados_cheque.prepare("INSERT INTO cheque(id_banco,agencia,conta,numero,valor,origem,id_origem,data_pagamento) VALUES(:id_banco, :agencia, :conta, :numero, :valor, :origem, :id_origem, :data_pagamento);");
+                salvar_dados_cheque.bindValue(":id_banco", cheque_usado->retorna_codigo_banco());
+                salvar_dados_cheque.bindValue(":agencia", cheque_usado->retorna_agencia());
+                salvar_dados_cheque.bindValue(":conta", cheque_usado->retorna_conta());
+                salvar_dados_cheque.bindValue(":numero", cheque_usado->retorna_conta());
+                salvar_dados_cheque.bindValue(":valor", cheque_usado->retorna_valor());
+                salvar_dados_cheque.bindValue(":origem", 1);
+                salvar_dados_cheque.bindValue(":id_origem", dados_compra->retorna_id_compra());
+                salvar_dados_cheque.bindValue(":data_pagamento", cheque_usado->retorna_data_pagamento());
+                std::cout<<cheque_usado->retorna_data_pagamento().toStdString()<<std::endl;
+                salvar_dados_cheque.exec();
+
+                //Insere na tabela de despesas a despesa do cheque.
+                salvar_dados_despesa_cheque.prepare("INSERT INTO despesas(data,descricao,valor,status,origem,id_origem) VALUES(:data, :descricao, :valor, :status, :origem, :id_origem);");
+                salvar_dados_despesa_cheque.bindValue(":descricao", "Cheque utilizado para efetuar pagamento da despesa de código: "+QString::number(dados_compra->retorna_id_compra())+".");
+                salvar_dados_despesa_cheque.bindValue(":valor", cheque_usado->retorna_valor());
+                if(cheque_usado->retorna_se_insere_caixa_hoje()==true){
+                    QDate data_atual;
+                    data_atual.currentDate().toString(Qt::SystemLocaleShortDate);
+                    salvar_dados_despesa_cheque.bindValue(":status", 1);
+                    salvar_dados_despesa_cheque.bindValue(":data", data_atual);
+                }
+                else{
+                    salvar_dados_despesa_cheque.bindValue(":data", cheque_usado->retorna_data_pagamento());
+                    salvar_dados_despesa_cheque.bindValue(":status", 0);
+                }
+                salvar_dados_despesa_cheque.bindValue(":origem", 1);
+                salvar_dados_despesa_cheque.bindValue(":id_origem", dados_compra->retorna_id_compra());
+                salvar_dados_despesa_cheque.exec();
+            }
 
             for(int i=0; i<int(lt_compra.size());i++){
                 //realiza a consulta determinar se já existe produto com mesmo valor de venda cadastrado.
@@ -228,16 +280,32 @@ void tela_pagamento::on_btn_confirmar_clicked()
                 salvar_dados_lista_compra.bindValue(":valor_venda_uni", lt_compra[i]->retorna_valor_venda());
                 salvar_dados_lista_compra.bindValue(":id_balanco",  lt_compra[i]->retorna_id_balanco());
                 salvar_dados_lista_compra.exec();
+
+                campos = "valor_venda=:valor_venda";
+
+                total_comprado = total_comprado+lt_compra[i]->retorna_quantidade();
+                total_disponivel = total_disponivel+lt_compra[i]->retorna_quantidade();
+
+                //Atualiva preço de venda do produto.
+                atualiza_valor_venda_produto.prepare("UPDATE produto SET "+campos+" WHERE id_produto = '"+QString::number(lt_compra[i]->retorna_id_produto())+"';");
+                atualiza_valor_venda_produto.bindValue(":valor_venda", lt_compra[i]->retorna_valor_venda());
+                atualiza_valor_venda_produto.exec();
             }
 
             std::cout<<salvar_dados_compra.lastError().number()<<std::endl;
             std::cout<<alterar_dados_his_balanco_estoque.lastError().number()<<std::endl;
             std::cout<<salvar_dados_his_balanco_estoque.lastError().number()<<std::endl;
             std::cout<<salvar_dados_lista_compra.lastError().number()<<std::endl;
+            std::cout<<atualiza_valor_venda_produto.lastError().number()<<std::endl;
+            std::cout<<salvar_dados_cheque.lastError().number()<<std::endl;
+            std::cout<<salvar_dados_cartao.lastError().number()<<std::endl;
+            std::cout<<salvar_dados_despesa_cheque.lastError().number()<<std::endl;
 
             //Verifica se os dados podem ser salvos, caso sim realiza o Commite, do contrário o Rollback.
             if((salvar_dados_compra.lastError().number()<=0)&&(alterar_dados_his_balanco_estoque.lastError().number()<=0)&&
-               (salvar_dados_his_balanco_estoque.lastError().number()<=0)&&(salvar_dados_lista_compra.lastError().number()<=0)){
+               (salvar_dados_his_balanco_estoque.lastError().number()<=0)&&(salvar_dados_lista_compra.lastError().number()<=0)&&
+               (atualiza_valor_venda_produto.lastError().number()<=0)&&(salvar_dados_cheque.lastError().number()<=0)&&
+               (salvar_dados_cartao.lastError().number()<=0)&&(salvar_dados_despesa_cheque.lastError().number()<=0)){
 
                 //Finaliza a inserçao dos dados.
                 bd.commit();

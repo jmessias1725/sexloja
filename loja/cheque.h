@@ -16,6 +16,7 @@ private:
     int id_origem;
     QString codigo_banco;
     QString data_pagamento;
+    bool inserir_caixa_hoje;
 
 public:
     cheque();
@@ -36,6 +37,8 @@ public:
     int retorna_id_origem(void);
     QString retorna_codigo_banco(void);
     QString retorna_data_pagamento(void);
+    void inserir_no_caixa_de_hoje(bool decisao);
+    bool retorna_se_insere_caixa_hoje(void);
 };
 
 #endif // CHEQUE_H

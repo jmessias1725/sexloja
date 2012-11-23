@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_pagamento_cheque.h'
 **
-** Created: Thu 22. Nov 20:16:31 2012
+** Created: Fri 23. Nov 14:52:53 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_tela_pagamento_cheque[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -37,6 +37,7 @@ static const uint qt_meta_data_tela_pagamento_cheque[] = {
      106,   22,   22,   22, 0x08,
      130,   22,   22,   22, 0x08,
      151,   22,   22,   22, 0x08,
+     196,  188,   22,   22, 0x08,
 
        0        // eod
 };
@@ -48,6 +49,7 @@ static const char qt_meta_stringdata_tela_pagamento_cheque[] = {
     "on_btn_confirmar_clicked()\0"
     "on_cb_a_vista_clicked()\0on_gb_para_clicked()\0"
     "on_le_codigo_banco_editingFinished()\0"
+    "checked\0on_cb_inserir_caixa_hoje_toggled(bool)\0"
 };
 
 void tela_pagamento_cheque::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -62,10 +64,10 @@ void tela_pagamento_cheque::qt_static_metacall(QObject *_o, QMetaObject::Call _c
         case 3: _t->on_cb_a_vista_clicked(); break;
         case 4: _t->on_gb_para_clicked(); break;
         case 5: _t->on_le_codigo_banco_editingFinished(); break;
+        case 6: _t->on_cb_inserir_caixa_hoje_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObjectExtraData tela_pagamento_cheque::staticMetaObjectExtraData = {
@@ -100,9 +102,9 @@ int tela_pagamento_cheque::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 7;
     }
     return _id;
 }

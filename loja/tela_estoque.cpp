@@ -6,16 +6,6 @@ tela_estoque::tela_estoque(QWidget *parent) :
     ui(new Ui::tela_estoque)
 {
     ui->setupUi(this);
-}
-
-tela_estoque::~tela_estoque()
-{
-    delete ui;
-}
-
-void tela_estoque::definir_icone_janela(QPixmap logo){
-    logomarca = logo;
-    this->setWindowIcon(logomarca);
     aux_cons_id_produto = "";
     aux_cons_nome = "";
     aux_cons_fabricante = "";
@@ -45,6 +35,16 @@ void tela_estoque::definir_icone_janela(QPixmap logo){
     ui->barra_de_status->insertWidget(2,lb_custo_total,0);
     ui->barra_de_status->insertWidget(3,lb_renda_total,0);
     ui->barra_de_status->insertWidget(4,lb_quantidade_produtos,0);
+}
+
+tela_estoque::~tela_estoque()
+{
+    delete ui;
+}
+
+void tela_estoque::definir_icone_janela(QPixmap logo){
+    logomarca = logo;
+    this->setWindowIcon(logomarca);
 }
 
 void tela_estoque::buscar_produtos(void){

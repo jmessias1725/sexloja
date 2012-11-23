@@ -1,6 +1,10 @@
 #include "cheque.h"
 
 cheque::cheque(){
+    id_cheque = 0;
+    codigo_banco = "";
+    valor = 0.0;
+    inserir_caixa_hoje = false;
 }
 
 cheque::cheque(QString nome_ban,QString age,QString con,int num,double val,int ori,int id_ori,
@@ -69,4 +73,12 @@ QString cheque::retorna_codigo_banco(void){
 
 QString cheque::retorna_data_pagamento(void){
     return data_pagamento;
+}
+
+void cheque::inserir_no_caixa_de_hoje(bool decisao){
+     inserir_caixa_hoje = decisao;
+}
+
+bool cheque::retorna_se_insere_caixa_hoje(void){
+    return inserir_caixa_hoje;
 }
