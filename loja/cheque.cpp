@@ -18,6 +18,7 @@ cheque::cheque(QString nome_ban,QString age,QString con,int num,double val,int o
     id_origem = id_ori;
     codigo_banco = codigo_ban;
     data_pagamento = data_pag;
+    inserir_caixa_hoje =  false;
 }
 
 cheque::cheque(int id_che,QString nome_ban,QString age,QString con,int num,double val,int ori,
@@ -32,6 +33,7 @@ cheque::cheque(int id_che,QString nome_ban,QString age,QString con,int num,doubl
     id_origem = id_ori;
     codigo_banco = codigo_ban;
     data_pagamento = data_pag;
+    inserir_caixa_hoje =  false;
 }
 
 int cheque::retorna_id_cheque(void){

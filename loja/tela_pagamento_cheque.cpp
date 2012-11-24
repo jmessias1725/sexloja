@@ -9,6 +9,7 @@ tela_pagamento_cheque::tela_pagamento_cheque(QWidget *parent) :
     ui->gb_para->setChecked(false);
     ui->cb_a_vista->setChecked(true);
     cheque_usado = new cheque();
+    inserir_caixa_hoje = false;
 }
 
 tela_pagamento_cheque::~tela_pagamento_cheque()
@@ -27,6 +28,7 @@ void tela_pagamento_cheque::definir_dados(double valor){
     QRegExp valida_dinheiro("^-?\\+?\\*?\\/?\\:?\\;?\\w?\\d{0,4}([,|.]*)(\\d{0,2})$");
     ui->le_valor->setValidator(new QRegExpValidator(valida_dinheiro, ui->le_valor));
     ui->le_valor->setText(funcao.retorna_valor_dinheiro(valor));
+    inserir_caixa_hoje = false;
 }
 
 void tela_pagamento_cheque::on_le_valor_editingFinished(){
@@ -50,6 +52,19 @@ void tela_pagamento_cheque::on_btn_confirmar_clicked()
     cheque_usado = new cheque(ui->le_nome_banco->text(),ui->le_agencia->text(),ui->le_conta->text(),
                               ui->le_numero_cheque->text().toInt(),valor_pago,1,0,ui->le_codigo_banco->text(),
                               ui->data->date().toString(Qt::SystemLocaleShortDate));
+    cheque_usado->inserir_no_caixa_de_hoje(inserir_caixa_hoje);
+
+    //limpa as informações
+    ui->le_agencia->clear();
+    ui->le_codigo_banco->clear();
+    ui->le_conta->clear();
+    ui->le_nome_banco->clear();
+    ui->le_numero_cheque->clear();
+    ui->le_valor->clear();
+    ui->cb_a_vista->setChecked(true);
+    ui->gb_para->setChecked(false);
+    ui->cb_inserir_caixa_hoje->setChecked(false);
+
     this->accept();
     this->close();
 }
@@ -62,12 +77,13 @@ void tela_pagamento_cheque::on_cb_a_vista_clicked()
 {
     if(ui->cb_a_vista->isChecked()){
         ui->gb_para->setChecked(false);
-        cheque_usado->inserir_no_caixa_de_hoje(true);
+        ui->cb_inserir_caixa_hoje->setChecked(false);
+        inserir_caixa_hoje = true;
         ui->data->setDate(QDate::currentDate());
     }
     else{
         ui->gb_para->setChecked(true);
-        cheque_usado->inserir_no_caixa_de_hoje(false);
+        inserir_caixa_hoje = false;
     }
 }
 
@@ -75,9 +91,11 @@ void tela_pagamento_cheque::on_gb_para_clicked()
 {
     if(ui->gb_para->isChecked()){
         ui->cb_a_vista->setChecked(false);
+        inserir_caixa_hoje = false;
     }
     else{
         ui->cb_a_vista->setChecked(true);
+        inserir_caixa_hoje = true;
     }
 }
 
@@ -107,9 +125,21 @@ void tela_pagamento_cheque::on_le_codigo_banco_editingFinished()
 void tela_pagamento_cheque::on_cb_inserir_caixa_hoje_toggled(bool checked)
 {
     if (checked == true){
-        cheque_usado->inserir_no_caixa_de_hoje(true);
+        inserir_caixa_hoje = true;
     }
     else{
-        cheque_usado->inserir_no_caixa_de_hoje(false);
+        inserir_caixa_hoje = false;
     }
 }
+
+/*void tela_pagamento_cheque::closeEvent(QCloseEvent *event){
+    ui->le_agencia->clear();
+    ui->le_codigo_banco->clear();
+    ui->le_conta->clear();
+    ui->le_nome_banco->clear();
+    ui->le_numero_cheque->clear();
+    ui->le_valor->clear();
+    ui->cb_a_vista->setChecked(true);
+    ui->gb_para->setChecked(false);
+    ui->cb_inserir_caixa_hoje->setChecked(false);
+}*/

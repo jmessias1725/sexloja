@@ -43,6 +43,7 @@ void tela_pagamento_dinheiro::on_btn_confirmar_clicked()
 {
     funcoes_extras funcao;
     valor_pago = funcao.converter_para_double(ui->le_valor->text());
+    ui->le_valor->clear();
     this->accept();
     this->close();
 }

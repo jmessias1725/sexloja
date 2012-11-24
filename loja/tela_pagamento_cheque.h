@@ -36,6 +36,7 @@ private:
     QPixmap logomarca;
     double valor_pago;
     cheque* cheque_usado;
+    bool inserir_caixa_hoje;
 };
 
 #endif // TELA_PAGAMENTO_CHEQUE_H
