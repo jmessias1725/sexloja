@@ -74,6 +74,9 @@ void tela_pagamento_cartao::on_btn_confirmar_clicked()
     if(!msg.exec()){
         cartao_usado = new cartao(ui->sb_dia_vencimento->text().toInt(),ui->sb_num_parcelas->text().toInt(),
                                   valor_pago,1,0);
+        ui->le_valor->clear();
+        ui->sb_dia_vencimento->setValue(1);
+        ui->sb_num_parcelas->setValue(1);
         this->accept();
         this->close();
     }

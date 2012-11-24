@@ -538,6 +538,7 @@ double funcoes_extras::converter_para_double(QString numero){
     if (posicao!=-1){
         aux = aux/100.0;
     }
+    std::cout<<aux<<std::endl;
     return aux;
 }
 

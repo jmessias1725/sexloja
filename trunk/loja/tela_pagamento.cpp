@@ -55,7 +55,14 @@ void tela_pagamento::on_btn_dinheiro_clicked()
         valor_em_dinheiro = tl_pagamento_dinheiro.retorna_valor_pago();
         valor_em_cartao = funcao.converter_para_double(ui->le_cartao->text());
         valor_em_cheque = funcao.converter_para_double(ui->le_cheque->text());
+
+        valor_em_dinheiro = funcao.arredonda_para_duas_casas_decimais(valor_em_dinheiro);
+        valor_em_cartao = funcao.arredonda_para_duas_casas_decimais(valor_em_cartao);
+        valor_em_cheque = funcao.arredonda_para_duas_casas_decimais(valor_em_cheque);
+
         total_pago = valor_em_dinheiro+valor_em_cartao+valor_em_cheque;
+        total_pago = funcao.arredonda_para_duas_casas_decimais(total_pago);
+
         troco = total_pago-total_pagar;
 
         ui->le_troco->setText(funcao.retorna_valor_dinheiro(troco));
@@ -79,7 +86,14 @@ void tela_pagamento::on_btn_cartao_clicked()
         valor_em_cartao = cartao_usado->retorna_valor();
         valor_em_dinheiro = funcao.converter_para_double(ui->le_dinheiro->text());
         valor_em_cheque = funcao.converter_para_double(ui->le_cheque->text());
+
+        valor_em_dinheiro = funcao.arredonda_para_duas_casas_decimais(valor_em_dinheiro);
+        valor_em_cartao = funcao.arredonda_para_duas_casas_decimais(valor_em_cartao);
+        valor_em_cheque = funcao.arredonda_para_duas_casas_decimais(valor_em_cheque);
+
         total_pago = valor_em_dinheiro+valor_em_cartao+valor_em_cheque;
+        total_pago = funcao.arredonda_para_duas_casas_decimais(total_pago);
+
         troco = total_pago-total_pagar;
 
         ui->le_troco->setText(funcao.retorna_valor_dinheiro(troco));
@@ -103,7 +117,14 @@ void tela_pagamento::on_btn_cheque_clicked()
         valor_em_cheque = cheque_usado->retorna_valor();
         valor_em_dinheiro = funcao.converter_para_double(ui->le_dinheiro->text());
         valor_em_cartao = funcao.converter_para_double(ui->le_cartao->text());
+
+        valor_em_dinheiro = funcao.arredonda_para_duas_casas_decimais(valor_em_dinheiro);
+        valor_em_cartao = funcao.arredonda_para_duas_casas_decimais(valor_em_cartao);
+        valor_em_cheque = funcao.arredonda_para_duas_casas_decimais(valor_em_cheque);
+
         total_pago = valor_em_dinheiro+valor_em_cartao+valor_em_cheque;
+        total_pago = funcao.arredonda_para_duas_casas_decimais(total_pago);
+
         troco = total_pago-total_pagar;
 
         ui->le_troco->setText(funcao.retorna_valor_dinheiro(troco));
@@ -193,16 +214,16 @@ void tela_pagamento::on_btn_confirmar_clicked()
 
             if(cheque_usado->retorna_valor() > 0.0){
                 //Insere os dados referente ao cheque
-                salvar_dados_cheque.prepare("INSERT INTO cheque(id_banco,agencia,conta,numero,valor,origem,id_origem,data_pagamento) VALUES(:id_banco, :agencia, :conta, :numero, :valor, :origem, :id_origem, :data_pagamento);");
+                salvar_dados_cheque.prepare("INSERT INTO cheque(id_banco,agencia,conta,numero,valor,origem,id_origem,data_pagamento,nome_banco) VALUES(:id_banco, :agencia, :conta, :numero, :valor, :origem, :id_origem, :data_pagamento, :nome_banco);");
                 salvar_dados_cheque.bindValue(":id_banco", cheque_usado->retorna_codigo_banco());
                 salvar_dados_cheque.bindValue(":agencia", cheque_usado->retorna_agencia());
                 salvar_dados_cheque.bindValue(":conta", cheque_usado->retorna_conta());
-                salvar_dados_cheque.bindValue(":numero", cheque_usado->retorna_conta());
+                salvar_dados_cheque.bindValue(":numero", cheque_usado->retorna_numero());
                 salvar_dados_cheque.bindValue(":valor", cheque_usado->retorna_valor());
                 salvar_dados_cheque.bindValue(":origem", 1);
                 salvar_dados_cheque.bindValue(":id_origem", dados_compra->retorna_id_compra());
                 salvar_dados_cheque.bindValue(":data_pagamento", cheque_usado->retorna_data_pagamento());
-                std::cout<<cheque_usado->retorna_data_pagamento().toStdString()<<std::endl;
+                salvar_dados_cheque.bindValue(":nome_banco", cheque_usado->retorna_nome_banco());
                 salvar_dados_cheque.exec();
 
                 //Insere na tabela de despesas a despesa do cheque.
@@ -211,9 +232,8 @@ void tela_pagamento::on_btn_confirmar_clicked()
                 salvar_dados_despesa_cheque.bindValue(":valor", cheque_usado->retorna_valor());
                 if(cheque_usado->retorna_se_insere_caixa_hoje()==true){
                     QDate data_atual;
-                    data_atual.currentDate().toString(Qt::SystemLocaleShortDate);
                     salvar_dados_despesa_cheque.bindValue(":status", 1);
-                    salvar_dados_despesa_cheque.bindValue(":data", data_atual);
+                    salvar_dados_despesa_cheque.bindValue(":data", data_atual.currentDate().toString(Qt::SystemLocaleShortDate));
                 }
                 else{
                     salvar_dados_despesa_cheque.bindValue(":data", cheque_usado->retorna_data_pagamento());

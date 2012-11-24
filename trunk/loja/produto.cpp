@@ -5,7 +5,7 @@ produto::produto()
 }
 
 produto::produto(int id_pro, QString nome_produto, QString fabricante_produto,QString cod_barras_produto, QString tipo_produto,
-        float valor_ven, float custo_med, int qt_disponivel){
+        double valor_ven, double custo_med, int qt_disponivel){
     id_produto = id_pro;
     nome = nome_produto;
     fabricante = fabricante_produto;
@@ -17,7 +17,7 @@ produto::produto(int id_pro, QString nome_produto, QString fabricante_produto,QS
 }
 
 produto::produto(int id_pro, QString nome_produto, QString fabricante_produto, QString desc_utilizacao_produto,
-                 QString cod_barras_produto, QString tipo_produto, int id_imag, float valor_ven, float custo_med, int qt_disponivel){
+                 QString cod_barras_produto, QString tipo_produto, int id_imag, double valor_ven, double custo_med, int qt_disponivel){
     id_produto = id_pro;
     nome = nome_produto;
     fabricante = fabricante_produto;
@@ -63,11 +63,11 @@ int produto::retorna_id_imagem(void){
     return id_imagem;
 }
 
-float produto::retorna_valor_venda(void){
+double produto::retorna_valor_venda(void){
     return valor_venda;
 }
 
-float produto::retorna_custo_medio(void){
+double produto::retorna_custo_medio(void){
     return custo_medio;
 }
 
@@ -79,17 +79,17 @@ void produto::altera_quantidade(int quant){
     quantidade_disponivel = quant;
 }
 
-void produto::altera_valor_venda(float valor_ven){
+void produto::altera_valor_venda(double valor_ven){
     valor_venda = valor_ven;
 }
 
-void produto::altera_valor_compra(float valor_com){
+void produto::altera_valor_compra(double valor_com){
     custo_medio = valor_com;
 }
 
 bool produto::salvar_dados_produto(QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
                                    QString cod_barras_produto,QString tipo_produto,QString nome_arquivo_imagem, int altura,
-                                   int largura,float valor_ven){
+                                   int largura,double valor_ven){
 
     nome = nome_produto;
     fabricante = fabricante_produto;
@@ -236,7 +236,7 @@ bool produto::salvar_dados_produto(QString nome_produto,QString fabricante_produ
 }
 
 bool produto::salvar_alteracao_dados_produto(QString nome_produto,QString fabricante_produto,QString desc_utilizacao_produto,
-                                             QString cod_barras_produto,QString tipo_produto,float valor_ven,QString nome_arquivo_imagem,
+                                             QString cod_barras_produto,QString tipo_produto,double valor_ven,QString nome_arquivo_imagem,
                                              int altura, int largura,bool alterou_imgem){
     nome = nome_produto;
     fabricante = fabricante_produto;
@@ -520,7 +520,7 @@ bool produto::reajustar_valor_venda_produto(int tp, QString porcentagem){
     QSqlDatabase bd;
 
     porcentagem.replace("%","");
-    float por = porcentagem.toFloat();
+    double por = porcentagem.toDouble();
 
     //realiza conexão ao banco de dados
     if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","produto::reajustar_valor_venda_produto")){
@@ -540,7 +540,7 @@ bool produto::reajustar_valor_venda_produto(int tp, QString porcentagem){
         consultar_valor_anterior.exec("SELECT id_produto,valor_venda FROM produto");
         while(consultar_valor_anterior.next()){
             id_produto =  consultar_valor_anterior.value(0).toInt();
-            valor_venda = consultar_valor_anterior.value(1).toFloat();
+            valor_venda = consultar_valor_anterior.value(1).toDouble();
 
             if(tp==0){
                 valor_venda = valor_venda+(valor_venda*(por/100));

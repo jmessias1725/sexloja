@@ -188,7 +188,7 @@ void tela_comprar::on_btn_confirmar_clicked()
         }
     }
     else{
-        dados_compra = new compra(ui->data->date().currentDate().toString(Qt::SystemLocaleShortDate),
+        dados_compra = new compra(ui->data->date().toString(Qt::SystemLocaleShortDate),
                                   ui->le_codigo->text().toInt(),ui->le_numero_cupom_nota->text().toInt(),
                                   funcao.converter_para_double(ui->le_total_a_pagar->text()),
                                   funcao.converter_para_double(ui->le_desconto->text()));
