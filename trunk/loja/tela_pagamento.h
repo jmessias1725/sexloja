@@ -24,7 +24,7 @@ public:
     explicit tela_pagamento(QWidget *parent = 0);
     ~tela_pagamento();
     void definir_icone_janela(QPixmap logo);
-    void definir_dados(compra* comp, std::vector< lista_compra* > lt_com);
+    void definir_dados(compra* comp, std::vector< lista_compra* > lt_com, QDate data_com);
 
 private slots:
     void on_btn_dinheiro_clicked();
@@ -43,6 +43,7 @@ private:
     cheque* cheque_usado;
     compra* dados_compra;
     std::vector< lista_compra* > lt_compra;
+    QDate data_compra;
     double valor_em_dinheiro;
     double valor_em_cartao;
     double valor_em_cheque;

@@ -105,7 +105,7 @@ void tela_produto::buscar_informacoes_his_estoque_produto(int id){
     conexao_bd conexao;
     QSqlDatabase bd;
 
-    float valor_compra;
+    double valor_compra;
     int total_comprado;
     int total_disponivel;
     int id_balanco;
@@ -125,7 +125,7 @@ void tela_produto::buscar_informacoes_his_estoque_produto(int id){
         consultar_his_balanco_estoque.exec("SELECT id_balanco,valor_compra,total_comprado,total_disponivel FROM his_balanco_estoque WHERE id_produto = "+QString::number(id)+";");
         while(consultar_his_balanco_estoque.next()){
             id_balanco = consultar_his_balanco_estoque.value(0).toString().toInt();
-            valor_compra = consultar_his_balanco_estoque.value(1).toFloat();
+            valor_compra = consultar_his_balanco_estoque.value(1).toDouble();
             total_comprado = consultar_his_balanco_estoque.value(2).toString().toInt();
             total_disponivel = consultar_his_balanco_estoque.value(3).toString().toInt();
             aux_his.push_back(new his_balanco_estoque(id_balanco,total_comprado,valor_compra,total_disponivel));
@@ -161,8 +161,8 @@ std::vector< his_entradas * > tela_produto::buscar_informacoes_his_entrada(int i
 
     int id_entrada;
     int quantidade;
-    float valor_compra;
-    float valor_venda;
+    double valor_compra;
+    double valor_venda;
     QString data;
     QString hora;
     int origem;
@@ -184,8 +184,8 @@ std::vector< his_entradas * > tela_produto::buscar_informacoes_his_entrada(int i
         while(consultar.next()){
             id_entrada = consultar.value(0).toString().toInt();
             quantidade = consultar.value(1).toString().toInt();
-            valor_compra = consultar.value(2).toString().toFloat();
-            valor_venda = consultar.value(3).toString().toFloat();
+            valor_compra = consultar.value(2).toString().toDouble();
+            valor_venda = consultar.value(3).toString().toDouble();
             data = consultar.value(4).toString();
             hora = consultar.value(5).toString();
             origem = consultar.value(6).toString().toInt();

@@ -538,7 +538,6 @@ double funcoes_extras::converter_para_double(QString numero){
     if (posicao!=-1){
         aux = aux/100.0;
     }
-    std::cout<<aux<<std::endl;
     return aux;
 }
 
@@ -644,4 +643,85 @@ double funcoes_extras::arredonda_para_duas_casas_decimais(double valor){
     valor = real+aux_centavos/100;
 
     return valor;
+}
+
+std::vector< QString > funcoes_extras::determina_parcelas(QDate data_compra,int dia_vencimento,int numero_parcelas){
+    std::vector< QString >  data_das_parcelas;
+    QString data;
+
+    int dia,mes,ano;
+    std::vector< int > meses;
+    std::vector< int > dias;
+    std::vector< int > anos;
+
+    dia = data_compra.day();
+    mes = data_compra.month();
+    ano = data_compra.year();
+
+    for(int i=0;i<numero_parcelas;i++){
+        if(i==0){
+            if ((dia_vencimento-dia)<9){
+                mes = mes+1;
+                if (mes>12){
+                    mes = 1;
+                    ano = ano+1;
+                    anos.push_back(ano);
+                    meses.push_back(mes);
+                }
+                else{
+                    meses.push_back(mes);
+                    anos.push_back(ano);
+                }
+            }
+            else{
+                meses.push_back(mes);
+                anos.push_back(ano);
+            }
+        }
+        else{
+        mes = mes+1;
+        if (mes>12){
+            mes = 1;
+            ano = ano+1;
+            meses.push_back(mes);
+            anos.push_back(ano);
+        }
+        else{
+            meses.push_back(mes);
+            anos.push_back(ano);
+        }
+        }
+
+        if ((mes==1)||(mes==3)||(mes==5)||(mes==7)||(mes==8)||(mes==10)||(mes==12)){
+            dias.push_back(dia_vencimento);
+        }
+        else{
+            if (mes==2){
+                if (dia_vencimento>28){
+                    if ((((ano%4)==0)&&((ano%100)!=0))||((ano%400)==0)){
+                        dias.push_back(29);
+                    }
+                    else{
+                        dias.push_back(28);
+                    }
+                }
+                else{
+                    dias.push_back(dia_vencimento);
+                }
+            }
+            else{
+                if ((mes==4)||(mes==6)||(mes==9)||(mes==11)){
+                    if (dia_vencimento>30){
+                        dias.push_back(30);
+                    }
+                    else{
+                        dias.push_back(dia_vencimento);
+                    }
+                }
+            }
+        }
+        data = QString::number(dia)+"/"+QString::number(mes)+"/"+QString::number(ano);
+        data_das_parcelas.push_back(data);
+    }
+    return data_das_parcelas;
 }

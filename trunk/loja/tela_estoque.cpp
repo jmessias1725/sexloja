@@ -150,8 +150,8 @@ void tela_estoque::mostrar_lista_produtos(void){
         ui->tw_produtos->setItem(i,2,new QTableWidgetItem(aux_lista_produtos[i]->retorna_nome()));
         ui->tw_produtos->setItem(i,3,new QTableWidgetItem(aux_lista_produtos[i]->retorna_fabricante()));
         ui->tw_produtos->setItem(i,4,new QTableWidgetItem(QString::number(aux_lista_produtos[i]->retorna_quantidade_disponivel())));
-        ui->tw_produtos->setItem(i,5,new QTableWidgetItem(funcao.retorna_valor_dinheiro(aux_lista_produtos[i]->retorna_custo_medio())));
-        ui->tw_produtos->setItem(i,6,new QTableWidgetItem(funcao.retorna_valor_dinheiro(aux_lista_produtos[i]->retorna_valor_venda())));
+        ui->tw_produtos->setItem(i,5,new QTableWidgetItem(funcao.retorna_valor_dinheiro(funcao.arredonda_para_duas_casas_decimais(aux_lista_produtos[i]->retorna_custo_medio()))));
+        ui->tw_produtos->setItem(i,6,new QTableWidgetItem(funcao.retorna_valor_dinheiro(funcao.arredonda_para_duas_casas_decimais(aux_lista_produtos[i]->retorna_valor_venda()))));
         ui->tw_produtos->setItem(i,7,new QTableWidgetItem(aux_lista_produtos[i]->retorna_cod_barras()));
         ui->tw_produtos->item(i,0)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_produtos->item(i,1)->setTextAlignment(Qt::AlignHCenter);
@@ -196,6 +196,9 @@ void tela_estoque::mostrar_lista_produtos(void){
     ui->tw_produtos->resizeColumnToContents(5);
     ui->tw_produtos->resizeColumnToContents(6);
     ui->tw_produtos->resizeColumnToContents(7);
+
+    custo_total = funcao.arredonda_para_duas_casas_decimais(custo_total);
+    renda_total = funcao.arredonda_para_duas_casas_decimais(renda_total);
 
     lb_data->setText("  "+data_sistema+"  ");
     lb_quantidade_produtos->setText("  Total de produtos = "+QString::number(int(lista_produtos.size()))+"  ");

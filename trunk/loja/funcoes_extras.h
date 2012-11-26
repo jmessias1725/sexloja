@@ -8,6 +8,7 @@
 #include <QIcon>
 #include <stdio.h>
 #include <math.h>
+#include <QDate>
 
 class funcoes_extras
 {
@@ -25,6 +26,7 @@ public:
     int retorna_id_tipo(std::string tipo);
     QString converte_numero_origem_nome(int ori);
     double arredonda_para_duas_casas_decimais(double valor);
+    std::vector< QString > determina_parcelas(QDate data_compra,int dia_vencimento,int numero_parcelas);
 };
 
 #endif // FUNCOES_EXTRAS_H

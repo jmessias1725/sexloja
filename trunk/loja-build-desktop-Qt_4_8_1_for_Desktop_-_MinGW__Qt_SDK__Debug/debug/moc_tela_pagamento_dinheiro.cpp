@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_pagamento_dinheiro.h'
 **
-** Created: Fri 23. Nov 21:28:36 2012
+** Created: Mon 26. Nov 16:34:29 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!

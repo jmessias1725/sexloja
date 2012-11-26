@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_definir_valor.ui'
 **
-** Created: Fri 23. Nov 21:26:11 2012
+** Created: Mon 26. Nov 09:17:13 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
