@@ -43,7 +43,6 @@ private slots:
     void on_btn_limpar_clicked();
     void on_btn_restaurar_produto_clicked();
     void on_le_codigo_textChanged(const QString &arg1);
-
     void on_btn_reajustar_estoque_clicked();
 
 private:
@@ -68,8 +67,8 @@ private:
     QLabel *lb_renda_total;
     QLabel *lb_saldo;
     QString data_sistema;
-    float custo_total;
-    float renda_total;
+    double custo_total;
+    double renda_total;
 };
 
 #endif // TELA_ESTOQUE_H

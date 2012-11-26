@@ -168,7 +168,7 @@ void tela_comprar::on_btn_confirmar_clicked()
         msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
         msg.setText("\nDeseja efetuar a compra sem inserir os dados do fornecedor ?");
         if(!msg.exec()){
-            dados_compra = new compra(ui->data->date().toString(Qt::SystemLocaleShortDate),
+            dados_compra = new compra(ui->data->date(),
                                       ui->le_codigo->text().toInt(),ui->le_numero_cupom_nota->text().toInt(),
                                       funcao.converter_para_double(ui->le_total_a_pagar->text()),
                                       funcao.converter_para_double(ui->le_desconto->text()));
@@ -181,14 +181,14 @@ void tela_comprar::on_btn_confirmar_clicked()
             }
 
             tl_pagamento.definir_icone_janela(logomarca);
-            tl_pagamento.definir_dados(dados_compra,lt_compra);
+            tl_pagamento.definir_dados(dados_compra,lt_compra,ui->data->date());
             if(tl_pagamento.exec()){
                 this->close();
             }
         }
     }
     else{
-        dados_compra = new compra(ui->data->date().toString(Qt::SystemLocaleShortDate),
+        dados_compra = new compra(ui->data->date(),
                                   ui->le_codigo->text().toInt(),ui->le_numero_cupom_nota->text().toInt(),
                                   funcao.converter_para_double(ui->le_total_a_pagar->text()),
                                   funcao.converter_para_double(ui->le_desconto->text()));
@@ -201,7 +201,7 @@ void tela_comprar::on_btn_confirmar_clicked()
         }
 
         tl_pagamento.definir_icone_janela(logomarca);
-        tl_pagamento.definir_dados(dados_compra,lt_compra);
+        tl_pagamento.definir_dados(dados_compra,lt_compra,ui->data->date());
         if(tl_pagamento.exec()){
             this->close();
         }

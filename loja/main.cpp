@@ -8,7 +8,6 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-
     tela_login tl_login;
 
     tl_login.show();

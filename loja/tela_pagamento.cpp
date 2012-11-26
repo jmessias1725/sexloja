@@ -6,8 +6,6 @@ tela_pagamento::tela_pagamento(QWidget *parent) :
     ui(new Ui::tela_pagamento)
 {
     ui->setupUi(this);
-    cheque_usado = new cheque();
-    cartao_usado = new cartao();
 }
 
 tela_pagamento::~tela_pagamento()
@@ -18,9 +16,11 @@ tela_pagamento::~tela_pagamento()
 void tela_pagamento::definir_icone_janela(QPixmap logo){
     logomarca = logo;
     this->setWindowIcon(logomarca);
+    cheque_usado = new cheque();
+    cartao_usado = new cartao();
 }
 
-void tela_pagamento::definir_dados(compra* comp, std::vector< lista_compra* > lt_com){
+void tela_pagamento::definir_dados(compra* comp, std::vector< lista_compra* > lt_com, QDate data_com){
     funcoes_extras funcao;
     dados_compra = comp;
     lt_compra = lt_com;
@@ -201,6 +201,25 @@ void tela_pagamento::on_btn_confirmar_clicked()
             }
             dados_compra->alterar_id_compra(id_compra);
 
+            if(valor_em_dinheiro > 0.0){
+                //Insere os dados referente ao dinheiro
+                salvar_dados_dinheiro.prepare("INSERT INTO dinheiro(valor,origem,id_origem) VALUES(:valor, :origem, :id_origem);");
+                salvar_dados_dinheiro.bindValue(":valor", valor_em_dinheiro);
+                salvar_dados_dinheiro.bindValue(":origem", 1);
+                salvar_dados_dinheiro.bindValue(":id_origem", dados_compra->retorna_id_compra());
+                salvar_dados_dinheiro.exec();
+
+                //Insere na tabela de despesas a despesa do dinheiro.
+                salvar_dados_despesa_dinheiro.prepare("INSERT INTO despesas(data,descricao,valor,status,origem,id_origem) VALUES(:data, :descricao, :valor, :status, :origem, :id_origem);");
+                salvar_dados_despesa_dinheiro.bindValue(":descricao", "Valor referente ao pagamento da compra de código: "+QString::number(dados_compra->retorna_id_compra())+".");
+                salvar_dados_despesa_dinheiro.bindValue(":valor", valor_em_dinheiro);
+                salvar_dados_despesa_dinheiro.bindValue(":data", dados_compra->retorna_data_compra());
+                salvar_dados_despesa_dinheiro.bindValue(":status", 1);
+                salvar_dados_despesa_dinheiro.bindValue(":origem", 2);
+                salvar_dados_despesa_dinheiro.bindValue(":id_origem", dados_compra->retorna_id_compra());
+                salvar_dados_despesa_dinheiro.exec();
+            }
+
             if(cartao_usado->retorna_valor() > 0.0){
                 //Insere os dados referente ao cartão.
                 salvar_dados_cartao.prepare("INSERT INTO cartao(dia_vencimento,num_parcelas,valor,origem,id_origem) VALUES(:dia_vencimento, :num_parcelas, :valor, :origem, :id_origem);");
@@ -210,6 +229,58 @@ void tela_pagamento::on_btn_confirmar_clicked()
                 salvar_dados_cartao.bindValue(":origem", 1);
                 salvar_dados_cartao.bindValue(":id_origem", dados_compra->retorna_id_compra());
                 salvar_dados_cartao.exec();
+
+                double valor_pago = cartao_usado->retorna_valor();
+                double valor_parcela = 0.0;
+                double primeira_parcela = 0.0;
+                int numero_pacelas = cartao_usado->retorna_num_parcelas();
+
+                valor_parcela = valor_pago/numero_pacelas;
+                valor_parcela = funcao.arredonda_para_duas_casas_decimais(valor_parcela);
+                primeira_parcela = valor_pago - valor_parcela*(numero_pacelas-1);
+
+                std::vector< QString > data_parcelas = funcao.determina_parcelas(dados_compra->retorna_data_QDate(),
+                                                                                 cartao_usado->retorna_dia_vencimento(),
+                                                                                 cartao_usado->retorna_num_parcelas());
+
+
+                if (primeira_parcela!=valor_parcela){
+                    //parcelas = ",\nsendo a 1ª de "+funcao.retorna_valor_dinheiro(primeira_parcela)+" e "+QString::number(numero_pacelas-1)+" de "+funcao.retorna_valor_dinheiro(valor_parcela);
+                    //Insere na tabela de despesas a despesas da parcela do cartão.
+                    salvar_dados_despesa_cartao.prepare("INSERT INTO despesas(data,descricao,valor,status,origem,id_origem) VALUES(:data, :descricao, :valor, :status, :origem, :id_origem);");
+                    salvar_dados_despesa_cartao.bindValue(":descricao", "Parcela de número 1, referente a compra de código: "+QString::number(dados_compra->retorna_id_compra())+".");
+                    salvar_dados_despesa_cartao.bindValue(":valor", primeira_parcela);
+                    salvar_dados_despesa_cartao.bindValue(":data", data_parcelas[0]);
+                    salvar_dados_despesa_cartao.bindValue(":status", 0);
+                    salvar_dados_despesa_cartao.bindValue(":origem", 0);
+                    salvar_dados_despesa_cartao.bindValue(":id_origem", dados_compra->retorna_id_compra());
+                    salvar_dados_despesa_cartao.exec();
+                    for (int i=2; i<=numero_pacelas;i++){
+                        //Insere na tabela de despesas a despesas da parcela do cartão.
+                        salvar_dados_despesa_cartao.prepare("INSERT INTO despesas(data,descricao,valor,status,origem,id_origem) VALUES(:data, :descricao, :valor, :status, :origem, :id_origem);");
+                        salvar_dados_despesa_cartao.bindValue(":descricao", "Parcela de número "+QString::number(i)+", referente a compra de código: "+QString::number(dados_compra->retorna_id_compra())+".");
+                        salvar_dados_despesa_cartao.bindValue(":valor", valor_parcela);
+                        salvar_dados_despesa_cartao.bindValue(":data", data_parcelas[i-1]);
+                        salvar_dados_despesa_cartao.bindValue(":status", 0);
+                        salvar_dados_despesa_cartao.bindValue(":origem", 0);
+                        salvar_dados_despesa_cartao.bindValue(":id_origem", dados_compra->retorna_id_compra());
+                        salvar_dados_despesa_cartao.exec();
+                    }
+                }
+                else{
+                    for (int i=1; i<=numero_pacelas;i++){
+                        //Insere na tabela de despesas a despesas da parcela do cartão.
+                        salvar_dados_despesa_cartao.prepare("INSERT INTO despesas(data,descricao,valor,status,origem,id_origem) VALUES(:data, :descricao, :valor, :status, :origem, :id_origem);");
+                        salvar_dados_despesa_cartao.bindValue(":descricao", "Parcela de número "+QString::number(i)+", referente a compra de código: "+QString::number(dados_compra->retorna_id_compra())+".");
+                        salvar_dados_despesa_cartao.bindValue(":valor", valor_parcela);
+                        salvar_dados_despesa_cartao.bindValue(":data", data_parcelas[i-1]);
+                        salvar_dados_despesa_cartao.bindValue(":status", 0);
+                        salvar_dados_despesa_cartao.bindValue(":origem", 0);
+                        salvar_dados_despesa_cartao.bindValue(":id_origem", dados_compra->retorna_id_compra());
+                        salvar_dados_despesa_cartao.exec();
+                    }
+                }
+
             }
 
             if(cheque_usado->retorna_valor() > 0.0){
@@ -228,7 +299,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
 
                 //Insere na tabela de despesas a despesa do cheque.
                 salvar_dados_despesa_cheque.prepare("INSERT INTO despesas(data,descricao,valor,status,origem,id_origem) VALUES(:data, :descricao, :valor, :status, :origem, :id_origem);");
-                salvar_dados_despesa_cheque.bindValue(":descricao", "Cheque utilizado para efetuar pagamento da despesa de código: "+QString::number(dados_compra->retorna_id_compra())+".");
+                salvar_dados_despesa_cheque.bindValue(":descricao", "Cheque utilizado para efetuar pagamento da compra de código: "+QString::number(dados_compra->retorna_id_compra())+".");
                 salvar_dados_despesa_cheque.bindValue(":valor", cheque_usado->retorna_valor());
                 if(cheque_usado->retorna_se_insere_caixa_hoje()==true){
                     QDate data_atual;
@@ -312,20 +383,13 @@ void tela_pagamento::on_btn_confirmar_clicked()
                 atualiza_valor_venda_produto.exec();
             }
 
-            std::cout<<salvar_dados_compra.lastError().number()<<std::endl;
-            std::cout<<alterar_dados_his_balanco_estoque.lastError().number()<<std::endl;
-            std::cout<<salvar_dados_his_balanco_estoque.lastError().number()<<std::endl;
-            std::cout<<salvar_dados_lista_compra.lastError().number()<<std::endl;
-            std::cout<<atualiza_valor_venda_produto.lastError().number()<<std::endl;
-            std::cout<<salvar_dados_cheque.lastError().number()<<std::endl;
-            std::cout<<salvar_dados_cartao.lastError().number()<<std::endl;
-            std::cout<<salvar_dados_despesa_cheque.lastError().number()<<std::endl;
-
             //Verifica se os dados podem ser salvos, caso sim realiza o Commite, do contrário o Rollback.
             if((salvar_dados_compra.lastError().number()<=0)&&(alterar_dados_his_balanco_estoque.lastError().number()<=0)&&
                (salvar_dados_his_balanco_estoque.lastError().number()<=0)&&(salvar_dados_lista_compra.lastError().number()<=0)&&
                (atualiza_valor_venda_produto.lastError().number()<=0)&&(salvar_dados_cheque.lastError().number()<=0)&&
-               (salvar_dados_cartao.lastError().number()<=0)&&(salvar_dados_despesa_cheque.lastError().number()<=0)){
+               (salvar_dados_cartao.lastError().number()<=0)&&(salvar_dados_despesa_cheque.lastError().number()<=0)&&
+               (salvar_dados_dinheiro.lastError().number()<=0)&&(salvar_dados_despesa_dinheiro.lastError().number()<=0)&&
+               (salvar_dados_despesa_cartao.lastError().number()<=0)){
 
                 //Finaliza a inserçao dos dados.
                 bd.commit();

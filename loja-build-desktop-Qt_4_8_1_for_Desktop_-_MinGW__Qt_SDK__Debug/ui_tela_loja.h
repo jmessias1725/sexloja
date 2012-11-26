@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_loja.ui'
 **
-** Created: Fri 23. Nov 21:26:11 2012
+** Created: Mon 26. Nov 09:17:12 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -298,7 +298,7 @@ public:
 
     void retranslateUi(QDialog *tela_loja)
     {
-        tela_loja->setWindowTitle(QApplication::translate("tela_loja", "Dialog", 0, QApplication::UnicodeUTF8));
+        tela_loja->setWindowTitle(QApplication::translate("tela_loja", "Cadastro da Loja", 0, QApplication::UnicodeUTF8));
         btn_editar_loja->setText(QApplication::translate("tela_loja", "Editar Fornecedor", 0, QApplication::UnicodeUTF8));
         gb_endereo->setTitle(QApplication::translate("tela_loja", "Endere\303\247o", 0, QApplication::UnicodeUTF8));
         le_cep->setInputMask(QApplication::translate("tela_loja", "00000-000; ", 0, QApplication::UnicodeUTF8));

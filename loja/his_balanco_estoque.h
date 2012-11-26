@@ -11,18 +11,18 @@ class his_balanco_estoque
 private:
     int id_balanco;
     int id_produto;
-    float valor_compra;
+    double valor_compra;
     int total_comprado;
     int total_disponivel;
     int somatorio_quantidade;
 
 public:
-    his_balanco_estoque(int id_bal,float valor_com,int somatorio_quan);
-    his_balanco_estoque(int id_bal,int total_com,float valor_com,int total_dis);
-    his_balanco_estoque(int id_pro,float valor_com,int total_com,int total_dis);
+    his_balanco_estoque(int id_bal,double valor_com,int somatorio_quan);
+    his_balanco_estoque(int id_bal,int total_com,double valor_com,int total_dis);
+    his_balanco_estoque(int id_pro,double valor_com,int total_com,int total_dis);
     int retorna_id_balanco(void);
     int retorna_id_produto(void);
-    float retorna_valor_compra(void);
+    double retorna_valor_compra(void);
     int retorna_total_comprado(void);
     int retorna_total_disponivel(void);
     int retorna_somatorio_quantidade(void);

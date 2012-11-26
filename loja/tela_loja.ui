@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Cadastro da Loja</string>
   </property>
   <property name="windowIcon">
    <iconset resource="imagens.qrc">
