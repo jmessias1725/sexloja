@@ -200,6 +200,7 @@ void tela_configurar_legenda_estoque::on_btn_confirmar_clicked()
                                               normal_valor,n_cor_vermelho,n_cor_verde,n_cor_azul,
                                               ideal_valor,i_cor_vermelho,i_cor_verde,i_cor_azul);
         if(legenda->salvar_alteracao_configuracao_estoque()){
+            this->accept();
             this->close();
         }
     }
@@ -214,6 +215,7 @@ legenda_estoque * tela_configurar_legenda_estoque::retorna_nova_configuracao(voi
 
 void tela_configurar_legenda_estoque::on_btn_cancelar_clicked()
 {
+    this->reject();
     this->close();
 }
 

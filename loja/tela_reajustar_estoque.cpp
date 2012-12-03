@@ -16,6 +16,7 @@ tela_reajustar_estoque::~tela_reajustar_estoque()
 void tela_reajustar_estoque::definir_icone_janela(QPixmap logo){
     logomarca = logo;
     this->setWindowIcon(logomarca);
+    this->reject();
 }
 
 void tela_reajustar_estoque::closeEvent(QCloseEvent *event){
@@ -29,6 +30,7 @@ void tela_reajustar_estoque::limpar_dados(void){
 
 void tela_reajustar_estoque::on_btn_cancelar_clicked()
 {
+    this->reject();
     this->close();
 }
 
@@ -50,6 +52,7 @@ void tela_reajustar_estoque::on_btn_confirmar_clicked()
         if(!msg.exec()){
             informacoes_produto->definir_icone_janela(logomarca);
             informacoes_produto->reajustar_valor_venda_produto(ui->cb_tipo->currentIndex(),ui->le_porcentagem->text());
+            this->accept();
             this->close();
         }
     }

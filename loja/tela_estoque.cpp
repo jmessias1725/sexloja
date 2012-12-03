@@ -212,7 +212,7 @@ void tela_estoque::on_pushButton_clicked()
 {
     tl_configurar_legenda_estoque.definir_icone_janela(logomarca);
     tl_configurar_legenda_estoque.configuracao_legenda(legenda);
-    if(tl_configurar_legenda_estoque.exec()<=0){
+    if(tl_configurar_legenda_estoque.exec()){
         legenda = tl_configurar_legenda_estoque.retorna_nova_configuracao();
         tela_estoque::mostrar_lista_produtos();
     }
@@ -221,7 +221,7 @@ void tela_estoque::on_pushButton_clicked()
 void tela_estoque::on_btn_adicionar_produto_clicked()
 {
     tl_cadastro_produto.definir_icone_janela(logomarca);
-    if(tl_cadastro_produto.exec()<=0){
+    if(tl_cadastro_produto.exec()){
         buscar_produtos();
     }
 }
@@ -285,10 +285,9 @@ void tela_estoque::on_tw_produtos_doubleClicked(const QModelIndex &index)
     tl_produto.definir_icone_janela(logomarca);
     tl_produto.definir_dados_produto(aux_lista_produtos[index.row()]);
     aux_lista_produtos[index.row()] = tl_produto.retorna_novo_cadastro();
-    if(!tl_produto.exec()){
-
+    if(tl_produto.exec()){
+        tela_estoque::buscar_produtos();
     }
-    tela_estoque::buscar_produtos();
 }
 
 void tela_estoque::on_btn_limpar_clicked()
@@ -301,7 +300,7 @@ void tela_estoque::on_btn_restaurar_produto_clicked()
     tl_restaurar_produto.setWindowFlags(Qt::Window);
     tl_restaurar_produto.definir_icone_janela(logomarca);
     tl_restaurar_produto.buscar_produtos();
-    if(!tl_restaurar_produto.exec()){
+    if(tl_restaurar_produto.exec()){
         tela_estoque::buscar_produtos();
     }
 }
@@ -309,7 +308,7 @@ void tela_estoque::on_btn_restaurar_produto_clicked()
 void tela_estoque::on_btn_reajustar_estoque_clicked()
 {
     tl_reajustar_estoque.definir_icone_janela(logomarca);
-    if(!tl_reajustar_estoque.exec()){
+    if(tl_reajustar_estoque.exec()){
         tela_estoque::buscar_produtos();
     }
 }

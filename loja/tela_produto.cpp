@@ -44,6 +44,8 @@ void tela_produto::definir_dados_produto(produto *cad_produto){
     buscar_informacoes_his_estoque_produto(informacoes_produto->retorna_id());
     informacoes_his_entrada = buscar_informacoes_his_entrada(informacoes_produto->retorna_id());
     mostrar_informacoes_his_entrada(informacoes_his_entrada);
+
+    this->reject();
 }
 
 produto * tela_produto::retorna_novo_cadastro(void){
@@ -70,16 +72,19 @@ void tela_produto::on_btn_editar_produto_clicked()
 {
     tl_editar_produto.definir_icone_janela(logomarca);
     tl_editar_produto.definir_dados_produto(informacoes_produto,imagem_produto);
-    if(!tl_editar_produto.exec()){
+    if(tl_editar_produto.exec()){
         tela_produto::limpar_dados();
         tela_produto::definir_dados_produto(tl_editar_produto.retorna_novo_cadastro());
+        this->accept();
     }
 }
 
 void tela_produto::on_btn_adicionar_produto_clicked()
 {
     tl_cadastro_produto.definir_icone_janela(logomarca);
-    tl_cadastro_produto.exec();
+    if(tl_cadastro_produto.exec()){
+        this->accept();
+    }
 }
 
 void tela_produto::on_btn_remover_produto_clicked()
@@ -97,6 +102,7 @@ void tela_produto::on_btn_remover_produto_clicked()
     if(!msg.exec()){
         informacoes_produto->definir_icone_janela(logomarca);
         informacoes_produto->remover_cadastro_produto();
+        this->accept();
         this->close();
     }
 }

@@ -44,6 +44,7 @@ void tela_editar_produto::definir_dados_produto(produto *cad_produto, imagem *im
     GS_imagem_produto->addPixmap(imagem_produto->retorna_QPixmap_imagem());
     ui->gv_imagem_produto->setScene(GS_imagem_produto);
     nome_arquivo_imagem = ":/img/img/produto.png";
+    this->reject();
 }
 
 
@@ -95,6 +96,7 @@ void tela_editar_produto::on_btn_confirmar_clicked()
                                                                    ui->le_codigo_barras->text(),ui->cb_tipo->currentText(),funcao.converter_para_double(ui->le_valor_venda->text()),
                                                                    nome_arquivo_imagem,altura,largura,alterou_imgem)){
                 tela_editar_produto::limpar_tela();
+                this->accept();
                 this->close();
             }
         }
@@ -116,6 +118,7 @@ void tela_editar_produto::on_btn_confirmar_clicked()
 
 void tela_editar_produto::on_btn_cancelar_clicked()
 {
+    this->reject();
     this->close();
 }
 

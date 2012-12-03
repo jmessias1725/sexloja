@@ -24,6 +24,7 @@ void tela_restaurar_produto::definir_icone_janela(QPixmap logo){
     aux_cons_tipo = "";
     ui->le_codigo->setCursorPosition(0);
     ui->le_codigo_barras->setCursorPosition(0);
+    this->reject();
 }
 
 void tela_restaurar_produto::buscar_produtos(void){
@@ -229,6 +230,7 @@ void tela_restaurar_produto::on_tw_produtos_doubleClicked(const QModelIndex &ind
         lista_produtos[index.row()]->definir_icone_janela(logomarca);
         lista_produtos[index.row()]->recuperar_cadastro_produto();
         tela_restaurar_produto::buscar_produtos();
+        this->accept();
     }
 }
 
