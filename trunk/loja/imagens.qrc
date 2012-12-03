@@ -61,6 +61,11 @@
         <file>img/cartao_credito3.png</file>
         <file>img/Cheque1.png</file>
         <file>img/dinheiro_geral.png</file>
+        <file>img/despesa.png</file>
+        <file>img/ganho.png</file>
+        <file>img/produto_buscar.png</file>
+        <file>img/despesa_buscar.png</file>
+        <file>img/buscar.png</file>
     </qresource>
     <qresource prefix="/operadoras">
         <file>img/claro.png</file>

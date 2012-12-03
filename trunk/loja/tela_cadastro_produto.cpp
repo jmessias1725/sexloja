@@ -28,6 +28,7 @@ void tela_cadastro_produto::definir_icone_janela(QPixmap logo){
     ui->gv_imagem_produto->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     cena->addPixmap(imagem_produto.retorna_QPixmap_imagem());
     ui->gv_imagem_produto->setScene(cena);
+    this->reject();
 }
 
 void tela_cadastro_produto::on_btn_adicionar_imagem_clicked()
@@ -64,6 +65,7 @@ void tela_cadastro_produto::on_btn_confirmar_clicked()
         if(cad_produto->salvar_dados_produto(ui->le_nome->text(),ui->le_fabricante->text(),QString::fromStdString(descricao_Aux),
                                              ui->le_codigo_barras->text(),ui->cb_tipo->currentText(),nome_arquivo_imagem,altura,largura,valor_venda)){
             tela_cadastro_produto::limpar_tela();
+            this->accept();
         }
     }
     else{
@@ -83,6 +85,7 @@ void tela_cadastro_produto::on_btn_confirmar_clicked()
 
 void tela_cadastro_produto::on_btn_cancelar_clicked()
 {
+    this->reject();
     this->close();
 }
 

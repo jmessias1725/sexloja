@@ -45,6 +45,7 @@ private:
     QString aux_cons_fabricante;
     QString aux_cons_cod_barras;
     QString aux_cons_tipo;
+    bool consultar_lista;
 };
 
 #endif // TELA_LISTAR_PRODUTOS_H

@@ -144,3 +144,9 @@ void tela_principal::on_realizar_compra_triggered()
     tl_comprar.definir_icone_janela(logomarca);
     tl_comprar.exec();
 }
+
+void tela_principal::on_listar_despesas_triggered()
+{
+    tl_listar_despesas.definir_icone_janela(logomarca);
+    tl_listar_despesas.exec();
+}

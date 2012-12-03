@@ -725,3 +725,33 @@ std::vector< QString > funcoes_extras::determina_parcelas(QDate data_compra,int 
     }
     return data_das_parcelas;
 }
+
+QString funcoes_extras::converte_despesa_numero_origem_nome(int ori){
+    if(ori==0)
+    {
+        return "Cartão";
+    }
+    else{
+    if(ori==1){
+        return "Cheque";
+    }
+    else{
+        return "Dinheiro";
+    }
+    }
+}
+
+QString funcoes_extras::converte_despesa_numero_status_nome(int ori){
+    if(ori==0)
+    {
+        return "Aberta";
+    }
+    else{
+    if(ori==1){
+        return "Paga";
+    }
+    else{
+        return "Atrasada";
+    }
+    }
+}

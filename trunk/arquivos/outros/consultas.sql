@@ -64,3 +64,5 @@ extensao = :formato_logo
 SELECT * FROM produto WHERE id_produto LIKE '%%' AND nome LIKE '%%' AND fabricante LIKE '%%' AND cod_barras  LIKE '%%' AND tipo LIKE '%%' GROUP BY nome;
 
 SELECT SUM(total_disponivel) FROM his_balanco_estoque WHERE id_produto = 2
+
+SELECT * FROM despesas WHERE STR_TO_DATE(data, '%d/%m/%Y') BETWEEN '2012-11-26' AND '2013-4-26'

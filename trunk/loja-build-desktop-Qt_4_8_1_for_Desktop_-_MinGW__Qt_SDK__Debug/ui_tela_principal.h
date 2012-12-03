@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_principal.ui'
 **
-** Created: Mon 26. Nov 09:17:10 2012
+** Created: Mon 3. Dec 11:21:46 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -42,11 +42,11 @@ public:
     QAction *Cadastrar_cliente;
     QAction *botao_sair;
     QAction *buscar_clientes;
-    QAction *buscar_produtos;
     QAction *buscar_fornecedores;
     QAction *Cadastro_da_Loja;
     QAction *Estoque;
     QAction *realizar_compra;
+    QAction *listar_despesas;
     QWidget *centralwidget;
     QHBoxLayout *horizontalLayout;
     QFrame *fr_central;
@@ -134,29 +134,29 @@ public:
         buscar_clientes = new QAction(tela_principal);
         buscar_clientes->setObjectName(QString::fromUtf8("buscar_clientes"));
         buscar_clientes->setIcon(icon1);
-        buscar_produtos = new QAction(tela_principal);
-        buscar_produtos->setObjectName(QString::fromUtf8("buscar_produtos"));
-        QIcon icon9;
-        icon9.addFile(QString::fromUtf8(":/img/img/produto.png"), QSize(), QIcon::Normal, QIcon::Off);
-        buscar_produtos->setIcon(icon9);
         buscar_fornecedores = new QAction(tela_principal);
         buscar_fornecedores->setObjectName(QString::fromUtf8("buscar_fornecedores"));
         buscar_fornecedores->setIcon(icon3);
         Cadastro_da_Loja = new QAction(tela_principal);
         Cadastro_da_Loja->setObjectName(QString::fromUtf8("Cadastro_da_Loja"));
-        QIcon icon10;
-        icon10.addFile(QString::fromUtf8(":/img/img/loja.png"), QSize(), QIcon::Normal, QIcon::Off);
-        Cadastro_da_Loja->setIcon(icon10);
+        QIcon icon9;
+        icon9.addFile(QString::fromUtf8(":/img/img/loja.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Cadastro_da_Loja->setIcon(icon9);
         Estoque = new QAction(tela_principal);
         Estoque->setObjectName(QString::fromUtf8("Estoque"));
-        QIcon icon11;
-        icon11.addFile(QString::fromUtf8(":/img/img/estoque.png"), QSize(), QIcon::Normal, QIcon::Off);
-        Estoque->setIcon(icon11);
+        QIcon icon10;
+        icon10.addFile(QString::fromUtf8(":/img/img/estoque.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Estoque->setIcon(icon10);
         realizar_compra = new QAction(tela_principal);
         realizar_compra->setObjectName(QString::fromUtf8("realizar_compra"));
+        QIcon icon11;
+        icon11.addFile(QString::fromUtf8(":/img/img/compra.png"), QSize(), QIcon::Normal, QIcon::Off);
+        realizar_compra->setIcon(icon11);
+        listar_despesas = new QAction(tela_principal);
+        listar_despesas->setObjectName(QString::fromUtf8("listar_despesas"));
         QIcon icon12;
-        icon12.addFile(QString::fromUtf8(":/img/img/compra.png"), QSize(), QIcon::Normal, QIcon::Off);
-        realizar_compra->setIcon(icon12);
+        icon12.addFile(QString::fromUtf8(":/img/img/despesa.png"), QSize(), QIcon::Normal, QIcon::Off);
+        listar_despesas->setIcon(icon12);
         centralwidget = new QWidget(tela_principal);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         horizontalLayout = new QHBoxLayout(centralwidget);
@@ -491,15 +491,16 @@ public:
         menuNovo->addAction(cadastrar_forncecedor);
         menuNovo->addAction(cadastrar_produto);
         menuListar->addAction(buscar_clientes);
-        menuListar->addAction(buscar_produtos);
         menuListar->addAction(buscar_fornecedores);
         menuConfigura_oes->addSeparator();
         menuConfigura_oes->addAction(Cadastro_da_Loja);
         menuConfigura_oes->addAction(Estoque);
+        menuConfigura_oes->addAction(listar_despesas);
         barra_de_menus->addSeparator();
         barra_de_menus->addAction(consultar_caixa);
         barra_de_menus->addAction(consultar_clientes);
         barra_de_menus->addAction(consultar_fornecedores);
+        barra_de_menus->addAction(listar_despesas);
         barra_de_menus->addAction(Estoque);
 
         retranslateUi(tela_principal);
@@ -522,7 +523,6 @@ public:
         Cadastrar_cliente->setText(QApplication::translate("tela_principal", "Cliente", 0, QApplication::UnicodeUTF8));
         botao_sair->setText(QApplication::translate("tela_principal", "Sair", 0, QApplication::UnicodeUTF8));
         buscar_clientes->setText(QApplication::translate("tela_principal", "Buscar Clientes", 0, QApplication::UnicodeUTF8));
-        buscar_produtos->setText(QApplication::translate("tela_principal", "Produtos", 0, QApplication::UnicodeUTF8));
         buscar_fornecedores->setText(QApplication::translate("tela_principal", "Buscar Fornecedores", 0, QApplication::UnicodeUTF8));
         Cadastro_da_Loja->setText(QApplication::translate("tela_principal", "Cadastro da Loja", 0, QApplication::UnicodeUTF8));
         Estoque->setText(QApplication::translate("tela_principal", "Estoque", 0, QApplication::UnicodeUTF8));
@@ -530,6 +530,7 @@ public:
 #ifndef QT_NO_TOOLTIP
         realizar_compra->setToolTip(QApplication::translate("tela_principal", "Clique para adicionar uma nova compra", 0, QApplication::UnicodeUTF8));
 #endif // QT_NO_TOOLTIP
+        listar_despesas->setText(QApplication::translate("tela_principal", "Despesas", 0, QApplication::UnicodeUTF8));
         lb_data->setText(QApplication::translate("tela_principal", "Segunda-Feira\n"
 "30/09/2012", 0, QApplication::UnicodeUTF8));
         lb_mes_pos->setText(QApplication::translate("tela_principal", "novembro, 2012", 0, QApplication::UnicodeUTF8));

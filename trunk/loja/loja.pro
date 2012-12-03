@@ -58,7 +58,9 @@ SOURCES += main.cpp\
     cartao.cpp \
     cheque.cpp \
     dinheiro.cpp \
-    compra.cpp
+    compra.cpp \
+    tela_listar_despesas.cpp \
+    despesa.cpp
 
 HEADERS  += \
     conexao_bd.h \
@@ -107,7 +109,9 @@ HEADERS  += \
     cartao.h \
     cheque.h \
     dinheiro.h \
-    compra.h
+    compra.h \
+    tela_listar_despesas.h \
+    despesa.h
 
 FORMS    += \
     tela_login.ui \
@@ -137,7 +141,8 @@ FORMS    += \
     tela_pagamento.ui \
     tela_pagamento_dinheiro.ui \
     tela_pagamento_cartao.ui \
-    tela_pagamento_cheque.ui
+    tela_pagamento_cheque.ui \
+    tela_listar_despesas.ui
 
 RESOURCES += \
     imagens.qrc
