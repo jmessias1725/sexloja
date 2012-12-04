@@ -18,6 +18,7 @@ void tela_listar_despesas::definir_icone_janela(QPixmap logo){
     logomarca = logo;
     this->setWindowIcon(logomarca);
     aux_cons_id_despesa = "";
+    aux_cons_status = "Todos";
     ui->le_codigo->setCursorPosition(0);
     ui->data_inicial->setDate(QDate::currentDate());
     QDate data_final;
@@ -34,6 +35,9 @@ void tela_listar_despesas::on_btn_cancelar_clicked()
 void tela_listar_despesas::on_btn_buscar_clicked()
 {
     ui->le_codigo->setCursorPosition(0);
+    aux_cons_id_despesa = "";
+    aux_cons_status = "Todos";
+    ui->cb_status->setCurrentIndex(0);
 
     conexao_bd conexao;
     QSqlDatabase bd;
@@ -91,9 +95,17 @@ void tela_listar_despesas::mostrar_lista_despesas(void){
     lista_despesa.clear();
     funcoes_extras funcao;
 
-    for (int i=0;i<int(aux_lista_despesa.size());i++){
-        if((QString::number(aux_lista_despesa[i]->retorna_id()).contains(aux_cons_id_despesa))){
-            lista_despesa.push_back(aux_lista_despesa[i]);
+    for (int i=0;i<int(aux_lista_despesa.size());i++){//aux_cons_status
+        if (aux_cons_status=="Todos"){
+            if((QString::number(aux_lista_despesa[i]->retorna_id_origem()).contains(aux_cons_id_despesa))){
+                lista_despesa.push_back(aux_lista_despesa[i]);
+            }
+        }
+        else{
+            if((QString::number(aux_lista_despesa[i]->retorna_id_origem()).contains(aux_cons_id_despesa))&&
+               funcao.converte_despesa_numero_status_nome(lista_despesa[i]->retorna_status())==aux_cons_status){
+                lista_despesa.push_back(aux_lista_despesa[i]);
+            }
         }
     }
     ui->tw_despesas->setRowCount(int(lista_despesa.size()));
@@ -133,6 +145,7 @@ void tela_listar_despesas::on_btn_limpar_clicked()
     ui->le_codigo->clear();
     ui->data_inicial->setDate(QDate::currentDate());
     ui->data_final->setDate(QDate::currentDate());
+    ui->cb_status->setCurrentIndex(0);
 }
 
 void tela_listar_despesas::closeEvent(QCloseEvent *event){
@@ -147,4 +160,11 @@ void tela_listar_despesas::on_data_inicial_editingFinished()
     QDate data_final;
     data_final.setDate(2500,12,30);
     ui->data_final->setDateRange(ui->data_inicial->date(),data_final);
+}
+
+void tela_listar_despesas::on_btn_filtrar_clicked()
+{
+    aux_cons_status = ui->cb_status->currentText();
+    aux_cons_id_despesa = ui->le_codigo->text();
+    tela_listar_despesas::mostrar_lista_despesas();
 }

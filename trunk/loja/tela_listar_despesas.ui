@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>725</width>
-    <height>435</height>
+    <width>750</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <rect>
      <x>5</x>
      <y>0</y>
-     <width>715</width>
+     <width>390</width>
      <height>45</height>
     </rect>
    </property>
@@ -32,59 +32,15 @@
     </font>
    </property>
    <property name="title">
-    <string>Buscar por</string>
+    <string>Buscar</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
-   <widget class="QLabel" name="lb_codigo">
-    <property name="geometry">
-     <rect>
-      <x>7</x>
-      <y>17</y>
-      <width>42</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Código:</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="le_codigo">
-    <property name="geometry">
-     <rect>
-      <x>49</x>
-      <y>17</y>
-      <width>70</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="inputMask">
-     <string>000000000; </string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="cursorPosition">
-     <number>9</number>
-    </property>
-   </widget>
    <widget class="QLabel" name="lb_nome">
     <property name="geometry">
      <rect>
-      <x>126</x>
+      <x>5</x>
       <y>17</y>
       <width>62</width>
       <height>20</height>
@@ -106,7 +62,7 @@
    <widget class="QPushButton" name="btn_buscar">
     <property name="geometry">
      <rect>
-      <x>418</x>
+      <x>295</x>
       <y>15</y>
       <width>90</width>
       <height>24</height>
@@ -146,96 +102,10 @@
      </size>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_cancelar">
-    <property name="geometry">
-     <rect>
-      <x>618</x>
-      <y>15</y>
-      <width>90</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>0</width>
-      <height>24</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>90</width>
-      <height>24</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Calibri</family>
-      <pointsize>10</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Cancelar</string>
-    </property>
-    <property name="icon">
-     <iconset resource="imagens.qrc">
-      <normaloff>:/img/img/1345902747_button_cancel.png</normaloff>:/img/img/1345902747_button_cancel.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>18</width>
-      <height>18</height>
-     </size>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_limpar">
-    <property name="geometry">
-     <rect>
-      <x>518</x>
-      <y>15</y>
-      <width>90</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>0</width>
-      <height>24</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>90</width>
-      <height>24</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Calibri</family>
-      <pointsize>10</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Limpar</string>
-    </property>
-    <property name="icon">
-     <iconset resource="imagens.qrc">
-      <normaloff>:/img/img/limpar.png</normaloff>:/img/img/limpar.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>20</width>
-      <height>20</height>
-     </size>
-    </property>
-   </widget>
    <widget class="QDateEdit" name="data_inicial">
     <property name="geometry">
      <rect>
-      <x>188</x>
+      <x>67</x>
       <y>17</y>
       <width>100</width>
       <height>20</height>
@@ -295,7 +165,7 @@
    <widget class="QLabel" name="lb_a">
     <property name="geometry">
      <rect>
-      <x>295</x>
+      <x>174</x>
       <y>17</y>
       <width>7</width>
       <height>20</height>
@@ -317,7 +187,7 @@
    <widget class="QDateEdit" name="data_final">
     <property name="geometry">
      <rect>
-      <x>309</x>
+      <x>188</x>
       <y>17</y>
       <width>100</width>
       <height>20</height>
@@ -379,9 +249,9 @@
    <property name="geometry">
     <rect>
      <x>5</x>
-     <y>50</y>
-     <width>715</width>
-     <height>380</height>
+     <y>79</y>
+     <width>740</width>
+     <height>416</height>
     </rect>
    </property>
    <property name="font">
@@ -421,14 +291,267 @@
     <number>20</number>
    </attribute>
   </widget>
+  <widget class="QGroupBox" name="gb_filtrar">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>0</y>
+     <width>344</width>
+     <height>45</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+     <kerning>false</kerning>
+    </font>
+   </property>
+   <property name="title">
+    <string>Filtrar</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <widget class="QPushButton" name="btn_filtrar">
+    <property name="geometry">
+     <rect>
+      <x>249</x>
+      <y>15</y>
+      <width>90</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>24</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>90</width>
+      <height>24</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Filtrar</string>
+    </property>
+    <property name="icon">
+     <iconset resource="imagens.qrc">
+      <normaloff>:/img/img/filtrar.png</normaloff>:/img/img/filtrar.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lb_codigo">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>17</y>
+      <width>42</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Código:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="le_codigo">
+    <property name="geometry">
+     <rect>
+      <x>47</x>
+      <y>17</y>
+      <width>70</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="inputMask">
+     <string>000000000; </string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="cursorPosition">
+     <number>9</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lb_status">
+    <property name="geometry">
+     <rect>
+      <x>124</x>
+      <y>17</y>
+      <width>38</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Status:</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cb_status">
+    <property name="geometry">
+     <rect>
+      <x>162</x>
+      <y>17</y>
+      <width>80</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <item>
+     <property name="text">
+      <string>Todos</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Aberta</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Atrasada</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Fechada</string>
+     </property>
+    </item>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="btn_cancelar">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>50</y>
+     <width>90</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>24</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>90</width>
+     <height>24</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>10</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Cancelar</string>
+   </property>
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/img/img/1345902747_button_cancel.png</normaloff>:/img/img/1345902747_button_cancel.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>18</width>
+     <height>18</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_limpar">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>50</y>
+     <width>90</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>24</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>90</width>
+     <height>24</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>10</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Limpar</string>
+   </property>
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/img/img/limpar.png</normaloff>:/img/img/limpar.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
+  </widget>
  </widget>
  <tabstops>
-  <tabstop>le_codigo</tabstop>
   <tabstop>data_inicial</tabstop>
   <tabstop>data_final</tabstop>
   <tabstop>btn_buscar</tabstop>
   <tabstop>btn_limpar</tabstop>
   <tabstop>btn_cancelar</tabstop>
+  <tabstop>tw_despesas</tabstop>
  </tabstops>
  <resources>
   <include location="imagens.qrc"/>
