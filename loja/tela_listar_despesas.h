@@ -30,15 +30,16 @@ private slots:
     void on_btn_cancelar_clicked();
     void on_btn_buscar_clicked();
     void on_btn_limpar_clicked();
-    void closeEvent( QCloseEvent * event );
-    
+    void closeEvent( QCloseEvent * event );    
     void on_data_inicial_editingFinished();
+    void on_btn_filtrar_clicked();
 
 private:
     Ui::tela_listar_despesas *ui;
     std::vector< despesa* > lista_despesa;
     std::vector< despesa* > aux_lista_despesa;
     QString aux_cons_id_despesa;
+    QString aux_cons_status;
     QStandardItemModel *modelo;
     QPixmap logomarca;
 };
