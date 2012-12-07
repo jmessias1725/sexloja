@@ -14,6 +14,7 @@ private:
     int num_cupom_nota;
     double valor_total;
     double desconto;
+    double valor_pago;
 public:
     compra();
     compra(QDate data_com,int id_for,int num_cupom_not,double valor_tot,double des);
@@ -24,6 +25,7 @@ public:
     int retorna_num_cupom_nota(void);
     double retorna_valor_total(void);
     double retorna_desconto(void);
+    double retorna_valor_pago(void);
     void alterar_id_compra(int id_com);
     QDate retorna_data_QDate(void);
 };

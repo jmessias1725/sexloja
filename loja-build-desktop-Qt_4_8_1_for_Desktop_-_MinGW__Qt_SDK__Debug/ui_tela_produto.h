@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_produto.ui'
 **
-** Created: Mon 26. Nov 09:17:12 2012
+** Created: Fri 7. Dec 10:28:01 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -273,9 +273,9 @@ public:
         tw_historico_entradas->setObjectName(QString::fromUtf8("tw_historico_entradas"));
         tw_historico_entradas->setGeometry(QRect(-1, -1, 504, 177));
         tw_historico_entradas->setFont(font5);
-        tw_historico_entradas->horizontalHeader()->setDefaultSectionSize(98);
+        tw_historico_entradas->horizontalHeader()->setDefaultSectionSize(110);
         tw_historico_entradas->horizontalHeader()->setMinimumSectionSize(20);
-        tw_historico_entradas->horizontalHeader()->setStretchLastSection(false);
+        tw_historico_entradas->horizontalHeader()->setStretchLastSection(true);
         tw_historico_entradas->verticalHeader()->setVisible(false);
         tw_historico_entradas->verticalHeader()->setDefaultSectionSize(20);
         tabw_historico_ent_sai->addTab(entradas, QString());

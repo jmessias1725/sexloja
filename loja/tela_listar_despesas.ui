@@ -270,7 +270,7 @@
     <number>0</number>
    </property>
    <attribute name="horizontalHeaderDefaultSectionSize">
-    <number>360</number>
+    <number>380</number>
    </attribute>
    <attribute name="horizontalHeaderHighlightSections">
     <bool>true</bool>
@@ -453,7 +453,7 @@
     </item>
     <item>
      <property name="text">
-      <string>Fechada</string>
+      <string>Paga</string>
      </property>
     </item>
    </widget>

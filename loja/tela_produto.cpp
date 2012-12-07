@@ -165,14 +165,11 @@ std::vector< his_entradas * > tela_produto::buscar_informacoes_his_entrada(int i
     conexao_bd conexao;
     QSqlDatabase bd;
 
-    int id_entrada;
+    int id_compra;
     int quantidade;
-    double valor_compra;
-    double valor_venda;
+    double valor_compra_uni;
+    double valor_venda_uni;
     QString data;
-    QString hora;
-    int origem;
-    int id_balanco;
 
     std::vector< his_entradas * > aux_his;
 
@@ -186,17 +183,14 @@ std::vector< his_entradas * > tela_produto::buscar_informacoes_his_entrada(int i
         QSqlQuery consultar(bd);
 
         //realiza a consulta
-        consultar.exec("SELECT id_entrada,quantidade,valor_compra,valor_venda,data,hora,origem,id_balanco FROM his_entradas WHERE id_produto = "+QString::number(id)+";");
+        consultar.exec("SELECT l.`id_compra`, l.`quantidade`, l.`valor_compra_uni`, l.`valor_venda_uni`, c.`data_compra` FROM lista_compra l,compra c WHERE l.id_compra=c.id_compra AND l.id_produto = "+QString::number(id)+";");
         while(consultar.next()){
-            id_entrada = consultar.value(0).toString().toInt();
+            id_compra = consultar.value(0).toString().toInt();
             quantidade = consultar.value(1).toString().toInt();
-            valor_compra = consultar.value(2).toString().toDouble();
-            valor_venda = consultar.value(3).toString().toDouble();
+            valor_compra_uni = consultar.value(2).toString().toDouble();
+            valor_venda_uni = consultar.value(3).toString().toDouble();
             data = consultar.value(4).toString();
-            hora = consultar.value(5).toString();
-            origem = consultar.value(6).toString().toInt();
-            id_balanco = consultar.value(7).toString().toInt();
-            aux_his.push_back(new his_entradas(id_entrada,quantidade,valor_compra,valor_venda,data,hora,origem,id_balanco));
+            aux_his.push_back(new his_entradas(id_compra,quantidade,valor_compra_uni,valor_venda_uni,data));
         }
         consultar.clear();
         bd.close();
@@ -208,24 +202,22 @@ std::vector< his_entradas * > tela_produto::buscar_informacoes_his_entrada(int i
 void tela_produto::mostrar_informacoes_his_entrada(std::vector< his_entradas * > aux_his){
 
     ui->tw_historico_entradas->setRowCount(int(aux_his.size()));
-    ui->tw_historico_entradas->setColumnCount(6);
+    ui->tw_historico_entradas->setColumnCount(5);
     ui->tw_historico_entradas->horizontalHeader()->setResizeMode(QHeaderView::Fixed);
     ui->tw_historico_entradas->clear();
-    ui->tw_historico_entradas->setHorizontalHeaderLabels(QString(" Origem ; Quantidade ; Valor de compra ; Valor de venda ; Data do registro ; Hora do registro ").split(";"));
+    ui->tw_historico_entradas->setHorizontalHeaderLabels(QString(" Origem ; Quantidade ; Valor de compra ; Valor de venda ; Data do registro ").split(";"));
 
     for (int i=0;i<int(aux_his.size());i++){
-        ui->tw_historico_entradas->setItem(i,0,new QTableWidgetItem(funcoes.converte_numero_origem_nome(aux_his[i]->retorna_origem())));
+        ui->tw_historico_entradas->setItem(i,0,new QTableWidgetItem(funcoes.converte_numero_origem_nome(aux_his[i]->retorna_id_entrada())));
         ui->tw_historico_entradas->setItem(i,1,new QTableWidgetItem(QString::number(aux_his[i]->retorna_quantidade())));
         ui->tw_historico_entradas->setItem(i,2,new QTableWidgetItem(funcoes.retorna_valor_dinheiro(aux_his[i]->retorna_valor_compra())));
         ui->tw_historico_entradas->setItem(i,3,new QTableWidgetItem(funcoes.retorna_valor_dinheiro(aux_his[i]->retorna_valor_venda())));
         ui->tw_historico_entradas->setItem(i,4,new QTableWidgetItem(aux_his[i]->retorna_data()));
-        ui->tw_historico_entradas->setItem(i,5,new QTableWidgetItem(aux_his[i]->retorna_hora()));
         ui->tw_historico_entradas->item(i,0)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_historico_entradas->item(i,1)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_historico_entradas->item(i,2)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_historico_entradas->item(i,3)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_historico_entradas->item(i,4)->setTextAlignment(Qt::AlignHCenter);
-        ui->tw_historico_entradas->item(i,5)->setTextAlignment(Qt::AlignHCenter);
     }
     ui->tw_historico_entradas->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tw_historico_entradas->setSelectionBehavior(QAbstractItemView::SelectRows);

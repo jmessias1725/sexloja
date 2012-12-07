@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_listar_despesas.ui'
 **
-** Created: Tue 4. Dec 11:17:12 2012
+** Created: Thu 6. Dec 08:54:16 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -131,7 +131,7 @@ public:
         tw_despesas->setAlternatingRowColors(true);
         tw_despesas->setRowCount(0);
         tw_despesas->setColumnCount(0);
-        tw_despesas->horizontalHeader()->setDefaultSectionSize(360);
+        tw_despesas->horizontalHeader()->setDefaultSectionSize(380);
         tw_despesas->horizontalHeader()->setHighlightSections(true);
         tw_despesas->horizontalHeader()->setMinimumSectionSize(60);
         tw_despesas->horizontalHeader()->setStretchLastSection(true);
@@ -219,7 +219,7 @@ public:
          << QApplication::translate("tela_listar_despesas", "Todos", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("tela_listar_despesas", "Aberta", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("tela_listar_despesas", "Atrasada", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("tela_listar_despesas", "Fechada", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("tela_listar_despesas", "Paga", 0, QApplication::UnicodeUTF8)
         );
         btn_cancelar->setText(QApplication::translate("tela_listar_despesas", "Cancelar", 0, QApplication::UnicodeUTF8));
         btn_limpar->setText(QApplication::translate("tela_listar_despesas", "Limpar", 0, QApplication::UnicodeUTF8));
