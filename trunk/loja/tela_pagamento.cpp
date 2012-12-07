@@ -187,11 +187,13 @@ void tela_pagamento::on_btn_confirmar_clicked()
             QSqlQuery consultar_id_balanco(bd);
 
             //Insere os dados no cadastro da compra
-            salvar_dados_compra.prepare("INSERT INTO compra(data_compra,id_fornecedor,num_cupom_nota,valor_total) VALUES(:data_compra, :id_fornecedor, :num_cupom_nota, :valor_total);");
+            salvar_dados_compra.prepare("INSERT INTO compra(data_compra,id_fornecedor,num_cupom_nota,valor_total,desconto,valor_pago) VALUES(:data_compra, :id_fornecedor, :num_cupom_nota, :valor_total, :desconto, :valor_pago);");
             salvar_dados_compra.bindValue(":data_compra", dados_compra->retorna_data_compra());
             salvar_dados_compra.bindValue(":id_fornecedor",dados_compra->retorna_id_fornecedor());
             salvar_dados_compra.bindValue(":num_cupom_nota", dados_compra->retorna_num_cupom_nota());
             salvar_dados_compra.bindValue(":valor_total", dados_compra->retorna_valor_total());
+            salvar_dados_compra.bindValue(":desconto", dados_compra->retorna_desconto());
+            salvar_dados_compra.bindValue(":valor_pago", dados_compra->retorna_valor_pago());
             salvar_dados_compra.exec();
 
             //realiza a consulta para determinar  o id da compra.

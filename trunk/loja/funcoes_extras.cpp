@@ -720,7 +720,13 @@ std::vector< QString > funcoes_extras::determina_parcelas(QDate data_compra,int 
                 }
             }
         }
-        data = QString::number(dia)+"/"+QString::number(mes)+"/"+QString::number(ano);
+        QString dia_s = QString::number(dia);
+        QString mes_s = QString::number(mes);
+        if (dia_s.size()<2)
+            dia_s = "0"+dia_s;
+        if (mes_s.size()<2)
+            mes_s = "0"+mes_s;
+        data = dia_s+"/"+mes_s+"/"+QString::number(ano);
         data_das_parcelas.push_back(data);
     }
     return data_das_parcelas;

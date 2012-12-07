@@ -24,7 +24,6 @@ void tela_comprar::definir_icone_janela(QPixmap logo){
     ui->data->setDate(QDate::currentDate());
     ui->le_desconto->setText(funcao.retorna_valor_dinheiro(0));
     tela_comprar::mostrar_lista_produtos();
-
 }
 
 void tela_comprar::on_btn_buscar_fornecedor_clicked()
@@ -168,10 +167,10 @@ void tela_comprar::on_btn_confirmar_clicked()
         msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
         msg.setText("\nDeseja efetuar a compra sem inserir os dados do fornecedor ?");
         if(!msg.exec()){
+            double valor_tot = funcao.converter_para_double(ui->le_total_a_pagar->text())+funcao.converter_para_double(ui->le_desconto->text());
             dados_compra = new compra(ui->data->date(),
                                       ui->le_codigo->text().toInt(),ui->le_numero_cupom_nota->text().toInt(),
-                                      funcao.converter_para_double(ui->le_total_a_pagar->text()),
-                                      funcao.converter_para_double(ui->le_desconto->text()));
+                                      valor_tot,funcao.converter_para_double(ui->le_desconto->text()));
 
             for(int i=0;i<int(lista_produtos.size());i++){
                 lt_compra.push_back(new lista_compra(lista_produtos[i]->retorna_id(),0,0,
@@ -188,10 +187,10 @@ void tela_comprar::on_btn_confirmar_clicked()
         }
     }
     else{
+        double valor_tot = funcao.converter_para_double(ui->le_total_a_pagar->text())+funcao.converter_para_double(ui->le_desconto->text());
         dados_compra = new compra(ui->data->date(),
                                   ui->le_codigo->text().toInt(),ui->le_numero_cupom_nota->text().toInt(),
-                                  funcao.converter_para_double(ui->le_total_a_pagar->text()),
-                                  funcao.converter_para_double(ui->le_desconto->text()));
+                                  valor_tot,funcao.converter_para_double(ui->le_desconto->text()));
 
         for(int i=0;i<int(lista_produtos.size());i++){
             lt_compra.push_back(new lista_compra(lista_produtos[i]->retorna_id(),0,0,

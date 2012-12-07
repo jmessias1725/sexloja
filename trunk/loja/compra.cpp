@@ -4,6 +4,7 @@ compra::compra()
 {
 
 }
+
 compra::compra(QDate data_com,int id_for,int num_cupom_not,double valor_tot,double des){
     data = data_com;
     data_compra =data.toString(Qt::SystemLocaleShortDate);
@@ -11,6 +12,7 @@ compra::compra(QDate data_com,int id_for,int num_cupom_not,double valor_tot,doub
     num_cupom_nota = num_cupom_not;
     valor_total = valor_tot;
     desconto = des;
+    valor_pago = valor_tot-des;
 }
 
 compra::compra(int id_com,QDate data_com,int id_for,int num_cupom_not,double valor_tot,double des){
@@ -21,6 +23,7 @@ compra::compra(int id_com,QDate data_com,int id_for,int num_cupom_not,double val
     num_cupom_nota = num_cupom_not;
     valor_total = valor_tot;
     desconto = des;
+    valor_pago = valor_tot-des;
 }
 
 int compra::retorna_id_compra(void){
@@ -45,6 +48,10 @@ double compra::retorna_valor_total(void){
 
 double compra::retorna_desconto(void){
     return desconto;
+}
+
+double compra::retorna_valor_pago(void){
+    return valor_pago;
 }
 
 void compra::alterar_id_compra(int id_com){

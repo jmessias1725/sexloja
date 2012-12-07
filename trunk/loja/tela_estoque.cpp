@@ -92,13 +92,13 @@ void tela_estoque::buscar_produtos(void){
             aux_cod_barras = consultar.value(4).toString();
             aux_tipo = consultar.value(5).toString();
             aux_id_imagem = consultar.value(6).toInt();
-            aux_valor_venda = consultar.value(7).toFloat();
+            aux_valor_venda = consultar.value(7).toDouble();
 
             //realiza a consulta
             consultar_his_balanco_estoque.exec("SELECT valor_compra,total_disponivel FROM his_balanco_estoque WHERE id_produto = "+QString::number(aux_id)+";");
             while(consultar_his_balanco_estoque.next()){
-                aux_valor_compra = consultar_his_balanco_estoque.value(0).toFloat();
-                aux_total_disponivel = consultar_his_balanco_estoque.value(1).toString().toInt();
+                aux_valor_compra = consultar_his_balanco_estoque.value(0).toDouble();
+                aux_total_disponivel = consultar_his_balanco_estoque.value(1).toInt();
                 custo_medio_cada_produto = custo_medio_cada_produto+(aux_valor_compra*aux_total_disponivel);
                 aux_soma_total_disponivel = aux_soma_total_disponivel+aux_total_disponivel;
             }

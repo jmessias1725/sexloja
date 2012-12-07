@@ -748,13 +748,13 @@ QToolButton{
       </font>
      </property>
      <attribute name="horizontalHeaderDefaultSectionSize">
-      <number>98</number>
+      <number>110</number>
      </attribute>
      <attribute name="horizontalHeaderMinimumSectionSize">
       <number>20</number>
      </attribute>
      <attribute name="horizontalHeaderStretchLastSection">
-      <bool>false</bool>
+      <bool>true</bool>
      </attribute>
      <attribute name="verticalHeaderVisible">
       <bool>false</bool>
