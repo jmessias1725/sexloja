@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_definir_valor.h'
 **
-** Created: Mon 3. Dec 15:15:40 2012
+** Created: Sat 8. Dec 12:47:21 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!

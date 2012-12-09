@@ -128,7 +128,8 @@ void tela_listar_despesas::mostrar_lista_despesas(void){
         ui->tw_despesas->item(i,4)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_despesas->item(i,5)->setTextAlignment(Qt::AlignHCenter);
     }
-
+    //Código para fazer a ordenação acesdente.
+    //ui->tw_despesas->sortItems(1,Qt::AscendingOrder);
     ui->tw_despesas->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tw_despesas->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tw_despesas->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -137,6 +138,7 @@ void tela_listar_despesas::mostrar_lista_despesas(void){
     ui->tw_despesas->resizeColumnToContents(3);
     ui->tw_despesas->resizeColumnToContents(4);
     ui->tw_despesas->resizeColumnToContents(5);
+    connect(ui->tw_despesas->horizontalHeader(),SIGNAL(sectionClicked(int)),this,SLOT(teste(int)));
 }
 
 void tela_listar_despesas::on_btn_limpar_clicked()
@@ -167,4 +169,28 @@ void tela_listar_despesas::on_btn_filtrar_clicked()
     aux_cons_status = ui->cb_status->currentText();
     aux_cons_id_despesa = ui->le_codigo->text();
     tela_listar_despesas::mostrar_lista_despesas();
+}
+
+void tela_listar_despesas::teste(int index){
+    switch(index){
+    case 0:
+        ui->tw_despesas->sortItems(0,Qt::AscendingOrder);
+        break;
+    case 1:
+        ui->tw_despesas->sortItems(1,Qt::AscendingOrder);
+        break;
+    case 2:
+        ui->tw_despesas->sortItems(2,Qt::AscendingOrder);
+        break;
+    case 3:
+        ui->tw_despesas->sortItems(3,Qt::AscendingOrder);
+        break;
+    case 4:
+        ui->tw_despesas->sortItems(4,Qt::AscendingOrder);
+        break;
+    case 5:
+        ui->tw_despesas->sortItems(5,Qt::AscendingOrder);
+        break;
+    }
+
 }
