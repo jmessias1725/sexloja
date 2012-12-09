@@ -33,6 +33,7 @@ private slots:
     void closeEvent( QCloseEvent * event );    
     void on_data_inicial_editingFinished();
     void on_btn_filtrar_clicked();
+    void teste(int index);
 
 private:
     Ui::tela_listar_despesas *ui;
