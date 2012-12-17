@@ -13,6 +13,7 @@
 #include "tela_loja.h"
 #include "tela_estoque.h"
 #include "tela_comprar.h"
+#include "tela_vender.h"
 #include "tela_listar_despesas.h"
 #include "loja.h"
 #include "usuario.h"
@@ -48,6 +49,8 @@ private slots:
     void on_realizar_compra_triggered();
     void on_listar_despesas_triggered();
 
+    void on_realizar_venda_triggered();
+
 private:
     Ui::tela_principal *ui;
     tela_cadastro_cliente tl_cadastro_clientes;
@@ -58,6 +61,7 @@ private:
     tela_loja tl_loja;
     tela_estoque tl_estoque;
     tela_comprar tl_comprar;
+    tela_vender tl_vender;
     tela_listar_despesas tl_listar_despesas;
     loja *informacao_loja;
     usuario *informacao_usuario;

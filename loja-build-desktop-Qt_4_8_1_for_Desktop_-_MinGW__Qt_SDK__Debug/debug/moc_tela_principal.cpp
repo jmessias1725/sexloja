@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_principal.h'
 **
-** Created: Sat 8. Dec 14:22:15 2012
+** Created: Mon 17. Dec 17:12:40 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_tela_principal[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      16,   14, // methods
+      17,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -47,6 +47,7 @@ static const uint qt_meta_data_tela_principal[] = {
      421,  410,   15,   15, 0x08,
      471,   15,   15,   15, 0x08,
      502,   15,   15,   15, 0x08,
+     533,   15,   15,   15, 0x08,
 
        0        // eod
 };
@@ -67,6 +68,7 @@ static const char qt_meta_stringdata_tela_principal[] = {
     "on_calendario_mes_cor_currentPageChanged(int,int)\0"
     "on_realizar_compra_triggered()\0"
     "on_listar_despesas_triggered()\0"
+    "on_realizar_venda_triggered()\0"
 };
 
 void tela_principal::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -91,6 +93,7 @@ void tela_principal::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 13: _t->on_calendario_mes_cor_currentPageChanged((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 14: _t->on_realizar_compra_triggered(); break;
         case 15: _t->on_listar_despesas_triggered(); break;
+        case 16: _t->on_realizar_venda_triggered(); break;
         default: ;
         }
     }
@@ -128,9 +131,9 @@ int tela_principal::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 16)
+        if (_id < 17)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 16;
+        _id -= 17;
     }
     return _id;
 }
