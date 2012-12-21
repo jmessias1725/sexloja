@@ -44,7 +44,7 @@ void tela_comprar::on_btn_buscar_fornecedor_clicked()
 
 void tela_comprar::on_btn_adicionar_produto_clicked()
 {
-    tl_listar_produtos.definir_icone_janela(logomarca);
+    tl_listar_produtos.definir_icone_janela(logomarca,true);
     tl_listar_produtos.buscar_produtos();
     if(!tl_listar_produtos.exec()){
         aux_lista_produtos = tl_listar_produtos.retorna_lista_produtos_desejados();

@@ -50,6 +50,9 @@ INPUT(
 ./release\tela_listar_despesas.o
 ./release\despesa.o
 ./release\tela_vender.o
+./release\venda.o
+./release\lista_venda.o
+./release\tela_definir_valor_venda.o
 ./release\moc_tela_login.o
 ./release\moc_tela_principal.o
 ./release\moc_tela_cadastro_cliente.o
@@ -79,5 +82,6 @@ INPUT(
 ./release\moc_tela_pagamento_cheque.o
 ./release\moc_tela_listar_despesas.o
 ./release\moc_tela_vender.o
+./release\moc_tela_definir_valor_venda.o
 ./release\qrc_imagens.o
 );

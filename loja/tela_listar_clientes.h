@@ -24,6 +24,8 @@ public:
     ~tela_listar_clientes();
     void limpar_dados_tela(void);
     void definir_icone_janela(QPixmap logo);
+    void alterar_editar(bool edit);
+    cliente * retorna_cliente(void);
     
 private slots:
     void on_le_telefone_editingFinished();
@@ -35,10 +37,12 @@ private slots:
 
 private:
     Ui::tela_listar_clientes *ui;
-    tela_clientes tl_cliente;
     std::vector< cliente * > lista_clientes;
+    cliente *cliente_atual;
+    tela_clientes tl_cliente;    
     QStandardItemModel *modelo;
     QPixmap logomarca;
+    bool editar;
 };
 
 #endif // TELA_LISTAR_CLIENTES_H

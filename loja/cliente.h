@@ -65,6 +65,7 @@ public:
                                       std::vector< std::string > lista_email_a_adicionar);
     bool remover_cadastro_cliente(int id_cliente);
     void definir_icone_janela(QPixmap logo);
+    void limpar_cliente(void);
 };
 
 #endif // CLIENTE_H

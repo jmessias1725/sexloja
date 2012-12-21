@@ -71,7 +71,7 @@
 e quantidade comprada. </string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -234,7 +234,7 @@ e quantidade comprada. </string>
   <widget class="QPushButton" name="btn_confirmar">
    <property name="geometry">
     <rect>
-     <x>6</x>
+     <x>7</x>
      <y>130</y>
      <width>90</width>
      <height>25</height>
@@ -275,7 +275,7 @@ e quantidade comprada. </string>
   <widget class="QPushButton" name="btn_cancelar">
    <property name="geometry">
     <rect>
-     <x>104</x>
+     <x>105</x>
      <y>130</y>
      <width>90</width>
      <height>25</height>

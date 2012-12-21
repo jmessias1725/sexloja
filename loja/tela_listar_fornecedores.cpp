@@ -287,7 +287,7 @@ void tela_listar_fornecedores::on_tv_fornecedores_doubleClicked(const QModelInde
         ui->tv_fornecedores->resizeColumnToContents(4);
     }
     else{
-        fornecedor_atual = new fornecedor();
+        //fornecedor_atual = new fornecedor();
         fornecedor_atual = lista_fornecedores[index.row()];
         this->close();
     }

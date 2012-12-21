@@ -7,6 +7,7 @@
 #include "funcoes_extras.h"
 #include "produto.h"
 #include "tela_definir_valor.h"
+#include "tela_definir_valor_venda.h"
 
 namespace Ui {
 class tela_listar_produtos;
@@ -19,7 +20,7 @@ class tela_listar_produtos : public QDialog
 public:
     explicit tela_listar_produtos(QWidget *parent = 0);
     ~tela_listar_produtos();
-    void definir_icone_janela(QPixmap logo);
+    void definir_icone_janela(QPixmap logo,bool com);
     void buscar_produtos(void);
     std::vector< produto* > retorna_lista_produtos_desejados(void);
 
@@ -36,6 +37,7 @@ private slots:
 private:
     Ui::tela_listar_produtos *ui;
     tela_definir_valor tl_definir_valor;
+    tela_definir_valor_venda tl_definir_valor_venda;
     QPixmap logomarca;
     std::vector< produto* > lista_produtos;
     std::vector< produto* > aux_lista_produtos;
@@ -45,7 +47,8 @@ private:
     QString aux_cons_fabricante;
     QString aux_cons_cod_barras;
     QString aux_cons_tipo;
-    bool consultar_lista;
+    //bool consultar_lista;
+    bool compra;
 };
 
 #endif // TELA_LISTAR_PRODUTOS_H

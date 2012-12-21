@@ -398,3 +398,14 @@ bool cliente::remover_cadastro_cliente(int id_cliente){
         return false;
     }
 }
+
+void cliente::limpar_cliente(void){
+    id = 0;
+    rg ="";
+    cpf ="";
+    nome ="";
+    comentario ="";
+    lista_email.clear();
+    lista_telefone.clear();
+    lista_operadora.clear();
+}
