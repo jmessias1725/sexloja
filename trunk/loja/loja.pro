@@ -61,7 +61,10 @@ SOURCES += main.cpp\
     compra.cpp \
     tela_listar_despesas.cpp \
     despesa.cpp \
-    tela_vender.cpp
+    tela_vender.cpp \
+    venda.cpp \
+    lista_venda.cpp \
+    tela_definir_valor_venda.cpp
 
 HEADERS  += \
     conexao_bd.h \
@@ -113,7 +116,10 @@ HEADERS  += \
     compra.h \
     tela_listar_despesas.h \
     despesa.h \
-    tela_vender.h
+    tela_vender.h \
+    venda.h \
+    lista_venda.h \
+    tela_definir_valor_venda.h
 
 FORMS    += \
     tela_login.ui \
@@ -145,7 +151,8 @@ FORMS    += \
     tela_pagamento_cartao.ui \
     tela_pagamento_cheque.ui \
     tela_listar_despesas.ui \
-    tela_vender.ui
+    tela_vender.ui \
+    tela_definir_valor_venda.ui
 
 RESOURCES += \
     imagens.qrc

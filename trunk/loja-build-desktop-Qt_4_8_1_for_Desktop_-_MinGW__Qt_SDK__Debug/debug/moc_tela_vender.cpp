@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_vender.h'
 **
-** Created: Mon 17. Dec 17:12:43 2012
+** Created: Fri 21. Dec 15:35:26 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,26 +23,56 @@ static const uint qt_meta_data_tela_vender[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       0,    0, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
        0,       // signalCount
 
+ // slots: signature, parameters, type, tag, flags
+      19,   13,   12,   12, 0x08,
+      44,   12,   12,   12, 0x08,
+      59,   12,   12,   12, 0x08,
+      91,   12,   12,   12, 0x08,
+     126,   12,   12,   12, 0x08,
+     157,  151,   12,   12, 0x08,
+     205,   12,   12,   12, 0x08,
+     238,   12,   12,   12, 0x08,
+     265,   12,   12,   12, 0x08,
+
        0        // eod
 };
 
 static const char qt_meta_stringdata_tela_vender[] = {
-    "tela_vender\0"
+    "tela_vender\0\0event\0closeEvent(QCloseEvent*)\0"
+    "limpar_dados()\0on_btn_buscar_cliente_clicked()\0"
+    "on_btn_adicionar_produto_clicked()\0"
+    "mostrar_lista_produtos()\0index\0"
+    "on_tw_lista_produtos_doubleClicked(QModelIndex)\0"
+    "on_btn_remover_produto_clicked()\0"
+    "on_btn_confirmar_clicked()\0"
+    "on_le_desconto_editingFinished()\0"
 };
 
 void tela_vender::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    Q_UNUSED(_o);
-    Q_UNUSED(_id);
-    Q_UNUSED(_c);
-    Q_UNUSED(_a);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        tela_vender *_t = static_cast<tela_vender *>(_o);
+        switch (_id) {
+        case 0: _t->closeEvent((*reinterpret_cast< QCloseEvent*(*)>(_a[1]))); break;
+        case 1: _t->limpar_dados(); break;
+        case 2: _t->on_btn_buscar_cliente_clicked(); break;
+        case 3: _t->on_btn_adicionar_produto_clicked(); break;
+        case 4: _t->mostrar_lista_produtos(); break;
+        case 5: _t->on_tw_lista_produtos_doubleClicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
+        case 6: _t->on_btn_remover_produto_clicked(); break;
+        case 7: _t->on_btn_confirmar_clicked(); break;
+        case 8: _t->on_le_desconto_editingFinished(); break;
+        default: ;
+        }
+    }
 }
 
 const QMetaObjectExtraData tela_vender::staticMetaObjectExtraData = {
@@ -76,6 +106,11 @@ int tela_vender::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     _id = QDialog::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 9)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 9;
+    }
     return _id;
 }
 QT_END_MOC_NAMESPACE

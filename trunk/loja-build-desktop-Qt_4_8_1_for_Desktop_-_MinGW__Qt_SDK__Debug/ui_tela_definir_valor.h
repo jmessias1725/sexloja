@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_definir_valor.ui'
 **
-** Created: Wed 12. Dec 08:15:06 2012
+** Created: Fri 21. Dec 15:30:21 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -31,7 +31,7 @@ class Ui_tela_definir_valor
 public:
     QGroupBox *groupBox;
     QLabel *label;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_2;
     QLabel *lb_valorvenda;
@@ -72,17 +72,17 @@ public:
         font1.setItalic(true);
         font1.setWeight(50);
         label->setFont(font1);
-        widget = new QWidget(groupBox);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(0, 50, 191, 71));
-        verticalLayout = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(groupBox);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(0, 50, 191, 71));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setSpacing(3);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(5, 0, 5, 0);
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(0);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        lb_valorvenda = new QLabel(widget);
+        lb_valorvenda = new QLabel(layoutWidget);
         lb_valorvenda->setObjectName(QString::fromUtf8("lb_valorvenda"));
         QFont font2;
         font2.setBold(false);
@@ -92,7 +92,7 @@ public:
 
         horizontalLayout_2->addWidget(lb_valorvenda);
 
-        le_valor_venda = new QLineEdit(widget);
+        le_valor_venda = new QLineEdit(layoutWidget);
         le_valor_venda->setObjectName(QString::fromUtf8("le_valor_venda"));
         le_valor_venda->setFont(font2);
         le_valor_venda->setInputMethodHints(Qt::ImhNone);
@@ -107,13 +107,13 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(0);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        lb_valor_compra = new QLabel(widget);
+        lb_valor_compra = new QLabel(layoutWidget);
         lb_valor_compra->setObjectName(QString::fromUtf8("lb_valor_compra"));
         lb_valor_compra->setFont(font2);
 
         horizontalLayout->addWidget(lb_valor_compra);
 
-        le_custo_medio = new QLineEdit(widget);
+        le_custo_medio = new QLineEdit(layoutWidget);
         le_custo_medio->setObjectName(QString::fromUtf8("le_custo_medio"));
         le_custo_medio->setFont(font2);
         le_custo_medio->setInputMethodHints(Qt::ImhNone);
@@ -128,13 +128,13 @@ public:
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setSpacing(0);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        lb_quantidade = new QLabel(widget);
+        lb_quantidade = new QLabel(layoutWidget);
         lb_quantidade->setObjectName(QString::fromUtf8("lb_quantidade"));
         lb_quantidade->setFont(font2);
 
         horizontalLayout_3->addWidget(lb_quantidade);
 
-        le_quantidade = new QLineEdit(widget);
+        le_quantidade = new QLineEdit(layoutWidget);
         le_quantidade->setObjectName(QString::fromUtf8("le_quantidade"));
         le_quantidade->setFont(font2);
         le_quantidade->setMaxLength(32767);
@@ -147,7 +147,7 @@ public:
 
         btn_confirmar = new QPushButton(tela_definir_valor);
         btn_confirmar->setObjectName(QString::fromUtf8("btn_confirmar"));
-        btn_confirmar->setGeometry(QRect(6, 130, 90, 25));
+        btn_confirmar->setGeometry(QRect(7, 130, 90, 25));
         btn_confirmar->setMinimumSize(QSize(0, 25));
         btn_confirmar->setMaximumSize(QSize(90, 25));
         QFont font3;
@@ -160,7 +160,7 @@ public:
         btn_confirmar->setIconSize(QSize(20, 20));
         btn_cancelar = new QPushButton(tela_definir_valor);
         btn_cancelar->setObjectName(QString::fromUtf8("btn_cancelar"));
-        btn_cancelar->setGeometry(QRect(104, 130, 90, 25));
+        btn_cancelar->setGeometry(QRect(105, 130, 90, 25));
         btn_cancelar->setMinimumSize(QSize(0, 25));
         btn_cancelar->setMaximumSize(QSize(90, 25));
         btn_cancelar->setFont(font3);

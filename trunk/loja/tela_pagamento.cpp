@@ -30,7 +30,7 @@ void tela_pagamento::definir_dados(compra* comp, std::vector< lista_compra* > lt
     valor_em_cheque = 0.0;
     total_pago = 0.0;
     troco = 0.0;
-    total_pagar = dados_compra->retorna_valor_total();
+    total_pagar = dados_compra->retorna_valor_total()-dados_compra->retorna_desconto();
 
     ui->le_dinheiro->setText(funcao.retorna_valor_dinheiro(valor_em_dinheiro));
     ui->le_cartao->setText(funcao.retorna_valor_dinheiro(valor_em_cartao));

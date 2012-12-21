@@ -13,9 +13,10 @@ tela_listar_produtos::~tela_listar_produtos()
     delete ui;
 }
 
-void tela_listar_produtos::definir_icone_janela(QPixmap logo){
+void tela_listar_produtos::definir_icone_janela(QPixmap logo,bool com){
     logomarca = logo;
     this->setWindowIcon(logomarca);
+    compra = com;
 }
 
 void tela_listar_produtos::buscar_produtos(void){
@@ -171,14 +172,27 @@ void tela_listar_produtos::on_tw_produtos_doubleClicked(const QModelIndex &index
     msg.addButton("Não", QMessageBox::RejectRole);
     msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
     msg.setText("\nDeseja adicionar o produto a lista?");
-    if(!msg.exec()){
-        tl_definir_valor.definir_icone_janela(logomarca);
-        tl_definir_valor.definir_dados(aux_lista_produtos[index.row()]->retorna_valor_venda(),0,0);
-        if(tl_definir_valor.exec()){
-            aux_lista_produtos[index.row()]->altera_valor_compra(tl_definir_valor.retorna_custo());
-            aux_lista_produtos[index.row()]->altera_valor_venda(tl_definir_valor.retorna_valor_venda());
-            aux_lista_produtos[index.row()]->altera_quantidade(tl_definir_valor.retorna_quantidade());
-            lista_produtos_desejados.push_back(aux_lista_produtos[index.row()]);
+    if (compra == true){
+        if(!msg.exec()){
+            tl_definir_valor.definir_icone_janela(logomarca);
+            tl_definir_valor.definir_dados(aux_lista_produtos[index.row()]->retorna_valor_venda(),0,0);
+            if(tl_definir_valor.exec()){
+                aux_lista_produtos[index.row()]->altera_valor_compra(tl_definir_valor.retorna_custo());
+                aux_lista_produtos[index.row()]->altera_valor_venda(tl_definir_valor.retorna_valor_venda());
+                aux_lista_produtos[index.row()]->altera_quantidade(tl_definir_valor.retorna_quantidade());
+                lista_produtos_desejados.push_back(aux_lista_produtos[index.row()]);
+            }
+        }
+    }
+    else{
+        if(!msg.exec()){
+            tl_definir_valor_venda.definir_icone_janela(logomarca);
+            tl_definir_valor_venda.definir_dados(aux_lista_produtos[index.row()]->retorna_valor_venda(),0);
+            if(tl_definir_valor_venda.exec()){
+                aux_lista_produtos[index.row()]->altera_valor_venda(tl_definir_valor_venda.retorna_valor_venda());
+                aux_lista_produtos[index.row()]->altera_quantidade(tl_definir_valor_venda.retorna_quantidade());
+                lista_produtos_desejados.push_back(aux_lista_produtos[index.row()]);
+            }
         }
     }
 }
