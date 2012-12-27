@@ -180,7 +180,7 @@ void tela_comprar::on_btn_confirmar_clicked()
             }
 
             tl_pagamento.definir_icone_janela(logomarca);
-            tl_pagamento.definir_dados(dados_compra,lt_compra,ui->data->date());
+            tl_pagamento.definir_dados_compra(dados_compra,lt_compra);
             if(tl_pagamento.exec()){
                 this->close();
             }
@@ -200,7 +200,7 @@ void tela_comprar::on_btn_confirmar_clicked()
         }
 
         tl_pagamento.definir_icone_janela(logomarca);
-        tl_pagamento.definir_dados(dados_compra,lt_compra,ui->data->date());
+        tl_pagamento.definir_dados_compra(dados_compra,lt_compra);
         if(tl_pagamento.exec()){
             this->close();
         }

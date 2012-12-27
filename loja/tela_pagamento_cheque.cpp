@@ -50,7 +50,7 @@ void tela_pagamento_cheque::on_btn_confirmar_clicked()
     funcoes_extras funcao;
     valor_pago = funcao.converter_para_double(ui->le_valor->text());
     cheque_usado = new cheque(ui->le_nome_banco->text(),ui->le_agencia->text(),ui->le_conta->text(),
-                              ui->le_numero_cheque->text().toInt(),valor_pago,1,0,ui->le_codigo_banco->text(),
+                              ui->le_numero_cheque->text().toInt(),valor_pago,-1,0,ui->le_codigo_banco->text(),
                               ui->data->date().toString(Qt::SystemLocaleShortDate));
     cheque_usado->inserir_no_caixa_de_hoje(inserir_caixa_hoje);
 
@@ -131,15 +131,3 @@ void tela_pagamento_cheque::on_cb_inserir_caixa_hoje_toggled(bool checked)
         inserir_caixa_hoje = false;
     }
 }
-
-/*void tela_pagamento_cheque::closeEvent(QCloseEvent *event){
-    ui->le_agencia->clear();
-    ui->le_codigo_banco->clear();
-    ui->le_conta->clear();
-    ui->le_nome_banco->clear();
-    ui->le_numero_cheque->clear();
-    ui->le_valor->clear();
-    ui->cb_a_vista->setChecked(true);
-    ui->gb_para->setChecked(false);
-    ui->cb_inserir_caixa_hoje->setChecked(false);
-}*/
