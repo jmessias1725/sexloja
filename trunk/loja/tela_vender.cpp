@@ -164,7 +164,7 @@ void tela_vender::on_btn_confirmar_clicked()
         msg.addButton("Sim", QMessageBox::AcceptRole);
         msg.addButton("Não", QMessageBox::RejectRole);
         msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
-        msg.setText("\nDeseja efetuar a compra sem inserir os dados do fornecedor ?");
+        msg.setText("\nDeseja efetuar a venda sem inserir os dados do cliente ?");
         if(!msg.exec()){
             double valor_tot = funcao.converter_para_double(ui->le_total_a_pagar->text())+funcao.converter_para_double(ui->le_desconto->text());
             dados_venda = new venda(ui->data->date(),ui->le_codigo->text().toInt(),valor_tot,
@@ -177,7 +177,7 @@ void tela_vender::on_btn_confirmar_clicked()
             }
 
             tl_pagamento.definir_icone_janela(logomarca);
-            //tl_pagamento.definir_dados(dados_compra,lt_compra,ui->data->date());
+            tl_pagamento.definir_dados_venda(dados_venda,lt_venda);
             if(tl_pagamento.exec()){
                 this->close();
             }
@@ -195,7 +195,7 @@ void tela_vender::on_btn_confirmar_clicked()
         }
 
         tl_pagamento.definir_icone_janela(logomarca);
-        //tl_pagamento.definir_dados(dados_compra,lt_compra,ui->data->date());
+        tl_pagamento.definir_dados_venda(dados_venda,lt_venda);
         if(tl_pagamento.exec()){
             this->close();
         }

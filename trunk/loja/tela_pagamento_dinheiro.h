@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "funcoes_extras.h"
+#include "dinheiro.h"
 
 namespace Ui {
 class tela_pagamento_dinheiro;
@@ -17,7 +18,7 @@ public:
     ~tela_pagamento_dinheiro();
     void definir_icone_janela(QPixmap logo);
     void definir_dados(double valor);
-    double retorna_valor_pago();
+    dinheiro* retorna_valor_pago();
     
 private slots:
     void on_le_valor_editingFinished();
@@ -27,7 +28,7 @@ private slots:
 private:
     Ui::tela_pagamento_dinheiro *ui;
     QPixmap logomarca;
-    double valor_pago;
+    dinheiro *valor_pago;
 };
 
 #endif // TELA_PAGAMENTO_DINHEIRO_H

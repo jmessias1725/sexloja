@@ -8,9 +8,12 @@
 #include "tela_pagamento_cheque.h"
 #include "cartao.h"
 #include "cheque.h"
+#include "dinheiro.h"
 #include "compra.h"
+#include "venda.h"
 #include "conexao_bd.h"
 #include "lista_compra.h"
+#include "lista_venda.h"
 
 namespace Ui {
 class tela_pagamento;
@@ -24,7 +27,8 @@ public:
     explicit tela_pagamento(QWidget *parent = 0);
     ~tela_pagamento();
     void definir_icone_janela(QPixmap logo);
-    void definir_dados(compra* comp, std::vector< lista_compra* > lt_com, QDate data_com);
+    void definir_dados_compra(compra* comp, std::vector< lista_compra* > lt_com);
+    void definir_dados_venda(venda* vend, std::vector< lista_venda* > lt_ven);
 
 private slots:
     void on_btn_dinheiro_clicked();
@@ -41,9 +45,12 @@ private:
     tela_pagamento_cheque tl_pagamento_cheque;
     cartao* cartao_usado;
     cheque* cheque_usado;
+    dinheiro* dinheiro_usado;
     compra* dados_compra;
+    venda* dados_venda;
+    bool verifica_se_eh_compra;
     std::vector< lista_compra* > lt_compra;
-    QDate data_compra;
+    std::vector< lista_venda* > lt_venda;
     double valor_em_dinheiro;
     double valor_em_cartao;
     double valor_em_cheque;
