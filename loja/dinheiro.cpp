@@ -56,14 +56,14 @@ int dinheiro::retorna_id_origem(void){
     return id_origem;
 }
 
-QString dinheiro::retorna_data_inical_pagmento(void){
+QString dinheiro::retorna_data_ini_pag(void){
     return data_inical_pagmento;
 }
 
-QDate dinheiro::retorna_data_ini_pagmento_Qdate(void){
+QDate dinheiro::retorna_data_ini_pag_Qdate(void){
     return data_ini_pagmento_Qdate;
 }
 
-int dinheiro::retorna_numero_parcelas(void){
+int dinheiro::retorna_num_parcelas(void){
     return numero_parcelas;
 }

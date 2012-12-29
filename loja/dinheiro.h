@@ -25,9 +25,9 @@ public:
     double retorna_valor(void);
     int retorna_origem(void);
     int retorna_id_origem(void);
-    QString retorna_data_inical_pagmento(void);
-    QDate retorna_data_ini_pagmento_Qdate(void);
-    int retorna_numero_parcelas(void);
+    QString retorna_data_ini_pag(void);
+    QDate retorna_data_ini_pag_Qdate(void);
+    int retorna_num_parcelas(void);
 };
 
 #endif // DINHEIRO_H
