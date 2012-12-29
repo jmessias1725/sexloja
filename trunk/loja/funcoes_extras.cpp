@@ -645,7 +645,7 @@ double funcoes_extras::arredonda_para_duas_casas_decimais(double valor){
     return valor;
 }
 
-std::vector< QString > funcoes_extras::determina_parcelas(QDate data_compra,int dia_vencimento,int numero_parcelas){
+std::vector< QString > funcoes_extras::determina_parcelas(QDate data_inicial,int dia_vencimento,int numero_parcelas){
     std::vector< QString >  data_das_parcelas;
     QString data;
 
@@ -654,19 +654,25 @@ std::vector< QString > funcoes_extras::determina_parcelas(QDate data_compra,int 
     std::vector< int > dias;
     std::vector< int > anos;
 
-    dia = data_compra.day();
-    mes = data_compra.month();
-    ano = data_compra.year();
+    dia = data_inicial.day();
+    mes = data_inicial.month();
+    ano = data_inicial.year();
 
     for(int i=0;i<numero_parcelas;i++){
         if(i==0){
-            if ((dia_vencimento-dia)<9){
-                mes = mes+1;
-                if (mes>12){
-                    mes = 1;
-                    ano = ano+1;
-                    anos.push_back(ano);
-                    meses.push_back(mes);
+            if(dia_vencimento!=0){
+                if ((dia_vencimento-dia)<9){
+                    mes = mes+1;
+                    if (mes>12){
+                        mes = 1;
+                        ano = ano+1;
+                        anos.push_back(ano);
+                        meses.push_back(mes);
+                    }
+                    else{
+                        meses.push_back(mes);
+                        anos.push_back(ano);
+                    }
                 }
                 else{
                     meses.push_back(mes);
@@ -680,16 +686,16 @@ std::vector< QString > funcoes_extras::determina_parcelas(QDate data_compra,int 
         }
         else{
         mes = mes+1;
-        if (mes>12){
-            mes = 1;
-            ano = ano+1;
-            meses.push_back(mes);
-            anos.push_back(ano);
-        }
-        else{
-            meses.push_back(mes);
-            anos.push_back(ano);
-        }
+            if (mes>12){
+                mes = 1;
+                ano = ano+1;
+                meses.push_back(mes);
+                anos.push_back(ano);
+            }
+            else{
+                meses.push_back(mes);
+                anos.push_back(ano);
+            }
         }
 
         if ((mes==1)||(mes==3)||(mes==5)||(mes==7)||(mes==8)||(mes==10)||(mes==12)){
