@@ -18,3 +18,14 @@
             std::cout<<":valor_venda_uni "<<lt_compra[i]->retorna_valor_venda()<<std::endl;
             std::cout<<":id_balanco "<<lt_compra[i]->retorna_id_balanco()<<std::endl;
         }
+
+
+               std::cout<<salvar_dados_venda.lastError().number()<<std::endl;
+               std::cout<<atualiza_quant_dis_his_bal_estoque.lastError().number()<<std::endl;
+               std::cout<<salvar_dados_lista_venda.lastError().number()<<std::endl;
+               std::cout<<salvar_dados_cartao.lastError().number()<<std::endl;
+               std::cout<<salvar_dados_despesa_cartao.lastError().number()<<std::endl;
+               std::cout<<salvar_dados_cheque.lastError().number()<<std::endl;
+               std::cout<<salvar_dados_despesa_cheque.lastError().number()<<std::endl;
+               std::cout<<salvar_dados_dinheiro.lastError().number()<<std::endl;
+               std::cout<<salvar_dados_despesa_dinheiro.lastError().number()<<std::endl;

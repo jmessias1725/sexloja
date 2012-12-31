@@ -463,8 +463,8 @@ void tela_pagamento::on_btn_confirmar_clicked()
                    (salvar_dados_despesa_cartao.lastError().number()<=0)){
 
                     //Finaliza a inserçao dos dados.
-                    bd.commit();
-                    //bd.rollback();
+                    //bd.commit();
+                    bd.rollback();
 
                     //Gera mensagem de que tudo ocorreu direito.
                     QPixmap icone_janela(":img/img/arquivo_50.png");
@@ -526,11 +526,6 @@ void tela_pagamento::on_btn_confirmar_clicked()
             QSqlDatabase bd;
 
             int id_venda;
-            double valor_venda;
-            int id_balanco;
-            int total_vendido;
-            int total_disponivel;
-            bool encontrou_valor_compra = false;
 
             QString campos;
 
@@ -544,10 +539,8 @@ void tela_pagamento::on_btn_confirmar_clicked()
 
                 //Declara as variáves que irão inserir os dados no banco de dados.
                 QSqlQuery salvar_dados_venda(bd);
-                QSqlQuery alterar_dados_his_balanco_estoque(bd);
-                QSqlQuery salvar_dados_his_balanco_estoque(bd);
-                QSqlQuery salvar_dados_lista_compra(bd);
-                QSqlQuery atualiza_valor_venda_produto(bd);
+                QSqlQuery atualiza_quant_dis_his_bal_estoque(bd);
+                QSqlQuery salvar_dados_lista_venda(bd);
                 QSqlQuery salvar_dados_cartao(bd);
                 QSqlQuery salvar_dados_despesa_cartao(bd);
                 QSqlQuery salvar_dados_cheque(bd);
@@ -557,8 +550,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
 
                 //Declara a variável que irá fazer a consulta para determinar o id do produto;
                 QSqlQuery consultar_id_venda(bd);
-                QSqlQuery consultar_valor_venda(bd);
-                QSqlQuery consultar_id_balanco(bd);
+                QSqlQuery consultar_total_disponivel(bd);
 
                 //Insere os dados no cadastro da venda
                 salvar_dados_venda.prepare("INSERT INTO venda(data_venda,id_cliente,valor_total,desconto,valor_pago) VALUES(:data_venda, :id_cliente, :valor_total, :desconto, :valor_pago);");
@@ -697,7 +689,6 @@ void tela_pagamento::on_btn_confirmar_clicked()
                             salvar_dados_despesa_cartao.exec();
                         }
                     }
-
                 }
 
                 if(cheque_usado->retorna_valor() > 0.0){
@@ -732,81 +723,75 @@ void tela_pagamento::on_btn_confirmar_clicked()
                     salvar_dados_despesa_cheque.exec();
                 }
 
-                for(int i=0; i<int(lt_compra.size());i++){
-                    /*//realiza a consulta determinar se já existe produto com mesmo valor de venda cadastrado.
-                    consultar_valor_compra.exec("SELECT id_balanco,valor_compra,total_comprado,total_disponivel FROM his_balanco_estoque WHERE id_produto = "+QString::number(lt_compra[i]->retorna_id_produto())+";");
-                    while((consultar_valor_compra.next())&&(encontrou_valor_compra==false)){
-                        id_balanco = consultar_valor_compra.value(0).toInt();
-                        valor_compra = consultar_valor_compra.value(1).toDouble();
-                        total_comprado = consultar_valor_compra.value(2).toInt();
-                        total_disponivel = consultar_valor_compra.value(3).toInt();
-                        if(funcao.arredonda_para_duas_casas_decimais(valor_compra)==
-                           funcao.arredonda_para_duas_casas_decimais(lt_compra[i]->retorna_valor_compra())){
+                for(int i=0; i<int(lt_venda.size());i++){
+                    std::vector< int > id_balanco;
+                    std::vector< int > total_disponivel;
+                    bool removeu_quantidade_desejada = false;
+                    int resto = 0;
+                    int j = 0;
+                    int aux_total;
+                    int aux_id;
+                    int total_desejado;
 
-                            encontrou_valor_compra = true;
-
-                            campos = "valor_compra=:valor_compra , total_comprado=:total_comprado, total_disponivel=:total_disponivel";
-
-                            total_comprado = total_comprado+lt_compra[i]->retorna_quantidade();
-                            total_disponivel = total_disponivel+lt_compra[i]->retorna_quantidade();
-
-                            //Alteras os dados no cadastro dos produtos
-                            alterar_dados_his_balanco_estoque.prepare("UPDATE his_balanco_estoque SET "+campos+" WHERE id_produto = '"+QString::number(lt_compra[i]->retorna_id_produto())+"' AND id_balanco = '"+QString::number(id_balanco)+"';");
-                            alterar_dados_his_balanco_estoque.bindValue(":valor_compra", lt_compra[i]->retorna_valor_compra());
-                            alterar_dados_his_balanco_estoque.bindValue(":total_comprado", total_comprado);
-                            alterar_dados_his_balanco_estoque.bindValue(":total_disponivel", total_disponivel);
-                            alterar_dados_his_balanco_estoque.exec();
-
-                            lt_compra[i]->alterar_id_balanco(id_balanco);
+                    consultar_total_disponivel.exec("SELECT id_balanco,total_disponivel FROM his_balanco_estoque WHERE id_produto = "+QString::number(lt_venda[i]->retorna_id_produto())+";");
+                    while(consultar_total_disponivel.next()){
+                        aux_id = consultar_total_disponivel.value(0).toInt();
+                        aux_total = consultar_total_disponivel.value(1).toInt();
+                        if(aux_total>0){
+                            id_balanco.push_back(aux_id);
+                            total_disponivel.push_back(aux_total);
                         }
                     }
-                    if(encontrou_valor_compra == false){
+
+                    total_desejado = lt_venda[i]->retorna_quantidade();
+                    while(j<int(total_disponivel.size())&&(removeu_quantidade_desejada==false)){
+                        resto = total_disponivel[j]-total_desejado;
+                        if(resto<0){
+                            total_desejado = total_desejado - total_disponivel[j];
+                            total_disponivel[j] = 0;
+                        }
+                        else{
+                            total_disponivel[j] = resto;
+                            removeu_quantidade_desejada = true;
+                            total_desejado = 0;
+                        }
+                        j++;
+                    }
+
+                    if(total_desejado!=0){
+                        total_desejado = total_desejado*(-1);
+                        total_disponivel[total_disponivel.size()-1] = total_desejado;
+                    }
+
+                    for(int k = 0;k<int(id_balanco.size());k++){
                         //Insere os dados no histórico de balanço do estoque
-                        salvar_dados_his_balanco_estoque.prepare("INSERT INTO his_balanco_estoque(valor_compra,id_produto,total_comprado,total_disponivel) VALUES(:valor_compra, :id_produto, :total_comprado, :total_disponivel);");
-                        salvar_dados_his_balanco_estoque.bindValue(":valor_compra", lt_compra[i]->retorna_valor_compra());
-                        salvar_dados_his_balanco_estoque.bindValue(":id_produto",lt_compra[i]->retorna_id_produto());
-                        salvar_dados_his_balanco_estoque.bindValue(":total_comprado", lt_compra[i]->retorna_quantidade());
-                        salvar_dados_his_balanco_estoque.bindValue(":total_disponivel", lt_compra[i]->retorna_quantidade());
-                        salvar_dados_his_balanco_estoque.exec();
-
-                        //realiza a consulta para determinar o id do balanco.
-                        consultar_id_balanco.exec("SELECT id_balanco FROM his_balanco_estoque");
-                        if(consultar_id_balanco.last()){
-                            id_balanco = consultar_id_balanco.value(0).toInt();
-                        }
-                        lt_compra[i]->alterar_id_balanco(id_balanco);
+                        atualiza_quant_dis_his_bal_estoque.prepare("UPDATE his_balanco_estoque SET total_disponivel=:total_disponivel WHERE id_balanco = '"+QString::number(id_balanco[k])+"';");
+                        atualiza_quant_dis_his_bal_estoque.bindValue(":total_disponivel", total_disponivel[k]);
+                        atualiza_quant_dis_his_bal_estoque.exec();
                     }
 
-                    encontrou_valor_compra = false;
+                    id_balanco.clear();
+                    total_disponivel.clear();
 
-                    //Insere os dados na lista de compra;
-                    salvar_dados_lista_compra.prepare("INSERT INTO lista_compra(id_produto,valor_compra_uni,quantidade,id_compra,valor_venda_uni,id_balanco) VALUES(:id_produto,:valor_compra_uni,:quantidade,:id_compra,:valor_venda_uni,:id_balanco);");
-                    salvar_dados_lista_compra.bindValue(":id_produto", lt_compra[i]->retorna_id_produto());
-                    salvar_dados_lista_compra.bindValue(":valor_compra_uni",lt_compra[i]->retorna_valor_compra());
-                    salvar_dados_lista_compra.bindValue(":quantidade", lt_compra[i]->retorna_quantidade());
-                    salvar_dados_lista_compra.bindValue(":id_compra", dados_compra->retorna_id_compra());
-                    salvar_dados_lista_compra.bindValue(":valor_venda_uni", lt_compra[i]->retorna_valor_venda());
-                    salvar_dados_lista_compra.bindValue(":id_balanco",  lt_compra[i]->retorna_id_balanco());
-                    salvar_dados_lista_compra.exec();
-
-                    campos = "valor_venda=:valor_venda";
-
-                    total_comprado = total_comprado+lt_compra[i]->retorna_quantidade();
-                    total_disponivel = total_disponivel+lt_compra[i]->retorna_quantidade();
-
-                    //Atualiva preço de venda do produto.
-                    atualiza_valor_venda_produto.prepare("UPDATE produto SET "+campos+" WHERE id_produto = '"+QString::number(lt_compra[i]->retorna_id_produto())+"';");
-                    atualiza_valor_venda_produto.bindValue(":valor_venda", lt_compra[i]->retorna_valor_venda());
-                    atualiza_valor_venda_produto.exec(); */
+                    //Insere os dados na lista de venda;
+                    salvar_dados_lista_venda.prepare("INSERT INTO lista_venda(id_produto,valor_venda_uni,quantidade,id_venda) VALUES(:id_produto,:valor_venda_uni,:quantidade,:id_venda);");
+                    salvar_dados_lista_venda.bindValue(":id_produto", lt_venda[i]->retorna_id_produto());
+                    salvar_dados_lista_venda.bindValue(":valor_venda_uni",lt_venda[i]->retorna_valor_venda());
+                    salvar_dados_lista_venda.bindValue(":quantidade", lt_venda[i]->retorna_quantidade());
+                    salvar_dados_lista_venda.bindValue(":id_venda", dados_venda->retorna_id_venda());
+                    salvar_dados_lista_venda.exec();
                 }
 
                 //Verifica se os dados podem ser salvos, caso sim realiza o Commite, do contrário o Rollback.
-                if((salvar_dados_venda.lastError().number()<=0)&&(alterar_dados_his_balanco_estoque.lastError().number()<=0)&&
-                   (salvar_dados_his_balanco_estoque.lastError().number()<=0)&&(salvar_dados_lista_compra.lastError().number()<=0)&&
-                   (atualiza_valor_venda_produto.lastError().number()<=0)&&(salvar_dados_cheque.lastError().number()<=0)&&
-                   (salvar_dados_cartao.lastError().number()<=0)&&(salvar_dados_despesa_cheque.lastError().number()<=0)&&
-                   (salvar_dados_dinheiro.lastError().number()<=0)&&(salvar_dados_despesa_dinheiro.lastError().number()<=0)&&
-                   (salvar_dados_despesa_cartao.lastError().number()<=0)){
+                if((salvar_dados_venda.lastError().number()<=0)&&
+                   (atualiza_quant_dis_his_bal_estoque.lastError().number()<=0)&&
+                   (salvar_dados_lista_venda.lastError().number()<=0)&&
+                   (salvar_dados_cartao.lastError().number()<=0)&&
+                   (salvar_dados_despesa_cartao.lastError().number()<=0)&&
+                   (salvar_dados_cheque.lastError().number()<=0)&&
+                   (salvar_dados_despesa_cheque.lastError().number()<=0)&&
+                   (salvar_dados_dinheiro.lastError().number()<=0)&&
+                   (salvar_dados_despesa_dinheiro.lastError().number()<=0)){
 
                     //Finaliza a inserçao dos dados.
                     bd.commit();
@@ -820,7 +805,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                     msg.setWindowTitle("Compra");
                     msg.addButton("OK", QMessageBox::AcceptRole);
                     msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
-                    msg.setText("\nA compra foi efetuada com sucesso!!!!");
+                    msg.setText("\nA venda foi efetuada com sucesso!!!!");
                     msg.exec();
 
                     //Fecha a conexão com o banco de dados
@@ -842,7 +827,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                     msg.setWindowTitle("Cadastro");
                     msg.addButton("OK", QMessageBox::AcceptRole);
                     msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
-                    msg.setText("\nNão foi possível efetuar a compra!!!!");
+                    msg.setText("\nNão foi possível efetuar a venda!!!!");
                     msg.exec();
 
                     //Fecha a conexão com o banco de dados
