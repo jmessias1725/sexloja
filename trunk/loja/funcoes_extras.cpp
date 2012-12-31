@@ -649,7 +649,7 @@ std::vector< QString > funcoes_extras::determina_parcelas(QDate data_inicial,int
     std::vector< QString >  data_das_parcelas;
     QString data;
 
-    int dia,mes,ano;
+    int dia,mes,ano,dias_para_fechamento = 9;
     std::vector< int > meses;
     std::vector< int > dias;
     std::vector< int > anos;
@@ -658,30 +658,25 @@ std::vector< QString > funcoes_extras::determina_parcelas(QDate data_inicial,int
     mes = data_inicial.month();
     ano = data_inicial.year();
 
+    std::cout<<dia_vencimento<<std::endl;
+
     for(int i=0;i<numero_parcelas;i++){
         if(i==0){
             if(dia_vencimento!=0){
-                if ((dia_vencimento-dia)<9){
-                    mes = mes+1;
-                    if (mes>12){
-                        mes = 1;
-                        ano = ano+1;
-                        anos.push_back(ano);
-                        meses.push_back(mes);
-                    }
-                    else{
-                        meses.push_back(mes);
-                        anos.push_back(ano);
-                    }
+                dias_para_fechamento = 0;
+            }
+            if ((dia_vencimento-dia)<dias_para_fechamento){
+                mes = mes+1;
+                if (mes>12){
+                    mes = 1;
+                    ano = ano+1;
+                    anos.push_back(ano);
+                    meses.push_back(mes);
                 }
                 else{
                     meses.push_back(mes);
                     anos.push_back(ano);
                 }
-            }
-            else{
-                meses.push_back(mes);
-                anos.push_back(ano);
             }
         }
         else{
