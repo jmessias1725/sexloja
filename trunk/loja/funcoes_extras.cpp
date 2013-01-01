@@ -658,13 +658,13 @@ std::vector< QString > funcoes_extras::determina_parcelas(QDate data_inicial,int
     mes = data_inicial.month();
     ano = data_inicial.year();
 
-    std::cout<<dia_vencimento<<std::endl;
+    if(dia_vencimento==0){
+        dia_vencimento = dia;
+        mes = mes - 1;
+    }
 
     for(int i=0;i<numero_parcelas;i++){
-        if(i==0){
-            if(dia_vencimento!=0){
-                dias_para_fechamento = 0;
-            }
+        if(i==0){            
             if ((dia_vencimento-dia)<dias_para_fechamento){
                 mes = mes+1;
                 if (mes>12){
@@ -674,13 +674,13 @@ std::vector< QString > funcoes_extras::determina_parcelas(QDate data_inicial,int
                     meses.push_back(mes);
                 }
                 else{
-                    meses.push_back(mes);
                     anos.push_back(ano);
+                    meses.push_back(mes);                    
                 }
             }
         }
         else{
-        mes = mes+1;
+            mes = mes+1;
             if (mes>12){
                 mes = 1;
                 ano = ano+1;
@@ -721,8 +721,9 @@ std::vector< QString > funcoes_extras::determina_parcelas(QDate data_inicial,int
                 }
             }
         }
-        QString dia_s = QString::number(dia);
-        QString mes_s = QString::number(mes);
+
+        QString dia_s = QString::number(dias[dias.size()-1]);
+        QString mes_s = QString::number(meses[meses.size()-1]);
         if (dia_s.size()<2)
             dia_s = "0"+dia_s;
         if (mes_s.size()<2)
