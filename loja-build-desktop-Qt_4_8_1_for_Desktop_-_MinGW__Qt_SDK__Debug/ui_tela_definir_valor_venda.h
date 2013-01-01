@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_definir_valor_venda.ui'
 **
-** Created: Sat 29. Dec 20:07:18 2012
+** Created: Mon 31. Dec 14:51:24 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

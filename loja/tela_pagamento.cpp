@@ -463,8 +463,8 @@ void tela_pagamento::on_btn_confirmar_clicked()
                    (salvar_dados_despesa_cartao.lastError().number()<=0)){
 
                     //Finaliza a inserçao dos dados.
-                    //bd.commit();
-                    bd.rollback();
+                    bd.commit();
+                    //bd.rollback();
 
                     //Gera mensagem de que tudo ocorreu direito.
                     QPixmap icone_janela(":img/img/arquivo_50.png");
@@ -527,8 +527,6 @@ void tela_pagamento::on_btn_confirmar_clicked()
 
             int id_venda;
 
-            QString campos;
-
             //realiza conexão ao banco de dados
             if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_pagamento::on_btn_confirmar_clicke")){
                 //Retorna o banco de dados
@@ -566,6 +564,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                 if(consultar_id_venda.last()){
                     id_venda = consultar_id_venda.value(0).toInt();
                 }
+                std::cout<<id_venda<<std::endl;
                 dados_venda->alterar_id_venda(id_venda);
 
                 if(dinheiro_usado->retorna_valor() > 0.0){
@@ -588,7 +587,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                     salvar_dados_dinheiro.bindValue(":num_par", dinheiro_usado->retorna_num_parcelas());
                     salvar_dados_dinheiro.exec();
 
-                    std::vector< QString > data_parcelas = funcao.determina_parcelas(dinheiro_usado->retorna_data_ini_pag_Qdate(),
+                    std::vector< QString > data_parcelas_dinheiro = funcao.determina_parcelas(dinheiro_usado->retorna_data_ini_pag_Qdate(),
                                                                                      0,
                                                                                      dinheiro_usado->retorna_num_parcelas());
 
@@ -598,7 +597,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                         salvar_dados_despesa_cartao.prepare("INSERT INTO ganhos(data,descricao,valor,status,origem,id_origem) VALUES(:data, :descricao, :valor, :status, :origem, :id_origem);");
                         salvar_dados_despesa_cartao.bindValue(":descricao", "Parcela em dinheiro de número 1, referente a venda de código: "+QString::number(dados_venda->retorna_id_venda())+".");
                         salvar_dados_despesa_cartao.bindValue(":valor", primeira_parcela);
-                        salvar_dados_despesa_cartao.bindValue(":data", data_parcelas[0]);
+                        salvar_dados_despesa_cartao.bindValue(":data", data_parcelas_dinheiro[0]);
                         salvar_dados_despesa_cartao.bindValue(":status", 0);
                         salvar_dados_despesa_cartao.bindValue(":origem", 2);
                         salvar_dados_despesa_cartao.bindValue(":id_origem", dados_venda->retorna_id_venda());
@@ -608,7 +607,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                             salvar_dados_despesa_cartao.prepare("INSERT INTO ganhos(data,descricao,valor,status,origem,id_origem) VALUES(:data, :descricao, :valor, :status, :origem, :id_origem);");
                             salvar_dados_despesa_cartao.bindValue(":descricao", "Parcela em dinheiro de número "+QString::number(i)+", referente a venda de código: "+QString::number(dados_venda->retorna_id_venda())+".");
                             salvar_dados_despesa_cartao.bindValue(":valor", valor_parcela);
-                            salvar_dados_despesa_cartao.bindValue(":data", data_parcelas[i-1]);
+                            salvar_dados_despesa_cartao.bindValue(":data", data_parcelas_dinheiro[i-1]);
                             salvar_dados_despesa_cartao.bindValue(":status", 0);
                             salvar_dados_despesa_cartao.bindValue(":origem", 2);
                             salvar_dados_despesa_cartao.bindValue(":id_origem", dados_venda->retorna_id_venda());
@@ -621,7 +620,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                             salvar_dados_despesa_cartao.prepare("INSERT INTO ganhos(data,descricao,valor,status,origem,id_origem) VALUES(:data, :descricao, :valor, :status, :origem, :id_origem);");
                             salvar_dados_despesa_cartao.bindValue(":descricao", "Parcela em dinheiro de número "+QString::number(i)+", referente a venda de código: "+QString::number(dados_venda->retorna_id_venda())+".");
                             salvar_dados_despesa_cartao.bindValue(":valor", valor_parcela);
-                            salvar_dados_despesa_cartao.bindValue(":data", data_parcelas[i-1]);
+                            salvar_dados_despesa_cartao.bindValue(":data", data_parcelas_dinheiro[i-1]);
                             salvar_dados_despesa_cartao.bindValue(":status", 0);
                             salvar_dados_despesa_cartao.bindValue(":origem", 2);
                             salvar_dados_despesa_cartao.bindValue(":id_origem", dados_venda->retorna_id_venda());
@@ -649,7 +648,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                     valor_parcela = funcao.arredonda_para_duas_casas_decimais(valor_parcela);
                     primeira_parcela = valor_pago - valor_parcela*(numero_pacelas-1);
 
-                    std::vector< QString > data_parcelas = funcao.determina_parcelas(dados_compra->retorna_data_QDate(),
+                    std::vector< QString > data_parcelas = funcao.determina_parcelas(dados_venda->retorna_data_QDate(),
                                                                                      cartao_usado->retorna_dia_vencimento(),
                                                                                      cartao_usado->retorna_num_parcelas());
 
