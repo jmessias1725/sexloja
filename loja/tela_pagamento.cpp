@@ -19,7 +19,6 @@ void tela_pagamento::definir_icone_janela(QPixmap logo){
     cheque_usado = new cheque();
     cartao_usado = new cartao();
     dinheiro_usado = new dinheiro();
-    verifica_se_eh_compra = false;
 }
 
 void tela_pagamento::definir_dados_compra(compra* comp, std::vector< lista_compra* > lt_com){
@@ -105,26 +104,51 @@ void tela_pagamento::on_btn_cartao_clicked()
 
     restante_a_pagar = total_pagar - valor_em_dinheiro - valor_em_cheque;
 
-    tl_pagamento_cartao.definir_icone_janela(logomarca);
-    tl_pagamento_cartao.definir_dados(restante_a_pagar);
-    if(tl_pagamento_cartao.exec()){
-        cartao_usado = tl_pagamento_cartao.retorna_cartao();
-        valor_em_cartao = cartao_usado->retorna_valor();
-        valor_em_dinheiro = funcao.converter_para_double(ui->le_dinheiro->text());
-        valor_em_cheque = funcao.converter_para_double(ui->le_cheque->text());
+    if(verifica_se_eh_compra){
+        tl_pagamento_cartao.definir_icone_janela(logomarca);
+        tl_pagamento_cartao.definir_dados(restante_a_pagar);
+        if(tl_pagamento_cartao.exec()){
+            cartao_usado = tl_pagamento_cartao.retorna_cartao();
+            valor_em_cartao = cartao_usado->retorna_valor();
+            valor_em_dinheiro = funcao.converter_para_double(ui->le_dinheiro->text());
+            valor_em_cheque = funcao.converter_para_double(ui->le_cheque->text());
 
-        valor_em_dinheiro = funcao.arredonda_para_duas_casas_decimais(valor_em_dinheiro);
-        valor_em_cartao = funcao.arredonda_para_duas_casas_decimais(valor_em_cartao);
-        valor_em_cheque = funcao.arredonda_para_duas_casas_decimais(valor_em_cheque);
+            valor_em_dinheiro = funcao.arredonda_para_duas_casas_decimais(valor_em_dinheiro);
+            valor_em_cartao = funcao.arredonda_para_duas_casas_decimais(valor_em_cartao);
+            valor_em_cheque = funcao.arredonda_para_duas_casas_decimais(valor_em_cheque);
 
-        total_pago = valor_em_dinheiro+valor_em_cartao+valor_em_cheque;
-        total_pago = funcao.arredonda_para_duas_casas_decimais(total_pago);
+            total_pago = valor_em_dinheiro+valor_em_cartao+valor_em_cheque;
+            total_pago = funcao.arredonda_para_duas_casas_decimais(total_pago);
 
-        troco = total_pago-total_pagar;
+            troco = total_pago-total_pagar;
 
-        ui->le_troco->setText(funcao.retorna_valor_dinheiro(troco));
-        ui->le_total_pago->setText(funcao.retorna_valor_dinheiro(total_pago));
-        ui->le_cartao->setText(funcao.retorna_valor_dinheiro(valor_em_cartao));
+            ui->le_troco->setText(funcao.retorna_valor_dinheiro(troco));
+            ui->le_total_pago->setText(funcao.retorna_valor_dinheiro(total_pago));
+            ui->le_cartao->setText(funcao.retorna_valor_dinheiro(valor_em_cartao));
+        }
+    }
+    else{
+        tl_pagamento_cartao_venda.definir_icone_janela(logomarca);
+        tl_pagamento_cartao_venda.definir_dados(restante_a_pagar);
+        if(tl_pagamento_cartao_venda.exec()){
+            cartao_usado = tl_pagamento_cartao_venda.retorna_cartao();
+            valor_em_cartao = cartao_usado->retorna_valor();
+            valor_em_dinheiro = funcao.converter_para_double(ui->le_dinheiro->text());
+            valor_em_cheque = funcao.converter_para_double(ui->le_cheque->text());
+
+            valor_em_dinheiro = funcao.arredonda_para_duas_casas_decimais(valor_em_dinheiro);
+            valor_em_cartao = funcao.arredonda_para_duas_casas_decimais(valor_em_cartao);
+            valor_em_cheque = funcao.arredonda_para_duas_casas_decimais(valor_em_cheque);
+
+            total_pago = valor_em_dinheiro+valor_em_cartao+valor_em_cheque;
+            total_pago = funcao.arredonda_para_duas_casas_decimais(total_pago);
+
+            troco = total_pago-total_pagar;
+
+            ui->le_troco->setText(funcao.retorna_valor_dinheiro(troco));
+            ui->le_total_pago->setText(funcao.retorna_valor_dinheiro(total_pago));
+            ui->le_cartao->setText(funcao.retorna_valor_dinheiro(valor_em_cartao));
+        }
     }
 }
 
@@ -564,7 +588,6 @@ void tela_pagamento::on_btn_confirmar_clicked()
                 if(consultar_id_venda.last()){
                     id_venda = consultar_id_venda.value(0).toInt();
                 }
-                std::cout<<id_venda<<std::endl;
                 dados_venda->alterar_id_venda(id_venda);
 
                 if(dinheiro_usado->retorna_valor() > 0.0){
@@ -630,9 +653,10 @@ void tela_pagamento::on_btn_confirmar_clicked()
                 }
 
                 if(cartao_usado->retorna_valor() > 0.0){
+                    int dia_venci = dados_venda->retorna_data_QDate().day();
                     //Insere os dados referente ao cartão.
                     salvar_dados_cartao.prepare("INSERT INTO cartao(dia_vencimento,num_parcelas,valor,origem,id_origem) VALUES(:dia_vencimento, :num_parcelas, :valor, :origem, :id_origem);");
-                    salvar_dados_cartao.bindValue(":dia_vencimento", cartao_usado->retorna_dia_vencimento());
+                    salvar_dados_cartao.bindValue(":dia_vencimento", dia_venci);
                     salvar_dados_cartao.bindValue(":num_parcelas", cartao_usado->retorna_num_parcelas());
                     salvar_dados_cartao.bindValue(":valor", cartao_usado->retorna_valor());
                     salvar_dados_cartao.bindValue(":origem", 3);
@@ -649,9 +673,8 @@ void tela_pagamento::on_btn_confirmar_clicked()
                     primeira_parcela = valor_pago - valor_parcela*(numero_pacelas-1);
 
                     std::vector< QString > data_parcelas = funcao.determina_parcelas(dados_venda->retorna_data_QDate(),
-                                                                                     cartao_usado->retorna_dia_vencimento(),
+                                                                                     dia_venci,
                                                                                      cartao_usado->retorna_num_parcelas());
-
                     if (primeira_parcela!=valor_parcela){
                         //parcelas = ",\nsendo a 1ª de "+funcao.retorna_valor_dinheiro(primeira_parcela)+" e "+QString::number(numero_pacelas-1)+" de "+funcao.retorna_valor_dinheiro(valor_parcela);
                         //Insere na tabela de despesas a despesas da parcela do cartão.
