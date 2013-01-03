@@ -5,6 +5,7 @@
 #include "funcoes_extras.h"
 #include "tela_pagamento_dinheiro.h"
 #include "tela_pagamento_cartao.h"
+#include "tela_pagamento_cartao_venda.h"
 #include "tela_pagamento_cheque.h"
 #include "cartao.h"
 #include "cheque.h"
@@ -42,6 +43,7 @@ private:
     QPixmap logomarca;
     tela_pagamento_dinheiro tl_pagamento_dinheiro;
     tela_pagamento_cartao tl_pagamento_cartao;
+    tela_pagamento_cartao_venda tl_pagamento_cartao_venda;
     tela_pagamento_cheque tl_pagamento_cheque;
     cartao* cartao_usado;
     cheque* cheque_usado;
