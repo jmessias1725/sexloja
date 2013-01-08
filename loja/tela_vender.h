@@ -5,7 +5,7 @@
 
 #include "tela_listar_clientes.h"
 #include "tela_listar_produtos.h"
-#include "tela_definir_valor.h"
+#include "tela_definir_valor_venda.h"
 #include "tela_pagamento.h"
 #include "cliente.h"
 #include "produto.h"
@@ -40,7 +40,7 @@ private slots:
 private:
     Ui::tela_vender *ui;
     tela_listar_clientes tl_listar_clientes;
-    tela_definir_valor tl_definir_valor;
+    tela_definir_valor_venda tl_definir_valor_venda;
     tela_pagamento tl_pagamento;
     std::vector< produto* > lista_produtos;
     std::vector< produto* > aux_lista_produtos;

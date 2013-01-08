@@ -14,7 +14,7 @@
 #include "tela_estoque.h"
 #include "tela_comprar.h"
 #include "tela_vender.h"
-#include "tela_listar_despesas.h"
+#include "tela_contas.h"
 #include "loja.h"
 #include "usuario.h"
 namespace Ui {
@@ -47,9 +47,10 @@ private slots:
     void on_btn_cal_voltar_clicked();
     void on_calendario_mes_cor_currentPageChanged(int year, int month);
     void on_realizar_compra_triggered();
-    void on_listar_despesas_triggered();
 
     void on_realizar_venda_triggered();
+
+    void on_listar_contas_triggered();
 
 private:
     Ui::tela_principal *ui;
@@ -62,7 +63,7 @@ private:
     tela_estoque tl_estoque;
     tela_comprar tl_comprar;
     tela_vender tl_vender;
-    tela_listar_despesas tl_listar_despesas;
+    tela_contas tl_contas;
     loja *informacao_loja;
     usuario *informacao_usuario;
     QPixmap logomarca;

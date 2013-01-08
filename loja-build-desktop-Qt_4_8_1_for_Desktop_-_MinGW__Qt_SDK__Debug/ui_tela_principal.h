@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_principal.ui'
 **
-** Created: Wed 2. Jan 10:39:28 2013
+** Created: Tue 8. Jan 11:06:22 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -46,7 +46,7 @@ public:
     QAction *Cadastro_da_Loja;
     QAction *Estoque;
     QAction *realizar_compra;
-    QAction *listar_despesas;
+    QAction *listar_contas;
     QWidget *centralwidget;
     QHBoxLayout *horizontalLayout;
     QFrame *fr_central;
@@ -152,11 +152,11 @@ public:
         QIcon icon11;
         icon11.addFile(QString::fromUtf8(":/img/img/compra.png"), QSize(), QIcon::Normal, QIcon::Off);
         realizar_compra->setIcon(icon11);
-        listar_despesas = new QAction(tela_principal);
-        listar_despesas->setObjectName(QString::fromUtf8("listar_despesas"));
+        listar_contas = new QAction(tela_principal);
+        listar_contas->setObjectName(QString::fromUtf8("listar_contas"));
         QIcon icon12;
-        icon12.addFile(QString::fromUtf8(":/img/img/despesa.png"), QSize(), QIcon::Normal, QIcon::Off);
-        listar_despesas->setIcon(icon12);
+        icon12.addFile(QString::fromUtf8(":/img/img/dinheiro_geral.png"), QSize(), QIcon::Normal, QIcon::Off);
+        listar_contas->setIcon(icon12);
         centralwidget = new QWidget(tela_principal);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         horizontalLayout = new QHBoxLayout(centralwidget);
@@ -495,12 +495,12 @@ public:
         menuConfigura_oes->addSeparator();
         menuConfigura_oes->addAction(Cadastro_da_Loja);
         menuConfigura_oes->addAction(Estoque);
-        menuConfigura_oes->addAction(listar_despesas);
+        menuConfigura_oes->addAction(listar_contas);
         barra_de_menus->addSeparator();
         barra_de_menus->addAction(consultar_caixa);
         barra_de_menus->addAction(consultar_clientes);
         barra_de_menus->addAction(consultar_fornecedores);
-        barra_de_menus->addAction(listar_despesas);
+        barra_de_menus->addAction(listar_contas);
         barra_de_menus->addAction(Estoque);
 
         retranslateUi(tela_principal);
@@ -530,7 +530,10 @@ public:
 #ifndef QT_NO_TOOLTIP
         realizar_compra->setToolTip(QApplication::translate("tela_principal", "Clique para adicionar uma nova compra", 0, QApplication::UnicodeUTF8));
 #endif // QT_NO_TOOLTIP
-        listar_despesas->setText(QApplication::translate("tela_principal", "Despesas", 0, QApplication::UnicodeUTF8));
+        listar_contas->setText(QApplication::translate("tela_principal", "Contas", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        listar_contas->setToolTip(QApplication::translate("tela_principal", "Contas", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
         lb_data->setText(QApplication::translate("tela_principal", "Segunda-Feira\n"
 "30/09/2012", 0, QApplication::UnicodeUTF8));
         lb_mes_pos->setText(QApplication::translate("tela_principal", "novembro, 2012", 0, QApplication::UnicodeUTF8));

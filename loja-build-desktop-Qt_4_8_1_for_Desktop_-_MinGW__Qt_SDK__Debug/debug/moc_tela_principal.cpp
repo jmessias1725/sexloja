@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_principal.h'
 **
-** Created: Wed 2. Jan 10:41:50 2013
+** Created: Tue 8. Jan 14:50:39 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -47,7 +47,7 @@ static const uint qt_meta_data_tela_principal[] = {
      421,  410,   15,   15, 0x08,
      471,   15,   15,   15, 0x08,
      502,   15,   15,   15, 0x08,
-     533,   15,   15,   15, 0x08,
+     532,   15,   15,   15, 0x08,
 
        0        // eod
 };
@@ -67,8 +67,8 @@ static const char qt_meta_stringdata_tela_principal[] = {
     "on_btn_cal_voltar_clicked()\0year,month\0"
     "on_calendario_mes_cor_currentPageChanged(int,int)\0"
     "on_realizar_compra_triggered()\0"
-    "on_listar_despesas_triggered()\0"
     "on_realizar_venda_triggered()\0"
+    "on_listar_contas_triggered()\0"
 };
 
 void tela_principal::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -92,8 +92,8 @@ void tela_principal::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 12: _t->on_btn_cal_voltar_clicked(); break;
         case 13: _t->on_calendario_mes_cor_currentPageChanged((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 14: _t->on_realizar_compra_triggered(); break;
-        case 15: _t->on_listar_despesas_triggered(); break;
-        case 16: _t->on_realizar_venda_triggered(); break;
+        case 15: _t->on_realizar_venda_triggered(); break;
+        case 16: _t->on_listar_contas_triggered(); break;
         default: ;
         }
     }

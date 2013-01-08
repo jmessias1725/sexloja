@@ -701,7 +701,7 @@ color: #FFFFFF;</string>
     <addaction name="separator"/>
     <addaction name="Cadastro_da_Loja"/>
     <addaction name="Estoque"/>
-    <addaction name="listar_despesas"/>
+    <addaction name="listar_contas"/>
    </widget>
    <addaction name="menuArquivo"/>
    <addaction name="menuListar"/>
@@ -778,7 +778,7 @@ QToolBar{
    <addaction name="consultar_caixa"/>
    <addaction name="consultar_clientes"/>
    <addaction name="consultar_fornecedores"/>
-   <addaction name="listar_despesas"/>
+   <addaction name="listar_contas"/>
    <addaction name="Estoque"/>
   </widget>
   <action name="consultar_clientes">
@@ -910,13 +910,16 @@ QToolBar{
     <string>Clique para adicionar uma nova compra</string>
    </property>
   </action>
-  <action name="listar_despesas">
+  <action name="listar_contas">
    <property name="icon">
     <iconset resource="imagens.qrc">
-     <normaloff>:/img/img/despesa.png</normaloff>:/img/img/despesa.png</iconset>
+     <normaloff>:/img/img/dinheiro_geral.png</normaloff>:/img/img/dinheiro_geral.png</iconset>
    </property>
    <property name="text">
-    <string>Despesas</string>
+    <string>Contas</string>
+   </property>
+   <property name="toolTip">
+    <string>Contas</string>
    </property>
   </action>
  </widget>
