@@ -161,7 +161,7 @@ void tela_estoque::mostrar_lista_produtos(void){
         ui->tw_produtos->item(i,5)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_produtos->item(i,6)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_produtos->item(i,7)->setTextAlignment(Qt::AlignHCenter);
-        if ((aux_lista_produtos[i]->retorna_quantidade_disponivel())==legenda->retorna_zerado_valor()){
+        if ((aux_lista_produtos[i]->retorna_quantidade_disponivel())<=legenda->retorna_zerado_valor()){
             for(int j=0;j<8;j++){
                 ui->tw_produtos->item(i,j)->setBackgroundColor(QColor::fromRgb(legenda->retorna_z_cor_vermelho(),legenda->retorna_z_cor_verde(),legenda->retorna_z_cor_azul(),255));
             }

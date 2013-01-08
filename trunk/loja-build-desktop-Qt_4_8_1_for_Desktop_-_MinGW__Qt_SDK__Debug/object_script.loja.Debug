@@ -54,6 +54,7 @@ INPUT(
 ./debug\lista_venda.o
 ./debug\tela_definir_valor_venda.o
 ./debug\tela_pagamento_cartao_venda.o
+./debug\tela_contas.o
 ./debug\moc_tela_login.o
 ./debug\moc_tela_principal.o
 ./debug\moc_tela_cadastro_cliente.o
@@ -85,5 +86,6 @@ INPUT(
 ./debug\moc_tela_vender.o
 ./debug\moc_tela_definir_valor_venda.o
 ./debug\moc_tela_pagamento_cartao_venda.o
+./debug\moc_tela_contas.o
 ./debug\qrc_imagens.o
 );

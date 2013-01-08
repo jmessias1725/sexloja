@@ -121,12 +121,11 @@ void tela_vender::limpar_dados(void){
 
 void tela_vender::on_tw_lista_produtos_doubleClicked(const QModelIndex &index)
 {
-    tl_definir_valor.definir_icone_janela(logomarca);
-    tl_definir_valor.definir_dados(lista_produtos[index.row()]->retorna_valor_venda(),lista_produtos[index.row()]->retorna_custo_medio(),lista_produtos[index.row()]->retorna_quantidade_disponivel());
-    if(tl_definir_valor.exec()){
-        lista_produtos[index.row()]->altera_valor_compra(tl_definir_valor.retorna_custo());
-        lista_produtos[index.row()]->altera_valor_venda(tl_definir_valor.retorna_valor_venda());
-        lista_produtos[index.row()]->altera_quantidade(tl_definir_valor.retorna_quantidade());
+    tl_definir_valor_venda.definir_icone_janela(logomarca);
+    tl_definir_valor_venda.definir_dados(lista_produtos[index.row()]->retorna_valor_venda(),lista_produtos[index.row()]->retorna_quantidade_disponivel());
+    if(tl_definir_valor_venda.exec()){
+        lista_produtos[index.row()]->altera_valor_venda(tl_definir_valor_venda.retorna_valor_venda());
+        lista_produtos[index.row()]->altera_quantidade(tl_definir_valor_venda.retorna_quantidade());
     }
     mostrar_lista_produtos();
 }
