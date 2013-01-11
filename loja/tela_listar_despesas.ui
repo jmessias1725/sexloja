@@ -257,7 +257,7 @@
    <property name="font">
     <font>
      <family>Calibri</family>
-     <pointsize>9</pointsize>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="alternatingRowColors">

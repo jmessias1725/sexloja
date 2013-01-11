@@ -155,5 +155,5 @@ void tela_principal::on_realizar_venda_triggered()
 void tela_principal::on_listar_contas_triggered()
 {
     tl_contas.definir_icone_janela(logomarca);
-    tl_contas.show();
+    tl_contas.showMaximized();
 }

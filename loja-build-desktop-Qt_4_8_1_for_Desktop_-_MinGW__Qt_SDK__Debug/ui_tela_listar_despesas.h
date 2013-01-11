@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_listar_despesas.ui'
 **
-** Created: Tue 8. Jan 09:44:09 2013
+** Created: Fri 11. Jan 09:11:23 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -126,7 +126,7 @@ public:
         tw_despesas->setGeometry(QRect(5, 79, 740, 416));
         QFont font4;
         font4.setFamily(QString::fromUtf8("Calibri"));
-        font4.setPointSize(9);
+        font4.setPointSize(10);
         tw_despesas->setFont(font4);
         tw_despesas->setAlternatingRowColors(true);
         tw_despesas->setRowCount(0);
