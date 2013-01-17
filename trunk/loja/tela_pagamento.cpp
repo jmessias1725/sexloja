@@ -712,7 +712,6 @@ void tela_pagamento::on_btn_confirmar_clicked()
                         }
                     }
                 }
-
                 if(cheque_usado->retorna_valor() > 0.0){
                     //Insere os dados referente ao cheque
                     salvar_dados_cheque.prepare("INSERT INTO cheque(id_banco,agencia,conta,numero,valor,origem,id_origem,data_pagamento,nome_banco) VALUES(:id_banco, :agencia, :conta, :numero, :valor, :origem, :id_origem, :data_pagamento, :nome_banco);");
@@ -731,6 +730,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                     salvar_dados_despesa_cheque.prepare("INSERT INTO ganhos(data,descricao,valor,status,origem,id_origem) VALUES(:data, :descricao, :valor, :status, :origem, :id_origem);");
                     salvar_dados_despesa_cheque.bindValue(":descricao", "Cheque utilizado para efetuar pagamento da venda de código: "+QString::number(dados_venda->retorna_id_venda())+".");
                     salvar_dados_despesa_cheque.bindValue(":valor", cheque_usado->retorna_valor());
+
                     if(cheque_usado->retorna_se_insere_caixa_hoje()==true){
                         QDate data_atual;
                         salvar_dados_despesa_cheque.bindValue(":status", 1);
@@ -740,6 +740,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                         salvar_dados_despesa_cheque.bindValue(":data", cheque_usado->retorna_data_pagamento());
                         salvar_dados_despesa_cheque.bindValue(":status", 0);
                     }
+
                     salvar_dados_despesa_cheque.bindValue(":origem", 1);
                     salvar_dados_despesa_cheque.bindValue(":id_origem", dados_venda->retorna_id_venda());
                     salvar_dados_despesa_cheque.exec();
@@ -765,6 +766,10 @@ void tela_pagamento::on_btn_confirmar_clicked()
                         }
                     }
 
+                    if (int(id_balanco.size())==0){
+                        id_balanco.push_back(aux_id);
+                    }
+
                     total_desejado = lt_venda[i]->retorna_quantidade();
                     while(j<int(total_disponivel.size())&&(removeu_quantidade_desejada==false)){
                         resto = total_disponivel[j]-total_desejado;
@@ -779,10 +784,13 @@ void tela_pagamento::on_btn_confirmar_clicked()
                         }
                         j++;
                     }
-
                     if(total_desejado!=0){
                         total_desejado = total_desejado*(-1);
-                        total_disponivel[total_disponivel.size()-1] = total_desejado;
+                        if(int(total_disponivel.size())!=0)
+                            total_disponivel[total_disponivel.size()-1] = total_desejado;
+                        else{
+                            total_disponivel.push_back(total_desejado);
+                        }
                     }
 
                     for(int k = 0;k<int(id_balanco.size());k++){
@@ -791,7 +799,6 @@ void tela_pagamento::on_btn_confirmar_clicked()
                         atualiza_quant_dis_his_bal_estoque.bindValue(":total_disponivel", total_disponivel[k]);
                         atualiza_quant_dis_his_bal_estoque.exec();
                     }
-
                     id_balanco.clear();
                     total_disponivel.clear();
 
@@ -803,6 +810,16 @@ void tela_pagamento::on_btn_confirmar_clicked()
                     salvar_dados_lista_venda.bindValue(":id_venda", dados_venda->retorna_id_venda());
                     salvar_dados_lista_venda.exec();
                 }
+
+                   /*std::cout<<salvar_dados_venda.lastError().number()<<std::endl;
+                   std::cout<<atualiza_quant_dis_his_bal_estoque.lastError().number()<<std::endl;
+                   std::cout<<salvar_dados_lista_venda.lastError().number()<<std::endl;
+                   std::cout<<salvar_dados_cartao.lastError().number()<<std::endl;
+                   std::cout<<salvar_dados_despesa_cartao.lastError().number()<<std::endl;
+                   std::cout<<salvar_dados_cheque.lastError().number()<<std::endl;
+                   std::cout<<salvar_dados_despesa_cheque.lastError().number()<<std::endl;
+                   std::cout<<salvar_dados_dinheiro.lastError().number()<<std::endl;
+                   std::cout<<salvar_dados_despesa_dinheiro.lastError().number()<<std::endl;*/
 
                 //Verifica se os dados podem ser salvos, caso sim realiza o Commite, do contrário o Rollback.
                 if((salvar_dados_venda.lastError().number()<=0)&&

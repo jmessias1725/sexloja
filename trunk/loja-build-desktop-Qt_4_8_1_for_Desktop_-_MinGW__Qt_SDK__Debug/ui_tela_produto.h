@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_produto.ui'
 **
-** Created: Tue 8. Jan 09:44:08 2013
+** Created: Thu 17. Jan 10:06:51 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -284,11 +284,20 @@ public:
         tw_historico_saidas = new QTableWidget(saidas);
         tw_historico_saidas->setObjectName(QString::fromUtf8("tw_historico_saidas"));
         tw_historico_saidas->setGeometry(QRect(-1, -1, 504, 177));
+        QFont font6;
+        font6.setFamily(QString::fromUtf8("Calibri"));
+        font6.setPointSize(10);
+        tw_historico_saidas->setFont(font6);
+        tw_historico_saidas->horizontalHeader()->setDefaultSectionSize(110);
+        tw_historico_saidas->horizontalHeader()->setMinimumSectionSize(20);
+        tw_historico_saidas->horizontalHeader()->setStretchLastSection(true);
+        tw_historico_saidas->verticalHeader()->setVisible(false);
+        tw_historico_saidas->verticalHeader()->setDefaultSectionSize(20);
         tabw_historico_ent_sai->addTab(saidas, QString());
 
         retranslateUi(tela_produto);
 
-        tabw_historico_ent_sai->setCurrentIndex(0);
+        tabw_historico_ent_sai->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(tela_produto);

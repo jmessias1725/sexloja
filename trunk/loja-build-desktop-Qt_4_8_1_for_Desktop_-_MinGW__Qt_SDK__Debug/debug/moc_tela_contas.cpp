@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_contas.h'
 **
-** Created: Fri 11. Jan 15:08:46 2013
+** Created: Tue 15. Jan 11:29:51 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_tela_contas[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -36,6 +36,10 @@ static const uint qt_meta_data_tela_contas[] = {
       64,   12,   12,   12, 0x08,
       92,   12,   12,   12, 0x08,
      119,   12,   12,   12, 0x08,
+     156,   12,   12,   12, 0x08,
+     183,   12,   12,   12, 0x08,
+     211,   12,   12,   12, 0x08,
+     237,   12,   12,   12, 0x08,
 
        0        // eod
 };
@@ -46,6 +50,10 @@ static const char qt_meta_stringdata_tela_contas[] = {
     "on_btn_filtrar_cp_clicked()\0"
     "on_btn_limpar_cp_clicked()\0"
     "on_data_inicial_cp_editingFinished()\0"
+    "on_btn_buscar_cr_clicked()\0"
+    "on_btn_filtrar_cr_clicked()\0"
+    "on_btn_limparcr_clicked()\0"
+    "on_data_inicial_cr_editingFinished()\0"
 };
 
 void tela_contas::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -59,6 +67,10 @@ void tela_contas::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 2: _t->on_btn_filtrar_cp_clicked(); break;
         case 3: _t->on_btn_limpar_cp_clicked(); break;
         case 4: _t->on_data_inicial_cp_editingFinished(); break;
+        case 5: _t->on_btn_buscar_cr_clicked(); break;
+        case 6: _t->on_btn_filtrar_cr_clicked(); break;
+        case 7: _t->on_btn_limparcr_clicked(); break;
+        case 8: _t->on_data_inicial_cr_editingFinished(); break;
         default: ;
         }
     }
@@ -97,9 +109,9 @@ int tela_contas::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 9;
     }
     return _id;
 }

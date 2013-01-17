@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_listar_clientes.h'
 **
-** Created: Tue 8. Jan 09:46:49 2013
+** Created: Thu 17. Jan 10:14:26 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_tela_listar_clientes[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -37,6 +37,7 @@ static const uint qt_meta_data_tela_listar_clientes[] = {
      111,  105,   21,   21, 0x08,
      153,   21,   21,   21, 0x08,
      183,  177,   21,   21, 0x08,
+     208,   21,   21,   21, 0x08,
 
        0        // eod
 };
@@ -49,6 +50,7 @@ static const char qt_meta_stringdata_tela_listar_clientes[] = {
     "on_tv_clientes_doubleClicked(QModelIndex)\0"
     "on_btn_limpar_clicked()\0event\0"
     "closeEvent(QCloseEvent*)\0"
+    "on_btn_adicionar_cliente_clicked()\0"
 };
 
 void tela_listar_clientes::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -63,6 +65,7 @@ void tela_listar_clientes::qt_static_metacall(QObject *_o, QMetaObject::Call _c,
         case 3: _t->on_tv_clientes_doubleClicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
         case 4: _t->on_btn_limpar_clicked(); break;
         case 5: _t->closeEvent((*reinterpret_cast< QCloseEvent*(*)>(_a[1]))); break;
+        case 6: _t->on_btn_adicionar_cliente_clicked(); break;
         default: ;
         }
     }
@@ -100,9 +103,9 @@ int tela_listar_clientes::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 7;
     }
     return _id;
 }

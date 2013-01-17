@@ -315,3 +315,9 @@ void tela_listar_fornecedores::alterar_editar(bool edit){
 fornecedor * tela_listar_fornecedores::retorna_fornecedor(void){
     return fornecedor_atual;
 }
+
+void tela_listar_fornecedores::on_btn_adicionar_fornecedor_clicked()
+{
+    tl_cadastro_fornecedor.definir_icone_janela(logomarca);
+    tl_cadastro_fornecedor.show();
+}

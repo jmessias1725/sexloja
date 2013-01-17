@@ -42,8 +42,8 @@ void tela_produto::definir_dados_produto(produto *cad_produto){
     ui->gv_imagem_produto->setScene(GS_imagem_produto);
 
     buscar_informacoes_his_estoque_produto(informacoes_produto->retorna_id());
-    informacoes_his_entrada = buscar_informacoes_his_entrada(informacoes_produto->retorna_id());
-    mostrar_informacoes_his_entrada(informacoes_his_entrada);
+    buscar_informacoes_his_entrada(informacoes_produto->retorna_id());
+    buscar_informacoes_his_saida(informacoes_produto->retorna_id());
 
     this->reject();
 }
@@ -161,7 +161,7 @@ void tela_produto::buscar_informacoes_his_estoque_produto(int id){
     }
 }
 
-std::vector< his_entradas * > tela_produto::buscar_informacoes_his_entrada(int id){
+void tela_produto::buscar_informacoes_his_entrada(int id){
     conexao_bd conexao;
     QSqlDatabase bd;
 
@@ -196,7 +196,7 @@ std::vector< his_entradas * > tela_produto::buscar_informacoes_his_entrada(int i
         bd.close();
         conexao.fechar_conexao();
     }
-    return aux_his;
+    mostrar_informacoes_his_entrada(aux_his);
 }
 
 void tela_produto::mostrar_informacoes_his_entrada(std::vector< his_entradas * > aux_his){
@@ -205,10 +205,10 @@ void tela_produto::mostrar_informacoes_his_entrada(std::vector< his_entradas * >
     ui->tw_historico_entradas->setColumnCount(5);
     ui->tw_historico_entradas->horizontalHeader()->setResizeMode(QHeaderView::Fixed);
     ui->tw_historico_entradas->clear();
-    ui->tw_historico_entradas->setHorizontalHeaderLabels(QString(" Origem ; Quantidade ; Valor de compra ; Valor de venda ; Data do registro ").split(";"));
+    ui->tw_historico_entradas->setHorizontalHeaderLabels(QString(" Código da compra ; Quantidade ; Valor de compra ; Valor de venda ; Data da compra ").split(";"));
 
     for (int i=0;i<int(aux_his.size());i++){
-        ui->tw_historico_entradas->setItem(i,0,new QTableWidgetItem(funcoes.converte_numero_origem_nome(aux_his[i]->retorna_id_entrada())));
+        ui->tw_historico_entradas->setItem(i,0,new QTableWidgetItem(QString::number(aux_his[i]->retorna_id_entrada())));
         ui->tw_historico_entradas->setItem(i,1,new QTableWidgetItem(QString::number(aux_his[i]->retorna_quantidade())));
         ui->tw_historico_entradas->setItem(i,2,new QTableWidgetItem(funcoes.retorna_valor_dinheiro(aux_his[i]->retorna_valor_compra())));
         ui->tw_historico_entradas->setItem(i,3,new QTableWidgetItem(funcoes.retorna_valor_dinheiro(aux_his[i]->retorna_valor_venda())));
@@ -223,4 +223,64 @@ void tela_produto::mostrar_informacoes_his_entrada(std::vector< his_entradas * >
     ui->tw_historico_entradas->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tw_historico_entradas->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tw_historico_entradas->resizeColumnsToContents();
+}
+
+void tela_produto::buscar_informacoes_his_saida(int id){
+    conexao_bd conexao;
+    QSqlDatabase bd;
+
+    int id_venda;
+    int quantidade;
+    double valor_venda_uni;
+    QString data;
+
+    std::vector< his_saidas * > aux_his;
+
+    //realiza conexão ao banco de dados
+    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_produto::buscar_his_entrada")){
+
+        //Retorna o banco de dados
+        bd = conexao.retorna_bd();
+
+        //Declara a variável que irá fazer a consulta
+        QSqlQuery consultar(bd);
+
+        //realiza a consulta
+        consultar.exec("SELECT l.`id_venda`, l.`quantidade`, l.`valor_venda_uni`, c.`data_venda` FROM lista_venda l,venda c WHERE l.id_venda=c.id_venda AND l.id_produto = "+QString::number(id)+";");
+        while(consultar.next()){
+            id_venda = consultar.value(0).toString().toInt();
+            quantidade = consultar.value(1).toString().toInt();
+            valor_venda_uni = consultar.value(2).toString().toDouble();
+            data = consultar.value(3).toString();
+            aux_his.push_back(new his_saidas(id_venda,quantidade,valor_venda_uni,data));
+        }
+        consultar.clear();
+        bd.close();
+        conexao.fechar_conexao();
+    }
+    mostrar_informacoes_his_saida(aux_his);
+}
+
+void tela_produto::mostrar_informacoes_his_saida(std::vector< his_saidas * > aux_his){
+
+    ui->tw_historico_saidas->setRowCount(int(aux_his.size()));
+    ui->tw_historico_saidas->setColumnCount(4);
+    ui->tw_historico_saidas->horizontalHeader()->setResizeMode(QHeaderView::Fixed);
+    ui->tw_historico_saidas->clear();
+    ui->tw_historico_saidas->setHorizontalHeaderLabels(QString(" Código da venda ; Quantidade ; Valor de venda ; Data da venda ").split(";"));
+
+    for (int i=0;i<int(aux_his.size());i++){
+        ui->tw_historico_saidas->setItem(i,0,new QTableWidgetItem(QString::number(aux_his[i]->retorna_id_saida())));
+        ui->tw_historico_saidas->setItem(i,1,new QTableWidgetItem(QString::number(aux_his[i]->retorna_quantidade())));
+        ui->tw_historico_saidas->setItem(i,2,new QTableWidgetItem(funcoes.retorna_valor_dinheiro(aux_his[i]->retorna_valor_venda())));
+        ui->tw_historico_saidas->setItem(i,3,new QTableWidgetItem(aux_his[i]->retorna_data()));
+        ui->tw_historico_saidas->item(i,0)->setTextAlignment(Qt::AlignHCenter);
+        ui->tw_historico_saidas->item(i,1)->setTextAlignment(Qt::AlignHCenter);
+        ui->tw_historico_saidas->item(i,2)->setTextAlignment(Qt::AlignHCenter);
+        ui->tw_historico_saidas->item(i,3)->setTextAlignment(Qt::AlignHCenter);
+    }
+    ui->tw_historico_saidas->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->tw_historico_saidas->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tw_historico_saidas->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tw_historico_saidas->resizeColumnsToContents();
 }

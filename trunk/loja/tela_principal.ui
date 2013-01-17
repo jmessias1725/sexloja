@@ -780,6 +780,8 @@ QToolBar{
    <addaction name="consultar_fornecedores"/>
    <addaction name="listar_contas"/>
    <addaction name="Estoque"/>
+   <addaction name="realizar_venda"/>
+   <addaction name="realizar_compra"/>
   </widget>
   <action name="consultar_clientes">
    <property name="icon">
