@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_listar_produtos.ui'
 **
-** Created: Tue 8. Jan 09:44:08 2013
+** Created: Thu 17. Jan 15:05:07 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -16,21 +16,24 @@
 #include <QtGui/QButtonGroup>
 #include <QtGui/QComboBox>
 #include <QtGui/QDialog>
+#include <QtGui/QFrame>
 #include <QtGui/QGroupBox>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
 #include <QtGui/QPushButton>
 #include <QtGui/QTableWidget>
+#include <QtGui/QToolButton>
 #include <QtGui/QVBoxLayout>
-#include <QtGui/QWidget>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_tela_listar_produtos
 {
 public:
-    QWidget *layoutWidget;
+    QVBoxLayout *verticalLayout_3;
+    QFrame *frame;
+    QToolButton *btn_adicionar_produto;
     QVBoxLayout *verticalLayout_2;
     QGroupBox *gb_filtrar;
     QLabel *lb_tipo;
@@ -53,15 +56,41 @@ public:
         if (tela_listar_produtos->objectName().isEmpty())
             tela_listar_produtos->setObjectName(QString::fromUtf8("tela_listar_produtos"));
         tela_listar_produtos->setWindowModality(Qt::ApplicationModal);
-        tela_listar_produtos->resize(903, 581);
-        layoutWidget = new QWidget(tela_listar_produtos);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(0, 0, 903, 581));
-        verticalLayout_2 = new QVBoxLayout(layoutWidget);
-        verticalLayout_2->setContentsMargins(5, 5, 5, 5);
+        tela_listar_produtos->resize(903, 586);
+        verticalLayout_3 = new QVBoxLayout(tela_listar_produtos);
+        verticalLayout_3->setSpacing(5);
+        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        frame = new QFrame(tela_listar_produtos);
+        frame->setObjectName(QString::fromUtf8("frame"));
+        frame->setMinimumSize(QSize(0, 50));
+        frame->setStyleSheet(QString::fromUtf8("QFrame{\n"
+"	background-color: qlineargradient(x1:0, y1:1, x0:1, y0:0,\n"
+"                                       stop:0.1 #777777, stop:0.9 #525252);\n"
+"	border: none;\n"
+"}\n"
+"\n"
+"QToolButton{\n"
+"	color:#FFFFFF\n"
+"}"));
+        frame->setFrameShape(QFrame::Panel);
+        frame->setFrameShadow(QFrame::Raised);
+        btn_adicionar_produto = new QToolButton(frame);
+        btn_adicionar_produto->setObjectName(QString::fromUtf8("btn_adicionar_produto"));
+        btn_adicionar_produto->setGeometry(QRect(10, 2, 45, 45));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/img/img/produto_cadastrar.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_adicionar_produto->setIcon(icon);
+        btn_adicionar_produto->setIconSize(QSize(40, 40));
+        btn_adicionar_produto->setAutoRaise(true);
+
+        verticalLayout_3->addWidget(frame);
+
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setSpacing(5);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        gb_filtrar = new QGroupBox(layoutWidget);
+        verticalLayout_2->setContentsMargins(5, -1, 5, 5);
+        gb_filtrar = new QGroupBox(tela_listar_produtos);
         gb_filtrar->setObjectName(QString::fromUtf8("gb_filtrar"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(5);
@@ -142,9 +171,9 @@ public:
         font3.setBold(false);
         font3.setWeight(50);
         btn_limpar->setFont(font3);
-        QIcon icon;
-        icon.addFile(QString::fromUtf8(":/img/img/limpar.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_limpar->setIcon(icon);
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/img/img/limpar.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_limpar->setIcon(icon1);
         lb_codigo = new QLabel(gb_filtrar);
         lb_codigo->setObjectName(QString::fromUtf8("lb_codigo"));
         lb_codigo->setGeometry(QRect(135, 17, 42, 20));
@@ -158,7 +187,7 @@ public:
 
         verticalLayout_2->addWidget(gb_filtrar);
 
-        gb_clientes = new QGroupBox(layoutWidget);
+        gb_clientes = new QGroupBox(tela_listar_produtos);
         gb_clientes->setObjectName(QString::fromUtf8("gb_clientes"));
         gb_clientes->setMinimumSize(QSize(889, 251));
         QFont font4;
@@ -174,7 +203,6 @@ public:
         verticalLayout->setContentsMargins(5, 0, 5, 5);
         tw_produtos = new QTableWidget(gb_clientes);
         tw_produtos->setObjectName(QString::fromUtf8("tw_produtos"));
-        tw_produtos->setMinimumSize(QSize(869, 469));
         QFont font5;
         font5.setFamily(QString::fromUtf8("Calibri"));
         font5.setPointSize(10);
@@ -209,6 +237,9 @@ public:
         verticalLayout_2->addWidget(gb_clientes);
 
 
+        verticalLayout_3->addLayout(verticalLayout_2);
+
+
         retranslateUi(tela_listar_produtos);
 
         QMetaObject::connectSlotsByName(tela_listar_produtos);
@@ -217,6 +248,7 @@ public:
     void retranslateUi(QDialog *tela_listar_produtos)
     {
         tela_listar_produtos->setWindowTitle(QApplication::translate("tela_listar_produtos", "Lista de Produtos", 0, QApplication::UnicodeUTF8));
+        btn_adicionar_produto->setText(QApplication::translate("tela_listar_produtos", "Adiconar Produto", 0, QApplication::UnicodeUTF8));
         gb_filtrar->setTitle(QApplication::translate("tela_listar_produtos", "Filtrar por:", 0, QApplication::UnicodeUTF8));
         lb_tipo->setText(QApplication::translate("tela_listar_produtos", "Tipo:", 0, QApplication::UnicodeUTF8));
         le_fabricante->setInputMask(QString());

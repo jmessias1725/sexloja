@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_listar_clientes.ui'
 **
-** Created: Tue 8. Jan 09:44:07 2013
+** Created: Thu 17. Jan 14:20:33 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -15,12 +15,14 @@
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
 #include <QtGui/QDialog>
+#include <QtGui/QFrame>
 #include <QtGui/QGroupBox>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
 #include <QtGui/QPushButton>
 #include <QtGui/QTableView>
+#include <QtGui/QToolButton>
 
 QT_BEGIN_NAMESPACE
 
@@ -39,19 +41,23 @@ public:
     QPushButton *btn_limpar;
     QGroupBox *gb_clientes;
     QTableView *tv_clientes;
+    QFrame *frame;
+    QToolButton *btn_adicionar_cliente;
 
     void setupUi(QDialog *tela_listar_clientes)
     {
         if (tela_listar_clientes->objectName().isEmpty())
             tela_listar_clientes->setObjectName(QString::fromUtf8("tela_listar_clientes"));
-        tela_listar_clientes->resize(767, 328);
+        tela_listar_clientes->resize(767, 382);
+        tela_listar_clientes->setMinimumSize(QSize(767, 382));
+        tela_listar_clientes->setMaximumSize(QSize(767, 382));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/img/img/logo_sex.png"), QSize(), QIcon::Normal, QIcon::Off);
         tela_listar_clientes->setWindowIcon(icon);
         tela_listar_clientes->setModal(true);
         gb_buscar = new QGroupBox(tela_listar_clientes);
         gb_buscar->setObjectName(QString::fromUtf8("gb_buscar"));
-        gb_buscar->setGeometry(QRect(5, 0, 756, 78));
+        gb_buscar->setGeometry(QRect(5, 55, 756, 78));
         QFont font;
         font.setFamily(QString::fromUtf8("Calibri"));
         font.setPointSize(10);
@@ -141,7 +147,7 @@ public:
         btn_limpar->setIconSize(QSize(20, 20));
         gb_clientes = new QGroupBox(tela_listar_clientes);
         gb_clientes->setObjectName(QString::fromUtf8("gb_clientes"));
-        gb_clientes->setGeometry(QRect(5, 83, 756, 240));
+        gb_clientes->setGeometry(QRect(5, 138, 756, 240));
         QFont font4;
         font4.setFamily(QString::fromUtf8("Calibri"));
         font4.setPointSize(10);
@@ -169,6 +175,28 @@ public:
         tv_clientes->verticalHeader()->setDefaultSectionSize(30);
         tv_clientes->verticalHeader()->setMinimumSectionSize(20);
         tv_clientes->verticalHeader()->setStretchLastSection(false);
+        frame = new QFrame(tela_listar_clientes);
+        frame->setObjectName(QString::fromUtf8("frame"));
+        frame->setGeometry(QRect(0, 0, 800, 50));
+        frame->setStyleSheet(QString::fromUtf8("QFrame{\n"
+"	background-color: qlineargradient(x1:0, y1:1, x0:1, y0:0,\n"
+"                                       stop:0.1 #777777, stop:0.9 #525252);\n"
+"	border: none;\n"
+"}\n"
+"\n"
+"QToolButton{\n"
+"	color:#FFFFFF\n"
+"}"));
+        frame->setFrameShape(QFrame::Panel);
+        frame->setFrameShadow(QFrame::Raised);
+        btn_adicionar_cliente = new QToolButton(frame);
+        btn_adicionar_cliente->setObjectName(QString::fromUtf8("btn_adicionar_cliente"));
+        btn_adicionar_cliente->setGeometry(QRect(10, 2, 45, 45));
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/img/img/adiciona_clientes.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_adicionar_cliente->setIcon(icon4);
+        btn_adicionar_cliente->setIconSize(QSize(40, 40));
+        btn_adicionar_cliente->setAutoRaise(true);
         QWidget::setTabOrder(le_codigo, le_nome);
         QWidget::setTabOrder(le_nome, le_telefone);
         QWidget::setTabOrder(le_telefone, btn_buscar);
@@ -200,6 +228,7 @@ public:
         btn_cancelar->setText(QApplication::translate("tela_listar_clientes", "Cancelar", 0, QApplication::UnicodeUTF8));
         btn_limpar->setText(QApplication::translate("tela_listar_clientes", "Limpar", 0, QApplication::UnicodeUTF8));
         gb_clientes->setTitle(QApplication::translate("tela_listar_clientes", "Clientes", 0, QApplication::UnicodeUTF8));
+        btn_adicionar_cliente->setText(QApplication::translate("tela_listar_clientes", "Adiconar Cliente", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

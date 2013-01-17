@@ -8,6 +8,7 @@
 
 #include "conexao_bd.h"
 #include "tela_clientes.h"
+#include "tela_cadastro_cliente.h"
 #include "cliente.h"
 #include "funcoes_extras.h"
 
@@ -34,9 +35,11 @@ private slots:
     void on_tv_clientes_doubleClicked(const QModelIndex &index);
     void on_btn_limpar_clicked();
     void closeEvent( QCloseEvent * event );
+    void on_btn_adicionar_cliente_clicked();
 
 private:
     Ui::tela_listar_clientes *ui;
+    tela_cadastro_cliente tl_cadastro_clientes;
     std::vector< cliente * > lista_clientes;
     cliente *cliente_atual;
     tela_clientes tl_cliente;    

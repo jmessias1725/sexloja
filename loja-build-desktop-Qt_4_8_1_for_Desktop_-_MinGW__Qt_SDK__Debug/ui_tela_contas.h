@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_contas.ui'
 **
-** Created: Fri 11. Jan 15:08:22 2013
+** Created: Tue 15. Jan 11:25:46 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -369,13 +369,13 @@ public:
         tw_contas_receber->setAlternatingRowColors(true);
         tw_contas_receber->setRowCount(0);
         tw_contas_receber->setColumnCount(0);
-        tw_contas_receber->horizontalHeader()->setDefaultSectionSize(380);
+        tw_contas_receber->horizontalHeader()->setDefaultSectionSize(450);
         tw_contas_receber->horizontalHeader()->setHighlightSections(true);
         tw_contas_receber->horizontalHeader()->setMinimumSectionSize(60);
         tw_contas_receber->horizontalHeader()->setStretchLastSection(true);
         tw_contas_receber->verticalHeader()->setVisible(false);
-        tw_contas_receber->verticalHeader()->setDefaultSectionSize(15);
-        tw_contas_receber->verticalHeader()->setMinimumSectionSize(15);
+        tw_contas_receber->verticalHeader()->setDefaultSectionSize(20);
+        tw_contas_receber->verticalHeader()->setMinimumSectionSize(20);
 
         verticalLayout_3->addWidget(tw_contas_receber);
 
@@ -525,7 +525,7 @@ public:
 
         retranslateUi(tela_contas);
 
-        tbw_geral->setCurrentIndex(2);
+        tbw_geral->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(tela_contas);

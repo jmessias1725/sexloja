@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_produto.h'
 **
-** Created: Tue 8. Jan 09:47:52 2013
+** Created: Thu 17. Jan 10:01:22 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_tela_produto[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -32,13 +32,15 @@ static const uint qt_meta_data_tela_produto[] = {
 
  // slots: signature, parameters, type, tag, flags
       17,   14,   13,   13, 0x08,
-      88,   14,   61,   13, 0x08,
-     132,  124,   13,   13, 0x08,
-     198,  192,   13,   13, 0x08,
-     223,   13,   13,   13, 0x08,
-     238,   13,   13,   13, 0x08,
-     270,   13,   13,   13, 0x08,
-     305,   13,   13,   13, 0x08,
+      61,   14,   13,   13, 0x08,
+     105,   97,   13,   13, 0x08,
+     165,   14,   13,   13, 0x08,
+     199,   97,   13,   13, 0x08,
+     261,  255,   13,   13, 0x08,
+     286,   13,   13,   13, 0x08,
+     301,   13,   13,   13, 0x08,
+     333,   13,   13,   13, 0x08,
+     368,   13,   13,   13, 0x08,
 
        0        // eod
 };
@@ -46,10 +48,11 @@ static const uint qt_meta_data_tela_produto[] = {
 static const char qt_meta_stringdata_tela_produto[] = {
     "tela_produto\0\0id\0"
     "buscar_informacoes_his_estoque_produto(int)\0"
-    "std::vector<his_entradas*>\0"
     "buscar_informacoes_his_entrada(int)\0"
     "aux_his\0"
     "mostrar_informacoes_his_entrada(std::vector<his_entradas*>)\0"
+    "buscar_informacoes_his_saida(int)\0"
+    "mostrar_informacoes_his_saida(std::vector<his_saidas*>)\0"
     "event\0closeEvent(QCloseEvent*)\0"
     "limpar_dados()\0on_btn_editar_produto_clicked()\0"
     "on_btn_adicionar_produto_clicked()\0"
@@ -63,14 +66,15 @@ void tela_produto::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         tela_produto *_t = static_cast<tela_produto *>(_o);
         switch (_id) {
         case 0: _t->buscar_informacoes_his_estoque_produto((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 1: { std::vector<his_entradas*> _r = _t->buscar_informacoes_his_entrada((*reinterpret_cast< int(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< std::vector<his_entradas*>*>(_a[0]) = _r; }  break;
+        case 1: _t->buscar_informacoes_his_entrada((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 2: _t->mostrar_informacoes_his_entrada((*reinterpret_cast< std::vector<his_entradas*>(*)>(_a[1]))); break;
-        case 3: _t->closeEvent((*reinterpret_cast< QCloseEvent*(*)>(_a[1]))); break;
-        case 4: _t->limpar_dados(); break;
-        case 5: _t->on_btn_editar_produto_clicked(); break;
-        case 6: _t->on_btn_adicionar_produto_clicked(); break;
-        case 7: _t->on_btn_remover_produto_clicked(); break;
+        case 3: _t->buscar_informacoes_his_saida((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 4: _t->mostrar_informacoes_his_saida((*reinterpret_cast< std::vector<his_saidas*>(*)>(_a[1]))); break;
+        case 5: _t->closeEvent((*reinterpret_cast< QCloseEvent*(*)>(_a[1]))); break;
+        case 6: _t->limpar_dados(); break;
+        case 7: _t->on_btn_editar_produto_clicked(); break;
+        case 8: _t->on_btn_adicionar_produto_clicked(); break;
+        case 9: _t->on_btn_remover_produto_clicked(); break;
         default: ;
         }
     }
@@ -108,9 +112,9 @@ int tela_produto::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 10;
     }
     return _id;
 }

@@ -271,3 +271,9 @@ void tela_listar_clientes::alterar_editar(bool edit){
 cliente * tela_listar_clientes::retorna_cliente(void){
     return cliente_atual;
 }
+
+void tela_listar_clientes::on_btn_adicionar_cliente_clicked()
+{
+    tl_cadastro_clientes.definir_icone_janela(logomarca);
+    tl_cadastro_clientes.show();
+}

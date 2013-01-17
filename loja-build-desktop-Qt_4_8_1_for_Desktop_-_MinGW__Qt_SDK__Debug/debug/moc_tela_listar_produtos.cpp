@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_listar_produtos.h'
 **
-** Created: Tue 8. Jan 09:48:16 2013
+** Created: Thu 17. Jan 15:09:30 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_tela_listar_produtos[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -39,6 +39,7 @@ static const uint qt_meta_data_tela_listar_produtos[] = {
      209,  203,   21,   21, 0x08,
      251,   21,   21,   21, 0x08,
      275,   47,   21,   21, 0x08,
+     309,   21,   21,   21, 0x08,
 
        0        // eod
 };
@@ -52,6 +53,7 @@ static const char qt_meta_stringdata_tela_listar_produtos[] = {
     "index\0on_tw_produtos_doubleClicked(QModelIndex)\0"
     "on_btn_limpar_clicked()\0"
     "on_le_codigo_textChanged(QString)\0"
+    "on_btn_adicionar_produto_clicked()\0"
 };
 
 void tela_listar_produtos::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -68,6 +70,7 @@ void tela_listar_produtos::qt_static_metacall(QObject *_o, QMetaObject::Call _c,
         case 5: _t->on_tw_produtos_doubleClicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
         case 6: _t->on_btn_limpar_clicked(); break;
         case 7: _t->on_le_codigo_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 8: _t->on_btn_adicionar_produto_clicked(); break;
         default: ;
         }
     }
@@ -105,9 +108,9 @@ int tela_listar_produtos::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     }
     return _id;
 }

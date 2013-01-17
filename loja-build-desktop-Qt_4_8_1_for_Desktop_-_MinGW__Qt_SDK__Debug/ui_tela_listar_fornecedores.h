@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_listar_fornecedores.ui'
 **
-** Created: Tue 8. Jan 09:44:08 2013
+** Created: Thu 17. Jan 14:26:33 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -15,12 +15,14 @@
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
 #include <QtGui/QDialog>
+#include <QtGui/QFrame>
 #include <QtGui/QGroupBox>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
 #include <QtGui/QPushButton>
 #include <QtGui/QTableView>
+#include <QtGui/QToolButton>
 
 QT_BEGIN_NAMESPACE
 
@@ -43,19 +45,21 @@ public:
     QLabel *lb_razao_social;
     QLineEdit *le_cnpj;
     QLabel *lb_cnpj;
+    QFrame *frame;
+    QToolButton *btn_adicionar_fornecedor;
 
     void setupUi(QDialog *tela_listar_fornecedores)
     {
         if (tela_listar_fornecedores->objectName().isEmpty())
             tela_listar_fornecedores->setObjectName(QString::fromUtf8("tela_listar_fornecedores"));
-        tela_listar_fornecedores->resize(767, 355);
+        tela_listar_fornecedores->resize(767, 410);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/img/img/logo_sex.png"), QSize(), QIcon::Normal, QIcon::Off);
         tela_listar_fornecedores->setWindowIcon(icon);
         tela_listar_fornecedores->setModal(true);
         gb_fornecedores = new QGroupBox(tela_listar_fornecedores);
         gb_fornecedores->setObjectName(QString::fromUtf8("gb_fornecedores"));
-        gb_fornecedores->setGeometry(QRect(5, 110, 756, 240));
+        gb_fornecedores->setGeometry(QRect(5, 164, 756, 240));
         QFont font;
         font.setFamily(QString::fromUtf8("Calibri"));
         font.setPointSize(10);
@@ -74,7 +78,7 @@ public:
         tv_fornecedores->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
         tv_fornecedores->setAlternatingRowColors(true);
         tv_fornecedores->setSortingEnabled(false);
-        tv_fornecedores->horizontalHeader()->setVisible(true);
+        tv_fornecedores->horizontalHeader()->setVisible(false);
         tv_fornecedores->horizontalHeader()->setDefaultSectionSize(390);
         tv_fornecedores->horizontalHeader()->setMinimumSectionSize(15);
         tv_fornecedores->horizontalHeader()->setStretchLastSection(true);
@@ -85,7 +89,7 @@ public:
         tv_fornecedores->verticalHeader()->setStretchLastSection(false);
         gb_buscar = new QGroupBox(tela_listar_fornecedores);
         gb_buscar->setObjectName(QString::fromUtf8("gb_buscar"));
-        gb_buscar->setGeometry(QRect(5, 0, 756, 108));
+        gb_buscar->setGeometry(QRect(5, 54, 756, 108));
         QFont font2;
         font2.setFamily(QString::fromUtf8("Calibri"));
         font2.setPointSize(10);
@@ -196,6 +200,28 @@ public:
         lb_cnpj->setObjectName(QString::fromUtf8("lb_cnpj"));
         lb_cnpj->setGeometry(QRect(588, 50, 40, 20));
         lb_cnpj->setFont(font3);
+        frame = new QFrame(tela_listar_fornecedores);
+        frame->setObjectName(QString::fromUtf8("frame"));
+        frame->setGeometry(QRect(0, 0, 800, 50));
+        frame->setStyleSheet(QString::fromUtf8("QFrame{\n"
+"	background-color: qlineargradient(x1:0, y1:1, x0:1, y0:0,\n"
+"                                       stop:0.1 #777777, stop:0.9 #525252);\n"
+"	border: none;\n"
+"}\n"
+"\n"
+"QToolButton{\n"
+"	color:#FFFFFF\n"
+"}"));
+        frame->setFrameShape(QFrame::Panel);
+        frame->setFrameShadow(QFrame::Raised);
+        btn_adicionar_fornecedor = new QToolButton(frame);
+        btn_adicionar_fornecedor->setObjectName(QString::fromUtf8("btn_adicionar_fornecedor"));
+        btn_adicionar_fornecedor->setGeometry(QRect(10, 2, 45, 45));
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/img/img/fornecedor_cadastrar.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_adicionar_fornecedor->setIcon(icon4);
+        btn_adicionar_fornecedor->setIconSize(QSize(40, 40));
+        btn_adicionar_fornecedor->setAutoRaise(true);
         QWidget::setTabOrder(le_codigo, le_nome);
         QWidget::setTabOrder(le_nome, le_telefone);
         QWidget::setTabOrder(le_telefone, le_razao_social);
@@ -236,6 +262,7 @@ public:
         le_cnpj->setInputMask(QApplication::translate("tela_listar_fornecedores", "00.000.000/0000-00; ", 0, QApplication::UnicodeUTF8));
         le_cnpj->setText(QApplication::translate("tela_listar_fornecedores", "../-", 0, QApplication::UnicodeUTF8));
         lb_cnpj->setText(QApplication::translate("tela_listar_fornecedores", "CNPJ:", 0, QApplication::UnicodeUTF8));
+        btn_adicionar_fornecedor->setText(QApplication::translate("tela_listar_fornecedores", "Adicionar Fornecedor", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

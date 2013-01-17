@@ -2,7 +2,7 @@
 #include "ui_tela_listar_produtos.h"
 
 tela_listar_produtos::tela_listar_produtos(QWidget *parent) :
-    QDialog(parent),
+    QDialog(parent,Qt::Window),
     ui(new Ui::tela_listar_produtos)
 {
     ui->setupUi(this);
@@ -204,4 +204,12 @@ void tela_listar_produtos::on_btn_limpar_clicked()
 
 std::vector< produto* > tela_listar_produtos::retorna_lista_produtos_desejados(void){
     return lista_produtos_desejados;
+}
+
+void tela_listar_produtos::on_btn_adicionar_produto_clicked()
+{
+    tl_cadastro_produto.definir_icone_janela(logomarca);
+    if(tl_cadastro_produto.exec()){
+        tela_listar_produtos::buscar_produtos();
+    }
 }

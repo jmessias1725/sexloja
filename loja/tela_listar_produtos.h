@@ -8,6 +8,7 @@
 #include "produto.h"
 #include "tela_definir_valor.h"
 #include "tela_definir_valor_venda.h"
+#include "tela_cadastro_produto.h"
 
 namespace Ui {
 class tela_listar_produtos;
@@ -34,10 +35,13 @@ private slots:
     void on_btn_limpar_clicked();
     void on_le_codigo_textChanged(const QString &arg1);
     
+    void on_btn_adicionar_produto_clicked();
+
 private:
     Ui::tela_listar_produtos *ui;
     tela_definir_valor tl_definir_valor;
     tela_definir_valor_venda tl_definir_valor_venda;
+    tela_cadastro_produto tl_cadastro_produto;
     QPixmap logomarca;
     std::vector< produto* > lista_produtos;
     std::vector< produto* > aux_lista_produtos;

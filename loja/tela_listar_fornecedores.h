@@ -10,6 +10,7 @@
 #include "tela_fornecedor.h"
 #include "fornecedor.h"
 #include "funcoes_extras.h"
+#include "tela_cadastro_fornecedor.h"
 
 namespace Ui {
 class tela_listar_fornecedores;
@@ -34,10 +35,12 @@ private slots:
     void on_tv_fornecedores_doubleClicked(const QModelIndex &index);
     void on_btn_limpar_clicked();
     void closeEvent( QCloseEvent * event );
+    void on_btn_adicionar_fornecedor_clicked();
 
 private:
     Ui::tela_listar_fornecedores *ui;
     std::vector< fornecedor * > lista_fornecedores;
+    tela_cadastro_fornecedor tl_cadastro_fornecedor;
     fornecedor *fornecedor_atual;
     tela_fornecedor tl_fornecedor;
     QStandardItemModel *modelo;

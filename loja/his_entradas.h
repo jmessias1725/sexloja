@@ -1,10 +1,7 @@
 #ifndef HIS_ENTRADAS_H
 #define HIS_ENTRADAS_H
 
-#include <iostream>
 #include <QString>
-#include <QDate>
-#include <QTime>
 
 class his_entradas
 {

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_principal.ui'
 **
-** Created: Wed 9. Jan 11:23:52 2013
+** Created: Thu 17. Jan 14:20:33 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -502,6 +502,8 @@ public:
         barra_de_menus->addAction(consultar_fornecedores);
         barra_de_menus->addAction(listar_contas);
         barra_de_menus->addAction(Estoque);
+        barra_de_menus->addAction(realizar_venda);
+        barra_de_menus->addAction(realizar_compra);
 
         retranslateUi(tela_principal);
 

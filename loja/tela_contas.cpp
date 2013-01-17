@@ -18,12 +18,17 @@ void tela_contas::definir_icone_janela(QPixmap logo){
     this->setWindowIcon(logomarca);
     ui->data->setDate(QDate::currentDate());
     aux_cons_id_despesa = "";
+    aux_cons_id_ganhos = "";
     aux_cons_status = "Todos";
+    aux_cons_status_ganhos = "Todos";
     ui->le_codigo_cp->setCursorPosition(0);
+    ui->le_codigo_cr->setCursorPosition(0);
     ui->data_inicial_cp->setDate(QDate::currentDate());
-    QDate data_final_cp;
-    data_final_cp.setDate(2500,12,30);
-    ui->data_final_cp->setDateRange(ui->data_inicial_cp->date(),data_final_cp);
+    ui->data_inicial_cr->setDate(QDate::currentDate());
+    QDate data_final;
+    data_final.setDate(2500,12,30);
+    ui->data_final_cp->setDateRange(ui->data_inicial_cp->date(),data_final);
+    ui->data_final_cr->setDateRange(ui->data_inicial_cr->date(),data_final);
     mostrar_fluxo_caixa();
 }
 
@@ -227,14 +232,11 @@ void tela_contas::on_btn_filtrar_cp_clicked()
 {
     aux_cons_status = ui->cb_status_cp->currentText();
     aux_cons_id_despesa = ui->le_codigo_cp->text();
-    std::cout<<aux_cons_id_despesa.toStdString()<<std::endl;
-    std::cout<<aux_cons_status.toStdString()<<std::endl;
     tela_contas::mostrar_lista_despesas();
 }
 
 void tela_contas::on_btn_limpar_cp_clicked()
 {
-    //modelo->clear();
     ui->le_codigo_cp->clear();
     ui->cb_status_cp->setCurrentIndex(0);
     tela_contas::mostrar_lista_despesas();
@@ -246,13 +248,13 @@ void tela_contas::mostrar_lista_despesas(void){
 
     for (int i=0;i<int(aux_lista_despesa.size());i++){//aux_cons_status
         if (aux_cons_status=="Todos"){
-            if((QString::number(aux_lista_despesa[i]->retorna_id_origem()).contains(aux_cons_id_despesa))){
+            if((QString::number(aux_lista_despesa[i]->retorna_id_origem())==aux_cons_id_despesa)||(aux_cons_id_despesa=="")){
                 lista_despesa.push_back(aux_lista_despesa[i]);
             }
         }
         else{
-            if((QString::number(aux_lista_despesa[i]->retorna_id_origem()).contains(aux_cons_id_despesa))&&
-               funcao.converte_despesa_numero_status_nome(lista_despesa[i]->retorna_status())==aux_cons_status){
+            if(((QString::number(aux_lista_despesa[i]->retorna_id_origem())==aux_cons_id_despesa)||(aux_cons_id_despesa==""))&&
+               (funcao.converte_despesa_numero_status_nome(aux_lista_despesa[i]->retorna_status())==aux_cons_status)){
                 lista_despesa.push_back(aux_lista_despesa[i]);
             }
         }
@@ -261,10 +263,10 @@ void tela_contas::mostrar_lista_despesas(void){
     ui->tw_contas_pagar->setColumnCount(6);
     ui->tw_contas_pagar->horizontalHeader()->setResizeMode(QHeaderView::Fixed);
     ui->tw_contas_pagar->clear();
-    ui->tw_contas_pagar->setHorizontalHeaderLabels(QString("Código;Data;Descrição;Origem;Valor;Status").split(";"));
+    ui->tw_contas_pagar->setHorizontalHeaderLabels(QString("Código da despesa;Data;Descrição;Origem;Valor;Status").split(";"));
 
     for (int i=0;i<int(lista_despesa.size());i++){
-        ui->tw_contas_pagar->setItem(i,0,new QTableWidgetItem(QString::number(lista_despesa[i]->retorna_id())));
+        ui->tw_contas_pagar->setItem(i,0,new QTableWidgetItem(QString::number(lista_despesa[i]->retorna_id_origem())));
         ui->tw_contas_pagar->setItem(i,1,new QTableWidgetItem(lista_despesa[i]->retorna_data()));
         ui->tw_contas_pagar->setItem(i,2,new QTableWidgetItem(lista_despesa[i]->retorna_descricao()));
         ui->tw_contas_pagar->setItem(i,3,new QTableWidgetItem(funcao.converte_despesa_numero_origem_nome(lista_despesa[i]->retorna_origem())));
@@ -283,6 +285,7 @@ void tela_contas::mostrar_lista_despesas(void){
     ui->tw_contas_pagar->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tw_contas_pagar->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tw_contas_pagar->resizeColumnToContents(0);
+    ui->tw_contas_pagar->setColumnWidth(0,120);
     ui->tw_contas_pagar->resizeColumnToContents(1);
     ui->tw_contas_pagar->resizeColumnToContents(3);
     ui->tw_contas_pagar->resizeColumnToContents(4);
@@ -295,4 +298,135 @@ void tela_contas::on_data_inicial_cp_editingFinished()
     QDate data_final;
     data_final.setDate(2500,12,30);
     ui->data_final_cp->setDateRange(ui->data_inicial_cp->date(),data_final);
+}
+
+void tela_contas::on_btn_buscar_cr_clicked()
+{
+    ui->le_codigo_cr->setCursorPosition(0);
+    aux_cons_id_ganhos = "";
+    aux_cons_status_ganhos = "Todos";
+    ui->cb_status_cr->setCurrentIndex(0);
+
+    conexao_bd conexao;
+    QSqlDatabase bd;
+
+    int aux_id_ganhos;
+    QString aux_data;
+    QString aux_descricao;
+    double aux_valor;
+    int aux_status;
+    int aux_origem;
+    int aux_id_origem;
+
+    QString aux_data_inicial;
+    QString aux_data_final;
+
+    aux_data_inicial = QString::number(ui->data_inicial_cr->date().year())+"-"+
+                       QString::number(ui->data_inicial_cr->date().month())+"-"+
+                       QString::number(ui->data_inicial_cr->date().day());
+
+    aux_data_final = QString::number(ui->data_final_cr->date().year())+"-"+
+                     QString::number(ui->data_final_cr->date().month())+"-"+
+                     QString::number(ui->data_final_cr->date().day());
+
+    aux_lista_ganho.clear();
+
+    //realiza conexão ao banco de dados
+    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_listar_despesas::on_btn_buscar_clicked")){
+
+        //Retorna o banco de dados
+        bd = conexao.retorna_bd();
+
+        //Declara a variável que irá fazer a consulta
+        QSqlQuery consultar(bd);
+
+        //realiza a consulta
+        consultar.exec("SELECT * FROM ganhos WHERE STR_TO_DATE(data, '%d/%m/%Y') BETWEEN '"+aux_data_inicial+"' AND '"+aux_data_final+"';");
+        while(consultar.next()){
+            aux_id_ganhos = consultar.value(0).toInt();
+            aux_data = consultar.value(1).toString();
+            aux_descricao = consultar.value(2).toString();
+            aux_valor = consultar.value(3).toDouble();
+            aux_status = consultar.value(4).toInt();
+            aux_origem = consultar.value(5).toInt();
+            aux_id_origem = consultar.value(6).toInt();
+            aux_lista_ganho.push_back(new ganho(aux_id_ganhos,aux_data,aux_descricao,aux_valor,aux_status,aux_origem,aux_id_origem));
+        }
+        consultar.clear();
+        tela_contas::mostrar_lista_ganhos();
+        bd.close();
+        conexao.fechar_conexao();
+    }
+}
+
+void tela_contas::on_btn_filtrar_cr_clicked()
+{
+    aux_cons_status_ganhos = ui->cb_status_cr->currentText();
+    aux_cons_id_ganhos = ui->le_codigo_cr->text();
+    tela_contas::mostrar_lista_ganhos();
+}
+
+void tela_contas::on_btn_limparcr_clicked()
+{
+    ui->le_codigo_cr->clear();
+    ui->cb_status_cr->setCurrentIndex(0);
+    tela_contas::mostrar_lista_ganhos();
+}
+
+void tela_contas::mostrar_lista_ganhos(void){
+    lista_ganho.clear();
+    funcoes_extras funcao;
+
+    for (int i=0;i<int(aux_lista_ganho.size());i++){//aux_cons_status
+        if (aux_cons_status=="Todos"){
+            if((QString::number(aux_lista_ganho[i]->retorna_id_origem())==aux_cons_id_ganhos)||(aux_cons_id_ganhos=="")){
+                lista_ganho.push_back(aux_lista_ganho[i]);
+            }
+        }
+        else{
+            if(((QString::number(aux_lista_ganho[i]->retorna_id_origem())==aux_cons_id_ganhos)||(aux_cons_id_ganhos==""))&&
+               (funcao.converte_despesa_numero_status_nome(aux_lista_ganho[i]->retorna_status())==aux_cons_status_ganhos)){
+                lista_ganho.push_back(aux_lista_ganho[i]);
+            }
+        }
+    }
+    ui->tw_contas_receber->setRowCount(int(lista_ganho.size()));
+    ui->tw_contas_receber->setColumnCount(6);
+    ui->tw_contas_receber->horizontalHeader()->setResizeMode(QHeaderView::Fixed);
+    ui->tw_contas_receber->clear();
+    ui->tw_contas_receber->setHorizontalHeaderLabels(QString("Código da receita;Data;Descrição;Origem;Valor;Status").split(";"));
+
+    for (int i=0;i<int(lista_ganho.size());i++){
+        ui->tw_contas_receber->setItem(i,0,new QTableWidgetItem(QString::number(lista_ganho[i]->retorna_id_origem())));
+        ui->tw_contas_receber->setItem(i,1,new QTableWidgetItem(lista_ganho[i]->retorna_data()));
+        ui->tw_contas_receber->setItem(i,2,new QTableWidgetItem(lista_ganho[i]->retorna_descricao()));
+        ui->tw_contas_receber->setItem(i,3,new QTableWidgetItem(funcao.converte_despesa_numero_origem_nome(lista_ganho[i]->retorna_origem())));
+        ui->tw_contas_receber->setItem(i,4,new QTableWidgetItem(funcao.retorna_valor_dinheiro(lista_ganho[i]->retorna_valor())));
+        ui->tw_contas_receber->setItem(i,5,new QTableWidgetItem(funcao.converte_despesa_numero_status_nome(lista_ganho[i]->retorna_status())));
+        ui->tw_contas_receber->item(i,0)->setTextAlignment(Qt::AlignHCenter);
+        ui->tw_contas_receber->item(i,1)->setTextAlignment(Qt::AlignHCenter);
+        ui->tw_contas_receber->item(i,2)->setTextAlignment(Qt::AlignHCenter);
+        ui->tw_contas_receber->item(i,3)->setTextAlignment(Qt::AlignHCenter);
+        ui->tw_contas_receber->item(i,4)->setTextAlignment(Qt::AlignHCenter);
+        ui->tw_contas_receber->item(i,5)->setTextAlignment(Qt::AlignHCenter);
+    }
+    //Código para fazer a ordenação acesdente.
+    //ui->tw_despesas->sortItems(1,Qt::AscendingOrder);
+    ui->tw_contas_receber->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->tw_contas_receber->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tw_contas_receber->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tw_contas_receber->resizeColumnToContents(0);
+    ui->tw_contas_receber->setColumnWidth(0,120);
+    ui->tw_contas_receber->resizeColumnToContents(1);
+    ui->tw_contas_receber->resizeColumnToContents(3);
+    ui->tw_contas_receber->resizeColumnToContents(4);
+    ui->tw_contas_receber->resizeColumnToContents(5);
+    //connect(ui->tw_despesas->horizontalHeader(),SIGNAL(sectionClicked(int)),this,SLOT(teste(int)));
+}
+
+void tela_contas::on_data_inicial_cr_editingFinished()
+{
+    QDate data_final;
+    data_final.setDate(2500,12,30);
+    ui->data_final_cr->setDateRange(ui->data_inicial_cr->date(),data_final);
 }
