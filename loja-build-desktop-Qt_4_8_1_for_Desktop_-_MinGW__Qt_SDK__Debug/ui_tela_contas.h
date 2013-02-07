@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_contas.ui'
 **
-** Created: Tue 15. Jan 11:25:46 2013
+** Created: Thu 7. Feb 11:32:10 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -82,6 +82,8 @@ public:
     QFrame *fr_linha_cp;
     QPushButton *btn_limpar_cp;
     QTableWidget *tw_contas_pagar;
+    QWidget *tab_notas_venda;
+    QWidget *tab_notas_compra;
 
     void setupUi(QMainWindow *tela_contas)
     {
@@ -518,6 +520,12 @@ public:
         QIcon icon5;
         icon5.addFile(QString::fromUtf8(":/img/img/despesa.png"), QSize(), QIcon::Normal, QIcon::Off);
         tbw_geral->addTab(tab_contas_pagar, icon5, QString());
+        tab_notas_venda = new QWidget();
+        tab_notas_venda->setObjectName(QString::fromUtf8("tab_notas_venda"));
+        tbw_geral->addTab(tab_notas_venda, QString());
+        tab_notas_compra = new QWidget();
+        tab_notas_compra->setObjectName(QString::fromUtf8("tab_notas_compra"));
+        tbw_geral->addTab(tab_notas_compra, QString());
 
         verticalLayout->addWidget(tbw_geral);
 
@@ -525,7 +533,7 @@ public:
 
         retranslateUi(tela_contas);
 
-        tbw_geral->setCurrentIndex(1);
+        tbw_geral->setCurrentIndex(4);
 
 
         QMetaObject::connectSlotsByName(tela_contas);
@@ -578,6 +586,8 @@ public:
         le_codigo_cp->setText(QString());
         btn_limpar_cp->setText(QApplication::translate("tela_contas", "Limpar", 0, QApplication::UnicodeUTF8));
         tbw_geral->setTabText(tbw_geral->indexOf(tab_contas_pagar), QApplication::translate("tela_contas", "Contas a Pagar", 0, QApplication::UnicodeUTF8));
+        tbw_geral->setTabText(tbw_geral->indexOf(tab_notas_venda), QApplication::translate("tela_contas", "Notas de venda", 0, QApplication::UnicodeUTF8));
+        tbw_geral->setTabText(tbw_geral->indexOf(tab_notas_compra), QApplication::translate("tela_contas", "Notas de compra", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

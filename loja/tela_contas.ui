@@ -41,7 +41,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>4</number>
       </property>
       <property name="elideMode">
        <enum>Qt::ElideMiddle</enum>
@@ -1457,6 +1457,16 @@ background-color: none;</string>
          </widget>
         </item>
        </layout>
+      </widget>
+      <widget class="QWidget" name="tab_notas_venda">
+       <attribute name="title">
+        <string>Notas de venda</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_notas_compra">
+       <attribute name="title">
+        <string>Notas de compra</string>
+       </attribute>
       </widget>
      </widget>
     </item>
