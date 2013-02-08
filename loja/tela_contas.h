@@ -10,6 +10,7 @@
 #include "funcoes_extras.h"
 #include "despesa.h"
 #include "ganho.h"
+#include "venda.h"
 
 namespace Ui {
 class tela_contas;
@@ -27,6 +28,7 @@ public:
     void busca_lista_movimento_mes(QDate data_consultar);
     void mostrar_lista_despesas(void);
     void mostrar_lista_ganhos(void);
+    void mostrar_lista_notas_venda(void);
     
 private slots:
     void on_btn_buscar_clicked();
@@ -38,6 +40,7 @@ private slots:
     void on_btn_filtrar_cr_clicked();
     void on_btn_limparcr_clicked();
     void on_data_inicial_cr_editingFinished();
+    void on_btn_buscar_nota_venda_clicked();
 
 private:
     Ui::tela_contas *ui;
@@ -48,6 +51,8 @@ private:
     std::vector< despesa* > aux_lista_despesa;
     std::vector< ganho* > lista_ganho;
     std::vector< ganho* > aux_lista_ganho;
+    std::vector< venda* > lista_venda;
+    std::vector< QString > lista_nome_clientes;
     QString aux_cons_id_despesa;
     QString aux_cons_id_ganhos;
     QString aux_cons_status;
