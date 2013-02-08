@@ -430,3 +430,82 @@ void tela_contas::on_data_inicial_cr_editingFinished()
     data_final.setDate(2500,12,30);
     ui->data_final_cr->setDateRange(ui->data_inicial_cr->date(),data_final);
 }
+
+void tela_contas::on_btn_buscar_nota_venda_clicked()
+{
+    conexao_bd conexao;
+    QSqlDatabase bd;
+
+    int aux_id_venda;
+    QString aux_data;
+    int aux_id_cliente;
+    double aux_valor_total;
+    double aux_desconto;
+    QString aux_nome;
+
+
+    lista_venda.clear();
+    lista_nome_clientes.clear();
+
+    //realiza conexão ao banco de dados
+    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_listar_despesas::on_btn_buscar_clicked")){
+
+        //Retorna o banco de dados
+        bd = conexao.retorna_bd();
+
+        //Declara a variável que irá fazer a consulta
+        QSqlQuery consultar(bd);
+
+        //realiza a consulta
+        consultar.exec("SELECT v.id_venda,v.data_venda,v.id_cliente,v.valor_total,v.desconto,c.nome FROM venda v, cliente c WHERE nome LIKE '%"+ui->le_nome_cliente->text()+"%' AND c.id_cliente = v.id_cliente;");
+        while(consultar.next()){
+            aux_id_venda = consultar.value(0).toInt();
+            aux_data = consultar.value(1).toString();
+            aux_id_cliente = consultar.value(2).toInt();
+            aux_valor_total = consultar.value(3).toDouble();
+            aux_desconto = consultar.value(4).toDouble();
+            aux_nome = consultar.value(5).toString();
+            lista_venda.push_back(new venda(aux_id_venda,QDate::fromString(aux_data,"dd/MM/yyyy"),aux_id_cliente,aux_valor_total,aux_desconto));
+            lista_nome_clientes.push_back(aux_nome);
+        }
+        consultar.clear();
+        bd.close();
+        conexao.fechar_conexao();
+        tela_contas::mostrar_lista_notas_venda();
+    }
+}
+
+void tela_contas::mostrar_lista_notas_venda(void){
+    lista_ganho.clear();
+    funcoes_extras funcao;
+
+    ui->tw_lista_notas_venda->setRowCount(int(lista_nome_clientes.size()));
+    ui->tw_lista_notas_venda->setColumnCount(5);
+    ui->tw_lista_notas_venda->horizontalHeader()->setResizeMode(QHeaderView::Fixed);
+    ui->tw_lista_notas_venda->clear();
+    ui->tw_lista_notas_venda->setHorizontalHeaderLabels(QString("Data;Número da nota;Nome do Cliente;Valor Total;Valor Pago").split(";"));
+
+    for (int i=0;i<int(lista_nome_clientes.size());i++){
+        ui->tw_lista_notas_venda->setItem(i,0,new QTableWidgetItem(lista_venda[i]->retorna_data_venda()));
+        ui->tw_lista_notas_venda->setItem(i,1,new QTableWidgetItem(QString::number(lista_venda[i]->retorna_id_venda())));
+        ui->tw_lista_notas_venda->setItem(i,2,new QTableWidgetItem(lista_nome_clientes[i]));
+        ui->tw_lista_notas_venda->setItem(i,3,new QTableWidgetItem(funcao.retorna_valor_dinheiro(lista_venda[i]->retorna_valor_total())));
+        ui->tw_lista_notas_venda->setItem(i,4,new QTableWidgetItem(funcao.retorna_valor_dinheiro(lista_venda[i]->retorna_valor_pago())));
+        ui->tw_lista_notas_venda->item(i,0)->setTextAlignment(Qt::AlignHCenter);
+        ui->tw_lista_notas_venda->item(i,1)->setTextAlignment(Qt::AlignHCenter);
+        ui->tw_lista_notas_venda->item(i,2)->setTextAlignment(Qt::AlignHCenter);
+        ui->tw_lista_notas_venda->item(i,3)->setTextAlignment(Qt::AlignHCenter);
+        ui->tw_lista_notas_venda->item(i,4)->setTextAlignment(Qt::AlignHCenter);
+    }
+    //Código para fazer a ordenação acesdente.
+    //ui->tw_lista_notas_venda->sortItems(0,Qt::AscendingOrder);
+    ui->tw_lista_notas_venda->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->tw_lista_notas_venda->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tw_lista_notas_venda->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tw_lista_notas_venda->resizeColumnToContents(0);
+    //ui->tw_lista_notas_venda->setColumnWidth(0,120);
+    ui->tw_lista_notas_venda->resizeColumnToContents(1);
+    ui->tw_lista_notas_venda->resizeColumnToContents(2);
+    ui->tw_lista_notas_venda->resizeColumnToContents(3);
+    ui->tw_lista_notas_venda->resizeColumnToContents(4);
+}

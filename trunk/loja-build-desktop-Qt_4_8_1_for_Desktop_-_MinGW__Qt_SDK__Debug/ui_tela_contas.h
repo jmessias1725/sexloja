@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_contas.ui'
 **
-** Created: Thu 7. Feb 11:32:10 2013
+** Created: Fri 8. Feb 11:12:58 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -83,7 +83,19 @@ public:
     QPushButton *btn_limpar_cp;
     QTableWidget *tw_contas_pagar;
     QWidget *tab_notas_venda;
+    QVBoxLayout *verticalLayout_5;
+    QFrame *fr_buscar_notas_venda;
+    QLabel *lb_nome_cliente;
+    QPushButton *btn_buscar_nota_venda;
+    QLineEdit *le_nome_cliente;
+    QTableWidget *tw_lista_notas_venda;
     QWidget *tab_notas_compra;
+    QVBoxLayout *verticalLayout_6;
+    QFrame *fr_buscar_notas_compra;
+    QLineEdit *le_nome_fornecedor;
+    QLabel *lb_nome_fornecedor;
+    QPushButton *btn_buscar_nota_compra;
+    QTableWidget *tw_lista_notas_compra;
 
     void setupUi(QMainWindow *tela_contas)
     {
@@ -522,10 +534,123 @@ public:
         tbw_geral->addTab(tab_contas_pagar, icon5, QString());
         tab_notas_venda = new QWidget();
         tab_notas_venda->setObjectName(QString::fromUtf8("tab_notas_venda"));
-        tbw_geral->addTab(tab_notas_venda, QString());
+        verticalLayout_5 = new QVBoxLayout(tab_notas_venda);
+        verticalLayout_5->setSpacing(0);
+        verticalLayout_5->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
+        fr_buscar_notas_venda = new QFrame(tab_notas_venda);
+        fr_buscar_notas_venda->setObjectName(QString::fromUtf8("fr_buscar_notas_venda"));
+        fr_buscar_notas_venda->setMinimumSize(QSize(0, 40));
+        fr_buscar_notas_venda->setStyleSheet(QString::fromUtf8("QFrame{\n"
+"	background-color: qlineargradient(x1:0, y1:1, x0:1, y0:0,\n"
+"                                       stop:0.3 #777777, stop:0.6 #525252);\n"
+"	border: none;\n"
+"}"));
+        fr_buscar_notas_venda->setFrameShape(QFrame::WinPanel);
+        fr_buscar_notas_venda->setFrameShadow(QFrame::Raised);
+        lb_nome_cliente = new QLabel(fr_buscar_notas_venda);
+        lb_nome_cliente->setObjectName(QString::fromUtf8("lb_nome_cliente"));
+        lb_nome_cliente->setGeometry(QRect(10, 10, 92, 20));
+        lb_nome_cliente->setFont(font1);
+        lb_nome_cliente->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+        btn_buscar_nota_venda = new QPushButton(fr_buscar_notas_venda);
+        btn_buscar_nota_venda->setObjectName(QString::fromUtf8("btn_buscar_nota_venda"));
+        btn_buscar_nota_venda->setGeometry(QRect(538, 8, 90, 24));
+        btn_buscar_nota_venda->setMinimumSize(QSize(0, 24));
+        btn_buscar_nota_venda->setMaximumSize(QSize(90, 24));
+        btn_buscar_nota_venda->setFont(font1);
+        btn_buscar_nota_venda->setIcon(icon);
+        btn_buscar_nota_venda->setIconSize(QSize(20, 20));
+        le_nome_cliente = new QLineEdit(fr_buscar_notas_venda);
+        le_nome_cliente->setObjectName(QString::fromUtf8("le_nome_cliente"));
+        le_nome_cliente->setGeometry(QRect(103, 10, 430, 20));
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(le_nome_cliente->sizePolicy().hasHeightForWidth());
+        le_nome_cliente->setSizePolicy(sizePolicy);
+        le_nome_cliente->setMinimumSize(QSize(410, 20));
+        le_nome_cliente->setMaximumSize(QSize(500, 20));
+        le_nome_cliente->setFont(font5);
+        le_nome_cliente->setMaxLength(60);
+        le_nome_cliente->setReadOnly(false);
+
+        verticalLayout_5->addWidget(fr_buscar_notas_venda);
+
+        tw_lista_notas_venda = new QTableWidget(tab_notas_venda);
+        tw_lista_notas_venda->setObjectName(QString::fromUtf8("tw_lista_notas_venda"));
+        tw_lista_notas_venda->setFont(font2);
+        tw_lista_notas_venda->setRowCount(0);
+        tw_lista_notas_venda->setColumnCount(0);
+        tw_lista_notas_venda->horizontalHeader()->setMinimumSectionSize(95);
+        tw_lista_notas_venda->horizontalHeader()->setStretchLastSection(true);
+        tw_lista_notas_venda->verticalHeader()->setVisible(false);
+        tw_lista_notas_venda->verticalHeader()->setDefaultSectionSize(20);
+        tw_lista_notas_venda->verticalHeader()->setMinimumSectionSize(20);
+
+        verticalLayout_5->addWidget(tw_lista_notas_venda);
+
+        QIcon icon6;
+        icon6.addFile(QString::fromUtf8(":/img/img/vender.png"), QSize(), QIcon::Normal, QIcon::Off);
+        tbw_geral->addTab(tab_notas_venda, icon6, QString());
         tab_notas_compra = new QWidget();
         tab_notas_compra->setObjectName(QString::fromUtf8("tab_notas_compra"));
-        tbw_geral->addTab(tab_notas_compra, QString());
+        verticalLayout_6 = new QVBoxLayout(tab_notas_compra);
+        verticalLayout_6->setSpacing(0);
+        verticalLayout_6->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
+        fr_buscar_notas_compra = new QFrame(tab_notas_compra);
+        fr_buscar_notas_compra->setObjectName(QString::fromUtf8("fr_buscar_notas_compra"));
+        fr_buscar_notas_compra->setMinimumSize(QSize(0, 40));
+        fr_buscar_notas_compra->setStyleSheet(QString::fromUtf8("QFrame{\n"
+"	background-color: qlineargradient(x1:0, y1:1, x0:1, y0:0,\n"
+"                                       stop:0.3 #777777, stop:0.6 #525252);\n"
+"	border: none;\n"
+"}"));
+        fr_buscar_notas_compra->setFrameShape(QFrame::WinPanel);
+        fr_buscar_notas_compra->setFrameShadow(QFrame::Raised);
+        le_nome_fornecedor = new QLineEdit(fr_buscar_notas_compra);
+        le_nome_fornecedor->setObjectName(QString::fromUtf8("le_nome_fornecedor"));
+        le_nome_fornecedor->setGeometry(QRect(128, 10, 430, 20));
+        sizePolicy.setHeightForWidth(le_nome_fornecedor->sizePolicy().hasHeightForWidth());
+        le_nome_fornecedor->setSizePolicy(sizePolicy);
+        le_nome_fornecedor->setMinimumSize(QSize(410, 20));
+        le_nome_fornecedor->setMaximumSize(QSize(500, 20));
+        le_nome_fornecedor->setFont(font5);
+        le_nome_fornecedor->setMaxLength(60);
+        le_nome_fornecedor->setReadOnly(false);
+        lb_nome_fornecedor = new QLabel(fr_buscar_notas_compra);
+        lb_nome_fornecedor->setObjectName(QString::fromUtf8("lb_nome_fornecedor"));
+        lb_nome_fornecedor->setGeometry(QRect(10, 10, 115, 20));
+        lb_nome_fornecedor->setFont(font1);
+        lb_nome_fornecedor->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+        btn_buscar_nota_compra = new QPushButton(fr_buscar_notas_compra);
+        btn_buscar_nota_compra->setObjectName(QString::fromUtf8("btn_buscar_nota_compra"));
+        btn_buscar_nota_compra->setGeometry(QRect(563, 8, 90, 24));
+        btn_buscar_nota_compra->setMinimumSize(QSize(0, 24));
+        btn_buscar_nota_compra->setMaximumSize(QSize(90, 24));
+        btn_buscar_nota_compra->setFont(font1);
+        btn_buscar_nota_compra->setIcon(icon);
+        btn_buscar_nota_compra->setIconSize(QSize(20, 20));
+
+        verticalLayout_6->addWidget(fr_buscar_notas_compra);
+
+        tw_lista_notas_compra = new QTableWidget(tab_notas_compra);
+        tw_lista_notas_compra->setObjectName(QString::fromUtf8("tw_lista_notas_compra"));
+        tw_lista_notas_compra->setFont(font2);
+        tw_lista_notas_compra->setRowCount(0);
+        tw_lista_notas_compra->setColumnCount(0);
+        tw_lista_notas_compra->horizontalHeader()->setMinimumSectionSize(95);
+        tw_lista_notas_compra->horizontalHeader()->setStretchLastSection(true);
+        tw_lista_notas_compra->verticalHeader()->setVisible(false);
+        tw_lista_notas_compra->verticalHeader()->setDefaultSectionSize(15);
+        tw_lista_notas_compra->verticalHeader()->setMinimumSectionSize(15);
+
+        verticalLayout_6->addWidget(tw_lista_notas_compra);
+
+        QIcon icon7;
+        icon7.addFile(QString::fromUtf8(":/img/img/compra.png"), QSize(), QIcon::Normal, QIcon::Off);
+        tbw_geral->addTab(tab_notas_compra, icon7, QString());
 
         verticalLayout->addWidget(tbw_geral);
 
@@ -533,7 +658,7 @@ public:
 
         retranslateUi(tela_contas);
 
-        tbw_geral->setCurrentIndex(4);
+        tbw_geral->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(tela_contas);
@@ -542,7 +667,7 @@ public:
     void retranslateUi(QMainWindow *tela_contas)
     {
         tela_contas->setWindowTitle(QApplication::translate("tela_contas", "Contas", 0, QApplication::UnicodeUTF8));
-        lb_data->setText(QApplication::translate("tela_contas", "Fulxo de caixa do m\303\252s de:", 0, QApplication::UnicodeUTF8));
+        lb_data->setText(QApplication::translate("tela_contas", "Fluxo de caixa do m\303\252s de:", 0, QApplication::UnicodeUTF8));
         data->setDisplayFormat(QApplication::translate("tela_contas", "MM/yyyy", 0, QApplication::UnicodeUTF8));
         btn_buscar->setText(QApplication::translate("tela_contas", "Buscar", 0, QApplication::UnicodeUTF8));
         lb_receitas_fixa->setText(QApplication::translate("tela_contas", "Receitas", 0, QApplication::UnicodeUTF8));
@@ -586,7 +711,13 @@ public:
         le_codigo_cp->setText(QString());
         btn_limpar_cp->setText(QApplication::translate("tela_contas", "Limpar", 0, QApplication::UnicodeUTF8));
         tbw_geral->setTabText(tbw_geral->indexOf(tab_contas_pagar), QApplication::translate("tela_contas", "Contas a Pagar", 0, QApplication::UnicodeUTF8));
+        lb_nome_cliente->setText(QApplication::translate("tela_contas", "Nome do cliente:", 0, QApplication::UnicodeUTF8));
+        btn_buscar_nota_venda->setText(QApplication::translate("tela_contas", "Buscar", 0, QApplication::UnicodeUTF8));
+        le_nome_cliente->setText(QString());
         tbw_geral->setTabText(tbw_geral->indexOf(tab_notas_venda), QApplication::translate("tela_contas", "Notas de venda", 0, QApplication::UnicodeUTF8));
+        le_nome_fornecedor->setText(QString());
+        lb_nome_fornecedor->setText(QApplication::translate("tela_contas", "Nome do fornecedor:", 0, QApplication::UnicodeUTF8));
+        btn_buscar_nota_compra->setText(QApplication::translate("tela_contas", "Buscar", 0, QApplication::UnicodeUTF8));
         tbw_geral->setTabText(tbw_geral->indexOf(tab_notas_compra), QApplication::translate("tela_contas", "Notas de compra", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
