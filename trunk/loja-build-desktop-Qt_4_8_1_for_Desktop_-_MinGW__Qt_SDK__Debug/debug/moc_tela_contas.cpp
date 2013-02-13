@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_contas.h'
 **
-** Created: Sun 10. Feb 13:19:30 2013
+** Created: Wed 13. Feb 17:17:31 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_tela_contas[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+      11,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -41,6 +41,7 @@ static const uint qt_meta_data_tela_contas[] = {
      211,   12,   12,   12, 0x08,
      237,   12,   12,   12, 0x08,
      274,   12,   12,   12, 0x08,
+     309,   12,   12,   12, 0x08,
 
        0        // eod
 };
@@ -56,6 +57,7 @@ static const char qt_meta_stringdata_tela_contas[] = {
     "on_btn_limparcr_clicked()\0"
     "on_data_inicial_cr_editingFinished()\0"
     "on_btn_buscar_nota_venda_clicked()\0"
+    "on_btn_buscar_nota_compra_clicked()\0"
 };
 
 void tela_contas::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -74,6 +76,7 @@ void tela_contas::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 7: _t->on_btn_limparcr_clicked(); break;
         case 8: _t->on_data_inicial_cr_editingFinished(); break;
         case 9: _t->on_btn_buscar_nota_venda_clicked(); break;
+        case 10: _t->on_btn_buscar_nota_compra_clicked(); break;
         default: ;
         }
     }
@@ -112,9 +115,9 @@ int tela_contas::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 11;
     }
     return _id;
 }

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_reajustar_estoque.h'
 **
-** Created: Sun 10. Feb 13:19:08 2013
+** Created: Wed 13. Feb 16:50:54 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
