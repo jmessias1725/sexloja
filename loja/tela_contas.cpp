@@ -476,7 +476,6 @@ void tela_contas::on_btn_buscar_nota_venda_clicked()
 }
 
 void tela_contas::mostrar_lista_notas_venda(void){
-    lista_ganho.clear();
     funcoes_extras funcao;
 
     ui->tw_lista_notas_venda->setRowCount(int(lista_nome_clientes.size()));
@@ -508,4 +507,86 @@ void tela_contas::mostrar_lista_notas_venda(void){
     ui->tw_lista_notas_venda->resizeColumnToContents(2);
     ui->tw_lista_notas_venda->resizeColumnToContents(3);
     ui->tw_lista_notas_venda->resizeColumnToContents(4);
+}
+
+void tela_contas::on_btn_buscar_nota_compra_clicked(){
+    conexao_bd conexao;
+    QSqlDatabase bd;
+
+    int aux_id_compra;
+    QString aux_data;
+    int aux_id_fornecedor;
+    int aux_num_nota;
+    double aux_valor_total;
+    double aux_desconto;
+    QString aux_nome;
+
+
+    lista_compra.clear();
+    lista_nome_fornecedores.clear();
+
+    //realiza conexão ao banco de dados
+    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_listar_despesas::on_btn_buscar_clicked")){
+
+        //Retorna o banco de dados
+        bd = conexao.retorna_bd();
+
+        //Declara a variável que irá fazer a consulta
+        QSqlQuery consultar(bd);
+
+        //realiza a consulta
+        consultar.exec("SELECT c.`id_compra`, c.`data_compra`, c.`id_fornecedor`, c.`num_cupom_nota`, c.`valor_total`, c.`desconto`, f.nome FROM compra c, fornecedor f WHERE f.nome LIKE '%"+ui->le_nome_fornecedor->text()+"%'AND c.id_fornecedor = f.id_fornecedor;");
+        while(consultar.next()){
+            aux_id_compra = consultar.value(0).toInt();
+            aux_data = consultar.value(1).toString();
+            aux_id_fornecedor = consultar.value(2).toInt();
+            aux_num_nota = consultar.value(3).toInt();
+            aux_valor_total = consultar.value(4).toDouble();
+            aux_desconto = consultar.value(5).toDouble();
+            aux_nome = consultar.value(6).toString();
+            lista_compra.push_back(new compra(aux_id_compra,QDate::fromString(aux_data,"dd/MM/yyyy"),aux_id_fornecedor,aux_num_nota,aux_valor_total,aux_desconto));
+            lista_nome_fornecedores.push_back(aux_nome);
+        }
+        consultar.clear();
+        bd.close();
+        conexao.fechar_conexao();
+        tela_contas::mostrar_lista_notas_compra();
+    }
+}
+
+void tela_contas::mostrar_lista_notas_compra(void){
+    funcoes_extras funcao;
+
+    ui->tw_lista_notas_compra->setRowCount(int(lista_nome_fornecedores.size()));
+    ui->tw_lista_notas_compra->setColumnCount(6);
+    ui->tw_lista_notas_compra->horizontalHeader()->setResizeMode(QHeaderView::Fixed);
+    ui->tw_lista_notas_compra->clear();
+    ui->tw_lista_notas_compra->setHorizontalHeaderLabels(QString("Data;Código da nota;Número da nota;Nome do Fornecedor;Valor Total;Valor Pago").split(";"));
+
+    for (int i=0;i<int(lista_nome_fornecedores.size());i++){
+        ui->tw_lista_notas_compra->setItem(i,0,new QTableWidgetItem(lista_compra[i]->retorna_data_compra()));
+        ui->tw_lista_notas_compra->setItem(i,1,new QTableWidgetItem(QString::number(lista_compra[i]->retorna_id_compra())));
+        ui->tw_lista_notas_compra->setItem(i,2,new QTableWidgetItem(QString::number(lista_compra[i]->retorna_num_cupom_nota())));
+        ui->tw_lista_notas_compra->setItem(i,3,new QTableWidgetItem(lista_nome_fornecedores[i]));
+        ui->tw_lista_notas_compra->setItem(i,4,new QTableWidgetItem(funcao.retorna_valor_dinheiro(lista_compra[i]->retorna_valor_total())));
+        ui->tw_lista_notas_compra->setItem(i,5,new QTableWidgetItem(funcao.retorna_valor_dinheiro(lista_compra[i]->retorna_valor_pago())));
+        ui->tw_lista_notas_compra->item(i,0)->setTextAlignment(Qt::AlignHCenter);
+        ui->tw_lista_notas_compra->item(i,1)->setTextAlignment(Qt::AlignHCenter);
+        ui->tw_lista_notas_compra->item(i,2)->setTextAlignment(Qt::AlignHCenter);
+        ui->tw_lista_notas_compra->item(i,3)->setTextAlignment(Qt::AlignHCenter);
+        ui->tw_lista_notas_compra->item(i,4)->setTextAlignment(Qt::AlignHCenter);
+        ui->tw_lista_notas_compra->item(i,5)->setTextAlignment(Qt::AlignHCenter);
+    }
+    //Código para fazer a ordenação acesdente.
+    //ui->tw_lista_notas_venda->sortItems(0,Qt::AscendingOrder);
+    ui->tw_lista_notas_compra->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->tw_lista_notas_compra->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tw_lista_notas_compra->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tw_lista_notas_compra->resizeColumnToContents(0);
+    //ui->tw_lista_notas_venda->setColumnWidth(0,120);
+    ui->tw_lista_notas_compra->resizeColumnToContents(1);
+    ui->tw_lista_notas_compra->resizeColumnToContents(2);
+    ui->tw_lista_notas_compra->resizeColumnToContents(3);
+    ui->tw_lista_notas_compra->resizeColumnToContents(4);
+    ui->tw_lista_notas_compra->resizeColumnToContents(5);
 }
