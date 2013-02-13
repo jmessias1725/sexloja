@@ -10,16 +10,10 @@
     <x>0</x>
     <y>0</y>
     <width>209</width>
-    <height>135</height>
+    <height>190</height>
    </rect>
   </property>
   <property name="minimumSize">
-   <size>
-    <width>209</width>
-    <height>135</height>
-   </size>
-  </property>
-  <property name="maximumSize">
    <size>
     <width>209</width>
     <height>135</height>
@@ -32,7 +26,7 @@
    <property name="geometry">
     <rect>
      <x>14</x>
-     <y>105</y>
+     <y>160</y>
      <width>90</width>
      <height>25</height>
     </rect>
@@ -66,7 +60,7 @@
    <property name="geometry">
     <rect>
      <x>104</x>
-     <y>105</y>
+     <y>160</y>
      <width>90</width>
      <height>25</height>
     </rect>
@@ -100,7 +94,7 @@
    <property name="geometry">
     <rect>
      <x>5</x>
-     <y>0</y>
+     <y>55</y>
      <width>199</width>
      <height>100</height>
     </rect>
@@ -114,10 +108,13 @@
     </font>
    </property>
    <property name="title">
-    <string>Dinheiro</string>
+    <string>Parcelado</string>
    </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
    </property>
    <widget class="QLabel" name="lb_valor">
     <property name="geometry">
@@ -281,6 +278,74 @@ pagamento:</string>
     </property>
    </widget>
   </widget>
+  <widget class="QGroupBox" name="groupBox_2">
+   <property name="geometry">
+    <rect>
+     <x>5</x>
+     <y>5</y>
+     <width>199</width>
+     <height>42</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="title">
+    <string>A vista</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <widget class="QLabel" name="lb_valor_3">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>15</y>
+      <width>93</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Valor a ser pago:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="le_valor_avista">
+    <property name="geometry">
+     <rect>
+      <x>99</x>
+      <y>15</y>
+      <width>95</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+   </widget>
+  </widget>
+  <zorder>btn_confirmar</zorder>
+  <zorder>btn_cancelar</zorder>
+  <zorder>groupBox</zorder>
+  <zorder>groupBox_2</zorder>
+  <zorder>groupBox_2</zorder>
  </widget>
  <resources>
   <include location="imagens.qrc"/>

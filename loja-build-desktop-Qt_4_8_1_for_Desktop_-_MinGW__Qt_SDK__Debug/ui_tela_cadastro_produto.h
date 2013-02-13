@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_cadastro_produto.ui'
 **
-** Created: Thu 7. Feb 11:32:09 2013
+** Created: Tue 12. Feb 22:57:53 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -81,6 +81,8 @@ public:
         le_nome->setFont(font1);
         le_nome->setInputMethodHints(Qt::ImhNone);
         le_nome->setMaxLength(60);
+        le_nome->setFrame(true);
+        le_nome->setEchoMode(QLineEdit::Normal);
         le_fabricante = new QLineEdit(gb_dados_produto);
         le_fabricante->setObjectName(QString::fromUtf8("le_fabricante"));
         le_fabricante->setGeometry(QRect(68, 50, 347, 20));
@@ -195,7 +197,7 @@ public:
         le_fabricante->setText(QString());
         lb_fabricante->setText(QApplication::translate("tela_cadastro_produto", "Fabricante:", 0, QApplication::UnicodeUTF8));
         lb_codigo_barras->setText(QApplication::translate("tela_cadastro_produto", "C\303\263digo de Barras:", 0, QApplication::UnicodeUTF8));
-        le_codigo_barras->setInputMask(QApplication::translate("tela_cadastro_produto", "0 000000 000000; ", 0, QApplication::UnicodeUTF8));
+        le_codigo_barras->setInputMask(QApplication::translate("tela_cadastro_produto", "0 00000 00000 0; ", 0, QApplication::UnicodeUTF8));
         le_codigo_barras->setText(QString());
         te_des_utilizacao->setHtml(QApplication::translate("tela_cadastro_produto", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"

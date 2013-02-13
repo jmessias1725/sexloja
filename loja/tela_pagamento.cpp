@@ -77,7 +77,7 @@ void tela_pagamento::on_btn_dinheiro_clicked()
     tl_pagamento_dinheiro.definir_dados(restante_a_pagar);
     if(tl_pagamento_dinheiro.exec()){
         dinheiro_usado = tl_pagamento_dinheiro.retorna_valor_pago();
-        valor_em_dinheiro = dinheiro_usado->retorna_valor();
+        valor_em_dinheiro = dinheiro_usado->retorna_valor()+dinheiro_usado->retorna_valor_avista();
         valor_em_cartao = funcao.converter_para_double(ui->le_cartao->text());
         valor_em_cheque = funcao.converter_para_double(ui->le_cheque->text());
 
@@ -591,7 +591,6 @@ void tela_pagamento::on_btn_confirmar_clicked()
                 dados_venda->alterar_id_venda(id_venda);
 
                 if(dinheiro_usado->retorna_valor() > 0.0){
-
                     double valor_pago = dinheiro_usado->retorna_valor();
                     double valor_parcela = 0.0;
                     double primeira_parcela = 0.0;
@@ -650,6 +649,29 @@ void tela_pagamento::on_btn_confirmar_clicked()
                             salvar_dados_despesa_cartao.exec();
                         }
                     }
+                }
+
+                if(dinheiro_usado->retorna_valor_avista() > 0.0){
+                    double valor_pago = dinheiro_usado->retorna_valor_avista();
+
+                    //Insere os dados referente ao dinheiro
+                    salvar_dados_dinheiro.prepare("INSERT INTO dinheiro(valor,origem,id_origem,data_ini_pag,num_par) VALUES(:valor, :origem, :id_origem, :data_ini_pag, :num_par);");
+                    salvar_dados_dinheiro.bindValue(":valor", valor_pago);
+                    salvar_dados_dinheiro.bindValue(":origem", 3);
+                    salvar_dados_dinheiro.bindValue(":id_origem", dados_venda->retorna_id_venda());
+                    salvar_dados_dinheiro.bindValue(":data_ini_pag", dados_venda->retorna_id_venda());
+                    salvar_dados_dinheiro.bindValue(":num_par", 0);
+                    salvar_dados_dinheiro.exec();
+
+                    //Insere na tabela de ganhos o ganho da parcela do cartão.
+                    salvar_dados_despesa_cartao.prepare("INSERT INTO ganhos(data,descricao,valor,status,origem,id_origem) VALUES(:data, :descricao, :valor, :status, :origem, :id_origem);");
+                    salvar_dados_despesa_cartao.bindValue(":descricao", "Valor em dinheiro referente ao pagamento da venda de código "+QString::number(dados_venda->retorna_id_venda())+".");
+                    salvar_dados_despesa_cartao.bindValue(":valor", valor_pago);
+                    salvar_dados_despesa_cartao.bindValue(":data", dados_venda->retorna_data_venda());
+                    salvar_dados_despesa_cartao.bindValue(":status", 1);
+                    salvar_dados_despesa_cartao.bindValue(":origem", 2);
+                    salvar_dados_despesa_cartao.bindValue(":id_origem", dados_venda->retorna_id_venda());
+                    salvar_dados_despesa_cartao.exec();
                 }
 
                 if(cartao_usado->retorna_valor() > 0.0){
