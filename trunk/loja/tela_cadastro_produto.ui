@@ -105,6 +105,12 @@
     <property name="maxLength">
      <number>60</number>
     </property>
+    <property name="frame">
+     <bool>true</bool>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Normal</enum>
+    </property>
    </widget>
    <widget class="QLineEdit" name="le_fabricante">
     <property name="geometry">
@@ -192,10 +198,10 @@
      </font>
     </property>
     <property name="inputMask">
-     <string>0 000000 000000; </string>
+     <string>0 00000 00000 0; </string>
     </property>
     <property name="text">
-     <string>  </string>
+     <string>   </string>
     </property>
     <property name="maxLength">
      <number>15</number>

@@ -5,22 +5,8 @@ dinheiro::dinheiro()
     valor = 0.0;
 }
 
-/*dinheiro::dinheiro(double val,int ori,int id_ori)
-{
-    valor = val;
-    origem = ori;
-    id_origem = id_ori;
-}
 
-dinheiro::dinheiro(int id_din,double val,int ori,int id_ori)
-{
-    id_dinheiro = id_din;
-    valor = val;
-    origem = ori;
-    id_origem = id_ori;
-}*/
-
-dinheiro::dinheiro(double val,int ori,int id_ori,QDate data_ini_pag_Qdate, int numero_par)
+dinheiro::dinheiro(double val,int ori,int id_ori,QDate data_ini_pag_Qdate, int numero_par,double valor_avis)
 {
     valor = val;
     origem = ori;
@@ -28,6 +14,7 @@ dinheiro::dinheiro(double val,int ori,int id_ori,QDate data_ini_pag_Qdate, int n
     data_ini_pagmento_Qdate = data_ini_pag_Qdate;
     data_inical_pagmento = data_ini_pagmento_Qdate.toString(Qt::SystemLocaleShortDate);
     numero_parcelas = numero_par;
+    valor_avista = valor_avis;
 }
 
 dinheiro::dinheiro(int id_din,double val,int ori,int id_ori,QString data_ini_pag, int numero_par)
@@ -66,4 +53,8 @@ QDate dinheiro::retorna_data_ini_pag_Qdate(void){
 
 int dinheiro::retorna_num_parcelas(void){
     return numero_parcelas;
+}
+
+double dinheiro::retorna_valor_avista(void){
+    return valor_avista;
 }

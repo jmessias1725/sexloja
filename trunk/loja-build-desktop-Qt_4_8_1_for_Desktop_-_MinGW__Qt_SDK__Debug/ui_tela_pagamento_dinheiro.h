@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_pagamento_dinheiro.ui'
 **
-** Created: Thu 7. Feb 11:32:10 2013
+** Created: Wed 13. Feb 11:18:22 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -37,18 +37,20 @@ public:
     QLabel *lb_numero_parcelas;
     QSpinBox *sb_num_parcelas;
     QDateEdit *data;
+    QGroupBox *groupBox_2;
+    QLabel *lb_valor_3;
+    QLineEdit *le_valor_avista;
 
     void setupUi(QDialog *tela_pagamento_dinheiro)
     {
         if (tela_pagamento_dinheiro->objectName().isEmpty())
             tela_pagamento_dinheiro->setObjectName(QString::fromUtf8("tela_pagamento_dinheiro"));
         tela_pagamento_dinheiro->setWindowModality(Qt::ApplicationModal);
-        tela_pagamento_dinheiro->resize(209, 135);
+        tela_pagamento_dinheiro->resize(209, 190);
         tela_pagamento_dinheiro->setMinimumSize(QSize(209, 135));
-        tela_pagamento_dinheiro->setMaximumSize(QSize(209, 135));
         btn_confirmar = new QPushButton(tela_pagamento_dinheiro);
         btn_confirmar->setObjectName(QString::fromUtf8("btn_confirmar"));
-        btn_confirmar->setGeometry(QRect(14, 105, 90, 25));
+        btn_confirmar->setGeometry(QRect(14, 160, 90, 25));
         QFont font;
         font.setFamily(QString::fromUtf8("Arial"));
         font.setPointSize(8);
@@ -62,7 +64,7 @@ public:
         btn_confirmar->setIconSize(QSize(20, 20));
         btn_cancelar = new QPushButton(tela_pagamento_dinheiro);
         btn_cancelar->setObjectName(QString::fromUtf8("btn_cancelar"));
-        btn_cancelar->setGeometry(QRect(104, 105, 90, 25));
+        btn_cancelar->setGeometry(QRect(104, 160, 90, 25));
         btn_cancelar->setFont(font);
         btn_cancelar->setStyleSheet(QString::fromUtf8("background-color: none;"));
         QIcon icon1;
@@ -71,14 +73,15 @@ public:
         btn_cancelar->setIconSize(QSize(18, 18));
         groupBox = new QGroupBox(tela_pagamento_dinheiro);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setGeometry(QRect(5, 0, 199, 100));
+        groupBox->setGeometry(QRect(5, 55, 199, 100));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Calibri"));
         font1.setPointSize(10);
         font1.setBold(true);
         font1.setWeight(75);
         groupBox->setFont(font1);
-        groupBox->setAlignment(Qt::AlignCenter);
+        groupBox->setCheckable(true);
+        groupBox->setChecked(false);
         lb_valor = new QLabel(groupBox);
         lb_valor->setObjectName(QString::fromUtf8("lb_valor"));
         lb_valor->setGeometry(QRect(5, 15, 93, 20));
@@ -123,6 +126,25 @@ public:
         data->setMinimumDateTime(QDateTime(QDate(2000, 9, 14), QTime(0, 0, 0)));
         data->setCalendarPopup(true);
         data->setTimeSpec(Qt::LocalTime);
+        groupBox_2 = new QGroupBox(tela_pagamento_dinheiro);
+        groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
+        groupBox_2->setGeometry(QRect(5, 5, 199, 42));
+        groupBox_2->setFont(font1);
+        groupBox_2->setCheckable(true);
+        groupBox_2->setChecked(false);
+        lb_valor_3 = new QLabel(groupBox_2);
+        lb_valor_3->setObjectName(QString::fromUtf8("lb_valor_3"));
+        lb_valor_3->setGeometry(QRect(5, 15, 93, 20));
+        lb_valor_3->setFont(font2);
+        le_valor_avista = new QLineEdit(groupBox_2);
+        le_valor_avista->setObjectName(QString::fromUtf8("le_valor_avista"));
+        le_valor_avista->setGeometry(QRect(99, 15, 95, 20));
+        le_valor_avista->setFont(font3);
+        btn_confirmar->raise();
+        btn_cancelar->raise();
+        groupBox->raise();
+        groupBox_2->raise();
+        groupBox_2->raise();
 
         retranslateUi(tela_pagamento_dinheiro);
 
@@ -134,11 +156,13 @@ public:
         tela_pagamento_dinheiro->setWindowTitle(QApplication::translate("tela_pagamento_dinheiro", "Pagamento", 0, QApplication::UnicodeUTF8));
         btn_confirmar->setText(QApplication::translate("tela_pagamento_dinheiro", "Confirmar", 0, QApplication::UnicodeUTF8));
         btn_cancelar->setText(QApplication::translate("tela_pagamento_dinheiro", "Cancelar", 0, QApplication::UnicodeUTF8));
-        groupBox->setTitle(QApplication::translate("tela_pagamento_dinheiro", "Dinheiro", 0, QApplication::UnicodeUTF8));
+        groupBox->setTitle(QApplication::translate("tela_pagamento_dinheiro", "Parcelado", 0, QApplication::UnicodeUTF8));
         lb_valor->setText(QApplication::translate("tela_pagamento_dinheiro", "Valor a ser pago:", 0, QApplication::UnicodeUTF8));
         lb_dia->setText(QApplication::translate("tela_pagamento_dinheiro", "Data de in\303\255cio do\n"
 "pagamento:", 0, QApplication::UnicodeUTF8));
         lb_numero_parcelas->setText(QApplication::translate("tela_pagamento_dinheiro", "N\303\272mero de parcelas:", 0, QApplication::UnicodeUTF8));
+        groupBox_2->setTitle(QApplication::translate("tela_pagamento_dinheiro", "A vista", 0, QApplication::UnicodeUTF8));
+        lb_valor_3->setText(QApplication::translate("tela_pagamento_dinheiro", "Valor a ser pago:", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

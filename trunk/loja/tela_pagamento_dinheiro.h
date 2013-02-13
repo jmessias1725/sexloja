@@ -24,11 +24,16 @@ private slots:
     void on_le_valor_editingFinished();
     void on_btn_cancelar_clicked();
     void on_btn_confirmar_clicked();
+    void on_le_valor_avista_editingFinished();
+    void on_groupBox_2_clicked(bool checked);
+
+    void on_groupBox_clicked(bool checked);
 
 private:
     Ui::tela_pagamento_dinheiro *ui;
     QPixmap logomarca;
     dinheiro *valor_pago;
+    double valor_total;
 };
 
 #endif // TELA_PAGAMENTO_DINHEIRO_H

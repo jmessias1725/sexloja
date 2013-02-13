@@ -14,12 +14,11 @@ private:
     QString data_inical_pagmento;
     QDate data_ini_pagmento_Qdate;
     int numero_parcelas;
+    double valor_avista;
 
 public:
     dinheiro();
-    //dinheiro(double val,int ori,int id_ori);
-    //dinheiro(int id_din,double val,int ori,int id_ori);
-    dinheiro(double val,int ori,int id_ori,QDate data_ini_pag_Qdate, int numero_par);
+    dinheiro(double val,int ori,int id_ori,QDate data_ini_pag_Qdate, int numero_par,double valor_avis);
     dinheiro(int id_din,double val,int ori,int id_ori,QString data_ini_pag, int numero_par);
     int retorna_id_dinheiro(void);
     double retorna_valor(void);
@@ -28,6 +27,7 @@ public:
     QString retorna_data_ini_pag(void);
     QDate retorna_data_ini_pag_Qdate(void);
     int retorna_num_parcelas(void);
+    double retorna_valor_avista(void);
 };
 
 #endif // DINHEIRO_H
