@@ -412,7 +412,7 @@
      <bool>false</bool>
     </attribute>
     <attribute name="verticalHeaderDefaultSectionSize">
-     <number>30</number>
+     <number>20</number>
     </attribute>
     <attribute name="verticalHeaderMinimumSectionSize">
      <number>20</number>
@@ -477,13 +477,14 @@ QToolButton{
   </widget>
  </widget>
  <tabstops>
-  <tabstop>le_codigo</tabstop>
   <tabstop>le_nome</tabstop>
+  <tabstop>le_codigo</tabstop>
   <tabstop>le_telefone</tabstop>
   <tabstop>btn_buscar</tabstop>
   <tabstop>btn_limpar</tabstop>
   <tabstop>btn_cancelar</tabstop>
   <tabstop>tv_clientes</tabstop>
+  <tabstop>btn_adicionar_cliente</tabstop>
  </tabstops>
  <resources>
   <include location="imagens.qrc"/>

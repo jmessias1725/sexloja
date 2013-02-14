@@ -20,6 +20,7 @@ tela_listar_clientes::~tela_listar_clientes()
 void tela_listar_clientes::definir_icone_janela(QPixmap logo){
     logomarca = logo;
     this->setWindowIcon(logomarca);
+    ui->le_nome->setFocus();
 }
 
 void tela_listar_clientes::on_le_telefone_editingFinished()

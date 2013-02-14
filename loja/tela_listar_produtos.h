@@ -24,6 +24,7 @@ public:
     void definir_icone_janela(QPixmap logo,bool com);
     void buscar_produtos(void);
     std::vector< produto* > retorna_lista_produtos_desejados(void);
+    void limpar(void);
 
 private slots:
     void mostrar_lista_produtos(void);
@@ -33,8 +34,7 @@ private slots:
     void on_le_fabricante_textChanged(const QString &arg1);
     void on_tw_produtos_doubleClicked(const QModelIndex &index);
     void on_btn_limpar_clicked();
-    void on_le_codigo_textChanged(const QString &arg1);
-    
+    void on_le_codigo_textChanged(const QString &arg1);    
     void on_btn_adicionar_produto_clicked();
 
 private:
@@ -51,7 +51,6 @@ private:
     QString aux_cons_fabricante;
     QString aux_cons_cod_barras;
     QString aux_cons_tipo;
-    //bool consultar_lista;
     bool compra;
 };
 

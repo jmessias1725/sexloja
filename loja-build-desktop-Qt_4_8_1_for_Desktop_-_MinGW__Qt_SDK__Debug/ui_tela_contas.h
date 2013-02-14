@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_contas.ui'
 **
-** Created: Wed 13. Feb 17:16:45 2013
+** Created: Thu 14. Feb 11:07:24 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -643,8 +643,8 @@ public:
         tw_lista_notas_compra->horizontalHeader()->setMinimumSectionSize(95);
         tw_lista_notas_compra->horizontalHeader()->setStretchLastSection(true);
         tw_lista_notas_compra->verticalHeader()->setVisible(false);
-        tw_lista_notas_compra->verticalHeader()->setDefaultSectionSize(15);
-        tw_lista_notas_compra->verticalHeader()->setMinimumSectionSize(15);
+        tw_lista_notas_compra->verticalHeader()->setDefaultSectionSize(20);
+        tw_lista_notas_compra->verticalHeader()->setMinimumSectionSize(20);
 
         verticalLayout_6->addWidget(tw_lista_notas_compra);
 
