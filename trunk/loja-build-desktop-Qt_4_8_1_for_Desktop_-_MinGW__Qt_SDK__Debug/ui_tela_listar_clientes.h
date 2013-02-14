@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_listar_clientes.ui'
 **
-** Created: Wed 13. Feb 16:45:44 2013
+** Created: Thu 14. Feb 13:56:05 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -172,7 +172,7 @@ public:
         tv_clientes->horizontalHeader()->setStretchLastSection(true);
         tv_clientes->verticalHeader()->setVisible(false);
         tv_clientes->verticalHeader()->setCascadingSectionResizes(false);
-        tv_clientes->verticalHeader()->setDefaultSectionSize(30);
+        tv_clientes->verticalHeader()->setDefaultSectionSize(20);
         tv_clientes->verticalHeader()->setMinimumSectionSize(20);
         tv_clientes->verticalHeader()->setStretchLastSection(false);
         frame = new QFrame(tela_listar_clientes);
@@ -197,12 +197,13 @@ public:
         btn_adicionar_cliente->setIcon(icon4);
         btn_adicionar_cliente->setIconSize(QSize(40, 40));
         btn_adicionar_cliente->setAutoRaise(true);
-        QWidget::setTabOrder(le_codigo, le_nome);
-        QWidget::setTabOrder(le_nome, le_telefone);
+        QWidget::setTabOrder(le_nome, le_codigo);
+        QWidget::setTabOrder(le_codigo, le_telefone);
         QWidget::setTabOrder(le_telefone, btn_buscar);
         QWidget::setTabOrder(btn_buscar, btn_limpar);
         QWidget::setTabOrder(btn_limpar, btn_cancelar);
         QWidget::setTabOrder(btn_cancelar, tv_clientes);
+        QWidget::setTabOrder(tv_clientes, btn_adicionar_cliente);
 
         retranslateUi(tela_listar_clientes);
         QObject::connect(btn_limpar, SIGNAL(clicked()), le_codigo, SLOT(clear()));

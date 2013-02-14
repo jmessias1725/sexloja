@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_pagamento_cartao_venda.ui'
 **
-** Created: Wed 13. Feb 16:45:46 2013
+** Created: Thu 14. Feb 11:07:24 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

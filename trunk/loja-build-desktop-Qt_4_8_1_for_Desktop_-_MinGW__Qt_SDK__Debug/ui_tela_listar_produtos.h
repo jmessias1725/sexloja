@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_listar_produtos.ui'
 **
-** Created: Wed 13. Feb 16:45:45 2013
+** Created: Thu 14. Feb 11:36:26 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -223,9 +223,9 @@ public:
         tw_produtos->horizontalHeader()->setVisible(true);
         tw_produtos->horizontalHeader()->setCascadingSectionResizes(false);
         tw_produtos->horizontalHeader()->setDefaultSectionSize(450);
-        tw_produtos->horizontalHeader()->setMinimumSectionSize(120);
+        tw_produtos->horizontalHeader()->setMinimumSectionSize(80);
         tw_produtos->horizontalHeader()->setProperty("showSortIndicator", QVariant(false));
-        tw_produtos->horizontalHeader()->setStretchLastSection(true);
+        tw_produtos->horizontalHeader()->setStretchLastSection(false);
         tw_produtos->verticalHeader()->setVisible(false);
         tw_produtos->verticalHeader()->setCascadingSectionResizes(false);
         tw_produtos->verticalHeader()->setDefaultSectionSize(20);

@@ -1817,10 +1817,10 @@ background-color: none;</string>
            <bool>false</bool>
           </attribute>
           <attribute name="verticalHeaderDefaultSectionSize">
-           <number>15</number>
+           <number>20</number>
           </attribute>
           <attribute name="verticalHeaderMinimumSectionSize">
-           <number>15</number>
+           <number>20</number>
           </attribute>
          </widget>
         </item>

@@ -22,6 +22,8 @@ void tela_listar_produtos::definir_icone_janela(QPixmap logo,bool com){
 void tela_listar_produtos::buscar_produtos(void){
 
     lista_produtos_desejados.clear();
+    limpar();
+    ui->le_nome->setFocus();
 
     aux_cons_id_produto = "";
     aux_cons_nome = "";
@@ -40,6 +42,8 @@ void tela_listar_produtos::buscar_produtos(void){
     QString aux_cod_barras;
     QString aux_tipo;
     float aux_valor_venda;
+    int aux_soma_total_disponivel = 0;
+    int aux_total_disponivel = 0;
 
     lista_produtos.clear();
 
@@ -51,6 +55,7 @@ void tela_listar_produtos::buscar_produtos(void){
 
         //Declara a variável que irá fazer a consulta
         QSqlQuery consultar(bd);
+        QSqlQuery consultar_his_balanco_estoque(bd);
 
         //realiza a consulta
         consultar.exec("SELECT id_produto,nome,fabricante,cod_barras,tipo,valor_venda FROM produto WHERE removido=0 ORDER BY nome;");
@@ -61,9 +66,17 @@ void tela_listar_produtos::buscar_produtos(void){
             aux_cod_barras = consultar.value(3).toString();
             aux_tipo = consultar.value(4).toString();
             aux_valor_venda = consultar.value(5).toFloat();
-            lista_produtos.push_back(new produto(aux_id,aux_nome,aux_fabricante,aux_cod_barras,aux_tipo,aux_valor_venda,0,0));
+            //realiza a consulta
+            consultar_his_balanco_estoque.exec("SELECT total_disponivel FROM his_balanco_estoque WHERE id_produto = "+QString::number(aux_id)+";");
+            while(consultar_his_balanco_estoque.next()){
+                aux_total_disponivel = consultar_his_balanco_estoque.value(0).toInt();
+                aux_soma_total_disponivel = aux_soma_total_disponivel+aux_total_disponivel;
+            }
+            lista_produtos.push_back(new produto(aux_id,aux_nome,aux_fabricante,aux_cod_barras,aux_tipo,aux_valor_venda,0,aux_soma_total_disponivel));
+            aux_soma_total_disponivel = 0;
         }
         consultar.clear();
+        consultar_his_balanco_estoque.clear();
         tela_listar_produtos::mostrar_lista_produtos();
         bd.close();
         conexao.fechar_conexao();
@@ -83,31 +96,31 @@ void tela_listar_produtos::mostrar_lista_produtos(void){
         }
     }
     ui->tw_produtos->setRowCount(int(aux_lista_produtos.size()));
-    ui->tw_produtos->setColumnCount(5);
+    ui->tw_produtos->setColumnCount(6);
     ui->tw_produtos->horizontalHeader()->setResizeMode(QHeaderView::Fixed);
     ui->tw_produtos->clear();
-    ui->tw_produtos->setHorizontalHeaderLabels(QString("Tipo;Código;Nome;Fabricante;Código de barras").split(";"));
-
+    ui->tw_produtos->setHorizontalHeaderLabels(QString("Tipo;Código;Nome;Fabricante;Quantidade;Código de barras").split(";"));
 
     for (int i=0;i<int(aux_lista_produtos.size());i++){
         ui->tw_produtos->setItem(i,0,new QTableWidgetItem(aux_lista_produtos[i]->retorna_tipo()));
         ui->tw_produtos->setItem(i,1,new QTableWidgetItem(QString::number(aux_lista_produtos[i]->retorna_id())));
         ui->tw_produtos->setItem(i,2,new QTableWidgetItem(aux_lista_produtos[i]->retorna_nome()));
         ui->tw_produtos->setItem(i,3,new QTableWidgetItem(aux_lista_produtos[i]->retorna_fabricante()));
-        ui->tw_produtos->setItem(i,4,new QTableWidgetItem(aux_lista_produtos[i]->retorna_cod_barras()));
+        ui->tw_produtos->setItem(i,4,new QTableWidgetItem(QString::number(aux_lista_produtos[i]->retorna_quantidade_disponivel())));
+        ui->tw_produtos->setItem(i,5,new QTableWidgetItem(aux_lista_produtos[i]->retorna_cod_barras()));
         ui->tw_produtos->item(i,0)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_produtos->item(i,1)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_produtos->item(i,2)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_produtos->item(i,3)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_produtos->item(i,4)->setTextAlignment(Qt::AlignHCenter);
+        ui->tw_produtos->item(i,5)->setTextAlignment(Qt::AlignHCenter);
     }
 
     ui->tw_produtos->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tw_produtos->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tw_produtos->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    ui->tw_produtos->resizeColumnToContents(0);
-    ui->tw_produtos->resizeColumnToContents(1);
-    ui->tw_produtos->resizeColumnToContents(4);
+    ui->tw_produtos->resizeColumnsToContents();
+    ui->tw_produtos->horizontalHeader()->setStretchLastSection(true);
 }
 
 
@@ -181,6 +194,8 @@ void tela_listar_produtos::on_tw_produtos_doubleClicked(const QModelIndex &index
                 aux_lista_produtos[index.row()]->altera_valor_venda(tl_definir_valor.retorna_valor_venda());
                 aux_lista_produtos[index.row()]->altera_quantidade(tl_definir_valor.retorna_quantidade());
                 lista_produtos_desejados.push_back(aux_lista_produtos[index.row()]);
+                limpar();
+                ui->le_nome->setFocus();
             }
         }
     }
@@ -192,6 +207,8 @@ void tela_listar_produtos::on_tw_produtos_doubleClicked(const QModelIndex &index
                 aux_lista_produtos[index.row()]->altera_valor_venda(tl_definir_valor_venda.retorna_valor_venda());
                 aux_lista_produtos[index.row()]->altera_quantidade(tl_definir_valor_venda.retorna_quantidade());
                 lista_produtos_desejados.push_back(aux_lista_produtos[index.row()]);
+                limpar();
+                ui->le_nome->setFocus();
             }
         }
     }
@@ -199,7 +216,7 @@ void tela_listar_produtos::on_tw_produtos_doubleClicked(const QModelIndex &index
 
 void tela_listar_produtos::on_btn_limpar_clicked()
 {
-    ui->cb_tipo->setCurrentIndex(0);
+    tela_listar_produtos::limpar();
 }
 
 std::vector< produto* > tela_listar_produtos::retorna_lista_produtos_desejados(void){
@@ -210,6 +227,15 @@ void tela_listar_produtos::on_btn_adicionar_produto_clicked()
 {
     tl_cadastro_produto.definir_icone_janela(logomarca);
     if(tl_cadastro_produto.exec()){
+        tela_listar_produtos::limpar();
         tela_listar_produtos::buscar_produtos();
     }
+}
+
+void tela_listar_produtos::limpar(){
+    ui->cb_tipo->setCurrentIndex(0);
+    ui->le_codigo->clear();
+    ui->le_codigo_barras->clear();
+    ui->le_fabricante->clear();
+    ui->le_nome->clear();
 }
