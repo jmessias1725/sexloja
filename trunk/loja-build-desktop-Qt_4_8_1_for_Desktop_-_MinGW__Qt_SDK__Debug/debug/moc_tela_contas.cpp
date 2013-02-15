@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_contas.h'
 **
-** Created: Thu 14. Feb 11:11:34 2013
+** Created: Thu 14. Feb 21:31:37 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_tela_contas[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      11,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -42,6 +42,7 @@ static const uint qt_meta_data_tela_contas[] = {
      237,   12,   12,   12, 0x08,
      274,   12,   12,   12, 0x08,
      309,   12,   12,   12, 0x08,
+     351,  345,   12,   12, 0x08,
 
        0        // eod
 };
@@ -58,6 +59,7 @@ static const char qt_meta_stringdata_tela_contas[] = {
     "on_data_inicial_cr_editingFinished()\0"
     "on_btn_buscar_nota_venda_clicked()\0"
     "on_btn_buscar_nota_compra_clicked()\0"
+    "index\0on_tw_lista_notas_venda_doubleClicked(QModelIndex)\0"
 };
 
 void tela_contas::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -77,10 +79,10 @@ void tela_contas::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 8: _t->on_data_inicial_cr_editingFinished(); break;
         case 9: _t->on_btn_buscar_nota_venda_clicked(); break;
         case 10: _t->on_btn_buscar_nota_compra_clicked(); break;
+        case 11: _t->on_tw_lista_notas_venda_doubleClicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObjectExtraData tela_contas::staticMetaObjectExtraData = {
@@ -115,9 +117,9 @@ int tela_contas::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 11)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 12;
     }
     return _id;
 }

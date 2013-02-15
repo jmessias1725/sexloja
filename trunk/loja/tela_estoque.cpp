@@ -45,6 +45,7 @@ tela_estoque::~tela_estoque()
 void tela_estoque::definir_icone_janela(QPixmap logo){
     logomarca = logo;
     this->setWindowIcon(logomarca);
+    tela_estoque::limpar_dados();
 }
 
 void tela_estoque::buscar_produtos(void){
@@ -311,4 +312,12 @@ void tela_estoque::on_btn_reajustar_estoque_clicked()
     if(tl_reajustar_estoque.exec()){
         tela_estoque::buscar_produtos();
     }
+}
+
+void tela_estoque::limpar_dados(){
+    ui->le_codigo->clear();
+    ui->le_codigo_barras->clear();
+    ui->le_fabricante->clear();
+    ui->le_nome->clear();
+    ui->cb_tipo->setCurrentIndex(0);
 }
