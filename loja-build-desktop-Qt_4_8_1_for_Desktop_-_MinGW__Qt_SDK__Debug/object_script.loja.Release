@@ -56,6 +56,7 @@ INPUT(
 ./release\tela_pagamento_cartao_venda.o
 ./release\tela_contas.o
 ./release\ganho.o
+./release\tela_nota_venda.o
 ./release\moc_tela_login.o
 ./release\moc_tela_principal.o
 ./release\moc_tela_cadastro_cliente.o
@@ -88,5 +89,6 @@ INPUT(
 ./release\moc_tela_definir_valor_venda.o
 ./release\moc_tela_pagamento_cartao_venda.o
 ./release\moc_tela_contas.o
+./release\moc_tela_nota_venda.o
 ./release\qrc_imagens.o
 );

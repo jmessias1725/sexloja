@@ -30,6 +30,7 @@ public:
     ~tela_estoque();
     void definir_icone_janela(QPixmap logo);
     void buscar_produtos(void);
+    void limpar_dados(void);
     
 private slots:
     void on_pushButton_clicked(void);

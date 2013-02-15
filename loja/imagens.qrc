@@ -67,6 +67,7 @@
         <file>img/despesa_buscar.png</file>
         <file>img/buscar.png</file>
         <file>img/filtrar.png</file>
+        <file>img/abrir.png</file>
     </qresource>
     <qresource prefix="/operadoras">
         <file>img/claro.png</file>

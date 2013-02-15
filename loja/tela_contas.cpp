@@ -562,7 +562,6 @@ void tela_contas::mostrar_lista_notas_compra(void){
     ui->tw_lista_notas_compra->horizontalHeader()->setResizeMode(QHeaderView::Fixed);
     ui->tw_lista_notas_compra->clear();
     ui->tw_lista_notas_compra->setHorizontalHeaderLabels(QString("Data;Código da nota;Número da nota;Nome do Fornecedor;Valor Total;Valor Pago").split(";"));
-
     for (int i=0;i<int(lista_nome_fornecedores.size());i++){
         ui->tw_lista_notas_compra->setItem(i,0,new QTableWidgetItem(lista_compra[i]->retorna_data_compra()));
         ui->tw_lista_notas_compra->setItem(i,1,new QTableWidgetItem(QString::number(lista_compra[i]->retorna_id_compra())));
@@ -589,4 +588,10 @@ void tela_contas::mostrar_lista_notas_compra(void){
     ui->tw_lista_notas_compra->resizeColumnToContents(3);
     ui->tw_lista_notas_compra->resizeColumnToContents(4);
     ui->tw_lista_notas_compra->resizeColumnToContents(5);
+}
+
+void tela_contas::on_tw_lista_notas_venda_doubleClicked(const QModelIndex &index){
+    tl_nota_venda.definir_icone_janela(logomarca);
+    tl_nota_venda.definir_dados(lista_venda[index.row()]);
+    tl_nota_venda.exec();
 }

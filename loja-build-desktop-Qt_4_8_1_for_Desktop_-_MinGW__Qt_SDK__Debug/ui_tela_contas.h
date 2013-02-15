@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_contas.ui'
 **
-** Created: Thu 14. Feb 11:07:24 2013
+** Created: Thu 14. Feb 21:28:35 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -658,7 +658,7 @@ public:
 
         retranslateUi(tela_contas);
 
-        tbw_geral->setCurrentIndex(4);
+        tbw_geral->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(tela_contas);
