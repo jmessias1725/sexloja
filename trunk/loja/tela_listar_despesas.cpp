@@ -138,7 +138,7 @@ void tela_listar_despesas::mostrar_lista_despesas(void){
     ui->tw_despesas->resizeColumnToContents(3);
     ui->tw_despesas->resizeColumnToContents(4);
     ui->tw_despesas->resizeColumnToContents(5);
-    connect(ui->tw_despesas->horizontalHeader(),SIGNAL(sectionClicked(int)),this,SLOT(teste(int)));
+    //connect(ui->tw_despesas->horizontalHeader(),SIGNAL(sectionClicked(int)),this,SLOT(teste(int)));
 }
 
 void tela_listar_despesas::on_btn_limpar_clicked()

@@ -25,11 +25,6 @@ void tela_listar_produtos::buscar_produtos(void){
     limpar();
     ui->le_nome->setFocus();
 
-    aux_cons_id_produto = "";
-    aux_cons_nome = "";
-    aux_cons_fabricante = "";
-    aux_cons_cod_barras = "";
-    aux_cons_tipo = "";
     ui->le_codigo->setCursorPosition(0);
     ui->le_codigo_barras->setCursorPosition(0);
 
@@ -190,10 +185,17 @@ void tela_listar_produtos::on_tw_produtos_doubleClicked(const QModelIndex &index
             tl_definir_valor.definir_icone_janela(logomarca);
             tl_definir_valor.definir_dados(aux_lista_produtos[index.row()]->retorna_valor_venda(),0,0);
             if(tl_definir_valor.exec()){
-                aux_lista_produtos[index.row()]->altera_valor_compra(tl_definir_valor.retorna_custo());
-                aux_lista_produtos[index.row()]->altera_valor_venda(tl_definir_valor.retorna_valor_venda());
-                aux_lista_produtos[index.row()]->altera_quantidade(tl_definir_valor.retorna_quantidade());
-                lista_produtos_desejados.push_back(aux_lista_produtos[index.row()]);
+                lista_produtos_desejados.push_back(new produto(aux_lista_produtos[index.row()]->retorna_id(),
+                                                               aux_lista_produtos[index.row()]->retorna_nome(),
+                                                               aux_lista_produtos[index.row()]->retorna_fabricante(),
+                                                               aux_lista_produtos[index.row()]->retorna_cod_barras(),
+                                                               aux_lista_produtos[index.row()]->retorna_tipo(),
+                                                               aux_lista_produtos[index.row()]->retorna_valor_venda(),
+                                                               0,
+                                                               aux_lista_produtos[index.row()]->retorna_quantidade_disponivel()));
+                lista_produtos_desejados[lista_produtos_desejados.size()-1]->altera_valor_compra(tl_definir_valor.retorna_custo());
+                lista_produtos_desejados[lista_produtos_desejados.size()-1]->altera_valor_venda(tl_definir_valor.retorna_valor_venda());
+                lista_produtos_desejados[lista_produtos_desejados.size()-1]->altera_quantidade(tl_definir_valor.retorna_quantidade());
                 limpar();
                 ui->le_nome->setFocus();
             }
@@ -204,9 +206,16 @@ void tela_listar_produtos::on_tw_produtos_doubleClicked(const QModelIndex &index
             tl_definir_valor_venda.definir_icone_janela(logomarca);
             tl_definir_valor_venda.definir_dados(aux_lista_produtos[index.row()]->retorna_valor_venda(),0);
             if(tl_definir_valor_venda.exec()){
-                aux_lista_produtos[index.row()]->altera_valor_venda(tl_definir_valor_venda.retorna_valor_venda());
-                aux_lista_produtos[index.row()]->altera_quantidade(tl_definir_valor_venda.retorna_quantidade());
-                lista_produtos_desejados.push_back(aux_lista_produtos[index.row()]);
+                lista_produtos_desejados.push_back(new produto(aux_lista_produtos[index.row()]->retorna_id(),
+                                                               aux_lista_produtos[index.row()]->retorna_nome(),
+                                                               aux_lista_produtos[index.row()]->retorna_fabricante(),
+                                                               aux_lista_produtos[index.row()]->retorna_cod_barras(),
+                                                               aux_lista_produtos[index.row()]->retorna_tipo(),
+                                                               aux_lista_produtos[index.row()]->retorna_valor_venda(),
+                                                               0,
+                                                               aux_lista_produtos[index.row()]->retorna_quantidade_disponivel()));
+                lista_produtos_desejados[lista_produtos_desejados.size()-1]->altera_valor_venda(tl_definir_valor_venda.retorna_valor_venda());
+                lista_produtos_desejados[lista_produtos_desejados.size()-1]->altera_quantidade(tl_definir_valor_venda.retorna_quantidade());
                 limpar();
                 ui->le_nome->setFocus();
             }
@@ -228,14 +237,19 @@ void tela_listar_produtos::on_btn_adicionar_produto_clicked()
     tl_cadastro_produto.definir_icone_janela(logomarca);
     if(tl_cadastro_produto.exec()){
         tela_listar_produtos::limpar();
-        tela_listar_produtos::buscar_produtos();
     }
 }
 
 void tela_listar_produtos::limpar(){
     ui->cb_tipo->setCurrentIndex(0);
-    ui->le_codigo->clear();
-    ui->le_codigo_barras->clear();
-    ui->le_fabricante->clear();
-    ui->le_nome->clear();
+    ui->le_codigo->setText("");
+    ui->le_codigo_barras->setText("");
+    ui->le_fabricante->setText("");
+    ui->le_nome->setText("");
+    aux_cons_id_produto = "";
+    aux_cons_nome = "";
+    aux_cons_fabricante = "";
+    aux_cons_cod_barras = "";
+    aux_cons_tipo = "";
+    mostrar_lista_produtos();
 }

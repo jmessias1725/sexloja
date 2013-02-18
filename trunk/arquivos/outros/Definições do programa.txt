@@ -6,7 +6,7 @@ Campo origem das tabelas, cartão, dinheiro e cheque.
 3 - venda de produto.
 
 
-Campo origem tabela despesas.
+Campo origem tabela despesas, ganhos.
 
 0 - cartão;
 1 - cheque;
