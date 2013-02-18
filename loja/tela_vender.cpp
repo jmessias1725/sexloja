@@ -114,8 +114,8 @@ void tela_vender::limpar_dados(void){
     ui->le_total->clear();
     ui->tw_lista_produtos->repaint();
     ui->data->setDate(QDate::currentDate());
-    lista_produtos.clear();
     tela_vender::mostrar_lista_produtos();
+    lista_produtos.clear();
 }
 
 
@@ -170,7 +170,7 @@ void tela_vender::on_btn_confirmar_clicked()
                                     funcao.converter_para_double(ui->le_desconto->text()));
 
             for(int i=0;i<int(lista_produtos.size());i++){
-                lt_venda.push_back(new lista_venda(lista_produtos[i]->retorna_id(),0,0,
+                lt_venda.push_back(new lista_venda(lista_produtos[i]->retorna_id(),0,
                                                    lista_produtos[i]->retorna_quantidade_disponivel(),
                                                    lista_produtos[i]->retorna_valor_venda()));
             }
@@ -188,7 +188,7 @@ void tela_vender::on_btn_confirmar_clicked()
                                 funcao.converter_para_double(ui->le_desconto->text()));
 
         for(int i=0;i<int(lista_produtos.size());i++){
-            lt_venda.push_back(new lista_venda(lista_produtos[i]->retorna_id(),0,0,
+            lt_venda.push_back(new lista_venda(lista_produtos[i]->retorna_id(),0,
                                                lista_produtos[i]->retorna_quantidade_disponivel(),
                                                lista_produtos[i]->retorna_valor_venda()));
         }

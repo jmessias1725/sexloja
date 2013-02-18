@@ -38,6 +38,13 @@ cliente::cliente(QString cliente_nome,QString cliente_rg,QString cliente_cpf,
     lista_operadora =lista_operadora_cliente;
 }
 
+cliente::cliente(int id_cliente,QString cliente_nome,QString cliente_rg,QString cliente_cpf){
+    id = id_cliente;
+    nome =cliente_nome;
+    rg =cliente_rg;
+    cpf =cliente_cpf;
+}
+
 void cliente::definir_icone_janela(QPixmap logo){
     logomarca = logo;
 }

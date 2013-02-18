@@ -659,7 +659,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                     salvar_dados_dinheiro.bindValue(":valor", valor_pago);
                     salvar_dados_dinheiro.bindValue(":origem", 3);
                     salvar_dados_dinheiro.bindValue(":id_origem", dados_venda->retorna_id_venda());
-                    salvar_dados_dinheiro.bindValue(":data_ini_pag", dados_venda->retorna_id_venda());
+                    salvar_dados_dinheiro.bindValue(":data_ini_pag", dados_venda->retorna_data_venda());
                     salvar_dados_dinheiro.bindValue(":num_par", 0);
                     salvar_dados_dinheiro.exec();
 

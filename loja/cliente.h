@@ -42,6 +42,8 @@ public:
             QString uf_sigla, QString uf_nome, QString cidade, QString bairro,
             QString rua, QString cep, int numero, QString pt_referencia);
 
+    cliente(int id_cliente,QString cliente_nome,QString cliente_rg,QString cliente_cpf);
+
     int retornar_id(void);
     QString retornar_nome(void);
     QString retornar_rg(void);

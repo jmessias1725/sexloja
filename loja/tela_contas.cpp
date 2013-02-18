@@ -279,18 +279,14 @@ void tela_contas::mostrar_lista_despesas(void){
         ui->tw_contas_pagar->item(i,4)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_contas_pagar->item(i,5)->setTextAlignment(Qt::AlignHCenter);
     }
-    //Código para fazer a ordenação acesdente.
-    //ui->tw_despesas->sortItems(1,Qt::AscendingOrder);
     ui->tw_contas_pagar->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tw_contas_pagar->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tw_contas_pagar->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tw_contas_pagar->resizeColumnToContents(0);
-    ui->tw_contas_pagar->setColumnWidth(0,120);
     ui->tw_contas_pagar->resizeColumnToContents(1);
     ui->tw_contas_pagar->resizeColumnToContents(3);
     ui->tw_contas_pagar->resizeColumnToContents(4);
     ui->tw_contas_pagar->resizeColumnToContents(5);
-    //connect(ui->tw_despesas->horizontalHeader(),SIGNAL(sectionClicked(int)),this,SLOT(teste(int)));
 }
 
 void tela_contas::on_data_inicial_cp_editingFinished()
@@ -410,8 +406,6 @@ void tela_contas::mostrar_lista_ganhos(void){
         ui->tw_contas_receber->item(i,4)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_contas_receber->item(i,5)->setTextAlignment(Qt::AlignHCenter);
     }
-    //Código para fazer a ordenação acesdente.
-    //ui->tw_despesas->sortItems(1,Qt::AscendingOrder);
     ui->tw_contas_receber->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tw_contas_receber->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tw_contas_receber->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -421,7 +415,6 @@ void tela_contas::mostrar_lista_ganhos(void){
     ui->tw_contas_receber->resizeColumnToContents(3);
     ui->tw_contas_receber->resizeColumnToContents(4);
     ui->tw_contas_receber->resizeColumnToContents(5);
-    //connect(ui->tw_despesas->horizontalHeader(),SIGNAL(sectionClicked(int)),this,SLOT(teste(int)));
 }
 
 void tela_contas::on_data_inicial_cr_editingFinished()
@@ -497,12 +490,10 @@ void tela_contas::mostrar_lista_notas_venda(void){
         ui->tw_lista_notas_venda->item(i,4)->setTextAlignment(Qt::AlignHCenter);
     }
     //Código para fazer a ordenação acesdente.
-    //ui->tw_lista_notas_venda->sortItems(0,Qt::AscendingOrder);
     ui->tw_lista_notas_venda->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tw_lista_notas_venda->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tw_lista_notas_venda->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tw_lista_notas_venda->resizeColumnToContents(0);
-    //ui->tw_lista_notas_venda->setColumnWidth(0,120);
     ui->tw_lista_notas_venda->resizeColumnToContents(1);
     ui->tw_lista_notas_venda->resizeColumnToContents(2);
     ui->tw_lista_notas_venda->resizeColumnToContents(3);
@@ -576,13 +567,10 @@ void tela_contas::mostrar_lista_notas_compra(void){
         ui->tw_lista_notas_compra->item(i,4)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_lista_notas_compra->item(i,5)->setTextAlignment(Qt::AlignHCenter);
     }
-    //Código para fazer a ordenação acesdente.
-    //ui->tw_lista_notas_venda->sortItems(0,Qt::AscendingOrder);
     ui->tw_lista_notas_compra->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tw_lista_notas_compra->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tw_lista_notas_compra->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tw_lista_notas_compra->resizeColumnToContents(0);
-    //ui->tw_lista_notas_venda->setColumnWidth(0,120);
     ui->tw_lista_notas_compra->resizeColumnToContents(1);
     ui->tw_lista_notas_compra->resizeColumnToContents(2);
     ui->tw_lista_notas_compra->resizeColumnToContents(3);
