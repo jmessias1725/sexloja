@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_configurar_legenda_estoque.ui'
 **
-** Created: Sun 17. Feb 21:31:45 2013
+** Created: Mon 18. Feb 14:29:52 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

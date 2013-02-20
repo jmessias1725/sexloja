@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_nota_venda.ui'
 **
-** Created: Sun 17. Feb 21:31:46 2013
+** Created: Wed 20. Feb 08:38:02 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -21,10 +21,10 @@
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
-#include <QtGui/QPushButton>
 #include <QtGui/QScrollArea>
 #include <QtGui/QSpacerItem>
 #include <QtGui/QTableWidget>
+#include <QtGui/QToolButton>
 #include <QtGui/QVBoxLayout>
 #include <QtGui/QWidget>
 
@@ -33,8 +33,9 @@ QT_BEGIN_NAMESPACE
 class Ui_tela_nota_venda
 {
 public:
-    QHBoxLayout *horizontalLayout_5;
-    QSpacerItem *horizontalSpacer_3;
+    QVBoxLayout *verticalLayout_5;
+    QFrame *frame_7;
+    QToolButton *btn_adicionar_cliente_3;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents_2;
     QVBoxLayout *verticalLayout_3;
@@ -79,24 +80,40 @@ public:
     QTableWidget *tw_lista_pagamento;
     QFrame *frame_4;
     QFrame *frame_2;
-    QHBoxLayout *horizontalLayout_4;
-    QSpacerItem *horizontalSpacer;
-    QPushButton *btn_confirmar;
-    QSpacerItem *horizontalSpacer_2;
-    QSpacerItem *horizontalSpacer_4;
 
     void setupUi(QDialog *tela_nota_venda)
     {
         if (tela_nota_venda->objectName().isEmpty())
             tela_nota_venda->setObjectName(QString::fromUtf8("tela_nota_venda"));
         tela_nota_venda->resize(830, 603);
-        horizontalLayout_5 = new QHBoxLayout(tela_nota_venda);
-        horizontalLayout_5->setSpacing(0);
-        horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
-        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
-        horizontalSpacer_3 = new QSpacerItem(7, 597, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        verticalLayout_5 = new QVBoxLayout(tela_nota_venda);
+        verticalLayout_5->setSpacing(0);
+        verticalLayout_5->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
+        frame_7 = new QFrame(tela_nota_venda);
+        frame_7->setObjectName(QString::fromUtf8("frame_7"));
+        frame_7->setMinimumSize(QSize(800, 50));
+        frame_7->setStyleSheet(QString::fromUtf8("QFrame{\n"
+"	background-color: qlineargradient(x1:0, y1:1, x0:1, y0:0,\n"
+"                                       stop:0.1 #777777, stop:0.9 #525252);\n"
+"	border: none;\n"
+"}\n"
+"\n"
+"QToolButton{\n"
+"	color:#FFFFFF\n"
+"}"));
+        frame_7->setFrameShape(QFrame::Panel);
+        frame_7->setFrameShadow(QFrame::Raised);
+        btn_adicionar_cliente_3 = new QToolButton(frame_7);
+        btn_adicionar_cliente_3->setObjectName(QString::fromUtf8("btn_adicionar_cliente_3"));
+        btn_adicionar_cliente_3->setGeometry(QRect(10, 2, 45, 45));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/img/img/adiciona_clientes.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_adicionar_cliente_3->setIcon(icon);
+        btn_adicionar_cliente_3->setIconSize(QSize(40, 40));
+        btn_adicionar_cliente_3->setAutoRaise(true);
 
-        horizontalLayout_5->addItem(horizontalSpacer_3);
+        verticalLayout_5->addWidget(frame_7);
 
         scrollArea = new QScrollArea(tela_nota_venda);
         scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
@@ -105,11 +122,11 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, -328, 814, 952));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, -310, 811, 915));
         verticalLayout_3 = new QVBoxLayout(scrollAreaWidgetContents_2);
         verticalLayout_3->setSpacing(5);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
-        verticalLayout_3->setContentsMargins(10, 0, 10, 10);
+        verticalLayout_3->setContentsMargins(5, 0, 5, 5);
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setSpacing(5);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
@@ -188,6 +205,16 @@ public:
         lb_codigo->setObjectName(QString::fromUtf8("lb_codigo"));
         lb_codigo->setGeometry(QRect(5, 44, 42, 20));
         lb_codigo->setFont(font2);
+        le_nome->raise();
+        le_cpf->raise();
+        lb_nome->raise();
+        lb_rg->raise();
+        lb_cpf->raise();
+        le_rg->raise();
+        le_codigo->raise();
+        lb_codigo->raise();
+        frame_7->raise();
+        frame_7->raise();
 
         horizontalLayout_3->addWidget(gb_dados_cliente);
 
@@ -503,41 +530,9 @@ public:
 
         verticalLayout_3->addLayout(verticalLayout_2);
 
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_4->addItem(horizontalSpacer);
-
-        btn_confirmar = new QPushButton(scrollAreaWidgetContents_2);
-        btn_confirmar->setObjectName(QString::fromUtf8("btn_confirmar"));
-        btn_confirmar->setMinimumSize(QSize(104, 25));
-        btn_confirmar->setMaximumSize(QSize(104, 25));
-        QFont font9;
-        font9.setFamily(QString::fromUtf8("Calibri"));
-        font9.setPointSize(10);
-        btn_confirmar->setFont(font9);
-        QIcon icon;
-        icon.addFile(QString::fromUtf8(":/img/img/abrir.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_confirmar->setIcon(icon);
-        btn_confirmar->setIconSize(QSize(20, 20));
-
-        horizontalLayout_4->addWidget(btn_confirmar);
-
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_4->addItem(horizontalSpacer_2);
-
-
-        verticalLayout_3->addLayout(horizontalLayout_4);
-
         scrollArea->setWidget(scrollAreaWidgetContents_2);
 
-        horizontalLayout_5->addWidget(scrollArea);
-
-        horizontalSpacer_4 = new QSpacerItem(7, 597, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_5->addItem(horizontalSpacer_4);
+        verticalLayout_5->addWidget(scrollArea);
 
 
         retranslateUi(tela_nota_venda);
@@ -548,6 +543,7 @@ public:
     void retranslateUi(QDialog *tela_nota_venda)
     {
         tela_nota_venda->setWindowTitle(QApplication::translate("tela_nota_venda", "Nota de venda;", 0, QApplication::UnicodeUTF8));
+        btn_adicionar_cliente_3->setText(QApplication::translate("tela_nota_venda", "Adiconar Cliente", 0, QApplication::UnicodeUTF8));
         gb_dados_cliente->setTitle(QApplication::translate("tela_nota_venda", "Dados do Cliente", 0, QApplication::UnicodeUTF8));
         le_nome->setText(QString());
         le_cpf->setInputMask(QApplication::translate("tela_nota_venda", "000.000.000-00; ", 0, QApplication::UnicodeUTF8));
@@ -573,7 +569,6 @@ public:
         lb_total_pago->setText(QApplication::translate("tela_nota_venda", "TOTAL PAGO:", 0, QApplication::UnicodeUTF8));
         le_total_a_pagar->setText(QString());
         lb_forma_pagamento->setText(QApplication::translate("tela_nota_venda", "Forma de pagamento", 0, QApplication::UnicodeUTF8));
-        btn_confirmar->setText(QApplication::translate("tela_nota_venda", "Reabrir Nota", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

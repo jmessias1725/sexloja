@@ -10,6 +10,8 @@
 #include <math.h>
 #include <QDate>
 
+#include "parcela.h"
+
 class funcoes_extras
 {
 public:
@@ -29,6 +31,7 @@ public:
     std::vector< QString > determina_parcelas(QDate data_compra,int dia_vencimento,int numero_parcelas);
     QString converte_despesa_numero_origem_nome(int ori);
     QString converte_despesa_numero_status_nome(int ori);
+    std::vector< parcela * > calcula_parcelas(QDate data_inicial,int dia_vencimento,int numero_parcelas,double valor_total);
 };
 
 #endif // FUNCOES_EXTRAS_H

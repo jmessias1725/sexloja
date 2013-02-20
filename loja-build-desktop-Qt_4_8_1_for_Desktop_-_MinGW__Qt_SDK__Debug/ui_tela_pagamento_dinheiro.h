@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_pagamento_dinheiro.ui'
 **
-** Created: Sun 17. Feb 21:31:46 2013
+** Created: Wed 20. Feb 15:52:39 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -22,6 +22,7 @@
 #include <QtGui/QLineEdit>
 #include <QtGui/QPushButton>
 #include <QtGui/QSpinBox>
+#include <QtGui/QTableWidget>
 
 QT_BEGIN_NAMESPACE
 
@@ -37,6 +38,7 @@ public:
     QLabel *lb_numero_parcelas;
     QSpinBox *sb_num_parcelas;
     QDateEdit *data;
+    QTableWidget *tw_parcelas;
     QGroupBox *groupBox_2;
     QLabel *lb_valor_3;
     QLineEdit *le_valor_avista;
@@ -46,11 +48,12 @@ public:
         if (tela_pagamento_dinheiro->objectName().isEmpty())
             tela_pagamento_dinheiro->setObjectName(QString::fromUtf8("tela_pagamento_dinheiro"));
         tela_pagamento_dinheiro->setWindowModality(Qt::ApplicationModal);
-        tela_pagamento_dinheiro->resize(209, 190);
+        tela_pagamento_dinheiro->resize(209, 355);
         tela_pagamento_dinheiro->setMinimumSize(QSize(209, 135));
+        tela_pagamento_dinheiro->setMaximumSize(QSize(209, 355));
         btn_confirmar = new QPushButton(tela_pagamento_dinheiro);
         btn_confirmar->setObjectName(QString::fromUtf8("btn_confirmar"));
-        btn_confirmar->setGeometry(QRect(14, 160, 90, 25));
+        btn_confirmar->setGeometry(QRect(14, 325, 90, 25));
         QFont font;
         font.setFamily(QString::fromUtf8("Arial"));
         font.setPointSize(8);
@@ -64,7 +67,7 @@ public:
         btn_confirmar->setIconSize(QSize(20, 20));
         btn_cancelar = new QPushButton(tela_pagamento_dinheiro);
         btn_cancelar->setObjectName(QString::fromUtf8("btn_cancelar"));
-        btn_cancelar->setGeometry(QRect(104, 160, 90, 25));
+        btn_cancelar->setGeometry(QRect(104, 325, 90, 25));
         btn_cancelar->setFont(font);
         btn_cancelar->setStyleSheet(QString::fromUtf8("background-color: none;"));
         QIcon icon1;
@@ -73,7 +76,7 @@ public:
         btn_cancelar->setIconSize(QSize(18, 18));
         groupBox = new QGroupBox(tela_pagamento_dinheiro);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setGeometry(QRect(5, 55, 199, 100));
+        groupBox->setGeometry(QRect(5, 55, 199, 265));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Calibri"));
         font1.setPointSize(10);
@@ -126,6 +129,22 @@ public:
         data->setMinimumDateTime(QDateTime(QDate(2000, 9, 14), QTime(0, 0, 0)));
         data->setCalendarPopup(true);
         data->setTimeSpec(Qt::LocalTime);
+        tw_parcelas = new QTableWidget(groupBox);
+        tw_parcelas->setObjectName(QString::fromUtf8("tw_parcelas"));
+        tw_parcelas->setGeometry(QRect(5, 100, 189, 160));
+        QFont font4;
+        font4.setFamily(QString::fromUtf8("Calibri"));
+        font4.setPointSize(10);
+        tw_parcelas->setFont(font4);
+        tw_parcelas->viewport()->setProperty("cursor", QVariant(QCursor(Qt::ArrowCursor)));
+        tw_parcelas->setRowCount(0);
+        tw_parcelas->setColumnCount(0);
+        tw_parcelas->horizontalHeader()->setDefaultSectionSize(80);
+        tw_parcelas->horizontalHeader()->setMinimumSectionSize(20);
+        tw_parcelas->horizontalHeader()->setStretchLastSection(true);
+        tw_parcelas->verticalHeader()->setVisible(false);
+        tw_parcelas->verticalHeader()->setDefaultSectionSize(20);
+        tw_parcelas->verticalHeader()->setMinimumSectionSize(20);
         groupBox_2 = new QGroupBox(tela_pagamento_dinheiro);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
         groupBox_2->setGeometry(QRect(5, 5, 199, 42));
@@ -140,11 +159,6 @@ public:
         le_valor_avista->setObjectName(QString::fromUtf8("le_valor_avista"));
         le_valor_avista->setGeometry(QRect(99, 15, 95, 20));
         le_valor_avista->setFont(font3);
-        btn_confirmar->raise();
-        btn_cancelar->raise();
-        groupBox->raise();
-        groupBox_2->raise();
-        groupBox_2->raise();
 
         retranslateUi(tela_pagamento_dinheiro);
 
