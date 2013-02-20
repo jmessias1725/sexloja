@@ -57,6 +57,7 @@ INPUT(
 ./release\tela_contas.o
 ./release\ganho.o
 ./release\tela_nota_venda.o
+./release\parcela.o
 ./release\moc_tela_login.o
 ./release\moc_tela_principal.o
 ./release\moc_tela_cadastro_cliente.o

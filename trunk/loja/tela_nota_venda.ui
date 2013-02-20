@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Nota de venda;</string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout_5">
+  <layout class="QVBoxLayout" name="verticalLayout_5">
    <property name="spacing">
     <number>0</number>
    </property>
@@ -21,17 +21,57 @@
     <number>0</number>
    </property>
    <item>
-    <spacer name="horizontalSpacer_3">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
+    <widget class="QFrame" name="frame_7">
+     <property name="minimumSize">
       <size>
-       <width>7</width>
-       <height>597</height>
+       <width>800</width>
+       <height>50</height>
       </size>
      </property>
-    </spacer>
+     <property name="styleSheet">
+      <string notr="true">QFrame{
+	background-color: qlineargradient(x1:0, y1:1, x0:1, y0:0,
+                                       stop:0.1 #777777, stop:0.9 #525252);
+	border: none;
+}
+
+QToolButton{
+	color:#FFFFFF
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Panel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QToolButton" name="btn_adicionar_cliente_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>2</y>
+        <width>45</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Adiconar Cliente</string>
+      </property>
+      <property name="icon">
+       <iconset resource="imagens.qrc">
+        <normaloff>:/img/img/adiciona_clientes.png</normaloff>:/img/img/adiciona_clientes.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>40</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="autoRaise">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
    </item>
    <item>
     <widget class="QScrollArea" name="scrollArea">
@@ -54,9 +94,9 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-328</y>
-        <width>814</width>
-        <height>952</height>
+        <y>-310</y>
+        <width>811</width>
+        <height>915</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -64,16 +104,16 @@
         <number>5</number>
        </property>
        <property name="leftMargin">
-        <number>10</number>
+        <number>5</number>
        </property>
        <property name="topMargin">
         <number>0</number>
        </property>
        <property name="rightMargin">
-        <number>10</number>
+        <number>5</number>
        </property>
        <property name="bottomMargin">
-        <number>10</number>
+        <number>5</number>
        </property>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -358,6 +398,16 @@
              <string>Código:</string>
             </property>
            </widget>
+           <zorder>le_nome</zorder>
+           <zorder>le_cpf</zorder>
+           <zorder>lb_nome</zorder>
+           <zorder>lb_rg</zorder>
+           <zorder>lb_cpf</zorder>
+           <zorder>le_rg</zorder>
+           <zorder>le_codigo</zorder>
+           <zorder>lb_codigo</zorder>
+           <zorder>frame_7</zorder>
+           <zorder>frame_7</zorder>
           </widget>
          </item>
          <item>
@@ -1003,87 +1053,9 @@ QToolButton{
          </item>
         </layout>
        </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
-         <item>
-          <spacer name="horizontalSpacer">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btn_confirmar">
-           <property name="minimumSize">
-            <size>
-             <width>104</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>104</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Calibri</family>
-             <pointsize>10</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Reabrir Nota</string>
-           </property>
-           <property name="icon">
-            <iconset resource="imagens.qrc">
-             <normaloff>:/img/img/abrir.png</normaloff>:/img/img/abrir.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>20</width>
-             <height>20</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_2">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
       </layout>
      </widget>
     </widget>
-   </item>
-   <item>
-    <spacer name="horizontalSpacer_4">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>7</width>
-       <height>597</height>
-      </size>
-     </property>
-    </spacer>
    </item>
   </layout>
  </widget>

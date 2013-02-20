@@ -57,6 +57,7 @@ INPUT(
 ./debug\tela_contas.o
 ./debug\ganho.o
 ./debug\tela_nota_venda.o
+./debug\parcela.o
 ./debug\moc_tela_login.o
 ./debug\moc_tela_principal.o
 ./debug\moc_tela_cadastro_cliente.o
