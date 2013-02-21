@@ -591,6 +591,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                 dados_venda->alterar_id_venda(id_venda);
 
                 if(dinheiro_usado->retorna_valor() > 0.0){
+
                     double valor_pago = dinheiro_usado->retorna_valor();
                     double valor_parcela = 0.0;
                     double primeira_parcela = 0.0;
@@ -599,6 +600,13 @@ void tela_pagamento::on_btn_confirmar_clicked()
                     valor_parcela = valor_pago/numero_pacelas;
                     valor_parcela = funcao.arredonda_para_duas_casas_decimais(valor_parcela);
                     primeira_parcela = valor_pago - valor_parcela*(numero_pacelas-1);
+
+
+                    std::vector < parcela* > parcelamento;
+
+                    parcelamento = funcao.calcula_parcelas(dados_venda->retorna_data_QDate(),
+                                                           0,dinheiro_usado->retorna_num_parcelas(),
+                                                           valor_pago);
 
                     //Insere os dados referente ao dinheiro
                     salvar_dados_dinheiro.prepare("INSERT INTO dinheiro(valor,origem,id_origem,data_ini_pag,num_par) VALUES(:valor, :origem, :id_origem, :data_ini_pag, :num_par);");
@@ -683,7 +691,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                     salvar_dados_cartao.bindValue(":valor", cartao_usado->retorna_valor());
                     salvar_dados_cartao.bindValue(":origem", 3);
                     salvar_dados_cartao.bindValue(":id_origem", dados_venda->retorna_id_venda());
-                    salvar_dados_cartao.exec();
+                    salvar_dados_cartao.exec();                   
 
                     double valor_pago = cartao_usado->retorna_valor();
                     double valor_parcela = 0.0;
@@ -855,8 +863,8 @@ void tela_pagamento::on_btn_confirmar_clicked()
                    (salvar_dados_despesa_dinheiro.lastError().number()<=0)){
 
                     //Finaliza a inserçao dos dados.
-                    bd.commit();
-                    //bd.rollback();
+                    //bd.commit();
+                    bd.rollback();
 
                     //Gera mensagem de que tudo ocorreu direito.
                     QPixmap icone_janela(":img/img/arquivo_50.png");

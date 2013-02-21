@@ -95,6 +95,10 @@ void tela_pagamento_dinheiro::on_groupBox_2_clicked(bool checked){
         aux_valor = valor_total - funcao.converter_para_double(ui->le_valor->text());
         ui->le_valor_avista->setText(funcao.retorna_valor_dinheiro(aux_valor));
     }
+    else{
+        aux_valor = 0.0;
+        ui->le_valor_avista->setText(funcao.retorna_valor_dinheiro(aux_valor));
+    }
 }
 
 void tela_pagamento_dinheiro::on_groupBox_clicked(bool checked)
@@ -106,4 +110,46 @@ void tela_pagamento_dinheiro::on_groupBox_clicked(bool checked)
         aux_valor = valor_total - funcao.converter_para_double(ui->le_valor_avista->text());
         ui->le_valor->setText(funcao.retorna_valor_dinheiro(aux_valor));
     }
+    else{
+        aux_valor = 0.0;
+        ui->le_valor->setText(funcao.retorna_valor_dinheiro(aux_valor));
+    }
+}
+
+void tela_pagamento_dinheiro::on_sb_num_parcelas_editingFinished()
+{
+    funcoes_extras funcao;
+    parcelamento = funcao.calcula_parcelas(ui->data->date(),
+                                           0,
+                                           ui->sb_num_parcelas->text().toInt(),
+                                           funcao.converter_para_double(ui->le_valor->text()));
+    mostrar_parcelamento();
+}
+
+void tela_pagamento_dinheiro::mostrar_parcelamento(){
+    funcoes_extras funcao;
+    ui->tw_parcelas->setRowCount(ui->sb_num_parcelas->text().toInt());
+    ui->tw_parcelas->setColumnCount(2);
+    ui->tw_parcelas->horizontalHeader()->setResizeMode(QHeaderView::Fixed);
+    ui->tw_parcelas->clear();
+    ui->tw_parcelas->setHorizontalHeaderLabels(QString("Data;Valor").split(";"));
+    for (int i=0;i<int(parcelamento.size());i++){
+        ui->tw_parcelas->setItem(i,0,new QTableWidgetItem(parcelamento[i]->retorna_data()));
+        ui->tw_parcelas->setItem(i,1,new QTableWidgetItem(funcao.retorna_valor_dinheiro(parcelamento[i]->retorna_valor())));
+    }
+    ui->tw_parcelas->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->tw_parcelas->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tw_parcelas->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tw_parcelas->resizeColumnToContents(0);
+    ui->tw_parcelas->resizeColumnToContents(1);
+}
+
+void tela_pagamento_dinheiro::on_data_editingFinished()
+{
+    funcoes_extras funcao;
+    parcelamento = funcao.calcula_parcelas(ui->data->date(),
+                                           0,
+                                           ui->sb_num_parcelas->text().toInt(),
+                                           funcao.converter_para_double(ui->le_valor->text()));
+    mostrar_parcelamento();
 }
