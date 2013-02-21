@@ -764,8 +764,8 @@ QString funcoes_extras::converte_despesa_numero_status_nome(int ori){
     }
 }
 
-std::vector< parcela * > calcula_parcelas(QDate data_inicial,int dia_vencimento,int numero_parcelas,double valor_total){
-    std::vector< QString >  data_das_parcelas;
+std::vector< parcela * > funcoes_extras::calcula_parcelas(QDate data_inicial,int dia_vencimento,int numero_parcelas,double valor_total){
+    std::vector< parcela * >  parcelas;
     QString data;
 
     int dia,mes,ano,dias_para_fechamento = 9;
@@ -848,6 +848,25 @@ std::vector< parcela * > calcula_parcelas(QDate data_inicial,int dia_vencimento,
         if (mes_s.size()<2)
             mes_s = "0"+mes_s;
         data = dia_s+"/"+mes_s+"/"+QString::number(ano);
-        data_das_parcelas.push_back(data);
+        parcelas.push_back(new parcela(data,0));
     }
+    double valor_parcela = 0.0;
+    double primeira_parcela = 0.0;
+
+    valor_parcela = valor_total/numero_parcelas;
+    valor_parcela = arredonda_para_duas_casas_decimais(valor_parcela);
+    primeira_parcela = valor_total - valor_parcela*(numero_parcelas-1);
+
+    if (primeira_parcela!=valor_parcela){
+        parcelas[0]->altera_valor(primeira_parcela);
+        for (int i=1; i<numero_parcelas;i++){
+          parcelas[i]->altera_valor(valor_parcela);
+        }
+    }
+    else{
+        for (int i=0; i<numero_parcelas;i++){
+          parcelas[i]->altera_valor(valor_parcela);
+        }
+    }
+    return parcelas;
 }

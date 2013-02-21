@@ -15,6 +15,7 @@
 #include "conexao_bd.h"
 #include "lista_compra.h"
 #include "lista_venda.h"
+#include "parcela.h"
 
 namespace Ui {
 class tela_pagamento;
