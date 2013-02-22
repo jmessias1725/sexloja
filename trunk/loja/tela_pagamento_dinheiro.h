@@ -2,9 +2,14 @@
 #define TELA_PAGAMENTO_DINHEIRO_H
 
 #include <QDialog>
+#include <QtSql>
+#include <QString>
+#include <iostream>
+
 #include "funcoes_extras.h"
 #include "dinheiro.h"
 #include "parcela.h"
+#include "tela_ajustar_data_valor.h"
 
 namespace Ui {
 class tela_pagamento_dinheiro;
@@ -31,9 +36,11 @@ private slots:
     void on_groupBox_clicked(bool checked);
     void on_sb_num_parcelas_editingFinished();
     void on_data_editingFinished();
+    void on_tw_parcelas_doubleClicked(const QModelIndex &index);
 
 private:
     Ui::tela_pagamento_dinheiro *ui;
+    tela_ajustar_data_valor tl_ajustar_data_valor;
     QPixmap logomarca;
     dinheiro *valor_pago;
     double valor_total;
