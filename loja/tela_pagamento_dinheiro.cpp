@@ -153,3 +153,13 @@ void tela_pagamento_dinheiro::on_data_editingFinished()
                                            funcao.converter_para_double(ui->le_valor->text()));
     mostrar_parcelamento();
 }
+
+void tela_pagamento_dinheiro::on_tw_parcelas_doubleClicked(const QModelIndex &index)
+{
+    tl_ajustar_data_valor.definir_icone_janela(logomarca);
+    tl_ajustar_data_valor.definir_dados(parcelamento[index.row()]);
+    if(tl_ajustar_data_valor.exec()){
+        parcelamento[index.row()] = tl_ajustar_data_valor.retorna_parcela();
+        mostrar_parcelamento();
+    }
+}

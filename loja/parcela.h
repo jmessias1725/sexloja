@@ -2,6 +2,7 @@
 #define PARCELA_H
 
 #include <QString>
+#include <QDate>
 
 class parcela
 {

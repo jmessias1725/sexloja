@@ -69,7 +69,8 @@ SOURCES += main.cpp\
     tela_contas.cpp \
     ganho.cpp \
     tela_nota_venda.cpp \
-    parcela.cpp
+    parcela.cpp \
+    tela_ajustar_data_valor.cpp
 
 HEADERS  += \
     conexao_bd.h \
@@ -129,7 +130,8 @@ HEADERS  += \
     tela_contas.h \
     ganho.h \
     tela_nota_venda.h \
-    parcela.h
+    parcela.h \
+    tela_ajustar_data_valor.h
 
 FORMS    += \
     tela_login.ui \
@@ -165,7 +167,8 @@ FORMS    += \
     tela_definir_valor_venda.ui \
     tela_pagamento_cartao_venda.ui \
     tela_contas.ui \
-    tela_nota_venda.ui
+    tela_nota_venda.ui \
+    tela_ajustar_data_valor.ui
 
 RESOURCES += \
     imagens.qrc

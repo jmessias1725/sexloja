@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_comprar.h'
 **
-** Created: Thu 21. Feb 11:36:48 2013
+** Created: Fri 22. Feb 15:49:28 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
