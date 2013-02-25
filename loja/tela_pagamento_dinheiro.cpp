@@ -156,10 +156,31 @@ void tela_pagamento_dinheiro::on_data_editingFinished()
 
 void tela_pagamento_dinheiro::on_tw_parcelas_doubleClicked(const QModelIndex &index)
 {
+    funcoes_extras funcao;
+    double total_parcial = 0;
+    double total_a_parcelar = 0;
+    double valor_parcelas = 0;
+    double ultima_parcela = 0;
+    int numero_parcelas_restantes;
+
     tl_ajustar_data_valor.definir_icone_janela(logomarca);
     tl_ajustar_data_valor.definir_dados(parcelamento[index.row()]);
     if(tl_ajustar_data_valor.exec()){
         parcelamento[index.row()] = tl_ajustar_data_valor.retorna_parcela();
+        for (int i = 0; i < int(index.row())+1;i++){
+            total_parcial  = total_parcial+parcelamento[i]->retorna_valor();
+        }
+        total_a_parcelar = valor_total - total_parcial;
+        numero_parcelas_restantes = (int(parcelamento.size())-(index.row()+1));
+
+        valor_parcelas = total_a_parcelar/numero_parcelas_restantes;
+        valor_parcelas = funcao.arredonda_para_duas_casas_decimais(valor_parcelas);
+        ultima_parcela = total_a_parcelar - valor_parcelas*(numero_parcelas_restantes-1);
+
+        for (int i = index.row()+1; i<int(parcelamento.size()-1);i++){
+            parcelamento[i]->altera_valor(valor_parcelas);
+        }
+        parcelamento[int(parcelamento.size()-1)]->altera_valor(ultima_parcela);
         mostrar_parcelamento();
     }
 }
