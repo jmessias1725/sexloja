@@ -208,6 +208,8 @@ void tela_pagamento::on_btn_confirmar_clicked()
             int total_comprado;
             int total_disponivel;
             bool encontrou_valor_compra = false;
+            int id_pag_parcelado = 0;
+            int id_pag_avista = 0;
 
             QString campos;
 
@@ -231,11 +233,16 @@ void tela_pagamento::on_btn_confirmar_clicked()
                 QSqlQuery salvar_dados_despesa_cheque(bd);
                 QSqlQuery salvar_dados_dinheiro(bd);
                 QSqlQuery salvar_dados_despesa_dinheiro(bd);
+                QSqlQuery salvar_dados_avista(bd);
+                QSqlQuery salvar_dados_parcelado(bd);
 
                 //Declara a variável que irá fazer a consulta para determinar o id do produto;
                 QSqlQuery consultar_id_compra(bd);
                 QSqlQuery consultar_valor_compra(bd);
                 QSqlQuery consultar_id_balanco(bd);
+                QSqlQuery consultar_id_parcelado(bd);
+                QSqlQuery consultar_id_avista(bd);
+
 
                 //Insere os dados no cadastro da compra
                 salvar_dados_compra.prepare("INSERT INTO compra(data_compra,id_fornecedor,num_cupom_nota,valor_total,desconto,valor_pago) VALUES(:data_compra, :id_fornecedor, :num_cupom_nota, :valor_total, :desconto, :valor_pago);");
@@ -254,66 +261,62 @@ void tela_pagamento::on_btn_confirmar_clicked()
                 }
                 dados_compra->alterar_id_compra(id_compra);
 
-                if(dinheiro_usado->retorna_valor() > 0.0){
+                if((dinheiro_usado->retorna_valor()+dinheiro_usado->retorna_valor_avista()> 0.0)){
+                    if(dinheiro_usado->retorna_valor() > 0.0){
+                        salvar_dados_parcelado.prepare("INSERT INTO pagamento_parcelado(num_parcelas,valor_total) VALUES(:num_parcelas, :valor_total);");
+                        salvar_dados_parcelado.bindValue(":num_parcelas", dinheiro_usado->retorna_num_parcelas());
+                        salvar_dados_parcelado.bindValue(":valor_total", dinheiro_usado->retorna_valor());
+                        salvar_dados_parcelado.exec();
 
-                    double valor_pago = dinheiro_usado->retorna_valor();
-                    double valor_parcela = 0.0;
-                    double primeira_parcela = 0.0;
-                    int numero_pacelas = dinheiro_usado->retorna_num_parcelas();
+                        //realiza a consulta para determinar  o id da parcela do cartão.
+                        consultar_id_parcelado.exec("SELECT id_pag_parcelado FROM pagamento_parcelado");
+                        if(consultar_id_parcelado.last()){
+                            id_pag_parcelado = consultar_id_parcelado.value(0).toInt();
+                        }
+                        std::vector< parcela * > parcelamento = dinheiro_usado->retorna_parcelamento();
+                        for (int i=0; i<dinheiro_usado->retorna_num_parcelas(); i++){
+                            salvar_dados_despesa_dinheiro.prepare("INSERT INTO despesas(data,descricao,valor,status,origem,id_origem) VALUES(:data, :descricao, :valor, :status, :origem, :id_origem);");
+                            salvar_dados_despesa_dinheiro.bindValue(":descricao", "Parcela em dinheiro de número "+QString::number(i)+", referente a compra de código: "+QString::number(dados_compra->retorna_id_compra())+".");
+                            salvar_dados_despesa_dinheiro.bindValue(":valor", parcelamento[i]->retorna_valor());
+                            salvar_dados_despesa_dinheiro.bindValue(":data", parcelamento[i]->retorna_data());
+                            salvar_dados_despesa_dinheiro.bindValue(":status", 0);
+                            salvar_dados_despesa_dinheiro.bindValue(":origem", 2);
+                            salvar_dados_despesa_dinheiro.bindValue(":id_origem", dados_compra->retorna_id_compra());
+                            salvar_dados_despesa_dinheiro.exec();
+                        }
+                    }
 
-                    valor_parcela = valor_pago/numero_pacelas;
-                    valor_parcela = funcao.arredonda_para_duas_casas_decimais(valor_parcela);
-                    primeira_parcela = valor_pago - valor_parcela*(numero_pacelas-1);
+                    if(dinheiro_usado->retorna_valor_avista() > 0.0){
+                        salvar_dados_avista.prepare("INSERT INTO pagamento_avista(valor) VALUES(:valor);");
+                        salvar_dados_avista.bindValue(":valor", dinheiro_usado->retorna_valor_avista());
+                        salvar_dados_avista.exec();
 
+                        //realiza a consulta para determinar  o id da parcela do cartão.
+                        consultar_id_avista.exec("SELECT id_pag_avista FROM pagamento_avista");
+                        if(consultar_id_avista.last()){
+                            id_pag_avista = consultar_id_avista.value(0).toInt();
+                        }
+                        double valor_pago = dinheiro_usado->retorna_valor_avista();
+                        //Insere na tabela de ganhos o ganho da parcela do cartão.
+                        salvar_dados_despesa_dinheiro.prepare("INSERT INTO despesas(data,descricao,valor,status,origem,id_origem) VALUES(:data, :descricao, :valor, :status, :origem, :id_origem);");
+                        salvar_dados_despesa_dinheiro.bindValue(":descricao", "Valor em dinheiro referente ao pagamento da compra de código: "+QString::number(dados_compra->retorna_id_compra())+".");
+                        salvar_dados_despesa_dinheiro.bindValue(":valor", valor_pago);
+                        salvar_dados_despesa_dinheiro.bindValue(":data", dados_compra->retorna_data_compra());
+                        salvar_dados_despesa_dinheiro.bindValue(":status", 1);
+                        salvar_dados_despesa_dinheiro.bindValue(":origem", 2);
+                        salvar_dados_despesa_dinheiro.bindValue(":id_origem", dados_compra->retorna_id_compra());
+                        salvar_dados_despesa_dinheiro.exec();
+                    }
+
+                    double valor_pago = dinheiro_usado->retorna_valor()+dinheiro_usado->retorna_valor_avista();
                     //Insere os dados referente ao dinheiro
-                    salvar_dados_dinheiro.prepare("INSERT INTO dinheiro(valor,origem,id_origem,data_ini_pag,num_par) VALUES(:valor, :origem, :id_origem, :data_ini_pag, :num_par);");
-                    salvar_dados_dinheiro.bindValue(":valor", valor_pago);
-                    salvar_dados_dinheiro.bindValue(":origem", 1);
-                    salvar_dados_dinheiro.bindValue(":id_origem", dados_compra->retorna_id_compra());
-                    salvar_dados_dinheiro.bindValue(":data_ini_pag", dinheiro_usado->retorna_data_ini_pag());
-                    salvar_dados_dinheiro.bindValue(":num_par", dinheiro_usado->retorna_num_parcelas());
-                    salvar_dados_dinheiro.exec();
-
-                    std::vector< QString > data_parcelas = funcao.determina_parcelas(dinheiro_usado->retorna_data_ini_pag_Qdate(),
-                                                                                     0,
-                                                                                     dinheiro_usado->retorna_num_parcelas());
-
-                    if (primeira_parcela!=valor_parcela){
-                        //parcelas = ",\nsendo a 1ª de "+funcao.retorna_valor_dinheiro(primeira_parcela)+" e "+QString::number(numero_pacelas-1)+" de "+funcao.retorna_valor_dinheiro(valor_parcela);
-                        //Insere na tabela de despesas a despesas da parcela do cartão.
-                        salvar_dados_despesa_cartao.prepare("INSERT INTO despesas(data,descricao,valor,status,origem,id_origem) VALUES(:data, :descricao, :valor, :status, :origem, :id_origem);");
-                        salvar_dados_despesa_cartao.bindValue(":descricao", "Parcela em dinheiro de número 1, referente a compra de código: "+QString::number(dados_compra->retorna_id_compra())+".");
-                        salvar_dados_despesa_cartao.bindValue(":valor", primeira_parcela);
-                        salvar_dados_despesa_cartao.bindValue(":data", data_parcelas[0]);
-                        salvar_dados_despesa_cartao.bindValue(":status", 0);
-                        salvar_dados_despesa_cartao.bindValue(":origem", 2);
-                        salvar_dados_despesa_cartao.bindValue(":id_origem", dados_compra->retorna_id_compra());
-                        salvar_dados_despesa_cartao.exec();
-                        for (int i=2; i<=numero_pacelas;i++){
-                            //Insere na tabela de despesas a despesas da parcela do cartão.
-                            salvar_dados_despesa_cartao.prepare("INSERT INTO despesas(data,descricao,valor,status,origem,id_origem) VALUES(:data, :descricao, :valor, :status, :origem, :id_origem);");
-                            salvar_dados_despesa_cartao.bindValue(":descricao", "Parcela em dinheiro de número "+QString::number(i)+", referente a compra de código: "+QString::number(dados_compra->retorna_id_compra())+".");
-                            salvar_dados_despesa_cartao.bindValue(":valor", valor_parcela);
-                            salvar_dados_despesa_cartao.bindValue(":data", data_parcelas[i-1]);
-                            salvar_dados_despesa_cartao.bindValue(":status", 0);
-                            salvar_dados_despesa_cartao.bindValue(":origem", 2);
-                            salvar_dados_despesa_cartao.bindValue(":id_origem", dados_compra->retorna_id_compra());
-                            salvar_dados_despesa_cartao.exec();
-                        }
-                    }
-                    else{
-                        for (int i=1; i<=numero_pacelas;i++){
-                            //Insere na tabela de despesas a despesas da parcela do cartão.
-                            salvar_dados_despesa_cartao.prepare("INSERT INTO despesas(data,descricao,valor,status,origem,id_origem) VALUES(:data, :descricao, :valor, :status, :origem, :id_origem);");
-                            salvar_dados_despesa_cartao.bindValue(":descricao", "Parcela em dinheiro de número "+QString::number(i)+", referente a compra de código: "+QString::number(dados_compra->retorna_id_compra())+".");
-                            salvar_dados_despesa_cartao.bindValue(":valor", valor_parcela);
-                            salvar_dados_despesa_cartao.bindValue(":data", data_parcelas[i-1]);
-                            salvar_dados_despesa_cartao.bindValue(":status", 0);
-                            salvar_dados_despesa_cartao.bindValue(":origem", 2);
-                            salvar_dados_despesa_cartao.bindValue(":id_origem", dados_compra->retorna_id_compra());
-                            salvar_dados_despesa_cartao.exec();
-                        }
-                    }
+                    salvar_dados_despesa_dinheiro.prepare("INSERT INTO dinheiro(valor,origem,id_origem,id_pag_avista,id_pag_parcelado) VALUES(:valor, :origem, :id_origem, :id_pag_avista, :id_pag_parcelado);");
+                    salvar_dados_despesa_dinheiro.bindValue(":valor", valor_pago);
+                    salvar_dados_despesa_dinheiro.bindValue(":origem", 1);
+                    salvar_dados_despesa_dinheiro.bindValue(":id_origem", dados_compra->retorna_id_compra());
+                    salvar_dados_despesa_dinheiro.bindValue(":id_pag_avista", id_pag_avista);
+                    salvar_dados_despesa_dinheiro.bindValue(":id_pag_parcelado", id_pag_parcelado);
+                    salvar_dados_despesa_dinheiro.exec();
                 }
 
                 if(cartao_usado->retorna_valor() > 0.0){
@@ -550,6 +553,8 @@ void tela_pagamento::on_btn_confirmar_clicked()
             QSqlDatabase bd;
 
             int id_venda;
+            int id_pag_parcelado = 0;
+            int id_pag_avista = 0;
 
             //realiza conexão ao banco de dados
             if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_pagamento::on_btn_confirmar_clicke")){
@@ -569,10 +574,14 @@ void tela_pagamento::on_btn_confirmar_clicked()
                 QSqlQuery salvar_dados_despesa_cheque(bd);
                 QSqlQuery salvar_dados_dinheiro(bd);
                 QSqlQuery salvar_dados_despesa_dinheiro(bd);
+                QSqlQuery salvar_dados_avista(bd);
+                QSqlQuery salvar_dados_parcelado(bd);
 
                 //Declara a variável que irá fazer a consulta para determinar o id do produto;
                 QSqlQuery consultar_id_venda(bd);
                 QSqlQuery consultar_total_disponivel(bd);
+                QSqlQuery consultar_id_parcelado(bd);
+                QSqlQuery consultar_id_avista(bd);
 
                 //Insere os dados no cadastro da venda
                 salvar_dados_venda.prepare("INSERT INTO venda(data_venda,id_cliente,valor_total,desconto,valor_pago) VALUES(:data_venda, :id_cliente, :valor_total, :desconto, :valor_pago);");
@@ -590,96 +599,64 @@ void tela_pagamento::on_btn_confirmar_clicked()
                 }
                 dados_venda->alterar_id_venda(id_venda);
 
-                if(dinheiro_usado->retorna_valor() > 0.0){
+                if((dinheiro_usado->retorna_valor()+dinheiro_usado->retorna_valor_avista()> 0.0)){
 
-                    double valor_pago = dinheiro_usado->retorna_valor();
-                    double valor_parcela = 0.0;
-                    double primeira_parcela = 0.0;
-                    int numero_pacelas = dinheiro_usado->retorna_num_parcelas();
+                    if(dinheiro_usado->retorna_valor() > 0.0){
+                        salvar_dados_parcelado.prepare("INSERT INTO pagamento_parcelado(num_parcelas,valor_total) VALUES(:num_parcelas, :valor_total);");
+                        salvar_dados_parcelado.bindValue(":num_parcelas", dinheiro_usado->retorna_num_parcelas());
+                        salvar_dados_parcelado.bindValue(":valor_total", dinheiro_usado->retorna_valor());
+                        salvar_dados_parcelado.exec();
 
-                    valor_parcela = valor_pago/numero_pacelas;
-                    valor_parcela = funcao.arredonda_para_duas_casas_decimais(valor_parcela);
-                    primeira_parcela = valor_pago - valor_parcela*(numero_pacelas-1);
-
-
-                    std::vector < parcela* > parcelamento;
-
-                    parcelamento = funcao.calcula_parcelas(dados_venda->retorna_data_QDate(),
-                                                           0,dinheiro_usado->retorna_num_parcelas(),
-                                                           valor_pago);
-
-                    //Insere os dados referente ao dinheiro
-                    salvar_dados_dinheiro.prepare("INSERT INTO dinheiro(valor,origem,id_origem,data_ini_pag,num_par) VALUES(:valor, :origem, :id_origem, :data_ini_pag, :num_par);");
-                    salvar_dados_dinheiro.bindValue(":valor", valor_pago);
-                    salvar_dados_dinheiro.bindValue(":origem", 3);
-                    salvar_dados_dinheiro.bindValue(":id_origem", dados_venda->retorna_id_venda());
-                    salvar_dados_dinheiro.bindValue(":data_ini_pag", dinheiro_usado->retorna_data_ini_pag());
-                    salvar_dados_dinheiro.bindValue(":num_par", dinheiro_usado->retorna_num_parcelas());
-                    salvar_dados_dinheiro.exec();
-
-                    std::vector< QString > data_parcelas_dinheiro = funcao.determina_parcelas(dinheiro_usado->retorna_data_ini_pag_Qdate(),
-                                                                                     0,
-                                                                                     dinheiro_usado->retorna_num_parcelas());
-
-                    if (primeira_parcela!=valor_parcela){
-                        //parcelas = ",\nsendo a 1ª de "+funcao.retorna_valor_dinheiro(primeira_parcela)+" e "+QString::number(numero_pacelas-1)+" de "+funcao.retorna_valor_dinheiro(valor_parcela);
-                        //Insere na tabela de ganhos a venda da parcela do cartão.
-                        salvar_dados_despesa_cartao.prepare("INSERT INTO ganhos(data,descricao,valor,status,origem,id_origem) VALUES(:data, :descricao, :valor, :status, :origem, :id_origem);");
-                        salvar_dados_despesa_cartao.bindValue(":descricao", "Parcela em dinheiro de número 1, referente a venda de código: "+QString::number(dados_venda->retorna_id_venda())+".");
-                        salvar_dados_despesa_cartao.bindValue(":valor", primeira_parcela);
-                        salvar_dados_despesa_cartao.bindValue(":data", data_parcelas_dinheiro[0]);
-                        salvar_dados_despesa_cartao.bindValue(":status", 0);
-                        salvar_dados_despesa_cartao.bindValue(":origem", 2);
-                        salvar_dados_despesa_cartao.bindValue(":id_origem", dados_venda->retorna_id_venda());
-                        salvar_dados_despesa_cartao.exec();
-                        for (int i=2; i<=numero_pacelas;i++){
-                            //Insere na tabela de ganhos a venda da parcela do cartão.
-                            salvar_dados_despesa_cartao.prepare("INSERT INTO ganhos(data,descricao,valor,status,origem,id_origem) VALUES(:data, :descricao, :valor, :status, :origem, :id_origem);");
-                            salvar_dados_despesa_cartao.bindValue(":descricao", "Parcela em dinheiro de número "+QString::number(i)+", referente a venda de código: "+QString::number(dados_venda->retorna_id_venda())+".");
-                            salvar_dados_despesa_cartao.bindValue(":valor", valor_parcela);
-                            salvar_dados_despesa_cartao.bindValue(":data", data_parcelas_dinheiro[i-1]);
-                            salvar_dados_despesa_cartao.bindValue(":status", 0);
-                            salvar_dados_despesa_cartao.bindValue(":origem", 2);
-                            salvar_dados_despesa_cartao.bindValue(":id_origem", dados_venda->retorna_id_venda());
-                            salvar_dados_despesa_cartao.exec();
+                        //realiza a consulta para determinar  o id da parcela do cartão.
+                        consultar_id_parcelado.exec("SELECT id_pag_parcelado FROM pagamento_parcelado");
+                        if(consultar_id_parcelado.last()){
+                            id_pag_parcelado = consultar_id_parcelado.value(0).toInt();
                         }
-                    }
-                    else{
-                        for (int i=1; i<=numero_pacelas;i++){
+                        std::vector< parcela * > parcelamento = dinheiro_usado->retorna_parcelamento();
+                        for (int i=0; i<dinheiro_usado->retorna_num_parcelas(); i++){
                             //Insere na tabela de ganhos o ganho da parcela do cartão.
-                            salvar_dados_despesa_cartao.prepare("INSERT INTO ganhos(data,descricao,valor,status,origem,id_origem) VALUES(:data, :descricao, :valor, :status, :origem, :id_origem);");
-                            salvar_dados_despesa_cartao.bindValue(":descricao", "Parcela em dinheiro de número "+QString::number(i)+", referente a venda de código: "+QString::number(dados_venda->retorna_id_venda())+".");
-                            salvar_dados_despesa_cartao.bindValue(":valor", valor_parcela);
-                            salvar_dados_despesa_cartao.bindValue(":data", data_parcelas_dinheiro[i-1]);
-                            salvar_dados_despesa_cartao.bindValue(":status", 0);
-                            salvar_dados_despesa_cartao.bindValue(":origem", 2);
-                            salvar_dados_despesa_cartao.bindValue(":id_origem", dados_venda->retorna_id_venda());
-                            salvar_dados_despesa_cartao.exec();
+                            salvar_dados_dinheiro.prepare("INSERT INTO ganhos(data,descricao,valor,status,origem,id_origem) VALUES(:data, :descricao, :valor, :status, :origem, :id_origem);");
+                            salvar_dados_dinheiro.bindValue(":descricao", "Parcela em dinheiro de número "+QString::number(i+1)+", referente a venda de código: "+QString::number(dados_venda->retorna_id_venda())+".");
+                            salvar_dados_dinheiro.bindValue(":valor", parcelamento[i]->retorna_valor());
+                            salvar_dados_dinheiro.bindValue(":data", parcelamento[i]->retorna_data());
+                            salvar_dados_dinheiro.bindValue(":status", 0);
+                            salvar_dados_dinheiro.bindValue(":origem", 2);
+                            salvar_dados_dinheiro.bindValue(":id_origem", dados_venda->retorna_id_venda());
+                            salvar_dados_dinheiro.exec();
                         }
                     }
-                }
 
-                if(dinheiro_usado->retorna_valor_avista() > 0.0){
-                    double valor_pago = dinheiro_usado->retorna_valor_avista();
+                    if(dinheiro_usado->retorna_valor_avista() > 0.0){
+                        salvar_dados_avista.prepare("INSERT INTO pagamento_avista(valor) VALUES(:valor);");
+                        salvar_dados_avista.bindValue(":valor", dinheiro_usado->retorna_valor_avista());
+                        salvar_dados_avista.exec();
 
+                        //realiza a consulta para determinar  o id da parcela do cartão.
+                        consultar_id_avista.exec("SELECT id_pag_avista FROM pagamento_avista");
+                        if(consultar_id_avista.last()){
+                            id_pag_avista = consultar_id_avista.value(0).toInt();
+                        }
+                        double valor_pago = dinheiro_usado->retorna_valor_avista();
+                        //Insere na tabela de ganhos o ganho da parcela do cartão.
+                        salvar_dados_dinheiro.prepare("INSERT INTO ganhos(data,descricao,valor,status,origem,id_origem) VALUES(:data, :descricao, :valor, :status, :origem, :id_origem);");
+                        salvar_dados_dinheiro.bindValue(":descricao", "Valor em dinheiro referente ao pagamento da venda de código "+QString::number(dados_venda->retorna_id_venda())+".");
+                        salvar_dados_dinheiro.bindValue(":valor", valor_pago);
+                        salvar_dados_dinheiro.bindValue(":data", dados_venda->retorna_data_venda());
+                        salvar_dados_dinheiro.bindValue(":status", 1);
+                        salvar_dados_dinheiro.bindValue(":origem", 2);
+                        salvar_dados_dinheiro.bindValue(":id_origem", dados_venda->retorna_id_venda());
+                        salvar_dados_dinheiro.exec();
+                    }
+
+                    double valor_pago = dinheiro_usado->retorna_valor()+dinheiro_usado->retorna_valor_avista();
                     //Insere os dados referente ao dinheiro
-                    salvar_dados_dinheiro.prepare("INSERT INTO dinheiro(valor,origem,id_origem,data_ini_pag,num_par) VALUES(:valor, :origem, :id_origem, :data_ini_pag, :num_par);");
+                    salvar_dados_dinheiro.prepare("INSERT INTO dinheiro(valor,origem,id_origem,id_pag_avista,id_pag_parcelado) VALUES(:valor, :origem, :id_origem, :id_pag_avista, :id_pag_parcelado);");
                     salvar_dados_dinheiro.bindValue(":valor", valor_pago);
                     salvar_dados_dinheiro.bindValue(":origem", 3);
                     salvar_dados_dinheiro.bindValue(":id_origem", dados_venda->retorna_id_venda());
-                    salvar_dados_dinheiro.bindValue(":data_ini_pag", dados_venda->retorna_data_venda());
-                    salvar_dados_dinheiro.bindValue(":num_par", 0);
+                    salvar_dados_dinheiro.bindValue(":id_pag_avista", id_pag_avista);
+                    salvar_dados_dinheiro.bindValue(":id_pag_parcelado", id_pag_parcelado);
                     salvar_dados_dinheiro.exec();
-
-                    //Insere na tabela de ganhos o ganho da parcela do cartão.
-                    salvar_dados_despesa_cartao.prepare("INSERT INTO ganhos(data,descricao,valor,status,origem,id_origem) VALUES(:data, :descricao, :valor, :status, :origem, :id_origem);");
-                    salvar_dados_despesa_cartao.bindValue(":descricao", "Valor em dinheiro referente ao pagamento da venda de código "+QString::number(dados_venda->retorna_id_venda())+".");
-                    salvar_dados_despesa_cartao.bindValue(":valor", valor_pago);
-                    salvar_dados_despesa_cartao.bindValue(":data", dados_venda->retorna_data_venda());
-                    salvar_dados_despesa_cartao.bindValue(":status", 1);
-                    salvar_dados_despesa_cartao.bindValue(":origem", 2);
-                    salvar_dados_despesa_cartao.bindValue(":id_origem", dados_venda->retorna_id_venda());
-                    salvar_dados_despesa_cartao.exec();
                 }
 
                 if(cartao_usado->retorna_valor() > 0.0){
@@ -863,8 +840,8 @@ void tela_pagamento::on_btn_confirmar_clicked()
                    (salvar_dados_despesa_dinheiro.lastError().number()<=0)){
 
                     //Finaliza a inserçao dos dados.
-                    //bd.commit();
-                    bd.rollback();
+                    bd.commit();
+                    //bd.rollback();
 
                     //Gera mensagem de que tudo ocorreu direito.
                     QPixmap icone_janela(":img/img/arquivo_50.png");
