@@ -64,7 +64,7 @@ void tela_pagamento_dinheiro::on_btn_confirmar_clicked(){
 
     valor_pago = new dinheiro(aux_valor,-1,0,
                               ui->data->date(),ui->sb_num_parcelas->text().toInt(),
-                              aux_valor_avista);
+                              aux_valor_avista,parcelamento);
     ui->le_valor->clear();
     this->accept();
     this->close();
@@ -170,7 +170,7 @@ void tela_pagamento_dinheiro::on_tw_parcelas_doubleClicked(const QModelIndex &in
         for (int i = 0; i < int(index.row())+1;i++){
             total_parcial  = total_parcial+parcelamento[i]->retorna_valor();
         }
-        total_a_parcelar = valor_total - total_parcial;
+        total_a_parcelar = valor_total - funcao.converter_para_double(ui->le_valor_avista->text()) - total_parcial;
         numero_parcelas_restantes = (int(parcelamento.size())-(index.row()+1));
 
         valor_parcelas = total_a_parcelar/numero_parcelas_restantes;

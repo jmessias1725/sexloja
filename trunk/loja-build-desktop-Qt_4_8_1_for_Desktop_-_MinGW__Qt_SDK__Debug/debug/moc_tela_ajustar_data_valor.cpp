@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_ajustar_data_valor.h'
 **
-** Created: Fri 22. Feb 15:50:04 2013
+** Created: Tue 26. Feb 11:43:39 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
