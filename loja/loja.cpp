@@ -80,7 +80,7 @@ bool loja::salvar_dados_loja(void){
     QString id_loja;
 
     //realiza conexão ao banco de dados
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","loja::salvar_dados_loja")){
+    if (conexao.conetar_bd()){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
@@ -182,7 +182,7 @@ bool loja::salvar_alteracao_dados_loja(std::vector< std::string > lista_telefone
     QString campos;
 
     //realiza conexão ao banco de dados
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","loja::salvar_alteracao_dados_loja")){
+    if (conexao.conetar_bd()){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
@@ -286,7 +286,7 @@ loja * loja::busca_loja(void){
     QSqlDatabase bd;
 
     //realiza conexão ao banco de dados
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","loja::busca_loja")){
+    if (conexao.conetar_bd()){
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
 

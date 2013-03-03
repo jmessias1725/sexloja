@@ -119,7 +119,7 @@ void tela_produto::buscar_informacoes_his_estoque_produto(int id){
     std::vector<his_balanco_estoque *> aux_his;
 
     //realiza conexão ao banco de dados
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","his_balanco_estoque::buscar_his_estoque_produto")){
+    if (conexao.conetar_bd()){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
@@ -174,7 +174,7 @@ void tela_produto::buscar_informacoes_his_entrada(int id){
     std::vector< his_entradas * > aux_his;
 
     //realiza conexão ao banco de dados
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_produto::buscar_his_entrada")){
+    if (conexao.conetar_bd()){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
@@ -237,7 +237,7 @@ void tela_produto::buscar_informacoes_his_saida(int id){
     std::vector< his_saidas * > aux_his;
 
     //realiza conexão ao banco de dados
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_produto::buscar_his_entrada")){
+    if (conexao.conetar_bd()){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();

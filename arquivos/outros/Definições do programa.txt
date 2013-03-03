@@ -10,7 +10,8 @@ Campo origem tabela despesas, ganhos.
 
 0 - cartão;
 1 - cheque;
-2 - dinheiro.
+2 - dinheiro,parcelado.
+3 - dinheiro,avista.
 
 campo status tabela despesas.
 

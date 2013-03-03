@@ -35,6 +35,7 @@ tela_estoque::tela_estoque(QWidget *parent) :
     ui->barra_de_status->insertWidget(2,lb_custo_total,0);
     ui->barra_de_status->insertWidget(3,lb_renda_total,0);
     ui->barra_de_status->insertWidget(4,lb_quantidade_produtos,0);
+    ui->le_nome->setFocus();
 }
 
 tela_estoque::~tela_estoque()
@@ -46,11 +47,30 @@ void tela_estoque::definir_icone_janela(QPixmap logo){
     logomarca = logo;
     this->setWindowIcon(logomarca);
     tela_estoque::limpar_dados();
+    legenda = new legenda_estoque();
+    z_v = legenda->retorna_zerado_valor();
+    z_r = legenda->retorna_z_cor_vermelho();
+    z_g = legenda->retorna_z_cor_verde();
+    z_b = legenda->retorna_z_cor_azul();
+
+    m_v = legenda->retorna_minimo_valor();
+    m_r = legenda->retorna_m_cor_vermelho();
+    m_g = legenda->retorna_m_cor_verde();
+    m_b = legenda->retorna_m_cor_azul();
+
+    n_v = legenda->retorna_normal_valor();
+    n_r = legenda->retorna_n_cor_vermelho();
+    n_g = legenda->retorna_n_cor_verde();
+    n_b = legenda->retorna_n_cor_azul();
+
+    i_v = legenda->retorna_ideal_valor();
+    i_r = legenda->retorna_i_cor_vermelho();
+    i_g = legenda->retorna_i_cor_verde();
+    i_b = legenda->retorna_i_cor_azul();
 }
 
 void tela_estoque::buscar_produtos(void){
     ui->tw_legenda->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    legenda = new legenda_estoque();
 
     conexao_bd conexao;
     QSqlDatabase bd;
@@ -74,7 +94,7 @@ void tela_estoque::buscar_produtos(void){
     lista_produtos.clear();
 
     //realiza conexão ao banco de dados
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_estoque::buscar_produtos")){
+    if (conexao.conetar_bd()){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
@@ -128,7 +148,6 @@ void tela_estoque::buscar_produtos(void){
 void tela_estoque::mostrar_lista_produtos(void){
     funcoes_extras funcao;
     aux_lista_produtos.clear();
-
     for (int i=0;i<int(lista_produtos.size());i++){
         if((QString::number(lista_produtos[i]->retorna_id()).contains(aux_cons_id_produto))&&
            (lista_produtos[i]->retorna_tipo().contains(aux_cons_tipo))&&
@@ -162,31 +181,32 @@ void tela_estoque::mostrar_lista_produtos(void){
         ui->tw_produtos->item(i,5)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_produtos->item(i,6)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_produtos->item(i,7)->setTextAlignment(Qt::AlignHCenter);
-        if ((aux_lista_produtos[i]->retorna_quantidade_disponivel())<=legenda->retorna_zerado_valor()){
+
+        if ((aux_lista_produtos[i]->retorna_quantidade_disponivel()) <= z_v){
             for(int j=0;j<8;j++){
-                ui->tw_produtos->item(i,j)->setBackgroundColor(QColor::fromRgb(legenda->retorna_z_cor_vermelho(),legenda->retorna_z_cor_verde(),legenda->retorna_z_cor_azul(),255));
+                ui->tw_produtos->item(i,j)->setBackgroundColor(QColor::fromRgb(z_r,z_g,z_b));
             }
         }
-        if (((aux_lista_produtos[i]->retorna_quantidade_disponivel()) > legenda->retorna_zerado_valor()) && ((aux_lista_produtos[i]->retorna_quantidade_disponivel())<= legenda->retorna_minimo_valor())){
+        if (((aux_lista_produtos[i]->retorna_quantidade_disponivel()) > z_v) && ((aux_lista_produtos[i]->retorna_quantidade_disponivel())<= m_v)){
             for(int j=0;j<8;j++){
-                ui->tw_produtos->item(i,j)->setBackgroundColor(QColor::fromRgb(legenda->retorna_m_cor_vermelho(),legenda->retorna_m_cor_verde(),legenda->retorna_m_cor_azul(),255));
+                ui->tw_produtos->item(i,j)->setBackgroundColor(QColor::fromRgb(m_r,m_g,m_b));
             }
         }
-        if (((aux_lista_produtos[i]->retorna_quantidade_disponivel())>legenda->retorna_minimo_valor())&&((aux_lista_produtos[i]->retorna_quantidade_disponivel())<=legenda->retorna_normal_valor())){
+        if (((aux_lista_produtos[i]->retorna_quantidade_disponivel()) > m_v)&&((aux_lista_produtos[i]->retorna_quantidade_disponivel()) <= n_v)){
             for(int j=0;j<8;j++){
-                ui->tw_produtos->item(i,j)->setBackgroundColor(QColor::fromRgb(legenda->retorna_n_cor_vermelho(),legenda->retorna_n_cor_verde(),legenda->retorna_n_cor_azul(),255));
+                ui->tw_produtos->item(i,j)->setBackgroundColor(QColor::fromRgb(n_r,n_g,n_b));
             }
         }
-        if ((aux_lista_produtos[i]->retorna_quantidade_disponivel())>=legenda->retorna_ideal_valor()){
+        if ((aux_lista_produtos[i]->retorna_quantidade_disponivel()) >= i_v){
             for(int j=0;j<8;j++){
-                ui->tw_produtos->item(i,j)->setBackgroundColor(QColor::fromRgb(legenda->retorna_i_cor_vermelho(),legenda->retorna_i_cor_verde(),legenda->retorna_i_cor_azul(),255));
+                ui->tw_produtos->item(i,j)->setBackgroundColor(QColor::fromRgb(i_r,i_g,i_b));
             }
         }
     }
-    ui->tw_legenda->item(0,0)->setBackgroundColor(QColor::fromRgb(legenda->retorna_z_cor_vermelho(),legenda->retorna_z_cor_verde(),legenda->retorna_z_cor_azul(),255));
-    ui->tw_legenda->item(0,1)->setBackgroundColor(QColor::fromRgb(legenda->retorna_m_cor_vermelho(),legenda->retorna_m_cor_verde(),legenda->retorna_m_cor_azul(),255));
-    ui->tw_legenda->item(0,2)->setBackgroundColor(QColor::fromRgb(legenda->retorna_n_cor_vermelho(),legenda->retorna_n_cor_verde(),legenda->retorna_n_cor_azul(),255));
-    ui->tw_legenda->item(0,3)->setBackgroundColor(QColor::fromRgb(legenda->retorna_i_cor_vermelho(),legenda->retorna_i_cor_verde(),legenda->retorna_i_cor_azul(),255));
+    ui->tw_legenda->item(0,0)->setBackgroundColor(QColor::fromRgb(z_r,z_g,z_b));
+    ui->tw_legenda->item(0,1)->setBackgroundColor(QColor::fromRgb(m_r,m_g,m_b));
+    ui->tw_legenda->item(0,2)->setBackgroundColor(QColor::fromRgb(n_r,n_g,n_b));
+    ui->tw_legenda->item(0,3)->setBackgroundColor(QColor::fromRgb(i_r,i_g,i_b));
 
     ui->tw_produtos->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tw_produtos->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -215,6 +235,25 @@ void tela_estoque::on_pushButton_clicked()
     tl_configurar_legenda_estoque.configuracao_legenda(legenda);
     if(tl_configurar_legenda_estoque.exec()){
         legenda = tl_configurar_legenda_estoque.retorna_nova_configuracao();
+        z_v = legenda->retorna_zerado_valor();
+        z_r = legenda->retorna_z_cor_vermelho();
+        z_g = legenda->retorna_z_cor_verde();
+        z_b = legenda->retorna_z_cor_azul();
+
+        m_v = legenda->retorna_minimo_valor();
+        m_r = legenda->retorna_m_cor_vermelho();
+        m_g = legenda->retorna_m_cor_verde();
+        m_b = legenda->retorna_m_cor_azul();
+
+        n_v = legenda->retorna_normal_valor();
+        n_r = legenda->retorna_n_cor_vermelho();
+        n_g = legenda->retorna_n_cor_verde();
+        n_b = legenda->retorna_n_cor_azul();
+
+        i_v = legenda->retorna_ideal_valor();
+        i_r = legenda->retorna_i_cor_vermelho();
+        i_g = legenda->retorna_i_cor_verde();
+        i_b = legenda->retorna_i_cor_azul();
         tela_estoque::mostrar_lista_produtos();
     }
 }
@@ -223,12 +262,14 @@ void tela_estoque::on_btn_adicionar_produto_clicked()
 {
     tl_cadastro_produto.definir_icone_janela(logomarca);
     if(tl_cadastro_produto.exec()){
-        buscar_produtos();
+        tela_estoque::buscar_produtos();
     }
 }
 
 void tela_estoque::on_cb_tipo_currentIndexChanged(const QString &arg1)
 {
+    QString aux = aux_cons_tipo;
+    aux_cons_tipo = arg1;
     if(arg1.toStdString() == "Todos")
     {
         aux_cons_tipo = "";
@@ -236,45 +277,60 @@ void tela_estoque::on_cb_tipo_currentIndexChanged(const QString &arg1)
     else{
         aux_cons_tipo = arg1;
     }
-    tela_estoque::mostrar_lista_produtos();
+    if(aux_cons_tipo!=aux){
+        tela_estoque::mostrar_lista_produtos();
+    }
 }
 
 void tela_estoque::on_le_nome_textChanged(const QString &arg1)
 {
-    ui->le_nome->setText(ui->le_nome->text().toUpper());
-    aux_cons_nome = ui->le_nome->text();
-    tela_estoque::mostrar_lista_produtos();
+    QString aux = aux_cons_nome;
+    aux_cons_nome = arg1;
+    if(aux_cons_nome!=aux){
+        ui->le_nome->setText(ui->le_nome->text().toUpper());
+        aux_cons_nome = ui->le_nome->text();
+        tela_estoque::mostrar_lista_produtos();
+    }
 }
 
-void tela_estoque::on_le_codigo_barras_textChanged(const QString &arg1)
-{
-    std::string aux;
-    if(arg1.toStdString() == "  "){
-        aux_cons_cod_barras = "";
-    }
-    else{
-        aux_cons_cod_barras = arg1;
-        if(int(aux_cons_cod_barras.size())<9){
-            aux = aux_cons_cod_barras.toStdString();
-            aux = aux.substr(0,(aux_cons_cod_barras.size()-2));
-            aux_cons_cod_barras = QString::fromStdString(aux);
+void tela_estoque::on_le_codigo_barras_textChanged(const QString &arg1){
+        std::string aux;
+        QString aux_q = aux_cons_cod_barras;
+        if(arg1.toStdString() == "  "){
+            aux_cons_cod_barras = "";
         }
-    }
-    tela_estoque::mostrar_lista_produtos();
+        else{
+            aux_cons_cod_barras = arg1;
+            if(int(aux_cons_cod_barras.size())<9){
+                aux = aux_cons_cod_barras.toStdString();
+                aux = aux.substr(0,(aux_cons_cod_barras.size()-2));
+                aux_cons_cod_barras = QString::fromStdString(aux);
+            }
+        }
+        if(aux_q!=aux_cons_cod_barras){
+            tela_estoque::mostrar_lista_produtos();
+        }
 }
 
 void tela_estoque::on_le_fabricante_textChanged(const QString &arg1)
 {
-    ui->le_fabricante->setText(ui->le_fabricante->text().toUpper());
-    aux_cons_fabricante = ui->le_fabricante->text();
-    tela_estoque::mostrar_lista_produtos();
+    QString aux = aux_cons_fabricante;
+    aux_cons_fabricante = arg1;
+    if(aux_cons_fabricante!=aux){
+        ui->le_fabricante->setText(ui->le_fabricante->text().toUpper());
+        aux_cons_fabricante = ui->le_fabricante->text();
+        tela_estoque::mostrar_lista_produtos();
+    }
 }
 
 
 void tela_estoque::on_le_codigo_textChanged(const QString &arg1)
 {
-    aux_cons_id_produto = ui->le_codigo->text();
-    tela_estoque::mostrar_lista_produtos();
+    QString aux = aux_cons_id_produto;
+    aux_cons_id_produto = arg1;
+    if(aux_cons_id_produto!=aux){
+        tela_estoque::mostrar_lista_produtos();
+    }
 }
 
 void tela_estoque::on_tw_produtos_doubleClicked(const QModelIndex &index)

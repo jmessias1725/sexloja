@@ -64,7 +64,7 @@ void tela_listar_despesas::on_btn_buscar_clicked()
     aux_lista_despesa.clear();
 
     //realiza conexão ao banco de dados
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_listar_despesas::on_btn_buscar_clicked")){
+    if (conexao.conetar_bd()){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();

@@ -31,7 +31,7 @@ bool usuario::verifica_login_senha(QString login_teclado, QString senha_teclado)
 
     //realiza conexão ao banco de dados
 
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","usuario::verifica_login_senha")){
+    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807")){
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
 

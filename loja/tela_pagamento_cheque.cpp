@@ -106,7 +106,7 @@ void tela_pagamento_cheque::on_le_codigo_banco_editingFinished()
 
     QString nome_banco = "Nome do banco não encontrado, insira o nome manualmente.";
 
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_pagamento_cheque")){
+    if (conexao.conetar_bd()){
         //Retorna o banco de dados
        bd = conexao.retorna_bd();
 

@@ -22,12 +22,14 @@ void tela_nota_venda::definir_dados(venda *vend){
     venda_atual = vend;
     this->setWindowTitle("Venda de Código = "+QString::number(venda_atual->retorna_id_venda()));
     buscar_dados();
+    mostrar_dados_pagamento();
     mostrar_dados();
 }
 
 void tela_nota_venda::buscar_dados(){
     lt_venda.clear();
     lt_ganho.clear();
+    valor_total = 0;
 
     conexao_bd conexao;
     QSqlDatabase bd;
@@ -52,7 +54,7 @@ void tela_nota_venda::buscar_dados(){
     int aux_id_origem;
 
     //realiza conexão ao banco de dados
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_listar_despesas::on_btn_buscar_clicked")){
+    if (conexao.conetar_bd()){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
@@ -94,6 +96,9 @@ void tela_nota_venda::buscar_dados(){
             aux_origem = consultar.value(5).toInt();
             aux_id_origem = consultar.value(6).toInt();
             lt_ganho.push_back(new ganho(aux_id_ganho,data_pagamento,aux_descricao,valor,aux_status,aux_origem,aux_id_origem));
+            if(aux_origem==2){
+                valor_total = valor_total+valor;
+            }
         }
         consultar.clear();
 
@@ -139,7 +144,10 @@ void tela_nota_venda::mostrar_dados(){
     ui->tw_lista_produtos->resizeColumnToContents(2);
     ui->tw_lista_produtos->resizeColumnToContents(3);
     ui->tw_lista_produtos->resizeColumnToContents(4);
+}
 
+void tela_nota_venda::mostrar_dados_pagamento(void){
+    funcoes_extras funcao;
     ui->le_total->setText(funcao.retorna_valor_dinheiro(venda_atual->retorna_valor_total()));
     ui->le_total_a_pagar->setText(funcao.retorna_valor_dinheiro(venda_atual->retorna_valor_pago()));
     ui->le_desconto->setText(funcao.retorna_valor_dinheiro(venda_atual->retorna_valor_total()-venda_atual->retorna_valor_pago()));
@@ -166,4 +174,53 @@ void tela_nota_venda::mostrar_dados(){
     ui->tw_lista_pagamento->resizeColumnToContents(1);
     ui->tw_lista_pagamento->resizeColumnToContents(2);
     ui->tw_lista_pagamento->resizeColumnToContents(3);
+}
+
+void tela_nota_venda::on_tw_lista_pagamento_doubleClicked(const QModelIndex &index){
+    if(lt_ganho[index.row()]->retorna_origem()==2){
+        funcoes_extras funcao;
+        double total_parcial = 0;
+        double total_a_parcelar = 0;
+        double valor_parcelas = 0;
+        double ultima_parcela = 0;
+        int numero_parcelas_restantes = 0;
+        double valor_anterior = lt_ganho[index.row()]->retorna_valor();
+        std::vector< int > indice_parcelas;
+
+        tl_editar_parcela.definir_icone_janela(logomarca);
+        tl_editar_parcela.definir_dados(lt_ganho[index.row()]);
+        if(tl_editar_parcela.exec()){
+            lt_ganho[index.row()]  = tl_editar_parcela.retorna_parcela();
+            if(valor_anterior!=lt_ganho[index.row()]->retorna_valor()){
+                for (int i=0; i < int(lt_ganho.size()); i++){
+                    if((lt_ganho[i]->retorna_origem()==2)){
+                        if(i <= int(index.row())){
+                            total_parcial  = total_parcial + lt_ganho[i]->retorna_valor();
+                        }
+                        else{
+                            if(lt_ganho[i]->retorna_status()==1){
+                                total_parcial = total_parcial + lt_ganho[i]->retorna_valor();
+                            }
+                            else{
+                                numero_parcelas_restantes = numero_parcelas_restantes+1;
+                                indice_parcelas.push_back(i);
+                            }
+                        }
+                    }
+                }
+                total_a_parcelar = valor_total - total_parcial;
+
+                valor_parcelas = total_a_parcelar/numero_parcelas_restantes;
+                valor_parcelas = funcao.arredonda_para_duas_casas_decimais(valor_parcelas);
+                ultima_parcela = total_a_parcelar - valor_parcelas*(numero_parcelas_restantes-1);
+
+                for (int i = 0; i<int(indice_parcelas.size()-1);i++){
+                    lt_ganho[indice_parcelas[i]]->alterar_valor(valor_parcelas);
+                }
+
+                lt_ganho[indice_parcelas[int(indice_parcelas.size()-1)]]->alterar_valor(ultima_parcela);
+            }
+            mostrar_dados_pagamento();
+        }
+    }
 }
