@@ -69,7 +69,11 @@ private:
     QLabel *lb_saldo;
     QString data_sistema;
     double custo_total;
-    double renda_total;
+    double renda_total;    
+    int z_v , z_r , z_g , z_b;
+    int m_v , m_r , m_g , m_b;
+    int n_v , n_r , n_g , n_b;
+    int i_v , i_r , i_g , i_b;
 };
 
 #endif // TELA_ESTOQUE_H

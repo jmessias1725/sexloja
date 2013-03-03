@@ -15,7 +15,7 @@ bool cep::buscar_cep(QString cep_procurado){
     cep_aux = cep_aux.substr(0,5)+cep_aux.substr(6,3);
     cep_procurado = QString::fromStdString(cep_aux);
 
-    if (conexao.conetar_bd("localhost",3306,"bd_cep","root","tiger270807","cep::buscar_cep")){
+    if (conexao.conetar_bd("localhost",3306,"bd_cep","root","tiger270807")){
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
 

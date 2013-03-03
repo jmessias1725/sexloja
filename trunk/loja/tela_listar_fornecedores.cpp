@@ -149,7 +149,7 @@ void tela_listar_fornecedores::on_btn_buscar_clicked()
         }
 
         //realiza conexão ao banco de dados
-        verifica_conexao = conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_listar_fornecedores::on_btn_buscar_clicked()");
+        verifica_conexao = conexao.conetar_bd();
         if (verifica_conexao){
             //Retorna o banco de dados
             bd = conexao.retorna_bd();

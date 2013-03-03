@@ -6,7 +6,7 @@ legenda_estoque::legenda_estoque()
     QSqlDatabase bd;
 
     //realiza conexão ao banco de dados
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","legenda_estoque::legenda_estoque")){
+    if (conexao.conetar_bd()){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
@@ -159,7 +159,7 @@ bool legenda_estoque::salvar_alteracao_configuracao_estoque(){
 
     //realiza conexão ao banco de dados
 
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","legenda_estoque::salvar_alteracao_configuracao_estoque")){
+    if (conexao.conetar_bd()){
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
 

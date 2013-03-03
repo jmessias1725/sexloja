@@ -101,7 +101,7 @@ bool fornecedor::salvar_dados_fornecedor(void){
     QString id_fornecedor;
 
     //realiza conexão ao banco de dados
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","fornecedor::salvar_dados_fornecedor")){
+    if (conexao.conetar_bd()){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
@@ -213,7 +213,7 @@ bool fornecedor::salvar_alteracao_dados_fornecedor(std::vector< std::string > li
     QSqlDatabase bd;
 
     //realiza conexão ao banco de dados
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","fornecedor::salvar_alteracao_dados_fornecedor")){
+    if (conexao.conetar_bd()){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
@@ -336,7 +336,7 @@ bool fornecedor::remover_cadastro_fornecedor(int id_fornecedor){
 
     //realiza conexão ao banco de dados
 
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","fornecedor::remover_cadastro_fornecedor")){
+    if (conexao.conetar_bd()){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();

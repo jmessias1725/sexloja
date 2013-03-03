@@ -6,12 +6,14 @@
 #include <iostream>
 #include <QtGui>
 #include <QMessageBox>
+#include <stdlib.h>
 
 class conexao_bd
 {
 public:
     QSqlDatabase bd_loja;
-    bool conetar_bd(const QString hostname,int porta,const QString nome_bd,const QString usuario,const QString senha,const QString nome_conexao);
+    bool conetar_bd();
+    bool conetar_bd(const QString hostname,int porta,const QString nome_bd,const QString usuario,const QString senha);
     void fechar_conexao();
     QSqlDatabase retorna_bd();
 };

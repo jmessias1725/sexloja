@@ -52,3 +52,14 @@ int ganho::retorna_id_origem(void){
     return id_origem;
 }
 
+void ganho::alterar_data(QString dat){
+    data = dat;
+}
+
+void ganho::alterar_valor(double val){
+    valor = val;
+}
+
+void ganho::alterar_status(int sta){
+    status = sta;
+}

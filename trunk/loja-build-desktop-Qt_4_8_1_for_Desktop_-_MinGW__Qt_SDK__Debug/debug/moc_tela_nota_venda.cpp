@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_nota_venda.h'
 **
-** Created: Tue 26. Feb 11:43:36 2013
+** Created: Sun 3. Mar 01:04:07 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,26 +23,34 @@ static const uint qt_meta_data_tela_nota_venda[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       0,    0, // methods
+       1,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
        0,       // signalCount
 
+ // slots: signature, parameters, type, tag, flags
+      23,   17,   16,   16, 0x08,
+
        0        // eod
 };
 
 static const char qt_meta_stringdata_tela_nota_venda[] = {
-    "tela_nota_venda\0"
+    "tela_nota_venda\0\0index\0"
+    "on_tw_lista_pagamento_doubleClicked(QModelIndex)\0"
 };
 
 void tela_nota_venda::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    Q_UNUSED(_o);
-    Q_UNUSED(_id);
-    Q_UNUSED(_c);
-    Q_UNUSED(_a);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        tela_nota_venda *_t = static_cast<tela_nota_venda *>(_o);
+        switch (_id) {
+        case 0: _t->on_tw_lista_pagamento_doubleClicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
+        default: ;
+        }
+    }
 }
 
 const QMetaObjectExtraData tela_nota_venda::staticMetaObjectExtraData = {
@@ -76,6 +84,11 @@ int tela_nota_venda::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     _id = QDialog::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 1)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 1;
+    }
     return _id;
 }
 QT_END_MOC_NAMESPACE

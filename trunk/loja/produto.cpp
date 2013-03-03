@@ -109,7 +109,7 @@ bool produto::salvar_dados_produto(QString nome_produto,QString fabricante_produ
 
     //realiza conexão ao banco de dados
 
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","produto::salvar_dados_produto")){
+    if (conexao.conetar_bd()){
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
 
@@ -251,7 +251,7 @@ bool produto::salvar_alteracao_dados_produto(QString nome_produto,QString fabric
 
     //realiza conexão ao banco de dados
 
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","produto::salvar_alteracao_dados_produto")){
+    if (conexao.conetar_bd()){
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
 
@@ -373,7 +373,7 @@ bool produto::remover_cadastro_produto(void){
 
     //realiza conexão ao banco de dados
 
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","produto::remover_cadastro_produto")){
+    if (conexao.conetar_bd()){
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
 
@@ -445,7 +445,7 @@ bool produto::recuperar_cadastro_produto(void){
 
     //realiza conexão ao banco de dados
 
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","produto::recuperar_cadastro_produto")){
+    if (conexao.conetar_bd()){
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
 
@@ -523,7 +523,7 @@ bool produto::reajustar_valor_venda_produto(int tp, QString porcentagem){
     double por = porcentagem.toDouble();
 
     //realiza conexão ao banco de dados
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","produto::reajustar_valor_venda_produto")){
+    if (conexao.conetar_bd()){
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
 

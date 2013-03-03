@@ -126,7 +126,7 @@ void tela_contas::busca_lista_movimento_mes(QDate data_consultar){
     QString data_s;
 
     //realiza conexão ao banco de dados
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_estoque::buscar_produtos")){
+    if (conexao.conetar_bd()){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
@@ -201,7 +201,7 @@ void tela_contas::on_btn_buscar_cp_clicked()
     aux_lista_despesa.clear();
 
     //realiza conexão ao banco de dados
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_listar_despesas::on_btn_buscar_clicked")){
+    if (conexao.conetar_bd()){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
@@ -328,7 +328,7 @@ void tela_contas::on_btn_buscar_cr_clicked()
     aux_lista_ganho.clear();
 
     //realiza conexão ao banco de dados
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_listar_despesas::on_btn_buscar_clicked")){
+    if (conexao.conetar_bd()){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
@@ -441,7 +441,7 @@ void tela_contas::on_btn_buscar_nota_venda_clicked()
     lista_nome_clientes.clear();
 
     //realiza conexão ao banco de dados
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_listar_despesas::on_btn_buscar_clicked")){
+    if (conexao.conetar_bd()){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();
@@ -517,7 +517,7 @@ void tela_contas::on_btn_buscar_nota_compra_clicked(){
     lista_nome_fornecedores.clear();
 
     //realiza conexão ao banco de dados
-    if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_listar_despesas::on_btn_buscar_clicked")){
+    if (conexao.conetar_bd()){
 
         //Retorna o banco de dados
         bd = conexao.retorna_bd();

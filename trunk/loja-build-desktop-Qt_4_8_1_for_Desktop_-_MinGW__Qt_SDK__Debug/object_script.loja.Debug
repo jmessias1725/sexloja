@@ -59,6 +59,7 @@ INPUT(
 ./debug\tela_nota_venda.o
 ./debug\parcela.o
 ./debug\tela_ajustar_data_valor.o
+./debug\tela_editar_parcela.o
 ./debug\moc_tela_login.o
 ./debug\moc_tela_principal.o
 ./debug\moc_tela_cadastro_cliente.o
@@ -93,5 +94,6 @@ INPUT(
 ./debug\moc_tela_contas.o
 ./debug\moc_tela_nota_venda.o
 ./debug\moc_tela_ajustar_data_valor.o
+./debug\moc_tela_editar_parcela.o
 ./debug\qrc_imagens.o
 );

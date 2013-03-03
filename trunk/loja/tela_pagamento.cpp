@@ -214,7 +214,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
             QString campos;
 
             //realiza conexão ao banco de dados
-            if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_pagamento::on_btn_confirmar_clicke")){
+            if (conexao.conetar_bd()){
                 //Retorna o banco de dados
                 bd = conexao.retorna_bd();
 
@@ -303,7 +303,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                         salvar_dados_despesa_dinheiro.bindValue(":valor", valor_pago);
                         salvar_dados_despesa_dinheiro.bindValue(":data", dados_compra->retorna_data_compra());
                         salvar_dados_despesa_dinheiro.bindValue(":status", 1);
-                        salvar_dados_despesa_dinheiro.bindValue(":origem", 2);
+                        salvar_dados_despesa_dinheiro.bindValue(":origem", 3);
                         salvar_dados_despesa_dinheiro.bindValue(":id_origem", dados_compra->retorna_id_compra());
                         salvar_dados_despesa_dinheiro.exec();
                     }
@@ -557,7 +557,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
             int id_pag_avista = 0;
 
             //realiza conexão ao banco de dados
-            if (conexao.conetar_bd("localhost",3306,"bd_loja","root","tiger270807","tela_pagamento::on_btn_confirmar_clicke")){
+            if (conexao.conetar_bd()){
                 //Retorna o banco de dados
                 bd = conexao.retorna_bd();
 
@@ -643,7 +643,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                         salvar_dados_dinheiro.bindValue(":valor", valor_pago);
                         salvar_dados_dinheiro.bindValue(":data", dados_venda->retorna_data_venda());
                         salvar_dados_dinheiro.bindValue(":status", 1);
-                        salvar_dados_dinheiro.bindValue(":origem", 2);
+                        salvar_dados_dinheiro.bindValue(":origem", 3);
                         salvar_dados_dinheiro.bindValue(":id_origem", dados_venda->retorna_id_venda());
                         salvar_dados_dinheiro.exec();
                     }
