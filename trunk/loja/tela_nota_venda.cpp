@@ -208,6 +208,7 @@ void tela_nota_venda::on_tw_lista_pagamento_doubleClicked(const QModelIndex &ind
                         }
                     }
                 }
+                if(numero_parcelas_restantes!=0){
                 total_a_parcelar = valor_total - total_parcial;
 
                 valor_parcelas = total_a_parcelar/numero_parcelas_restantes;
@@ -219,6 +220,10 @@ void tela_nota_venda::on_tw_lista_pagamento_doubleClicked(const QModelIndex &ind
                 }
 
                 lt_ganho[indice_parcelas[int(indice_parcelas.size()-1)]]->alterar_valor(ultima_parcela);
+                }
+                else{
+                    lt_ganho[index.row()]->alterar_valor(valor_anterior);
+                }
             }
             mostrar_dados_pagamento();
         }
