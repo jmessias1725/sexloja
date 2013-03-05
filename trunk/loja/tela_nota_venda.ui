@@ -45,27 +45,112 @@ QToolButton{
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QToolButton" name="btn_adicionar_cliente_3">
+     <widget class="QToolButton" name="btn_confirmar">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>700</x>
         <y>2</y>
-        <width>45</width>
+        <width>60</width>
         <height>45</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Calibri</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
-       <string>Adiconar Cliente</string>
+       <string>Confirmar</string>
       </property>
       <property name="icon">
        <iconset resource="imagens.qrc">
-        <normaloff>:/img/img/adiciona_clientes.png</normaloff>:/img/img/adiciona_clientes.png</iconset>
+        <normaloff>:/img/img/1345902916_camera_test.png</normaloff>:/img/img/1345902916_camera_test.png</iconset>
       </property>
       <property name="iconSize">
        <size>
-        <width>40</width>
-        <height>40</height>
+        <width>20</width>
+        <height>20</height>
        </size>
+      </property>
+      <property name="toolButtonStyle">
+       <enum>Qt::ToolButtonTextUnderIcon</enum>
+      </property>
+      <property name="autoRaise">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="btn_cancelar">
+      <property name="geometry">
+       <rect>
+        <x>760</x>
+        <y>2</y>
+        <width>60</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Calibri</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Cancelar</string>
+      </property>
+      <property name="icon">
+       <iconset resource="imagens.qrc">
+        <normaloff>:/img/img/1345902747_button_cancel.png</normaloff>:/img/img/1345902747_button_cancel.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="toolButtonStyle">
+       <enum>Qt::ToolButtonTextUnderIcon</enum>
+      </property>
+      <property name="autoRaise">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="btn_reabrir">
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>2</y>
+        <width>60</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Calibri</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Reabrir</string>
+      </property>
+      <property name="icon">
+       <iconset resource="imagens.qrc">
+        <normaloff>:/img/img/abrir.png</normaloff>:/img/img/abrir.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="toolButtonStyle">
+       <enum>Qt::ToolButtonTextUnderIcon</enum>
       </property>
       <property name="autoRaise">
        <bool>true</bool>
@@ -94,7 +179,7 @@ QToolButton{
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-310</y>
+        <y>0</y>
         <width>811</width>
         <height>915</height>
        </rect>

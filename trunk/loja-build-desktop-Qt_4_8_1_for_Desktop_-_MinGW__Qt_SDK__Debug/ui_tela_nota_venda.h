@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_nota_venda.ui'
 **
-** Created: Sun 3. Mar 01:01:04 2013
+** Created: Tue 5. Mar 15:41:13 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -35,7 +35,9 @@ class Ui_tela_nota_venda
 public:
     QVBoxLayout *verticalLayout_5;
     QFrame *frame_7;
-    QToolButton *btn_adicionar_cliente_3;
+    QToolButton *btn_confirmar;
+    QToolButton *btn_cancelar;
+    QToolButton *btn_reabrir;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents_2;
     QVBoxLayout *verticalLayout_3;
@@ -104,14 +106,41 @@ public:
 "}"));
         frame_7->setFrameShape(QFrame::Panel);
         frame_7->setFrameShadow(QFrame::Raised);
-        btn_adicionar_cliente_3 = new QToolButton(frame_7);
-        btn_adicionar_cliente_3->setObjectName(QString::fromUtf8("btn_adicionar_cliente_3"));
-        btn_adicionar_cliente_3->setGeometry(QRect(10, 2, 45, 45));
+        btn_confirmar = new QToolButton(frame_7);
+        btn_confirmar->setObjectName(QString::fromUtf8("btn_confirmar"));
+        btn_confirmar->setGeometry(QRect(700, 2, 60, 45));
+        QFont font;
+        font.setFamily(QString::fromUtf8("Calibri"));
+        font.setPointSize(10);
+        font.setBold(true);
+        font.setWeight(75);
+        btn_confirmar->setFont(font);
         QIcon icon;
-        icon.addFile(QString::fromUtf8(":/img/img/adiciona_clientes.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_adicionar_cliente_3->setIcon(icon);
-        btn_adicionar_cliente_3->setIconSize(QSize(40, 40));
-        btn_adicionar_cliente_3->setAutoRaise(true);
+        icon.addFile(QString::fromUtf8(":/img/img/1345902916_camera_test.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_confirmar->setIcon(icon);
+        btn_confirmar->setIconSize(QSize(20, 20));
+        btn_confirmar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+        btn_confirmar->setAutoRaise(true);
+        btn_cancelar = new QToolButton(frame_7);
+        btn_cancelar->setObjectName(QString::fromUtf8("btn_cancelar"));
+        btn_cancelar->setGeometry(QRect(760, 2, 60, 45));
+        btn_cancelar->setFont(font);
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/img/img/1345902747_button_cancel.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_cancelar->setIcon(icon1);
+        btn_cancelar->setIconSize(QSize(20, 20));
+        btn_cancelar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+        btn_cancelar->setAutoRaise(true);
+        btn_reabrir = new QToolButton(frame_7);
+        btn_reabrir->setObjectName(QString::fromUtf8("btn_reabrir"));
+        btn_reabrir->setGeometry(QRect(640, 2, 60, 45));
+        btn_reabrir->setFont(font);
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/img/img/abrir.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_reabrir->setIcon(icon2);
+        btn_reabrir->setIconSize(QSize(20, 20));
+        btn_reabrir->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+        btn_reabrir->setAutoRaise(true);
 
         verticalLayout_5->addWidget(frame_7);
 
@@ -122,7 +151,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, -310, 811, 915));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 811, 915));
         verticalLayout_3 = new QVBoxLayout(scrollAreaWidgetContents_2);
         verticalLayout_3->setSpacing(5);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
@@ -133,14 +162,14 @@ public:
         gb_dados_cliente = new QGroupBox(scrollAreaWidgetContents_2);
         gb_dados_cliente->setObjectName(QString::fromUtf8("gb_dados_cliente"));
         gb_dados_cliente->setMinimumSize(QSize(645, 70));
-        QFont font;
-        font.setFamily(QString::fromUtf8("Calibri"));
-        font.setPointSize(10);
-        font.setBold(true);
-        font.setWeight(75);
-        font.setStrikeOut(false);
-        font.setKerning(false);
-        gb_dados_cliente->setFont(font);
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Calibri"));
+        font1.setPointSize(10);
+        font1.setBold(true);
+        font1.setWeight(75);
+        font1.setStrikeOut(false);
+        font1.setKerning(false);
+        gb_dados_cliente->setFont(font1);
         gb_dados_cliente->setAlignment(Qt::AlignCenter);
         le_nome = new QLineEdit(gb_dados_cliente);
         le_nome->setObjectName(QString::fromUtf8("le_nome"));
@@ -151,13 +180,13 @@ public:
         sizePolicy.setHeightForWidth(le_nome->sizePolicy().hasHeightForWidth());
         le_nome->setSizePolicy(sizePolicy);
         le_nome->setMinimumSize(QSize(410, 20));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("Calibri"));
-        font1.setPointSize(10);
-        font1.setBold(false);
-        font1.setWeight(50);
-        font1.setKerning(false);
-        le_nome->setFont(font1);
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("Calibri"));
+        font2.setPointSize(10);
+        font2.setBold(false);
+        font2.setWeight(50);
+        font2.setKerning(false);
+        le_nome->setFont(font2);
         le_nome->setMaxLength(60);
         le_nome->setReadOnly(true);
         le_cpf = new QLineEdit(gb_dados_cliente);
@@ -167,44 +196,44 @@ public:
         le_cpf->setSizePolicy(sizePolicy);
         le_cpf->setMinimumSize(QSize(95, 20));
         le_cpf->setMaximumSize(QSize(95, 20));
-        le_cpf->setFont(font1);
+        le_cpf->setFont(font2);
         le_cpf->setMaxLength(14);
         le_cpf->setReadOnly(true);
         lb_nome = new QLabel(gb_dados_cliente);
         lb_nome->setObjectName(QString::fromUtf8("lb_nome"));
         lb_nome->setGeometry(QRect(5, 17, 35, 20));
         lb_nome->setMaximumSize(QSize(40, 20));
-        lb_nome->setFont(font1);
+        lb_nome->setFont(font2);
         lb_rg = new QLabel(gb_dados_cliente);
         lb_rg->setObjectName(QString::fromUtf8("lb_rg"));
         lb_rg->setGeometry(QRect(126, 44, 20, 20));
-        lb_rg->setFont(font1);
+        lb_rg->setFont(font2);
         lb_cpf = new QLabel(gb_dados_cliente);
         lb_cpf->setObjectName(QString::fromUtf8("lb_cpf"));
         lb_cpf->setGeometry(QRect(304, 44, 26, 20));
-        lb_cpf->setFont(font1);
+        lb_cpf->setFont(font2);
         le_rg = new QLineEdit(gb_dados_cliente);
         le_rg->setObjectName(QString::fromUtf8("le_rg"));
         le_rg->setGeometry(QRect(147, 44, 150, 20));
         le_rg->setMinimumSize(QSize(120, 20));
         le_rg->setMaximumSize(QSize(200, 20));
-        le_rg->setFont(font1);
+        le_rg->setFont(font2);
         le_rg->setMaxLength(20);
         le_rg->setCursorPosition(20);
         le_rg->setReadOnly(true);
         le_codigo = new QLineEdit(gb_dados_cliente);
         le_codigo->setObjectName(QString::fromUtf8("le_codigo"));
         le_codigo->setGeometry(QRect(49, 44, 70, 20));
-        QFont font2;
-        font2.setBold(false);
-        font2.setWeight(50);
-        le_codigo->setFont(font2);
+        QFont font3;
+        font3.setBold(false);
+        font3.setWeight(50);
+        le_codigo->setFont(font3);
         le_codigo->setCursorPosition(9);
         le_codigo->setReadOnly(true);
         lb_codigo = new QLabel(gb_dados_cliente);
         lb_codigo->setObjectName(QString::fromUtf8("lb_codigo"));
         lb_codigo->setGeometry(QRect(5, 44, 42, 20));
-        lb_codigo->setFont(font2);
+        lb_codigo->setFont(font3);
         le_nome->raise();
         le_cpf->raise();
         lb_nome->raise();
@@ -221,21 +250,16 @@ public:
         gb_dados_venda = new QGroupBox(scrollAreaWidgetContents_2);
         gb_dados_venda->setObjectName(QString::fromUtf8("gb_dados_venda"));
         gb_dados_venda->setMinimumSize(QSize(140, 70));
-        QFont font3;
-        font3.setFamily(QString::fromUtf8("Calibri"));
-        font3.setPointSize(10);
-        font3.setBold(true);
-        font3.setWeight(75);
-        gb_dados_venda->setFont(font3);
+        gb_dados_venda->setFont(font);
         gb_dados_venda->setAlignment(Qt::AlignCenter);
         lb_data = new QLabel(gb_dados_venda);
         lb_data->setObjectName(QString::fromUtf8("lb_data"));
         lb_data->setGeometry(QRect(5, 17, 30, 20));
-        lb_data->setFont(font2);
+        lb_data->setFont(font3);
         le_data = new QLineEdit(gb_dados_venda);
         le_data->setObjectName(QString::fromUtf8("le_data"));
         le_data->setGeometry(QRect(39, 17, 97, 20));
-        le_data->setFont(font2);
+        le_data->setFont(font3);
         le_data->setCursorPosition(0);
         le_data->setReadOnly(true);
 
@@ -347,7 +371,7 @@ public:
 
         lb_total = new QLabel(frame);
         lb_total->setObjectName(QString::fromUtf8("lb_total"));
-        lb_total->setFont(font3);
+        lb_total->setFont(font);
         lb_total->setStyleSheet(QString::fromUtf8("color: rgb(217, 217, 217);"));
 
         horizontalLayout_6->addWidget(lb_total);
@@ -379,7 +403,7 @@ public:
 
         lb_desconto = new QLabel(frame);
         lb_desconto->setObjectName(QString::fromUtf8("lb_desconto"));
-        lb_desconto->setFont(font3);
+        lb_desconto->setFont(font);
         lb_desconto->setStyleSheet(QString::fromUtf8("color: rgb(217, 217, 217);"));
 
         horizontalLayout_7->addWidget(lb_desconto);
@@ -543,7 +567,9 @@ public:
     void retranslateUi(QDialog *tela_nota_venda)
     {
         tela_nota_venda->setWindowTitle(QApplication::translate("tela_nota_venda", "Nota de venda;", 0, QApplication::UnicodeUTF8));
-        btn_adicionar_cliente_3->setText(QApplication::translate("tela_nota_venda", "Adiconar Cliente", 0, QApplication::UnicodeUTF8));
+        btn_confirmar->setText(QApplication::translate("tela_nota_venda", "Confirmar", 0, QApplication::UnicodeUTF8));
+        btn_cancelar->setText(QApplication::translate("tela_nota_venda", "Cancelar", 0, QApplication::UnicodeUTF8));
+        btn_reabrir->setText(QApplication::translate("tela_nota_venda", "Reabrir", 0, QApplication::UnicodeUTF8));
         gb_dados_cliente->setTitle(QApplication::translate("tela_nota_venda", "Dados do Cliente", 0, QApplication::UnicodeUTF8));
         le_nome->setText(QString());
         le_cpf->setInputMask(QApplication::translate("tela_nota_venda", "000.000.000-00; ", 0, QApplication::UnicodeUTF8));

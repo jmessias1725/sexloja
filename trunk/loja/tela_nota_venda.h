@@ -31,6 +31,8 @@ public:
 private slots:
     void on_tw_lista_pagamento_doubleClicked(const QModelIndex &index);
 
+    void on_btn_reabrir_clicked();
+
 private:
     Ui::tela_nota_venda *ui;
     QPixmap logomarca;

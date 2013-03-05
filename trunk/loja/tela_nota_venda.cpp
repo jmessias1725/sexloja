@@ -229,3 +229,8 @@ void tela_nota_venda::on_tw_lista_pagamento_doubleClicked(const QModelIndex &ind
         }
     }
 }
+
+void tela_nota_venda::on_btn_reabrir_clicked()
+{
+
+}
