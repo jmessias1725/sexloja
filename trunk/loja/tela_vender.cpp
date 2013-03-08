@@ -26,6 +26,26 @@ void tela_vender::definir_icone_janela(QPixmap logo){
     tela_vender::mostrar_lista_produtos();
 }
 
+void tela_vender::definir_dados(std::vector< lista_venda* > lis_venda, cliente *cli, venda *vend){
+    for (int i = 0; i<int(lis_venda.size()); i++){
+        lista_produtos.push_back(new produto(lis_venda[i]->retorna_id_produto(),
+                                             lis_venda[i]->retorna_nome_produto(),
+                                             "","","",
+                                             lis_venda[i]->retorna_valor_venda(),
+                                             0.0,
+                                             lis_venda[i]->retorna_quantidade()));
+    }
+    cliente_atual = cli;
+    if(cliente_atual->retornar_id()>0){
+        ui->le_codigo->setText(QString::number(cliente_atual->retornar_id()));
+        ui->le_nome->setText(cliente_atual->retornar_nome());
+        ui->le_cpf->setText(cliente_atual->retornar_cpf());
+        ui->le_rg->setText(cliente_atual->retornar_rg());
+    }
+    ui->data->setDate(vend->retorna_data_QDate());
+    tela_vender::mostrar_lista_produtos();
+}
+
 void tela_vender::on_btn_buscar_cliente_clicked()
 {
     cliente_atual->limpar_cliente();

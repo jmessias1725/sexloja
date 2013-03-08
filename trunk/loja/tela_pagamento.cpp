@@ -576,12 +576,15 @@ void tela_pagamento::on_btn_confirmar_clicked()
                 QSqlQuery salvar_dados_despesa_dinheiro(bd);
                 QSqlQuery salvar_dados_avista(bd);
                 QSqlQuery salvar_dados_parcelado(bd);
+                QSqlQuery salvar_dados_his_balanco_estoque(bd);
+                QSqlQuery salvar_dados_his_remocao_pro_estoque(bd);
 
                 //Declara a variável que irá fazer a consulta para determinar o id do produto;
                 QSqlQuery consultar_id_venda(bd);
                 QSqlQuery consultar_total_disponivel(bd);
                 QSqlQuery consultar_id_parcelado(bd);
                 QSqlQuery consultar_id_avista(bd);
+                QSqlQuery consultar_id_balanco(bd);
 
                 //Insere os dados no cadastro da venda
                 salvar_dados_venda.prepare("INSERT INTO venda(data_venda,id_cliente,valor_total,desconto,valor_pago) VALUES(:data_venda, :id_cliente, :valor_total, :desconto, :valor_pago);");
@@ -753,23 +756,56 @@ void tela_pagamento::on_btn_confirmar_clicked()
                     salvar_dados_despesa_cheque.exec();
                 }
 
+                std::vector< int > id_balanco;
+                std::vector< int > total_disponivel;
+                std::vector< int > quantidade_removida;
+                std::vector< int > id_balanco_removido;
+
+                bool removeu_quantidade_desejada = false;
+                int resto = 0;
+                int j = 0;
+                int aux_total;
+                int aux_id = 0;
+                int total_desejado;
+
+                QString verifica_se_tem_id = "";
+
                 for(int i=0; i<int(lt_venda.size());i++){
-                    std::vector< int > id_balanco;
-                    std::vector< int > total_disponivel;
-                    bool removeu_quantidade_desejada = false;
-                    int resto = 0;
-                    int j = 0;
-                    int aux_total;
-                    int aux_id;
-                    int total_desejado;
+
+                    id_balanco.clear();
+                    total_disponivel.clear();
+                    quantidade_removida.clear();
+                    id_balanco_removido.clear();
+
+                    removeu_quantidade_desejada = false;
+                    resto = 0;
+                    j = 0;
+
+                    verifica_se_tem_id = "";
 
                     consultar_total_disponivel.exec("SELECT id_balanco,total_disponivel FROM his_balanco_estoque WHERE id_produto = "+QString::number(lt_venda[i]->retorna_id_produto())+";");
                     while(consultar_total_disponivel.next()){
                         aux_id = consultar_total_disponivel.value(0).toInt();
+                        verifica_se_tem_id = QString::number(aux_id);
                         aux_total = consultar_total_disponivel.value(1).toInt();
                         if(aux_total>0){
                             id_balanco.push_back(aux_id);
                             total_disponivel.push_back(aux_total);
+                        }
+                    }
+
+                    if(verifica_se_tem_id == ""){
+                        //Insere os dados no histórico de balanço do estoque
+                        salvar_dados_his_balanco_estoque.prepare("INSERT INTO his_balanco_estoque(valor_compra,id_produto,total_comprado,total_disponivel) VALUES(:valor_compra, :id_produto, :total_comprado, :total_disponivel);");
+                        salvar_dados_his_balanco_estoque.bindValue(":valor_compra", 0.0);
+                        salvar_dados_his_balanco_estoque.bindValue(":id_produto",lt_venda[i]->retorna_id_produto());
+                        salvar_dados_his_balanco_estoque.bindValue(":total_comprado", 0);
+                        salvar_dados_his_balanco_estoque.bindValue(":total_disponivel", total_desejado);
+                        salvar_dados_his_balanco_estoque.exec();
+
+                        consultar_id_balanco.exec("SELECT id_balanco FROM his_balanco_estoque WHERE id_produto = "+QString::number(lt_venda[i]->retorna_id_produto())+";");
+                        if(consultar_id_balanco.next()){
+                            aux_id = consultar_id_balanco.value(0).toInt();
                         }
                     }
 
@@ -782,10 +818,14 @@ void tela_pagamento::on_btn_confirmar_clicked()
                         resto = total_disponivel[j]-total_desejado;
                         if(resto<0){
                             total_desejado = total_desejado - total_disponivel[j];
+                            quantidade_removida.push_back(total_disponivel[j]);
+                            id_balanco_removido.push_back(id_balanco[j]);
                             total_disponivel[j] = 0;
                         }
                         else{
                             total_disponivel[j] = resto;
+                            quantidade_removida.push_back(total_desejado);
+                            id_balanco_removido.push_back(id_balanco[j]);
                             removeu_quantidade_desejada = true;
                             total_desejado = 0;
                         }
@@ -793,10 +833,17 @@ void tela_pagamento::on_btn_confirmar_clicked()
                     }
                     if(total_desejado!=0){
                         total_desejado = total_desejado*(-1);
-                        if(int(total_disponivel.size())!=0)
+                        if(int(total_disponivel.size())!=0){
                             total_disponivel[total_disponivel.size()-1] = total_desejado;
+                            total_desejado = total_desejado*(-1);
+                            quantidade_removida[id_balanco.size()-1] = quantidade_removida[id_balanco.size()-1]+total_desejado;
+                        }
                         else{
                             total_disponivel.push_back(total_desejado);
+                            total_desejado = total_desejado*(-1);
+                            quantidade_removida.push_back(total_desejado);
+                            id_balanco_removido.push_back(aux_id);
+                            consultar_id_balanco.clear();
                         }
                     }
 
@@ -809,6 +856,16 @@ void tela_pagamento::on_btn_confirmar_clicked()
                     id_balanco.clear();
                     total_disponivel.clear();
 
+                    for(int j = 0; j < int(id_balanco_removido.size()); j++){
+                        //std::cout<<dados_venda->retorna_id_venda()<<" , "<<lt_venda[i]->retorna_id_produto()<<" , "<<"id = "<<id_balanco_removido[j]<<" quantidade="<<quantidade_removida[j]<<std::endl;
+                        //Insere os dados no histórico de balanço do estoque
+                        salvar_dados_his_remocao_pro_estoque.prepare("INSERT INTO his_remocao_pro_estoque(id_venda,id_produto,id_balanco,quantidade) VALUES(:id_venda, :id_produto, :id_balanco, :quantidade);");
+                        salvar_dados_his_remocao_pro_estoque.bindValue(":id_venda", dados_venda->retorna_id_venda());
+                        salvar_dados_his_remocao_pro_estoque.bindValue(":id_produto",lt_venda[i]->retorna_id_produto());
+                        salvar_dados_his_remocao_pro_estoque.bindValue(":id_balanco", id_balanco_removido[j]);
+                        salvar_dados_his_remocao_pro_estoque.bindValue(":quantidade", quantidade_removida[j]);
+                        salvar_dados_his_remocao_pro_estoque.exec();
+                    }
                     //Insere os dados na lista de venda;
                     salvar_dados_lista_venda.prepare("INSERT INTO lista_venda(id_produto,valor_venda_uni,quantidade,id_venda) VALUES(:id_produto,:valor_venda_uni,:quantidade,:id_venda);");
                     salvar_dados_lista_venda.bindValue(":id_produto", lt_venda[i]->retorna_id_produto());
@@ -837,7 +894,9 @@ void tela_pagamento::on_btn_confirmar_clicked()
                    (salvar_dados_cheque.lastError().number()<=0)&&
                    (salvar_dados_despesa_cheque.lastError().number()<=0)&&
                    (salvar_dados_dinheiro.lastError().number()<=0)&&
-                   (salvar_dados_despesa_dinheiro.lastError().number()<=0)){
+                   (salvar_dados_despesa_dinheiro.lastError().number()<=0)&&
+                   (salvar_dados_his_balanco_estoque.lastError().number()<=0)&&
+                   (salvar_dados_his_remocao_pro_estoque.lastError().number()<=0)){
 
                     //Finaliza a inserçao dos dados.
                     bd.commit();

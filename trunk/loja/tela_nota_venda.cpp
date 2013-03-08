@@ -232,5 +232,18 @@ void tela_nota_venda::on_tw_lista_pagamento_doubleClicked(const QModelIndex &ind
 
 void tela_nota_venda::on_btn_reabrir_clicked()
 {
-
+    QPixmap icone_janela(":img/img/produto_pergunta_50.png");
+    QMessageBox msg(0);
+    msg.setIconPixmap(icone_janela);
+    msg.setWindowIcon(logomarca);
+    msg.setWindowTitle("AVISO!!!");
+    msg.addButton("Sim", QMessageBox::AcceptRole);
+    msg.addButton("Não", QMessageBox::RejectRole);
+    msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+    msg.setText("Deseja reabrir a nota para edição?");
+    if(!msg.exec()){
+        tl_vender.definir_icone_janela(logomarca);
+        tl_vender.definir_dados(lt_venda,cliente_atual,venda_atual);
+        tl_vender.exec();
+    }
 }
