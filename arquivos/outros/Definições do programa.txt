@@ -13,6 +13,8 @@ Campo origem tabela despesas, ganhos.
 2 - dinheiro,parcelado.
 3 - dinheiro,avista.
 
+campo id_origem se refere ao id da operação.
+
 campo status tabela despesas.
 
 0 - aberta;

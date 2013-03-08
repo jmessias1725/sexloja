@@ -25,6 +25,7 @@ public:
     explicit tela_vender(QWidget *parent = 0);
     ~tela_vender();
     void definir_icone_janela(QPixmap logo);
+    void definir_dados(std::vector< lista_venda* > lis_venda, cliente *cli ,venda *vend);
 
 private slots:
     void closeEvent( QCloseEvent * event );

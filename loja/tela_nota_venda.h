@@ -9,6 +9,7 @@
 #include "lista_venda.h"
 #include "funcoes_extras.h"
 #include "tela_editar_parcela.h"
+#include "tela_vender.h"
 #include "ganho.h"
 
 namespace Ui {
@@ -30,7 +31,6 @@ public:
     
 private slots:
     void on_tw_lista_pagamento_doubleClicked(const QModelIndex &index);
-
     void on_btn_reabrir_clicked();
 
 private:
@@ -41,6 +41,7 @@ private:
     std::vector< lista_venda* > lt_venda;
     std::vector< ganho* > lt_ganho;
     tela_editar_parcela tl_editar_parcela;
+    tela_vender tl_vender;
     double valor_total;
 };
 

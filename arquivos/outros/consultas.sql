@@ -70,3 +70,10 @@ SELECT * FROM despesas WHERE STR_TO_DATE(data, '%d/%m/%Y') BETWEEN '2012-11-26' 
 SELECT *,SUM(valor) FROM despesas WHERE data = "15/01/2013";
 
 SELECT * FROM venda v, cliente c WHERE nome LIKE '%mag%' AND c.id_cliente = v.id_cliente;
+
+DELETE FROM venda WHERE id_venda = '1';
+DELETE FROM lista_venda WHERE id_venda='1';
+DELETE FROM dinheiro WHERE origem = '3' AND id_origem = '1';
+DELETE FROM cartao WHERE origem = '3' AND id_origem = '1';
+DELETE FROM cheque WHERE origem = '3' AND id_origem = '1';
+DELETE FROM ganhos WHERE id_origem = '1';
