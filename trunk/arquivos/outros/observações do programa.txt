@@ -4,3 +4,5 @@ Observações do programa
 3 - Corrigir tamnaho do campo fabrincante quando se seleciona um produto.
 4 - Buscar pelo número da nota de venda também, para os as vendas que não possuem um cliente definida pararecer.
 5 - Limpar os campos de busca da parte de contas.
+6 - Quando inserir um produto repetido, alterar somente a quantidade do mesmo e não o inserir novamente.
+7 - Alterar para permitir alterar a data do última parcela, menos o valor da mesma.
