@@ -52,6 +52,7 @@ private:
     double total_a_pagar;
     double valor_total;
     venda *dados_venda;
+    bool eh_estorno;
 };
 
 #endif // TELA_VENDER_H

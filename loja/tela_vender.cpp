@@ -10,6 +10,7 @@ tela_vender::tela_vender(QWidget *parent) :
     ui->le_desconto->setValidator(new QRegExpValidator(valida_dinheiro, ui->le_desconto));
     cliente_atual = new cliente();
     cliente_atual->altera_id_cliente(0);
+    eh_estorno = false;
 }
 
 tela_vender::~tela_vender()
@@ -27,6 +28,7 @@ void tela_vender::definir_icone_janela(QPixmap logo){
 }
 
 void tela_vender::definir_dados(std::vector< lista_venda* > lis_venda, cliente *cli, venda *vend){
+    dados_venda = vend;
     for (int i = 0; i<int(lis_venda.size()); i++){
         lista_produtos.push_back(new produto(lis_venda[i]->retorna_id_produto(),
                                              lis_venda[i]->retorna_nome_produto(),
@@ -43,6 +45,7 @@ void tela_vender::definir_dados(std::vector< lista_venda* > lis_venda, cliente *
         ui->le_rg->setText(cliente_atual->retornar_rg());
     }
     ui->data->setDate(vend->retorna_data_QDate());
+    eh_estorno = true;
     tela_vender::mostrar_lista_produtos();
 }
 
@@ -196,7 +199,7 @@ void tela_vender::on_btn_confirmar_clicked()
             }
 
             tl_pagamento.definir_icone_janela(logomarca);
-            tl_pagamento.definir_dados_venda(dados_venda,lt_venda);
+            tl_pagamento.definir_dados_venda(dados_venda,lt_venda,eh_estorno);
             if(tl_pagamento.exec()){
                 this->close();
             }
@@ -204,17 +207,32 @@ void tela_vender::on_btn_confirmar_clicked()
     }
     else{
         double valor_tot = funcao.converter_para_double(ui->le_total_a_pagar->text())+funcao.converter_para_double(ui->le_desconto->text());
-        dados_venda = new venda(ui->data->date(),ui->le_codigo->text().toInt(),valor_tot,
-                                funcao.converter_para_double(ui->le_desconto->text()));
+        if(eh_estorno == false){
+            dados_venda = new venda(ui->data->date(),ui->le_codigo->text().toInt(),valor_tot,
+                                    funcao.converter_para_double(ui->le_desconto->text()));
 
-        for(int i=0;i<int(lista_produtos.size());i++){
-            lt_venda.push_back(new lista_venda(lista_produtos[i]->retorna_id(),0,
-                                               lista_produtos[i]->retorna_quantidade_disponivel(),
-                                               lista_produtos[i]->retorna_valor_venda()));
+            for(int i=0;i<int(lista_produtos.size());i++){
+                lt_venda.push_back(new lista_venda(lista_produtos[i]->retorna_id(),0,
+                                                   lista_produtos[i]->retorna_quantidade_disponivel(),
+                                                   lista_produtos[i]->retorna_valor_venda()));
+            }
+        }
+        else{
+            dados_venda->alterar_data(ui->data->date());
+            dados_venda->alterar_id_cliente(ui->le_codigo->text().toInt());
+            dados_venda->alterar_valor_total(valor_tot);
+            dados_venda->alterar_desconto(funcao.converter_para_double(ui->le_desconto->text()));
+            dados_venda->alterar_valor_total(funcao.converter_para_double(ui->le_total_a_pagar->text()));
+
+            for(int i=0;i<int(lista_produtos.size());i++){
+                lt_venda.push_back(new lista_venda(lista_produtos[i]->retorna_id(),dados_venda->retorna_id_venda(),
+                                                   lista_produtos[i]->retorna_quantidade_disponivel(),
+                                                   lista_produtos[i]->retorna_valor_venda()));
+            }
         }
 
         tl_pagamento.definir_icone_janela(logomarca);
-        tl_pagamento.definir_dados_venda(dados_venda,lt_venda);
+        tl_pagamento.definir_dados_venda(dados_venda,lt_venda,eh_estorno);
         if(tl_pagamento.exec()){
             this->close();
         }

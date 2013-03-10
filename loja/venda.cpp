@@ -54,3 +54,24 @@ void venda::alterar_id_venda(int id_ven){
 QDate venda::retorna_data_QDate(void){
     return data;
 }
+
+void venda::alterar_id_cliente(int id_cli){
+    id_cliente = id_cli;
+}
+
+void venda::alterar_valor_total(double valor_tot){
+    valor_total = valor_tot;
+}
+
+void venda::alterar_desconto(double des){
+    desconto = des;
+}
+
+void venda::alterar_valor_pago(double valor_pag){
+    valor_pago = valor_pag;
+}
+
+void venda::alterar_data(QDate dta){
+    data = dta;
+    data_venda =data.toString(Qt::SystemLocaleShortDate);
+}

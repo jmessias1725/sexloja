@@ -1,4 +1,4 @@
-Campo origem das tabelas, cartão, dinheiro e cheque.
+Campo origem das tabelas cartão, dinheiro e cheque.
 
 0 - dívida avulsa;
 1 - pagamento de compra;

@@ -30,7 +30,7 @@ public:
     ~tela_pagamento();
     void definir_icone_janela(QPixmap logo);
     void definir_dados_compra(compra* comp, std::vector< lista_compra* > lt_com);
-    void definir_dados_venda(venda* vend, std::vector< lista_venda* > lt_ven);
+    void definir_dados_venda(venda* vend, std::vector< lista_venda* > lt_ven, bool veric_estorno);
 
 private slots:
     void on_btn_dinheiro_clicked();
@@ -52,6 +52,7 @@ private:
     compra* dados_compra;
     venda* dados_venda;
     bool verifica_se_eh_compra;
+    bool verifica_se_eh_estorno;
     std::vector< lista_compra* > lt_compra;
     std::vector< lista_venda* > lt_venda;
     double valor_em_dinheiro;
