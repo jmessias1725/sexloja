@@ -27,6 +27,11 @@ public:
     double retorna_valor_pago(void);
     void alterar_id_venda(int id_com);
     QDate retorna_data_QDate(void);
+    void alterar_id_cliente(int id_cli);
+    void alterar_valor_total(double valor_tot);
+    void alterar_desconto(double des);
+    void alterar_valor_pago(double valor_pag);
+    void alterar_data(QDate dta);
 };
 
 #endif // VENDA_H
