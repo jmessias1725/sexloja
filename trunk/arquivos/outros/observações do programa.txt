@@ -6,3 +6,4 @@ Observações do programa
 5 - Limpar os campos de busca da parte de contas.
 6 - Quando inserir um produto repetido, alterar somente a quantidade do mesmo e não o inserir novamente.
 7 - Alterar para permitir alterar a data do última parcela, menos o valor da mesma.
+8 - Corrigir tamnaho nome do fabricante quando buscar fabricantes.

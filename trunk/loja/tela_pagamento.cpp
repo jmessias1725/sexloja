@@ -610,23 +610,57 @@ void tela_pagamento::on_btn_confirmar_clicked()
                     QSqlQuery remover_dados_cheque(bd);
                     QSqlQuery remover_dados_ganhos(bd);
                     QSqlQuery remover_lista_venda(bd);
+                    QSqlQuery remover_pagamento_avista(bd);
+                    QSqlQuery remover_pagamento_parcelado(bd);
+                    QSqlQuery remover_his_balanco_estoque(bd);
 
-                    remover_dados_dinheiro.prepare("DELETE FROM dinheiro WHERE origem = '3' AND id_origem = '"+QString::number(dados_venda->retorna_id_venda())+"';");
-                    remover_dados_cartao.prepare("DELETE FROM cartao WHERE origem = '3' AND id_origem = '"+QString::number(dados_venda->retorna_id_venda())+"';");
-                    remover_dados_cheque.prepare("DELETE FROM cheque WHERE origem = '3' AND id_origem = '"+QString::number(dados_venda->retorna_id_venda())+"';");
-                    remover_dados_ganhos.prepare("DELETE FROM ganhos WHERE id_origem = '"+QString::number(dados_venda->retorna_id_venda())+"';");
-                    remover_lista_venda.prepare("DELETE FROM lista_venda WHERE id_venda='"+QString::number(dados_venda->retorna_id_venda())+"';");
+                    QSqlQuery consultar_id_pagamento(bd);
+                    QSqlQuery consultar_his_remocao_pro_estoque(bd);
 
-                    remover_dados_dinheiro.exec();
-                    remover_dados_cartao.exec();
-                    remover_dados_cheque.exec();
-                    remover_dados_ganhos.exec();
+                    QSqlQuery atualizar_his_balanco_estoque(bd);
 
-                    std::cout<<"é um estorno"<<std::endl;
+                    int id_avista;
+                    int id_parcelado;
+                    int quantidade_his_remocao_pro_estoque;
+                    int id_balanco_remover;
+
+                    //Insere os dados no cadastro da venda
+                    salvar_dados_venda.prepare("UPDATE venda SET data_venda=:data_venda, id_cliente=:id_cliente, valor_total=:valor_total, desconto=:desconto, valor_pago=:valor_pago;");
+                    salvar_dados_venda.bindValue(":data_venda", dados_venda->retorna_data_venda());
+                    salvar_dados_venda.bindValue(":id_cliente",dados_venda->retorna_id_cliente());
+                    salvar_dados_venda.bindValue(":valor_total", dados_venda->retorna_valor_total());
+                    salvar_dados_venda.bindValue(":desconto", dados_venda->retorna_desconto());
+                    salvar_dados_venda.bindValue(":valor_pago", dados_venda->retorna_valor_pago());
+                    salvar_dados_venda.exec();
+
+                    consultar_id_pagamento.exec("SELECT d.`id_pag_avista`, d.`id_pag_parcelado` FROM dinheiro d WHERE id_origem = '"+QString::number(dados_venda->retorna_id_venda())+"';");
+                    if(consultar_id_pagamento.last()){
+                        id_avista = consultar_id_pagamento.value(0).toInt();
+                        id_parcelado = consultar_id_pagamento.value(1).toInt();
+                    }
+                    remover_dados_dinheiro.exec("DELETE FROM dinheiro WHERE origem = '3' AND id_origem = '"+QString::number(dados_venda->retorna_id_venda())+"';");
+                    remover_dados_cartao.exec("DELETE FROM cartao WHERE origem = '3' AND id_origem = '"+QString::number(dados_venda->retorna_id_venda())+"';");
+                    remover_dados_cheque.exec("DELETE FROM cheque WHERE origem = '3' AND id_origem = '"+QString::number(dados_venda->retorna_id_venda())+"';");
+                    remover_dados_ganhos.exec("DELETE FROM ganhos WHERE id_origem = '"+QString::number(dados_venda->retorna_id_venda())+"';");
+                    remover_pagamento_avista.exec("DELETE FROM lista_venda WHERE id_venda ='"+QString::number(dados_venda->retorna_id_venda())+"';");
+                    remover_lista_venda.exec("DELETE FROM pagamento_avista WHERE id_pag_avista = '"+QString::number(id_avista)+"';");
+                    remover_pagamento_parcelado.exec("DELETE FROM pagamento_parcelado WHERE id_pag_parcelado = '"+QString::number(id_parcelado)+"';");
+
+                    consultar_his_remocao_pro_estoque.exec("SELECT h.`id_balanco`, h.`quantidade` FROM his_remocao_pro_estoque h WHERE h.id_venda = "+QString::number(dados_venda->retorna_id_venda())+";");
+                    while(consultar_his_remocao_pro_estoque.next()){
+                        id_balanco_remover = consultar_his_remocao_pro_estoque.value(0).toInt();
+                        quantidade_his_remocao_pro_estoque = consultar_his_remocao_pro_estoque.value(1).toInt();
+                        //Insere os dados no histórico de balanço do estoque
+                        atualizar_his_balanco_estoque.prepare("UPDATE his_balanco_estoque SET total_disponivel = total_disponivel+:quantidade WHERE id_balanco = '"+QString::number(id_balanco_remover)+"';");
+                        atualizar_his_balanco_estoque.bindValue(":quantidade", quantidade_his_remocao_pro_estoque);
+                        atualizar_his_balanco_estoque.exec();
+                    }
+
+                    remover_his_balanco_estoque.exec("DELETE FROM his_remocao_pro_estoque WHERE id_venda = '"+QString::number(dados_venda->retorna_id_venda())+"';");
+                    remover_his_balanco_estoque.exec();
                 }
 
                 if((dinheiro_usado->retorna_valor()+dinheiro_usado->retorna_valor_avista()> 0.0)){
-
                     if(dinheiro_usado->retorna_valor() > 0.0){
                         salvar_dados_parcelado.prepare("INSERT INTO pagamento_parcelado(num_parcelas,valor_total) VALUES(:num_parcelas, :valor_total);");
                         salvar_dados_parcelado.bindValue(":num_parcelas", dinheiro_usado->retorna_num_parcelas());
@@ -896,7 +930,9 @@ void tela_pagamento::on_btn_confirmar_clicked()
                    std::cout<<salvar_dados_cheque.lastError().number()<<std::endl;
                    std::cout<<salvar_dados_despesa_cheque.lastError().number()<<std::endl;
                    std::cout<<salvar_dados_dinheiro.lastError().number()<<std::endl;
-                   std::cout<<salvar_dados_despesa_dinheiro.lastError().number()<<std::endl;*/
+                   std::cout<<salvar_dados_despesa_dinheiro.lastError().number()<<std::endl;
+                   std::cout<<salvar_dados_his_balanco_estoque.lastError().number()<<std::endl;
+                   std::cout<<salvar_dados_his_remocao_pro_estoque.lastError().number()<<std::endl;*/
 
                 //Verifica se os dados podem ser salvos, caso sim realiza o Commite, do contrário o Rollback.
                 if((salvar_dados_venda.lastError().number()<=0)&&
@@ -912,8 +948,8 @@ void tela_pagamento::on_btn_confirmar_clicked()
                    (salvar_dados_his_remocao_pro_estoque.lastError().number()<=0)){
 
                     //Finaliza a inserçao dos dados.
-                    //bd.commit();
-                    bd.rollback();
+                    bd.commit();
+                    //bd.rollback();
 
                     //Gera mensagem de que tudo ocorreu direito.
                     QPixmap icone_janela(":img/img/arquivo_50.png");

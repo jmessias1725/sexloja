@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_nota_venda.ui'
 **
-** Created: Sun 10. Mar 12:16:28 2013
+** Created: Tue 12. Mar 16:48:51 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -35,9 +35,13 @@ class Ui_tela_nota_venda
 public:
     QVBoxLayout *verticalLayout_5;
     QFrame *frame_7;
+    QHBoxLayout *horizontalLayout_5;
+    QSpacerItem *horizontalSpacer_3;
+    QToolButton *btn_reabrir;
     QToolButton *btn_confirmar;
     QToolButton *btn_cancelar;
-    QToolButton *btn_reabrir;
+    QHBoxLayout *horizontalLayout_4;
+    QSpacerItem *horizontalSpacer;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents_2;
     QVBoxLayout *verticalLayout_3;
@@ -82,12 +86,13 @@ public:
     QTableWidget *tw_lista_pagamento;
     QFrame *frame_4;
     QFrame *frame_2;
+    QSpacerItem *horizontalSpacer_2;
 
     void setupUi(QDialog *tela_nota_venda)
     {
         if (tela_nota_venda->objectName().isEmpty())
             tela_nota_venda->setObjectName(QString::fromUtf8("tela_nota_venda"));
-        tela_nota_venda->resize(830, 603);
+        tela_nota_venda->resize(832, 603);
         verticalLayout_5 = new QVBoxLayout(tela_nota_venda);
         verticalLayout_5->setSpacing(0);
         verticalLayout_5->setContentsMargins(0, 0, 0, 0);
@@ -106,43 +111,64 @@ public:
 "}"));
         frame_7->setFrameShape(QFrame::Panel);
         frame_7->setFrameShadow(QFrame::Raised);
-        btn_confirmar = new QToolButton(frame_7);
-        btn_confirmar->setObjectName(QString::fromUtf8("btn_confirmar"));
-        btn_confirmar->setGeometry(QRect(700, 2, 60, 45));
+        horizontalLayout_5 = new QHBoxLayout(frame_7);
+        horizontalLayout_5->setSpacing(0);
+        horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        horizontalSpacer_3 = new QSpacerItem(647, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_5->addItem(horizontalSpacer_3);
+
+        btn_reabrir = new QToolButton(frame_7);
+        btn_reabrir->setObjectName(QString::fromUtf8("btn_reabrir"));
         QFont font;
         font.setFamily(QString::fromUtf8("Calibri"));
         font.setPointSize(10);
         font.setBold(true);
         font.setWeight(75);
-        btn_confirmar->setFont(font);
-        QIcon icon;
-        icon.addFile(QString::fromUtf8(":/img/img/1345902916_camera_test.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_confirmar->setIcon(icon);
-        btn_confirmar->setIconSize(QSize(20, 20));
-        btn_confirmar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-        btn_confirmar->setAutoRaise(true);
-        btn_cancelar = new QToolButton(frame_7);
-        btn_cancelar->setObjectName(QString::fromUtf8("btn_cancelar"));
-        btn_cancelar->setGeometry(QRect(760, 2, 60, 45));
-        btn_cancelar->setFont(font);
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/img/img/1345902747_button_cancel.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_cancelar->setIcon(icon1);
-        btn_cancelar->setIconSize(QSize(20, 20));
-        btn_cancelar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-        btn_cancelar->setAutoRaise(true);
-        btn_reabrir = new QToolButton(frame_7);
-        btn_reabrir->setObjectName(QString::fromUtf8("btn_reabrir"));
-        btn_reabrir->setGeometry(QRect(640, 2, 60, 45));
         btn_reabrir->setFont(font);
-        QIcon icon2;
-        icon2.addFile(QString::fromUtf8(":/img/img/abrir.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_reabrir->setIcon(icon2);
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/img/img/abrir.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_reabrir->setIcon(icon);
         btn_reabrir->setIconSize(QSize(20, 20));
         btn_reabrir->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
         btn_reabrir->setAutoRaise(true);
 
+        horizontalLayout_5->addWidget(btn_reabrir);
+
+        btn_confirmar = new QToolButton(frame_7);
+        btn_confirmar->setObjectName(QString::fromUtf8("btn_confirmar"));
+        btn_confirmar->setFont(font);
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/img/img/1345902916_camera_test.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_confirmar->setIcon(icon1);
+        btn_confirmar->setIconSize(QSize(20, 20));
+        btn_confirmar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+        btn_confirmar->setAutoRaise(true);
+
+        horizontalLayout_5->addWidget(btn_confirmar);
+
+        btn_cancelar = new QToolButton(frame_7);
+        btn_cancelar->setObjectName(QString::fromUtf8("btn_cancelar"));
+        btn_cancelar->setFont(font);
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/img/img/1345902747_button_cancel.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_cancelar->setIcon(icon2);
+        btn_cancelar->setIconSize(QSize(20, 20));
+        btn_cancelar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+        btn_cancelar->setAutoRaise(true);
+
+        horizontalLayout_5->addWidget(btn_cancelar);
+
+
         verticalLayout_5->addWidget(frame_7);
+
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setSpacing(0);
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        horizontalSpacer = new QSpacerItem(0, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer);
 
         scrollArea = new QScrollArea(tela_nota_venda);
         scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
@@ -234,16 +260,6 @@ public:
         lb_codigo->setObjectName(QString::fromUtf8("lb_codigo"));
         lb_codigo->setGeometry(QRect(5, 44, 42, 20));
         lb_codigo->setFont(font3);
-        le_nome->raise();
-        le_cpf->raise();
-        lb_nome->raise();
-        lb_rg->raise();
-        lb_cpf->raise();
-        le_rg->raise();
-        le_codigo->raise();
-        lb_codigo->raise();
-        frame_7->raise();
-        frame_7->raise();
 
         horizontalLayout_3->addWidget(gb_dados_cliente);
 
@@ -556,7 +572,14 @@ public:
 
         scrollArea->setWidget(scrollAreaWidgetContents_2);
 
-        verticalLayout_5->addWidget(scrollArea);
+        horizontalLayout_4->addWidget(scrollArea);
+
+        horizontalSpacer_2 = new QSpacerItem(0, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_2);
+
+
+        verticalLayout_5->addLayout(horizontalLayout_4);
 
 
         retranslateUi(tela_nota_venda);
@@ -567,9 +590,9 @@ public:
     void retranslateUi(QDialog *tela_nota_venda)
     {
         tela_nota_venda->setWindowTitle(QApplication::translate("tela_nota_venda", "Nota de venda;", 0, QApplication::UnicodeUTF8));
+        btn_reabrir->setText(QApplication::translate("tela_nota_venda", "Reabrir", 0, QApplication::UnicodeUTF8));
         btn_confirmar->setText(QApplication::translate("tela_nota_venda", "Confirmar", 0, QApplication::UnicodeUTF8));
         btn_cancelar->setText(QApplication::translate("tela_nota_venda", "Cancelar", 0, QApplication::UnicodeUTF8));
-        btn_reabrir->setText(QApplication::translate("tela_nota_venda", "Reabrir", 0, QApplication::UnicodeUTF8));
         gb_dados_cliente->setTitle(QApplication::translate("tela_nota_venda", "Dados do Cliente", 0, QApplication::UnicodeUTF8));
         le_nome->setText(QString());
         le_cpf->setInputMask(QApplication::translate("tela_nota_venda", "000.000.000-00; ", 0, QApplication::UnicodeUTF8));

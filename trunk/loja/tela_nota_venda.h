@@ -33,6 +33,8 @@ private slots:
     void on_tw_lista_pagamento_doubleClicked(const QModelIndex &index);
     void on_btn_reabrir_clicked();
 
+    void on_btn_confirmar_clicked();
+
 private:
     Ui::tela_nota_venda *ui;
     QPixmap logomarca;
@@ -43,6 +45,7 @@ private:
     tela_editar_parcela tl_editar_parcela;
     tela_vender tl_vender;
     double valor_total;
+    bool editou_dados;
 };
 
 #endif // TELA_NOTA_VENDA_H
