@@ -21,6 +21,7 @@ void tela_nota_venda::definir_icone_janela(QPixmap logo){
 void tela_nota_venda::definir_dados(venda *vend){
     venda_atual = vend;
     this->setWindowTitle("Venda de Código = "+QString::number(venda_atual->retorna_id_venda()));
+    editou_dados = false;
     buscar_dados();
     mostrar_dados_pagamento();
     mostrar_dados();
@@ -190,6 +191,7 @@ void tela_nota_venda::on_tw_lista_pagamento_doubleClicked(const QModelIndex &ind
         tl_editar_parcela.definir_icone_janela(logomarca);
         tl_editar_parcela.definir_dados(lt_ganho[index.row()]);
         if(tl_editar_parcela.exec()){
+            editou_dados = true;
             lt_ganho[index.row()]  = tl_editar_parcela.retorna_parcela();
             if(valor_anterior!=lt_ganho[index.row()]->retorna_valor()){
                 for (int i=0; i < int(lt_ganho.size()); i++){
@@ -232,7 +234,7 @@ void tela_nota_venda::on_tw_lista_pagamento_doubleClicked(const QModelIndex &ind
 
 void tela_nota_venda::on_btn_reabrir_clicked()
 {
-    QPixmap icone_janela(":img/img/produto_pergunta_50.png");
+    QPixmap icone_janela(":img/img/abrir_50.png");
     QMessageBox msg(0);
     msg.setIconPixmap(icone_janela);
     msg.setWindowIcon(logomarca);
@@ -244,6 +246,30 @@ void tela_nota_venda::on_btn_reabrir_clicked()
     if(!msg.exec()){
         tl_vender.definir_icone_janela(logomarca);
         tl_vender.definir_dados(lt_venda,cliente_atual,venda_atual);
-        tl_vender.exec();
+        if(!tl_vender.exec()){
+            this->accept();
+            this->close();
+        }
+    }
+}
+
+void tela_nota_venda::on_btn_confirmar_clicked()
+{
+    QPixmap icone_janela(":img/img/abrir_50.png");
+    QMessageBox msg(0);
+    msg.setIconPixmap(icone_janela);
+    msg.setWindowIcon(logomarca);
+    msg.setWindowTitle("AVISO!!!");
+    msg.addButton("Sim", QMessageBox::AcceptRole);
+    msg.addButton("Não", QMessageBox::RejectRole);
+    msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+    msg.setText("Deseja reabrir a nota para edição?");
+    if(!msg.exec()){
+        /*tl_vender.definir_icone_janela(logomarca);
+        tl_vender.definir_dados(lt_venda,cliente_atual,venda_atual);
+        if(!tl_vender.exec()){
+            this->accept();
+            this->close();
+        }*/
     }
 }
