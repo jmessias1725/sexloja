@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_nota_venda.h'
 **
-** Created: Tue 12. Mar 16:36:14 2013
+** Created: Fri 15. Mar 11:23:04 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_tela_nota_venda[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -34,6 +34,7 @@ static const uint qt_meta_data_tela_nota_venda[] = {
       23,   17,   16,   16, 0x08,
       72,   16,   16,   16, 0x08,
       97,   16,   16,   16, 0x08,
+     129,   16,  124,   16, 0x08,
 
        0        // eod
 };
@@ -42,7 +43,8 @@ static const char qt_meta_stringdata_tela_nota_venda[] = {
     "tela_nota_venda\0\0index\0"
     "on_tw_lista_pagamento_doubleClicked(QModelIndex)\0"
     "on_btn_reabrir_clicked()\0"
-    "on_btn_confirmar_clicked()\0"
+    "on_btn_confirmar_clicked()\0bool\0"
+    "atualizar_dados_parcelamento()\0"
 };
 
 void tela_nota_venda::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -54,6 +56,8 @@ void tela_nota_venda::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         case 0: _t->on_tw_lista_pagamento_doubleClicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
         case 1: _t->on_btn_reabrir_clicked(); break;
         case 2: _t->on_btn_confirmar_clicked(); break;
+        case 3: { bool _r = _t->atualizar_dados_parcelamento();
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
         default: ;
         }
     }
@@ -91,9 +95,9 @@ int tela_nota_venda::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 4;
     }
     return _id;
 }
