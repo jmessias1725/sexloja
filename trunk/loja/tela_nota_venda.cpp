@@ -242,7 +242,7 @@ void tela_nota_venda::on_btn_reabrir_clicked()
     msg.addButton("Sim", QMessageBox::AcceptRole);
     msg.addButton("Não", QMessageBox::RejectRole);
     msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
-    msg.setText("Deseja reabrir a nota para edição?");
+    msg.setText("\nDeseja reabrir a nota para edição?");
     if(!msg.exec()){
         tl_vender.definir_icone_janela(logomarca);
         tl_vender.definir_dados(lt_venda,cliente_atual,venda_atual);
@@ -255,21 +255,84 @@ void tela_nota_venda::on_btn_reabrir_clicked()
 
 void tela_nota_venda::on_btn_confirmar_clicked()
 {
-    QPixmap icone_janela(":img/img/abrir_50.png");
-    QMessageBox msg(0);
-    msg.setIconPixmap(icone_janela);
-    msg.setWindowIcon(logomarca);
-    msg.setWindowTitle("AVISO!!!");
-    msg.addButton("Sim", QMessageBox::AcceptRole);
-    msg.addButton("Não", QMessageBox::RejectRole);
-    msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
-    msg.setText("Deseja reabrir a nota para edição?");
-    if(!msg.exec()){
-        /*tl_vender.definir_icone_janela(logomarca);
-        tl_vender.definir_dados(lt_venda,cliente_atual,venda_atual);
-        if(!tl_vender.exec()){
-            this->accept();
-            this->close();
-        }*/
+    if(editou_dados){
+        QPixmap icone_janela(":img/img/perguntar.png");
+        QMessageBox msg(0);
+        msg.setIconPixmap(icone_janela);
+        msg.setWindowIcon(logomarca);
+        msg.setWindowTitle("AVISO!!!");
+        msg.addButton("Sim", QMessageBox::AcceptRole);
+        msg.addButton("Não", QMessageBox::RejectRole);
+        msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+        msg.setText("\nDeseja salvar as alterações?");
+        if(!msg.exec()){
+            if(atualizar_dados_parcelamento()){
+                //Gera mensagem de que tudo ocorreu direito.
+                QPixmap icone_janela(":img/img/correto.png");
+                QMessageBox msg(0);
+                msg.setIconPixmap(icone_janela);
+                msg.setWindowIcon(logomarca);
+                msg.setWindowTitle("Alteração");
+                msg.addButton("OK", QMessageBox::AcceptRole);
+                msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+                msg.setText("\nAlteração efetuada com sucesso!!!!");
+                msg.exec();
+
+                this->accept();
+                this->close();
+            }
+            else{
+                //Gera a mensagem de erro.
+                QPixmap icone_janela(":img/img/error_50.png");
+                QMessageBox msg(0);
+                msg.setIconPixmap(icone_janela);
+                msg.setWindowIcon(logomarca);
+                msg.setWindowTitle("Alteraçao");
+                msg.addButton("OK", QMessageBox::AcceptRole);
+                msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+                msg.setText("\nNão foi possível efetuar a alteração!!!!");
+                msg.exec();
+                this->reject();
+            }
+        }
+    }
+    else{
+        this->close();
+    }
+}
+
+bool tela_nota_venda::atualizar_dados_parcelamento(void){
+    conexao_bd conexao;
+    QSqlDatabase bd;
+
+    //realiza conexão ao banco de dados
+    if (conexao.conetar_bd()){
+
+        //Retorna o banco de dados
+        bd = conexao.retorna_bd();
+
+        //Declara a variável que irá fazer a consulta
+        QSqlQuery atualizar_dados_parecelamento(bd);
+        atualizar_dados_parecelamento.lastError().setNumber(2);
+
+        for (int i = 0; i < int(lt_ganho.size());i++){
+            //atualiza os dados sobre o parcelamento
+            atualizar_dados_parecelamento.prepare("UPDATE ganhos SET data=:data, valor=:valor, status=:status WHERE id_ganhos ='"+QString::number(lt_ganho[i]->retorna_id())+"';");
+            atualizar_dados_parecelamento.bindValue(":data", lt_ganho[i]->retorna_data());
+            atualizar_dados_parecelamento.bindValue(":valor",lt_ganho[i]->retorna_valor());
+            atualizar_dados_parecelamento.bindValue(":status", lt_ganho[i]->retorna_status());
+            atualizar_dados_parecelamento.exec();
+        }
+        bd.close();
+        conexao.fechar_conexao();
+        if(atualizar_dados_parecelamento.lastError().number()<=0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    else{
+        return false;
     }
 }

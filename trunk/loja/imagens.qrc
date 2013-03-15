@@ -69,6 +69,7 @@
         <file>img/filtrar.png</file>
         <file>img/abrir.png</file>
         <file>img/abrir_50.png</file>
+        <file>img/correto.png</file>
     </qresource>
     <qresource prefix="/operadoras">
         <file>img/claro.png</file>
