@@ -71,21 +71,7 @@ cliente * tela_clientes::retorna_novo_cadastro(void){
 }
 
 void tela_clientes::closeEvent(QCloseEvent *event){
-    ui->le_codigo->clear();
-    ui->le_nome->clear();
-    ui->le_rg->clear();
-    ui->le_cpf->clear();
-    ui->le_cep->clear();
-    ui->le_rua->clear();
-    ui->le_bairro->clear();
-    ui->te_ponto_referencia->clear();
-    ui->le_cidade->clear();
-    ui->le_estado->clear();
-    ui->le_uf->clear();
-    ui->le_numero->clear();
-    ui->te_comentario_cliente->clear();
-    ui->cb_email->clear();
-    ui->cb_telefone->clear();
+    limpar_dados();
 }
 
 void tela_clientes::limpar_dados(void){

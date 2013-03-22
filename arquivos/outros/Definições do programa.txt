@@ -25,3 +25,12 @@ campo origem tabela his_entradas.
 
 0 - entrada avulsa;
 1 - compra;
+
+Campo origem tabela jus_cancelamento_nota.
+
+0 - nota de venda;
+1 - nota de compra;
+
+campo status nas tabelas compra e venda.
+0 - aberta;
+1 - cancelada;

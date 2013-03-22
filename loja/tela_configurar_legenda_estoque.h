@@ -31,9 +31,7 @@ private slots:
     void on_le_normal_editingFinished();
     void on_btn_voltar_padrao_clicked();
     void on_btn_confirmar_clicked();
-
     void on_btn_cancelar_clicked();
-
     void on_le_minimo_editingFinished();
 
 private:

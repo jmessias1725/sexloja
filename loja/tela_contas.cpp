@@ -48,7 +48,7 @@ void tela_contas::mostrar_fluxo_caixa(){
     ui->tw_fluxo_caixa->setRowCount(num_dias);
     ui->tw_fluxo_caixa->setColumnCount(5);
     ui->tw_fluxo_caixa->horizontalHeader()->setResizeMode(QHeaderView::Fixed);
-    //ui->tw_fluxo_caixa->clear();
+    ui->tw_fluxo_caixa->clear();
     ui->tw_fluxo_caixa->setHorizontalHeaderLabels(QString("Dia;Despesas;Receitas;Saldo;Acumulado do mês").split(";"));
 
     double saldo;
@@ -581,5 +581,41 @@ void tela_contas::mostrar_lista_notas_compra(void){
 void tela_contas::on_tw_lista_notas_venda_doubleClicked(const QModelIndex &index){
     tl_nota_venda.definir_icone_janela(logomarca);
     tl_nota_venda.definir_dados(lista_venda[index.row()]);
-    tl_nota_venda.exec();
+    if(tl_nota_venda.exec()){
+        on_btn_buscar_nota_venda_clicked();
+        mostrar_lista_notas_compra();
+    }
+}
+
+void tela_contas::closeEvent(QCloseEvent *event){
+    limpar_dados();
+}
+
+void tela_contas::limpar_dados(){
+    ui->le_codigo_cp->clear();
+    ui->le_codigo_cr->clear();
+    ui->le_nome_cliente->clear();
+    ui->le_nome_fornecedor->clear();
+    ui->cb_status_cp->setCurrentIndex(0);
+    ui->cb_status_cr->setCurrentIndex(0);
+    ui->tw_contas_pagar->setColumnCount(0);
+    ui->tw_contas_pagar->setRowCount(0);
+    ui->tw_contas_receber->setColumnCount(0);
+    ui->tw_contas_receber->setRowCount(0);
+    ui->tw_fluxo_caixa->setColumnCount(0);
+    ui->tw_fluxo_caixa->setRowCount(0);
+    ui->tw_lista_notas_venda->setColumnCount(0);
+    ui->tw_lista_notas_venda->setRowCount(0);
+    ui->tw_lista_notas_compra->setColumnCount(0);
+    ui->tw_lista_notas_compra->setRowCount(0);
+    lista_ganhos_valores.clear();
+    lista_despesas_valores.clear();
+    lista_despesa.clear();
+    aux_lista_despesa.clear();
+    lista_ganho.clear();
+    aux_lista_ganho.clear();
+    lista_venda.clear();
+    lista_compra.clear();
+    lista_nome_clientes.clear();
+    lista_nome_fornecedores.clear();
 }

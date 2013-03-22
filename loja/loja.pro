@@ -71,7 +71,8 @@ SOURCES += main.cpp\
     tela_nota_venda.cpp \
     parcela.cpp \
     tela_ajustar_data_valor.cpp \
-    tela_editar_parcela.cpp
+    tela_editar_parcela.cpp \
+    tela_justificativa_cancelamento.cpp
 
 HEADERS  += \
     conexao_bd.h \
@@ -133,7 +134,8 @@ HEADERS  += \
     tela_nota_venda.h \
     parcela.h \
     tela_ajustar_data_valor.h \
-    tela_editar_parcela.h
+    tela_editar_parcela.h \
+    tela_justificativa_cancelamento.h
 
 FORMS    += \
     tela_login.ui \
@@ -171,7 +173,8 @@ FORMS    += \
     tela_contas.ui \
     tela_nota_venda.ui \
     tela_ajustar_data_valor.ui \
-    tela_editar_parcela.ui
+    tela_editar_parcela.ui \
+    tela_justificativa_cancelamento.ui
 
 RESOURCES += \
     imagens.qrc

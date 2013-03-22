@@ -589,12 +589,13 @@ void tela_pagamento::on_btn_confirmar_clicked()
 
                 if(verifica_se_eh_estorno  == false){
                     //Insere os dados no cadastro da venda
-                    salvar_dados_venda.prepare("INSERT INTO venda(data_venda,id_cliente,valor_total,desconto,valor_pago) VALUES(:data_venda, :id_cliente, :valor_total, :desconto, :valor_pago);");
+                    salvar_dados_venda.prepare("INSERT INTO venda(data_venda,id_cliente,valor_total,desconto,valor_pago,status) VALUES(:data_venda, :id_cliente, :valor_total, :desconto, :valor_pago, :status);");
                     salvar_dados_venda.bindValue(":data_venda", dados_venda->retorna_data_venda());
                     salvar_dados_venda.bindValue(":id_cliente",dados_venda->retorna_id_cliente());
                     salvar_dados_venda.bindValue(":valor_total", dados_venda->retorna_valor_total());
                     salvar_dados_venda.bindValue(":desconto", dados_venda->retorna_desconto());
                     salvar_dados_venda.bindValue(":valor_pago", dados_venda->retorna_valor_pago());
+                    salvar_dados_venda.bindValue(":status", 0);
                     salvar_dados_venda.exec();
 
                     //realiza a consulta para determinar  o id da venda.
@@ -625,12 +626,13 @@ void tela_pagamento::on_btn_confirmar_clicked()
                     int id_balanco_remover;
 
                     //Insere os dados no cadastro da venda
-                    salvar_dados_venda.prepare("UPDATE venda SET data_venda=:data_venda, id_cliente=:id_cliente, valor_total=:valor_total, desconto=:desconto, valor_pago=:valor_pago;");
+                    salvar_dados_venda.prepare("UPDATE venda SET data_venda=:data_venda, id_cliente=:id_cliente, valor_total=:valor_total, desconto=:desconto, valor_pago=:valor_pago , status=:status WHERE id_venda = '"+QString::number(dados_venda->retorna_id_venda())+"';");
                     salvar_dados_venda.bindValue(":data_venda", dados_venda->retorna_data_venda());
                     salvar_dados_venda.bindValue(":id_cliente",dados_venda->retorna_id_cliente());
                     salvar_dados_venda.bindValue(":valor_total", dados_venda->retorna_valor_total());
                     salvar_dados_venda.bindValue(":desconto", dados_venda->retorna_desconto());
                     salvar_dados_venda.bindValue(":valor_pago", dados_venda->retorna_valor_pago());
+                    salvar_dados_venda.bindValue(":status", 0);
                     salvar_dados_venda.exec();
 
                     consultar_id_pagamento.exec("SELECT d.`id_pag_avista`, d.`id_pag_parcelado` FROM dinheiro d WHERE id_origem = '"+QString::number(dados_venda->retorna_id_venda())+"';");

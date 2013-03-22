@@ -177,33 +177,15 @@ void tela_vender::on_btn_confirmar_clicked()
     lt_venda.clear();
     funcoes_extras funcao;
     if(ui->le_codigo->text().toStdString()==""){
-        //Gera mensagem perguntando se é para salvar alterações.
-        QPixmap icone_janela(":img/img/perguntar.png");
+        QPixmap icone_janela(":img/img/error_50.png");
         QMessageBox msg(0);
         msg.setIconPixmap(icone_janela);
         msg.setWindowIcon(logomarca);
-        msg.setWindowTitle("Efetuar a compra");
-        msg.addButton("Sim", QMessageBox::AcceptRole);
-        msg.addButton("Não", QMessageBox::RejectRole);
+        msg.setWindowTitle("Dados do Cliente");
+        msg.addButton("OK", QMessageBox::AcceptRole);
         msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
-        msg.setText("\nDeseja efetuar a venda sem inserir os dados do cliente ?");
-        if(!msg.exec()){
-            double valor_tot = funcao.converter_para_double(ui->le_total_a_pagar->text())+funcao.converter_para_double(ui->le_desconto->text());
-            dados_venda = new venda(ui->data->date(),ui->le_codigo->text().toInt(),valor_tot,
-                                    funcao.converter_para_double(ui->le_desconto->text()));
-
-            for(int i=0;i<int(lista_produtos.size());i++){
-                lt_venda.push_back(new lista_venda(lista_produtos[i]->retorna_id(),0,
-                                                   lista_produtos[i]->retorna_quantidade_disponivel(),
-                                                   lista_produtos[i]->retorna_valor_venda()));
-            }
-
-            tl_pagamento.definir_icone_janela(logomarca);
-            tl_pagamento.definir_dados_venda(dados_venda,lt_venda,eh_estorno);
-            if(tl_pagamento.exec()){
-                this->close();
-            }
-        }
+        msg.setText("\nFavor, inserir dados sobre o cliente!");
+        msg.exec();
     }
     else{
         double valor_tot = funcao.converter_para_double(ui->le_total_a_pagar->text())+funcao.converter_para_double(ui->le_desconto->text());

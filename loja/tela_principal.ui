@@ -670,6 +670,10 @@ color: #FFFFFF;</string>
      <property name="title">
       <string>Novo</string>
      </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/img/img/mais.png</normaloff>:/img/img/mais.png</iconset>
+     </property>
      <addaction name="realizar_venda"/>
      <addaction name="realizar_compra"/>
      <addaction name="Cadastrar_cliente"/>

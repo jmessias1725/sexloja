@@ -18,7 +18,6 @@ void tela_editar_parcela::definir_icone_janela(QPixmap logo){
     this->setWindowIcon(logomarca);
 }
 
-
 void tela_editar_parcela::definir_dados(ganho *par_atual){
     QRegExp valida_dinheiro("^-?\\+?\\*?\\/?\\:?\\;?\\w?\\d{0,4}([,|.]*)(\\d{0,2})$");
     ui->le_valor->setValidator(new QRegExpValidator(valida_dinheiro, ui->le_valor));
@@ -28,6 +27,13 @@ void tela_editar_parcela::definir_dados(ganho *par_atual){
     ui->data->setDate(QDate::fromString(parcela_atual->retorna_data(),"dd/MM/yyyy"));
     ui->le_valor->setText(funcao.retorna_valor_dinheiro(par_atual->retorna_valor()));
     ui->cb_status->setCurrentIndex(parcela_atual->retorna_status());
+
+    if((parcela_atual->retorna_origem()==0)||(parcela_atual->retorna_origem()==1)||(parcela_atual->retorna_origem()==3)){
+        ui->le_valor->setEnabled(false);
+    }
+    else{
+        ui->le_valor->setEnabled(true);
+    }
 }
 
 void tela_editar_parcela::on_le_valor_editingFinished(){

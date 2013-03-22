@@ -41,7 +41,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <property name="elideMode">
        <enum>Qt::ElideMiddle</enum>
@@ -1521,7 +1521,7 @@ background-color: none;</string>
           <widget class="QPushButton" name="btn_buscar_nota_venda">
            <property name="geometry">
             <rect>
-             <x>538</x>
+             <x>540</x>
              <y>8</y>
              <width>90</width>
              <height>24</height>
@@ -1578,13 +1578,13 @@ background-color: none;</string>
            </property>
            <property name="minimumSize">
             <size>
-             <width>410</width>
+             <width>430</width>
              <height>20</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>500</width>
+             <width>430</width>
              <height>20</height>
             </size>
            </property>
