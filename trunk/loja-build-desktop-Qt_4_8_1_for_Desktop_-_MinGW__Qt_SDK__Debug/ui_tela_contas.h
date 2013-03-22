@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_contas.ui'
 **
-** Created: Sun 10. Mar 12:16:28 2013
+** Created: Wed 20. Mar 10:48:55 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -555,7 +555,7 @@ public:
         lb_nome_cliente->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
         btn_buscar_nota_venda = new QPushButton(fr_buscar_notas_venda);
         btn_buscar_nota_venda->setObjectName(QString::fromUtf8("btn_buscar_nota_venda"));
-        btn_buscar_nota_venda->setGeometry(QRect(538, 8, 90, 24));
+        btn_buscar_nota_venda->setGeometry(QRect(540, 8, 90, 24));
         btn_buscar_nota_venda->setMinimumSize(QSize(0, 24));
         btn_buscar_nota_venda->setMaximumSize(QSize(90, 24));
         btn_buscar_nota_venda->setFont(font1);
@@ -569,8 +569,8 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(le_nome_cliente->sizePolicy().hasHeightForWidth());
         le_nome_cliente->setSizePolicy(sizePolicy);
-        le_nome_cliente->setMinimumSize(QSize(410, 20));
-        le_nome_cliente->setMaximumSize(QSize(500, 20));
+        le_nome_cliente->setMinimumSize(QSize(430, 20));
+        le_nome_cliente->setMaximumSize(QSize(430, 20));
         le_nome_cliente->setFont(font5);
         le_nome_cliente->setMaxLength(60);
         le_nome_cliente->setReadOnly(false);
@@ -658,7 +658,7 @@ public:
 
         retranslateUi(tela_contas);
 
-        tbw_geral->setCurrentIndex(3);
+        tbw_geral->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(tela_contas);

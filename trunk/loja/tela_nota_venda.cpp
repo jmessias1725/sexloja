@@ -178,57 +178,55 @@ void tela_nota_venda::mostrar_dados_pagamento(void){
 }
 
 void tela_nota_venda::on_tw_lista_pagamento_doubleClicked(const QModelIndex &index){
-    if(lt_ganho[index.row()]->retorna_origem()==2){
-        funcoes_extras funcao;
-        double total_parcial = 0;
-        double total_a_parcelar = 0;
-        double valor_parcelas = 0;
-        double ultima_parcela = 0;
-        int numero_parcelas_restantes = 0;
-        double valor_anterior = lt_ganho[index.row()]->retorna_valor();
-        std::vector< int > indice_parcelas;
+    funcoes_extras funcao;
+    double total_parcial = 0;
+    double total_a_parcelar = 0;
+    double valor_parcelas = 0;
+    double ultima_parcela = 0;
+    int numero_parcelas_restantes = 0;
+    double valor_anterior = lt_ganho[index.row()]->retorna_valor();
+    std::vector< int > indice_parcelas;
 
-        tl_editar_parcela.definir_icone_janela(logomarca);
-        tl_editar_parcela.definir_dados(lt_ganho[index.row()]);
-        if(tl_editar_parcela.exec()){
-            editou_dados = true;
-            lt_ganho[index.row()]  = tl_editar_parcela.retorna_parcela();
-            if(valor_anterior!=lt_ganho[index.row()]->retorna_valor()){
-                for (int i=0; i < int(lt_ganho.size()); i++){
-                    if((lt_ganho[i]->retorna_origem()==2)){
-                        if(i <= int(index.row())){
-                            total_parcial  = total_parcial + lt_ganho[i]->retorna_valor();
+    tl_editar_parcela.definir_icone_janela(logomarca);
+    tl_editar_parcela.definir_dados(lt_ganho[index.row()]);
+    if(tl_editar_parcela.exec()){
+        editou_dados = true;
+        lt_ganho[index.row()]  = tl_editar_parcela.retorna_parcela();
+        if(valor_anterior!=lt_ganho[index.row()]->retorna_valor()){
+            for (int i=0; i < int(lt_ganho.size()); i++){
+                if((lt_ganho[i]->retorna_origem()==2)){
+                    if(i <= int(index.row())){
+                        total_parcial  = total_parcial + lt_ganho[i]->retorna_valor();
+                    }
+                    else{
+                        if(lt_ganho[i]->retorna_status()==1){
+                            total_parcial = total_parcial + lt_ganho[i]->retorna_valor();
                         }
                         else{
-                            if(lt_ganho[i]->retorna_status()==1){
-                                total_parcial = total_parcial + lt_ganho[i]->retorna_valor();
-                            }
-                            else{
-                                numero_parcelas_restantes = numero_parcelas_restantes+1;
-                                indice_parcelas.push_back(i);
-                            }
+                            numero_parcelas_restantes = numero_parcelas_restantes+1;
+                            indice_parcelas.push_back(i);
                         }
                     }
                 }
-                if(numero_parcelas_restantes!=0){
-                total_a_parcelar = valor_total - total_parcial;
-
-                valor_parcelas = total_a_parcelar/numero_parcelas_restantes;
-                valor_parcelas = funcao.arredonda_para_duas_casas_decimais(valor_parcelas);
-                ultima_parcela = total_a_parcelar - valor_parcelas*(numero_parcelas_restantes-1);
-
-                for (int i = 0; i<int(indice_parcelas.size()-1);i++){
-                    lt_ganho[indice_parcelas[i]]->alterar_valor(valor_parcelas);
-                }
-
-                lt_ganho[indice_parcelas[int(indice_parcelas.size()-1)]]->alterar_valor(ultima_parcela);
-                }
-                else{
-                    lt_ganho[index.row()]->alterar_valor(valor_anterior);
-                }
             }
-            mostrar_dados_pagamento();
+            if(numero_parcelas_restantes!=0){
+            total_a_parcelar = valor_total - total_parcial;
+
+            valor_parcelas = total_a_parcelar/numero_parcelas_restantes;
+            valor_parcelas = funcao.arredonda_para_duas_casas_decimais(valor_parcelas);
+            ultima_parcela = total_a_parcelar - valor_parcelas*(numero_parcelas_restantes-1);
+
+            for (int i = 0; i<int(indice_parcelas.size()-1);i++){
+                lt_ganho[indice_parcelas[i]]->alterar_valor(valor_parcelas);
+            }
+
+            lt_ganho[indice_parcelas[int(indice_parcelas.size()-1)]]->alterar_valor(ultima_parcela);
+            }
+            else{
+                lt_ganho[index.row()]->alterar_valor(valor_anterior);
+            }
         }
+        mostrar_dados_pagamento();
     }
 }
 
@@ -265,6 +263,7 @@ void tela_nota_venda::on_btn_confirmar_clicked()
         msg.addButton("Não", QMessageBox::RejectRole);
         msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
         msg.setText("\nDeseja salvar as alterações?");
+        editou_dados = false;
         if(!msg.exec()){
             if(atualizar_dados_parcelamento()){
                 //Gera mensagem de que tudo ocorreu direito.
@@ -334,5 +333,191 @@ bool tela_nota_venda::atualizar_dados_parcelamento(void){
     }
     else{
         return false;
+    }
+}
+
+void tela_nota_venda::closeEvent(QCloseEvent *event){
+    if(editou_dados){
+        QPixmap icone_janela(":img/img/perguntar.png");
+        QMessageBox msg(0);
+        msg.setIconPixmap(icone_janela);
+        msg.setWindowIcon(logomarca);
+        msg.setWindowTitle("AVISO!!!");
+        msg.addButton("Sim", QMessageBox::AcceptRole);
+        msg.addButton("Não", QMessageBox::RejectRole);
+        msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+        msg.setText("Alterações efetuadas.\nDeseja salvar as alterações?");
+        if(!msg.exec()){
+            if(atualizar_dados_parcelamento()){
+                //Gera mensagem de que tudo ocorreu direito.
+                QPixmap icone_janela(":img/img/correto.png");
+                QMessageBox msg(0);
+                msg.setIconPixmap(icone_janela);
+                msg.setWindowIcon(logomarca);
+                msg.setWindowTitle("Alteração");
+                msg.addButton("OK", QMessageBox::AcceptRole);
+                msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+                msg.setText("\nAlteração efetuada com sucesso!!!!");
+                msg.exec();
+
+                this->accept();
+                this->close();
+            }
+            else{
+                //Gera a mensagem de erro.
+                QPixmap icone_janela(":img/img/error_50.png");
+                QMessageBox msg(0);
+                msg.setIconPixmap(icone_janela);
+                msg.setWindowIcon(logomarca);
+                msg.setWindowTitle("Alteraçao");
+                msg.addButton("OK", QMessageBox::AcceptRole);
+                msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+                msg.setText("\nNão foi possível efetuar a alteração!!!!");
+                msg.exec();
+                this->reject();
+            }
+        }
+        else{
+            this->reject();
+            this->close();
+        }
+    }
+}
+
+void tela_nota_venda::on_btn_cancelar_clicked()
+{
+    this->reject();
+    this->close();
+}
+
+void tela_nota_venda::on_btn_cancelar_nota_clicked()
+{
+    QPixmap icone_janela(":img/img/perguntar.png");
+    QMessageBox msg(0);
+    msg.setIconPixmap(icone_janela);
+    msg.setWindowIcon(logomarca);
+    msg.setWindowTitle("AVISO!!!");
+    msg.addButton("Sim", QMessageBox::AcceptRole);
+    msg.addButton("Não", QMessageBox::RejectRole);
+    msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+    msg.setText("\nDeseja cancelar a nota?");
+    if(!msg.exec()){
+        tl_justificativa_cancelamento.definir_icone_janela(logomarca);
+        if(tl_justificativa_cancelamento.exec())
+        {
+            conexao_bd conexao;
+            QSqlDatabase bd;
+
+            //realiza conexão ao banco de dados
+            if (conexao.conetar_bd()){
+                //Retorna o banco de dados
+                bd = conexao.retorna_bd();
+
+                //Inicia a transaçao
+                bd.transaction();
+
+                QSqlQuery remover_dados_dinheiro(bd);
+                QSqlQuery remover_dados_cartao(bd);
+                QSqlQuery remover_dados_cheque(bd);
+                QSqlQuery remover_dados_ganhos(bd);
+                QSqlQuery remover_pagamento_avista(bd);
+                QSqlQuery remover_pagamento_parcelado(bd);
+                QSqlQuery remover_his_balanco_estoque(bd);
+                QSqlQuery consultar_id_pagamento(bd);
+                QSqlQuery consultar_his_remocao_pro_estoque(bd);
+                QSqlQuery atualizar_his_balanco_estoque(bd);
+                QSqlQuery salvar_dados_venda(bd);
+
+                int id_avista;
+                int id_parcelado;
+                int quantidade_his_remocao_pro_estoque;
+                int id_balanco_remover;
+                int id_venda = venda_atual->retorna_id_venda();
+
+                //Insere os dados no cadastro da venda
+                salvar_dados_venda.prepare("UPDATE venda SET status=:status WHERE id_venda = '"+QString::number(id_venda)+"';");
+                salvar_dados_venda.bindValue(":status",1);
+                salvar_dados_venda.exec();
+
+                consultar_id_pagamento.exec("SELECT d.`id_pag_avista`, d.`id_pag_parcelado` FROM dinheiro d WHERE id_origem = '"+QString::number(id_venda)+"';");
+                if(consultar_id_pagamento.last()){
+                    id_avista = consultar_id_pagamento.value(0).toInt();
+                    id_parcelado = consultar_id_pagamento.value(1).toInt();
+                }
+                remover_dados_dinheiro.exec("DELETE FROM dinheiro WHERE origem = '3' AND id_origem = '"+QString::number(id_venda)+"';");
+                remover_dados_cartao.exec("DELETE FROM cartao WHERE origem = '3' AND id_origem = '"+QString::number(id_venda)+"';");
+                remover_dados_cheque.exec("DELETE FROM cheque WHERE origem = '3' AND id_origem = '"+QString::number(id_venda)+"';");
+                remover_dados_ganhos.exec("DELETE FROM ganhos WHERE id_origem = '"+QString::number(id_venda)+"';");
+                remover_pagamento_avista.exec("DELETE FROM pagamento_avista WHERE id_pag_avista = '"+QString::number(id_avista)+"';");
+                remover_pagamento_parcelado.exec("DELETE FROM pagamento_parcelado WHERE id_pag_parcelado = '"+QString::number(id_parcelado)+"';");
+
+                consultar_his_remocao_pro_estoque.exec("SELECT h.`id_balanco`, h.`quantidade` FROM his_remocao_pro_estoque h WHERE h.id_venda = "+QString::number(id_venda)+";");
+                while(consultar_his_remocao_pro_estoque.next()){
+                    id_balanco_remover = consultar_his_remocao_pro_estoque.value(0).toInt();
+                    quantidade_his_remocao_pro_estoque = consultar_his_remocao_pro_estoque.value(1).toInt();
+                    //Insere os dados no histórico de balanço do estoque
+                    atualizar_his_balanco_estoque.prepare("UPDATE his_balanco_estoque SET total_disponivel = total_disponivel+:quantidade WHERE id_balanco = '"+QString::number(id_balanco_remover)+"';");
+                    atualizar_his_balanco_estoque.bindValue(":quantidade", quantidade_his_remocao_pro_estoque);
+                    atualizar_his_balanco_estoque.exec();
+                }
+
+                remover_his_balanco_estoque.exec("DELETE FROM his_remocao_pro_estoque WHERE id_venda = '"+QString::number(id_venda)+"';");
+                remover_his_balanco_estoque.exec();
+
+                if ((remover_dados_dinheiro.lastError().number()<=0)&&
+                    (remover_dados_cartao.lastError().number()<=0)&&
+                    (remover_dados_cheque.lastError().number()<=0)&&
+                    (remover_dados_ganhos.lastError().number()<=0)&&
+                    (remover_pagamento_avista.lastError().number()<=0)&&
+                    (remover_pagamento_parcelado.lastError().number()<=0)&&
+                    (remover_his_balanco_estoque.lastError().number()<=0)&&
+                    (atualizar_his_balanco_estoque.lastError().number()<=0)&&
+                    (salvar_dados_venda.lastError().number()<=0)){
+
+                    //Finaliza a inserçao dos dados.
+                    bd.commit();
+                    //bd.rollback();
+
+                    //Gera mensagem de que tudo ocorreu direito.
+                    QPixmap icone_janela(":img/img/arquivo_50.png");
+                    QMessageBox msg(0);
+                    msg.setIconPixmap(icone_janela);
+                    msg.setWindowIcon(logomarca);
+                    msg.setWindowTitle("Cancelamento");
+                    msg.addButton("OK", QMessageBox::AcceptRole);
+                    msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+                    msg.setText("\nA venda foi cancelada com sucesso!!!!");
+                    msg.exec();
+
+                    //Fecha a conexão com o banco de dados
+                    bd.close();
+                    conexao.fechar_conexao();
+                    this->accept();
+                    this->close();
+                }
+                else{
+
+                    //Desfaz as alterações no banco de dados.
+                    bd.rollback();
+
+                    //Gera a mensagem de erro.
+                    QPixmap icone_janela(":img/img/arquivo_erro_50.png");
+                    QMessageBox msg(0);
+                    msg.setIconPixmap(icone_janela);
+                    msg.setWindowIcon(logomarca);
+                    msg.setWindowTitle("Cancelamento");
+                    msg.addButton("OK", QMessageBox::AcceptRole);
+                    msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
+                    msg.setText("\nNão foi possível efetuar o cancelamento!!!!");
+                    msg.exec();
+
+                    //Fecha a conexão com o banco de dados
+                    bd.close();
+                    conexao.fechar_conexao();
+                    this->accept();
+                    this->close();
+                }
+            }
+        }
     }
 }

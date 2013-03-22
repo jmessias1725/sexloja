@@ -11,6 +11,7 @@
 #include "tela_editar_parcela.h"
 #include "tela_vender.h"
 #include "ganho.h"
+#include "tela_justificativa_cancelamento.h"
 
 namespace Ui {
 class tela_nota_venda;
@@ -22,7 +23,8 @@ class tela_nota_venda : public QDialog
     
 public:
     explicit tela_nota_venda(QWidget *parent = 0);
-    ~tela_nota_venda();
+    ~tela_nota_venda();    
+    void closeEvent( QCloseEvent * event );
     void definir_icone_janela(QPixmap logo);
     void definir_dados(venda *vend);
     void buscar_dados(void);
@@ -34,6 +36,8 @@ private slots:
     void on_btn_reabrir_clicked();
     void on_btn_confirmar_clicked();
     bool atualizar_dados_parcelamento(void);
+    void on_btn_cancelar_clicked();
+    void on_btn_cancelar_nota_clicked();
 
 private:
     Ui::tela_nota_venda *ui;
@@ -44,6 +48,7 @@ private:
     std::vector< ganho* > lt_ganho;
     tela_editar_parcela tl_editar_parcela;
     tela_vender tl_vender;
+    tela_justificativa_cancelamento tl_justificativa_cancelamento;
     double valor_total;
     bool editou_dados;
 };

@@ -70,6 +70,8 @@
         <file>img/abrir.png</file>
         <file>img/abrir_50.png</file>
         <file>img/correto.png</file>
+        <file>img/compra_cancelar.png</file>
+        <file>img/vender_cancelar.png</file>
     </qresource>
     <qresource prefix="/operadoras">
         <file>img/claro.png</file>

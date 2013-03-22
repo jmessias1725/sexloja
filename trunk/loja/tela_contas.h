@@ -32,6 +32,8 @@ public:
     void mostrar_lista_ganhos(void);
     void mostrar_lista_notas_venda(void);
     void mostrar_lista_notas_compra(void);
+    void limpar_dados(void);
+    void closeEvent( QCloseEvent * event );
     
 private slots:
     void on_btn_buscar_clicked();
@@ -45,7 +47,6 @@ private slots:
     void on_data_inicial_cr_editingFinished();
     void on_btn_buscar_nota_venda_clicked();
     void on_btn_buscar_nota_compra_clicked();
-
     void on_tw_lista_notas_venda_doubleClicked(const QModelIndex &index);
 
 private:

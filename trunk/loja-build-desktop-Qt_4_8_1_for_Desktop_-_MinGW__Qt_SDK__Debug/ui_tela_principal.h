@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_principal.ui'
 **
-** Created: Sun 10. Mar 12:16:26 2013
+** Created: Fri 22. Mar 10:41:10 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -430,6 +430,9 @@ public:
         menuNovo->setFont(font6);
         menuNovo->setStyleSheet(QString::fromUtf8("background-color: #505050;\n"
 "color: #FFFFFF;"));
+        QIcon icon15;
+        icon15.addFile(QString::fromUtf8(":/img/img/mais.png"), QSize(), QIcon::Normal, QIcon::Off);
+        menuNovo->setIcon(icon15);
         menuListar = new QMenu(menubar);
         menuListar->setObjectName(QString::fromUtf8("menuListar"));
         menuListar->setStyleSheet(QString::fromUtf8("background-color: #505050;\n"
