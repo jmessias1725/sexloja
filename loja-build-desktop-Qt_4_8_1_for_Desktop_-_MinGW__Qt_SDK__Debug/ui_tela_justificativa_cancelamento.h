@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_justificativa_cancelamento.ui'
 **
-** Created: Fri 22. Mar 15:40:39 2013
+** Created: Tue 26. Mar 15:45:03 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -30,7 +30,7 @@ class Ui_tela_justificativa_cancelamento
 public:
     QVBoxLayout *verticalLayout;
     QLabel *label;
-    QTextEdit *textEdit;
+    QTextEdit *te_justificativa;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer_2;
     QPushButton *btn_confirmar;
@@ -63,11 +63,11 @@ public:
 
         verticalLayout->addWidget(label);
 
-        textEdit = new QTextEdit(tela_justificativa_cancelamento);
-        textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setOverwriteMode(false);
+        te_justificativa = new QTextEdit(tela_justificativa_cancelamento);
+        te_justificativa->setObjectName(QString::fromUtf8("te_justificativa"));
+        te_justificativa->setOverwriteMode(false);
 
-        verticalLayout->addWidget(textEdit);
+        verticalLayout->addWidget(te_justificativa);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(5);
