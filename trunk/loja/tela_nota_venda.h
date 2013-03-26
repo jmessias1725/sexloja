@@ -29,7 +29,7 @@ public:
     void definir_dados(venda *vend);
     void buscar_dados(void);
     void mostrar_dados(void);
-    void mostrar_dados_pagamento(void);
+    void mostrar_dados_pagamento_ou_justificativa(void);
     
 private slots:
     void on_tw_lista_pagamento_doubleClicked(const QModelIndex &index);
@@ -51,6 +51,9 @@ private:
     tela_justificativa_cancelamento tl_justificativa_cancelamento;
     double valor_total;
     bool editou_dados;
+    QFont font5;
+    QTextEdit *te_justificativa_cancelamento;
+    QTableWidget *tw_lista_pagamento;
 };
 
 #endif // TELA_NOTA_VENDA_H

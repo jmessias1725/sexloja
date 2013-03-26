@@ -595,7 +595,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                     salvar_dados_venda.bindValue(":valor_total", dados_venda->retorna_valor_total());
                     salvar_dados_venda.bindValue(":desconto", dados_venda->retorna_desconto());
                     salvar_dados_venda.bindValue(":valor_pago", dados_venda->retorna_valor_pago());
-                    salvar_dados_venda.bindValue(":status", 0);
+                    salvar_dados_venda.bindValue(":status", dados_venda->retorna_status());
                     salvar_dados_venda.exec();
 
                     //realiza a consulta para determinar  o id da venda.
@@ -614,6 +614,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                     QSqlQuery remover_pagamento_avista(bd);
                     QSqlQuery remover_pagamento_parcelado(bd);
                     QSqlQuery remover_his_balanco_estoque(bd);
+                    QSqlQuery remover_justificativa_cancelamento(bd);
 
                     QSqlQuery consultar_id_pagamento(bd);
                     QSqlQuery consultar_his_remocao_pro_estoque(bd);
@@ -647,6 +648,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                     remover_pagamento_avista.exec("DELETE FROM lista_venda WHERE id_venda ='"+QString::number(dados_venda->retorna_id_venda())+"';");
                     remover_lista_venda.exec("DELETE FROM pagamento_avista WHERE id_pag_avista = '"+QString::number(id_avista)+"';");
                     remover_pagamento_parcelado.exec("DELETE FROM pagamento_parcelado WHERE id_pag_parcelado = '"+QString::number(id_parcelado)+"';");
+                    remover_justificativa_cancelamento.exec("DELETE FROM jus_cancelamento_nota WHERE origem = '0' AND id_origem = '"+QString::number(dados_venda->retorna_id_venda())+"';");
 
                     consultar_his_remocao_pro_estoque.exec("SELECT h.`id_balanco`, h.`quantidade` FROM his_remocao_pro_estoque h WHERE h.id_venda = "+QString::number(dados_venda->retorna_id_venda())+";");
                     while(consultar_his_remocao_pro_estoque.next()){

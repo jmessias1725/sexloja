@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_definir_valor_venda.h'
 **
-** Created: Sun 10. Mar 12:19:37 2013
+** Created: Tue 26. Mar 15:49:28 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!

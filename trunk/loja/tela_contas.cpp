@@ -435,6 +435,7 @@ void tela_contas::on_btn_buscar_nota_venda_clicked()
     double aux_valor_total;
     double aux_desconto;
     QString aux_nome;
+    int aux_status;
 
 
     lista_venda.clear();
@@ -450,15 +451,16 @@ void tela_contas::on_btn_buscar_nota_venda_clicked()
         QSqlQuery consultar(bd);
 
         //realiza a consulta
-        consultar.exec("SELECT v.id_venda,v.data_venda,v.id_cliente,v.valor_total,v.desconto,c.nome FROM venda v, cliente c WHERE nome LIKE '%"+ui->le_nome_cliente->text()+"%' AND c.id_cliente = v.id_cliente;");
+        consultar.exec("SELECT v.id_venda,v.data_venda,v.id_cliente,v.valor_total,v.desconto,v.status,c.nome FROM venda v, cliente c WHERE nome LIKE '%"+ui->le_nome_cliente->text()+"%' AND c.id_cliente = v.id_cliente;");
         while(consultar.next()){
             aux_id_venda = consultar.value(0).toInt();
             aux_data = consultar.value(1).toString();
             aux_id_cliente = consultar.value(2).toInt();
             aux_valor_total = consultar.value(3).toDouble();
             aux_desconto = consultar.value(4).toDouble();
-            aux_nome = consultar.value(5).toString();
-            lista_venda.push_back(new venda(aux_id_venda,QDate::fromString(aux_data,"dd/MM/yyyy"),aux_id_cliente,aux_valor_total,aux_desconto));
+            aux_status = consultar.value(5).toInt();
+            aux_nome = consultar.value(6).toString();
+            lista_venda.push_back(new venda(aux_id_venda,QDate::fromString(aux_data,"dd/MM/yyyy"),aux_id_cliente,aux_valor_total,aux_desconto,aux_status));
             lista_nome_clientes.push_back(aux_nome);
         }
         consultar.clear();

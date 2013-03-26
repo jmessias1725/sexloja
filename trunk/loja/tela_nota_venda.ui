@@ -251,7 +251,7 @@ QToolButton{
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>0</y>
+          <y>-350</y>
           <width>811</width>
           <height>915</height>
          </rect>
@@ -1041,7 +1041,7 @@ QToolButton{
             <number>0</number>
            </property>
            <item>
-            <widget class="QLabel" name="lb_forma_pagamento">
+            <widget class="QLabel" name="lb_forma_pagamento_jus">
              <property name="minimumSize">
               <size>
                <width>790</width>
@@ -1085,6 +1085,12 @@ QToolButton{
                  <height>250</height>
                 </size>
                </property>
+               <property name="maximumSize">
+                <size>
+                 <width>20</width>
+                 <height>250</height>
+                </size>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QFrame{
 	background-color: qlineargradient(x1:0, y1:1, x0:1, y0:0,
@@ -1105,54 +1111,14 @@ QToolButton{
               </widget>
              </item>
              <item>
-              <widget class="QTableWidget" name="tw_lista_pagamento">
+              <widget class="QFrame" name="frame_4">
                <property name="minimumSize">
                 <size>
-                 <width>750</width>
+                 <width>20</width>
                  <height>250</height>
                 </size>
                </property>
-               <property name="font">
-                <font>
-                 <family>Calibri</family>
-                 <pointsize>9</pointsize>
-                </font>
-               </property>
-               <property name="alternatingRowColors">
-                <bool>true</bool>
-               </property>
-               <property name="rowCount">
-                <number>0</number>
-               </property>
-               <property name="columnCount">
-                <number>0</number>
-               </property>
-               <attribute name="horizontalHeaderDefaultSectionSize">
-                <number>400</number>
-               </attribute>
-               <attribute name="horizontalHeaderHighlightSections">
-                <bool>true</bool>
-               </attribute>
-               <attribute name="horizontalHeaderMinimumSectionSize">
-                <number>95</number>
-               </attribute>
-               <attribute name="horizontalHeaderStretchLastSection">
-                <bool>true</bool>
-               </attribute>
-               <attribute name="verticalHeaderVisible">
-                <bool>false</bool>
-               </attribute>
-               <attribute name="verticalHeaderDefaultSectionSize">
-                <number>20</number>
-               </attribute>
-               <attribute name="verticalHeaderMinimumSectionSize">
-                <number>20</number>
-               </attribute>
-              </widget>
-             </item>
-             <item>
-              <widget class="QFrame" name="frame_4">
-               <property name="minimumSize">
+               <property name="maximumSize">
                 <size>
                  <width>20</width>
                  <height>250</height>

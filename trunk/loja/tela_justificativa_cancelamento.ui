@@ -54,7 +54,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QTextEdit" name="textEdit">
+    <widget class="QTextEdit" name="te_justificativa">
      <property name="overwriteMode">
       <bool>false</bool>
      </property>

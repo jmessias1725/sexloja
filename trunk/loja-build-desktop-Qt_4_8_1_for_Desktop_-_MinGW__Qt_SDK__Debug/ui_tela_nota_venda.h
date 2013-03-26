@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_nota_venda.ui'
 **
-** Created: Fri 22. Mar 14:41:52 2013
+** Created: Tue 26. Mar 15:45:03 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -81,10 +81,9 @@ public:
     QLabel *lb_total_pago;
     QLineEdit *le_total_a_pagar;
     QVBoxLayout *verticalLayout_2;
-    QLabel *lb_forma_pagamento;
+    QLabel *lb_forma_pagamento_jus;
     QHBoxLayout *horizontalLayout_2;
     QFrame *frame_5;
-    QTableWidget *tw_lista_pagamento;
     QFrame *frame_4;
     QFrame *frame_2;
     QSpacerItem *horizontalSpacer_2;
@@ -195,7 +194,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 811, 915));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, -350, 811, 915));
         verticalLayout_3 = new QVBoxLayout(scrollAreaWidgetContents_2);
         verticalLayout_3->setSpacing(5);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
@@ -505,19 +504,19 @@ public:
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setSpacing(0);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        lb_forma_pagamento = new QLabel(scrollAreaWidgetContents_2);
-        lb_forma_pagamento->setObjectName(QString::fromUtf8("lb_forma_pagamento"));
-        lb_forma_pagamento->setMinimumSize(QSize(790, 40));
-        lb_forma_pagamento->setFont(font4);
-        lb_forma_pagamento->setStyleSheet(QString::fromUtf8("QFrame{	\n"
+        lb_forma_pagamento_jus = new QLabel(scrollAreaWidgetContents_2);
+        lb_forma_pagamento_jus->setObjectName(QString::fromUtf8("lb_forma_pagamento_jus"));
+        lb_forma_pagamento_jus->setMinimumSize(QSize(790, 40));
+        lb_forma_pagamento_jus->setFont(font4);
+        lb_forma_pagamento_jus->setStyleSheet(QString::fromUtf8("QFrame{	\n"
 "	background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.3 rgba(255, 255, 255, 0));\n"
 "	border: none;\n"
 "	color:#000000\n"
 "}\n"
 ""));
-        lb_forma_pagamento->setAlignment(Qt::AlignCenter);
+        lb_forma_pagamento_jus->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_2->addWidget(lb_forma_pagamento);
+        verticalLayout_2->addWidget(lb_forma_pagamento_jus);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(0);
@@ -525,6 +524,7 @@ public:
         frame_5 = new QFrame(scrollAreaWidgetContents_2);
         frame_5->setObjectName(QString::fromUtf8("frame_5"));
         frame_5->setMinimumSize(QSize(20, 250));
+        frame_5->setMaximumSize(QSize(20, 250));
         frame_5->setStyleSheet(QString::fromUtf8("QFrame{\n"
 "	background-color: qlineargradient(x1:0, y1:1, x0:1, y0:0,\n"
 "                                       stop:0.3 #505050, stop:0.6 #000000);\n"
@@ -539,26 +539,10 @@ public:
 
         horizontalLayout_2->addWidget(frame_5);
 
-        tw_lista_pagamento = new QTableWidget(scrollAreaWidgetContents_2);
-        tw_lista_pagamento->setObjectName(QString::fromUtf8("tw_lista_pagamento"));
-        tw_lista_pagamento->setMinimumSize(QSize(750, 250));
-        tw_lista_pagamento->setFont(font5);
-        tw_lista_pagamento->setAlternatingRowColors(true);
-        tw_lista_pagamento->setRowCount(0);
-        tw_lista_pagamento->setColumnCount(0);
-        tw_lista_pagamento->horizontalHeader()->setDefaultSectionSize(400);
-        tw_lista_pagamento->horizontalHeader()->setHighlightSections(true);
-        tw_lista_pagamento->horizontalHeader()->setMinimumSectionSize(95);
-        tw_lista_pagamento->horizontalHeader()->setStretchLastSection(true);
-        tw_lista_pagamento->verticalHeader()->setVisible(false);
-        tw_lista_pagamento->verticalHeader()->setDefaultSectionSize(20);
-        tw_lista_pagamento->verticalHeader()->setMinimumSectionSize(20);
-
-        horizontalLayout_2->addWidget(tw_lista_pagamento);
-
         frame_4 = new QFrame(scrollAreaWidgetContents_2);
         frame_4->setObjectName(QString::fromUtf8("frame_4"));
         frame_4->setMinimumSize(QSize(20, 250));
+        frame_4->setMaximumSize(QSize(20, 250));
         frame_4->setStyleSheet(QString::fromUtf8("QFrame{\n"
 "	background-color: qlineargradient(x1:0, y1:1, x0:1, y0:0,\n"
 "                                       stop:0.3 #505050, stop:0.6 #000000);\n"
@@ -636,7 +620,7 @@ public:
         le_desconto->setText(QString());
         lb_total_pago->setText(QApplication::translate("tela_nota_venda", "TOTAL PAGO:", 0, QApplication::UnicodeUTF8));
         le_total_a_pagar->setText(QString());
-        lb_forma_pagamento->setText(QApplication::translate("tela_nota_venda", "Forma de pagamento", 0, QApplication::UnicodeUTF8));
+        lb_forma_pagamento_jus->setText(QApplication::translate("tela_nota_venda", "Forma de pagamento", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
