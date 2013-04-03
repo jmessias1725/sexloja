@@ -280,7 +280,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                             salvar_dados_despesa_dinheiro.bindValue(":descricao", "Parcela em dinheiro de número "+QString::number(i)+", referente a compra de código: "+QString::number(dados_compra->retorna_id_compra())+".");
                             salvar_dados_despesa_dinheiro.bindValue(":valor", parcelamento[i]->retorna_valor());
                             salvar_dados_despesa_dinheiro.bindValue(":data", parcelamento[i]->retorna_data());
-                            salvar_dados_despesa_dinheiro.bindValue(":status", 0);
+                            salvar_dados_despesa_dinheiro.bindValue(":status", _aberta);
                             salvar_dados_despesa_dinheiro.bindValue(":origem", 2);
                             salvar_dados_despesa_dinheiro.bindValue(":id_origem", dados_compra->retorna_id_compra());
                             salvar_dados_despesa_dinheiro.exec();
@@ -303,7 +303,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                         salvar_dados_despesa_dinheiro.bindValue(":descricao", "Valor em dinheiro referente ao pagamento da compra de código: "+QString::number(dados_compra->retorna_id_compra())+".");
                         salvar_dados_despesa_dinheiro.bindValue(":valor", valor_pago);
                         salvar_dados_despesa_dinheiro.bindValue(":data", dados_compra->retorna_data_compra());
-                        salvar_dados_despesa_dinheiro.bindValue(":status", 1);
+                        salvar_dados_despesa_dinheiro.bindValue(":status", _paga);
                         salvar_dados_despesa_dinheiro.bindValue(":origem", 3);
                         salvar_dados_despesa_dinheiro.bindValue(":id_origem", dados_compra->retorna_id_compra());
                         salvar_dados_despesa_dinheiro.exec();
@@ -350,7 +350,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                         salvar_dados_despesa_cartao.bindValue(":descricao", "Parcela de número 1, referente a compra de código: "+QString::number(dados_compra->retorna_id_compra())+".");
                         salvar_dados_despesa_cartao.bindValue(":valor", primeira_parcela);
                         salvar_dados_despesa_cartao.bindValue(":data", data_parcelas[0]);
-                        salvar_dados_despesa_cartao.bindValue(":status", 0);
+                        salvar_dados_despesa_cartao.bindValue(":status", _aberta);
                         salvar_dados_despesa_cartao.bindValue(":origem", 0);
                         salvar_dados_despesa_cartao.bindValue(":id_origem", dados_compra->retorna_id_compra());
                         salvar_dados_despesa_cartao.exec();
@@ -360,7 +360,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                             salvar_dados_despesa_cartao.bindValue(":descricao", "Parcela de número "+QString::number(i)+", referente a compra de código: "+QString::number(dados_compra->retorna_id_compra())+".");
                             salvar_dados_despesa_cartao.bindValue(":valor", valor_parcela);
                             salvar_dados_despesa_cartao.bindValue(":data", data_parcelas[i-1]);
-                            salvar_dados_despesa_cartao.bindValue(":status", 0);
+                            salvar_dados_despesa_cartao.bindValue(":status", _aberta);
                             salvar_dados_despesa_cartao.bindValue(":origem", 0);
                             salvar_dados_despesa_cartao.bindValue(":id_origem", dados_compra->retorna_id_compra());
                             salvar_dados_despesa_cartao.exec();
@@ -373,7 +373,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                             salvar_dados_despesa_cartao.bindValue(":descricao", "Parcela de número "+QString::number(i)+", referente a compra de código: "+QString::number(dados_compra->retorna_id_compra())+".");
                             salvar_dados_despesa_cartao.bindValue(":valor", valor_parcela);
                             salvar_dados_despesa_cartao.bindValue(":data", data_parcelas[i-1]);
-                            salvar_dados_despesa_cartao.bindValue(":status", 0);
+                            salvar_dados_despesa_cartao.bindValue(":status", _aberta);
                             salvar_dados_despesa_cartao.bindValue(":origem", 0);
                             salvar_dados_despesa_cartao.bindValue(":id_origem", dados_compra->retorna_id_compra());
                             salvar_dados_despesa_cartao.exec();
@@ -402,12 +402,12 @@ void tela_pagamento::on_btn_confirmar_clicked()
                     salvar_dados_despesa_cheque.bindValue(":valor", cheque_usado->retorna_valor());
                     if(cheque_usado->retorna_se_insere_caixa_hoje()==true){
                         QDate data_atual;
-                        salvar_dados_despesa_cheque.bindValue(":status", 1);
+                        salvar_dados_despesa_cheque.bindValue(":status", _aberta);
                         salvar_dados_despesa_cheque.bindValue(":data", data_atual.currentDate().toString(Qt::SystemLocaleShortDate));
                     }
                     else{
                         salvar_dados_despesa_cheque.bindValue(":data", cheque_usado->retorna_data_pagamento());
-                        salvar_dados_despesa_cheque.bindValue(":status", 0);
+                        salvar_dados_despesa_cheque.bindValue(":status", _aberta);
                     }
                     salvar_dados_despesa_cheque.bindValue(":origem", 1);
                     salvar_dados_despesa_cheque.bindValue(":id_origem", dados_compra->retorna_id_compra());
@@ -633,7 +633,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                     salvar_dados_venda.bindValue(":valor_total", dados_venda->retorna_valor_total());
                     salvar_dados_venda.bindValue(":desconto", dados_venda->retorna_desconto());
                     salvar_dados_venda.bindValue(":valor_pago", dados_venda->retorna_valor_pago());
-                    salvar_dados_venda.bindValue(":status", 0);
+                    salvar_dados_venda.bindValue(":status", _aberta);
                     salvar_dados_venda.exec();
 
                     consultar_id_pagamento.exec("SELECT d.`id_pag_avista`, d.`id_pag_parcelado` FROM dinheiro d WHERE id_origem = '"+QString::number(dados_venda->retorna_id_venda())+"';");
@@ -683,7 +683,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                             salvar_dados_dinheiro.bindValue(":descricao", "Parcela em dinheiro de número "+QString::number(i+1)+", referente a venda de código: "+QString::number(dados_venda->retorna_id_venda())+".");
                             salvar_dados_dinheiro.bindValue(":valor", parcelamento[i]->retorna_valor());
                             salvar_dados_dinheiro.bindValue(":data", parcelamento[i]->retorna_data());
-                            salvar_dados_dinheiro.bindValue(":status", 0);
+                            salvar_dados_dinheiro.bindValue(":status", _aberta);
                             salvar_dados_dinheiro.bindValue(":origem", 2);
                             salvar_dados_dinheiro.bindValue(":id_origem", dados_venda->retorna_id_venda());
                             salvar_dados_dinheiro.exec();
@@ -706,7 +706,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                         salvar_dados_dinheiro.bindValue(":descricao", "Valor em dinheiro referente ao pagamento da venda de código "+QString::number(dados_venda->retorna_id_venda())+".");
                         salvar_dados_dinheiro.bindValue(":valor", valor_pago);
                         salvar_dados_dinheiro.bindValue(":data", dados_venda->retorna_data_venda());
-                        salvar_dados_dinheiro.bindValue(":status", 1);
+                        salvar_dados_dinheiro.bindValue(":status",_paga);
                         salvar_dados_dinheiro.bindValue(":origem", 3);
                         salvar_dados_dinheiro.bindValue(":id_origem", dados_venda->retorna_id_venda());
                         salvar_dados_dinheiro.exec();
@@ -753,7 +753,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                         salvar_dados_despesa_cartao.bindValue(":descricao", "Parcela de número 1, referente a venda de código: "+QString::number(dados_venda->retorna_id_venda())+".");
                         salvar_dados_despesa_cartao.bindValue(":valor", primeira_parcela);
                         salvar_dados_despesa_cartao.bindValue(":data", data_parcelas[0]);
-                        salvar_dados_despesa_cartao.bindValue(":status", 0);
+                        salvar_dados_despesa_cartao.bindValue(":status", _aberta);
                         salvar_dados_despesa_cartao.bindValue(":origem", 0);
                         salvar_dados_despesa_cartao.bindValue(":id_origem", dados_venda->retorna_id_venda());
                         salvar_dados_despesa_cartao.exec();
@@ -763,7 +763,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                             salvar_dados_despesa_cartao.bindValue(":descricao", "Parcela de número "+QString::number(i)+", referente a venda de código: "+QString::number(dados_venda->retorna_id_venda())+".");
                             salvar_dados_despesa_cartao.bindValue(":valor", valor_parcela);
                             salvar_dados_despesa_cartao.bindValue(":data", data_parcelas[i-1]);
-                            salvar_dados_despesa_cartao.bindValue(":status", 0);
+                            salvar_dados_despesa_cartao.bindValue(":status", _aberta);
                             salvar_dados_despesa_cartao.bindValue(":origem", 0);
                             salvar_dados_despesa_cartao.bindValue(":id_origem", dados_venda->retorna_id_venda());
                             salvar_dados_despesa_cartao.exec();
@@ -776,7 +776,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                             salvar_dados_despesa_cartao.bindValue(":descricao", "Parcela de número "+QString::number(i)+", referente a venda de código: "+QString::number(dados_venda->retorna_id_venda())+".");
                             salvar_dados_despesa_cartao.bindValue(":valor", valor_parcela);
                             salvar_dados_despesa_cartao.bindValue(":data", data_parcelas[i-1]);
-                            salvar_dados_despesa_cartao.bindValue(":status", 0);
+                            salvar_dados_despesa_cartao.bindValue(":status", _aberta);
                             salvar_dados_despesa_cartao.bindValue(":origem", 0);
                             salvar_dados_despesa_cartao.bindValue(":id_origem", dados_venda->retorna_id_venda());
                             salvar_dados_despesa_cartao.exec();
@@ -804,12 +804,12 @@ void tela_pagamento::on_btn_confirmar_clicked()
 
                     if(cheque_usado->retorna_se_insere_caixa_hoje()==true){
                         QDate data_atual;
-                        salvar_dados_despesa_cheque.bindValue(":status", 1);
+                        salvar_dados_despesa_cheque.bindValue(":status", _aberta);
                         salvar_dados_despesa_cheque.bindValue(":data", data_atual.currentDate().toString(Qt::SystemLocaleShortDate));
                     }
                     else{
                         salvar_dados_despesa_cheque.bindValue(":data", cheque_usado->retorna_data_pagamento());
-                        salvar_dados_despesa_cheque.bindValue(":status", 0);
+                        salvar_dados_despesa_cheque.bindValue(":status", _aberta);
                     }
 
                     salvar_dados_despesa_cheque.bindValue(":origem", 1);

@@ -13,6 +13,7 @@
 #include "venda.h"
 #include "compra.h"
 #include "tela_nota_venda.h"
+#include "tela_nota_compra.h"
 
 namespace Ui {
 class tela_contas;
@@ -49,6 +50,8 @@ private slots:
     void on_btn_buscar_nota_compra_clicked();
     void on_tw_lista_notas_venda_doubleClicked(const QModelIndex &index);
 
+    void on_tw_lista_notas_compra_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::tela_contas *ui;
     QPixmap logomarca;
@@ -68,6 +71,7 @@ private:
     QString aux_cons_status_ganhos;
     QStandardItemModel *modelo;
     tela_nota_venda tl_nota_venda;
+    tela_nota_compra tl_nota_compra;
 };
 
 #endif // TELA_CONTAS_H

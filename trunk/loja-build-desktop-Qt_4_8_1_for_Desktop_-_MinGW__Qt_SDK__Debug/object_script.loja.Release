@@ -61,6 +61,8 @@ INPUT(
 ./release\tela_ajustar_data_valor.o
 ./release\tela_editar_parcela.o
 ./release\tela_justificativa_cancelamento.o
+./release\variaveis_globais.o
+./release\tela_nota_compra.o
 ./release\moc_tela_login.o
 ./release\moc_tela_principal.o
 ./release\moc_tela_cadastro_cliente.o
@@ -97,5 +99,6 @@ INPUT(
 ./release\moc_tela_ajustar_data_valor.o
 ./release\moc_tela_editar_parcela.o
 ./release\moc_tela_justificativa_cancelamento.o
+./release\moc_tela_nota_compra.o
 ./release\qrc_imagens.o
 );

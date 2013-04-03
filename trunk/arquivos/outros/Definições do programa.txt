@@ -1,13 +1,12 @@
 Campo origem das tabelas cartão, dinheiro e cheque.
 
-0 - dívida avulsa;
-1 - pagamento de compra;
-2 - entrada avulsa;
+0 - compra avulsa;
+1 - compra de produto;
+2 - venda avulsa;
 3 - venda de produto.
 
 
 Campo origem tabela despesas, ganhos.
-
 0 - cartão;
 1 - cheque;
 2 - dinheiro,parcelado.
@@ -15,10 +14,9 @@ Campo origem tabela despesas, ganhos.
 
 campo id_origem se refere ao id da operação.
 
-campo status tabela despesas.
-
-0 - aberta;
-1 - paga;
+campo status tabela despesas,ganhos.
+0 - paga;
+1 - aberta;
 2 - atrasada.
 
 campo origem tabela his_entradas.
@@ -27,10 +25,10 @@ campo origem tabela his_entradas.
 1 - compra;
 
 Campo origem tabela jus_cancelamento_nota.
-
 0 - nota de venda;
 1 - nota de compra;
 
 campo status nas tabelas compra e venda.
-0 - aberta;
-1 - cancelada;
+0 - fechada;
+1 - aberta;
+2 - cancelada;

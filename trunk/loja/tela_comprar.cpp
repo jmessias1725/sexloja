@@ -170,7 +170,7 @@ void tela_comprar::on_btn_confirmar_clicked()
             double valor_tot = funcao.converter_para_double(ui->le_total_a_pagar->text())+funcao.converter_para_double(ui->le_desconto->text());
             dados_compra = new compra(ui->data->date(),
                                       ui->le_codigo->text().toInt(),ui->le_numero_cupom_nota->text().toInt(),
-                                      valor_tot,funcao.converter_para_double(ui->le_desconto->text()));
+                                      valor_tot,funcao.converter_para_double(ui->le_desconto->text()),_aberta);
 
             for(int i=0;i<int(lista_produtos.size());i++){
                 lt_compra.push_back(new lista_compra(lista_produtos[i]->retorna_id(),0,0,
@@ -190,7 +190,7 @@ void tela_comprar::on_btn_confirmar_clicked()
         double valor_tot = funcao.converter_para_double(ui->le_total_a_pagar->text())+funcao.converter_para_double(ui->le_desconto->text());
         dados_compra = new compra(ui->data->date(),
                                   ui->le_codigo->text().toInt(),ui->le_numero_cupom_nota->text().toInt(),
-                                  valor_tot,funcao.converter_para_double(ui->le_desconto->text()));
+                                  valor_tot,funcao.converter_para_double(ui->le_desconto->text()),_aberta);
 
         for(int i=0;i<int(lista_produtos.size());i++){
             lt_compra.push_back(new lista_compra(lista_produtos[i]->retorna_id(),0,0,

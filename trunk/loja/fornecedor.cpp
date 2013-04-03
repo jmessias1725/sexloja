@@ -39,6 +39,14 @@ fornecedor::fornecedor(QString fornecedor_cnpj,QString fornecedor_razao_social,Q
     lista_operadora =lista_operadora_fornecedor;
 }
 
+fornecedor::fornecedor(int id_fornecedor,QString fornecedor_cnpj,QString fornecedor_razao_social,QString fornecedor_nome){
+
+    id = id_fornecedor;
+    cnpj =fornecedor_cnpj;
+    razao_social =fornecedor_razao_social;
+    nome =fornecedor_nome;
+}
+
 void fornecedor::definir_icone_janela(QPixmap logo){
     logomarca = logo;
 }

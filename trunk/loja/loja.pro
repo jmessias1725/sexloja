@@ -72,7 +72,9 @@ SOURCES += main.cpp\
     parcela.cpp \
     tela_ajustar_data_valor.cpp \
     tela_editar_parcela.cpp \
-    tela_justificativa_cancelamento.cpp
+    tela_justificativa_cancelamento.cpp \
+    variaveis_globais.cpp \
+    tela_nota_compra.cpp
 
 HEADERS  += \
     conexao_bd.h \
@@ -135,7 +137,9 @@ HEADERS  += \
     parcela.h \
     tela_ajustar_data_valor.h \
     tela_editar_parcela.h \
-    tela_justificativa_cancelamento.h
+    tela_justificativa_cancelamento.h \
+    variaveis_globais.h \
+    tela_nota_compra.h
 
 FORMS    += \
     tela_login.ui \
@@ -174,7 +178,8 @@ FORMS    += \
     tela_nota_venda.ui \
     tela_ajustar_data_valor.ui \
     tela_editar_parcela.ui \
-    tela_justificativa_cancelamento.ui
+    tela_justificativa_cancelamento.ui \
+    tela_nota_compra.ui
 
 RESOURCES += \
     imagens.qrc

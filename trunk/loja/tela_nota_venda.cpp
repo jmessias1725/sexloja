@@ -38,6 +38,7 @@ void tela_nota_venda::definir_icone_janela(QPixmap logo){
     tw_lista_pagamento->verticalHeader()->setVisible(false);
     tw_lista_pagamento->verticalHeader()->setDefaultSectionSize(20);
     tw_lista_pagamento->verticalHeader()->setMinimumSectionSize(20);
+    tw_lista_pagamento->connect(tw_lista_pagamento,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(ajustar_parcelas(QModelIndex)));
 }
 
 void tela_nota_venda::definir_dados(venda *vend){
@@ -120,15 +121,15 @@ void tela_nota_venda::buscar_dados(){
             aux_origem = consultar.value(5).toInt();
             aux_id_origem = consultar.value(6).toInt();
             lt_ganho.push_back(new ganho(aux_id_ganho,data_pagamento,aux_descricao,valor,aux_status,aux_origem,aux_id_origem));
-            if(aux_origem==2){
+            if(aux_origem==_dinheiro_par){
                 valor_total = valor_total+valor;
             }
         }
         consultar.clear();
 
-        if(venda_atual->retorna_status()==1){
+        if(venda_atual->retorna_status()==_cancelada){
             //realiza a consulta sobre a lista dados de pagamento
-            consultar.exec("SELECT justificativa FROM jus_cancelamento_nota WHERE id_origem='"+QString::number(venda_atual->retorna_id_venda())+"' AND origem = '0';");
+            consultar.exec("SELECT justificativa FROM jus_cancelamento_nota WHERE id_origem='"+QString::number(venda_atual->retorna_id_venda())+"' AND origem = '"+_nota_de_venda+"';");
             if(consultar.last()){
                 justificativa = consultar.value(0).toString();
             }
@@ -182,7 +183,7 @@ void tela_nota_venda::mostrar_dados(){
 
 void tela_nota_venda::mostrar_dados_pagamento_ou_justificativa(void){
     funcoes_extras funcao;
-    if(venda_atual->retorna_status()!=1){
+    if(venda_atual->retorna_status()!=_cancelada){
         ui->lb_forma_pagamento_jus->setText("Forma de Pagamento");
         ui->horizontalLayout_2->insertWidget(1,tw_lista_pagamento,0,0);
 
@@ -212,7 +213,6 @@ void tela_nota_venda::mostrar_dados_pagamento_ou_justificativa(void){
         tw_lista_pagamento->resizeColumnToContents(1);
         tw_lista_pagamento->resizeColumnToContents(2);
         tw_lista_pagamento->resizeColumnToContents(3);
-        tw_lista_pagamento->connect(tw_lista_pagamento,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(on_tw_lista_pagamento_doubleClicked(QModelIndex)));
         tw_lista_pagamento->deleteLater();
     }
     else{
@@ -222,7 +222,7 @@ void tela_nota_venda::mostrar_dados_pagamento_ou_justificativa(void){
     }
 }
 
-void tela_nota_venda::on_tw_lista_pagamento_doubleClicked(const QModelIndex &index){
+void tela_nota_venda::ajustar_parcelas(const QModelIndex &index){
     funcoes_extras funcao;
     double total_parcial = 0;
     double total_a_parcelar = 0;
@@ -238,13 +238,13 @@ void tela_nota_venda::on_tw_lista_pagamento_doubleClicked(const QModelIndex &ind
         editou_dados = true;
         lt_ganho[index.row()]  = tl_editar_parcela.retorna_parcela();
         if(valor_anterior!=lt_ganho[index.row()]->retorna_valor()){
-            for (int i=0; i < int(lt_ganho.size()); i++){
-                if((lt_ganho[i]->retorna_origem()==2)){
+            for (int i=0; i < int(lt_ganho.size()); i++){                
+                if((lt_ganho[i]->retorna_origem()==_dinheiro_par)){
                     if(i <= int(index.row())){
                         total_parcial  = total_parcial + lt_ganho[i]->retorna_valor();
                     }
                     else{
-                        if(lt_ganho[i]->retorna_status()==1){
+                        if(lt_ganho[i]->retorna_status()==_fechada){
                             total_parcial = total_parcial + lt_ganho[i]->retorna_valor();
                         }
                         else{
@@ -255,18 +255,18 @@ void tela_nota_venda::on_tw_lista_pagamento_doubleClicked(const QModelIndex &ind
                 }
             }
             if(numero_parcelas_restantes!=0){
-            total_a_parcelar = valor_total - total_parcial;
+                total_a_parcelar = valor_total - total_parcial;
 
-            valor_parcelas = total_a_parcelar/numero_parcelas_restantes;
-            valor_parcelas = funcao.arredonda_para_duas_casas_decimais(valor_parcelas);
-            ultima_parcela = total_a_parcelar - valor_parcelas*(numero_parcelas_restantes-1);
+                valor_parcelas = total_a_parcelar/numero_parcelas_restantes;
+                valor_parcelas = funcao.arredonda_para_duas_casas_decimais(valor_parcelas);
+                ultima_parcela = total_a_parcelar - valor_parcelas*(numero_parcelas_restantes-1);
 
-            for (int i = 0; i<int(indice_parcelas.size()-1);i++){
-                lt_ganho[indice_parcelas[i]]->alterar_valor(valor_parcelas);
-            }
+                for (int i = 0; i<int(indice_parcelas.size()-1);i++){
+                    lt_ganho[indice_parcelas[i]]->alterar_valor(valor_parcelas);
+                }
 
-            lt_ganho[indice_parcelas[int(indice_parcelas.size()-1)]]->alterar_valor(ultima_parcela);
-            }
+                lt_ganho[indice_parcelas[int(indice_parcelas.size()-1)]]->alterar_valor(ultima_parcela);
+                }
             else{
                 lt_ganho[index.row()]->alterar_valor(valor_anterior);
             }
@@ -488,7 +488,7 @@ void tela_nota_venda::on_btn_cancelar_nota_clicked()
 
             //Insere os dados no cadastro da venda
             salvar_dados_venda.prepare("UPDATE venda SET status=:status WHERE id_venda = '"+QString::number(id_venda)+"';");
-            salvar_dados_venda.bindValue(":status",1);
+            salvar_dados_venda.bindValue(":status",_cancelada);
             salvar_dados_venda.exec();
 
             //Insere a justificativa para o cancelamento

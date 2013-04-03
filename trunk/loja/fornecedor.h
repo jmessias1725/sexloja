@@ -40,6 +40,8 @@ public:
             QString uf_sigla, QString uf_nome, QString cidade, QString bairro,
             QString rua, QString cep, int numero, QString pt_referencia);
 
+    fornecedor(int id_fornecedor,QString fornecedor_cnpj,QString fornecedor_razao_social,QString fornecedor_nome);
+
     int retornar_id(void);
     QString retornar_cnpj(void);
     QString retornar_razao_social(void);

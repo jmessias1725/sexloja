@@ -16,6 +16,7 @@
 #include "lista_compra.h"
 #include "lista_venda.h"
 #include "parcela.h"
+#include "variaveis_globais.h"
 
 namespace Ui {
 class tela_pagamento;

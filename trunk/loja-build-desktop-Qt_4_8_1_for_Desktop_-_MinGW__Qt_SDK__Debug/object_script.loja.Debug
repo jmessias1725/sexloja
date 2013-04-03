@@ -61,6 +61,8 @@ INPUT(
 ./debug\tela_ajustar_data_valor.o
 ./debug\tela_editar_parcela.o
 ./debug\tela_justificativa_cancelamento.o
+./debug\variaveis_globais.o
+./debug\tela_nota_compra.o
 ./debug\moc_tela_login.o
 ./debug\moc_tela_principal.o
 ./debug\moc_tela_cadastro_cliente.o
@@ -97,5 +99,6 @@ INPUT(
 ./debug\moc_tela_ajustar_data_valor.o
 ./debug\moc_tela_editar_parcela.o
 ./debug\moc_tela_justificativa_cancelamento.o
+./debug\moc_tela_nota_compra.o
 ./debug\qrc_imagens.o
 );

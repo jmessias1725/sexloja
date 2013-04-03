@@ -1,13 +1,13 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_editar_parcela.h'
 **
-** Created: Tue 26. Mar 15:49:41 2013
+** Created: Wed 3. Apr 14:30:33 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../loja/tela_editar_parcela.h"
+#include "../../../programa Paula/loja/tela_editar_parcela.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'tela_editar_parcela.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 63

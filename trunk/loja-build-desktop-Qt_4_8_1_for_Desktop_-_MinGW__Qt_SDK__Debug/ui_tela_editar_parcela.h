@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_editar_parcela.ui'
 **
-** Created: Tue 26. Mar 15:45:03 2013
+** Created: Mon 1. Apr 16:25:40 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -201,8 +201,8 @@ public:
         lb_status->setText(QApplication::translate("tela_editar_parcela", "Status:", 0, QApplication::UnicodeUTF8));
         cb_status->clear();
         cb_status->insertItems(0, QStringList()
-         << QApplication::translate("tela_editar_parcela", "Aberta", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("tela_editar_parcela", "Paga", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("tela_editar_parcela", "Aberta", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("tela_editar_parcela", "Atrasada", 0, QApplication::UnicodeUTF8)
         );
         btn_confirmar->setText(QApplication::translate("tela_editar_parcela", "Confirmar", 0, QApplication::UnicodeUTF8));

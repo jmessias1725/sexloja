@@ -12,6 +12,7 @@
 #include "funcoes_extras.h"
 #include "lista_compra.h"
 #include "compra.h"
+#include "variaveis_globais.h"
 
 namespace Ui {
 class tela_comprar;
