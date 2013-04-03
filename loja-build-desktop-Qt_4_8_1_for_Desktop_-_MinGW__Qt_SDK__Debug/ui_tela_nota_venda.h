@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_nota_venda.ui'
 **
-** Created: Tue 26. Mar 15:45:03 2013
+** Created: Mon 1. Apr 16:25:39 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -36,7 +36,7 @@ public:
     QVBoxLayout *verticalLayout_5;
     QFrame *frame_7;
     QHBoxLayout *horizontalLayout_5;
-    QSpacerItem *horizontalSpacer_3;
+    QSpacerItem *horizontalSpacer_9;
     QToolButton *btn_cancelar_nota;
     QToolButton *btn_reabrir;
     QToolButton *btn_confirmar;
@@ -46,7 +46,7 @@ public:
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents_2;
     QVBoxLayout *verticalLayout_3;
-    QHBoxLayout *horizontalLayout_3;
+    QHBoxLayout *hz;
     QGroupBox *gb_dados_cliente;
     QLineEdit *le_nome;
     QLineEdit *le_cpf;
@@ -115,9 +115,9 @@ public:
         horizontalLayout_5->setSpacing(0);
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
         horizontalLayout_5->setContentsMargins(0, 0, 10, 0);
-        horizontalSpacer_3 = new QSpacerItem(647, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_9 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        horizontalLayout_5->addItem(horizontalSpacer_3);
+        horizontalLayout_5->addItem(horizontalSpacer_9);
 
         btn_cancelar_nota = new QToolButton(frame_7);
         btn_cancelar_nota->setObjectName(QString::fromUtf8("btn_cancelar_nota"));
@@ -194,14 +194,14 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, -350, 811, 915));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 811, 915));
         verticalLayout_3 = new QVBoxLayout(scrollAreaWidgetContents_2);
         verticalLayout_3->setSpacing(5);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(5, 0, 5, 5);
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setSpacing(5);
-        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        hz = new QHBoxLayout();
+        hz->setSpacing(5);
+        hz->setObjectName(QString::fromUtf8("hz"));
         gb_dados_cliente = new QGroupBox(scrollAreaWidgetContents_2);
         gb_dados_cliente->setObjectName(QString::fromUtf8("gb_dados_cliente"));
         gb_dados_cliente->setMinimumSize(QSize(645, 70));
@@ -278,7 +278,7 @@ public:
         lb_codigo->setGeometry(QRect(5, 44, 42, 20));
         lb_codigo->setFont(font3);
 
-        horizontalLayout_3->addWidget(gb_dados_cliente);
+        hz->addWidget(gb_dados_cliente);
 
         gb_dados_venda = new QGroupBox(scrollAreaWidgetContents_2);
         gb_dados_venda->setObjectName(QString::fromUtf8("gb_dados_venda"));
@@ -296,10 +296,10 @@ public:
         le_data->setCursorPosition(0);
         le_data->setReadOnly(true);
 
-        horizontalLayout_3->addWidget(gb_dados_venda);
+        hz->addWidget(gb_dados_venda);
 
 
-        verticalLayout_3->addLayout(horizontalLayout_3);
+        verticalLayout_3->addLayout(hz);
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(0);

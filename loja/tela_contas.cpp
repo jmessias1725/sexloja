@@ -474,10 +474,10 @@ void tela_contas::mostrar_lista_notas_venda(void){
     funcoes_extras funcao;
 
     ui->tw_lista_notas_venda->setRowCount(int(lista_nome_clientes.size()));
-    ui->tw_lista_notas_venda->setColumnCount(5);
+    ui->tw_lista_notas_venda->setColumnCount(6);
     ui->tw_lista_notas_venda->horizontalHeader()->setResizeMode(QHeaderView::Fixed);
     ui->tw_lista_notas_venda->clear();
-    ui->tw_lista_notas_venda->setHorizontalHeaderLabels(QString("Data;Número da nota;Nome do Cliente;Valor Total;Valor Pago").split(";"));
+    ui->tw_lista_notas_venda->setHorizontalHeaderLabels(QString("Data;Número da nota;Nome do Cliente;Valor Total;Valor Pago;Status").split(";"));
 
     for (int i=0;i<int(lista_nome_clientes.size());i++){
         ui->tw_lista_notas_venda->setItem(i,0,new QTableWidgetItem(lista_venda[i]->retorna_data_venda()));
@@ -485,11 +485,13 @@ void tela_contas::mostrar_lista_notas_venda(void){
         ui->tw_lista_notas_venda->setItem(i,2,new QTableWidgetItem(lista_nome_clientes[i]));
         ui->tw_lista_notas_venda->setItem(i,3,new QTableWidgetItem(funcao.retorna_valor_dinheiro(lista_venda[i]->retorna_valor_total())));
         ui->tw_lista_notas_venda->setItem(i,4,new QTableWidgetItem(funcao.retorna_valor_dinheiro(lista_venda[i]->retorna_valor_pago())));
+        ui->tw_lista_notas_venda->setItem(i,5,new QTableWidgetItem(funcao.converte_venda_status_numero_status_nome(lista_venda[i]->retorna_status())));
         ui->tw_lista_notas_venda->item(i,0)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_lista_notas_venda->item(i,1)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_lista_notas_venda->item(i,2)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_lista_notas_venda->item(i,3)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_lista_notas_venda->item(i,4)->setTextAlignment(Qt::AlignHCenter);
+        ui->tw_lista_notas_venda->item(i,5)->setTextAlignment(Qt::AlignHCenter);
     }
     //Código para fazer a ordenação acesdente.
     ui->tw_lista_notas_venda->setSelectionMode(QAbstractItemView::SingleSelection);
@@ -500,6 +502,7 @@ void tela_contas::mostrar_lista_notas_venda(void){
     ui->tw_lista_notas_venda->resizeColumnToContents(2);
     ui->tw_lista_notas_venda->resizeColumnToContents(3);
     ui->tw_lista_notas_venda->resizeColumnToContents(4);
+    ui->tw_lista_notas_venda->resizeColumnToContents(5);
 }
 
 void tela_contas::on_btn_buscar_nota_compra_clicked(){
@@ -512,6 +515,7 @@ void tela_contas::on_btn_buscar_nota_compra_clicked(){
     int aux_num_nota;
     double aux_valor_total;
     double aux_desconto;
+    int aux_status;
     QString aux_nome;
 
 
@@ -528,7 +532,7 @@ void tela_contas::on_btn_buscar_nota_compra_clicked(){
         QSqlQuery consultar(bd);
 
         //realiza a consulta
-        consultar.exec("SELECT c.`id_compra`, c.`data_compra`, c.`id_fornecedor`, c.`num_cupom_nota`, c.`valor_total`, c.`desconto`, f.nome FROM compra c, fornecedor f WHERE f.nome LIKE '%"+ui->le_nome_fornecedor->text()+"%'AND c.id_fornecedor = f.id_fornecedor;");
+        consultar.exec("SELECT c.`id_compra`, c.`data_compra`, c.`id_fornecedor`, c.`num_cupom_nota`, c.`valor_total`, c.`desconto`, c.status, f.nome FROM compra c, fornecedor f WHERE f.nome LIKE '%"+ui->le_nome_fornecedor->text()+"%'AND c.id_fornecedor = f.id_fornecedor;");
         while(consultar.next()){
             aux_id_compra = consultar.value(0).toInt();
             aux_data = consultar.value(1).toString();
@@ -536,8 +540,9 @@ void tela_contas::on_btn_buscar_nota_compra_clicked(){
             aux_num_nota = consultar.value(3).toInt();
             aux_valor_total = consultar.value(4).toDouble();
             aux_desconto = consultar.value(5).toDouble();
-            aux_nome = consultar.value(6).toString();
-            lista_compra.push_back(new compra(aux_id_compra,QDate::fromString(aux_data,"dd/MM/yyyy"),aux_id_fornecedor,aux_num_nota,aux_valor_total,aux_desconto));
+            aux_status = consultar.value(6).toInt();
+            aux_nome = consultar.value(7).toString();
+            lista_compra.push_back(new compra(aux_id_compra,QDate::fromString(aux_data,"dd/MM/yyyy"),aux_id_fornecedor,aux_num_nota,aux_valor_total,aux_desconto,aux_status));
             lista_nome_fornecedores.push_back(aux_nome);
         }
         consultar.clear();
@@ -587,6 +592,13 @@ void tela_contas::on_tw_lista_notas_venda_doubleClicked(const QModelIndex &index
         on_btn_buscar_nota_venda_clicked();
         mostrar_lista_notas_compra();
     }
+}
+
+void tela_contas::on_tw_lista_notas_compra_doubleClicked(const QModelIndex &index)
+{
+    tl_nota_compra.definir_icone_janela(logomarca);
+    tl_nota_compra.definir_dados(lista_compra[index.row()]);
+    tl_nota_compra.exec();
 }
 
 void tela_contas::closeEvent(QCloseEvent *event){

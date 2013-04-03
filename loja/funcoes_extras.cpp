@@ -750,16 +750,31 @@ QString funcoes_extras::converte_despesa_numero_origem_nome(int ori){
 }
 
 QString funcoes_extras::converte_despesa_numero_status_nome(int ori){
-    if(ori==0)
+    if(ori==_paga)
     {
-        return "Aberta";
-    }
-    else{
-    if(ori==1){
         return "Paga";
     }
     else{
+    if(ori==_aberta){
+        return "Aberta";
+    }
+    else{
         return "Atrasada";
+    }
+    }
+}
+
+QString funcoes_extras::converte_venda_status_numero_status_nome(int sta){
+    if(sta==_fechada)
+    {
+        return "Fechada";
+    }
+    else{
+    if(sta==_aberta){
+        return "Aberta";
+    }
+    else{
+        return "Cancelada";
     }
     }
 }

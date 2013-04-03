@@ -12,6 +12,7 @@
 #include "tela_vender.h"
 #include "ganho.h"
 #include "tela_justificativa_cancelamento.h"
+#include "variaveis_globais.h"
 
 namespace Ui {
 class tela_nota_venda;
@@ -32,7 +33,7 @@ public:
     void mostrar_dados_pagamento_ou_justificativa(void);
     
 private slots:
-    void on_tw_lista_pagamento_doubleClicked(const QModelIndex &index);
+    void ajustar_parcelas(const QModelIndex &index);
     void on_btn_reabrir_clicked();
     void on_btn_confirmar_clicked();
     bool atualizar_dados_parcelamento(void);

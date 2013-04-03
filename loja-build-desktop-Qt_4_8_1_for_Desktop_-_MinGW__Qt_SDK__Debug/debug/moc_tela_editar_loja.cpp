@@ -1,13 +1,13 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_editar_loja.h'
 **
-** Created: Tue 26. Mar 15:48:24 2013
+** Created: Wed 3. Apr 14:29:17 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../loja/tela_editar_loja.h"
+#include "../../../programa Paula/loja/tela_editar_loja.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'tela_editar_loja.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 63

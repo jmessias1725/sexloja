@@ -1,13 +1,13 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_nota_venda.h'
 **
-** Created: Tue 26. Mar 15:49:36 2013
+** Created: Wed 3. Apr 14:30:28 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../loja/tela_nota_venda.h"
+#include "../../../programa Paula/loja/tela_nota_venda.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'tela_nota_venda.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 63
@@ -32,18 +32,18 @@ static const uint qt_meta_data_tela_nota_venda[] = {
 
  // slots: signature, parameters, type, tag, flags
       23,   17,   16,   16, 0x08,
-      72,   16,   16,   16, 0x08,
-      97,   16,   16,   16, 0x08,
-     129,   16,  124,   16, 0x08,
-     160,   16,   16,   16, 0x08,
-     186,   16,   16,   16, 0x08,
+      53,   16,   16,   16, 0x08,
+      78,   16,   16,   16, 0x08,
+     110,   16,  105,   16, 0x08,
+     141,   16,   16,   16, 0x08,
+     167,   16,   16,   16, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_tela_nota_venda[] = {
     "tela_nota_venda\0\0index\0"
-    "on_tw_lista_pagamento_doubleClicked(QModelIndex)\0"
+    "ajustar_parcelas(QModelIndex)\0"
     "on_btn_reabrir_clicked()\0"
     "on_btn_confirmar_clicked()\0bool\0"
     "atualizar_dados_parcelamento()\0"
@@ -57,7 +57,7 @@ void tela_nota_venda::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         Q_ASSERT(staticMetaObject.cast(_o));
         tela_nota_venda *_t = static_cast<tela_nota_venda *>(_o);
         switch (_id) {
-        case 0: _t->on_tw_lista_pagamento_doubleClicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
+        case 0: _t->ajustar_parcelas((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
         case 1: _t->on_btn_reabrir_clicked(); break;
         case 2: _t->on_btn_confirmar_clicked(); break;
         case 3: { bool _r = _t->atualizar_dados_parcelamento();

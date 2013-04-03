@@ -227,12 +227,12 @@
        </property>
        <item>
         <property name="text">
-         <string>Aberta</string>
+         <string>Paga</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>Paga</string>
+         <string>Aberta</string>
         </property>
        </item>
        <item>

@@ -191,7 +191,7 @@ void tela_vender::on_btn_confirmar_clicked()
         double valor_tot = funcao.converter_para_double(ui->le_total_a_pagar->text())+funcao.converter_para_double(ui->le_desconto->text());
         if(eh_estorno == false){
             dados_venda = new venda(ui->data->date(),ui->le_codigo->text().toInt(),valor_tot,
-                                    funcao.converter_para_double(ui->le_desconto->text()),0);
+                                    funcao.converter_para_double(ui->le_desconto->text()),_aberta);
 
             for(int i=0;i<int(lista_produtos.size());i++){
                 lt_venda.push_back(new lista_venda(lista_produtos[i]->retorna_id(),0,

@@ -62,13 +62,13 @@ QToolButton{
        <number>0</number>
       </property>
       <item>
-       <spacer name="horizontalSpacer_3">
+       <spacer name="horizontalSpacer_9">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>647</width>
+          <width>40</width>
           <height>20</height>
          </size>
         </property>
@@ -209,7 +209,6 @@ QToolButton{
      <zorder>btn_confirmar</zorder>
      <zorder>btn_cancelar</zorder>
      <zorder>btn_cancelar_nota</zorder>
-     <zorder>horizontalSpacer_3</zorder>
     </widget>
    </item>
    <item>
@@ -251,7 +250,7 @@ QToolButton{
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>-350</y>
+          <y>0</y>
           <width>811</width>
           <height>915</height>
          </rect>
@@ -273,7 +272,7 @@ QToolButton{
           <number>5</number>
          </property>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <layout class="QHBoxLayout" name="hz">
            <property name="spacing">
             <number>5</number>
            </property>

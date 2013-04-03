@@ -1,13 +1,13 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_contas.h'
 **
-** Created: Tue 26. Mar 15:49:32 2013
+** Created: Wed 3. Apr 14:30:24 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../loja/tela_contas.h"
+#include "../../../programa Paula/loja/tela_contas.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'tela_contas.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 63
@@ -23,7 +23,7 @@ static const uint qt_meta_data_tela_contas[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      12,   14, // methods
+      13,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -43,6 +43,7 @@ static const uint qt_meta_data_tela_contas[] = {
      274,   12,   12,   12, 0x08,
      309,   12,   12,   12, 0x08,
      351,  345,   12,   12, 0x08,
+     402,  345,   12,   12, 0x08,
 
        0        // eod
 };
@@ -60,6 +61,7 @@ static const char qt_meta_stringdata_tela_contas[] = {
     "on_btn_buscar_nota_venda_clicked()\0"
     "on_btn_buscar_nota_compra_clicked()\0"
     "index\0on_tw_lista_notas_venda_doubleClicked(QModelIndex)\0"
+    "on_tw_lista_notas_compra_doubleClicked(QModelIndex)\0"
 };
 
 void tela_contas::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -80,6 +82,7 @@ void tela_contas::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 9: _t->on_btn_buscar_nota_venda_clicked(); break;
         case 10: _t->on_btn_buscar_nota_compra_clicked(); break;
         case 11: _t->on_tw_lista_notas_venda_doubleClicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
+        case 12: _t->on_tw_lista_notas_compra_doubleClicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -117,9 +120,9 @@ int tela_contas::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 12)
+        if (_id < 13)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 12;
+        _id -= 13;
     }
     return _id;
 }
