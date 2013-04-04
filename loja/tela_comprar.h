@@ -26,6 +26,7 @@ public:
     explicit tela_comprar(QWidget *parent = 0);
     ~tela_comprar();
     void definir_icone_janela(QPixmap logo);
+    void definir_dados(std::vector< lista_compra* > lis_compra, fornecedor *forn, compra *comp);
     
 private slots:
     void closeEvent( QCloseEvent * event );
@@ -52,6 +53,7 @@ private:
     double total_a_pagar;
     double valor_total;
     compra *dados_compra;
+    bool eh_estorno;
 };
 
 #endif // TELA_COMPRAR_H

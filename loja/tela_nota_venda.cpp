@@ -498,7 +498,7 @@ void tela_nota_venda::on_btn_cancelar_nota_clicked()
             salvar_justificativa.bindValue(":justificativa", justificativa);
             salvar_justificativa.exec();
 
-            consultar_id_pagamento.exec("SELECT d.`id_pag_avista`, d.`id_pag_parcelado` FROM dinheiro d WHERE id_origem = '"+QString::number(id_venda)+"'AND origem ='"+_venda_de_produto+"';");
+            consultar_id_pagamento.exec("SELECT d.`id_pag_avista`, d.`id_pag_parcelado` FROM dinheiro d WHERE id_origem = '"+QString::number(id_venda)+"'AND origem ='"+QString::number(_venda_de_produto)+"';");
             if(consultar_id_pagamento.last()){
                 id_avista = consultar_id_pagamento.value(0).toInt();
                 id_parcelado = consultar_id_pagamento.value(1).toInt();
