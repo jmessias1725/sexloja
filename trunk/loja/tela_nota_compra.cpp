@@ -134,7 +134,7 @@ void tela_nota_compra::buscar_dados(){
 
         if(compra_atual->retorna_status()==_cancelada){
             //realiza a consulta sobre a lista dados de pagamento
-            consultar.exec("SELECT justificativa FROM jus_cancelamento_nota WHERE id_origem='"+QString::number(compra_atual->retorna_id_compra())+"' AND origem = '"+_nota_de_compra+"';");
+            consultar.exec("SELECT justificativa FROM jus_cancelamento_nota WHERE id_origem='"+QString::number(compra_atual->retorna_id_compra())+"' AND origem = '"+QString::number(_nota_de_compra)+"';");
             if(consultar.last()){
                 justificativa = consultar.value(0).toString();
             }
@@ -286,7 +286,7 @@ void tela_nota_compra::ajustar_parcelas(const QModelIndex &index){
 }
 
 void tela_nota_compra::on_btn_reabrir_clicked()
-{/*
+{
     QPixmap icone_janela(":img/img/abrir_50.png");
     QMessageBox msg(0);
     msg.setIconPixmap(icone_janela);
@@ -297,13 +297,13 @@ void tela_nota_compra::on_btn_reabrir_clicked()
     msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
     msg.setText("\nDeseja reabrir a nota para edição?");
     if(!msg.exec()){
-        tl_vender.definir_icone_janela(logomarca);
-        tl_vender.definir_dados(lt_venda,cliente_atual,venda_atual);
-        if(!tl_vender.exec()){
+        tl_comprar.definir_icone_janela(logomarca);
+        tl_comprar.definir_dados(lt_compra,fornecedor_atual,compra_atual );
+        if(!tl_comprar.exec()){
             this->accept();
             this->close();
         }
-    }*/
+    }
 }
 
 void tela_nota_compra::on_btn_confirmar_clicked()
@@ -460,7 +460,7 @@ void tela_nota_compra::on_btn_cancelar_nota_clicked()
     msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
     msg.setText("\nDeseja cancelar a nota?");
     if(!msg.exec()){
-        /*tl_justificativa_cancelamento.definir_icone_janela(logomarca);
+        tl_justificativa_cancelamento.definir_icone_janela(logomarca);
         if(tl_justificativa_cancelamento.exec())
         {
             justificativa = tl_justificativa_cancelamento.retorna_justificativa();
@@ -487,14 +487,14 @@ void tela_nota_compra::on_btn_cancelar_nota_clicked()
             QSqlQuery remover_pagamento_parcelado(bd);
             QSqlQuery remover_his_balanco_estoque(bd);
             QSqlQuery consultar_id_pagamento(bd);
-            QSqlQuery consultar_his_remocao_pro_estoque(bd);
+            QSqlQuery consultar_his_balanco_estoque(bd);
             QSqlQuery atualizar_his_balanco_estoque(bd);
             QSqlQuery salvar_dados_venda(bd);
             QSqlQuery salvar_justificativa(bd);
 
             int id_avista;
             int id_parcelado;
-            int quantidade_his_remocao_pro_estoque;
+            int quantidade_his_balanco_estoque;
             int id_balanco_remover;
             int id_compra = compra_atual->retorna_id_compra();
 
@@ -510,35 +510,33 @@ void tela_nota_compra::on_btn_cancelar_nota_clicked()
             salvar_justificativa.bindValue(":justificativa", justificativa);
             salvar_justificativa.exec();
 
-            consultar_id_pagamento.exec("SELECT d.`id_pag_avista`, d.`id_pag_parcelado` FROM dinheiro d WHERE id_origem = '"+QString::number(id_compra)+"' AND origem ='"+_compra_de_produto+"';");
+            consultar_id_pagamento.exec("SELECT d.`id_pag_avista`, d.`id_pag_parcelado` FROM dinheiro d WHERE id_origem = '"+QString::number(id_compra)+"' AND origem ='"+QString::number(_compra_de_produto)+"';");
             if(consultar_id_pagamento.last()){
                 id_avista = consultar_id_pagamento.value(0).toInt();
                 id_parcelado = consultar_id_pagamento.value(1).toInt();
             }
-            remover_dados_dinheiro.exec("DELETE FROM dinheiro WHERE origem = '"+_compra_de_produto+"' AND id_origem = '"+QString::number(id_compra)+"';");
-            remover_dados_cartao.exec("DELETE FROM cartao WHERE origem = '"+_compra_de_produto+"' AND id_origem = '"+QString::number(id_compra)+"';");
-            remover_dados_cheque.exec("DELETE FROM cheque WHERE origem = '"+_compra_de_produto+"' AND id_origem = '"+QString::number(id_compra)+"';");
-            remover_dados_ganhos.exec("DELETE FROM ganhos WHERE id_origem = '"+QString::number(id_compra)+"';");
+
+            remover_dados_dinheiro.exec("DELETE FROM dinheiro WHERE origem = '"+QString::number(_compra_de_produto)+"' AND id_origem = '"+QString::number(id_compra)+"';");
+            remover_dados_cartao.exec("DELETE FROM cartao WHERE origem = '"+QString::number(_compra_de_produto)+"' AND id_origem = '"+QString::number(id_compra)+"';");
+            remover_dados_cheque.exec("DELETE FROM cheque WHERE origem = '"+QString::number(_compra_de_produto)+"' AND id_origem = '"+QString::number(id_compra)+"';");
+            remover_dados_despesas.exec("DELETE FROM despesas WHERE id_origem = '"+QString::number(id_compra)+"';");
             remover_pagamento_avista.exec("DELETE FROM pagamento_avista WHERE id_pag_avista = '"+QString::number(id_avista)+"';");
             remover_pagamento_parcelado.exec("DELETE FROM pagamento_parcelado WHERE id_pag_parcelado = '"+QString::number(id_parcelado)+"';");
 
-            consultar_his_remocao_pro_estoque.exec("SELECT h.`id_balanco`, h.`quantidade` FROM his_remocao_pro_estoque h WHERE h.id_venda = "+QString::number(id_venda)+";");
-            while(consultar_his_remocao_pro_estoque.next()){
-                id_balanco_remover = consultar_his_remocao_pro_estoque.value(0).toInt();
-                quantidade_his_remocao_pro_estoque = consultar_his_remocao_pro_estoque.value(1).toInt();
+            consultar_his_balanco_estoque.exec("SELECT l.id_balanco, l.quantidade FROM lista_compra l WHERE l.id_compra = "+QString::number(id_compra)+";");
+            while(consultar_his_balanco_estoque.next()){
+                id_balanco_remover = consultar_his_balanco_estoque.value(0).toInt();
+                quantidade_his_balanco_estoque = consultar_his_balanco_estoque.value(1).toInt();
                 //Insere os dados no histórico de balanço do estoque
-                atualizar_his_balanco_estoque.prepare("UPDATE his_balanco_estoque SET total_disponivel = total_disponivel+:quantidade WHERE id_balanco = '"+QString::number(id_balanco_remover)+"';");
-                atualizar_his_balanco_estoque.bindValue(":quantidade", quantidade_his_remocao_pro_estoque);
+                atualizar_his_balanco_estoque.prepare("UPDATE his_balanco_estoque SET total_disponivel = total_disponivel-:quantidade WHERE id_balanco = '"+QString::number(id_balanco_remover)+"';");
+                atualizar_his_balanco_estoque.bindValue(":quantidade", quantidade_his_balanco_estoque);
                 atualizar_his_balanco_estoque.exec();
             }
-
-            remover_his_balanco_estoque.exec("DELETE FROM his_remocao_pro_estoque WHERE id_venda = '"+QString::number(id_venda)+"';");
-            remover_his_balanco_estoque.exec();
 
             if ((remover_dados_dinheiro.lastError().number()<=0)&&
                 (remover_dados_cartao.lastError().number()<=0)&&
                 (remover_dados_cheque.lastError().number()<=0)&&
-                (remover_dados_ganhos.lastError().number()<=0)&&
+                (remover_dados_despesas.lastError().number()<=0)&&
                 (remover_pagamento_avista.lastError().number()<=0)&&
                 (remover_pagamento_parcelado.lastError().number()<=0)&&
                 (remover_his_balanco_estoque.lastError().number()<=0)&&
@@ -558,7 +556,7 @@ void tela_nota_compra::on_btn_cancelar_nota_clicked()
                 msg.setWindowTitle("Cancelamento");
                 msg.addButton("OK", QMessageBox::AcceptRole);
                 msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
-                msg.setText("\nA venda foi cancelada com sucesso!!!!");
+                msg.setText("\nA Nota foi cancelada com sucesso!!!!");
                 msg.exec();
 
                 //Fecha a conexão com o banco de dados
@@ -589,7 +587,7 @@ void tela_nota_compra::on_btn_cancelar_nota_clicked()
                 this->accept();
                 this->close();
             }
-        }*/
+        }
     }
 }
 
