@@ -51,3 +51,15 @@ int despesa::retorna_origem(void){
 int despesa::retorna_id_origem(void){
     return id_origem;
 }
+
+void despesa::alterar_data(QString dat){
+    data = dat;
+}
+
+void despesa::alterar_valor(double val){
+    valor = val;
+}
+
+void despesa::alterar_status(int sta){
+    status = sta;
+}

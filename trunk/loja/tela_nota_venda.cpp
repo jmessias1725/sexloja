@@ -494,18 +494,18 @@ void tela_nota_venda::on_btn_cancelar_nota_clicked()
             //Insere a justificativa para o cancelamento
             salvar_justificativa.prepare("INSERT INTO jus_cancelamento_nota(id_origem,origem,justificativa) VALUES(:id_origem,:origem,:justificativa);");
             salvar_justificativa.bindValue(":id_origem", id_venda);
-            salvar_justificativa.bindValue(":origem",0);
+            salvar_justificativa.bindValue(":origem",_nota_de_venda);
             salvar_justificativa.bindValue(":justificativa", justificativa);
             salvar_justificativa.exec();
 
-            consultar_id_pagamento.exec("SELECT d.`id_pag_avista`, d.`id_pag_parcelado` FROM dinheiro d WHERE id_origem = '"+QString::number(id_venda)+"';");
+            consultar_id_pagamento.exec("SELECT d.`id_pag_avista`, d.`id_pag_parcelado` FROM dinheiro d WHERE id_origem = '"+QString::number(id_venda)+"'AND origem ='"+_venda_de_produto+"';");
             if(consultar_id_pagamento.last()){
                 id_avista = consultar_id_pagamento.value(0).toInt();
                 id_parcelado = consultar_id_pagamento.value(1).toInt();
             }
-            remover_dados_dinheiro.exec("DELETE FROM dinheiro WHERE origem = '3' AND id_origem = '"+QString::number(id_venda)+"';");
-            remover_dados_cartao.exec("DELETE FROM cartao WHERE origem = '3' AND id_origem = '"+QString::number(id_venda)+"';");
-            remover_dados_cheque.exec("DELETE FROM cheque WHERE origem = '3' AND id_origem = '"+QString::number(id_venda)+"';");
+            remover_dados_dinheiro.exec("DELETE FROM dinheiro WHERE origem = '"+QString::number(_venda_de_produto)+"' AND id_origem = '"+QString::number(id_venda)+"';");
+            remover_dados_cartao.exec("DELETE FROM cartao WHERE origem = '"+QString::number(_venda_de_produto)+"' AND id_origem = '"+QString::number(id_venda)+"';");
+            remover_dados_cheque.exec("DELETE FROM cheque WHERE origem = '"+QString::number(_venda_de_produto)+"' AND id_origem = '"+QString::number(id_venda)+"';");
             remover_dados_ganhos.exec("DELETE FROM ganhos WHERE id_origem = '"+QString::number(id_venda)+"';");
             remover_pagamento_avista.exec("DELETE FROM pagamento_avista WHERE id_pag_avista = '"+QString::number(id_avista)+"';");
             remover_pagamento_parcelado.exec("DELETE FROM pagamento_parcelado WHERE id_pag_parcelado = '"+QString::number(id_parcelado)+"';");
