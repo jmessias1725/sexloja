@@ -39,7 +39,7 @@ void tela_nota_compra::definir_icone_janela(QPixmap logo){
     tw_lista_pagamento->verticalHeader()->setVisible(false);
     tw_lista_pagamento->verticalHeader()->setDefaultSectionSize(20);
     tw_lista_pagamento->verticalHeader()->setMinimumSectionSize(20);
-    //tw_lista_pagamento->connect(tw_lista_pagamento,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(ajustar_parcelas(QModelIndex)));
+    tw_lista_pagamento->connect(tw_lista_pagamento,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(ajustar_parcelas(QModelIndex)));
 }
 
 void tela_nota_compra::definir_dados(compra *compr){
@@ -233,29 +233,29 @@ void tela_nota_compra::mostrar_dados_pagamento_ou_justificativa(void){
 }
 
 void tela_nota_compra::ajustar_parcelas(const QModelIndex &index){
-    /*funcoes_extras funcao;
+    funcoes_extras funcao;
     double total_parcial = 0;
     double total_a_parcelar = 0;
     double valor_parcelas = 0;
     double ultima_parcela = 0;
     int numero_parcelas_restantes = 0;
-    double valor_anterior = lt_ganho[index.row()]->retorna_valor();
+    double valor_anterior = lt_despesas[index.row()]->retorna_valor();
     std::vector< int > indice_parcelas;
 
     tl_editar_parcela.definir_icone_janela(logomarca);
-    tl_editar_parcela.definir_dados(lt_ganho[index.row()]);
+    tl_editar_parcela.definir_dados_des(lt_despesas[index.row()]);
     if(tl_editar_parcela.exec()){
         editou_dados = true;
-        lt_ganho[index.row()]  = tl_editar_parcela.retorna_parcela();
-        if(valor_anterior!=lt_ganho[index.row()]->retorna_valor()){
-            for (int i=0; i < int(lt_ganho.size()); i++){
-                if((lt_ganho[i]->retorna_origem()==_dinheiro_par)){
+        lt_despesas[index.row()]  = tl_editar_parcela.retorna_parcela_des();
+        if(valor_anterior!=lt_despesas[index.row()]->retorna_valor()){
+            for (int i=0; i < int(lt_despesas.size()); i++){
+                if((lt_despesas[i]->retorna_origem()==_dinheiro_par)){
                     if(i <= int(index.row())){
-                        total_parcial  = total_parcial + lt_ganho[i]->retorna_valor();
+                        total_parcial  = total_parcial + lt_despesas[i]->retorna_valor();
                     }
                     else{
-                        if(lt_ganho[i]->retorna_status()==_fechada){
-                            total_parcial = total_parcial + lt_ganho[i]->retorna_valor();
+                        if(lt_despesas[i]->retorna_status()==_fechada){
+                            total_parcial = total_parcial + lt_despesas[i]->retorna_valor();
                         }
                         else{
                             numero_parcelas_restantes = numero_parcelas_restantes+1;
@@ -272,17 +272,17 @@ void tela_nota_compra::ajustar_parcelas(const QModelIndex &index){
                 ultima_parcela = total_a_parcelar - valor_parcelas*(numero_parcelas_restantes-1);
 
                 for (int i = 0; i<int(indice_parcelas.size()-1);i++){
-                    lt_ganho[indice_parcelas[i]]->alterar_valor(valor_parcelas);
+                    lt_despesas[indice_parcelas[i]]->alterar_valor(valor_parcelas);
                 }
 
-                lt_ganho[indice_parcelas[int(indice_parcelas.size()-1)]]->alterar_valor(ultima_parcela);
+                lt_despesas[indice_parcelas[int(indice_parcelas.size()-1)]]->alterar_valor(ultima_parcela);
                 }
             else{
-                lt_ganho[index.row()]->alterar_valor(valor_anterior);
+                lt_despesas[index.row()]->alterar_valor(valor_anterior);
             }
         }
         mostrar_dados_pagamento_ou_justificativa();
-    }*/
+    }
 }
 
 void tela_nota_compra::on_btn_reabrir_clicked()
@@ -307,7 +307,7 @@ void tela_nota_compra::on_btn_reabrir_clicked()
 }
 
 void tela_nota_compra::on_btn_confirmar_clicked()
-{/*
+{
     if(editou_dados){
         QPixmap icone_janela(":img/img/perguntar.png");
         QMessageBox msg(0);
@@ -352,11 +352,11 @@ void tela_nota_compra::on_btn_confirmar_clicked()
     }
     else{
         this->close();
-    }*/
+    }
 }
 
 bool tela_nota_compra::atualizar_dados_parcelamento(void){
-    /*conexao_bd conexao;
+    conexao_bd conexao;
     QSqlDatabase bd;
 
     //realiza conexão ao banco de dados
@@ -369,12 +369,12 @@ bool tela_nota_compra::atualizar_dados_parcelamento(void){
         QSqlQuery atualizar_dados_parecelamento(bd);
         atualizar_dados_parecelamento.lastError().setNumber(2);
 
-        for (int i = 0; i < int(lt_ganho.size());i++){
+        for (int i = 0; i < int(lt_despesas.size());i++){
             //atualiza os dados sobre o parcelamento
-            atualizar_dados_parecelamento.prepare("UPDATE ganhos SET data=:data, valor=:valor, status=:status WHERE id_ganhos ='"+QString::number(lt_ganho[i]->retorna_id())+"';");
-            atualizar_dados_parecelamento.bindValue(":data", lt_ganho[i]->retorna_data());
-            atualizar_dados_parecelamento.bindValue(":valor",lt_ganho[i]->retorna_valor());
-            atualizar_dados_parecelamento.bindValue(":status", lt_ganho[i]->retorna_status());
+            atualizar_dados_parecelamento.prepare("UPDATE despesas SET data=:data, valor=:valor, status=:status WHERE id_despesas ='"+QString::number(lt_despesas[i]->retorna_id())+"';");
+            atualizar_dados_parecelamento.bindValue(":data", lt_despesas[i]->retorna_data());
+            atualizar_dados_parecelamento.bindValue(":valor",lt_despesas[i]->retorna_valor());
+            atualizar_dados_parecelamento.bindValue(":status", lt_despesas[i]->retorna_status());
             atualizar_dados_parecelamento.exec();
         }
         bd.close();
@@ -388,12 +388,12 @@ bool tela_nota_compra::atualizar_dados_parcelamento(void){
     }
     else{
         return false;
-    }*/
+    }
 }
 
 
 void tela_nota_compra::closeEvent(QCloseEvent *event){
-    /*if(editou_dados){
+    if(editou_dados){
         QPixmap icone_janela(":img/img/perguntar.png");
         QMessageBox msg(0);
         msg.setIconPixmap(icone_janela);
@@ -437,7 +437,7 @@ void tela_nota_compra::closeEvent(QCloseEvent *event){
             this->reject();
             this->close();
         }
-    }*/
+    }
 }
 
 void tela_nota_compra::on_btn_cancelar_clicked()
@@ -449,7 +449,7 @@ void tela_nota_compra::on_btn_cancelar_clicked()
 
 void tela_nota_compra::on_btn_cancelar_nota_clicked()
 {
-    /*QString justificativa;
+    QString justificativa;
     QPixmap icone_janela(":img/img/perguntar.png");
     QMessageBox msg(0);
     msg.setIconPixmap(icone_janela);
@@ -460,7 +460,7 @@ void tela_nota_compra::on_btn_cancelar_nota_clicked()
     msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
     msg.setText("\nDeseja cancelar a nota?");
     if(!msg.exec()){
-        tl_justificativa_cancelamento.definir_icone_janela(logomarca);
+        /*tl_justificativa_cancelamento.definir_icone_janela(logomarca);
         if(tl_justificativa_cancelamento.exec())
         {
             justificativa = tl_justificativa_cancelamento.retorna_justificativa();
@@ -482,7 +482,7 @@ void tela_nota_compra::on_btn_cancelar_nota_clicked()
             QSqlQuery remover_dados_dinheiro(bd);
             QSqlQuery remover_dados_cartao(bd);
             QSqlQuery remover_dados_cheque(bd);
-            QSqlQuery remover_dados_ganhos(bd);
+            QSqlQuery remover_dados_despesas(bd);
             QSqlQuery remover_pagamento_avista(bd);
             QSqlQuery remover_pagamento_parcelado(bd);
             QSqlQuery remover_his_balanco_estoque(bd);
@@ -496,29 +496,29 @@ void tela_nota_compra::on_btn_cancelar_nota_clicked()
             int id_parcelado;
             int quantidade_his_remocao_pro_estoque;
             int id_balanco_remover;
-            int id_venda = venda_atual->retorna_id_venda();
+            int id_compra = compra_atual->retorna_id_compra();
 
             //Insere os dados no cadastro da venda
-            salvar_dados_venda.prepare("UPDATE venda SET status=:status WHERE id_venda = '"+QString::number(id_venda)+"';");
+            salvar_dados_venda.prepare("UPDATE compra SET status=:status WHERE id_compra = '"+QString::number(id_compra)+"';");
             salvar_dados_venda.bindValue(":status",_cancelada);
             salvar_dados_venda.exec();
 
             //Insere a justificativa para o cancelamento
             salvar_justificativa.prepare("INSERT INTO jus_cancelamento_nota(id_origem,origem,justificativa) VALUES(:id_origem,:origem,:justificativa);");
-            salvar_justificativa.bindValue(":id_origem", id_venda);
-            salvar_justificativa.bindValue(":origem",0);
+            salvar_justificativa.bindValue(":id_origem", id_compra);
+            salvar_justificativa.bindValue(":origem",_nota_de_compra);
             salvar_justificativa.bindValue(":justificativa", justificativa);
             salvar_justificativa.exec();
 
-            consultar_id_pagamento.exec("SELECT d.`id_pag_avista`, d.`id_pag_parcelado` FROM dinheiro d WHERE id_origem = '"+QString::number(id_venda)+"';");
+            consultar_id_pagamento.exec("SELECT d.`id_pag_avista`, d.`id_pag_parcelado` FROM dinheiro d WHERE id_origem = '"+QString::number(id_compra)+"' AND origem ='"+_compra_de_produto+"';");
             if(consultar_id_pagamento.last()){
                 id_avista = consultar_id_pagamento.value(0).toInt();
                 id_parcelado = consultar_id_pagamento.value(1).toInt();
             }
-            remover_dados_dinheiro.exec("DELETE FROM dinheiro WHERE origem = '3' AND id_origem = '"+QString::number(id_venda)+"';");
-            remover_dados_cartao.exec("DELETE FROM cartao WHERE origem = '3' AND id_origem = '"+QString::number(id_venda)+"';");
-            remover_dados_cheque.exec("DELETE FROM cheque WHERE origem = '3' AND id_origem = '"+QString::number(id_venda)+"';");
-            remover_dados_ganhos.exec("DELETE FROM ganhos WHERE id_origem = '"+QString::number(id_venda)+"';");
+            remover_dados_dinheiro.exec("DELETE FROM dinheiro WHERE origem = '"+_compra_de_produto+"' AND id_origem = '"+QString::number(id_compra)+"';");
+            remover_dados_cartao.exec("DELETE FROM cartao WHERE origem = '"+_compra_de_produto+"' AND id_origem = '"+QString::number(id_compra)+"';");
+            remover_dados_cheque.exec("DELETE FROM cheque WHERE origem = '"+_compra_de_produto+"' AND id_origem = '"+QString::number(id_compra)+"';");
+            remover_dados_ganhos.exec("DELETE FROM ganhos WHERE id_origem = '"+QString::number(id_compra)+"';");
             remover_pagamento_avista.exec("DELETE FROM pagamento_avista WHERE id_pag_avista = '"+QString::number(id_avista)+"';");
             remover_pagamento_parcelado.exec("DELETE FROM pagamento_parcelado WHERE id_pag_parcelado = '"+QString::number(id_parcelado)+"';");
 
@@ -589,7 +589,7 @@ void tela_nota_compra::on_btn_cancelar_nota_clicked()
                 this->accept();
                 this->close();
             }
-        }
-    }*/
+        }*/
+    }
 }
 

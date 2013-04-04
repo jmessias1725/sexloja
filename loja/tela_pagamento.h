@@ -30,7 +30,7 @@ public:
     explicit tela_pagamento(QWidget *parent = 0);
     ~tela_pagamento();
     void definir_icone_janela(QPixmap logo);
-    void definir_dados_compra(compra* comp, std::vector< lista_compra* > lt_com);
+    void definir_dados_compra(compra* comp, std::vector< lista_compra* > lt_com, , bool veric_estorno);
     void definir_dados_venda(venda* vend, std::vector< lista_venda* > lt_ven, bool veric_estorno);
 
 private slots:

@@ -25,6 +25,9 @@ public:
     int retorna_status(void);
     int retorna_origem(void);
     int retorna_id_origem(void);
+    void alterar_data(QString dat);
+    void alterar_valor(double val);
+    void alterar_status(int sta);
 };
 
 #endif // DESPESA_H

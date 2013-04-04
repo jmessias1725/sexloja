@@ -16,4 +16,9 @@ extern int _dinheiro_avi;
 extern int _nota_de_venda;
 extern int _nota_de_compra;
 
+extern int _compra_avulsa;
+extern int _compra_de_produto;
+extern int _venda_avulsa;
+extern int _venda_de_produto;
+
 #endif // VARIAVEIS_GLOBAIS_H

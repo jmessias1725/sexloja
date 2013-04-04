@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_nota_compra.ui'
 **
-** Created: Wed 3. Apr 10:58:17 2013
+** Created: Thu 4. Apr 10:57:12 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

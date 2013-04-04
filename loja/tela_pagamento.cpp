@@ -21,7 +21,7 @@ void tela_pagamento::definir_icone_janela(QPixmap logo){
     dinheiro_usado = new dinheiro();
 }
 
-void tela_pagamento::definir_dados_compra(compra* comp, std::vector< lista_compra* > lt_com){
+void tela_pagamento::definir_dados_compra(compra* comp, std::vector< lista_compra* > lt_com, bool veric_estorno){
     funcoes_extras funcao;
     dados_compra = comp;
     lt_compra = lt_com;
@@ -41,6 +41,7 @@ void tela_pagamento::definir_dados_compra(compra* comp, std::vector< lista_compr
     ui->le_total_pagar->setText(funcao.retorna_valor_dinheiro(total_pagar));
     ui->le_total_pago->setText(funcao.retorna_valor_dinheiro(0));
     ui->le_troco->setText(funcao.retorna_valor_dinheiro(0));
+    verifica_se_eh_estorno = veric_estorno;
 }
 
 void tela_pagamento::definir_dados_venda(venda* vend, std::vector< lista_venda* > lt_ven, bool veric_estorno){
@@ -244,24 +245,83 @@ void tela_pagamento::on_btn_confirmar_clicked()
                 QSqlQuery consultar_id_parcelado(bd);
                 QSqlQuery consultar_id_avista(bd);
 
+				if(verifica_se_eh_estorno  == false){
+					//Insere os dados no cadastro da compra
+					salvar_dados_compra.prepare("INSERT INTO compra(data_compra,id_fornecedor,num_cupom_nota,valor_total,desconto,valor_pago) VALUES(:data_compra, :id_fornecedor, :num_cupom_nota, :valor_total, :desconto, :valor_pago);");
+					salvar_dados_compra.bindValue(":data_compra", dados_compra->retorna_data_compra());
+					salvar_dados_compra.bindValue(":id_fornecedor",dados_compra->retorna_id_fornecedor());
+					salvar_dados_compra.bindValue(":num_cupom_nota", dados_compra->retorna_num_cupom_nota());
+					salvar_dados_compra.bindValue(":valor_total", dados_compra->retorna_valor_total());
+					salvar_dados_compra.bindValue(":desconto", dados_compra->retorna_desconto());
+					salvar_dados_compra.bindValue(":valor_pago", dados_compra->retorna_valor_pago());
+					salvar_dados_compra.exec();
 
-                //Insere os dados no cadastro da compra
-                salvar_dados_compra.prepare("INSERT INTO compra(data_compra,id_fornecedor,num_cupom_nota,valor_total,desconto,valor_pago) VALUES(:data_compra, :id_fornecedor, :num_cupom_nota, :valor_total, :desconto, :valor_pago);");
-                salvar_dados_compra.bindValue(":data_compra", dados_compra->retorna_data_compra());
-                salvar_dados_compra.bindValue(":id_fornecedor",dados_compra->retorna_id_fornecedor());
-                salvar_dados_compra.bindValue(":num_cupom_nota", dados_compra->retorna_num_cupom_nota());
-                salvar_dados_compra.bindValue(":valor_total", dados_compra->retorna_valor_total());
-                salvar_dados_compra.bindValue(":desconto", dados_compra->retorna_desconto());
-                salvar_dados_compra.bindValue(":valor_pago", dados_compra->retorna_valor_pago());
-                salvar_dados_compra.exec();
+					//realiza a consulta para determinar  o id da compra.
+					consultar_id_compra.exec("SELECT id_compra FROM compra");
+					if(consultar_id_compra.last()){
+						id_compra = consultar_id_compra.value(0).toInt();
+					}
+					dados_compra->alterar_id_compra(id_compra);
+				}
+				else{
+					QSqlQuery remover_dados_dinheiro(bd);
+                    QSqlQuery remover_dados_cartao(bd);
+                    QSqlQuery remover_dados_cheque(bd);
+                    QSqlQuery remover_dados_ganhos(bd);
+                    QSqlQuery remover_lista_venda(bd);
+                    QSqlQuery remover_pagamento_avista(bd);
+                    QSqlQuery remover_pagamento_parcelado(bd);
+                    QSqlQuery remover_his_balanco_estoque(bd);
+                    QSqlQuery remover_justificativa_cancelamento(bd);
 
-                //realiza a consulta para determinar  o id da compra.
-                consultar_id_compra.exec("SELECT id_compra FROM compra");
-                if(consultar_id_compra.last()){
-                    id_compra = consultar_id_compra.value(0).toInt();
-                }
-                dados_compra->alterar_id_compra(id_compra);
+                    QSqlQuery consultar_id_pagamento(bd);
+                    QSqlQuery consultar_his_remocao_pro_estoque(bd);
 
+                    QSqlQuery atualizar_his_balanco_estoque(bd);
+
+                    int id_avista;
+                    int id_parcelado;
+                    int quantidade_his_remocao_pro_estoque;
+                    int id_balanco_remover;
+
+                    //Insere os dados no cadastro da venda
+                    salvar_dados_venda.prepare("UPDATE venda SET data_venda=:data_venda, id_cliente=:id_cliente, valor_total=:valor_total, desconto=:desconto, valor_pago=:valor_pago , status=:status WHERE id_venda = '"+QString::number(dados_venda->retorna_id_venda())+"';");
+                    salvar_dados_venda.bindValue(":data_venda", dados_venda->retorna_data_venda());
+                    salvar_dados_venda.bindValue(":id_cliente",dados_venda->retorna_id_cliente());
+                    salvar_dados_venda.bindValue(":valor_total", dados_venda->retorna_valor_total());
+                    salvar_dados_venda.bindValue(":desconto", dados_venda->retorna_desconto());
+                    salvar_dados_venda.bindValue(":valor_pago", dados_venda->retorna_valor_pago());
+                    salvar_dados_venda.bindValue(":status", _aberta);
+                    salvar_dados_venda.exec();
+
+                    consultar_id_pagamento.exec("SELECT d.`id_pag_avista`, d.`id_pag_parcelado` FROM dinheiro d WHERE id_origem = '"+QString::number(dados_venda->retorna_id_venda())+"';");
+                    if(consultar_id_pagamento.last()){
+                        id_avista = consultar_id_pagamento.value(0).toInt();
+                        id_parcelado = consultar_id_pagamento.value(1).toInt();
+                    }
+                    remover_dados_dinheiro.exec("DELETE FROM dinheiro WHERE origem = '3' AND id_origem = '"+QString::number(dados_venda->retorna_id_venda())+"';");
+                    remover_dados_cartao.exec("DELETE FROM cartao WHERE origem = '3' AND id_origem = '"+QString::number(dados_venda->retorna_id_venda())+"';");
+                    remover_dados_cheque.exec("DELETE FROM cheque WHERE origem = '3' AND id_origem = '"+QString::number(dados_venda->retorna_id_venda())+"';");
+                    remover_dados_ganhos.exec("DELETE FROM ganhos WHERE id_origem = '"+QString::number(dados_venda->retorna_id_venda())+"';");
+                    remover_pagamento_avista.exec("DELETE FROM lista_venda WHERE id_venda ='"+QString::number(dados_venda->retorna_id_venda())+"';");
+                    remover_lista_venda.exec("DELETE FROM pagamento_avista WHERE id_pag_avista = '"+QString::number(id_avista)+"';");
+                    remover_pagamento_parcelado.exec("DELETE FROM pagamento_parcelado WHERE id_pag_parcelado = '"+QString::number(id_parcelado)+"';");
+                    remover_justificativa_cancelamento.exec("DELETE FROM jus_cancelamento_nota WHERE origem = '0' AND id_origem = '"+QString::number(dados_venda->retorna_id_venda())+"';");
+
+                    consultar_his_remocao_pro_estoque.exec("SELECT h.`id_balanco`, h.`quantidade` FROM his_remocao_pro_estoque h WHERE h.id_venda = "+QString::number(dados_venda->retorna_id_venda())+";");
+                    while(consultar_his_remocao_pro_estoque.next()){
+                        id_balanco_remover = consultar_his_remocao_pro_estoque.value(0).toInt();
+                        quantidade_his_remocao_pro_estoque = consultar_his_remocao_pro_estoque.value(1).toInt();
+                        //Insere os dados no histórico de balanço do estoque
+                        atualizar_his_balanco_estoque.prepare("UPDATE his_balanco_estoque SET total_disponivel = total_disponivel+:quantidade WHERE id_balanco = '"+QString::number(id_balanco_remover)+"';");
+                        atualizar_his_balanco_estoque.bindValue(":quantidade", quantidade_his_remocao_pro_estoque);
+                        atualizar_his_balanco_estoque.exec();
+                    }
+
+                    remover_his_balanco_estoque.exec("DELETE FROM his_remocao_pro_estoque WHERE id_venda = '"+QString::number(dados_venda->retorna_id_venda())+"';");
+                    remover_his_balanco_estoque.exec();
+				}
+				
                 if((dinheiro_usado->retorna_valor()+dinheiro_usado->retorna_valor_avista()> 0.0)){
                     if(dinheiro_usado->retorna_valor() > 0.0){
                         salvar_dados_parcelado.prepare("INSERT INTO pagamento_parcelado(num_parcelas,valor_total) VALUES(:num_parcelas, :valor_total);");
