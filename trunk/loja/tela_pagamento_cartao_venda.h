@@ -25,6 +25,7 @@ private slots:
     void on_le_valor_editingFinished();
     void on_btn_cancelar_clicked();
     void on_btn_confirmar_clicked();
+    void closeEvent(QCloseEvent *event);
 
 private:
     Ui::tela_pagamento_cartao_venda *ui;

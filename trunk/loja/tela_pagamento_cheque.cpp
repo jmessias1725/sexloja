@@ -131,3 +131,15 @@ void tela_pagamento_cheque::on_cb_inserir_caixa_hoje_toggled(bool checked)
         inserir_caixa_hoje = false;
     }
 }
+
+void tela_pagamento_cheque::closeEvent(QCloseEvent *event){
+    ui->le_valor->clear();
+    ui->le_agencia->clear();
+    ui->le_codigo_banco->clear();
+    ui->le_conta->clear();
+    ui->le_nome_banco->clear();
+    ui->le_numero_cheque->clear();
+    ui->cb_a_vista->setChecked(false);
+    ui->cb_inserir_caixa_hoje->setChecked(false);
+    ui->gb_para->setChecked(false);
+}

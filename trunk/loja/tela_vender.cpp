@@ -205,7 +205,6 @@ void tela_vender::on_btn_confirmar_clicked()
             dados_venda->alterar_valor_total(valor_tot);
             dados_venda->alterar_desconto(funcao.converter_para_double(ui->le_desconto->text()));
             dados_venda->alterar_valor_pago(funcao.converter_para_double(ui->le_total_a_pagar->text()));
-            dados_venda->alterar_status(_aberta);
 
             for(int i=0;i<int(lista_produtos.size());i++){
                 lt_venda.push_back(new lista_venda(lista_produtos[i]->retorna_id(),dados_venda->retorna_id_venda(),
@@ -230,4 +229,9 @@ void tela_vender::on_le_desconto_editingFinished()
     ui->le_desconto->setText(aux);
     total_a_pagar = valor_total - funcao.converter_para_double(ui->le_desconto->text());
     ui->le_total_a_pagar->setText(funcao.retorna_valor_dinheiro(total_a_pagar));
+}
+
+void tela_vender::on_btn_cancelar_clicked()
+{
+    this->close();
 }

@@ -37,6 +37,7 @@ private slots:
     void on_sb_num_parcelas_editingFinished();
     void on_data_editingFinished();
     void on_tw_parcelas_doubleClicked(const QModelIndex &index);
+    void closeEvent(QCloseEvent *event);
 
 private:
     Ui::tela_pagamento_dinheiro *ui;

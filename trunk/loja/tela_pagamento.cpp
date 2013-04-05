@@ -207,8 +207,8 @@ void tela_pagamento::on_btn_confirmar_clicked()
             int id_compra;
             double valor_compra;
             int id_balanco;
-            int total_comprado;
-            int total_disponivel;
+            int total_comprado = 0;
+            int total_disponivel = 0;
             bool encontrou_valor_compra = false;
             int id_pag_parcelado = 0;
             int id_pag_avista = 0;
@@ -245,15 +245,16 @@ void tela_pagamento::on_btn_confirmar_clicked()
                 QSqlQuery consultar_id_parcelado(bd);
                 QSqlQuery consultar_id_avista(bd);
 
-				if(verifica_se_eh_estorno  == false){
+                if(verifica_se_eh_estorno == false){
 					//Insere os dados no cadastro da compra
-					salvar_dados_compra.prepare("INSERT INTO compra(data_compra,id_fornecedor,num_cupom_nota,valor_total,desconto,valor_pago) VALUES(:data_compra, :id_fornecedor, :num_cupom_nota, :valor_total, :desconto, :valor_pago);");
+                    salvar_dados_compra.prepare("INSERT INTO compra(data_compra,id_fornecedor,num_cupom_nota,valor_total,desconto,valor_pago,status) VALUES(:data_compra, :id_fornecedor, :num_cupom_nota, :valor_total, :desconto, :valor_pago, :status);");
 					salvar_dados_compra.bindValue(":data_compra", dados_compra->retorna_data_compra());
 					salvar_dados_compra.bindValue(":id_fornecedor",dados_compra->retorna_id_fornecedor());
 					salvar_dados_compra.bindValue(":num_cupom_nota", dados_compra->retorna_num_cupom_nota());
 					salvar_dados_compra.bindValue(":valor_total", dados_compra->retorna_valor_total());
 					salvar_dados_compra.bindValue(":desconto", dados_compra->retorna_desconto());
 					salvar_dados_compra.bindValue(":valor_pago", dados_compra->retorna_valor_pago());
+                    salvar_dados_compra.bindValue(":status", _aberta);
 					salvar_dados_compra.exec();
 
 					//realiza a consulta para determinar  o id da compra.
@@ -263,8 +264,9 @@ void tela_pagamento::on_btn_confirmar_clicked()
 					}
 					dados_compra->alterar_id_compra(id_compra);
 				}
-				else{
-					QSqlQuery remover_dados_dinheiro(bd);
+                else{
+
+                    QSqlQuery remover_dados_dinheiro(bd);
                     QSqlQuery remover_dados_cartao(bd);
                     QSqlQuery remover_dados_cheque(bd);
                     QSqlQuery remover_dados_despesas(bd);
@@ -307,16 +309,20 @@ void tela_pagamento::on_btn_confirmar_clicked()
                     remover_pagamento_parcelado.exec("DELETE FROM pagamento_parcelado WHERE id_pag_parcelado = '"+QString::number(id_parcelado)+"';");
                     remover_justificativa_cancelamento.exec("DELETE FROM jus_cancelamento_nota WHERE origem = '"+QString::number(_nota_de_compra)+"' AND id_origem = '"+QString::number(dados_compra->retorna_id_compra())+"';");
 
-                    consultar_his_balanco_estoque.exec("SELECT l.id_balanco, l.quantidade FROM lista_compra l WHERE l.id_compra = "+QString::number(dados_compra->retorna_id_compra())+";");
-                    while(consultar_his_balanco_estoque.next()){
-                        id_balanco_remover = consultar_his_balanco_estoque.value(0).toInt();
-                        quantidade_his_balanco_estoque = consultar_his_balanco_estoque.value(1).toInt();
-                        //Insere os dados no histórico de balanço do estoque
-                        atualizar_his_balanco_estoque.prepare("UPDATE his_balanco_estoque SET total_disponivel = total_disponivel-:quantidade WHERE id_balanco = '"+QString::number(id_balanco_remover)+"';");
-                        atualizar_his_balanco_estoque.bindValue(":quantidade", quantidade_his_balanco_estoque);
-                        atualizar_his_balanco_estoque.exec();
-                    }
-                    remover_lista_compra.exec("DELETE FROM lista_compra WHERE id_compra ='"+QString::number(dados_compra->retorna_id_compra())+"';");
+                    if (dados_compra->retorna_status()!=_cancelada){
+                        consultar_his_balanco_estoque.exec("SELECT l.id_balanco, l.quantidade FROM lista_compra l WHERE l.id_compra = "+QString::number(dados_compra->retorna_id_compra())+";");
+                        while(consultar_his_balanco_estoque.next()){
+                            id_balanco_remover = consultar_his_balanco_estoque.value(0).toInt();
+                            quantidade_his_balanco_estoque = consultar_his_balanco_estoque.value(1).toInt();
+                            //Insere os dados no histórico de balanço do estoque
+                            atualizar_his_balanco_estoque.prepare("UPDATE his_balanco_estoque SET total_disponivel = total_disponivel-:quantidade, total_comprado = total_comprado-:quantidade2 WHERE id_balanco = '"+QString::number(id_balanco_remover)+"';");
+                            atualizar_his_balanco_estoque.bindValue(":quantidade", quantidade_his_balanco_estoque);
+                            atualizar_his_balanco_estoque.bindValue(":quantidade2", quantidade_his_balanco_estoque);
+                            atualizar_his_balanco_estoque.exec();
+                        }
+                   }
+                   remover_lista_compra.exec("DELETE FROM lista_compra WHERE id_compra ='"+QString::number(dados_compra->retorna_id_compra())+"';");
+
 				}
 				
                 if((dinheiro_usado->retorna_valor()+dinheiro_usado->retorna_valor_avista()> 0.0)){
@@ -334,7 +340,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                         std::vector< parcela * > parcelamento = dinheiro_usado->retorna_parcelamento();
                         for (int i=0; i<dinheiro_usado->retorna_num_parcelas(); i++){
                             salvar_dados_despesa_dinheiro.prepare("INSERT INTO despesas(data,descricao,valor,status,origem,id_origem) VALUES(:data, :descricao, :valor, :status, :origem, :id_origem);");
-                            salvar_dados_despesa_dinheiro.bindValue(":descricao", "Parcela em dinheiro de número "+QString::number(i)+", referente a compra de código: "+QString::number(dados_compra->retorna_id_compra())+".");
+                            salvar_dados_despesa_dinheiro.bindValue(":descricao", "Parcela em dinheiro de número "+QString::number(i+1)+", referente a compra de código: "+QString::number(dados_compra->retorna_id_compra())+".");
                             salvar_dados_despesa_dinheiro.bindValue(":valor", parcelamento[i]->retorna_valor());
                             salvar_dados_despesa_dinheiro.bindValue(":data", parcelamento[i]->retorna_data());
                             salvar_dados_despesa_dinheiro.bindValue(":status", _aberta);
@@ -969,6 +975,7 @@ void tela_pagamento::on_btn_confirmar_clicked()
                         }
                         j++;
                     }
+
                     if(total_desejado!=0){
                         quantidade_removida[quantidade_removida.size()-1] = quantidade_removida[quantidade_removida.size()-1]+total_desejado;
                         total_desejado = total_desejado*(-1);
@@ -1079,4 +1086,13 @@ void tela_pagamento::on_btn_cancelar_clicked()
 {
     this->reject();
     this->close();
+}
+
+void tela_pagamento::closeEvent(QCloseEvent *event){
+    ui->le_cartao->clear();
+    ui->le_cheque->clear();
+    ui->le_dinheiro->clear();
+    ui->le_total_pagar->clear();
+    ui->le_total_pago->clear();
+    ui->le_troco->clear();
 }

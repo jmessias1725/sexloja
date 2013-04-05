@@ -1,10 +1,2 @@
 Observações do programa
-1 - quando efetuar a venda demascar as box de pagamento avista e a prazo e zerar os valores.
-2 - quando vender produto zerado no estoque adiconar o mesmo no histórico de balanço do estoque com valor negativo.
-3 - Corrigir tamnaho do campo fabrincante quando se seleciona um produto.
-
-
 6 - Quando inserir um produto repetido, alterar somente a quantidade do mesmo e não o inserir novamente.
-7 - Alterar para permitir alterar a data do última parcela, menos o valor da mesma.
-8 - Corrigir tamnaho nome do fabricante quando buscar fabricantes.
-9 - Atualizar a busca da venda quando feita alguma alteração nos dados.
