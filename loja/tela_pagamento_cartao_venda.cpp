@@ -24,6 +24,7 @@ void tela_pagamento_cartao_venda::definir_dados(double valor){
     QRegExp valida_dinheiro("^-?\\+?\\*?\\/?\\:?\\;?\\w?\\d{0,4}([,|.]*)(\\d{0,2})$");
     ui->le_valor->setValidator(new QRegExpValidator(valida_dinheiro, ui->le_valor));
     ui->le_valor->setText(funcao.retorna_valor_dinheiro(valor));
+    ui->sb_num_parcelas->clear();
 }
 
 void tela_pagamento_cartao_venda::on_le_valor_editingFinished(){
@@ -83,4 +84,9 @@ void tela_pagamento_cartao_venda::on_btn_confirmar_clicked()
 
 cartao * tela_pagamento_cartao_venda::retorna_cartao(){
     return cartao_usado;
+}
+
+void tela_pagamento_cartao_venda::closeEvent(QCloseEvent *event){
+    ui->le_valor->clear();
+    ui->sb_num_parcelas->setValue(1);
 }

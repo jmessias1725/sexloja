@@ -94,14 +94,14 @@ void tela_listar_produtos::mostrar_lista_produtos(void){
     ui->tw_produtos->setColumnCount(6);
     ui->tw_produtos->horizontalHeader()->setResizeMode(QHeaderView::Fixed);
     ui->tw_produtos->clear();
-    ui->tw_produtos->setHorizontalHeaderLabels(QString("Tipo;Código;Nome;Fabricante;Quantidade;Código de barras").split(";"));
+    ui->tw_produtos->setHorizontalHeaderLabels(QString("Tipo;Código;Quantidade;Nome;Fabricante;Código de barras").split(";"));
 
     for (int i=0;i<int(aux_lista_produtos.size());i++){
         ui->tw_produtos->setItem(i,0,new QTableWidgetItem(aux_lista_produtos[i]->retorna_tipo()));
         ui->tw_produtos->setItem(i,1,new QTableWidgetItem(QString::number(aux_lista_produtos[i]->retorna_id())));
-        ui->tw_produtos->setItem(i,2,new QTableWidgetItem(aux_lista_produtos[i]->retorna_nome()));
-        ui->tw_produtos->setItem(i,3,new QTableWidgetItem(aux_lista_produtos[i]->retorna_fabricante()));
-        ui->tw_produtos->setItem(i,4,new QTableWidgetItem(QString::number(aux_lista_produtos[i]->retorna_quantidade_disponivel())));
+        ui->tw_produtos->setItem(i,2,new QTableWidgetItem(QString::number(aux_lista_produtos[i]->retorna_quantidade_disponivel())));
+        ui->tw_produtos->setItem(i,3,new QTableWidgetItem(aux_lista_produtos[i]->retorna_nome()));
+        ui->tw_produtos->setItem(i,4,new QTableWidgetItem(aux_lista_produtos[i]->retorna_fabricante()));
         ui->tw_produtos->setItem(i,5,new QTableWidgetItem(aux_lista_produtos[i]->retorna_cod_barras()));
         ui->tw_produtos->item(i,0)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_produtos->item(i,1)->setTextAlignment(Qt::AlignHCenter);
@@ -114,7 +114,11 @@ void tela_listar_produtos::mostrar_lista_produtos(void){
     ui->tw_produtos->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tw_produtos->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tw_produtos->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    ui->tw_produtos->resizeColumnsToContents();
+    ui->tw_produtos->setColumnWidth(0,85);
+    ui->tw_produtos->setColumnWidth(1,85);
+    ui->tw_produtos->setColumnWidth(2,80);
+    ui->tw_produtos->setColumnWidth(3,450);
+    ui->tw_produtos->setColumnWidth(4,250);
     ui->tw_produtos->horizontalHeader()->setStretchLastSection(true);
 }
 

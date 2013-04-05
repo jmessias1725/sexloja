@@ -528,8 +528,9 @@ void tela_nota_compra::on_btn_cancelar_nota_clicked()
                 id_balanco_remover = consultar_his_balanco_estoque.value(0).toInt();
                 quantidade_his_balanco_estoque = consultar_his_balanco_estoque.value(1).toInt();
                 //Insere os dados no histórico de balanço do estoque
-                atualizar_his_balanco_estoque.prepare("UPDATE his_balanco_estoque SET total_disponivel = total_disponivel-:quantidade WHERE id_balanco = '"+QString::number(id_balanco_remover)+"';");
+                atualizar_his_balanco_estoque.prepare("UPDATE his_balanco_estoque SET total_disponivel = total_disponivel-:quantidade, total_comprado = total_comprado-:quantidade2 WHERE id_balanco = '"+QString::number(id_balanco_remover)+"';");
                 atualizar_his_balanco_estoque.bindValue(":quantidade", quantidade_his_balanco_estoque);
+                atualizar_his_balanco_estoque.bindValue(":quantidade2", quantidade_his_balanco_estoque);
                 atualizar_his_balanco_estoque.exec();
             }
 
@@ -556,7 +557,7 @@ void tela_nota_compra::on_btn_cancelar_nota_clicked()
                 msg.setWindowTitle("Cancelamento");
                 msg.addButton("OK", QMessageBox::AcceptRole);
                 msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
-                msg.setText("\nA Nota foi cancelada com sucesso!!!!");
+                msg.setText("\nA nota foi cancelada com sucesso!!!!");
                 msg.exec();
 
                 //Fecha a conexão com o banco de dados

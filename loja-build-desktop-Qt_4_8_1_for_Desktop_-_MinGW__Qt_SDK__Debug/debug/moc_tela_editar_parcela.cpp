@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tela_editar_parcela.h'
 **
-** Created: Thu 4. Apr 17:47:43 2013
+** Created: Fri 5. Apr 08:30:07 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!

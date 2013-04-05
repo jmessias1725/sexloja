@@ -215,9 +215,8 @@ void tela_listar_fornecedores::on_btn_buscar_clicked()
             ui->tv_fornecedores->setSelectionBehavior(QAbstractItemView::SelectRows);
             ui->tv_fornecedores->setEditTriggers(QAbstractItemView::NoEditTriggers);
             ui->tv_fornecedores->setModel(modelo);
-            ui->tv_fornecedores->resizeColumnToContents(0);
-            ui->tv_fornecedores->resizeColumnToContents(3);
-            ui->tv_fornecedores->resizeColumnToContents(4);
+            ui->tv_fornecedores->resizeColumnsToContents();
+            ui->tv_fornecedores->horizontalHeader()->setStretchLastSection(true);
             bd.close();
             conexao.fechar_conexao();
         }

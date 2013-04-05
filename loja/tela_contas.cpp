@@ -590,7 +590,6 @@ void tela_contas::on_tw_lista_notas_venda_doubleClicked(const QModelIndex &index
     tl_nota_venda.definir_dados(lista_venda[index.row()]);
     if(tl_nota_venda.exec()){
         on_btn_buscar_nota_venda_clicked();
-        mostrar_lista_notas_compra();
     }
 }
 
@@ -598,7 +597,9 @@ void tela_contas::on_tw_lista_notas_compra_doubleClicked(const QModelIndex &inde
 {
     tl_nota_compra.definir_icone_janela(logomarca);
     tl_nota_compra.definir_dados(lista_compra[index.row()]);
-    tl_nota_compra.exec();
+    if(tl_nota_compra.exec()){
+        on_btn_buscar_nota_compra_clicked();
+    }
 }
 
 void tela_contas::closeEvent(QCloseEvent *event){

@@ -38,6 +38,8 @@ private slots:
     void on_btn_confirmar_clicked();
     void on_le_desconto_editingFinished();
     
+    void on_btn_cancelar_clicked();
+
 private:
     Ui::tela_vender *ui;
     tela_listar_clientes tl_listar_clientes;

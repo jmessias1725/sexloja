@@ -35,7 +35,8 @@ void tela_pagamento_dinheiro::on_le_valor_editingFinished(){
     aux_valor = funcao.converter_para_double(ui->le_valor->text());
     aux_valor = valor_total - aux_valor;
     aux =  funcao.retorna_valor_dinheiro(aux_valor);
-    ui->le_valor_avista->setText(aux);
+    if((ui->groupBox->isChecked()==true)&&ui->le_valor_avista->text()=="")
+        ui->le_valor_avista->setText(aux);
 }
 
 void tela_pagamento_dinheiro::on_btn_cancelar_clicked(){
@@ -83,8 +84,8 @@ void tela_pagamento_dinheiro::on_le_valor_avista_editingFinished(){
     aux_valor = funcao.converter_para_double(ui->le_valor_avista->text());
     aux_valor = valor_total - aux_valor;
     aux =  funcao.retorna_valor_dinheiro(aux_valor);
-    ui->le_valor->setText(aux);
-
+    if((ui->groupBox_2->isChecked()==true)&&ui->le_valor->text()=="")
+        ui->le_valor->setText(aux);
 }
 
 void tela_pagamento_dinheiro::on_groupBox_2_clicked(bool checked){
@@ -184,4 +185,15 @@ void tela_pagamento_dinheiro::on_tw_parcelas_doubleClicked(const QModelIndex &in
             mostrar_parcelamento();
         }
     }
+}
+
+void tela_pagamento_dinheiro::closeEvent(QCloseEvent *event){
+    ui->le_valor->clear();
+    ui->le_valor_avista->clear();
+    ui->data->setDate(QDate::currentDate());
+    ui->sb_num_parcelas->setValue(1);
+    ui->tw_parcelas->setColumnCount(0);
+    ui->tw_parcelas->setRowCount(0);
+    ui->groupBox->setChecked(false);
+    ui->groupBox_2->setChecked(false);
 }

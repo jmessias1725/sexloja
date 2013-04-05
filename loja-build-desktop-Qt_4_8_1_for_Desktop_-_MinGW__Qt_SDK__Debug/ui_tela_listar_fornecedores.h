@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_listar_fornecedores.ui'
 **
-** Created: Thu 4. Apr 17:42:59 2013
+** Created: Fri 5. Apr 15:25:18 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -78,8 +78,8 @@ public:
         tv_fornecedores->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
         tv_fornecedores->setAlternatingRowColors(true);
         tv_fornecedores->setSortingEnabled(false);
-        tv_fornecedores->horizontalHeader()->setVisible(false);
-        tv_fornecedores->horizontalHeader()->setDefaultSectionSize(390);
+        tv_fornecedores->horizontalHeader()->setVisible(true);
+        tv_fornecedores->horizontalHeader()->setDefaultSectionSize(90);
         tv_fornecedores->horizontalHeader()->setMinimumSectionSize(15);
         tv_fornecedores->horizontalHeader()->setStretchLastSection(true);
         tv_fornecedores->verticalHeader()->setVisible(false);

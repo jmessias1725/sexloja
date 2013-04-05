@@ -28,8 +28,8 @@ private slots:
     void on_cb_a_vista_clicked();
     void on_gb_para_clicked();
     void on_le_codigo_banco_editingFinished();
-
     void on_cb_inserir_caixa_hoje_toggled(bool checked);
+    void closeEvent(QCloseEvent *event);
 
 private:
     Ui::tela_pagamento_cheque *ui;
