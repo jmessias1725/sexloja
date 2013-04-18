@@ -447,7 +447,7 @@ void tela_nota_venda::on_btn_cancelar_nota_clicked()
     msg.addButton("Não", QMessageBox::RejectRole);
     msg.setFont(QFont ("Calibri", 11,QFont::Normal, false));
     msg.setText("\nDeseja cancelar a nota?");
-    if(!msg.exec()){
+    if(msg.exec()==QMessageBox::AcceptRole){
         tl_justificativa_cancelamento.definir_icone_janela(logomarca);
         if(tl_justificativa_cancelamento.exec())
         {

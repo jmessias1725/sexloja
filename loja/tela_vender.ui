@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Vender</string>
+   <string>Nova Venda</string>
   </property>
   <widget class="QFrame" name="menu_produtos">
    <property name="geometry">

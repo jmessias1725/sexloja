@@ -679,6 +679,8 @@ color: #FFFFFF;</string>
      <addaction name="Cadastrar_cliente"/>
      <addaction name="cadastrar_forncecedor"/>
      <addaction name="cadastrar_produto"/>
+     <addaction name="adicionar_despesa"/>
+     <addaction name="adicionar_receita"/>
     </widget>
     <addaction name="menuNovo"/>
     <addaction name="botao_sair"/>
@@ -780,12 +782,21 @@ QToolBar{
    </attribute>
    <addaction name="separator"/>
    <addaction name="consultar_caixa"/>
+   <addaction name="separator"/>
    <addaction name="consultar_clientes"/>
    <addaction name="consultar_fornecedores"/>
-   <addaction name="listar_contas"/>
-   <addaction name="Estoque"/>
+   <addaction name="separator"/>
    <addaction name="realizar_venda"/>
    <addaction name="realizar_compra"/>
+   <addaction name="Cadastrar_cliente"/>
+   <addaction name="cadastrar_forncecedor"/>
+   <addaction name="cadastrar_produto"/>
+   <addaction name="adicionar_despesa"/>
+   <addaction name="adicionar_receita"/>
+   <addaction name="separator"/>
+   <addaction name="listar_contas"/>
+   <addaction name="Estoque"/>
+   <addaction name="Cadastro_da_Loja"/>
   </widget>
   <action name="consultar_clientes">
    <property name="icon">
@@ -794,6 +805,9 @@ QToolBar{
    </property>
    <property name="text">
     <string>Buscar Clientes</string>
+   </property>
+   <property name="toolTip">
+    <string>Clique para buscar os dados sobre os clientes.</string>
    </property>
   </action>
   <action name="consultar_caixa">
@@ -804,6 +818,9 @@ QToolBar{
    <property name="text">
     <string>Caixa</string>
    </property>
+   <property name="toolTip">
+    <string>Clique para visualizar o fluxo do caixa.</string>
+   </property>
   </action>
   <action name="consultar_fornecedores">
    <property name="icon">
@@ -812,6 +829,9 @@ QToolBar{
    </property>
    <property name="text">
     <string>Buscar Forncedores</string>
+   </property>
+   <property name="toolTip">
+    <string>Clique para buscar os dados sobre os forncedores</string>
    </property>
   </action>
   <action name="cadastrar_forncecedor">
@@ -822,6 +842,9 @@ QToolBar{
    <property name="text">
     <string>Fornecedor</string>
    </property>
+   <property name="toolTip">
+    <string>Clique para cadastrar um novo fornecedor.</string>
+   </property>
   </action>
   <action name="cadastrar_produto">
    <property name="icon">
@@ -830,6 +853,9 @@ QToolBar{
    </property>
    <property name="text">
     <string>Produto</string>
+   </property>
+   <property name="toolTip">
+    <string>Clique para cadastrar um novo produto.</string>
    </property>
   </action>
   <action name="realizar_venda">
@@ -841,7 +867,7 @@ QToolBar{
     <string>Venda</string>
    </property>
    <property name="toolTip">
-    <string>Clique para realizar uma venda</string>
+    <string>Clique para realizar uma nova venda.</string>
    </property>
    <property name="font">
     <font>
@@ -858,6 +884,9 @@ QToolBar{
    <property name="text">
     <string>Cliente</string>
    </property>
+   <property name="toolTip">
+    <string>Clique para cadastrar um novo cliente.</string>
+   </property>
   </action>
   <action name="botao_sair">
    <property name="icon">
@@ -866,6 +895,9 @@ QToolBar{
    </property>
    <property name="text">
     <string>Sair</string>
+   </property>
+   <property name="toolTip">
+    <string>Clique para sair do programa.</string>
    </property>
   </action>
   <action name="buscar_clientes">
@@ -876,6 +908,9 @@ QToolBar{
    <property name="text">
     <string>Buscar Clientes</string>
    </property>
+   <property name="toolTip">
+    <string>Clique para buscar os dados sobre os clientes.</string>
+   </property>
   </action>
   <action name="buscar_fornecedores">
    <property name="icon">
@@ -884,6 +919,9 @@ QToolBar{
    </property>
    <property name="text">
     <string>Buscar Fornecedores</string>
+   </property>
+   <property name="toolTip">
+    <string>Clique para buscar os dados sobre fornecedores.</string>
    </property>
   </action>
   <action name="Cadastro_da_Loja">
@@ -894,6 +932,9 @@ QToolBar{
    <property name="text">
     <string>Cadastro da Loja</string>
    </property>
+   <property name="toolTip">
+    <string>Clique para visualizar o cadastro da Loja.</string>
+   </property>
   </action>
   <action name="Estoque">
    <property name="icon">
@@ -902,6 +943,9 @@ QToolBar{
    </property>
    <property name="text">
     <string>Estoque</string>
+   </property>
+   <property name="toolTip">
+    <string>Clique para visualizar o estoque.</string>
    </property>
   </action>
   <action name="realizar_compra">
@@ -913,7 +957,7 @@ QToolBar{
     <string>Compra</string>
    </property>
    <property name="toolTip">
-    <string>Clique para adicionar uma nova compra</string>
+    <string>Clique para adicionar uma nova compra.</string>
    </property>
   </action>
   <action name="listar_contas">
@@ -925,7 +969,31 @@ QToolBar{
     <string>Contas</string>
    </property>
    <property name="toolTip">
-    <string>Contas</string>
+    <string>Clique para visualizar as contas.</string>
+   </property>
+  </action>
+  <action name="adicionar_despesa">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/img/img/despesa.png</normaloff>:/img/img/despesa.png</iconset>
+   </property>
+   <property name="text">
+    <string>Despesa</string>
+   </property>
+   <property name="toolTip">
+    <string>Clique para adicionar uma nova despesa.</string>
+   </property>
+  </action>
+  <action name="adicionar_receita">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/img/img/ganho.png</normaloff>:/img/img/ganho.png</iconset>
+   </property>
+   <property name="text">
+    <string>Receita</string>
+   </property>
+   <property name="toolTip">
+    <string>Clique para adicionar uma nova receita.</string>
    </property>
   </action>
  </widget>

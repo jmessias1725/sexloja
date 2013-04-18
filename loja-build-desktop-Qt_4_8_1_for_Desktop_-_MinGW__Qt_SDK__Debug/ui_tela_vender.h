@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_vender.ui'
 **
-** Created: Fri 5. Apr 08:25:35 2013
+** Created: Tue 16. Apr 10:39:20 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -341,7 +341,7 @@ public:
 
     void retranslateUi(QDialog *tela_vender)
     {
-        tela_vender->setWindowTitle(QApplication::translate("tela_vender", "Vender", 0, QApplication::UnicodeUTF8));
+        tela_vender->setWindowTitle(QApplication::translate("tela_vender", "Nova Venda", 0, QApplication::UnicodeUTF8));
         btn_adicionar_produto->setText(QApplication::translate("tela_vender", "...", 0, QApplication::UnicodeUTF8));
         btn_remover_produto->setText(QApplication::translate("tela_vender", "...", 0, QApplication::UnicodeUTF8));
         btn_confirmar->setText(QApplication::translate("tela_vender", "Confirmar", 0, QApplication::UnicodeUTF8));

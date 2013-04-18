@@ -17,6 +17,8 @@
 #include "lista_venda.h"
 #include "parcela.h"
 #include "variaveis_globais.h"
+#include "despesa_avulsa.h"
+#include "ganho_avulso.h"
 
 namespace Ui {
 class tela_pagamento;
@@ -30,6 +32,8 @@ public:
     explicit tela_pagamento(QWidget *parent = 0);
     ~tela_pagamento();
     void definir_icone_janela(QPixmap logo);
+    void definir_dados_ganho_avulso(ganho_avulso *dados_gan);
+    void definir_dados_despesa_avulsa(despesa_avulsa *dados_des);
     void definir_dados_compra(compra* comp, std::vector< lista_compra* > lt_com , bool veric_estorno);
     void definir_dados_venda(venda* vend, std::vector< lista_venda* > lt_ven, bool veric_estorno);
 
@@ -53,8 +57,11 @@ private:
     dinheiro* dinheiro_usado;
     compra* dados_compra;
     venda* dados_venda;
+    despesa_avulsa *dados_despesa;
+    ganho_avulso *dados_ganho;
     bool verifica_se_eh_compra;
     bool verifica_se_eh_estorno;
+    bool verifica_se_eh_avulso;
     std::vector< lista_compra* > lt_compra;
     std::vector< lista_venda* > lt_venda;
     double valor_em_dinheiro;
@@ -63,6 +70,7 @@ private:
     double total_pagar;
     double total_pago;
     double troco;
+    int tipo;
 };
 
 #endif // TELA_PAGAMENTO_H

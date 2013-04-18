@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_contas.ui'
 **
-** Created: Fri 5. Apr 08:25:36 2013
+** Created: Thu 18. Apr 11:04:34 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -66,6 +66,9 @@ public:
     QFrame *fr_linha;
     QPushButton *btn_limparcr;
     QTableWidget *tw_contas_receber;
+    QFrame *fr_informacoes_cr;
+    QLabel *lb_total_receber;
+    QLabel *lb_total_receber_dina;
     QWidget *tab_contas_pagar;
     QVBoxLayout *verticalLayout_4;
     QFrame *fr_2;
@@ -82,6 +85,9 @@ public:
     QFrame *fr_linha_cp;
     QPushButton *btn_limpar_cp;
     QTableWidget *tw_contas_pagar;
+    QFrame *fr_informacoes_cr_2;
+    QLabel *lb_total_pagar;
+    QLabel *lb_total_pagar_dina;
     QWidget *tab_notas_venda;
     QVBoxLayout *verticalLayout_5;
     QFrame *fr_buscar_notas_venda;
@@ -393,6 +399,31 @@ public:
 
         verticalLayout_3->addWidget(tw_contas_receber);
 
+        fr_informacoes_cr = new QFrame(tab_contas_receber);
+        fr_informacoes_cr->setObjectName(QString::fromUtf8("fr_informacoes_cr"));
+        fr_informacoes_cr->setMinimumSize(QSize(0, 40));
+        fr_informacoes_cr->setStyleSheet(QString::fromUtf8("QFrame{	\n"
+"	border: none;\n"
+"	background-color: qlineargradient(spread:reflect, x1:1, y1:0, x2:1, y2:1, stop:0.534091 rgba(238, 238, 238, 227), stop:0.965909 rgba(71, 71, 71, 178));\n"
+"}"));
+        fr_informacoes_cr->setFrameShape(QFrame::WinPanel);
+        fr_informacoes_cr->setFrameShadow(QFrame::Raised);
+        lb_total_receber = new QLabel(fr_informacoes_cr);
+        lb_total_receber->setObjectName(QString::fromUtf8("lb_total_receber"));
+        lb_total_receber->setGeometry(QRect(10, 10, 95, 20));
+        lb_total_receber->setFont(font3);
+        lb_total_receber->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 255);\n"
+"background-color: none"));
+        lb_total_receber_dina = new QLabel(fr_informacoes_cr);
+        lb_total_receber_dina->setObjectName(QString::fromUtf8("lb_total_receber_dina"));
+        lb_total_receber_dina->setGeometry(QRect(110, 10, 100, 20));
+        lb_total_receber_dina->setFont(font4);
+        lb_total_receber_dina->setStyleSheet(QString::fromUtf8("background-color: none;\n"
+"color: rgb(0, 0, 255);\n"
+""));
+
+        verticalLayout_3->addWidget(fr_informacoes_cr);
+
         QIcon icon4;
         icon4.addFile(QString::fromUtf8(":/img/img/ganho.png"), QSize(), QIcon::Normal, QIcon::Off);
         tbw_geral->addTab(tab_contas_receber, icon4, QString());
@@ -529,6 +560,32 @@ public:
 
         verticalLayout_4->addWidget(tw_contas_pagar);
 
+        fr_informacoes_cr_2 = new QFrame(tab_contas_pagar);
+        fr_informacoes_cr_2->setObjectName(QString::fromUtf8("fr_informacoes_cr_2"));
+        fr_informacoes_cr_2->setMinimumSize(QSize(0, 40));
+        fr_informacoes_cr_2->setStyleSheet(QString::fromUtf8("QFrame{	\n"
+"	border: none;\n"
+"	background-color: qlineargradient(spread:reflect, x1:1, y1:0, x2:1, y2:1, stop:0.534091 rgba(238, 238, 238, 227), stop:0.965909 rgba(71, 71, 71, 178));\n"
+"}"));
+        fr_informacoes_cr_2->setFrameShape(QFrame::WinPanel);
+        fr_informacoes_cr_2->setFrameShadow(QFrame::Raised);
+        lb_total_pagar = new QLabel(fr_informacoes_cr_2);
+        lb_total_pagar->setObjectName(QString::fromUtf8("lb_total_pagar"));
+        lb_total_pagar->setGeometry(QRect(10, 10, 81, 20));
+        lb_total_pagar->setFont(font3);
+        lb_total_pagar->setStyleSheet(QString::fromUtf8("background-color: none;\n"
+"color: rgb(255, 0, 0);\n"
+""));
+        lb_total_pagar_dina = new QLabel(fr_informacoes_cr_2);
+        lb_total_pagar_dina->setObjectName(QString::fromUtf8("lb_total_pagar_dina"));
+        lb_total_pagar_dina->setGeometry(QRect(95, 10, 100, 20));
+        lb_total_pagar_dina->setFont(font4);
+        lb_total_pagar_dina->setStyleSheet(QString::fromUtf8("background-color: none;\n"
+"color: rgb(255, 0, 0);\n"
+""));
+
+        verticalLayout_4->addWidget(fr_informacoes_cr_2);
+
         QIcon icon5;
         icon5.addFile(QString::fromUtf8(":/img/img/despesa.png"), QSize(), QIcon::Normal, QIcon::Off);
         tbw_geral->addTab(tab_contas_pagar, icon5, QString());
@@ -658,7 +715,7 @@ public:
 
         retranslateUi(tela_contas);
 
-        tbw_geral->setCurrentIndex(4);
+        tbw_geral->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(tela_contas);
@@ -686,14 +743,16 @@ public:
         cb_status_cr->clear();
         cb_status_cr->insertItems(0, QStringList()
          << QApplication::translate("tela_contas", "Todos", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("tela_contas", "Paga", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("tela_contas", "Aberta", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("tela_contas", "Atrasada", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("tela_contas", "Paga", 0, QApplication::UnicodeUTF8)
         );
         le_codigo_cr->setInputMask(QApplication::translate("tela_contas", "000000000; ", 0, QApplication::UnicodeUTF8));
         le_codigo_cr->setText(QString());
         btn_limparcr->setText(QApplication::translate("tela_contas", "Limpar", 0, QApplication::UnicodeUTF8));
-        tbw_geral->setTabText(tbw_geral->indexOf(tab_contas_receber), QApplication::translate("tela_contas", "Contas a Receber", 0, QApplication::UnicodeUTF8));
+        lb_total_receber->setText(QApplication::translate("tela_contas", "Total a receber:", 0, QApplication::UnicodeUTF8));
+        lb_total_receber_dina->setText(QApplication::translate("tela_contas", "R$ 0,00", 0, QApplication::UnicodeUTF8));
+        tbw_geral->setTabText(tbw_geral->indexOf(tab_contas_receber), QApplication::translate("tela_contas", "Recitas", 0, QApplication::UnicodeUTF8));
         btn_buscar_cp->setText(QApplication::translate("tela_contas", "Buscar", 0, QApplication::UnicodeUTF8));
         lb_nome_cp->setText(QApplication::translate("tela_contas", "Per\303\255odo de:", 0, QApplication::UnicodeUTF8));
         lb_a_cp->setText(QApplication::translate("tela_contas", "a", 0, QApplication::UnicodeUTF8));
@@ -703,14 +762,16 @@ public:
         cb_status_cp->clear();
         cb_status_cp->insertItems(0, QStringList()
          << QApplication::translate("tela_contas", "Todos", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("tela_contas", "Paga", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("tela_contas", "Aberta", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("tela_contas", "Atrasada", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("tela_contas", "Paga", 0, QApplication::UnicodeUTF8)
         );
         le_codigo_cp->setInputMask(QApplication::translate("tela_contas", "000000000; ", 0, QApplication::UnicodeUTF8));
         le_codigo_cp->setText(QString());
         btn_limpar_cp->setText(QApplication::translate("tela_contas", "Limpar", 0, QApplication::UnicodeUTF8));
-        tbw_geral->setTabText(tbw_geral->indexOf(tab_contas_pagar), QApplication::translate("tela_contas", "Contas a Pagar", 0, QApplication::UnicodeUTF8));
+        lb_total_pagar->setText(QApplication::translate("tela_contas", "Total a pagar:", 0, QApplication::UnicodeUTF8));
+        lb_total_pagar_dina->setText(QApplication::translate("tela_contas", "R$ 0,00", 0, QApplication::UnicodeUTF8));
+        tbw_geral->setTabText(tbw_geral->indexOf(tab_contas_pagar), QApplication::translate("tela_contas", "Despesas", 0, QApplication::UnicodeUTF8));
         lb_nome_cliente->setText(QApplication::translate("tela_contas", "Nome do cliente:", 0, QApplication::UnicodeUTF8));
         btn_buscar_nota_venda->setText(QApplication::translate("tela_contas", "Buscar", 0, QApplication::UnicodeUTF8));
         le_nome_cliente->setText(QString());

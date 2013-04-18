@@ -74,7 +74,11 @@ SOURCES += main.cpp\
     tela_editar_parcela.cpp \
     tela_justificativa_cancelamento.cpp \
     variaveis_globais.cpp \
-    tela_nota_compra.cpp
+    tela_nota_compra.cpp \
+    tela_despesa_avulsa.cpp \
+    tela_receita_avulsa.cpp \
+    despesa_avulsa.cpp \
+    ganho_avulso.cpp
 
 HEADERS  += \
     conexao_bd.h \
@@ -139,7 +143,11 @@ HEADERS  += \
     tela_editar_parcela.h \
     tela_justificativa_cancelamento.h \
     variaveis_globais.h \
-    tela_nota_compra.h
+    tela_nota_compra.h \
+    tela_despesa_avulsa.h \
+    tela_receita_avulsa.h \
+    despesa_avulsa.h \
+    ganho_avulso.h
 
 FORMS    += \
     tela_login.ui \
@@ -179,7 +187,9 @@ FORMS    += \
     tela_ajustar_data_valor.ui \
     tela_editar_parcela.ui \
     tela_justificativa_cancelamento.ui \
-    tela_nota_compra.ui
+    tela_nota_compra.ui \
+    tela_despesa_avulsa.ui \
+    tela_receita_avulsa.ui
 
 RESOURCES += \
     imagens.qrc
