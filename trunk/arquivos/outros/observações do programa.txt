@@ -1,2 +1,9 @@
 Observações do programa
-6 - Quando inserir um produto repetido, alterar somente a quantidade do mesmo e não o inserir novamente.
+1 - contas a pagar e contas a receber só irão mostrar as contas com status aberta e atrasada. Vai ter uma select box para pergutar se 
+deseja buscar as que estão fechadas também.
+2 - O fluxo de caixa só vai mostrar dados referentes as compras que fora pagas, idenpendente de ser ganho ou despesa.
+3 - Visualizar despesa avulsa.
+4 - Visualizar receita avulsa.
+5 - Quando for referente a uma conta noramal, abrir a conta.
+6 - as contas a receber a pagar, vão começar mostrando as contas de 5 dias antes e 5 dias depois do dia corrente.
+7 - Na barra de status de contas a pagar e a receber vai aparecer o valor total das contas listadas acima.

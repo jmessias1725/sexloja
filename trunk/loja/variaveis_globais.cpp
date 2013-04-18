@@ -15,7 +15,7 @@ int _dinheiro_avi = 3;
 int _nota_de_venda = 0;
 int _nota_de_compra = 1;
 
-int _compra_avulsa = 0;
+int _despesa_avulsa = 0;
 int _compra_de_produto = 1;
-int _venda_avulsa = 2;
+int _receita_avulsa = 2;
 int _venda_de_produto = 3;

@@ -41,7 +41,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>2</number>
       </property>
       <property name="elideMode">
        <enum>Qt::ElideMiddle</enum>
@@ -404,7 +404,7 @@ background-color: none</string>
          <normaloff>:/img/img/ganho.png</normaloff>:/img/img/ganho.png</iconset>
        </attribute>
        <attribute name="title">
-        <string>Contas a Receber</string>
+        <string>Recitas</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <property name="spacing">
@@ -778,17 +778,17 @@ background-color: none;</string>
            </item>
            <item>
             <property name="text">
+             <string>Paga</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
              <string>Aberta</string>
             </property>
            </item>
            <item>
             <property name="text">
              <string>Atrasada</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Paga</string>
             </property>
            </item>
           </widget>
@@ -926,6 +926,77 @@ background-color: none;</string>
           </attribute>
          </widget>
         </item>
+        <item>
+         <widget class="QFrame" name="fr_informacoes_cr">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QFrame{	
+	border: none;
+	background-color: qlineargradient(spread:reflect, x1:1, y1:0, x2:1, y2:1, stop:0.534091 rgba(238, 238, 238, 227), stop:0.965909 rgba(71, 71, 71, 178));
+}</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::WinPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <widget class="QLabel" name="lb_total_receber">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>95</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <pointsize>11</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(0, 0, 255);
+background-color: none</string>
+           </property>
+           <property name="text">
+            <string>Total a receber:</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="lb_total_receber_dina">
+           <property name="geometry">
+            <rect>
+             <x>110</x>
+             <y>10</y>
+             <width>100</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: none;
+color: rgb(0, 0, 255);
+</string>
+           </property>
+           <property name="text">
+            <string>R$ 0,00</string>
+           </property>
+          </widget>
+         </widget>
+        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="tab_contas_pagar">
@@ -934,7 +1005,7 @@ background-color: none;</string>
          <normaloff>:/img/img/despesa.png</normaloff>:/img/img/despesa.png</iconset>
        </attribute>
        <attribute name="title">
-        <string>Contas a Pagar</string>
+        <string>Despesas</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_4">
         <property name="spacing">
@@ -1308,17 +1379,17 @@ background-color: none;</string>
            </item>
            <item>
             <property name="text">
+             <string>Paga</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
              <string>Aberta</string>
             </property>
            </item>
            <item>
             <property name="text">
              <string>Atrasada</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Paga</string>
             </property>
            </item>
           </widget>
@@ -1454,6 +1525,78 @@ background-color: none;</string>
           <attribute name="verticalHeaderMinimumSectionSize">
            <number>20</number>
           </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFrame" name="fr_informacoes_cr_2">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QFrame{	
+	border: none;
+	background-color: qlineargradient(spread:reflect, x1:1, y1:0, x2:1, y2:1, stop:0.534091 rgba(238, 238, 238, 227), stop:0.965909 rgba(71, 71, 71, 178));
+}</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::WinPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <widget class="QLabel" name="lb_total_pagar">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>81</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <pointsize>11</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: none;
+color: rgb(255, 0, 0);
+</string>
+           </property>
+           <property name="text">
+            <string>Total a pagar:</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="lb_total_pagar_dina">
+           <property name="geometry">
+            <rect>
+             <x>95</x>
+             <y>10</y>
+             <width>100</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: none;
+color: rgb(255, 0, 0);
+</string>
+           </property>
+           <property name="text">
+            <string>R$ 0,00</string>
+           </property>
+          </widget>
          </widget>
         </item>
        </layout>

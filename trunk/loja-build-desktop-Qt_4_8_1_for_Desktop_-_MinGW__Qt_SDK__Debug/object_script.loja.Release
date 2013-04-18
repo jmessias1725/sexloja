@@ -63,6 +63,10 @@ INPUT(
 ./release\tela_justificativa_cancelamento.o
 ./release\variaveis_globais.o
 ./release\tela_nota_compra.o
+./release\tela_despesa_avulsa.o
+./release\tela_receita_avulsa.o
+./release\despesa_avulsa.o
+./release\ganho_avulso.o
 ./release\moc_tela_login.o
 ./release\moc_tela_principal.o
 ./release\moc_tela_cadastro_cliente.o
@@ -100,5 +104,7 @@ INPUT(
 ./release\moc_tela_editar_parcela.o
 ./release\moc_tela_justificativa_cancelamento.o
 ./release\moc_tela_nota_compra.o
+./release\moc_tela_despesa_avulsa.o
+./release\moc_tela_receita_avulsa.o
 ./release\qrc_imagens.o
 );

@@ -1,8 +1,8 @@
 Campo origem das tabelas cartão, dinheiro e cheque.
 
-0 - compra avulsa;
+0 - despesa avulsa;
 1 - compra de produto;
-2 - venda avulsa;
+2 - receita avulsa;
 3 - venda de produto.
 
 

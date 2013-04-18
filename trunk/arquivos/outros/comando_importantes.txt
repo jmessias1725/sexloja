@@ -1,1 +1,5 @@
 QRegExp valida_codigo_barras("^([0-9]{1}\ [0-9]{5}\ [0-9]{5}\ [0-9]{1})$");
+
+        //Define o íten como não editável
+        //ui->tw_lista_produtos->item(i,0)->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+        //ui->tw_lista_produtos->item(i,1)->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);

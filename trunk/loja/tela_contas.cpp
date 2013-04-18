@@ -30,6 +30,7 @@ void tela_contas::definir_icone_janela(QPixmap logo){
     ui->data_final_cp->setDateRange(ui->data_inicial_cp->date(),data_final);
     ui->data_final_cr->setDateRange(ui->data_inicial_cr->date(),data_final);
     mostrar_fluxo_caixa();
+    ui->tbw_geral->setCurrentIndex(0);
 }
 
 void tela_contas::mostrar_fluxo_caixa(){
@@ -90,10 +91,6 @@ void tela_contas::mostrar_fluxo_caixa(){
                 ui->tw_fluxo_caixa->item(i-1,j)->setBackgroundColor(QColor::fromRgb(239,80,80,255));
             }
         }
-
-        //Define o íten como não editável
-        //ui->tw_lista_produtos->item(i,0)->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
-        //ui->tw_lista_produtos->item(i,1)->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
     }
 
     ui->tw_fluxo_caixa->setSelectionMode(QAbstractItemView::SingleSelection);
@@ -145,14 +142,14 @@ void tela_contas::busca_lista_movimento_mes(QDate data_consultar){
             data_s = dia_s+"/"+mes_s+"/"+ano_s;
 
             //realiza a consulta
-            consultar_ganhos.exec("SELECT SUM(valor) FROM ganhos WHERE data = '"+data_s+"';");
+            consultar_ganhos.exec("SELECT SUM(valor) FROM ganhos WHERE data = '"+data_s+"' AND status = '"+QString::number(_paga)+"';");
             if(consultar_ganhos.last()){
                 valor_ganhos = consultar_ganhos.value(0).toDouble();
             }
             lista_ganhos_valores.push_back(valor_ganhos);
             consultar_ganhos.clear();
 
-            consultar_despesas.exec("SELECT SUM(valor) FROM despesas WHERE data = '"+data_s+"';");
+            consultar_despesas.exec("SELECT SUM(valor) FROM despesas WHERE data = '"+data_s+"' AND status = '"+QString::number(_paga)+"';");
             if(consultar_despesas.last()){
                 valor_despesas = consultar_despesas.value(0).toDouble();
             }
@@ -245,6 +242,7 @@ void tela_contas::on_btn_limpar_cp_clicked()
 void tela_contas::mostrar_lista_despesas(void){
     lista_despesa.clear();
     funcoes_extras funcao;
+    double despesas_acumuladas = 0;
 
     for (int i=0;i<int(aux_lista_despesa.size());i++){//aux_cons_status
         if (aux_cons_status=="Todos"){
@@ -271,6 +269,7 @@ void tela_contas::mostrar_lista_despesas(void){
         ui->tw_contas_pagar->setItem(i,2,new QTableWidgetItem(lista_despesa[i]->retorna_descricao()));
         ui->tw_contas_pagar->setItem(i,3,new QTableWidgetItem(funcao.converte_despesa_numero_origem_nome(lista_despesa[i]->retorna_origem())));
         ui->tw_contas_pagar->setItem(i,4,new QTableWidgetItem(funcao.retorna_valor_dinheiro(lista_despesa[i]->retorna_valor())));
+        despesas_acumuladas = despesas_acumuladas+lista_despesa[i]->retorna_valor();
         ui->tw_contas_pagar->setItem(i,5,new QTableWidgetItem(funcao.converte_despesa_numero_status_nome(lista_despesa[i]->retorna_status())));
         ui->tw_contas_pagar->item(i,0)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_contas_pagar->item(i,1)->setTextAlignment(Qt::AlignHCenter);
@@ -287,6 +286,7 @@ void tela_contas::mostrar_lista_despesas(void){
     ui->tw_contas_pagar->resizeColumnToContents(3);
     ui->tw_contas_pagar->resizeColumnToContents(4);
     ui->tw_contas_pagar->resizeColumnToContents(5);
+    ui->lb_total_pagar_dina->setText(funcao.retorna_valor_dinheiro(despesas_acumuladas));
 }
 
 void tela_contas::on_data_inicial_cp_editingFinished()
@@ -372,9 +372,10 @@ void tela_contas::on_btn_limparcr_clicked()
 void tela_contas::mostrar_lista_ganhos(void){
     lista_ganho.clear();
     funcoes_extras funcao;
+    double ganhos_acumulado = 0;
 
-    for (int i=0;i<int(aux_lista_ganho.size());i++){//aux_cons_status
-        if (aux_cons_status=="Todos"){
+    for (int i=0;i<int(aux_lista_ganho.size());i++){
+        if (aux_cons_status_ganhos=="Todos"){
             if((QString::number(aux_lista_ganho[i]->retorna_id_origem())==aux_cons_id_ganhos)||(aux_cons_id_ganhos=="")){
                 lista_ganho.push_back(aux_lista_ganho[i]);
             }
@@ -384,7 +385,7 @@ void tela_contas::mostrar_lista_ganhos(void){
                (funcao.converte_despesa_numero_status_nome(aux_lista_ganho[i]->retorna_status())==aux_cons_status_ganhos)){
                 lista_ganho.push_back(aux_lista_ganho[i]);
             }
-        }
+        }        
     }
     ui->tw_contas_receber->setRowCount(int(lista_ganho.size()));
     ui->tw_contas_receber->setColumnCount(6);
@@ -398,6 +399,7 @@ void tela_contas::mostrar_lista_ganhos(void){
         ui->tw_contas_receber->setItem(i,2,new QTableWidgetItem(lista_ganho[i]->retorna_descricao()));
         ui->tw_contas_receber->setItem(i,3,new QTableWidgetItem(funcao.converte_despesa_numero_origem_nome(lista_ganho[i]->retorna_origem())));
         ui->tw_contas_receber->setItem(i,4,new QTableWidgetItem(funcao.retorna_valor_dinheiro(lista_ganho[i]->retorna_valor())));
+        ganhos_acumulado = ganhos_acumulado+lista_ganho[i]->retorna_valor();
         ui->tw_contas_receber->setItem(i,5,new QTableWidgetItem(funcao.converte_despesa_numero_status_nome(lista_ganho[i]->retorna_status())));
         ui->tw_contas_receber->item(i,0)->setTextAlignment(Qt::AlignHCenter);
         ui->tw_contas_receber->item(i,1)->setTextAlignment(Qt::AlignHCenter);
@@ -415,6 +417,7 @@ void tela_contas::mostrar_lista_ganhos(void){
     ui->tw_contas_receber->resizeColumnToContents(3);
     ui->tw_contas_receber->resizeColumnToContents(4);
     ui->tw_contas_receber->resizeColumnToContents(5);
+    ui->lb_total_receber_dina->setText(funcao.retorna_valor_dinheiro(ganhos_acumulado));
 }
 
 void tela_contas::on_data_inicial_cr_editingFinished()
@@ -590,6 +593,7 @@ void tela_contas::on_tw_lista_notas_venda_doubleClicked(const QModelIndex &index
     tl_nota_venda.definir_dados(lista_venda[index.row()]);
     if(tl_nota_venda.exec()){
         on_btn_buscar_nota_venda_clicked();
+        mostrar_fluxo_caixa();
     }
 }
 
@@ -599,6 +603,7 @@ void tela_contas::on_tw_lista_notas_compra_doubleClicked(const QModelIndex &inde
     tl_nota_compra.definir_dados(lista_compra[index.row()]);
     if(tl_nota_compra.exec()){
         on_btn_buscar_nota_compra_clicked();
+        mostrar_fluxo_caixa();
     }
 }
 

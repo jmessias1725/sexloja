@@ -157,3 +157,15 @@ void tela_principal::on_listar_contas_triggered()
     tl_contas.definir_icone_janela(logomarca);
     tl_contas.showMaximized();
 }
+
+void tela_principal::on_adicionar_despesa_triggered()
+{
+    tl_despesa_avulsa.definir_icone_janela(logomarca);
+    tl_despesa_avulsa.exec();
+}
+
+void tela_principal::on_adicionar_receita_triggered()
+{
+    tl_receita_avulsa.definir_icone_janela(logomarca);
+    tl_receita_avulsa.exec();
+}

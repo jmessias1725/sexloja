@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tela_principal.ui'
 **
-** Created: Fri 5. Apr 08:25:33 2013
+** Created: Thu 18. Apr 09:54:43 2013
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -47,6 +47,8 @@ public:
     QAction *Estoque;
     QAction *realizar_compra;
     QAction *listar_contas;
+    QAction *adicionar_despesa;
+    QAction *adicionar_receita;
     QWidget *centralwidget;
     QHBoxLayout *horizontalLayout;
     QFrame *fr_central;
@@ -157,6 +159,16 @@ public:
         QIcon icon12;
         icon12.addFile(QString::fromUtf8(":/img/img/dinheiro_geral.png"), QSize(), QIcon::Normal, QIcon::Off);
         listar_contas->setIcon(icon12);
+        adicionar_despesa = new QAction(tela_principal);
+        adicionar_despesa->setObjectName(QString::fromUtf8("adicionar_despesa"));
+        QIcon icon13;
+        icon13.addFile(QString::fromUtf8(":/img/img/despesa.png"), QSize(), QIcon::Normal, QIcon::Off);
+        adicionar_despesa->setIcon(icon13);
+        adicionar_receita = new QAction(tela_principal);
+        adicionar_receita->setObjectName(QString::fromUtf8("adicionar_receita"));
+        QIcon icon14;
+        icon14.addFile(QString::fromUtf8(":/img/img/ganho.png"), QSize(), QIcon::Normal, QIcon::Off);
+        adicionar_receita->setIcon(icon14);
         centralwidget = new QWidget(tela_principal);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         horizontalLayout = new QHBoxLayout(centralwidget);
@@ -289,9 +301,9 @@ public:
         btn_cal_avanc->setObjectName(QString::fromUtf8("btn_cal_avanc"));
         btn_cal_avanc->setGeometry(QRect(195, 32, 25, 25));
         btn_cal_avanc->setStyleSheet(QString::fromUtf8("background-color: none;"));
-        QIcon icon13;
-        icon13.addFile(QString::fromUtf8(":/img/img/botao_avancar.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_cal_avanc->setIcon(icon13);
+        QIcon icon15;
+        icon15.addFile(QString::fromUtf8(":/img/img/botao_avancar.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_cal_avanc->setIcon(icon15);
         btn_cal_avanc->setIconSize(QSize(25, 25));
         btn_cal_avanc->setAutoRaise(true);
         btn_cal_avanc->setArrowType(Qt::NoArrow);
@@ -299,9 +311,9 @@ public:
         btn_cal_voltar->setObjectName(QString::fromUtf8("btn_cal_voltar"));
         btn_cal_voltar->setGeometry(QRect(10, 32, 25, 25));
         btn_cal_voltar->setStyleSheet(QString::fromUtf8("background-color: none;"));
-        QIcon icon14;
-        icon14.addFile(QString::fromUtf8(":/img/img/botao_voltar.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_cal_voltar->setIcon(icon14);
+        QIcon icon16;
+        icon16.addFile(QString::fromUtf8(":/img/img/botao_voltar.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_cal_voltar->setIcon(icon16);
         btn_cal_voltar->setIconSize(QSize(25, 25));
         btn_cal_voltar->setAutoRaise(true);
         calendario_mes_cor->raise();
@@ -430,9 +442,9 @@ public:
         menuNovo->setFont(font6);
         menuNovo->setStyleSheet(QString::fromUtf8("background-color: #505050;\n"
 "color: #FFFFFF;"));
-        QIcon icon15;
-        icon15.addFile(QString::fromUtf8(":/img/img/mais.png"), QSize(), QIcon::Normal, QIcon::Off);
-        menuNovo->setIcon(icon15);
+        QIcon icon17;
+        icon17.addFile(QString::fromUtf8(":/img/img/mais.png"), QSize(), QIcon::Normal, QIcon::Off);
+        menuNovo->setIcon(icon17);
         menuListar = new QMenu(menubar);
         menuListar->setObjectName(QString::fromUtf8("menuListar"));
         menuListar->setStyleSheet(QString::fromUtf8("background-color: #505050;\n"
@@ -493,6 +505,8 @@ public:
         menuNovo->addAction(Cadastrar_cliente);
         menuNovo->addAction(cadastrar_forncecedor);
         menuNovo->addAction(cadastrar_produto);
+        menuNovo->addAction(adicionar_despesa);
+        menuNovo->addAction(adicionar_receita);
         menuListar->addAction(buscar_clientes);
         menuListar->addAction(buscar_fornecedores);
         menuConfigura_oes->addSeparator();
@@ -501,12 +515,21 @@ public:
         menuConfigura_oes->addAction(listar_contas);
         barra_de_menus->addSeparator();
         barra_de_menus->addAction(consultar_caixa);
+        barra_de_menus->addSeparator();
         barra_de_menus->addAction(consultar_clientes);
         barra_de_menus->addAction(consultar_fornecedores);
-        barra_de_menus->addAction(listar_contas);
-        barra_de_menus->addAction(Estoque);
+        barra_de_menus->addSeparator();
         barra_de_menus->addAction(realizar_venda);
         barra_de_menus->addAction(realizar_compra);
+        barra_de_menus->addAction(Cadastrar_cliente);
+        barra_de_menus->addAction(cadastrar_forncecedor);
+        barra_de_menus->addAction(cadastrar_produto);
+        barra_de_menus->addAction(adicionar_despesa);
+        barra_de_menus->addAction(adicionar_receita);
+        barra_de_menus->addSeparator();
+        barra_de_menus->addAction(listar_contas);
+        barra_de_menus->addAction(Estoque);
+        barra_de_menus->addAction(Cadastro_da_Loja);
 
         retranslateUi(tela_principal);
 
@@ -517,27 +540,68 @@ public:
     {
         tela_principal->setWindowTitle(QApplication::translate("tela_principal", "Sex Shop", 0, QApplication::UnicodeUTF8));
         consultar_clientes->setText(QApplication::translate("tela_principal", "Buscar Clientes", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        consultar_clientes->setToolTip(QApplication::translate("tela_principal", "Clique para buscar os dados sobre os clientes.", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
         consultar_caixa->setText(QApplication::translate("tela_principal", "Caixa", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        consultar_caixa->setToolTip(QApplication::translate("tela_principal", "Clique para visualizar o fluxo do caixa.", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
         consultar_fornecedores->setText(QApplication::translate("tela_principal", "Buscar Forncedores", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        consultar_fornecedores->setToolTip(QApplication::translate("tela_principal", "Clique para buscar os dados sobre os forncedores", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
         cadastrar_forncecedor->setText(QApplication::translate("tela_principal", "Fornecedor", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        cadastrar_forncecedor->setToolTip(QApplication::translate("tela_principal", "Clique para cadastrar um novo fornecedor.", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
         cadastrar_produto->setText(QApplication::translate("tela_principal", "Produto", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        cadastrar_produto->setToolTip(QApplication::translate("tela_principal", "Clique para cadastrar um novo produto.", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
         realizar_venda->setText(QApplication::translate("tela_principal", "Venda", 0, QApplication::UnicodeUTF8));
 #ifndef QT_NO_TOOLTIP
-        realizar_venda->setToolTip(QApplication::translate("tela_principal", "Clique para realizar uma venda", 0, QApplication::UnicodeUTF8));
+        realizar_venda->setToolTip(QApplication::translate("tela_principal", "Clique para realizar uma nova venda.", 0, QApplication::UnicodeUTF8));
 #endif // QT_NO_TOOLTIP
         Cadastrar_cliente->setText(QApplication::translate("tela_principal", "Cliente", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        Cadastrar_cliente->setToolTip(QApplication::translate("tela_principal", "Clique para cadastrar um novo cliente.", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
         botao_sair->setText(QApplication::translate("tela_principal", "Sair", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        botao_sair->setToolTip(QApplication::translate("tela_principal", "Clique para sair do programa.", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
         buscar_clientes->setText(QApplication::translate("tela_principal", "Buscar Clientes", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        buscar_clientes->setToolTip(QApplication::translate("tela_principal", "Clique para buscar os dados sobre os clientes.", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
         buscar_fornecedores->setText(QApplication::translate("tela_principal", "Buscar Fornecedores", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        buscar_fornecedores->setToolTip(QApplication::translate("tela_principal", "Clique para buscar os dados sobre fornecedores.", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
         Cadastro_da_Loja->setText(QApplication::translate("tela_principal", "Cadastro da Loja", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        Cadastro_da_Loja->setToolTip(QApplication::translate("tela_principal", "Clique para visualizar o cadastro da Loja.", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
         Estoque->setText(QApplication::translate("tela_principal", "Estoque", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        Estoque->setToolTip(QApplication::translate("tela_principal", "Clique para visualizar o estoque.", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
         realizar_compra->setText(QApplication::translate("tela_principal", "Compra", 0, QApplication::UnicodeUTF8));
 #ifndef QT_NO_TOOLTIP
-        realizar_compra->setToolTip(QApplication::translate("tela_principal", "Clique para adicionar uma nova compra", 0, QApplication::UnicodeUTF8));
+        realizar_compra->setToolTip(QApplication::translate("tela_principal", "Clique para adicionar uma nova compra.", 0, QApplication::UnicodeUTF8));
 #endif // QT_NO_TOOLTIP
         listar_contas->setText(QApplication::translate("tela_principal", "Contas", 0, QApplication::UnicodeUTF8));
 #ifndef QT_NO_TOOLTIP
-        listar_contas->setToolTip(QApplication::translate("tela_principal", "Contas", 0, QApplication::UnicodeUTF8));
+        listar_contas->setToolTip(QApplication::translate("tela_principal", "Clique para visualizar as contas.", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
+        adicionar_despesa->setText(QApplication::translate("tela_principal", "Despesa", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        adicionar_despesa->setToolTip(QApplication::translate("tela_principal", "Clique para adicionar uma nova despesa.", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
+        adicionar_receita->setText(QApplication::translate("tela_principal", "Receita", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        adicionar_receita->setToolTip(QApplication::translate("tela_principal", "Clique para adicionar uma nova receita.", 0, QApplication::UnicodeUTF8));
 #endif // QT_NO_TOOLTIP
         lb_data->setText(QApplication::translate("tela_principal", "Segunda-Feira\n"
 "30/09/2012", 0, QApplication::UnicodeUTF8));

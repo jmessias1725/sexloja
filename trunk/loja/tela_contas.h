@@ -49,7 +49,6 @@ private slots:
     void on_btn_buscar_nota_venda_clicked();
     void on_btn_buscar_nota_compra_clicked();
     void on_tw_lista_notas_venda_doubleClicked(const QModelIndex &index);
-
     void on_tw_lista_notas_compra_doubleClicked(const QModelIndex &index);
 
 private:
